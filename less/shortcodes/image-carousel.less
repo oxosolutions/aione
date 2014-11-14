@@ -1,0 +1,167 @@
+.aione-image-carousel {
+	overflow: hidden;
+	margin-bottom: 40px;
+	padding: 0;
+	height: auto;
+}
+
+// all standard carousel styles
+.es-carousel-wrapper {
+	overflow: hidden;
+	position: relative;
+	padding: 0;
+	background: transparent;
+
+	.es-carousel {
+		overflow: hidden;
+
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+
+			li {
+				display: block;
+				float: left;
+				padding: 0;
+
+				.image {
+					margin-bottom: 0;
+					text-align: center;
+					visibility: hidden;
+				}
+
+				> a {
+					display: block;
+				}
+				
+				img {
+					vertical-align: middle;
+					margin: 0 auto;
+				}
+
+			}
+		}
+	}
+		
+	.es-nav {
+		.es-nav-prev,
+		.es-nav-next {
+			text-align: center;
+		
+			&:before {
+				display: block;
+				position: relative;
+				line-height: 29px;
+				font-size: 14px;
+				color: #fff;		
+				font-family: IcoMoon;
+			}
+		
+		}
+
+		.es-nav-prev {
+			&:before {
+				content: @left-arrow-small;
+			}
+		}
+
+		.es-nav-next {
+			&:before {
+				content: @right-arrow-small;
+			}
+		}			
+	}
+
+	&.aione-carousel-small {
+		.es-carousel {
+			padding-left: 13px;
+
+			ul {
+				li {
+					margin-right: 13px;
+
+					.image {
+						height: 118px;
+						width: 159px;
+						line-height: 118px;
+					}
+
+					img {
+						max-height: 115px;
+						border: 1px solid @default-border-color;
+					}
+				}
+			}
+		}
+	}
+
+	&.aione-carousel-large {
+		.es-carousel {
+			padding-left: 44px;
+
+			ul {
+				li {
+					margin-right: 44px;
+					height: 100%;
+
+					.image {
+						height: 138px;
+						width: 180px;
+						line-height: 138px;
+						
+						.image-extras-content {
+							line-height: normal;
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	.simple-products-slider-variable &, .picture-size-auto & {
+		.es-carousel {
+			padding-left: 13px;
+
+			ul {
+				li {
+					margin-right: 13px;
+
+					.image {
+						height: auto;
+						width: 159px;
+						line-height: auto;
+					}
+
+					img {
+						max-height: none;
+						border: 1px solid @default-border-color;
+					}
+				}
+			}
+		}
+	}
+
+	.picture-size-auto &.aione-carousel-large {
+		.es-carousel {
+			padding-left: 44px;
+
+			ul {
+				li {
+					margin-right: 44px;
+					height: 100%;
+
+					.image {
+						height: auto;
+						width: 180px;
+						line-height: 138px;
+						
+						.image-extras-content {
+							line-height: initial;
+						}
+					}
+				}
+			}
+		}
+	}	
+}

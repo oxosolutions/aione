@@ -1,0 +1,537 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon/icomoon-admin.eot?cacde4');
+	src:url('../fonts/icomoon/icomoon-admin.eot?#iefixcacde4') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon-admin.woff?cacde4') format('woff'),
+		url('../fonts/icomoon/icomoon-admin.ttf?cacde4') format('truetype'),
+		url('../fonts/icomoon/icomoon-admin.svg?cacde4#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="aionea-"], [class*=" aionea-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.aionea-logo:before {
+	content: "\e639";
+}
+.aionea-footer:before {
+	content: "\e637";
+}
+.aionea-page_title:before {
+	content: "\e636";
+}
+.aionea-loop-alt2:before {
+	content: "\e62e";
+}
+.aionea-anchor:before {
+	content: "\e62f";
+}
+.aionea-columns:before {
+	content: "\e600";
+}
+.aionea-file-alt:before {
+	content: "\e601";
+}
+.aionea-copy:before {
+	content: "\e602";
+}
+.aionea-exclamation-sign:before {
+	content: "\e603";
+}
+.aionea-blog:before {
+	content: "\e604";
+}
+.aionea-check-empty:before {
+	content: "\e605";
+}
+.aionea-list-ul:before {
+	content: "\e606";
+}
+.aionea-users:before {
+	content: "\e612";
+}
+.aionea-newspaper:before {
+	content: "\e613";
+}
+.aionea-clock:before {
+	content: "\e614";
+}
+.aionea-browser:before {
+	content: "\e615";
+}
+.aionea-d:before {
+	content: "\e61d";
+}
+.aionea-air:before {
+	content: "\e616";
+}
+.aionea-map:before {
+	content: "\e617";
+}
+.aionea-flag:before {
+	content: "\e608";
+}
+.aionea-move-horizontal:before {
+	content: "\e61e";
+}
+.aionea-uniF6CC:before {
+	content: "\e61f";
+}
+.aionea-image:before {
+	content: "\e620";
+}
+.aionea-images:before {
+	content: "\e621";
+}
+.aionea-uniF602:before {
+	content: "\e622";
+}
+.aionea-stack:before {
+	content: "\e623";
+}
+.aionea-user:before {
+	content: "\e618";
+}
+.aionea-dollar:before {
+	content: "\e609";
+}
+.aionea-tasks:before {
+	content: "\e60a";
+}
+.aionea-feather:before {
+	content: "\e619";
+}
+.aionea-uniF61C:before {
+	content: "\e624";
+}
+.aionea-insertpicture:before {
+	content: "\e625";
+}
+.aionea-link:before {
+	content: "\e61b";
+}
+.aionea-soundcloud:before {
+	content: "\e61c";
+}
+.aionea-table:before {
+	content: "\e60b";
+}
+.aionea-folder:before {
+	content: "\e62b";
+}
+.aionea-list-alt:before {
+	content: "\e60c";
+}
+.aionea-bubbles:before {
+	content: "\e626";
+}
+.aionea-font:before {
+	content: "\e627";
+}
+.aionea-H:before {
+	content: "\e628";
+}
+.aionea-expand-alt:before {
+	content: "\e60d";
+}
+.aionea-hand-up:before {
+	content: "\e60e";
+}
+.aionea-film:before {
+	content: "\e60f";
+}
+.aionea-star-empty:before {
+	content: "\e610";
+}
+.aionea-shopping-cart:before {
+	content: "\e611";
+}
+.aionea-share2:before {
+	content: "\e629";
+}
+.aionea-layers-alt:before {
+	content: "\e62a";
+}
+.aionea-minus:before {
+	content: "\e61a";
+}
+.aionea-TFicon:before {
+	content: "\e62d";
+}
+.aionea-youtube:before {
+	content: "\e607";
+}
+.aionea-vimeo2:before {
+	content: "\e62c";
+}
+.aionea-sidebar:before {
+	content: "\e634";
+}
+.aionea-header:before {
+	content: "\e635";
+}
+.aionea-tag:before {
+	content: "\e632";
+}
+.aionea-pointer:before {
+	content: "\e630";
+}
+.aionea-external-link:before {
+	content: "\f08e";
+}
+.aionea-external-link-square:before {
+	content: "\f14c";
+}
+.aionea-file:before {
+	content: "\e633";
+}
+.aionea-ellipsis:before {
+	content: "\e631";
+}
+.aionea-tools:before {
+	content: "\e63b";
+}
+.aionea-pin-outline:before {
+	content: "\e63f";
+}
+.aionea-sitewidth:before {
+	content: "\e63a";
+}
+.aionea-search:before {
+	content: "\f002";
+}
+.aionea-envelope-o:before {
+	content: "\f003";
+}
+.aionea-plus:before {
+	content: "\f067";
+}
+.aionea-plus2:before {
+	content: "\e645";
+	font-size:12px;
+}
+.aionea-socialmedia:before {
+	content: "\f08a";
+}
+.aionea-menu:before {
+	content: "\f0c9";
+}
+.aionea-code:before {
+	content: "\f121";
+}
+.aionea-css3:before {
+	content: "\f13c";
+}
+.aionea-equalizer:before {
+	content: "\e638";
+}
+.aionea-loop:before {
+	content: "\e63c";
+}
+.aionea-droplet:before {
+	content: "\e63d";
+}
+.aionea-drive:before {
+	content: "\e63e";
+}
+.aionea-pen:before {
+	content: "\e640";
+}
+.aionea-file-add:before {
+	content: "\e641";
+}
+.aionea-trash-o:before {
+	content: "\f014";
+}
+.aionea-reply:before {
+	content: "\e642";
+}
+.aionea-forward:before {
+	content: "\e643";
+}
+
+#poststuff .pyre_metabox h2{margin-top:30px;}
+
+#of_container .controls .wp-picker-container .wp-color-result { outline: 0; margin-bottom: 11px; }
+#of_container .controls .wp-picker-container .wp-color-result:focus{ outline: 0; }
+
+#section-status_revslider .controls,
+#section-post_type_order .controls { display: none; }
+
+.hide-if-no-js a img{max-width:100%;}
+
+.form-field-checkbox input[type=checkbox] {
+	width: 16px !important;
+}
+
+.form-field-checkbox .description {
+	display: inline-block !important;
+}
+
+.pyre_metabox_field textarea {
+	max-width: 100%;
+}
+
+.post-type-slide #slide-page-add-toggle,
+.post-type-slide #sbg-sortables {
+	display: none;
+}
+
+#pyre_page_options .inside, #pyre_post_options .inside,
+#pyre_portfolio_options .inside, #pyre_woocommerce_options .inside,
+#pyre_slide_options .inside {
+	padding: 0;
+	margin: 0;
+}
+
+#pyre_slide_options .pyre_metabox {
+	width: 100%;
+}
+
+.pyre_metabox_tabs {
+	margin: 0;
+	padding: 0;
+	width: 17%;
+	float: left;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	background: #f5f5f5;
+}
+
+.pyre_metabox_tabs li {
+	margin: 0;
+	padding: 0;
+}
+
+.pyre_metabox_tabs li a {
+	display: block;
+	font-size: 13px;
+	color: #222222;
+	text-decoration: none;
+	padding: 13px;
+	border-bottom: 1px solid #e2dddb;
+	border-right: 1px solid #e2dddb;
+}
+
+.pyre_metabox_tabs li.active a, .pyre_metabox_tabs li a:hover {
+	background-color: #fff;
+	border-right-color: transparent;
+}
+
+.pyre_metabox {
+	width: 83%;
+	float: left;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 30px;
+	padding-bottom: 10px;
+}
+
+.pyre_metabox_field {
+	border-bottom: 1px solid #fafafa;
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
+.pyre_metabox_tab .pyre_metabox_field:first-child {
+	padding-top: 0px;
+}
+
+.pyre_metabox_tab {
+	display: none;
+}
+
+.pyre_metabox_tab.active {
+	display: block;
+}
+
+.pyre_desc {
+	width: 45%;
+	float: left;
+}
+
+#poststuff .pyre_metabox h3 {
+	margin: 10px 0 5px 0;
+	padding-left: 0 !important;
+	font-size: 17px !important;
+	color: #b5b4b4;
+}
+
+.pyre_desc label {
+	font-size: 13px;
+	color: #222222;
+}
+
+.pyre_desc p {
+	margin: 0;
+	margin-top: 8px;
+	color: #939393;
+	font-size: 12px;
+}
+
+.pyre_field {
+	width: 50%;
+	float: right;
+}
+
+.pyre_field input[type=text],.pyre_field select {
+	width: 100%;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	border: 1px solid #d6d6d6 !important;
+	color: #333333;
+	font-size: 13px;
+	padding: 7px 15px;
+}
+
+.pyre_metabox_field {
+	overflow: hidden;
+}
+
+.pyre_field {
+	position: relative;
+}
+
+.pyre_field .aione-shortcodes-arrow {
+	background: #fff;
+	width: 35px;
+	height: 32px;
+	border-left: 1px solid #d9d9d9;
+	position: absolute; top: 1px; right: 1px;
+	pointer-events: none;
+	z-index: 10;
+	font-family: 'FontAwesome';
+	text-align: center;
+	line-height: 32px;
+}
+
+.pyre_field select {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	background: #ffffff;
+	border: 1px solid #d9d9d9;
+	box-sizing: border-box;
+	-webkit-box-sizing: none;
+	-moz-box-sizing: none;
+	-o-box-sizing: none;
+	color: #333333;
+	cursor: pointer;
+	display: block;
+	font-size: 13px;
+	outline: none;
+	height: auto;
+	overflow: ellipsis;
+	padding: 7px 15px;
+	position: relative;
+	text-indent: 0.01px;
+	text-overflow: '';
+	-webkit-text-overflow: none;
+	-moz-text-overflow: none;
+	-o-text-overflow: none;
+	vertical-align: middle;
+	z-index: 5;
+	margin: 0;
+}
+
+.pyre_field textarea {
+	margin: 0;
+}
+
+.pyre_metabox_tabs a {
+}
+.pyre_metabox_tabs a:before {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-right: 8px;
+}
+
+.pyre_metabox_tabs a[href^="sliders"]:before {
+	content: "\e624";
+}
+
+.pyre_metabox_tabs a[href^="page"]:before {
+	content: "\e633";
+}
+
+.pyre_metabox_tabs a[href^="header"]:before {
+	content: "\e635";
+}
+
+.pyre_metabox_tabs a[href^="footer"]:before {
+	content: "\e637";
+}
+
+.pyre_metabox_tabs a[href^="sidebar"]:before {
+	content: "\e634";
+}
+
+.pyre_metabox_tabs a[href^="background"]:before {
+	content: "\e620";
+}
+
+.pyre_metabox_tabs a[href^="portfolio"]:before {
+	content: "\e625";
+}
+
+.pyre_metabox_tabs a[href^="pagetitlebar"]:before {
+	content: "\e636";
+}
+
+.pyre_metabox_tabs a[href^="post"]:before {
+	content: "\e619";
+}
+
+.pyre_upload {
+	display: table;
+	width: 100%;
+}
+
+.upload_field {
+	display: table-cell;
+	width: auto;
+}
+
+.aione_upload_button_container {
+	display: table-cell;
+	width: 95px;
+}
+
+.aione_upload_button {
+	margin: 0 0 0 5px;
+	height: 34px;
+	width: 90px;
+	background: none repeat scroll 0 0 #fff;
+	border: 1px solid #c7c5c5;
+	color: #333333;
+	font-size: 13px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}

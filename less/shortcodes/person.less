@@ -1,0 +1,73 @@
+@person-shadow-color: 00;
+@person-shadow-opacity: 0.3;
+
+.aione-person {
+	.person-shortcode-image-wrapper {
+		text-align: center;
+	}
+
+	.person-imgage-container {
+		display: inline-block;
+		z-index: 1;
+		max-width: 100%;
+		
+		&.glow {
+			.box-shadow( 0 0 3px rgba( @person-shadow-color, @person-shadow-color, @person-shadow-color, @person-shadow-opacity ) );
+		}
+
+		&.dropshadow {
+			.box-shadow( 2px 3px 7px rgba( @person-shadow-color, @person-shadow-color, @person-shadow-color, @person-shadow-opacity ) );
+		}
+
+		//bottom shadow classes in taglinebox.less
+		
+	}
+	
+	.person-desc {
+		margin-top: 25px;
+		
+		.person-author {
+			display: table;
+			width: 100%;
+		
+			.person-author-wrapper,
+			.aione-social-networks {
+				display: table-cell;
+				vertical-align: middle;
+				float: none;
+			}
+			
+			.person-author-wrapper {
+				min-width: 50%;
+				font-family: 'MuseoSlab500Regular',arial,helvetica,sans-serif;
+			}
+			
+			.aione-social-networks {
+				max-width: 50%;
+				text-align: right;
+				
+				a:first-child {
+					margin-left: 0;
+				}
+				a {
+					margin-bottom: 10px;
+					margin-right: 0;
+					margin-left: 20px;
+				}
+			}
+
+			.boxed-icons a {
+				margin-left: 10px;
+			}
+
+			.person-name,
+			.person-title {
+				display: block;
+			}
+		}
+	}
+	
+	.person-content {
+		margin-top: 25px;
+	}
+}

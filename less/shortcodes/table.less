@@ -1,0 +1,86 @@
+//** Padding for `<th>`s and `<td>`s.
+@table-cell-padding:			8px;
+//** Padding for cells in `.table-condensed`.
+@table-condensed-cell-padding:  5px;
+
+//** Default background color used for all tables.
+@table-bg:					  transparent;
+//** Background color used for `.table-striped`.
+@table-bg-accent:			   #f9f9f9;
+//** Background color used for `.table-hover`.
+@table-bg-hover:				#f5f5f5;
+@table-bg-active:			   @table-bg-hover;
+
+//** Border color for table and cell borders.
+@table-border-color:			#ddd;
+
+@table-background-color: #F6F6F6;
+@table-border-color: #E5E4E3;
+@table-border: 1px solid @table-border-color;
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.table {
+
+	border-color: @table-border-color;
+
+	> thead > tr > th, 
+	> tbody > tr > th {
+		padding: 20px;
+		font-weight: bold;
+	}	
+	
+	> thead > tr > td, 
+	> tbody > tr > td,
+	> tfoot > tr > td {
+		padding: 10px 20px;
+	}
+	
+	> tfoot > tr > td {
+		font-weight: bold;
+	}
+}
+
+table{
+	border-collapse:collapse;
+	border-spacing:0;
+}
+
+.table-1 table{
+	border: 1px solid#dcdcdc;
+	background-color:#fff;
+	-moz-box-shadow:0 1px 3px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.5);
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.5);
+	box-shadow:0 1px 3px rgba(0,0,0,.08), inset 0 0 0 1px rgba(255,255,255,.5);
+}
+.table-1 table th{
+	border:1px solid #dcdcdc;
+	background:#f6f6f6;
+	padding:20px;
+	font-family:'MuseoSlab500Regular', arial, helvetica, sans-serif;
+	text-align:left;
+}
+.table-1 tr:nth-child(even){
+	background:#f6f6f6;
+}
+.table-1 tr td{
+	border:1px solid #dcdcdc;
+	padding:10px 20px;
+}
+
+.table-2 table thead{
+	border: 1px solid #d3d3d3;
+	font-family:'MuseoSlab500Regular', arial, helvetica, sans-serif;
+	text-align:left;
+}
+.table-2 table th{
+	padding:20px;
+	color:#fff;
+}
+.table-2 tr td{
+	border-bottom:1px solid #dcdcdc;
+	padding:10px 20px;
+}

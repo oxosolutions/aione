@@ -1,0 +1,113 @@
+//
+// Theme Variables
+// --------------------------------------------------
+
+@primary-color:				#A0CE4E;
+
+@default-margin-bottom: 	40px;
+
+@default-background-color:	#fff;
+@default-border-color:		#E9EAEE;
+@default-border-radius:		5px;
+
+@font-size-base:			13px;
+@font-size-large:			ceil((@font-size-base * 1.3)); // ~17px
+@font-size-small:			ceil((@font-size-base * 0.85)); // ~11px
+
+@line-height-base:			20/13;
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+@line-height-computed:	floor((@font-size-base * @line-height-base)); // ~20px
+
+@zindex-popover:			1010;
+@zindex-tooltip:			1030;
+@zindex-modal-background:	1040;
+@zindex-modal:				1050;
+
+
+//Font Icons
+@left-arrow-small: '\f104';
+@right-arrow-small: '\f105';
+@left-arrow-large: '\e61e';
+@right-arrow-large: '\e620';
+@down-arrow-large: '\e61f';
+@blog-timeline-arrow-left: '\f0da';
+@blog-timeline-arrow-right: '\f0d9';
+
+@slidingbar-plus: '\e61d';
+@slidingbar-minus: '\e61c';
+@twitter-widget: '\e605';
+@to-top-arrow: '\f106';
+@search-icon: '\f002';
+@link-icon: '\e619';
+@mobile-menu-icon: '\f0c9';
+
+@cart-icon: '\f07a';
+@details-icon: '\e623';
+@options-icon: '\f013';
+@star-icon: '\f005';
+@star-o-icon: '\f006';
+@woo-ok-icon: '\f05d';
+@check-icon: '\f046';
+
+@modal-screen-min: 900px;
+
+// 
+// Mixins
+// --------------------------------------------------
+.group {
+	zoom: 1; // For IE 6/7 (trigger hasLayout)
+
+	&:before, 
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear:both;
+	}
+}
+
+.clearfix() {
+	zoom: 1; // For IE 6/7 (trigger hasLayout)
+
+	&:before, 
+	&:after {
+		content: " ";
+		display: table;
+	}
+
+	&:after {
+		clear:both;
+	}
+}
+
+.border-radius( @radius: @default-border-radius ) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius:	@radius;
+	border-radius:		 @radius;
+
+	-moz-background-clip:	padding;
+	-webkit-background-clip: padding-box;
+	background-clip:		 padding-box;
+}
+
+.backgroundclip( @value ) {
+	-moz-background-clip:	@value;
+	-webkit-background-clip: @value;
+	background-clip:		 @value;
+}
+
+.box-shadow( @shadow-args ) {
+	-webkit-box-shadow: @shadow-args;
+	-moz-box-shadow: 	@shadow-args;
+	box-shadow: 		@shadow-args;
+}
+
+.transform( @transformation ) {
+	-webkit-transform: @transformation;
+	-moz-transform: @transformation;
+	-ms-transform: @transformation;
+	-o-transform: @transformation;
+	transform: @transformation;
+}

@@ -1,0 +1,118 @@
+.aione-reading-box-container {
+	z-index: 1;
+	position: relative;
+	margin-bottom: 84px;
+
+	.reading-box {
+		padding: 28px 28px 27px 31px;	
+		background-color: #F2EFEF;
+		border-left: 3px solid @primary-color;
+		   
+		&.reading-box-center,
+		&.reading-box-right {
+			text-align: left;
+		}		
+		
+		h2 {
+			margin: 0 0 7px;
+			line-height: 20px;
+			font-size: 18px;
+		}
+		
+		p {
+			margin: 0;
+		}
+		
+	}
+	
+	.continue {
+		display: none;
+	}
+	
+	.continue-center {
+		float: none;
+		margin: 15px auto 0 auto;
+	}
+	
+	.continue-left {
+		float: left;
+		margin-right: 10px;
+	}	
+
+	.continue-right {
+		float: right;
+		margin-left: 10px;
+	}
+
+	.mobile-button {
+		display: block;
+		float: none;
+		margin: 20px 0 0;
+	}
+}
+
+@media (min-width: 800px) {
+
+	.aione-reading-box-container {
+		.reading-box {
+			&.reading-box-center {
+				text-align: center;
+			}		
+
+			&.reading-box-right {
+				text-align: right;
+			}
+		}
+	
+		.continue {
+			display: block;
+		}
+		
+		.continue-center {
+			display: inline-block;
+		}
+
+		.mobile-button {
+			display: none;
+		}
+	}
+}
+
+.element-bottomshadow-mixin( @argument ) {
+	-webkit-transform:rotate( @argument );	
+	-moz-transform:rotate( @argument );   
+	-ms-transform:rotate( @argument );   
+	-o-transform:rotate( @argument ); 
+	transform:rotate( @argument ); 
+}
+
+.element-box-shadow( @arguments ) {
+	-webkit-box-shadow: @arguments;
+	-moz-box-shadow: 	@arguments;
+	box-shadow: 		@arguments;
+}
+
+.element-bottomshadow {
+	position: relative;
+}
+
+.element-bottomshadow:before, .element-bottomshadow:after {
+	position: absolute;
+	bottom: 15px;
+	left: 10px;
+	z-index: -1;	
+	height: 20%;
+	max-height: 100px;
+	max-width: 460px;
+	width: 60%;
+	content: "";	
+	opacity: 0.7;
+	.element-box-shadow( 0 17px 10px rgba(0, 0, 0, 0.7 ) );
+	.element-bottomshadow-mixin( -3deg );
+}
+
+.element-bottomshadow:after {
+	left: auto;
+	right: 10px;
+	.element-bottomshadow-mixin( 3deg );
+}

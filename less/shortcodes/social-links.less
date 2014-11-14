@@ -1,0 +1,83 @@
+.aione-social-links {
+	//margin-bottom: @default-margin-bottom; 
+}
+
+@icon-color: #46494A;
+@boxed-icon-color: #fff;
+@boxed-icon-bg: @icon-color;
+
+.aione-social-networks {
+	.aione-social-network-icon {
+		margin-left: 0;
+		margin-right: 20px;
+		margin-bottom: 10px;
+		font-size: 16px;
+		color: @icon-color;
+		display: inline-block;
+
+		&:hover {
+			opacity: 0.8;
+		}
+		&:before {
+			color: inherit;
+		}
+	}
+	
+	&.boxed-icons {
+		line-height: 46px;
+	
+		.aione-social-network-icon {
+			margin-right: 10px;
+			padding: 8px;		
+			background-color: @boxed-icon-bg;
+			border: none;
+			.border-radius( 3px );
+			.box-shadow( 0 1px 1px rgba( 0, 0, 0, 0.2 ) );
+			.backgroundclip( inherit );
+			border: 1px solid @boxed-icon-bg;
+			color: @boxed-icon-color;
+		}
+	}
+}
+
+.header-social .alignright .aione-social-links-header {
+	.aione-social-network-icon {
+		margin-right: 0;
+		margin-left: 20px;
+	}
+	.boxed-icons {
+		.aione-social-network-icon {
+			margin-right: 0;
+			margin-left: 10px;
+		}
+	}
+}
+ 
+.aione-social-links-footer {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: right;
+	width: 40%;
+	
+	.aione-social-networks {
+		margin-top: 10px;	
+
+		&.boxed-icons {
+			margin-top: 0;
+
+			.aione-social-network-icon {
+				margin-right: 0;
+				margin-left: 10px;
+			}
+		}
+		
+		.aione-social-network-icon {
+			margin-right: 0;
+			margin-left: 20px;
+			
+			&:first-child {
+				margin-left: 0;
+			}
+		}		
+	}
+}

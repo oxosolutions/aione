@@ -1,0 +1,100 @@
+@separator-border-color: #E7E6E6;
+@separator-border-width: 1px;
+
+.separator-border-mixin( @sep-border-color, @sep-border-opacity, @sep-border-start, @sep-border-end ) {
+	@rgba0: rgba( @sep-border-color, @sep-border-color, @sep-border-color, 0 );
+	@rgba-op: rgba( @sep-border-color, @sep-border-color, @sep-border-color, @sep-border-opacity );
+	background: none;
+	background: -webkit-gradient( linear, left top, right top, color-stop( 0%, @rgba0 ), color-stop( @sep-border-start, @rgba0 ), color-stop( 50%, @rgba-op ), color-stop( @sep-border-end, @rgba0 ), color-stop( 100%, @rgba0 ) );
+	background: -webkit-linear-gradient( left, @rgba0 0%, @rgba0 @sep-border-start, @rgba-op 50%, @rgba0 @sep-border-end, @rgba0 100% );
+	background:	-moz-linear-gradient( left, @rgba0 0%, @rgba0 @sep-border-start, rgba(150,150,150,0.65) 50%, @rgba0 @sep-border-end, @rgba0 100%);
+	background:  	-ms-linear-gradient( left, @rgba0 0%, @rgba0 @sep-border-start, @rgba-op 50%, @rgba0 @sep-border-end, @rgba0 100%); 
+	background: 	 -o-linear-gradient( left, @rgba0 0%, @rgba0 @sep-border-start, @rgba-op 50%, @rgba0 @sep-border-end, @rgba0 100%);
+	background: linear-gradient(left, @rgba0 0%, @rgba0 @sep-border-start, @rgba-op 50%, @rgba0 @sep-border-end, @rgba0 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
+
+}
+
+.aione-sep-clear {
+	clear: both;
+	display: block;
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.aione-separator {
+	margin: 0 auto;
+	border: 0 solid @separator-border-color;
+	clear: both;
+	position: relative;
+
+	&.sep-none {
+		height: 1px;
+	}
+	
+	&.sep-double {
+		height: 8px;
+		border-bottom-width: @separator-border-width;
+		border-top-width: @separator-border-width;
+	}
+
+	&.sep-single {
+		border-top-width: @separator-border-width;
+	}
+
+	&.sep-dashed {
+		border-bottom-style: dashed;
+		border-top-style: dashed;
+	}
+
+	&.sep-dotted {
+		border-bottom-style: dotted;
+		border-top-style: dotted;
+	}
+	
+	&.sep-shadow {
+		height: 1px;
+		overflow: visible;
+		border: none;
+		.separator-border-mixin( 150, 0.65, 15%, 85% );
+
+		&:after{
+			display: block;
+			margin-top: 10px;
+			height: 6px;
+			width: 100%;
+			content: '';
+			background: -webkit-radial-gradient(ellipse at 50% -50% , rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 65%);
+			background:	-moz-radial-gradient(ellipse at 50% -50% , rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 80%);
+			background: 	 -o-radial-gradient(ellipse at 50% -50% , rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 80%);	
+			background: radial-gradient(ellipse at 50% -50% , rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 65%);
+		}
+	}
+	
+	.icon-wrapper {
+		position: absolute;
+		display: table;
+		left: 50%;
+		top: 50%;
+		margin: -13px 0 0 -13px;
+		height: 26px;
+		width: 26px;		
+		background: none repeat scroll 0 0 #FFFFFF;
+		border: 1px solid #AAAAAA;
+		.border-radius( 50% );
+		text-align: center;
+		
+		i {
+			display: block;
+				display: table-cell;
+				vertical-align: middle;
+		}
+	}	
+}
+
+body:not(:-moz-handler-blocked) .aione-separator.sep-shadow:after {
+	background: radial-gradient(ellipse at 50% -50% , rgba(0, 0, 0, 0.5) 0px, rgba(255, 255, 255, 0) 80%);
+}

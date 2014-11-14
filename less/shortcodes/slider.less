@@ -1,0 +1,27 @@
+.aione-slider-sc {
+	.flex-direction-nav {
+		a {
+			position: absolute;
+			top: 50%;
+			z-index: 100;
+			margin: -20px 0 0;
+			height: 30px;
+			width: 30px;
+			opacity: 0;
+			overflow: hidden;
+			background-color: rgba(0, 0, 0, 0.5);
+			background-repeat: no-repeat;
+			cursor: pointer;
+			font-size: 14px;
+			font-weight: normal;
+			font-family: IcoMoon;
+			-webkit-font-smoothing: none;
+		}
+	}
+	
+	&:hover .flex-next:hover, 
+	&:hover .flex-prev:hover {
+		opacity: 1;
+	}
+	
+}

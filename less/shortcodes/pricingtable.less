@@ -1,0 +1,288 @@
+@pricing-border-color: #E5E4E3;
+@pricing-border: 1px solid @pricing-border-color;
+@pricing-colored-bgs: #F8F8F8;
+
+.aione-pricing-table {
+	margin: 0 0 20px 0;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+	
+	* {
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.panel {
+		overflow: hidden;
+		margin: 0;
+		background-color: @default-background-color;
+		box-shadow: none;
+		.border-radius( 0 );
+		border: @pricing-border;
+	}
+	
+	.panel-heading {
+		padding: 15px 15px;
+		.border-radius( 0 );
+		border-bottom: @pricing-border;
+		text-align: center;
+		
+		h3 {
+			margin: 0;
+		}
+	}
+	
+	.panel-body {
+		padding: 15px;
+		background-color: @pricing-colored-bgs;
+		text-align: center;
+		
+		.price {
+			position: relative;
+		
+			.currency {
+				position: relative;
+				color: #505050;
+				
+				&.pos-right {
+					top: 0;
+					margin-left: -12px;
+					font-size: 32px;
+					
+					&.price-without-decimal {
+						margin-left: 0;
+					}					
+				}
+			}
+
+			.integer-part {
+				display: inline;
+				font-weight: bold;
+				color: @primary-color;
+				line-height: normal;
+			}
+			
+			.decimal-part {
+				position: relative;
+				top: -30px;
+				font-weight: bold;
+				color: @primary-color;
+			}
+			
+			.time {
+				position: relative;
+				font-style: italic;
+				color: #888888;
+				margin-left: -14px;
+			
+				&.price-without-decimal {
+					margin-left: 0;
+				}
+			
+				&.pos-right {
+					margin-left: 12px;
+				}				
+			}
+		}
+	}
+	
+	.list-group {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.list-group-item {
+		display: block;
+		position: relative;	
+		padding: 15px;
+		background: none;
+		border-radius: 0;
+		border-top: @pricing-border;		
+		text-align: center;
+		
+		&:last-child {
+			border-bottom: @pricing-border;
+		}
+	}
+	
+	.panel-footer {
+		padding: 15px;
+		background-color: @pricing-colored-bgs;
+		.border-radius( 0 );
+		border-color: @pricing-border;
+		text-align: center;
+	}
+	
+	.panel-wrapper:hover {
+		cursor: pointer;
+		
+		.panel {
+			background-color: @pricing-colored-bgs;
+		}
+	}	
+}
+
+.full-boxed-pricing {
+
+	#wrapper & {
+		.panel-wrapper {
+			padding: 0;
+		}
+	}
+	
+	.panel-container {
+		padding: 9px;
+		background-color: @pricing-colored-bgs;	
+	}
+
+	.panel-wrapper:last-child .panel {
+		border-right: @pricing-border;
+	}
+	
+	.panel-body {
+		
+		.price {
+			.currency {
+				top: -20px;
+				font-size: 21px;
+			}
+
+			.integer-part {
+				font-size: 55px;
+			}
+			
+			.decimal-part {
+				top: -20px;
+				font-size: 17px;
+			}
+			
+			.time {
+				font-size: 11px;
+			}			
+		}
+	}
+	
+	.panel-wrapper:hover {
+		
+		.panel-heading {
+			background-color: @pricing-colored-bgs;
+		}
+	}		
+	
+}
+
+.sep-boxed-pricing {
+	.panel-wrapper {
+		margin-bottom: 10px;
+		padding: 0;
+	}
+	
+	.panel-container {
+		padding: 9px;
+		background-color: @pricing-colored-bgs;	
+	}	
+	
+	.panel-heading {
+		background-color: @primary-color;
+		.border-radius( 0 );
+		border-bottom: @pricing-border;
+		text-align: center;
+		
+		h3 {
+			margin: 0;
+		}
+	}
+	
+	.panel-body {
+		
+		.price {
+			.currency {
+				top: -30px;
+				font-size: 28px;
+			}
+
+			.integer-part {
+				font-size: 75px;
+			}
+			
+			.decimal-part {
+				font-size: 23px;
+			}
+			
+			.time {
+				font-size: 20px;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.aione-pricing-table {
+		.standout {
+			.panel-container {
+				z-index: 1000;			
+			}	
+
+			.panel-heading,
+			.panel-footer {
+				padding: 20px;
+			}	
+		}
+	}
+	
+	.full-boxed-pricing {
+		padding: 0 9px;
+		background-color: @pricing-colored-bgs;
+
+		.panel-container {
+			padding: 9px 0;
+		}
+
+		.panel-wrapper:last-child .panel {
+			border-right: @pricing-border;
+		}
+
+		.panel {
+			border-right: none;
+		}	
+	
+		.standout {
+			.panel-container {
+				position: relative;
+				-moz-box-sizing: 	content-box;
+				box-sizing: 		content-box;	
+				margin: -10px -9px;
+				padding: 9px;
+				.box-shadow( 0 0 6px 6px rgba( 0, 0, 0, 0.08 ) );			
+				background-color: @pricing-colored-bgs;
+			}
+
+			.panel {
+				border-right: @pricing-border;
+			}
+
+			.panel-heading {			
+				h3 {
+					color: @primary-color;
+				}
+			}
+		}
+	}
+
+	.sep-boxed-pricing {
+		margin: 0 -15px;
+		margin-bottom: 20px;
+		
+		.panel-wrapper {
+			margin: 0;
+			padding: 0 12px;
+		}	
+	
+		.standout {
+			.panel-container {
+				margin: -10px;
+				.box-shadow( 0 0 15px 5px rgba( 0, 0, 0, 0.16 ) );			
+			}
+		}
+	}
+}

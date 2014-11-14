@@ -1,0 +1,70 @@
+.aione-woo-product-slider {
+	overflow: hidden;
+	margin-bottom: 55px;
+	
+	.simple-products-slider {
+		position: relative;
+		margin-bottom: 0;
+		
+		.image-extras-content {
+		
+			h2 {
+				margin-top: 0;
+				margin-bottom: 2px;
+			}
+			
+			.price {
+  				display: inline-block;
+  				margin-top: 5px;
+  				
+				.amount {
+				  font-size: 18px;
+				}  				
+			}
+		}
+		
+		.product-buttons {
+			left: 0;
+			height: 40px;
+			width: 100%;
+			
+			a {
+				display: block;
+				padding-left: 20px;
+				width: auto;
+				line-height: normal;
+				text-align: left;
+				max-width: 100%;
+				font-size: 12px;
+	
+				&:first-child {
+					float: left;
+					
+					&:before {
+						position: absolute;
+						margin-left: -20px;
+						content: @cart-icon;
+						font-family: IcoMoon;
+					}
+				}
+				
+				&:last-child {
+					float: right;
+					
+					&:before {
+						position: absolute;
+						margin-left: -20px;
+						content: @details-icon;
+						font-family: IcoMoon;
+					}
+				}				
+  			}
+		}
+		
+		.es-nav {
+			span {
+				cursor: pointer;
+			}
+		}			
+	}
+}

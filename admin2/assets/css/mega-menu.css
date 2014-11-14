@@ -1,0 +1,44 @@
+.aione-mega-menu-options {
+	margin-top: 10px;
+}
+
+.field-megamenu-status,
+.field-megamenu-width,
+.field-megamenu-columns,
+.field-megamenu-title,
+.field-megamenu-widgetarea,
+.aione-megamenu-upload-thumbnail.button-primary,
+.field-megamenu-icon,
+.field-megamenu-thumbnail,
+.aione-megamenu-thumbnail-image {
+	display: none;
+}
+
+.menu-item-depth-0 .field-megamenu-status,
+.menu-item-depth-0.aione-megamenu .field-megamenu-width,
+.menu-item-depth-0.aione-megamenu .field-megamenu-columns,
+.menu-item-depth-1.aione-megamenu .field-megamenu-title,
+.menu-item-depth-1.aione-megamenu .field-megamenu-widgetarea,
+.menu-item-depth-2.aione-megamenu .field-megamenu-widgetarea,
+.aione-megamenu .field-megamenu-icon,
+.aione-megamenu .field-megamenu-thumbnail {
+	display: block;
+}
+
+.aione-megamenu .aione-megamenu-upload-thumbnail {
+	display: inline-block;
+}
+
+.aione-megamenu-thumbnail-image {
+	max-width: 300px;
+}
+
+.menu-item-depth-0 .aione-megamenu-upload-thumbnail,
+.menu-item-depth-1 .aione-megamenu-upload-thumbnail,
+.menu-item-depth-2 .aione-megamenu-upload-thumbnail {
+	margin-top: 0 !important;
+}
+
+.aione-megamenu-upload-thumbnail {
+	margin-top: 0.6em !important;
+}

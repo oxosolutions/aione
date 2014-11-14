@@ -1,0 +1,1098 @@
+/*
+Needed Styles From Bootstrap
+-----------------------------------------------------------------------------*/
+
+//
+// Component animations
+// --------------------------------------------------
+
+.fade {
+  opacity: 0;
+  .transition(opacity .3s linear);
+  &.in {
+	opacity: 1;
+  }
+}
+
+.collapse {
+  display: none;
+  &.in {
+	display: block;
+  }
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  .transition(height .35s ease);
+}
+
+//
+// Mixin
+// --------------------------------------------------
+
+// Animations
+.animation(@animation) {
+  -webkit-animation: @animation;
+		  animation: @animation;
+}
+
+// Gradients
+#gradient {
+	.striped(@color: rgba(255,255,255,.15); @angle: 45deg) {
+		background-image: -webkit-linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+		background-image: linear-gradient(@angle, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+	}
+}
+
+// Transitions
+.transition(@transition) {
+  -webkit-transition: @transition;
+		  transition: @transition;
+}
+
+.transition-transform(@transition) {
+  -webkit-transition: -webkit-transform @transition;
+	 -moz-transition: -moz-transform @transition;
+	   -o-transition: -o-transform @transition;
+		  transition: transform @transition;
+}
+
+// Transformations
+.translate(@x; @y) {
+  -webkit-transform: translate(@x, @y);
+	  -ms-transform: translate(@x, @y); // IE9 only
+		  transform: translate(@x, @y);
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+@screen-xs:				  480px;
+@screen-xs-min:			  @screen-xs;
+@screen-phone:			   @screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+@screen-sm:				  800px;
+@screen-sm-min:			  @screen-sm;
+@screen-tablet:			  @screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+@screen-md:				  992px;
+@screen-md-min:			  @screen-md;
+@screen-desktop:			 @screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+@screen-lg:				  1200px;
+@screen-lg-min:			  @screen-lg;
+@screen-lg-desktop:		  @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:			  (@screen-sm-min - 1);
+@screen-sm-max:			  (@screen-md-min - 1);
+@screen-md-max:			  (@screen-lg-min - 1);
+
+//== Container sizes
+//
+//## Define the maximum width of `.container` for different screen sizes.
+
+// Small screen / tablet
+@container-tablet:			 ((720px + @grid-gutter-width));
+//** For `@screen-sm-min` and up.
+@container-sm:				 @container-tablet;
+
+// Medium screen / desktop
+@container-desktop:			((940px + @grid-gutter-width));
+//** For `@screen-md-min` and up.
+@container-md:				 @container-desktop;
+
+// Large screen / wide desktop
+@container-large-desktop:	  ((1140px + @grid-gutter-width));
+//** For `@screen-lg-min` and up.
+@container-lg:				 @container-large-desktop;
+
+//== Grid system
+//
+//## Define your custom responsive grid.
+
+//** Number of columns in the grid.
+@grid-columns:			  12;
+//** Padding between columns. Gets divided in half for the left and right.
+@grid-gutter-width:		 30px;
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+@grid-float-breakpoint:	 @screen-sm-min;
+//** Point at which the navbar begins collapsing.
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+// Grid System
+// -----------
+
+// Centered container element
+.container-fixed() {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left:  (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+  &:extend(.clearfix all);
+}
+
+// Creates a wrapper for a series of columns
+.make-row(@gutter: @grid-gutter-width) {
+  margin-left:  (@gutter / -2);
+  margin-right: (@gutter / -2);
+  &:extend(.clearfix all);
+}
+
+// Generate the extra small columns
+.make-xs-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  float: left;
+  width: percentage((@columns / @grid-columns));
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+}
+.make-xs-column-offset(@columns) {
+  @media (min-width: @screen-xs-min) {
+	margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-xs-column-push(@columns) {
+  @media (min-width: @screen-xs-min) {
+	left: percentage((@columns / @grid-columns));
+  }
+}
+.make-xs-column-pull(@columns) {
+  @media (min-width: @screen-xs-min) {
+	right: percentage((@columns / @grid-columns));
+  }
+}
+
+
+// Generate the small columns
+.make-sm-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  @media (min-width: @screen-sm-min) {
+	float: left;
+	width: percentage((@columns / @grid-columns));
+  }
+}
+.make-sm-column-offset(@columns) {
+  @media (min-width: @screen-sm-min) {
+	margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-sm-column-push(@columns) {
+  @media (min-width: @screen-sm-min) {
+	left: percentage((@columns / @grid-columns));
+  }
+}
+.make-sm-column-pull(@columns) {
+  @media (min-width: @screen-sm-min) {
+	right: percentage((@columns / @grid-columns));
+  }
+}
+
+
+// Generate the medium columns
+.make-md-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  @media (min-width: @screen-md-min) {
+	float: left;
+	width: percentage((@columns / @grid-columns));
+  }
+}
+.make-md-column-offset(@columns) {
+  @media (min-width: @screen-md-min) {
+	margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-md-column-push(@columns) {
+  @media (min-width: @screen-md-min) {
+	left: percentage((@columns / @grid-columns));
+  }
+}
+.make-md-column-pull(@columns) {
+  @media (min-width: @screen-md-min) {
+	right: percentage((@columns / @grid-columns));
+  }
+}
+
+
+// Generate the large columns
+.make-lg-column(@columns; @gutter: @grid-gutter-width) {
+  position: relative;
+  min-height: 1px;
+  padding-left:  (@gutter / 2);
+  padding-right: (@gutter / 2);
+
+  @media (min-width: @screen-lg-min) {
+	float: left;
+	width: percentage((@columns / @grid-columns));
+  }
+}
+.make-lg-column-offset(@columns) {
+  @media (min-width: @screen-lg-min) {
+	margin-left: percentage((@columns / @grid-columns));
+  }
+}
+.make-lg-column-push(@columns) {
+  @media (min-width: @screen-lg-min) {
+	left: percentage((@columns / @grid-columns));
+  }
+}
+.make-lg-column-pull(@columns) {
+  @media (min-width: @screen-lg-min) {
+	right: percentage((@columns / @grid-columns));
+  }
+}
+
+
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `@grid-columns`.
+
+.make-grid-columns() {
+  // Common styles for all sizes of grid columns, widths 1-12
+  .col(@index) when (@index = 1) { // initial
+	@item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+	.col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general; "=<" isn't a typo
+	@item: ~".col-xs-@{index}, .col-sm-@{index}, .col-md-@{index}, .col-lg-@{index}";
+	.col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+	@{list} {
+	  position: relative;
+	  // Prevent columns from collapsing when empty
+	  min-height: 1px;
+	  // Inner gutter via padding
+	  padding-left:  (@grid-gutter-width / 2);
+	  padding-right: (@grid-gutter-width / 2);
+	}
+  }
+  .col(1); // kickstart it
+}
+
+.make-grid-columns-float(@class) {
+  .col(@index) when (@index = 1) { // initial
+	@item: ~".col-@{class}-@{index}";
+	.col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general
+	@item: ~".col-@{class}-@{index}";
+	.col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+	@{list} {
+	  float: left;
+	}
+  }
+  .col(1); // kickstart it
+}
+
+.calc-grid(@index, @class, @type) when (@type = width) and (@index > 0) {
+  .col-@{class}-@{index} {
+	width: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid(@index, @class, @type) when (@type = push) {
+  .col-@{class}-push-@{index} {
+	left: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid(@index, @class, @type) when (@type = pull) {
+  .col-@{class}-pull-@{index} {
+	right: percentage((@index / @grid-columns));
+  }
+}
+.calc-grid(@index, @class, @type) when (@type = offset) {
+  .col-@{class}-offset-@{index} {
+	margin-left: percentage((@index / @grid-columns));
+  }
+}
+
+// Basic looping in LESS
+.make-grid(@index, @class, @type) when (@index >= 0) {
+  .calc-grid(@index, @class, @type);
+  // next iteration
+  .make-grid((@index - 1), @class, @type);
+}
+
+//
+// Grid system
+// --------------------------------------------------
+
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+.container {
+  .container-fixed();
+
+  @media (min-width: @screen-sm-min) {
+	width: @container-sm;
+  }
+  @media (min-width: @screen-md-min) {
+	width: @container-md;
+  }
+  @media (min-width: @screen-lg-min) {
+	width: @container-lg;
+  }
+}
+
+
+// Fluid container
+//
+// Utilizes the mixin meant for fixed width containers, but without any defined
+// width for fluid, full width layouts.
+
+.container-fluid {
+  .container-fixed();
+}
+
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+.row {
+  .make-row();
+}
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+.make-grid-columns();
+
+
+// Extra small grid
+//
+// Columns, offsets, pushes, and pulls for extra small devices like
+// smartphones.
+
+.make-grid-columns-float(xs);
+.make-grid(@grid-columns, xs, width);
+.make-grid(@grid-columns, xs, pull);
+.make-grid(@grid-columns, xs, push);
+.make-grid(@grid-columns, xs, offset);
+
+
+// Small grid
+//
+// Columns, offsets, pushes, and pulls for the small device range, from phones
+// to tablets.
+
+@media (min-width: @screen-sm-min) {
+  .make-grid-columns-float(sm);
+  .make-grid(@grid-columns, sm, width);
+  .make-grid(@grid-columns, sm, pull);
+  .make-grid(@grid-columns, sm, push);
+  .make-grid(@grid-columns, sm, offset);
+}
+
+
+// Medium grid
+//
+// Columns, offsets, pushes, and pulls for the desktop device range.
+
+@media (min-width: @screen-md-min) {
+  .make-grid-columns-float(md);
+  .make-grid(@grid-columns, md, width);
+  .make-grid(@grid-columns, md, pull);
+  .make-grid(@grid-columns, md, push);
+  .make-grid(@grid-columns, md, offset);
+}
+
+
+// Large grid
+//
+// Columns, offsets, pushes, and pulls for the large desktop device range.
+
+@media (min-width: @screen-lg-min) {
+  .make-grid-columns-float(lg);
+  .make-grid(@grid-columns, lg, width);
+  .make-grid(@grid-columns, lg, pull);
+  .make-grid(@grid-columns, lg, push);
+  .make-grid(@grid-columns, lg, offset);
+}
+
+//
+// Shortcodes
+// --------------------------------------------------
+
+//
+// Alerts
+// --------------------------------------------------
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+
+.alert .alert-link {
+  font-weight: bold;
+}
+
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+
+.alert > p + p {
+  margin-top: 5px;
+}
+
+.alert-dismissable {
+  padding-right: 35px;
+}
+
+.alert-dismissable .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+
+.alert-success {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #468847;
+}
+
+.alert-success hr {
+  border-top-color: #c9e2b3;
+}
+
+.alert-success .alert-link {
+  color: #356635;
+}
+
+.alert-info {
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border-color: #3a87ad;
+}
+
+.alert-info hr {
+  border-top-color: #a6e1ec;
+}
+
+.alert-info .alert-link {
+  color: #2d6987;
+}
+
+.alert-warning {
+  color: #c09853;
+  background-color: #fcf8e3;
+  border-color: #c09853;
+}
+
+.alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+
+.alert-warning .alert-link {
+  color: #a47e3c;
+}
+
+.alert-danger {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #b94a48;
+}
+
+.alert-danger hr {
+  border-top-color: #e4b9c0;
+}
+
+.alert-danger .alert-link {
+  color: #953b39;
+}
+
+button.close {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	border: 0 none;
+	cursor: pointer;
+	padding: 0;
+}
+
+.close {
+	color: #000000;
+	float: right;
+	font-size: 21px;
+	font-weight: bold;
+	line-height: 1;
+	opacity: 0.2;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+
+//
+// Modals
+// --------------------------------------------------
+
+// .modal-open	  - body class for killing the scroll
+// .modal		   - container to scroll within
+// .modal-dialog	- positioning shell for the actual modal
+// .modal-content   - actual modal w/ bg and corners and shit
+
+// Kill the scroll on the body
+.modal-open {
+  overflow: hidden;
+}
+
+// Container that the modal scrolls within
+.modal {
+  display: none;
+  overflow: auto;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal;
+  -webkit-overflow-scrolling: touch;
+
+  // Prevent Chrome on Windows from adding a focus outline. For details, see
+  // https://github.com/twbs/bootstrap/pull/10951.
+  outline: 0;
+
+  // When fading in the modal, animate it to slide down
+  &.fade .modal-dialog {
+	.translate(0, -25%);
+	.transition-transform(~"0.3s ease-out");
+  }
+  &.in .modal-dialog { .translate(0, 0)}
+}
+
+// Shell div to position the modal with bottom padding
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 10px;
+}
+
+// Actual modal
+.modal-content {
+  position: relative;
+  background-color: @modal-content-bg;
+  border: 1px solid @modal-content-border-color;
+  .border-radius();
+  .box-shadow(0 3px 9px rgba(0,0,0,.5));
+  background-clip: padding-box;
+  // Remove focus outline from opened modal
+  outline: none;
+}
+
+// Modal background
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: @zindex-modal-background;
+  background-color: @modal-backdrop-bg;
+  // Fade for backdrop
+  &.fade { .opacity(0); }
+  &.in { .opacity(@modal-backdrop-opacity); }
+}
+
+// Modal header
+// Top section of the modal w/ title and dismiss
+.modal-header {
+  padding: 15px 20px;
+  border-bottom: 1px solid @modal-header-border-color;
+  min-height: (@modal-title-padding + @modal-title-line-height);
+}
+// Close icon
+.modal-header .close {
+  margin-top: -2px;
+}
+
+// Title text within header
+.modal-title {
+  margin: 0;
+  line-height: @modal-title-line-height;
+}
+
+// Modal body
+// Where all modal content resides (sibling of .modal-header and .modal-footer)
+.modal-body {
+  position: relative;
+  padding: @modal-inner-padding;
+}
+
+// Footer (for actions)
+.modal-footer {
+  margin-top: 15px;
+  padding: (@modal-inner-padding - 1) @modal-inner-padding @modal-inner-padding;
+  text-align: right; // right align buttons
+  border-top: 1px solid @modal-footer-border-color;
+  &:extend(.clearfix all); // clear it in case folks use .pull-* classes on buttons
+
+  // Properly space out buttons
+  .btn + .btn {
+	margin-left: 5px;
+	margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+  }
+  // but override that for button groups
+  .btn-group .btn + .btn {
+	margin-left: -1px;
+  }
+  // and override it for block buttons as well
+  .btn-block + .btn-block {
+	margin-left: 0;
+  }
+}
+
+// Scale up the modal
+//@media (min-width: @screen-sm-min) {
+@media (min-width: @modal-screen-min) {
+
+  // Automatically set modal's width for larger viewports
+  .modal-dialog {
+	width: @modal-md;
+	margin: 30px auto;
+  }
+  .modal-content {
+	.box-shadow(0 5px 15px rgba(0,0,0,.5));
+  }
+
+  // Modal sizes
+  .modal-sm { width: @modal-sm; }
+  .modal-lg { width: @modal-lg; }
+
+}
+
+//
+// Popovers
+// --------------------------------------------------
+
+
+.popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: @zindex-popover;
+  display: none;
+  max-width: @popover-max-width;
+  padding: 1px;
+  text-align: left; // Reset given new insertion method
+  background-color: @popover-bg;
+  background-clip: padding-box;
+  border: 1px solid @popover-fallback-border-color;
+  border: 1px solid @popover-border-color;
+  .border-radius();
+  .box-shadow(0 5px 10px rgba(0,0,0,.2));
+
+  // Overrides for proper insertion
+  white-space: normal;
+
+  // Offset the popover to account for the popover arrow
+  &.top	 { margin-top: -10px; }
+  &.right   { margin-left: 10px; }
+  &.bottom  { margin-top: 10px; }
+  &.left	{ margin-left: -10px; }
+}
+
+.popover-title {
+  margin: 0; // reset heading margin
+  padding: 8px 14px;
+  font-size: @font-size-base;
+  font-weight: normal;
+  line-height: 18px;
+  background-color: @popover-title-bg;
+  border-bottom: 1px solid darken(@popover-title-bg, 5%);
+  border-radius: 5px 5px 0 0;
+}
+
+.popover-content {
+  padding: 9px 14px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+// Arrows
+//
+// .arrow is outer, .arrow:after is inner
+
+.popover .arrow {
+  &,
+  &:after {
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-color: transparent;
+	border-style: solid;
+  }
+}
+.popover .arrow {
+  border-width: @popover-arrow-outer-width;
+}
+.popover .arrow:after {
+  border-width: @popover-arrow-width;
+  content: "";
+}
+
+.popover {
+  &.top .arrow {
+	left: 50%;
+	margin-left: -@popover-arrow-outer-width;
+	border-bottom-width: 0;
+	//border-top-color: @popover-arrow-outer-fallback-color; // IE8 fallback
+	//border-top-color: @popover-arrow-outer-color;
+	bottom: -@popover-arrow-outer-width;
+	&:after {
+	  content: " ";
+	  bottom: 1px;
+	  margin-left: -@popover-arrow-width;
+	  border-bottom-width: 0;
+	  border-top-color: @popover-arrow-color;
+	}
+  }
+  &.right .arrow {
+	top: 50%;
+	left: -@popover-arrow-outer-width;
+	margin-top: -@popover-arrow-outer-width;
+	border-left-width: 0;
+	//border-right-color: @popover-arrow-outer-fallback-color; // IE8 fallback
+	//border-right-color: @popover-arrow-outer-color;
+	&:after {
+	  content: " ";
+	  left: 1px;
+	  bottom: -@popover-arrow-width;
+	  border-left-width: 0;
+	  border-right-color: @popover-arrow-color;
+	}
+  }
+  &.bottom .arrow {
+	left: 50%;
+	margin-left: -@popover-arrow-outer-width;
+	border-top-width: 0;
+	//border-bottom-color: @popover-arrow-outer-fallback-color; // IE8 fallback
+	//border-bottom-color: @popover-arrow-outer-color;
+	top: -@popover-arrow-outer-width;
+	&:after {
+	  content: " ";
+	  top: 1px;
+	  margin-left: -@popover-arrow-width;
+	  border-top-width: 0;
+	  border-bottom-color: @popover-arrow-color;
+	}
+  }
+
+  &.left .arrow {
+	top: 50%;
+	right: -@popover-arrow-outer-width;
+	margin-top: -@popover-arrow-outer-width;
+	border-right-width: 0;
+	//border-left-color: @popover-arrow-outer-fallback-color; // IE8 fallback
+	//border-left-color: @popover-arrow-outer-color;
+	&:after {
+	  content: " ";
+	  right: 1px;
+	  border-right-width: 0;
+	  border-left-color: @popover-arrow-color;
+	  bottom: -@popover-arrow-width;
+	}
+  }
+
+}
+
+//
+// Progress bars
+// --------------------------------------------------
+
+
+// Bar animations
+// -------------------------
+
+// WebKit
+@-webkit-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to	{ background-position: 0 0; }
+}
+
+// Spec and IE10+
+@keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to	{ background-position: 0 0; }
+}
+
+
+
+// Bar itself
+// -------------------------
+
+// Outer container
+.progress-bar {
+  overflow: hidden;
+  height: @line-height-computed;
+  margin-bottom: @line-height-computed;
+  background-color: @progress-bg;
+  .border-radius();
+  .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+}
+
+// Bar of progress
+.progress {
+  float: left;
+  width: 0%;
+  height: 100%;
+  font-size: @font-size-small;
+  line-height: @line-height-computed;
+  color: @progress-bar-color;
+  text-align: center;
+  background-color: @progress-bar-bg;
+  .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+  .transition(width .6s ease);
+}
+
+// Striped bars
+.progress-striped .progress {
+  #gradient > .striped();
+  background-size: 40px 40px;
+}
+
+// Call animation for the active one
+.progress-bar.active .progress {
+  .animation(progress-bar-stripes 2s linear infinite);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+//
+// Tables
+// --------------------------------------------------
+
+
+table {
+  max-width: 100%;
+  background-color: @table-bg;
+}
+th {
+  text-align: left;
+}
+
+
+// Baseline styles
+
+.table {
+  width: 100%;
+  margin-bottom: @line-height-computed;
+  // Cells
+  > thead,
+  > tbody,
+  > tfoot {
+	> tr {
+	  > th,
+	  > td {
+		padding: @table-cell-padding;
+		line-height: @line-height-base;
+		vertical-align: top;
+		border-top: 1px solid @table-border-color;
+	  }
+	}
+  }
+  // Bottom align for column headings
+  > thead > tr > th {
+	vertical-align: bottom;
+	border-bottom: 2px solid @table-border-color;
+  }
+  // Remove top border from thead by default
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+	> tr:first-child {
+	  > th,
+	  > td {
+		border-top: 0;
+	  }
+	}
+  }
+  // Account for multiple tbody instances
+  > tbody + tbody {
+	border-top: 2px solid @table-border-color;
+  }
+
+  // Nesting
+  .table {
+	background-color: @default-background-color;
+  }
+}
+
+// Responsive tables
+//
+// Wrap your tables in `.table-responsive` and we'll make them mobile friendly
+// by enabling horizontal scrolling. Only applies <768px. Everything above that
+// will display normally.
+
+@media (max-width: @screen-xs-max) {
+  .table-responsive {
+	width: 100%;
+	margin-bottom: (@line-height-computed * 0.75);
+	overflow-y: hidden;
+	overflow-x: scroll;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	border: 1px solid @table-border-color;
+	-webkit-overflow-scrolling: touch;
+
+	// Tighten up spacing
+	> .table {
+	  margin-bottom: 0;
+
+	  // Ensure the content doesn't wrap
+	  > thead,
+	  > tbody,
+	  > tfoot {
+		> tr {
+		  > th,
+		  > td {
+			white-space: nowrap;
+		  }
+		}
+	  }
+	}
+  }
+}
+
+//
+// Tooltips
+// --------------------------------------------------
+
+
+// Base class
+.tooltip {
+  position: absolute;
+  z-index: @zindex-tooltip;
+  display: block;
+  visibility: visible;
+  font-size: @font-size-small;
+  line-height: 1.4;
+  .opacity(0);
+
+  &.in	 { .opacity(@tooltip-opacity); }
+  &.top	{ margin-top:  -3px; padding: @tooltip-arrow-width 0; }
+  &.right  { margin-left:  3px; padding: 0 @tooltip-arrow-width; }
+  &.bottom { margin-top:   3px; padding: @tooltip-arrow-width 0; }
+  &.left   { margin-left: -3px; padding: 0 @tooltip-arrow-width; }
+}
+
+// Wrapper for the tooltip content
+.tooltip-inner {
+  max-width: @tooltip-max-width;
+  padding: 3px 8px;
+  color: @tooltip-color;
+  text-align: center;
+  text-decoration: none;
+  background-color: @tooltip-bg;
+  .border-radius( 4px );
+}
+
+// Arrows
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+.tooltip {
+  &.top .tooltip-arrow {
+	bottom: 0;
+	left: 50%;
+	margin-left: -@tooltip-arrow-width;
+	border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+	border-top-color: @tooltip-arrow-color;
+  }
+  &.top-left .tooltip-arrow {
+	bottom: 0;
+	left: @tooltip-arrow-width;
+	border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+	border-top-color: @tooltip-arrow-color;
+  }
+  &.top-right .tooltip-arrow {
+	bottom: 0;
+	right: @tooltip-arrow-width;
+	border-width: @tooltip-arrow-width @tooltip-arrow-width 0;
+	border-top-color: @tooltip-arrow-color;
+  }
+  &.right .tooltip-arrow {
+	top: 50%;
+	left: 0;
+	margin-top: -@tooltip-arrow-width;
+	border-width: @tooltip-arrow-width @tooltip-arrow-width @tooltip-arrow-width 0;
+	border-right-color: @tooltip-arrow-color;
+  }
+  &.left .tooltip-arrow {
+	top: 50%;
+	right: 0;
+	margin-top: -@tooltip-arrow-width;
+	border-width: @tooltip-arrow-width 0 @tooltip-arrow-width @tooltip-arrow-width;
+	border-left-color: @tooltip-arrow-color;
+  }
+  &.bottom .tooltip-arrow {
+	top: 0;
+	left: 50%;
+	margin-left: -@tooltip-arrow-width;
+	border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+	border-bottom-color: @tooltip-arrow-color;
+  }
+  &.bottom-left .tooltip-arrow {
+	top: 0;
+	left: @tooltip-arrow-width;
+	border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+	border-bottom-color: @tooltip-arrow-color;
+  }
+  &.bottom-right .tooltip-arrow {
+	top: 0;
+	right: @tooltip-arrow-width;
+	border-width: 0 @tooltip-arrow-width @tooltip-arrow-width;
+	border-bottom-color: @tooltip-arrow-color;
+  }
+}

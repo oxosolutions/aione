@@ -1,0 +1,53 @@
+.aione-alert {
+	position: relative;
+	padding: 25px;
+	border-radius: 0;
+	font-size: 15px;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: @default-margin-bottom / 2;
+	
+	&.alert-shadow {
+		.box-shadow( 0 1px 1px rgba( 0, 0, 0, 0.1 ) );
+	}
+	
+	.close {
+		position: absolute;
+		-moz-box-sizing: content-box;
+		box-sizing: content-box;
+		right: -1px;
+		top: -1px;
+		height: 25px;
+		width: 25px;
+		line-height: 25px;
+		opacity: 1;
+		border: 1px solid;
+		border-color: inherit;
+		color: inherit;
+		font-size: 15px;
+		-webkit-transition: all .2s;
+		-moz-transition: all .2s;
+		-ms-transition: all .2s;	
+		-o-transition: all .2s;
+		transition: all .2s;		
+
+		&:hover {
+			opacity: 1;
+			background-color: rgba(0, 0, 0, 0.05 );
+		}
+	}
+	
+	.alert-icon {
+		margin-right: 10px;
+	}
+	
+	&.alert-blank {
+		border: 1px solid #747474;
+	}
+	
+	&.alert-info {
+		background-color: #fff;
+		border-color: #D7D6D6;
+		color: inherit;
+	}
+}

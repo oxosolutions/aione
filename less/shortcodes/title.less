@@ -1,0 +1,141 @@
+@title-border-color: #E7E6E6;
+@title-border-width: 1px;
+
+.aione-title {
+	display: table;
+	margin: 0 0 31px;
+	overflow: hidden;
+	
+	 h1,
+	 h2,
+	 h3,
+	 h4,
+	 h5,
+	 h6 {
+		float: left;
+		display: table-cell;
+		margin: 0;
+		padding:0 8px 0 0;
+		line-height: normal;
+		white-space: pre;
+		
+		&.title-heading-left {
+			padding-right: 8px;
+			
+			.fontawesome-icon {
+				margin-left: 10px;
+			}
+		}
+
+		&.title-heading-right {
+			padding:0 0 0 8px;
+			
+			.fontawesome-icon,
+			img {
+				margin-left: 10px;
+				margin-right: 0;
+			}
+		}
+		
+		img {
+			margin-right: 10px;
+		}
+		
+		.fontawesome-icon {
+			display: inline-block;
+			float: none;
+			vertical-align: middle;
+			margin-left: 2px;
+			
+			&.size-small,
+			&.size-medium,
+			&.size-large {
+				margin-top: 0;
+			}
+		}
+	}
+	
+	.title-sep-container {
+		position: relative;
+		display: table-cell;
+		vertical-align: middle;
+		height: 6px;
+		width: 100%;
+	}
+	
+	&.sep-underline {
+		padding-bottom: 10px;
+		width: 100%;
+		border-bottom: @title-border-width solid @title-border-color;
+		
+		.title-heading-right {
+			float: right;
+			margin: 0;
+		}
+	}
+
+	.title-sep {
+		position: relative;	
+		display: block;
+		width: 100%;
+		border-style: solid;
+		border: 0 solid @title-border-color;
+		box-sizing: content-box;
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		-o-box-sizing: content-box;
+
+		&.sep-double {
+			height: 6px;
+			border-bottom-width: @title-border-width;
+			border-top-width: @title-border-width;
+		}
+		
+		&.sep-single {
+			border-bottom-width: @title-border-width;
+		}
+		
+		&.sep-dashed {
+			border-bottom-style: dashed;
+			border-top-style: dashed;
+		}
+		
+		&.sep-dotted {
+			border-bottom-style: dotted;
+			border-top-style: dotted;
+		}		
+	}
+	
+	&.sep-dashed {
+		border-bottom-style: dashed;
+	}
+
+	&.sep-dotted {
+		border-bottom-style: dotted;
+	}
+}
+
+.border-below-title {
+	display: block;
+}
+.border-below-title h1,
+.border-below-title h2,
+.border-below-title h3,
+.border-below-title h4,
+.border-below-title h5,
+.border-below-title h6 {
+	white-space: normal;
+}
+#main .post-content .border-below-title h1,
+#main .post-content .border-below-title h2,
+#main .post-content .border-below-title h3,
+#main .post-content .border-below-title h4,
+#main .post-content .border-below-title h5,
+#main .post-content .border-below-title h6 {
+	float: none;
+	padding-right: 0;
+}
+.border-below-title .title-sep-container {
+	display: none;
+	height: 8px;
+}

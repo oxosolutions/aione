@@ -1,0 +1,50 @@
+.fontawesome-icon{
+	display: inline-block;
+	float: left;
+	margin-right:10px;
+	&.circle-yes {
+		.border-radius( 50% );
+		.backgroundclip( inherit );
+		border-width: 1px;
+		border-style: solid;
+		background-color: #333333;
+		color: #fff;
+		text-align: center;
+		margin-top: 2px;
+	}
+	&.size-large {
+		font-size: 40px;
+		&.circle-yes {
+			width: 70px;
+			height: 70px;
+			line-height: 70px;
+		}
+	}
+	&.size-medium {
+		font-size: 18px;
+		&.circle-yes {
+			width: 35px;
+			height: 35px;
+			line-height: 35px;
+		}
+	}
+	&.size-small {
+		font-size: 10px;
+		&.circle-yes {
+			width: 18px;
+			height: 18px;
+			line-height: 18px;
+		}
+	}
+	&.circle-no {
+		&.size-large {
+			margin-top: 2px;
+		}
+		&.size-medium {
+			margin-top: 3px;
+		}
+		&.size-small {
+			margin-top: 5px;
+		}
+	}
+}
