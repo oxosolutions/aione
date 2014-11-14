@@ -1,7 +1,7 @@
-Test Repository for students for learning git commands
+Test Repository for Students
 =====
 
-Testing Repository for learning purpose
+This is a test repository for learning purpose
 
 This Repository for our students who are learning cakePHP and laravel frameworks. 
 Students mights be adding some code later. But currently they are learning git commands.
