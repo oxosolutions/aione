@@ -8962,13 +8962,17 @@ jQuery( document ).ajaxComplete( function() {
 
 		jQuery("a[rel^='prettyPhoto']").prettyPhoto(ppArgs);
 	}
+
 });
 
 
 // Smooth Scrolling with left Anchor One Page Menu
-jQuery('.anchor_scroll ul.menu_scroll li > a').click(function(e) {
+jQuery('ul.anchor_scroll li > a').click(function(e) {
     var menu_anchor = jQuery(this).attr('href');
 
+    var sticky_height = 65;
+    var adminbar_height = 0;
+    adminbar_height = jQuery('#wpadminbar').outerHeight();
 
     if( menu_anchor &&
         menu_anchor.indexOf("#") == 0 &&
@@ -8982,3 +8986,4 @@ jQuery('.anchor_scroll ul.menu_scroll li > a').click(function(e) {
         }, 850, 'easeInOutExpo');
     }
 });
+
