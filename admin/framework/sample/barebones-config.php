@@ -53,24 +53,50 @@
                 // ACTUAL DECLARATION OF SECTIONS
                 $this->sections[] = array(
                     'title'  => __( 'Home Settings', 'redux-framework-demo' ),
-                    'desc'   => sprintf( __( 'Redux Framework was created with the developer in mind. It allows for any theme developer to have an advanced theme panel with most of the features a developer would need. For more information check out the Github repo at: %d', 'redux-framework-demo' ), '<a href="' . 'https://' . 'github.com/ReduxFramework/Redux-Framework">' . 'https://' . 'github.com/ReduxFramework/Redux-Framework</a>' ),
-                    'icon'   => 'el-icon-home',
+                    'desc'   => __( 'These fields can be fully translated by WPML (WordPress Multi-Language). This serves as an example for you to implement. For extra details look at our <a href="http://docs.reduxframework.com/core/advanced/wpml-integration/" target="_blank">WPML Implementation</a> documentation.', 'redux-framework-demo' ),
+                    'icon'   => 'el el-home',
                     // 'submenu' => false, // Setting submenu to false on a given section will hide it from the WordPress sidebar menu!
                     'fields' => array(
 
                         array(
-                            'id'       => 'opt-web-fonts',
-                            'type'     => 'media',
-                            'title'    => __( 'Web Fonts', 'redux-framework-demo' ),
+                            'id'       => 'textid',
+                            'type'     => 'text',
+                            'title'    => __( 'Example Text', 'redux-framework-demo' ),
                             'compiler' => 'true',
-                            'mode'     => false,
                             // Can be set to false to allow any media type, or can also be set to any mime type.
-                            'desc'     => __( 'Basic media uploader with disabled URL input field.', 'redux-framework-demo' ),
-                            'subtitle' => __( 'Upload any media using the WordPress native uploader', 'redux-framework-demo' ),
+                            'desc'     => __( 'Example description.', 'redux-framework-demo' ),
+                            'subtitle' => __( 'Example subtitle.', 'redux-framework-demo' ),
                             'hint'     => array(
                                 //'title'     => '',
                                 'content' => 'This is a <b>hint</b> tool-tip for the webFonts field.<br/><br/>Add any HTML based text you like here.',
                             )
+                        ),
+                    )
+                );
+
+                $this->sections[] = array(
+                    'title'  => __( 'WPML Example', 'redux-framework-demo' ),
+                    'desc'   => __( 'These fields can be fully translated by WPML (WordPress Multi-Language). This serves as an example for you to implement.', 'redux-framework-demo' ),
+                    'icon'   => 'el el-home',
+                    // 'submenu' => false, // Setting submenu to false on a given section will hide it from the WordPress sidebar menu!
+                    'fields' => array(
+                        array(
+                            'id'       => 'wpml-text',
+                            'type'     => 'textarea',
+                            'title'    => __( 'WPML Text', 'redux-framework-demo' ),
+                            'desc'     => __( 'This string can be translated via WPML.', 'redux-framework-demo' ),
+                        ),
+                        array(
+                            'id'       => 'wpml-multicheck',
+                            'type'     => 'checkbox',
+                            'title'    => __( 'WPML Multi Checkbox', 'redux-framework-demo' ),
+                            'desc'     => __( 'You can literally translate the values via key.', 'redux-framework-demo' ),
+                            //Must provide key => value pairs for multi checkbox options
+                            'options'  => array(
+                                '1' => 'Option 1',
+                                '2' => 'Option 2',
+                                '3' => 'Option 3'
+                            ),
                         ),
                     )
                 );
@@ -207,23 +233,23 @@
                 $this->args['share_icons'][] = array(
                     'url'   => 'https://github.com/ReduxFramework/ReduxFramework',
                     'title' => 'Visit us on GitHub',
-                    'icon'  => 'el-icon-github'
+                    'icon'  => 'el el-github'
                     //'img'   => '', // You can use icon OR img. IMG needs to be a full URL.
                 );
                 $this->args['share_icons'][] = array(
                     'url'   => 'https://www.facebook.com/pages/Redux-Framework/243141545850368',
                     'title' => 'Like us on Facebook',
-                    'icon'  => 'el-icon-facebook'
+                    'icon'  => 'el el-facebook'
                 );
                 $this->args['share_icons'][] = array(
                     'url'   => 'http://twitter.com/reduxframework',
                     'title' => 'Follow us on Twitter',
-                    'icon'  => 'el-icon-twitter'
+                    'icon'  => 'el el-twitter'
                 );
                 $this->args['share_icons'][] = array(
                     'url'   => 'http://www.linkedin.com/company/redux-framework',
                     'title' => 'Find us on LinkedIn',
-                    'icon'  => 'el-icon-linkedin'
+                    'icon'  => 'el el-linkedin'
                 );
 
                 // Panel Intro text -> before the form

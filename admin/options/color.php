@@ -6,40 +6,128 @@
  *********************************************************************************************/
 
 $this->sections[] = array(
-    'title' => 'Color',
+    'title' => __('Color','redux-framework-demo'),
     'icon'      => 'el-icon-magic',
+    'desc'      => '
+        <style>
+            #theme_options-color_scheme .redux-image-select-preset-color_scheme_1 img{ background-color:#168DC5;}
+            #theme_options-color_scheme .redux-image-select-preset-color_scheme_2 img{ background-color:#dd3333;}
+            #theme_options-color_scheme .redux-image-select-preset-color_scheme_3 img{ background-color:#168DC5;}
+            #theme_options-color_scheme .redux-image-select-preset-color_scheme_4 img{ background-color:#168DC5;}
+
+        </style>',
+
     'fields' => array (
         array (
-            'desc' => 'Select a skin, all color options will automatically change to the defined skin.',
             'id' => 'scheme_type',
             'type' => 'select',
             'options' => array (
                 'Light' => 'Light',
                 'Dark' => 'Dark',
             ),
-            'title' => 'Select Theme Skin',
+            'title' => __('Select Theme Skin','redux-framework-demo'),
+            'subtitle'  => __('Select Theme Skin.', 'redux-framework-demo'),
+            'desc' => __('Select a skin, all color options will automatically change to the defined skin.','redux-framework-demo'),
             'default' => 'Light',
+            'hint' => array(
+                'title'   => __('Select Theme Skin','redux-framework-demo'),
+                'content' => __('Select Theme Skin','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select a scheme, all color options will automatically change to the defined scheme.',
             'id' => 'color_scheme',
-            'type' => 'select',
+            'type' => 'image_select',
+            'title' => __('Predefined Color Scheme','redux-framework-demo'),
+            'subtitle'  => __('Predefined Color Scheme.', 'redux-framework-demo'),
+            'desc' => __('Select a scheme, all color options will automatically change to the defined scheme.','redux-framework-demo'),
             'options' => array (
-                'Red' => 'Red',
-                'Light Red' => 'Light Red',
-                'Blue' => 'Blue',
-                'Light Blue' => 'Light Blue',
-                'Green' => 'Green',
-                'Dark Green' => 'Dark Green',
-                'Orange' => 'Orange',
-                'Pink' => 'Pink',
-                'Brown' => 'Brown',
-                'Light Grey' => 'Light Grey',
+                'Red' => array(
+                    'alt'   => '1 Column',
+                    'img'   => get_template_directory_uri(). '/images/transparent.png',
+                    'presets'   => getColorPresets('#c23b34','#AB2822'),
+
+                ),
+                'blue' => array(
+                    'alt'   => '1 Column',
+                    'img'   => get_template_directory_uri(). '/images/transparent.png',
+                    'presets'   => getColorPresets('#168DC5','#1570A6'),
+                ),
+                //'Blue' => get_template_directory_uri(). '/images/transparent.png',
+                //'Light Blue' => get_template_directory_uri(). '/images/transparent.png',
+                //'Green' =>  get_template_directory_uri(). '/images/transparent.png',
+                //'Dark Green' => get_template_directory_uri(). '/images/transparent.png',
+                //'Orange' => get_template_directory_uri(). '/images/transparent.png',
+                //'Pink' => get_template_directory_uri(). '/images/transparent.png',
+                //'Brown' => get_template_directory_uri(). '/images/transparent.png',
+                //'Light Grey' => get_template_directory_uri(). '/images/transparent.png',
             ),
-            'title' => 'Predefined Color Scheme',
-            'default' => 'Green',
+            //'default' => 'v4',
+            'tiles' => false,
+            'presets' => 'true',
+            'width' => '60px',
+            'height' => '60px',
+
+            'class' => 'color-schemes',
+            'hint' => array(
+                'title'   => __('Predefined Color Scheme','redux-framework-demo'),
+                'content' => __('Predefined Color Scheme','redux-framework-demo'),
+            )
         )
     )
+);
+
+/*********************************************************************************************/
+$this->sections[] = array(
+    'icon'      => 'el-icon-livejournal',
+    'title'     => __('Topbar Colors', 'redux-framework-demo'),
+    'subsection' => true,
+    'fields'    => array(
+        array (
+            'id' => 'topbar_text_color',
+            'type' => 'color',
+            'title' =>  __('Topbar Text Color', 'redux-framework-demo'),
+            'subtitle'  => __('Choose color of text on topbar.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>#FFFFFF</strong>.', 'redux-framework-demo'),
+            'validate' => 'color',
+            //'class' => '',
+            //'transparent' => 'false',
+            'default'   => '#FFFFFF',
+            'output' => '#topbar, .topbar-item',
+            'hint' => array(
+                'title'   => __('Topbar Text Color','redux-framework-demo'),
+                'content' => __('Topbar Text Color','redux-framework-demo'),
+            )
+
+        ),
+        array (
+            'id' => 'topbar_link_color',
+            'type' => 'link_color',
+            'title' =>  __('Topbar Link Color', 'redux-framework-demo'),
+            'subtitle'  => __('Choose color of links on topbar.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>#FFFFFF</strong>.', 'redux-framework-demo'),
+            'validate' => 'color',
+            //'class' => '',
+            'regular'  => true,
+            'hover'    => true,
+            'active'   => true,
+            'visited'  => true,
+            'default'   => array(
+                'regular'  => '#FFFFFF',
+                'hover'    => '#FFFFFF',
+                'active'   => '#FFFFFF',
+                'visited'  => '#FFFFFF'
+            ),
+            'output' => '#topbar a',
+            'hint' => array(
+                'title'   => __('Topbar Link Color','redux-framework-demo'),
+                'content' => __('Topbar Link Color','redux-framework-demo'),
+            )
+        ),
+
+
+
+    )
+
 );
 
 /*********************************************************************************************/
@@ -49,95 +137,158 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Controls several items, ex: link hovers, highlights, and more.',
             'id' => 'primary_color',
             'type' => 'color',
-            'title' => 'Primary Color',
-            'default' => '#a0ce4e',
+            'title' => __('Primary Color','redux-framework-demo'),
+            'subtitle'  => __('Primary Color.', 'redux-framework-demo'),
+            'desc' => __('Controls several items, ex: link hovers, highlights, and more.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Primary Color','redux-framework-demo'),
+                'content' => __('Primary Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the top sliding bar.',
             'id' => 'slidingbar_bg_color',
             'type' => 'color',
-            'title' => 'Sliding Bar Background Color',
+            'title' => __('Sliding Bar Background Color','redux-framework-demo'),
+            'subtitle'  => __('Sliding Bar Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the top sliding bar.','redux-framework-demo'),
             'default' => '#363839',
+            'hint' => array(
+                'title'   => __('Sliding Bar Background Color','redux-framework-demo'),
+                'content' => __('Sliding Bar Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color for the sticky header.',
             'id' => 'header_sticky_bg_color',
             'type' => 'color',
-            'title' => 'Sticky Header Background Color',
+            'title' => __('Sticky Header Background Color','redux-framework-demo'),
+            'subtitle'  => __('Sticky Header Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color for the sticky header.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Sticky Header Background Color','redux-framework-demo'),
+                'content' => __('Sticky Header Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color for the header.',
             'id' => 'header_bg_color',
             'type' => 'color',
-            'title' => 'Header Background Color',
+            'title' => __('Header Background Color','redux-framework-demo'),
+            'subtitle'  => __('Header Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color for the header.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Header Background Color','redux-framework-demo'),
+                'content' => __('Header Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border colors for the header.',
             'id' => 'header_border_color',
             'type' => 'color',
-            'title' => 'Header Border Color',
+            'title' => __('Header Border Color','redux-framework-demo'),
+            'subtitle'  => __('Header Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border colors for the header.','redux-framework-demo'),
             'default' => '#e5e5e5',
+            'hint' => array(
+                'title'   => __('Header Border Color','redux-framework-demo'),
+                'content' => __('Header Border Color','redux-framework-demo'),
+            )
         ),
-        array (
-            'desc' => 'Controls the background color of the top header section used in Headers 2-5.',
+        /*
+
+         array (
+            'desc' => __('Controls the background color of the top header section used in Headers 2-5.',
             'id' => 'header_top_bg_color',
             'type' => 'color',
-            'title' => 'Header Top Background Color',
-            'default' => '#a0ce4e',
+            'title' => __('Header Top Background Color',
+            'default' => '#168DC5',
         ),
+        */
         array (
-            'desc' => 'Select a color for the page title bar background.',
             'id' => 'page_title_bg_color',
             'type' => 'color',
-            'title' => 'Page Title Bar Background Color',
+            'title' => __('Page Title Bar Background Color','redux-framework-demo'),
+            'subtitle'  => __('Page Title Bar Background Color.', 'redux-framework-demo'),
+            'desc' => __('Select a color for the page title bar background.','redux-framework-demo'),
             'default' => '#F6F6F6',
+            'hint' => array(
+                'title'   => __('Page Title Bar Background Color','redux-framework-demo'),
+                'content' => __('Page Title Bar Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select a color for the page title bar borders.',
             'id' => 'page_title_border_color',
             'type' => 'color',
-            'title' => 'Page Title Bar Borders Color',
+            'title' => __('Page Title Bar Borders Color','redux-framework-demo'),
+            'subtitle'  => __('Page Title Bar Borders Color.', 'redux-framework-demo'),
+            'desc' => __('Select a color for the page title bar borders.','redux-framework-demo'),
             'default' => '#d2d3d4',
+            'hint' => array(
+                'title'   => __('Page Title Bar Borders Color','redux-framework-demo'),
+                'content' => __('Page Title Bar Borders Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color of the main content area.',
             'id' => 'content_bg_color',
             'type' => 'color',
-            'title' => 'Content Background Color',
+            'title' => __('Content Background Color','redux-framework-demo'),
+            'subtitle'  => __('Content Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the main content area.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Content Background Color','redux-framework-demo'),
+                'content' => __('Content Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color of the footer.',
             'id' => 'footer_bg_color',
             'type' => 'color',
-            'title' => 'Footer Background Color',
+            'title' => __('Footer Background Color','redux-framework-demo'),
+            'subtitle'  => __('Footer Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the footer.','redux-framework-demo'),
             'default' => '#363839',
+            'hint' => array(
+                'title'   => __('Footer Background Color','redux-framework-demo'),
+                'content' => __('Footer Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border colors for the footer.',
             'id' => 'footer_border_color',
             'type' => 'color',
-            'title' => 'Footer Border Color',
+            'title' => __('Footer Border Color','redux-framework-demo'),
+            'subtitle'  => __('Footer Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border colors for the footer.','redux-framework-demo'),
             'default' => '#e9eaee',
+            'hint' => array(
+                'title'   => __('Footer Border Color','redux-framework-demo'),
+                'content' => __('Footer Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color of the footer copyright.',
             'id' => 'copyright_bg_color',
             'type' => 'color',
-            'title' => 'Copyright Background Color',
+            'title' => __('Copyright Background Color','redux-framework-demo'),
+            'subtitle'  => __('Copyright Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the footer copyright.','redux-framework-demo'),
             'default' => '#282a2b',
+            'hint' => array(
+                'title'   => __('Copyright Background Color','redux-framework-demo'),
+                'content' => __('Copyright Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border colors for the footer copyright.',
             'id' => 'copyright_border_color',
             'type' => 'color',
-            'title' => 'Copyright Border Color',
+            'title' => __('Copyright Border Color','redux-framework-demo'),
+            'subtitle'  => __('Copyright Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border colors for the footer copyright.','redux-framework-demo'),
             'default' => '#4b4c4d',
+            'hint' => array(
+                'title'   => __('Copyright Border Color','redux-framework-demo'),
+                'content' => __('Copyright Border Color','redux-framework-demo'),
+            )
         ),
 
     )
@@ -151,103 +302,172 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Controls the top color of the image rollover gradients.',
             'id' => 'image_gradient_top_color',
             'type' => 'color',
-            'title' => 'Rollover Image Gradient Top Color',
-            'default' => '#D1E990',
+            'title' => __('Rollover Image Gradient Top Color','redux-framework-demo'),
+            'subtitle'  => __('Rollover Image Gradient Top Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the top color of the image rollover gradients.','redux-framework-demo'),
+            'default' => '#2ba5df',
+            'hint' => array(
+                'title'   => __('Rollover Image Gradient Top Color','redux-framework-demo'),
+                'content' => __('Rollover Image Gradient Top Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the bottom color of the image rollover gradients.',
             'id' => 'image_gradient_bottom_color',
             'type' => 'color',
-            'title' => 'Rollover Image Gradient Bottom Color',
-            'default' => '#AAD75B',
+            'title' => __('Rollover Image Gradient Bottom Color','redux-framework-demo'),
+            'subtitle'  => __('Rollover Image Gradient Bottom Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the bottom color of the image rollover gradients.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Rollover Image Gradient Bottom Color','redux-framework-demo'),
+                'content' => __('Rollover Image Gradient Bottom Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'This option controls the color of image rollover text and the icon circle backgrounds.',
             'id' => 'image_rollover_text_color',
             'type' => 'color',
-            'title' => 'Rollover Image Element Color',
+            'title' => __('Rollover Image Element Color','redux-framework-demo'),
+            'subtitle'  => __('Rollover Image Element Color.', 'redux-framework-demo'),
+            'desc' => __('This option controls the color of image rollover text and the icon circle backgrounds.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Rollover Image Element Color','redux-framework-demo'),
+                'content' => __('Rollover Image Element Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the divider color in the sliding bar.',
             'id' => 'slidingbar_divider_color',
             'type' => 'color',
-            'title' => 'Sliding Bar Item Divider Color',
+            'title' => __('Sliding Bar Item Divider Color','redux-framework-demo'),
+            'subtitle'  => __('Sliding Bar Item Divider Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the divider color in the sliding bar.','redux-framework-demo'),
             'default' => '#282A2B',
+            'hint' => array(
+                'title'   => __('Sliding Bar Item Divider Color','redux-framework-demo'),
+                'content' => __('Sliding Bar Item Divider Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the divider color in the footer.',
-
             'id' => 'footer_divider_color',
             'type' => 'color',
-            'title' => 'Footer Widget Divider Color',
+            'title' => __('Footer Widget Divider Color','redux-framework-demo'),
+            'subtitle'  => __('Footer Widget Divider Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the divider color in the footer.','redux-framework-demo'),
             'default' => '#505152',
+            'hint' => array(
+                'title'   => __('Footer Widget Divider Color','redux-framework-demo'),
+                'content' => __('Footer Widget Divider Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color of form fields.',
             'id' => 'form_bg_color',
             'type' => 'color',
-            'title' => 'Form Background Color',
+            'title' => __('Form Background Color','redux-framework-demo'),
+            'subtitle'  => __('Form Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of form fields.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Form Background Color','redux-framework-demo'),
+                'content' => __('Form Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color for forms.',
             'id' => 'form_text_color',
             'type' => 'color',
-            'title' => 'Form Text Color',
+            'title' => __('Form Text Color','redux-framework-demo'),
+            'subtitle'  => __('Form Text Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color for forms.','redux-framework-demo'),
             'default' => '#aaa9a9',
+            'hint' => array(
+                'title'   => __('Form Text Color','redux-framework-demo'),
+                'content' => __('Form Text Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of form fields.',
             'id' => 'form_border_color',
             'type' => 'color',
-            'title' => 'Form Border Color',
+            'title' => __('Form Border Color','redux-framework-demo'),
+            'subtitle'  => __('Form Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of form fields.','redux-framework-demo'),
             'default' => '#d2d2d2',
+            'hint' => array(
+                'title'   => __('Form Border Color','redux-framework-demo'),
+                'content' => __('Form Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls blog grid, timeline and WooCommerce post box background color.',
             'id' => 'timeline_bg_color',
             'type' => 'color',
-            'title' => 'Grid Box Color',
+            'title' => __('Grid Box Color','redux-framework-demo'),
+            'subtitle'  => __('Grid Box Color.', 'redux-framework-demo'),
+            'desc' => __('Controls blog grid, timeline and WooCommerce post box background color.','redux-framework-demo'),
             'default' => 'transparent',
+            'hint' => array(
+                'title'   => __('Grid Box Color','redux-framework-demo'),
+                'content' => __('Grid Box Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls blog grid, timeline and WooCommerce post box border, divider lines, date box and border, timeline dots, timeline icon, timeline arrow.',
             'id' => 'timeline_color',
             'type' => 'color',
-            'title' => 'Grid Element Color',
+            'title' => __('Grid Element Color','redux-framework-demo'),
+            'subtitle'  => __('Grid Element Color.', 'redux-framework-demo'),
+            'desc' => __('Controls blog grid, timeline and WooCommerce post box border, divider lines, date box and border, timeline dots, timeline icon, timeline arrow.','redux-framework-demo'),
             'default' => '#ebeaea',
+            'hint' => array(
+                'title'   => __('Grid Element Color','redux-framework-demo'),
+                'content' => __('Grid Element Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color of the woocommerce quantity box.',
             'id' => 'qty_bg_color',
             'type' => 'color',
-            'title' => 'Woo Quantity Box Background Color',
+            'title' => __('Woo Quantity Box Background Color','redux-framework-demo'),
+            'subtitle'  => __('Woo Quantity Box Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the woocommerce quantity box.','redux-framework-demo'),
             'default' => '#fbfaf9',
+            'hint' => array(
+                'title'   => __('Woo Quantity Box Background Color','redux-framework-demo'),
+                'content' => __('Woo Quantity Box Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the hover color of the woocommerce quantity box.',
             'id' => 'qty_bg_hover_color',
             'type' => 'color',
-            'title' => 'Woo Quantity Box Hover Background Color',
+            'title' => __('Woo Quantity Box Hover Background Color','redux-framework-demo'),
+            'subtitle'  => __('Woo Quantity Box Hover Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the hover color of the woocommerce quantity box.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Woo Quantity Box Hover Background Color','redux-framework-demo'),
+                'content' => __('Woo Quantity Box Hover Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color for forum header rows.',
             'id' => 'bbp_forum_header_bg',
             'type' => 'color',
-            'title' => 'bbPress Forum Header Background Color',
+            'title' => __('bbPress Forum Header Background Color','redux-framework-demo'),
+            'subtitle'  => __('bbPress Forum Header Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color for forum header rows.','redux-framework-demo'),
             'default' => '#ebeaea',
+            'hint' => array(
+                'title'   => __('bbPress Forum Header Background Color','redux-framework-demo'),
+                'content' => __('bbPress Forum Header Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color for all forum surrounding borders.',
             'id' => 'bbp_forum_border_color',
             'type' => 'color',
-            'title' => 'bbPress Forum Border Color',
+            'title' => __('bbPress Forum Border Color','redux-framework-demo'),
+            'subtitle'  => __('bbPress Forum Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color for all forum surrounding borders.','redux-framework-demo'),
             'default' => '#ebeaea',
+            'hint' => array(
+                'title'   => __('bbPress Forum Border Color','redux-framework-demo'),
+                'content' => __('bbPress Forum Border Color','redux-framework-demo'),
+            )
         ),
 
     )
@@ -261,130 +481,220 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Controls the text color of the header tagline font.',
             'id' => 'tagline_font_color',
             'type' => 'color',
-            'title' => 'Header Tagline Font Color',
+            'title' => __('Header Tagline Font Color','redux-framework-demo'),
+            'subtitle'  => __('Header Tagline Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the header tagline font.','redux-framework-demo'),
             'default' => '#747474',
+            'hint' => array(
+                'title'   => __('Header Tagline Font Color','redux-framework-demo'),
+                'content' => __('Header Tagline Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the page title font.',
             'id' => 'page_title_color',
             'type' => 'color',
-            'title' => 'Page Title Font Color',
+            'title' => __('Page Title Font Color','redux-framework-demo'),
+            'subtitle'  => __('Page Title Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the page title font.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Page Title Font Color','redux-framework-demo'),
+                'content' => __('Page Title Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of H1 headings.',
             'id' => 'h1_color',
             'type' => 'color',
-            'title' => 'Heading 1 (H1) Font Color',
+            'title' => __('Heading 1 (H1) Font Color','redux-framework-demo'),
+            'subtitle'  => __('Heading 1 (H1) Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of H1 headings.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Heading 1 (H1) Font Color','redux-framework-demo'),
+                'content' => __('Heading 1 (H1) Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of H2 headings.',
             'id' => 'h2_color',
             'type' => 'color',
-            'title' => 'Heading 2 (H2) Font Color',
+            'title' => __('Heading 2 (H2) Font Color','redux-framework-demo'),
+            'subtitle'  => __('Heading 2 (H2) Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of H2 headings.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Heading 2 (H2) Font Color','redux-framework-demo'),
+                'content' => __('Heading 2 (H2) Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of H3 headings.',
             'id' => 'h3_color',
             'type' => 'color',
-            'title' => 'Heading 3 (H3) Font Color',
+            'title' => __('Heading 3 (H3) Font Color','redux-framework-demo'),
+            'subtitle'  => __('Heading 3 (H3) Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of H3 headings.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Heading 3 (H3) Font Color','redux-framework-demo'),
+                'content' => __('Heading 3 (H3) Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of H4 headings.',
             'id' => 'h4_color',
             'type' => 'color',
-            'title' => 'Heading 4 (H4) Font Color',
+            'title' => __('Heading 4 (H4) Font Color','redux-framework-demo'),
+            'subtitle'  => __('Heading 4 (H4) Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of H4 headings.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Heading 4 (H4) Font Color','redux-framework-demo'),
+                'content' => __('Heading 4 (H4) Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of H5 headings.',
             'id' => 'h5_color',
             'type' => 'color',
-            'title' => 'Heading 5 (H5) Font Color',
+            'title' => __('Heading 5 (H5) Font Color','redux-framework-demo'),
+            'subtitle'  => __('Heading 5 (H5) Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of H5 headings.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Heading 5 (H5) Font Color','redux-framework-demo'),
+                'content' => __('Heading 5 (H5) Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of H6 headings.',
             'id' => 'h6_color',
             'type' => 'color',
-            'title' => 'Heading 6 (H6) Font Color',
+            'title' => __('Heading 6 (H6) Font Color','redux-framework-demo'),
+            'subtitle'  => __('Heading 6 (H6) Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of H6 headings.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Heading 6 (H6) Font Color','redux-framework-demo'),
+                'content' => __('Heading 6 (H6) Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of body font.',
             'id' => 'body_text_color',
             'type' => 'color',
-            'title' => 'Body Text Color',
+            'title' => __('Body Text Color','redux-framework-demo'),
+            'subtitle'  => __('Body Text Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of body font.','redux-framework-demo'),
             'default' => '#747474',
+            'hint' => array(
+                'title'   => __('Body Text Color','redux-framework-demo'),
+                'content' => __('Body Text Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of all text links as well as the \'>\' in certain areas.',
             'id' => 'link_color',
             'type' => 'color',
-            'title' => 'Link Color',
+            'title' => __('Link Color','redux-framework-demo'),
+            'subtitle'  => __('Link Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of all text links as well as the \'>\' in certain areas.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Link Color','redux-framework-demo'),
+                'content' => __('Link Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the breadcrumb font.',
             'id' => 'breadcrumbs_text_color',
             'type' => 'color',
-            'title' => 'Breadcrumbs Text Color',
+            'title' => __('Breadcrumbs Text Color','redux-framework-demo'),
+            'subtitle'  => __('Breadcrumbs Text Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the breadcrumb font.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Breadcrumbs Text Color','redux-framework-demo'),
+                'content' => __('Breadcrumbs Text Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the sliding bar heading font.',
             'id' => 'slidingbar_headings_color',
             'type' => 'color',
-            'title' => 'Sliding Bar Headings Color',
+            'title' => __('Sliding Bar Headings Color','redux-framework-demo'),
+            'subtitle'  => __('Sliding Bar Headings Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the sliding bar heading font.','redux-framework-demo'),
             'default' => '#DDDDDD',
+            'hint' => array(
+                'title'   => __('Sliding Bar Headings Color','redux-framework-demo'),
+                'content' => __('Sliding Bar Headings Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the font color of the sliding bar font.',
             'id' => 'slidingbar_text_color',
             'type' => 'color',
-            'title' => 'Sliding Bar Font Color',
+            'title' => __('Sliding Bar Font Color','redux-framework-demo'),
+            'subtitle'  => __('Sliding Bar Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the font color of the sliding bar font.','redux-framework-demo'),
             'default' => '#8C8989',
+            'hint' => array(
+                'title'   => __('Sliding Bar Font Color','redux-framework-demo'),
+                'content' => __('Sliding Bar Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the sliding bar link font.',
             'id' => 'slidingbar_link_color',
             'type' => 'color',
-            'title' => 'Sliding Bar Link Color',
+            'title' => __('Sliding Bar Link Color','redux-framework-demo'),
+            'subtitle'  => __('Sliding Bar Link Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the sliding bar link font.','redux-framework-demo'),
             'default' => '#BFBFBF',
+            'hint' => array(
+                'title'   => __('Sliding Bar Link Color','redux-framework-demo'),
+                'content' => __('Sliding Bar Link Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the sidebar widget headings.',
             'id' => 'sidebar_heading_color',
             'type' => 'color',
-            'title' => 'Sidebar Widget Headings Color',
+            'title' => __('Sidebar Widget Headings Color','redux-framework-demo'),
+            'subtitle'  => __('Sidebar Widget Headings Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the sidebar widget headings.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Sidebar Widget Headings Color','redux-framework-demo'),
+                'content' => __('Sidebar Widget Headings Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the footer heading font.',
             'id' => 'footer_headings_color',
             'type' => 'color',
-            'title' => 'Footer Headings Color',
+            'title' => __('Footer Headings Color','redux-framework-demo'),
+            'subtitle'  => __('Footer Headings Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the footer heading font.','redux-framework-demo'),
             'default' => '#DDDDDD',
+            'hint' => array(
+                'title'   => __('Footer Headings Color','redux-framework-demo'),
+                'content' => __('Footer Headings Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the footer font.',
             'id' => 'footer_text_color',
             'type' => 'color',
-            'title' => 'Footer Font Color',
+            'title' => __('Footer Font Color','redux-framework-demo'),
+            'subtitle'  => __('Footer Font Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the footer font.','redux-framework-demo'),
             'default' => '#8C8989',
+            'hint' => array(
+                'title'   => __('Footer Font Color','redux-framework-demo'),
+                'content' => __('Footer Font Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the footer link font.',
             'id' => 'footer_link_color',
             'type' => 'color',
-            'title' => 'Footer Link Color',
+            'title' => __('Footer Link Color','redux-framework-demo'),
+            'subtitle'  => __('Footer Link Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the footer link font.','redux-framework-demo'),
             'default' => '#BFBFBF',
+            'hint' => array(
+                'title'   => __('Footer Link Color','redux-framework-demo'),
+                'content' => __('Footer Link Color','redux-framework-demo'),
+            )
         ),
 
     )
@@ -397,60 +707,100 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Controls the background color of the menu when using header 4 or 5.',
             'id' => 'menu_h45_bg_color',
             'type' => 'color',
-            'title' => 'Main Menu Background Color For Header 4 & 5',
+            'title' => __('Main Menu Background Color For Header 4 & 5','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Color For Header 4 & 5.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the menu when using header 4 or 5.','redux-framework-demo'),
             'default' => '#FFFFFF',
+            'hint' => array(
+                'title'   => __('Main Menu Background Color For Header 4 & 5','redux-framework-demo'),
+                'content' => __('Main Menu Background Color For Header 4 & 5','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of first level menu items.',
             'id' => 'menu_first_color',
             'type' => 'color',
-            'title' => 'Main Menu Font Color - First Level',
+            'title' => __('Main Menu Font Color - First Level','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Font Color - First Level.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of first level menu items.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Main Menu Font Color - First Level','redux-framework-demo'),
+                'content' => __('Main Menu Font Color - First Level','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the main menu hover, hover border & dropdown border color.',
             'id' => 'menu_hover_first_color',
             'type' => 'color',
-            'title' => 'Main Menu Font Hover Color - First Level',
-            'default' => '#a0ce4e',
+            'title' => __('Main Menu Font Hover Color - First Level','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Font Hover Color - First Level.', 'redux-framework-demo'),
+            'desc' => __('Controls the main menu hover, hover border & dropdown border color.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Main Menu Font Hover Color - First Level','redux-framework-demo'),
+                'content' => __('Main Menu Font Hover Color - First Level','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the menu sublevel background.',
             'id' => 'menu_sub_bg_color',
             'type' => 'color',
-            'title' => 'Main Menu Background Color - Sublevels',
+            'title' => __('Main Menu Background Color - Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Color - Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the menu sublevel background.','redux-framework-demo'),
             'default' => '#f2efef',
+            'hint' => array(
+                'title'   => __('Main Menu Background Color - Sublevels','redux-framework-demo'),
+                'content' => __('Main Menu Background Color - Sublevels','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the hover color of the menu sublevel background.',
             'id' => 'menu_bg_hover_color',
             'type' => 'color',
-            'title' => 'Main Menu Background Hover Color - Sublevels',
+            'title' => __('Main Menu Background Hover Color - Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Hover Color - Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the hover color of the menu sublevel background.','redux-framework-demo'),
             'default' => '#f8f8f8',
+            'hint' => array(
+                'title'   => __('Main Menu Background Hover Color - Sublevels','redux-framework-demo'),
+                'content' => __('Main Menu Background Hover Color - Sublevels','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the menu font sublevels.',
             'id' => 'menu_sub_color',
             'type' => 'color',
-            'title' => 'Main Menu Font Color - Sublevels',
+            'title' => __('Main Menu Font Color - Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Font Color - Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the menu font sublevels.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Main Menu Font Color - Sublevels','redux-framework-demo'),
+                'content' => __('Main Menu Font Color - Sublevels','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the menu separator sublevels.',
             'id' => 'menu_sub_sep_color',
             'type' => 'color',
-            'title' => 'Main Menu Separator - Sublevels',
+            'title' => __('Main Menu Separator - Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Separator - Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the menu separator sublevels.','redux-framework-demo'),
             'default' => '#dcdadb',
+            'hint' => array(
+                'title'   => __('Main Menu Separator - Sublevels','redux-framework-demo'),
+                'content' => __('Main Menu Separator - Sublevels','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the bottom section background color of the woocommerce cart dropdown.',
             'id' => 'woo_cart_bg_color',
             'type' => 'color',
-            'title' => 'Woo Cart Menu Background Color',
+            'title' => __('Woo Cart Menu Background Color','redux-framework-demo'),
+            'subtitle'  => __('Woo Cart Menu Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the bottom section background color of the woocommerce cart dropdown.','redux-framework-demo'),
             'default' => '#fafafa',
+            'hint' => array(
+                'title'   => __('Woo Cart Menu Background Color','redux-framework-demo'),
+                'content' => __('Woo Cart Menu Background Color','redux-framework-demo'),
+            )
         ),
 
     )
@@ -463,53 +813,88 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Controls the color of the secondary menu first level and contact info font.',
             'id' => 'snav_color',
             'type' => 'color',
-            'title' => 'Secondary Menu Font Color - First Level & Top Contact Info',
+            'title' => __('Secondary Menu Font Color - First Level & Top Contact Info','redux-framework-demo'),
+            'subtitle'  => __('Secondary Menu Font Color - First Level & Top Contact Info.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the secondary menu first level and contact info font.','redux-framework-demo'),
             'default' => '#747474',
+            'hint' => array(
+                'title'   => __('Secondary Menu Font Color - First Level & Top Contact Info','redux-framework-demo'),
+                'content' => __('Secondary Menu Font Color - First Level & Top Contact Info','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the divider color of the first level secondary menu.',
             'id' => 'header_top_first_border_color',
             'type' => 'color',
-            'title' => 'Secondary Menu Divider Color - First Level',
+            'title' => __('Secondary Menu Divider Color - First Level','redux-framework-demo'),
+            'subtitle'  => __('Secondary Menu Divider Color - First Level.', 'redux-framework-demo'),
+            'desc' => __('Controls the divider color of the first level secondary menu.','redux-framework-demo'),
             'default' => '#e5e5e5',
+            'hint' => array(
+                'title'   => __('Secondary Menu Divider Color - First Level','redux-framework-demo'),
+                'content' => __('Secondary Menu Divider Color - First Level','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color of the secondary menu sublevels.',
             'id' => 'header_top_sub_bg_color',
             'type' => 'color',
-            'title' => 'Secondary Menu Background Color - Sublevels',
+            'title' => __('Secondary Menu Background Color - Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Secondary Menu Background Color - Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the secondary menu sublevels.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Secondary Menu Background Color - Sublevels','redux-framework-demo'),
+                'content' => __('Secondary Menu Background Color - Sublevels','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the secondary menu font sublevels.',
             'id' => 'header_top_menu_sub_color',
             'type' => 'color',
-            'title' => 'Secondary Menu Font Color - Sublevels',
+            'title' => __('Secondary Menu Font Color - Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Secondary Menu Font Color - Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the secondary menu font sublevels.','redux-framework-demo'),
             'default' => '#747474',
+            'hint' => array(
+                'title'   => __('Secondary Menu Font Color - Sublevels','redux-framework-demo'),
+                'content' => __('Secondary Menu Font Color - Sublevels','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the hover color of the secondary menu background sublevels.',
             'id' => 'header_top_menu_bg_hover_color',
             'type' => 'color',
-            'title' => 'Secondary Menu Hover Background Color - Sublevels',
+            'title' => __('Secondary Menu Hover Background Color - Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Secondary Menu Hover Background Color - Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the hover color of the secondary menu background sublevels.','redux-framework-demo'),
             'default' => '#fafafa',
+            'hint' => array(
+                'title'   => __('Secondary Menu Hover Background Color - Sublevels','redux-framework-demo'),
+                'content' => __('Secondary Menu Hover Background Color - Sublevels','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the hover text color of the secondary menu font sublevels.',
             'id' => 'header_top_menu_sub_hover_color',
             'type' => 'color',
-            'title' => 'Secondary Menu Hover Font Color - Sublevels',
+            'title' => __('Secondary Menu Hover Font Color - Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Secondary Menu Hover Font Color - Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the hover text color of the secondary menu font sublevels.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Secondary Menu Hover Font Color - Sublevels','redux-framework-demo'),
+                'content' => __('Secondary Menu Hover Font Color - Sublevels','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of the secondary menu sublevels.',
             'id' => 'header_top_menu_sub_sep_color',
             'type' => 'color',
-            'title' => 'Secondary Menu Border	- Sublevels',
+            'title' => __('Secondary Menu Border	- Sublevels','redux-framework-demo'),
+            'subtitle'  => __('Secondary Menu Border	- Sublevels.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of the secondary menu sublevels.','redux-framework-demo'),
             'default' => '#e5e5e5',
+            'hint' => array(
+                'title'   => __('Secondary Menu Border	- Sublevels','redux-framework-demo'),
+                'content' => __('Secondary Menu Border	- Sublevels','redux-framework-demo'),
+            )
         ),
 
     )
@@ -522,25 +907,40 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Controls the background color of the mobile menu box and dropdown.',
             'id' => 'mobile_menu_background_color',
             'type' => 'color',
-            'title' => 'Mobile Menu Background Color',
+            'title' => __('Mobile Menu Background Color','redux-framework-demo'),
+            'subtitle'  => __('Mobile Menu Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the mobile menu box and dropdown.','redux-framework-demo'),
             'default' => '#f9f9f9',
+            'hint' => array(
+                'title'   => __('Mobile Menu Background Color','redux-framework-demo'),
+                'content' => __('Mobile Menu Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border, divider and icon colors of the mobile menu.',
             'id' => 'mobile_menu_border_color',
             'type' => 'color',
-            'title' => 'Mobile Menu Border Color',
+            'title' => __('Mobile Menu Border Color','redux-framework-demo'),
+            'subtitle'  => __('Mobile Menu Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border, divider and icon colors of the mobile menu.','redux-framework-demo'),
             'default' => '#dadada',
+            'hint' => array(
+                'title'   => __('Mobile Menu Border Color','redux-framework-demo'),
+                'content' => __('Mobile Menu Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the hover color of the mobile menu items.',
             'id' => 'mobile_menu_hover_color',
             'type' => 'color',
-            'title' => 'Mobile Menu Hover Color',
+            'title' => __('Mobile Menu Hover Color','redux-framework-demo'),
+            'subtitle'  => __('Mobile Menu Hover Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the hover color of the mobile menu items.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Mobile Menu Hover Color','redux-framework-demo'),
+                'content' => __('Mobile Menu Hover Color','redux-framework-demo'),
+            )
         ),
 
     )
@@ -553,11 +953,16 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Controls the background color of the sidebar.',
             'id' => 'sidebar_bg_color',
             'type' => 'color',
-            'title' => 'Sidebar Background Color',
+            'title' => __('Sidebar Background Color','redux-framework-demo'),
+            'subtitle'  => __('Sidebar Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the sidebar.','redux-framework-demo'),
             'default' => 'transparent',
+            'hint' => array(
+                'title'   => __('Sidebar Background Color','redux-framework-demo'),
+                'content' => __('Sidebar Background Color','redux-framework-demo'),
+            )
         )
 
     )
@@ -578,11 +983,16 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the inactive boxes behind the \'+\' icons.',
             'id' => 'accordian_inactive_color',
             'type' => 'color',
-            'title' => 'Accordion Inactive Box Color',
+            'title' => __('Accordion Inactive Box Color','redux-framework-demo'),
+            'subtitle'  => __('Accordion Inactive Box Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the inactive boxes behind the \'+\' icons.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Accordion Inactive Box Color','redux-framework-demo'),
+                'content' => __('Accordion Inactive Box Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -592,11 +1002,16 @@ $this->sections[] = array(
             'raw' => '<h3 style=\'margin: 0;\'>Blog Shortcode</h3>',
         ),
         array (
-            'desc' => 'Controls the color of the date box in blog alternate and recent posts layouts.',
             'id' => 'dates_box_color',
             'type' => 'color',
-            'title' => 'Blog Date Box Color',
+            'title' => __('Blog Date Box Color','redux-framework-demo'),
+            'subtitle'  => __('Blog Date Box Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the date box in blog alternate and recent posts layouts.','redux-framework-demo'),
             'default' => '#eef0f2',
+            'hint' => array(
+                'title'   => __('Blog Date Box Color','redux-framework-demo'),
+                'content' => __('Blog Date Box Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -607,7 +1022,6 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Select the default button size.',
             'id' => 'button_size',
             'type' => 'select',
             'options' => array (
@@ -616,11 +1030,16 @@ $this->sections[] = array(
                 'Large' => 'Large',
                 'XLarge' => 'XLarge',
             ),
-            'title' => 'Button Size',
+            'title' => __('Button Size','redux-framework-demo'),
+            'subtitle'  => __('Button Size.', 'redux-framework-demo'),
+            'desc' => __('Select the default button size.','redux-framework-demo'),
             'default' => 'Large',
+            'hint' => array(
+                'title'   => __('Button Size','redux-framework-demo'),
+                'content' => __('Button Size','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select the default shape for buttons.',
             'id' => 'button_shape',
             'type' => 'select',
             'options' => array (
@@ -628,81 +1047,140 @@ $this->sections[] = array(
                 'Round' => 'Round',
                 'Pill' => 'Pill',
             ),
-            'title' => 'Button Shape',
+            'title' => __('Button Shape','redux-framework-demo'),
+            'subtitle'  => __('Button Shape.', 'redux-framework-demo'),
+            'desc' => __('Select the default shape for buttons.','redux-framework-demo'),
             'default' => 'Round',
+            'hint' => array(
+                'title'   => __('Button Shape','redux-framework-demo'),
+                'content' => __('Button Shape','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select the default button type.',
             'id' => 'button_type',
             'type' => 'select',
             'options' => array (
                 'Flat' => 'Flat',
                 '3d' => '3d',
             ),
-            'title' => 'Button Type',
+            'title' => __('Button Type','redux-framework-demo'),
+            'subtitle'  => __('Button Type.', 'redux-framework-demo'),
+            'desc' => __('Select the default button type.','redux-framework-demo'),
             'default' => 'Flat',
+            'hint' => array(
+                'title'   => __('Button Type','redux-framework-demo'),
+                'content' => __('Button Type','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Set the top color of the button background.',
             'id' => 'button_gradient_top_color',
             'type' => 'color',
-            'title' => 'Button Gradient Top Color',
-            'default' => '#D1E990',
+            'title' => __('Button Gradient Top Color','redux-framework-demo'),
+            'subtitle'  => __('Button Gradient Top Color.', 'redux-framework-demo'),
+            'desc' => __('Set the top color of the button background.','redux-framework-demo'),
+            'default' => '#2ba5df',
+            'hint' => array(
+                'title'   => __('Button Gradient Top Color','redux-framework-demo'),
+                'content' => __('Button Gradient Top Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Set the bottom color of the button background or leave empty for solid color.',
             'id' => 'button_gradient_bottom_color',
             'type' => 'color',
-            'title' => 'Button Gradient Bottom Color',
-            'default' => '#AAD75B',
+            'title' => __('Button Gradient Bottom Color','redux-framework-demo'),
+            'subtitle'  => __('Button Gradient Bottom Color.', 'redux-framework-demo'),
+            'desc' => __('Set the bottom color of the button background or leave empty for solid color.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Button Gradient Bottom Color','redux-framework-demo'),
+                'content' => __('Button Gradient Bottom Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Set the top hover color of the button background.',
             'id' => 'button_gradient_top_color_hover',
             'type' => 'color',
-            'title' => 'Button Gradient Top Hover Color',
-            'default' => '#AAD75B',
+            'title' => __('Button Gradient Top Hover Color','redux-framework-demo'),
+            'subtitle'  => __('Button Gradient Top Hover Color.', 'redux-framework-demo'),
+            'desc' => __('Set the top hover color of the button background.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Button Gradient Top Hover Color','redux-framework-demo'),
+                'content' => __('Button Gradient Top Hover Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Set the bottom hover color of the button background or leave empty for solid color. ',
             'id' => 'button_gradient_bottom_color_hover',
             'type' => 'color',
-            'title' => 'Button Gradient Bottom Hover Color',
-            'default' => '#D1E990',
+            'title' => __('Button Gradient Bottom Hover Color','redux-framework-demo'),
+            'subtitle'  => __('Button Gradient Bottom Hover Color.', 'redux-framework-demo'),
+            'desc' => __('Set the bottom hover color of the button background or leave empty for solid color. ','redux-framework-demo'),
+            'default' => '#2ba5df',
+            'hint' => array(
+                'title'   => __('Button Gradient Bottom Hover Color','redux-framework-demo'),
+                'content' => __('Button Gradient Bottom Hover Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'This option controls the color of the button border, divider, text and icon.',
             'id' => 'button_accent_color',
             'type' => 'color',
-            'title' => 'Button Accent Color',
-            'default' => '#6e9a1f',
+            'title' => __('Button Accent Color','redux-framework-demo'),
+            'subtitle'  => __('Button Accent Color.', 'redux-framework-demo'),
+            'desc' => __('This option controls the color of the button border, divider, text and icon.','redux-framework-demo'),
+            'default' => '#1570a6',
+            'hint' => array(
+                'title'   => __('Button Accent Color','redux-framework-demo'),
+                'content' => __('Button Accent Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'This option controls the hover color of the button border, divider, text and icon.',
             'id' => 'button_accent_hover_color',
             'type' => 'color',
-            'title' => 'Button Accent Hover Color',
-            'default' => '#638e1a',
+            'title' => __('Button Accent Hover Color','redux-framework-demo'),
+            'subtitle'  => __('Button Accent Hover Color.', 'redux-framework-demo'),
+            'desc' => __('This option controls the hover color of the button border, divider, text and icon.','redux-framework-demo'),
+            'default' => '#1570a6',
+            'hint' => array(
+                'title'   => __('Button Accent Hover Color','redux-framework-demo'),
+                'content' => __('Button Accent Hover Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the default bevel color of the buttons.',
             'id' => 'button_bevel_color',
             'type' => 'color',
-            'title' => 'Button Bevel Color (3D Mode only)',
-            'default' => '#54770F',
+            'title' => __('Button Bevel Color (3D Mode only)','redux-framework-demo'),
+            'subtitle'  => __('Button Bevel Color (3D Mode only).', 'redux-framework-demo'),
+            'desc' => __('Controls the default bevel color of the buttons.','redux-framework-demo'),
+            'default' => '#1570a6',
+            'hint' => array(
+                'title'   => __('Button Bevel Color (3D Mode only)','redux-framework-demo'),
+                'content' => __('Button Bevel Color (3D Mode only)','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select the border width for buttons. Enter value in px. ex: 1px',
             'id' => 'button_border_width',
             'type' => 'text',
-            'title' => 'Button Border Width',
+            'title' => __('Button Border Width','redux-framework-demo'),
+            'subtitle'  => __('Button Border Width.', 'redux-framework-demo'),
+            'desc' => __('Select the border width for buttons. Enter value in px. ex: 1px','redux-framework-demo'),
             'default' => '1px',
+            'hint' => array(
+                'title'   => __('Button Border Width','redux-framework-demo'),
+                'content' => __('Button Border Width','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select the box to disable the bottom button shadow and text shadow.',
             'id' => 'button_text_shadow',
-            'type' => 'checkbox',
-            'title' => 'Button Shadow',
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => false,
+            'title' => __('Button Shadow','redux-framework-demo'),
+            'subtitle'  => __('Button Shadow.', 'redux-framework-demo'),
+            'desc' => __('YES to disable the bottom button shadow and text shadow.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Button Shadow','redux-framework-demo'),
+                'content' => __('Button Shadow','redux-framework-demo'),
+            )
         ),
 
 
@@ -714,18 +1192,28 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the default navigation box for carousel sliders.',
             'id' => 'carousel_nav_color',
             'type' => 'color',
-            'title' => 'Carousel Default Nav Box Color',
+            'title' => __('Carousel Default Nav Box Color','redux-framework-demo'),
+            'subtitle'  => __('Carousel Default Nav Box Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the default navigation box for carousel sliders.','redux-framework-demo'),
             'default' => '#999999',
+            'hint' => array(
+                'title'   => __('Carousel Default Nav Box Color','redux-framework-demo'),
+                'content' => __('Carousel Default Nav Box Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the hover navigation box for carousel sliders.',
             'id' => 'carousel_hover_color',
             'type' => 'color',
-            'title' => 'Carousel Hover Nav Box Color',
+            'title' => __('Carousel Hover Nav Box Color','redux-framework-demo'),
+            'subtitle'  => __('Carousel Hover Nav Box Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the hover navigation box for carousel sliders.','redux-framework-demo'),
             'default' => '#808080',
+            'hint' => array(
+                'title'   => __('Carousel Hover Nav Box Color','redux-framework-demo'),
+                'content' => __('Carousel Hover Nav Box Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -736,11 +1224,16 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the background for content boxes. Only use for \'icon-boxed\' style. Leave transparent for other styles.',
             'id' => 'content_box_bg_color',
             'type' => 'color',
-            'title' => 'Content Box Background Color',
+            'title' => __('Content Box Background Color','redux-framework-demo'),
+            'subtitle'  => __('Content Box Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the background for content boxes. Only use for \'icon-boxed\' style. Leave transparent for other styles.','redux-framework-demo'),
             'default' => 'transparent',
+            'hint' => array(
+                'title'   => __('Content Box Background Color','redux-framework-demo'),
+                'content' => __('Content Box Background Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -751,25 +1244,42 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Check the box if you want to use circles on checklists.',
             'id' => 'checklist_circle',
-            'type' => 'checkbox',
-            'title' => 'Checklist Circle',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('Checklist Circle','redux-framework-demo'),
+            'subtitle'  => __('Checklist Circle.', 'redux-framework-demo'),
+            'desc' => __('YES if you want to use circles on checklists.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Checklist Circle','redux-framework-demo'),
+                'content' => __('Checklist Circle','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the checklist circle.',
             'id' => 'checklist_circle_color',
             'type' => 'color',
-            'title' => 'Checklist Circle Color',
-            'default' => '#a0ce4e',
+            'title' => __('Checklist Circle Color','redux-framework-demo'),
+            'subtitle'  => __('Checklist Circle Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the checklist circle.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Checklist Circle Color','redux-framework-demo'),
+                'content' => __('Checklist Circle Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the checklist icon.',
             'id' => 'checklist_icons_color',
             'type' => 'color',
-            'title' => 'Checklist Icon Color',
+            'title' => __('Checklist Icon Color','redux-framework-demo'),
+            'subtitle'  => __('Checklist Icon Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the checklist icon.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Checklist Icon Color','redux-framework-demo'),
+                'content' => __('Checklist Icon Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -780,18 +1290,28 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the counter text and icon.',
             'id' => 'counter_filled_color',
             'type' => 'color',
-            'title' => 'Counter Circle Filled Color',
-            'default' => '#a0ce4e',
+            'title' => __('Counter Circle Filled Color','redux-framework-demo'),
+            'subtitle'  => __('Counter Circle Filled Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the counter text and icon.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Counter Circle Filled Color','redux-framework-demo'),
+                'content' => __('Counter Circle Filled Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the counter text and icon.',
             'id' => 'counter_unfilled_color',
             'type' => 'color',
-            'title' => 'Counter Circle Unfilled Color',
+            'title' => __('Counter Circle Unfilled Color','redux-framework-demo'),
+            'subtitle'  => __('Counter Circle Unfilled Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the counter text and icon.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Counter Circle Unfilled Color','redux-framework-demo'),
+                'content' => __('Counter Circle Unfilled Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -802,11 +1322,16 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the counter text and icon.',
             'id' => 'counter_box_color',
             'type' => 'color',
-            'title' => 'Counter Box Text Color',
-            'default' => '#a0ce4e',
+            'title' => __('Counter Box Text Color','redux-framework-demo'),
+            'subtitle'  => __('Counter Box Text Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the counter text and icon.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Counter Box Text Color','redux-framework-demo'),
+                'content' => __('Counter Box Text Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -817,11 +1342,16 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the dropcap text, or the dropcap box is a box is used.',
             'id' => 'dropcap_color',
             'type' => 'color',
-            'title' => 'Dropcap Color',
-            'default' => '#a0ce4e',
+            'title' => __('Dropcap Color','redux-framework-demo'),
+            'subtitle'  => __('Dropcap Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the dropcap text, or the dropcap box is a box is used.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Dropcap Color','redux-framework-demo'),
+                'content' => __('Dropcap Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -832,67 +1362,112 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of frontside background color.',
             'id' => 'flip_boxes_front_bg',
             'type' => 'color',
-            'title' => 'Flip Box Background Color Frontside',
+            'title' => __('Flip Box Background Color Frontside','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Background Color Frontside.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of frontside background color.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Flip Box Background Color Frontside','redux-framework-demo'),
+                'content' => __('Flip Box Background Color Frontside','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of frontside heading color.',
             'id' => 'flip_boxes_front_heading',
             'type' => 'color',
-            'title' => 'Flip Box Heading Color Frontside',
+            'title' => __('Flip Box Heading Color Frontside','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Heading Color Frontside.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of frontside heading color.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Flip Box Heading Color Frontside','redux-framework-demo'),
+                'content' => __('Flip Box Heading Color Frontside','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of frontside text color.',
             'id' => 'flip_boxes_front_text',
             'type' => 'color',
-            'title' => 'Flip Box Text Color Frontside',
+            'title' => __('Flip Box Text Color Frontside','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Text Color Frontside.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of frontside text color.','redux-framework-demo'),
             'default' => '#747474',
+            'hint' => array(
+                'title'   => __('Flip Box Text Color Frontside','redux-framework-demo'),
+                'content' => __('Flip Box Text Color Frontside','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of backside background color.',
             'id' => 'flip_boxes_back_bg',
             'type' => 'color',
-            'title' => 'Flip Box Background Color Backside',
-            'default' => '#a0ce4e',
+            'title' => __('Flip Box Background Color Backside','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Background Color Backside.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of backside background color.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Flip Box Background Color Backside','redux-framework-demo'),
+                'content' => __('Flip Box Background Color Backside','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of backside heading color.',
             'id' => 'flip_boxes_back_heading',
             'type' => 'color',
-            'title' => 'Flip Box Heading Color Backside',
+            'title' => __('Flip Box Heading Color Backside','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Heading Color Backside.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of backside heading color.','redux-framework-demo'),
             'default' => '#eeeded',
+            'hint' => array(
+                'title'   => __('Flip Box Heading Color Backside','redux-framework-demo'),
+                'content' => __('Flip Box Heading Color Backside','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of backside text color.',
             'id' => 'flip_boxes_back_text',
             'type' => 'color',
-            'title' => 'Flip Box Text Color Backside',
+            'title' => __('Flip Box Text Color Backside','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Text Color Backside.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of backside text color.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Flip Box Text Color Backside','redux-framework-demo'),
+                'content' => __('Flip Box Text Color Backside','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border size of flip boxes.',
             'id' => 'flip_boxes_border_size',
             'type' => 'text',
-            'title' => 'Flip Box Border Size',
+            'title' => __('Flip Box Border Size','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Border Size.', 'redux-framework-demo'),
+            'desc' => __('Controls the border size of flip boxes.','redux-framework-demo'),
             'default' => '1px',
+            'hint' => array(
+                'title'   => __('Flip Box Border Size','redux-framework-demo'),
+                'content' => __('Flip Box Border Size','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of flip boxes.',
             'id' => 'flip_boxes_border_color',
             'type' => 'color',
-            'title' => 'Flip Box Border Color',
+            'title' => __('Flip Box Border Color','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of flip boxes.','redux-framework-demo'),
             'default' => 'transparent',
+            'hint' => array(
+                'title'   => __('Flip Box Border Color','redux-framework-demo'),
+                'content' => __('Flip Box Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border radius (roundness) of flip boxes.',
             'id' => 'flip_boxes_border_radius',
             'type' => 'text',
-            'title' => 'Flip Box Border Radius',
+            'title' => __('Flip Box Border Radius','redux-framework-demo'),
+            'subtitle'  => __('Flip Box Border Radius.', 'redux-framework-demo'),
+            'desc' => __('Controls the border radius (roundness) of flip boxes.','redux-framework-demo'),
             'default' => '4px',
+            'hint' => array(
+                'title'   => __('Flip Box Border Radius','redux-framework-demo'),
+                'content' => __('Flip Box Border Radius','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -903,25 +1478,40 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the background color of the full width section.',
             'id' => 'full_width_bg_color',
             'type' => 'color',
-            'title' => 'Full Width Background Color',
+            'title' => __('Full Width Background Color','redux-framework-demo'),
+            'subtitle'  => __('Full Width Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the full width section.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Full Width Background Color','redux-framework-demo'),
+                'content' => __('Full Width Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border size of the full width section.',
             'id' => 'full_width_border_size',
             'type' => 'text',
-            'title' => 'Full Width Border Size',
+            'title' => __('Full Width Border Size','redux-framework-demo'),
+            'subtitle'  => __('Full Width Border Size.', 'redux-framework-demo'),
+            'desc' => __('Controls the border size of the full width section.','redux-framework-demo'),
             'default' => '0px',
+            'hint' => array(
+                'title'   => __('Full Width Border Size','redux-framework-demo'),
+                'content' => __('Full Width Border Size','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of the full width section.',
             'id' => 'full_width_border_color',
             'type' => 'color',
-            'title' => 'Full Width Border Color',
+            'title' => __('Full Width Border Color','redux-framework-demo'),
+            'subtitle'  => __('Full Width Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of the full width section.','redux-framework-demo'),
             'default' => '#eae9e9',
+            'hint' => array(
+                'title'   => __('Full Width Border Color','redux-framework-demo'),
+                'content' => __('Full Width Border Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -932,25 +1522,40 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the circle when used with icons.',
             'id' => 'icon_circle_color',
             'type' => 'color',
-            'title' => 'Icon Circle Background Color',
+            'title' => __('Icon Circle Background Color','redux-framework-demo'),
+            'subtitle'  => __('Icon Circle Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the circle when used with icons.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Icon Circle Background Color','redux-framework-demo'),
+                'content' => __('Icon Circle Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the circle border when used with icons.',
             'id' => 'icon_border_color',
             'type' => 'color',
-            'title' => 'Icon Circle Border Color',
+            'title' => __('Icon Circle Border Color','redux-framework-demo'),
+            'subtitle'  => __('Icon Circle Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the circle border when used with icons.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Icon Circle Border Color','redux-framework-demo'),
+                'content' => __('Icon Circle Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the icons.',
             'id' => 'icon_color',
             'type' => 'color',
-            'title' => 'Icon Color',
+            'title' => __('Icon Color','redux-framework-demo'),
+            'subtitle'  => __('Icon Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the icons.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Icon Color','redux-framework-demo'),
+                'content' => __('Icon Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -961,24 +1566,39 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the border color of the image frame.',
             'id' => 'imgframe_border_color',
             'type' => 'color',
-            'title' => 'Image Frame Border Color',
+            'title' => __('Image Frame Border Color','redux-framework-demo'),
+            'subtitle'  => __('Image Frame Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of the image frame.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Image Frame Border Color','redux-framework-demo'),
+                'content' => __('Image Frame Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border size of the image.',
             'id' => 'imageframe_border_size',
             'type' => 'text',
-            'title' => 'Image Frame Border Size',
+            'title' => __('Image Frame Border Size','redux-framework-demo'),
+            'subtitle'  => __('Image Frame Border Size.', 'redux-framework-demo'),
+            'desc' => __('Controls the border size of the image.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Image Frame Border Size','redux-framework-demo'),
+                'content' => __('Image Frame Border Size','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the style color of the image frame. Only works for glow and dropshadow style.',
             'id' => 'imgframe_style_color',
             'type' => 'color',
-            'title' => 'Image Frame Style Color',
+            'title' => __('Image Frame Style Color','redux-framework-demo'),
+            'subtitle'  => __('Image Frame Style Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the style color of the image frame. Only works for glow and dropshadow style.','redux-framework-demo'),
             'default' => '#000000',
+            'hint' => array(
+                'title'   => __('Image Frame Style Color','redux-framework-demo'),
+                'content' => __('Image Frame Style Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -989,18 +1609,28 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the background color of the modal popup box',
             'id' => 'modal_bg_color',
             'type' => 'color',
-            'title' => 'Modal Background Color',
+            'title' => __('Modal Background Color','redux-framework-demo'),
+            'subtitle'  => __('Modal Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the modal popup box','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Modal Background Color','redux-framework-demo'),
+                'content' => __('Modal Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of the modal popup box',
             'id' => 'modal_border_color',
             'type' => 'color',
-            'title' => 'Modal Border Color',
+            'title' => __('Modal Border Color','redux-framework-demo'),
+            'subtitle'  => __('Modal Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of the modal popup box','redux-framework-demo'),
             'default' => '#ebebeb',
+            'hint' => array(
+                'title'   => __('Modal Border Color','redux-framework-demo'),
+                'content' => __('Modal Border Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1011,24 +1641,39 @@ $this->sections[] = array(
         ),
 
         array (
-            'desc' => 'Controls the border size of the image.',
             'id' => 'person_border_size',
             'type' => 'text',
-            'title' => 'Person Border Size',
+            'title' => __('Person Border Size','redux-framework-demo'),
+            'subtitle'  => __('Person Border Size.', 'redux-framework-demo'),
+            'desc' => __('Controls the border size of the image.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Person Border Size','redux-framework-demo'),
+                'content' => __('Person Border Size','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of the of the image.',
             'id' => 'person_border_color',
             'type' => 'color',
-            'title' => 'Person Border Color',
+            'title' => __('Person Border Color','redux-framework-demo'),
+            'subtitle'  => __('Person Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of the of the image.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Person Border Color','redux-framework-demo'),
+                'content' => __('Person Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'For all style types except border. Controls the style color. ',
             'id' => 'person_style_color',
             'type' => 'color',
-            'title' => 'Person Style Color',
+            'title' => __('Person Style Color','redux-framework-demo'),
+            'subtitle'  => __('Person Style Color.', 'redux-framework-demo'),
+            'desc' => __('For all style types except border. Controls the style color. ','redux-framework-demo'),
             'default' => '#000000',
+            'hint' => array(
+                'title'   => __('Person Style Color','redux-framework-demo'),
+                'content' => __('Person Style Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1039,35 +1684,54 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the background color of popover heading area.',
             'id' => 'popover_heading_bg_color',
             'type' => 'color',
-            'title' => 'Popover Heading Background Color',
+            'title' => __('Popover Heading Background Color','redux-framework-demo'),
+            'subtitle'  => __('Popover Heading Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of popover heading area.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Popover Heading Background Color','redux-framework-demo'),
+                'content' => __('Popover Heading Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color of popover content area.',
             'id' => 'popover_content_bg_color',
             'type' => 'color',
-            'title' => 'Popover Content Background Color',
+            'title' => __('Popover Content Background Color','redux-framework-demo'),
+            'subtitle'  => __('Popover Content Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of popover content area.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Popover Content Background Color','redux-framework-demo'),
+                'content' => __('Popover Content Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of popover box.',
             'id' => 'popover_border_color',
             'type' => 'color',
-            'title' => 'Popover Border Color',
+            'title' => __('Popover Border Color','redux-framework-demo'),
+            'subtitle'  => __('Popover Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of popover box.','redux-framework-demo'),
             'default' => '#ebebeb',
+            'hint' => array(
+                'title'   => __('Popover Border Color','redux-framework-demo'),
+                'content' => __('Popover Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color inside the popover box. ',
             'id' => 'popover_text_color',
             'type' => 'color',
-            'title' => 'Popover Text Color',
+            'title' => __('Popover Text Color','redux-framework-demo'),
+            'subtitle'  => __('Popover Text Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color inside the popover box. ','redux-framework-demo'),
             'default' => '#747474',
+            'hint' => array(
+                'title'   => __('Popover Text Color','redux-framework-demo'),
+                'content' => __('Popover Text Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the position of the popover in reference to the triggering text.',
             'id' => 'popover_placement',
             'type' => 'select',
             'options' => array (
@@ -1076,8 +1740,14 @@ $this->sections[] = array(
                 'Bottom' => 'Bottom',
                 'Left' => 'Left',
             ),
-            'title' => 'Popover Position',
+            'title' => __('Popover Position','redux-framework-demo'),
+            'subtitle'  => __('Popover Position.', 'redux-framework-demo'),
+            'desc' => __('Controls the position of the popover in reference to the triggering text.','redux-framework-demo'),
             'default' => 'Top',
+            'hint' => array(
+                'title'   => __('Popover Position','redux-framework-demo'),
+                'content' => __('Popover Position','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1088,46 +1758,76 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the heading color of full boxed pricing tables.',
             'id' => 'full_boxed_pricing_box_heading_color',
             'type' => 'color',
-            'title' => 'Pricing Box Style 1 Heading Color',
+            'title' => __('Pricing Box Style 1 Heading Color','redux-framework-demo'),
+            'subtitle'  => __('Pricing Box Style 1 Heading Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the heading color of full boxed pricing tables.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Pricing Box Style 1 Heading Color','redux-framework-demo'),
+                'content' => __('Pricing Box Style 1 Heading Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the heading color of separate pricing boxes.',
             'id' => 'sep_pricing_box_heading_color',
             'type' => 'color',
-            'title' => 'Pricing Box Style 2 Heading Color',
+            'title' => __('Pricing Box Style 2 Heading Color','redux-framework-demo'),
+            'subtitle'  => __('Pricing Box Style 2 Heading Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the heading color of separate pricing boxes.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Pricing Box Style 2 Heading Color','redux-framework-demo'),
+                'content' => __('Pricing Box Style 2 Heading Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color portions of pricing boxes.',
             'id' => 'pricing_box_color',
             'type' => 'color',
-            'title' => 'Pricing Box Color',
-            'default' => '#a0ce4e',
+            'title' => __('Pricing Box Color','redux-framework-demo'),
+            'subtitle'  => __('Pricing Box Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color portions of pricing boxes.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Pricing Box Color','redux-framework-demo'),
+                'content' => __('Pricing Box Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of main background and title background.',
             'id' => 'pricing_bg_color',
             'type' => 'color',
-            'title' => 'Pricing Box Bg Color',
+            'title' => __('Pricing Box Bg Color','redux-framework-demo'),
+            'subtitle'  => __('Pricing Box Bg Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of main background and title background.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Pricing Box Bg Color','redux-framework-demo'),
+                'content' => __('Pricing Box Bg Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the outer border, pricing row and footer row backgrounds.',
             'id' => 'pricing_border_color',
             'type' => 'color',
-            'title' => 'Pricing Box Border Color',
+            'title' => __('Pricing Box Border Color','redux-framework-demo'),
+            'subtitle'  => __('Pricing Box Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the outer border, pricing row and footer row backgrounds.','redux-framework-demo'),
             'default' => '#f8f8f8',
+            'hint' => array(
+                'title'   => __('Pricing Box Border Color','redux-framework-demo'),
+                'content' => __('Pricing Box Border Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the dividers in-between pricing rows.',
             'id' => 'pricing_divider_color',
             'type' => 'color',
-            'title' => 'Pricing Box Divider Color',
+            'title' => __('Pricing Box Divider Color','redux-framework-demo'),
+            'subtitle'  => __('Pricing Box Divider Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the dividers in-between pricing rows.','redux-framework-demo'),
             'default' => '#ededed',
+            'hint' => array(
+                'title'   => __('Pricing Box Divider Color','redux-framework-demo'),
+                'content' => __('Pricing Box Divider Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1138,25 +1838,40 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the filled area in progress bars.',
             'id' => 'progressbar_filled_color',
             'type' => 'color',
-            'title' => 'Progress Bar Filled Color',
-            'default' => '#a0ce4e',
+            'title' => __('Progress Bar Filled Color','redux-framework-demo'),
+            'subtitle'  => __('Progress Bar Filled Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the filled area in progress bars.','redux-framework-demo'),
+            'default' => '#168DC5',
+            'hint' => array(
+                'title'   => __('Progress Bar Filled Color','redux-framework-demo'),
+                'content' => __('Progress Bar Filled Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the unfilled area in progress bars.',
             'id' => 'progressbar_unfilled_color',
             'type' => 'color',
-            'title' => 'Progress Bar Unfilled Color',
+            'title' => __('Progress Bar Unfilled Color','redux-framework-demo'),
+            'subtitle'  => __('Progress Bar Unfilled Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the unfilled area in progress bars.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Progress Bar Unfilled Color','redux-framework-demo'),
+                'content' => __('Progress Bar Unfilled Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the text in progress bars.',
             'id' => 'progressbar_text_color',
             'type' => 'color',
-            'title' => 'Progress Bar Text Color',
+            'title' => __('Progress Bar Text Color','redux-framework-demo'),
+            'subtitle'  => __('Progress Bar Text Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the text in progress bars.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Progress Bar Text Color','redux-framework-demo'),
+                'content' => __('Progress Bar Text Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1167,11 +1882,16 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of all separators, divider lines and borders for meta, previous & next, filters, category page, boxes around number pagination, sidebar widgets, accordion divider lines, counter boxes and more.',
             'id' => 'sep_color',
             'type' => 'color',
-            'title' => 'Separators Color',
+            'title' => __('Separators Color','redux-framework-demo'),
+            'subtitle'  => __('Separators Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of all separators, divider lines and borders for meta, previous & next, filters, category page, boxes around number pagination, sidebar widgets, accordion divider lines, counter boxes and more.','redux-framework-demo'),
             'default' => '#e0dede',
+            'hint' => array(
+                'title'   => __('Separators Color','redux-framework-demo'),
+                'content' => __('Separators Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1182,25 +1902,40 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the border size of the section separator.',
             'id' => 'section_sep_border_size',
             'type' => 'text',
-            'title' => 'Section Separator Border Size',
+            'title' => __('Section Separator Border Size','redux-framework-demo'),
+            'subtitle'  => __('Section Separator Border Size.', 'redux-framework-demo'),
+            'desc' => __('Controls the border size of the section separator.','redux-framework-demo'),
             'default' => '1px',
+            'hint' => array(
+                'title'   => __('Section Separator Border Size','redux-framework-demo'),
+                'content' => __('Section Separator Border Size','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the background color of the divider candy.',
             'id' => 'section_sep_bg',
             'type' => 'color',
-            'title' => 'Section Separator Background Color of Divider Candy',
+            'title' => __('Section Separator Background Color of Divider Candy','redux-framework-demo'),
+            'subtitle'  => __('Section Separator Background Color of Divider Candy.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the divider candy.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Section Separator Background Color of Divider Candy','redux-framework-demo'),
+                'content' => __('Section Separator Background Color of Divider Candy','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of the separator.',
             'id' => 'section_sep_border_color',
             'type' => 'color',
-            'title' => 'Section Separator Border Color',
+            'title' => __('Section Separator Border Color','redux-framework-demo'),
+            'subtitle'  => __('Section Separator Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of the separator.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Section Separator Border Color','redux-framework-demo'),
+                'content' => __('Section Separator Border Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1211,18 +1946,28 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the background color of the sharing box.',
             'id' => 'sharing_box_bg_color',
             'type' => 'color',
-            'title' => 'Sharing Box Background Color',
+            'title' => __('Sharing Box Background Color','redux-framework-demo'),
+            'subtitle'  => __('Sharing Box Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the sharing box.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Sharing Box Background Color','redux-framework-demo'),
+                'content' => __('Sharing Box Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the tagline text.',
             'id' => 'sharing_box_tagline_text_color',
             'type' => 'color',
-            'title' => 'Sharing Box Tagline Text Color',
+            'title' => __('Sharing Box Tagline Text Color','redux-framework-demo'),
+            'subtitle'  => __('Sharing Box Tagline Text Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the tagline text.','redux-framework-demo'),
             'default' => '#333333',
+            'hint' => array(
+                'title'   => __('Sharing Box Tagline Text Color','redux-framework-demo'),
+                'content' => __('Sharing Box Tagline Text Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1233,39 +1978,58 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Select a custom social icon color.',
             'id' => 'social_links_icon_color',
             'type' => 'color',
-            'title' => 'Social Links Custom Icons Color',
+            'title' => __('Social Links Custom Icons Color','redux-framework-demo'),
+            'subtitle'  => __('Social Links Custom Icons Color.', 'redux-framework-demo'),
+            'desc' => __('Select a custom social icon color.','redux-framework-demo'),
             'default' => '#bebdbd',
+            'hint' => array(
+                'title'   => __('Social Links Custom Icons Color','redux-framework-demo'),
+                'content' => __('Social Links Custom Icons Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the social icons in the sharing box.',
             'id' => 'social_links_boxed',
             'type' => 'select',
             'options' => array (
                 'No' => 'No',
                 'Yes' => 'Yes',
             ),
-            'title' => 'Social Links Icons Boxed',
+            'title' => __('Social Links Icons Boxed','redux-framework-demo'),
+            'subtitle'  => __('Social Links Icons Boxed.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the social icons in the sharing box.','redux-framework-demo'),
             'default' => 'No',
+            'hint' => array(
+                'title'   => __('Social Links Icons Boxed','redux-framework-demo'),
+                'content' => __('Social Links Icons Boxed','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select a custom social icon box color.',
             'id' => 'social_links_box_color',
             'type' => 'color',
-            'title' => 'Social Links Icons Custom Box Color',
+            'title' => __('Social Links Icons Custom Box Color','redux-framework-demo'),
+            'subtitle'  => __('Social Links Icons Custom Box Color.', 'redux-framework-demo'),
+            'desc' => __('Select a custom social icon box color.','redux-framework-demo'),
             'default' => '#e8e8e8',
+            'hint' => array(
+                'title'   => __('Social Links Icons Custom Box Color','redux-framework-demo'),
+                'content' => __('Social Links Icons Custom Box Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Boxradius for the social icons. In pixels, ex: 4px.',
             'id' => 'social_links_boxed_radius',
             'type' => 'text',
-            'title' => 'Social Links Icons Boxed Radius',
+            'title' => __('Social Links Icons Boxed Radius','redux-framework-demo'),
+            'subtitle'  => __('Social Links Icons Boxed Radius.', 'redux-framework-demo'),
+            'desc' => __('Boxradius for the social icons. In pixels, ex: 4px.','redux-framework-demo'),
             'default' => '4px',
+            'hint' => array(
+                'title'   => __('Social Links Icons Boxed Radius','redux-framework-demo'),
+                'content' => __('Social Links Icons Boxed Radius','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the tooltip position of the social icons in the sharing box.',
             'id' => 'social_links_tooltip_placement',
             'type' => 'select',
             'options' => array (
@@ -1275,8 +2039,14 @@ $this->sections[] = array(
                 'Left' => 'Left',
                 'None' => 'None',
             ),
-            'title' => 'Social Links Icons Tooltip Position',
+            'title' => __('Social Links Icons Tooltip Position','redux-framework-demo'),
+            'subtitle'  => __('Social Links Icons Tooltip Position.', 'redux-framework-demo'),
+            'desc' => __('Controls the tooltip position of the social icons in the sharing box.','redux-framework-demo'),
             'default' => 'Top',
+            'hint' => array(
+                'title'   => __('Social Links Icons Tooltip Position','redux-framework-demo'),
+                'content' => __('Social Links Icons Tooltip Position','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1287,18 +2057,28 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the active tab, content background color and tab hover.',
             'id' => 'tabs_bg_color',
             'type' => 'color',
-            'title' => 'Tabs Background Color + Hover Color',
+            'title' => __('Tabs Background Color + Hover Color','redux-framework-demo'),
+            'subtitle'  => __('Tabs Background Color + Hover Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the active tab, content background color and tab hover.','redux-framework-demo'),
             'default' => '#ffffff',
+            'hint' => array(
+                'title'   => __('Tabs Background Color + Hover Color','redux-framework-demo'),
+                'content' => __('Tabs Background Color + Hover Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the inactive tabs and the outer tab border.',
             'id' => 'tabs_inactive_color',
             'type' => 'color',
-            'title' => 'Tabs Inactive Color',
+            'title' => __('Tabs Inactive Color','redux-framework-demo'),
+            'subtitle'  => __('Tabs Inactive Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the inactive tabs and the outer tab border.','redux-framework-demo'),
             'default' => '#ebeaea',
+            'hint' => array(
+                'title'   => __('Tabs Inactive Color','redux-framework-demo'),
+                'content' => __('Tabs Inactive Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1309,18 +2089,28 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the background color of the tagline box.',
             'id' => 'tagline_bg',
             'type' => 'color',
-            'title' => 'Tagline Box Background Color',
+            'title' => __('Tagline Box Background Color','redux-framework-demo'),
+            'subtitle'  => __('Tagline Box Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the tagline box.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Tagline Box Background Color','redux-framework-demo'),
+                'content' => __('Tagline Box Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the border color of the tagline box.',
             'id' => 'tagline_border_color',
             'type' => 'color',
-            'title' => 'Tagline Box Border Color',
+            'title' => __('Tagline Box Border Color','redux-framework-demo'),
+            'subtitle'  => __('Tagline Box Border Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the border color of the tagline box.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Tagline Box Border Color','redux-framework-demo'),
+                'content' => __('Tagline Box Border Color','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1331,25 +2121,40 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the background color of the testimonial.',
             'id' => 'testimonial_bg_color',
             'type' => 'color',
-            'title' => 'Testimonial Background Color',
+            'title' => __('Testimonial Background Color','redux-framework-demo'),
+            'subtitle'  => __('Testimonial Background Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the background color of the testimonial.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Testimonial Background Color','redux-framework-demo'),
+                'content' => __('Testimonial Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the text color of the testimonial font.',
             'id' => 'testimonial_text_color',
             'type' => 'color',
-            'title' => 'Testimonial Text Color',
+            'title' => __('Testimonial Text Color','redux-framework-demo'),
+            'subtitle'  => __('Testimonial Text Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the text color of the testimonial font.','redux-framework-demo'),
             'default' => '#747474',
+            'hint' => array(
+                'title'   => __('Testimonial Text Color','redux-framework-demo'),
+                'content' => __('Testimonial Text Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select the slideshow speed, 1000 = 1 second.',
             'id' => 'testimonials_speed',
             'type' => 'text',
-            'title' => 'Testimonials Speed',
+            'title' => __('Testimonials Speed','redux-framework-demo'),
+            'subtitle'  => __('Testimonials Speed.', 'redux-framework-demo'),
+            'desc' => __('Select the slideshow speed, 1000 = 1 second.','redux-framework-demo'),
             'default' => '4000',
+            'hint' => array(
+                'title'   => __('Testimonials Speed','redux-framework-demo'),
+                'content' => __('Testimonials Speed','redux-framework-demo'),
+            )
         ),
 
         array (
@@ -1360,18 +2165,18 @@ $this->sections[] = array(
 
         ),
         array (
-            'desc' => 'Controls the color of the title separators',
             'id' => 'title_border_color',
             'type' => 'color',
-            'title' => 'Title Separator Color',
+            'title' => __('Title Separator Color','redux-framework-demo'),
+            'subtitle'  => __('Title Separator Color.', 'redux-framework-demo'),
+            'desc' => __('Controls the color of the title separators','redux-framework-demo'),
             'default' => '#e0dede',
+            'hint' => array(
+                'title'   => __('Title Separator Color','redux-framework-demo'),
+                'content' => __('Title Separator Color','redux-framework-demo'),
+            )
         ),
-
     ),
     'icon' => 'el-icon-puzzle',
-
-
-
 );
 
-?>

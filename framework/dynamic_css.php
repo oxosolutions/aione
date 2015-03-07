@@ -1106,13 +1106,7 @@ body #toTop:before {color:#fff;}
 .ei-title h3{color:<?php echo $theme_options['es_caption_color']; ?>;}
 <?php endif; ?>
 
-<?php if($theme_options['snav_color']): ?>
-#wrapper .header-social .header-info, #wrapper .header-social a {color:<?php echo $theme_options['snav_color']; ?>;}
-@media only screen and (max-width: 800px){
-	.mobile-menu-design-modern #wrapper .header-social .top-menu .cart > a, .mobile-menu-design-modern #wrapper .header-social .top-menu .cart > a:before {color:<?php echo $theme_options['snav_color']; ?>;}
-}
-#wrapper .header-social .mobile-topnav-holder li a {color: #333333;}
-<?php endif; ?>
+
 
 <?php if($theme_options['topmenu_dropwdown_width']): ?>
 .header-social .menu .sub-menu {width:<?php echo $theme_options['topmenu_dropwdown_width']; ?>;}
@@ -1281,21 +1275,21 @@ input#s,#comment-input input,#comment-textarea textarea,.comment-form-comment te
 
 <?php if($theme_options['dropdown_menu_width']): ?>
 #nav ul ul,#sticky-nav ul ul{
-	width:<?php echo $theme_options['dropdown_menu_width']; ?>;
+	width:<?php echo $theme_options['dropdown_menu_width']; ?>px;
 }
 #nav ul ul li ul,#sticky-nav ul ul li ul{
-	left:<?php echo $theme_options['dropdown_menu_width']; ?>;
+	left:<?php echo $theme_options['dropdown_menu_width']; ?>px;
 }
 ul.navigation > li:last-child ul ul{
-	left:-<?php echo $theme_options['dropdown_menu_width']; ?>;
+	left:-<?php echo $theme_options['dropdown_menu_width']; ?>px;
 }
 #nav .aione-megamenu-wrapper ul{left:auto;}
 .rtl #header #nav ul ul li:hover ul, .rtl #small-nav #nav ul ul li:hover ul, .rtl .sticky-header #sticky-nav ul ul li:hover ul {
-	right:<?php echo $theme_options['dropdown_menu_width']; ?>;
+	right:<?php echo $theme_options['dropdown_menu_width']; ?>px;
 	left: auto;
 }
 .rtl ul.navigation > li:last-child ul ul{
-	right:-<?php echo $theme_options['dropdown_menu_width']; ?>;
+	right:-<?php echo $theme_options['dropdown_menu_width']; ?>px;
 	left: auto;
 }
 .rtl #wrapper #nav .aione-megamenu-wrapper ul,
@@ -1331,6 +1325,8 @@ if( strpos( $theme_options['content_width'], '%' ) ) {
 	$content_unit = '%';
 	$margin = 6;
 }
+    //Margin 0
+    $margin = 0;
 ?>
 #content{
 	width:<?php echo $content_width - $margin . $content_unit; ?>;
@@ -1413,11 +1409,6 @@ endif; ?>
 }
 <?php endif; ?>
 
-<?php if($theme_options['header_top_bg_color']): ?>
-#wrapper .header-social{
-	background-color:<?php echo $theme_options['header_top_bg_color']; ?>;
-}
-<?php endif; ?>
 
 <?php if($theme_options['header_top_first_border_color']): ?>
 #wrapper .header-social .menu > li, .mobile-menu-sep{
@@ -1657,10 +1648,15 @@ body #header-sticky.sticky-header .sticky-shadow { -webkit-box-shadow: 0 1px 3px
 #nav.nav-holder .navigation > li > a{height:<?php echo $theme_options['main_nav_height']; ?>px;line-height:<?php echo $theme_options['main_nav_height']; ?>px;}
 <?php endif; ?>
 
-<?php if($theme_options['main_nav_padding']): ?>
-#nav ul li, #sticky-nav ul li { padding-right: <?php echo $theme_options['main_nav_padding']; ?>px; }
-.rtl #nav > .aione-navbar-nav > li, .rtl #small-nav > .aione-navbar-nav > li, .rtl #sticky-nav > .aione-navbar-nav > li { padding-left: <?php echo $theme_options['main_nav_padding']; ?>px; }
+<?php if($theme_options['main_nav_margin'] >= 0): ?>
+#nav ul li, #sticky-nav ul li { padding-right: <?php echo $theme_options['main_nav_margin']; ?>px; }
+.rtl #nav > .aione-navbar-nav > li, .rtl #small-nav > .aione-navbar-nav > li, .rtl #sticky-nav > .aione-navbar-nav > li { padding-left: <?php echo $theme_options['main_nav_margin']; ?>px; }
 <?php endif; ?>
+
+<?php if($theme_options['main_nav_padding']): ?>
+    #nav > ul > li > a, #sticky-nav > ul > li > a{ padding-left: <?php echo $theme_options['main_nav_padding']; ?>px; padding-right: <?php echo $theme_options['main_nav_padding']; ?>px;}
+<?php endif; ?>
+
 
 <?php if($theme_options['tfes_slider_width']): ?>
 .ei-slider{width:<?php echo $theme_options['tfes_slider_width']; ?>;}
@@ -1868,7 +1864,7 @@ body #header-sticky.sticky-header .sticky-shadow { -webkit-box-shadow: 0 1px 3px
 <?php endif; ?>
 
 <?php if($theme_options['logo_retina']): ?>
-@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dpi) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dppx) {
 	#header-sticky .normal_logo,#header .normal_logo{display:none;}
 	#header-sticky .retina_logo,#header .retina_logo{display:inline;}
 }
@@ -2248,13 +2244,17 @@ if($theme_options['imgframe_style_color']) {
     <?php echo get_background('pagetitle'); ?>
 }
 
+#main{
+<?php echo get_background('main'); ?>
+}
+
 #content{
     <?php echo get_background('content'); ?>
 }
 #sidebar{
     <?php echo get_background('left_sidebar'); ?>
 }
-#sidebar2{
+#sidebar-2{
 <?php echo get_background('right_sidebar'); ?>
 }
 .footer-area{

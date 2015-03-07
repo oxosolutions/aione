@@ -43,7 +43,7 @@ body .post-content .products-slider li{width:auto !important;}
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dpi) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dppx) {
 	.sidebar .wooslider .wooslider-prev,
 	.footer-area .wooslider .wooslider-prev,
 	.post-content .wooslider .wooslider-prev {

@@ -74,3 +74,4 @@
         <div class="mobile-topnav-holder"></div>
     <?php endif; ?>
 </div>
+<div id="top-menu-separator" class='topbar-item'></div>

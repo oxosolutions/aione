@@ -107,7 +107,7 @@
                 $sections[] = array(
                     'title'  => __( 'Section via hook', 'redux-framework-demo' ),
                     'desc'   => __( '<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo' ),
-                    'icon'   => 'el-icon-paper-clip',
+                    'icon'   => 'el el-paper-clip',
                     // Leave this as a blank section, no options just some intro text set above.
                     'fields' => array()
                 );
@@ -238,7 +238,7 @@
                 $this->sections[] = array(
                     'title'  => __( 'Home Settings', 'redux-framework-demo' ),
                     'desc'   => __( 'Redux Framework was created with the developer in mind. It allows for any theme developer to have an advanced theme panel with most of the features a developer would need. For more information check out the Github repo at: <a href="https://github.com/ReduxFramework/Redux-Framework">https://github.com/ReduxFramework/Redux-Framework</a>', 'redux-framework-demo' ),
-                    'icon'   => 'el-icon-home',
+                    'icon'   => 'el el-home',
                     // 'submenu' => false, // Setting submenu to false on a given section will hide it from the WordPress sidebar menu!
                     'fields' => array(
 
@@ -551,7 +551,7 @@
                 );
 
                 $this->sections[] = array(
-                    'icon'   => 'el-icon-cogs',
+                    'icon'   => 'el el-cogs',
                     'title'  => __( 'General Settings', 'redux-framework-demo' ),
                     'fields' => array(
                         array(
@@ -647,7 +647,7 @@
                 );
 
                 $this->sections[] = array(
-                    'icon'       => 'el-icon-website',
+                    'icon'       => 'el el-website',
                     'title'      => __( 'Styling Options', 'redux-framework-demo' ),
                     'subsection' => true,
                     'fields'     => array(
@@ -687,9 +687,12 @@
                         array(
                             'id'       => 'opt-color-rgba',
                             'type'     => 'color_rgba',
-                            'title'    => __( 'Color RGBA - BETA', 'redux-framework-demo' ),
-                            'subtitle' => __( 'Gives you the RGBA color. Still quite experimental. Use at your own risk.', 'redux-framework-demo' ),
-                            'default'  => array( 'color' => '#dd9933', 'alpha' => '1.0' ),
+                            'title'    => __( 'Color RGBA', 'redux-framework-demo' ),
+                            'subtitle' => __( 'Gives you the RGBA color.', 'redux-framework-demo' ),
+                            'default'  => array( 
+                                'color' => '#7e33dd', 
+                                'alpha' => '.8' 
+                            ),
                             'output'   => array( 'body' ),
                             'mode'     => 'background',
                             'validate' => 'colorrgba',
@@ -816,7 +819,7 @@
                  * section - kp
                  */
                 $this->sections[] = array(
-                    'icon'    => 'el-icon-bullhorn',
+                    'icon'    => 'el el-bullhorn',
                     'title'   => __( 'Field Validation', 'redux-framework-demo' ),
                     'heading' => __( 'Validate ALL fields within Redux.', 'redux-framework-demo' ),
                     'desc'    => __( '<p class="description">This is the Description. Again HTML is allowed2</p>', 'redux-framework-demo' ),
@@ -981,7 +984,7 @@
                 );
 
                 $this->sections[] = array(
-                    'icon'   => 'el-icon-check',
+                    'icon'   => 'el el-check',
                     'title'  => __( 'Radio/Checkbox Fields', 'redux-framework-demo' ),
                     'desc'   => __( '<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo' ),
                     'fields' => array(
@@ -1129,7 +1132,7 @@
                 );
 
                 $this->sections[] = array(
-                    'icon'   => 'el-icon-list-alt',
+                    'icon'   => 'el el-list-alt',
                     'title'  => __( 'Select Fields', 'redux-framework-demo' ),
                     'desc'   => __( '<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo' ),
                     'fields' => array(
@@ -1360,7 +1363,7 @@
 
                 if ( file_exists( dirname( __FILE__ ) . '/../README.md' ) ) {
                     $this->sections['theme_docs'] = array(
-                        'icon'   => 'el-icon-list-alt',
+                        'icon'   => 'el el-list-alt',
                         'title'  => __( 'Documentation', 'redux-framework-demo' ),
                         'fields' => array(
                             array(
@@ -1375,7 +1378,7 @@
 
                 // You can append a new section at any time.
                 $this->sections[] = array(
-                    'icon'   => 'el-icon-eye-open',
+                    'icon'   => 'el el-eye-open',
                     'title'  => __( 'Additional Fields', 'redux-framework-demo' ),
                     'desc'   => __( '<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo' ),
                     'fields' => array(
@@ -1435,7 +1438,7 @@
                             'id'    => 'opt-info-success',
                             'type'  => 'info',
                             'style' => 'success',
-                            'icon'  => 'el-icon-info-sign',
+                            'icon'  => 'el el-info-circle',
                             'title' => __( 'This is a title.', 'redux-framework-demo' ),
                             'desc'  => __( 'This is an info field with the success style applied, a header and an icon.', 'redux-framework-demo' )
                         ),
@@ -1443,7 +1446,7 @@
                             'id'    => 'opt-info-critical',
                             'type'  => 'info',
                             'style' => 'critical',
-                            'icon'  => 'el-icon-info-sign',
+                            'icon'  => 'el el-info-circle',
                             'title' => __( 'This is a title.', 'redux-framework-demo' ),
                             'desc'  => __( 'This is an info field with the critical style applied, a header and an icon.', 'redux-framework-demo' )
                         ),
@@ -1474,7 +1477,7 @@
                             'type'   => 'info',
                             'notice' => true,
                             'style'  => 'warning',
-                            'icon'   => 'el-icon-info-sign',
+                            'icon'   => 'el el-info-circle',
                             'title'  => __( 'This is a title.', 'redux-framework-demo' ),
                             'desc'   => __( 'This is an info notice field with the warning style applied, a header and an icon.', 'redux-framework-demo' )
                         ),
@@ -1483,7 +1486,7 @@
                             'type'   => 'info',
                             'notice' => true,
                             'style'  => 'success',
-                            'icon'   => 'el-icon-info-sign',
+                            'icon'   => 'el el-info-circle',
                             'title'  => __( 'This is a title.', 'redux-framework-demo' ),
                             'desc'   => __( 'This is an info notice field with the success style applied, a header and an icon.', 'redux-framework-demo' )
                         ),
@@ -1492,7 +1495,7 @@
                             'type'   => 'info',
                             'notice' => true,
                             'style'  => 'critical',
-                            'icon'   => 'el-icon-info-sign',
+                            'icon'   => 'el el-info-circle',
                             'title'  => __( 'This is a title.', 'redux-framework-demo' ),
                             'desc'   => __( 'This is an notice field with the critical style applied, a header and an icon.', 'redux-framework-demo' )
                         ),
@@ -1533,7 +1536,7 @@
                 );
 
                 $this->sections[] = array(
-                    'icon'            => 'el-icon-list-alt',
+                    'icon'            => 'el el-list-alt',
                     'title'           => __( 'Customizer Only', 'redux-framework-demo' ),
                     'desc'            => __( '<p class="description">This Section should be visible only in Customizer</p>', 'redux-framework-demo' ),
                     'customizer_only' => true,
@@ -1557,9 +1560,36 @@
                 );
 
                 $this->sections[] = array(
+                    'title'  => __( 'WPML Example', 'redux-framework-demo' ),
+                    'desc'   => __( 'These fields can be fully translated by WPML (WordPress Multi-Language). This serves as an example for you to implement. For extra details look at our <a href="http://docs.reduxframework.com/core/advanced/wpml-integration/" target="_blank">WPML Implementation</a> documentation.', 'redux-framework-demo' ),
+                    'icon'   => 'el el-home',
+                    // 'submenu' => false, // Setting submenu to false on a given section will hide it from the WordPress sidebar menu!
+                    'fields' => array(
+                        array(
+                            'id'       => 'wpml-text',
+                            'type'     => 'textarea',
+                            'title'    => __( 'WPML Text', 'redux-framework-demo' ),
+                            'desc'     => __( 'This string can be translated via WPML.', 'redux-framework-demo' ),
+                        ),
+                        array(
+                            'id'       => 'wpml-multicheck',
+                            'type'     => 'checkbox',
+                            'title'    => __( 'WPML Multi Checkbox', 'redux-framework-demo' ),
+                            'desc'     => __( 'You can literally translate the values via key.', 'redux-framework-demo' ),
+                            //Must provide key => value pairs for multi checkbox options
+                            'options'  => array(
+                                '1' => 'Option 1',
+                                '2' => 'Option 2',
+                                '3' => 'Option 3'
+                            ),
+                        ),
+                    )
+                );
+
+                $this->sections[] = array(
                     'title'  => __( 'Import / Export', 'redux-framework-demo' ),
                     'desc'   => __( 'Import and Export your Redux Framework settings from file, text or URL.', 'redux-framework-demo' ),
-                    'icon'   => 'el-icon-refresh',
+                    'icon'   => 'el el-refresh',
                     'fields' => array(
                         array(
                             'id'         => 'opt-import-export',
@@ -1576,7 +1606,7 @@
                 );
 
                 $this->sections[] = array(
-                    'icon'   => 'el-icon-info-sign',
+                    'icon'   => 'el el-info-circle',
                     'title'  => __( 'Theme Information', 'redux-framework-demo' ),
                     'desc'   => __( '<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo' ),
                     'fields' => array(
@@ -1590,7 +1620,7 @@
 
                 if ( file_exists( trailingslashit( dirname( __FILE__ ) ) . 'README.html' ) ) {
                     $tabs['docs'] = array(
-                        'icon'    => 'el-icon-book',
+                        'icon'    => 'el el-book',
                         'title'   => __( 'Documentation', 'redux-framework-demo' ),
                         'content' => nl2br( file_get_contents( trailingslashit( dirname( __FILE__ ) ) . 'README.html' ) )
                     );
@@ -1704,7 +1734,7 @@
 
                     // HINTS
                     'hints'                => array(
-                        'icon'          => 'icon-question-sign',
+                        'icon'          => 'el el-question-sign',
                         'icon_position' => 'right',
                         'icon_color'    => 'lightgray',
                         'icon_size'     => 'normal',
@@ -1756,23 +1786,23 @@
                 $this->args['share_icons'][] = array(
                     'url'   => 'https://github.com/ReduxFramework/ReduxFramework',
                     'title' => 'Visit us on GitHub',
-                    'icon'  => 'el-icon-github'
+                    'icon'  => 'el el-github'
                     //'img'   => '', // You can use icon OR img. IMG needs to be a full URL.
                 );
                 $this->args['share_icons'][] = array(
                     'url'   => 'https://www.facebook.com/pages/Redux-Framework/243141545850368',
                     'title' => 'Like us on Facebook',
-                    'icon'  => 'el-icon-facebook'
+                    'icon'  => 'el el-facebook'
                 );
                 $this->args['share_icons'][] = array(
                     'url'   => 'http://twitter.com/reduxframework',
                     'title' => 'Follow us on Twitter',
-                    'icon'  => 'el-icon-twitter'
+                    'icon'  => 'el el-twitter'
                 );
                 $this->args['share_icons'][] = array(
                     'url'   => 'http://www.linkedin.com/company/redux-framework',
                     'title' => 'Find us on LinkedIn',
-                    'icon'  => 'el-icon-linkedin'
+                    'icon'  => 'el el-linkedin'
                 );
 
                 // Panel Intro text -> before the form
@@ -1816,7 +1846,7 @@
                 return $return;
             }
 
-            public function class_field_callback( $field, $value ) {
+            public static function class_field_callback( $field, $value ) {
                 print_r( $field );
                 echo '<br/>CLASS CALLBACK';
                 print_r( $value );
@@ -1866,6 +1896,8 @@
             if ( $error == true ) {
                 $return['error'] = $field;
             }
+
+            $return['warning'] = $field;
 
             return $return;
         }

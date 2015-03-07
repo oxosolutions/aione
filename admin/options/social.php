@@ -15,46 +15,69 @@ $this->sections[] = array(
             'raw' => '<h3 style=\'margin: 0;\'>Social Share Box Icon Options</h3>',
         ),
         array (
-            'desc' => 'Controls the background color of the social share box.',
             'id' => 'social_bg_color',
             'type' => 'color',
-            'title' => 'Social Share Box Background Color',
+            'title' => __('Social Share Box Background Color','redux-framework-demo'),
+            'subtitle'  => __('Social Share Box Background Color.', 'redux-framework-demo'),
+            'desc' =>  __('Controls the background color of the social share box.','redux-framework-demo'),
             'default' => '#f6f6f6',
+            'hint' => array(
+                'title'   => __('Social Share Box Background Color','redux-framework-demo'),
+                'content' => __('Social Share Box Background Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select a custom social icon color.',
             'id' => 'sharing_social_links_icon_color',
             'type' => 'color',
-            'title' => 'Social Sharing Box Custom Icons Color',
+            'title' => __('Social Sharing Box Custom Icons Color','redux-framework-demo'),
+            'subtitle'  => __('Social Sharing Box Custom Icons Color.', 'redux-framework-demo'),
+            'desc' =>  __('Select a custom social icon color.','redux-framework-demo'),
             'default' => '#bebdbd',
+            'hint' => array(
+                'title'   => __('Social Sharing Box Custom Icons Color','redux-framework-demo'),
+                'content' => __('Social Sharing Box Custom Icons Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the color of the social icons in the sharing box.',
             'id' => 'sharing_social_links_boxed',
-            'type' => 'select',
-            'options' => array (
-                'No' => 'No',
-                'Yes' => 'Yes',
-            ),
-            'title' => 'Social Sharing Box Icons Boxed',
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => false,
+            'title' => __('Social Sharing Box Icons Boxed','redux-framework-demo'),
+            'subtitle'  => __('Social Sharing Box Icons Boxed.', 'redux-framework-demo'),
+            'desc' =>  __('Controls the color of the social icons in the sharing box.','redux-framework-demo'),
             'default' => 'No',
+            'hint' => array(
+                'title'   => __('Social Sharing Box Icons Boxed','redux-framework-demo'),
+                'content' => __('Social Sharing Box Icons Boxed','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select a custom social icon box color.',
             'id' => 'sharing_social_links_box_color',
             'type' => 'color',
-            'title' => 'Social Sharing Box Icons Custom Box Color',
+            'title' => __('Social Sharing Box Icons Custom Box Color','redux-framework-demo'),
+            'subtitle'  => __('Social Sharing Box Icons Custom Box Color.', 'redux-framework-demo'),
+            'desc' =>  __('Select a custom social icon box color.','redux-framework-demo'),
             'default' => '#e8e8e8',
+            'hint' => array(
+                'title'   => __('Social Sharing Box Icons Custom Box Color','redux-framework-demo'),
+                'content' => __('Social Sharing Box Icons Custom Box Color','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Boxradius for the social icons. In pixels, ex: 4px.',
             'id' => 'sharing_social_links_boxed_radius',
             'type' => 'text',
-            'title' => 'Social Sharing Box Icons Boxed Radius',
+            'title' => __('Social Sharing Box Icons Boxed Radius','redux-framework-demo'),
+            'subtitle'  => __('Social Sharing Box Icons Boxed Radius.', 'redux-framework-demo'),
+            'desc' =>  __('Boxradius for the social icons. In pixels, ex: 4px.','redux-framework-demo'),
             'default' => '4px',
+            'hint' => array(
+                'title'   => __('Social Sharing Box Icons Boxed Radius','redux-framework-demo'),
+                'content' => __('Social Sharing Box Icons Boxed Radius','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Controls the tooltip position of the social icons in the sharing box.',
             'id' => 'sharing_social_links_tooltip_placement',
             'type' => 'select',
             'options' => array (
@@ -64,8 +87,14 @@ $this->sections[] = array(
                 'Left' => 'Left',
                 'None' => 'None',
             ),
-            'title' => 'Social Sharing Box Icons Tooltip Position',
+            'title' => __('Social Sharing Box Icons Tooltip Position','redux-framework-demo'),
+            'subtitle'  => __('Social Sharing Box Icons Tooltip Position.', 'redux-framework-demo'),
+            'desc' =>  __('Controls the tooltip position of the social icons in the sharing box.','redux-framework-demo'),
             'default' => 'Top',
+            'hint' => array(
+                'title'   => __('Social Sharing Box Icons Tooltip Position','redux-framework-demo'),
+                'content' => __('Social Sharing Box Icons Tooltip Position','redux-framework-demo'),
+            )
         ),
         array (
             'id' => 'social_share_box_links_title',
@@ -74,64 +103,455 @@ $this->sections[] = array(
             'raw' => '<h3 style=\'margin: 0;\'>Social Share Box Links</h3>',
         ),
         array (
-            'desc' => 'Check the box to show the facebook sharing icon in blog posts.',
             'id' => 'sharing_facebook',
-            'type' => 'checkbox',
-            'title' => 'Facebook',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('Facebook','redux-framework-demo'),
+            'subtitle'  => __('Facebook.', 'redux-framework-demo'),
+            'desc' =>  __('YES to show the facebook sharing icon in blog posts.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Facebook','redux-framework-demo'),
+                'content' => __('Facebook','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Check the box to show the twitter sharing icon in blog posts.',
             'id' => 'sharing_twitter',
-            'type' => 'checkbox',
-            'title' => 'Twitter',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('Twitter','redux-framework-demo'),
+            'subtitle'  => __('Twitter.', 'redux-framework-demo'),
+            'desc' =>  __('YES to show the twitter sharing icon in blog posts.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Twitter','redux-framework-demo'),
+                'content' => __('Twitter','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Check the box to show the reddit sharing icon in blog posts.',
             'id' => 'sharing_reddit',
-            'type' => 'checkbox',
-            'title' => 'Reddit',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('Reddit','redux-framework-demo'),
+            'subtitle'  => __('Reddit.', 'redux-framework-demo'),
+            'desc' =>  __('YES to show the reddit sharing icon in blog posts.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Reddit','redux-framework-demo'),
+                'content' => __('Reddit','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Check the box to show the linkedin sharing icon in blog posts.',
             'id' => 'sharing_linkedin',
-            'type' => 'checkbox',
-            'title' => 'LinkedIn',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('LinkedIn','redux-framework-demo'),
+            'subtitle'  => __('LinkedIn.', 'redux-framework-demo'),
+            'desc' =>  __('YES to show the linkedin sharing icon in blog posts.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('LinkedIn','redux-framework-demo'),
+                'content' => __('LinkedIn','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Check the box to show the g+ sharing icon in blog posts.',
             'id' => 'sharing_google',
-            'type' => 'checkbox',
-            'title' => 'Google Plus',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('Google Plus','redux-framework-demo'),
+            'subtitle'  => __('Google Plus.', 'redux-framework-demo'),
+            'desc' =>  __('YES to show the g+ sharing icon in blog posts.','redux-framework-demo'),
+             'hint' => array(
+                'title'   => __('Google Plus','redux-framework-demo'),
+                'content' => __('Google Plus','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Check the box to show the tumblr sharing icon in blog posts.',
             'id' => 'sharing_tumblr',
-            'type' => 'checkbox',
-            'title' => 'Tumblr',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('Tumblr','redux-framework-demo'),
+            'subtitle'  => __('Tumblr.', 'redux-framework-demo'),
+            'desc' =>  __('YES to show the tumblr sharing icon in blog posts.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Tumblr','redux-framework-demo'),
+                'content' => __('Tumblr','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Check the box to show the pinterest sharing icon in blog posts.',
             'id' => 'sharing_pinterest',
-            'type' => 'checkbox',
-            'title' => 'Pinterest',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('Pinterest','redux-framework-demo'),
+            'subtitle'  => __('Pinterest.', 'redux-framework-demo'),
+            'desc' =>  __('YES to show the pinterest sharing icon in blog posts.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Pinterest','redux-framework-demo'),
+                'content' => __('Pinterest','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Check the box to show the email sharing icon in blog posts.',
             'id' => 'sharing_email',
-            'type' => 'checkbox',
-            'title' => 'Email',
-            'default' => 1,
+            'type' => 'switch',
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => true,
+            'title' => __('Email','redux-framework-demo'),
+            'subtitle'  => __('Email.', 'redux-framework-demo'),
+            'desc' =>  __('YES to show the email sharing icon in blog posts.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Email','redux-framework-demo'),
+                'content' => __('Email','redux-framework-demo'),
+            )
         ),
+
+        array (
+            'id' => 'facebook_link',
+            'type' => 'text',
+            'title' => __('Facebook URL','redux-framework-demo'),
+            'subtitle'  => __('Facebook URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to facebook','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Facebook URL','redux-framework-demo'),
+                'content' => __('Facebook URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'twitter_link',
+            'type' => 'text',
+            'title' => __('Twitter URL','redux-framework-demo'),
+            'subtitle'  => __('Twitter URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Twitter','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Twitter URL','redux-framework-demo'),
+                'content' => __('Twitter URL','redux-framework-demo'),
+            )
+        ),
+
+        array (
+            'id' => 'linkedin_link',
+            'type' => 'text',
+            'title' => __('Linkedin URL','redux-framework-demo'),
+            'subtitle'  => __('Linkedin URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Linkedin','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Linkedin URL','redux-framework-demo'),
+                'content' => __('Linkedin URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'dribbble_link',
+            'type' => 'text',
+            'title' => __('Dribbble URL','redux-framework-demo'),
+            'subtitle'  => __('Dribbble URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Dribbble','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Dribbble URL','redux-framework-demo'),
+                'content' => __('Dribbble URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'rss_link',
+            'type' => 'text',
+            'title' => __('RSS URL','redux-framework-demo'),
+            'subtitle'  => __('RSS URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to RSS','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('RSS URL','redux-framework-demo'),
+                'content' => __('RSS URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'youtube_link',
+            'type' => 'text',
+            'title' => __('Youtube URL','redux-framework-demo'),
+            'subtitle'  => __('Youtube URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Youtube','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Youtube URL','redux-framework-demo'),
+                'content' => __('Youtube URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'instagram_link',
+            'type' => 'text',
+            'title' => __('Instagram URL','redux-framework-demo'),
+            'subtitle'  => __('Instagram URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Instagram','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Instagram URL','redux-framework-demo'),
+                'content' => __('Instagram URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'pinterest_link',
+            'type' => 'text',
+            'title' => __('Pinterest URL','redux-framework-demo'),
+            'subtitle'  => __('Pinterest URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Pinterest','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Pinterest URL','redux-framework-demo'),
+                'content' => __('Pinterest URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'flickr_link',
+            'type' => 'text',
+            'title' => __('Flickr URL','redux-framework-demo'),
+            'subtitle'  => __('Flickr URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Flickr','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Flickr URL','redux-framework-demo'),
+                'content' => __('Flickr URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'vimeo_link',
+            'type' => 'text',
+            'title' => __('Vimeo URL','redux-framework-demo'),
+            'subtitle'  => __('Vimeo URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Vimeo','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Vimeo URL','redux-framework-demo'),
+                'content' => __('Vimeo URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'tumblr_link',
+            'type' => 'text',
+            'title' => __('Tumblr URL','redux-framework-demo'),
+            'subtitle'  => __('Tumblr URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Tumblr','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Tumblr URL','redux-framework-demo'),
+                'content' => __('Tumblr URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'google_link',
+            'type' => 'text',
+            'title' => __('Google Plus URL','redux-framework-demo'),
+            'subtitle'  => __('Google Plus URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Google Plus','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Google Plus URL','redux-framework-demo'),
+                'content' => __('Google Plus URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'digg_link',
+            'type' => 'text',
+            'title' => __('Digg URL','redux-framework-demo'),
+            'subtitle'  => __('Digg URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Digg','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Digg URL','redux-framework-demo'),
+                'content' => __('Digg URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'blogger_link',
+            'type' => 'text',
+            'title' => __('blogger URL','redux-framework-demo'),
+            'subtitle'  => __('blogger URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to blogger','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('blogger URL','redux-framework-demo'),
+                'content' => __('blogger URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'skype_link',
+            'type' => 'text',
+            'title' => __('skype URL','redux-framework-demo'),
+            'subtitle'  => __('skype URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to skype','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('skype URL','redux-framework-demo'),
+                'content' => __('skype URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'myspace_link',
+            'type' => 'text',
+            'title' => __('Myspace URL','redux-framework-demo'),
+            'subtitle'  => __('Myspace URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to Myspace','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Myspace URL','redux-framework-demo'),
+                'content' => __('Myspace URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'deviantart_link',
+            'type' => 'text',
+            'title' => __('deviantart URL','redux-framework-demo'),
+            'subtitle'  => __('deviantart URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to deviantart','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('deviantart URL','redux-framework-demo'),
+                'content' => __('deviantart URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'yahoo_link',
+            'type' => 'text',
+            'title' => __('yahoo URL','redux-framework-demo'),
+            'subtitle'  => __('yahoo URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to yahoo','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('yahoo URL','redux-framework-demo'),
+                'content' => __('yahoo URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'reddit_link',
+            'type' => 'text',
+            'title' => __('reddit URL','redux-framework-demo'),
+            'subtitle'  => __('reddit URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to reddit','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('reddit URL','redux-framework-demo'),
+                'content' => __('reddit URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'forrst_link',
+            'type' => 'text',
+            'title' => __('forrst URL','redux-framework-demo'),
+            'subtitle'  => __('forrst URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to forrst','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('forrst URL','redux-framework-demo'),
+                'content' => __('forrst URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'paypal_link',
+            'type' => 'text',
+            'title' => __('paypal URL','redux-framework-demo'),
+            'subtitle'  => __('paypal URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to paypal','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('paypal URL','redux-framework-demo'),
+                'content' => __('paypal URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'dropbox_link',
+            'type' => 'text',
+            'title' => __('dropbox URL','redux-framework-demo'),
+            'subtitle'  => __('dropbox URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to dropbox','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('dropbox URL','redux-framework-demo'),
+                'content' => __('dropbox URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'soundcloud_link',
+            'type' => 'text',
+            'title' => __('soundcloud URL','redux-framework-demo'),
+            'subtitle'  => __('soundcloud URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to soundcloud','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('soundcloud URL','redux-framework-demo'),
+                'content' => __('soundcloud URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'vk_link',
+            'type' => 'text',
+            'title' => __('vk URL','redux-framework-demo'),
+            'subtitle'  => __('vk URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to vk','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('vk URL','redux-framework-demo'),
+                'content' => __('vk URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'email_link',
+            'type' => 'text',
+            'title' => __('email URL','redux-framework-demo'),
+            'subtitle'  => __('email URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to email','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('email URL','redux-framework-demo'),
+                'content' => __('email URL','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'custom_icon_name',
+            'type' => 'text',
+            'title' => __('custom icon Name','redux-framework-demo'),
+            'subtitle'  => __('custom icon Name.', 'redux-framework-demo'),
+            'desc' =>  __('URL to custom icon Name','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('custom icon Name','redux-framework-demo'),
+                'content' => __('custom icon Name','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id' => 'custom_icon_link',
+            'type' => 'text',
+            'title' => __('custom icon URL','redux-framework-demo'),
+            'subtitle'  => __('custom icon URL.', 'redux-framework-demo'),
+            'desc' =>  __('URL to custom icon url','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('custom icon URL','redux-framework-demo'),
+                'content' => __('custom icon URL','redux-framework-demo'),
+            )
+        ),
+        /*
+         array (
+            'desc' => 'URL to custom icon url',
+            'id' => 'custom_icon_image',
+            'type' => 'text',
+            'title' => 'custom icon URL',
+            'default' => '',
+        ),
+        */
+
+
     )
-
-
 );
 
 
@@ -139,12 +559,12 @@ $this->sections[] = array(
 
 
 
-
 $this->sections[] = array (
-    'title' => 'Social Media',
+    'title' => __('Social Media','redux-framework-demo'),
     'subsection' => true,
     'fields' => array (
-        array (
+
+         /*array (
             'id' => 'social_sorter',
             'type' => 'info',
             'fields' => array (
@@ -324,317 +744,10 @@ $this->sections[] = array (
                     'type' => 'text',
                 ),
             ),
-            'desc' => '<h3 style=\'color: red;\'>Found a field with an unknown type!</h3> <p>Perhaps this was a custom field and will need to be remade for use within Redux. This was the field\'s configuration:</p><pre style=\'overflow:auto;border: 2px dashed #eee;padding: 2px 5px; width: 100%;\'>array(3) {
-        ["id"]=>
-        string(13) "social_sorter"
-        ["type"]=>
-        string(13) "aione_sorter"
-        ["fields"]=>array(25) {
-            [0]=>array(5) {
-                ["name"]=>
-                string(8) "Facebook"
-                ["desc"]=>
-                string(76) "Insert your custom link to show the Facebook icon. Leave blank to hide icon."
-                ["id"]=>
-                string(13) "facebook_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [1]=>array(5) {
-                ["name"]=>
-                string(6) "Flickr"
-                ["desc"]=>
-                string(74) "Insert your custom link to show the Flickr icon. Leave blank to hide icon."
-                ["id"]=>
-                string(11) "flickr_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [2]=>array(5) {
-                ["name"]=>
-                string(3) "RSS"
-                ["desc"]=>
-                string(71) "Insert your custom link to show the RSS icon. Leave blank to hide icon."
-                ["id"]=>
-                string(8) "rss_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [3]=>array(5) {
-                ["name"]=>
-                string(7) "Twitter"
-                ["desc"]=>
-                string(75) "Insert your custom link to show the Twitter icon. Leave blank to hide icon."
-                ["id"]=>
-                string(12) "twitter_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [4]=>array(5) {
-                ["name"]=>
-                string(5) "Vimeo"
-                ["desc"]=>
-                string(73) "Insert your custom link to show the Vimeo icon. Leave blank to hide icon."
-                ["id"]=>
-                string(10) "vimeo_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [5]=>array(5) {
-                ["name"]=>
-                string(7) "Youtube"
-                ["desc"]=>
-                string(75) "Insert your custom link to show the Youtube icon. Leave blank to hide icon."
-                ["id"]=>
-                string(12) "youtube_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [6]=>array(5) {
-                ["name"]=>
-                string(9) "Instagram"
-                ["desc"]=>
-                string(77) "Insert your custom link to show the Instagram icon. Leave blank to hide icon."
-                ["id"]=>
-                string(14) "instagram_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [7]=>array(5) {
-                ["name"]=>
-                string(9) "Pinterest"
-                ["desc"]=>
-                string(77) "Insert your custom link to show the Pinterest icon. Leave blank to hide icon."
-                ["id"]=>
-                string(14) "pinterest_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [8]=>array(5) {
-                ["name"]=>
-                string(6) "Tumblr"
-                ["desc"]=>
-                string(74) "Insert your custom link to show the Tumblr icon. Leave blank to hide icon."
-                ["id"]=>
-                string(11) "tumblr_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [9]=>array(5) {
-                ["name"]=>
-                string(7) "Google+"
-                ["desc"]=>
-                string(75) "Insert your custom link to show the Google+ icon. Leave blank to hide icon."
-                ["id"]=>
-                string(11) "google_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [10]=>array(5) {
-                ["name"]=>
-                string(8) "Dribbble"
-                ["desc"]=>
-                string(76) "Insert your custom link to show the Dribbble icon. Leave blank to hide icon."
-                ["id"]=>
-                string(13) "dribbble_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [11]=>array(5) {
-                ["name"]=>
-                string(4) "Digg"
-                ["desc"]=>
-                string(72) "Insert your custom link to show the Digg icon. Leave blank to hide icon."
-                ["id"]=>
-                string(9) "digg_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [12]=>array(5) {
-                ["name"]=>
-                string(8) "LinkedIn"
-                ["desc"]=>
-                string(76) "Insert your custom link to show the LinkedIn icon. Leave blank to hide icon."
-                ["id"]=>
-                string(13) "linkedin_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [13]=>array(5) {
-                ["name"]=>
-                string(7) "Blogger"
-                ["desc"]=>
-                string(75) "Insert your custom link to show the Blogger icon. Leave blank to hide icon."
-                ["id"]=>
-                string(12) "blogger_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [14]=>array(5) {
-                ["name"]=>
-                string(5) "Skype"
-                ["desc"]=>
-                string(73) "Insert your custom link to show the Skype icon. Leave blank to hide icon."
-                ["id"]=>
-                string(10) "skype_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [15]=>array(5) {
-                ["name"]=>
-                string(6) "Forrst"
-                ["desc"]=>
-                string(74) "Insert your custom link to show the Forrst icon. Leave blank to hide icon."
-                ["id"]=>
-                string(11) "forrst_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [16]=>array(5) {
-                ["name"]=>
-                string(7) "Myspace"
-                ["desc"]=>
-                string(75) "Insert your custom link to show the Myspace icon. Leave blank to hide icon."
-                ["id"]=>
-                string(12) "myspace_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [17]=>array(5) {
-                ["name"]=>
-                string(10) "Deviantart"
-                ["desc"]=>
-                string(78) "Insert your custom link to show the Deviantart icon. Leave blank to hide icon."
-                ["id"]=>
-                string(15) "deviantart_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [18]=>array(5) {
-                ["name"]=>
-                string(5) "Yahoo"
-                ["desc"]=>
-                string(73) "Insert your custom link to show the Yahoo icon. Leave blank to hide icon."
-                ["id"]=>
-                string(10) "yahoo_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [19]=>array(5) {
-                ["name"]=>
-                string(6) "Reddit"
-                ["desc"]=>
-                string(75) "Insert your custom link to show the Redditt icon. Leave blank to hide icon."
-                ["id"]=>
-                string(11) "reddit_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [20]=>array(5) {
-                ["name"]=>
-                string(6) "Paypal"
-                ["desc"]=>
-                string(74) "Insert your custom link to show the Paypal icon. Leave blank to hide icon."
-                ["id"]=>
-                string(11) "paypal_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [21]=>array(5) {
-                ["name"]=>
-                string(7) "Dropbox"
-                ["desc"]=>
-                string(75) "Insert your custom link to show the Dropbox icon. Leave blank to hide icon."
-                ["id"]=>
-                string(12) "dropbox_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [22]=>array(5) {
-                ["name"]=>
-                string(11) "Soundclound"
-                ["desc"]=>
-                string(78) "Insert your custom link to show the Soundcloud icon. Leave blank to hide icon."
-                ["id"]=>
-                string(15) "soundcloud_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [23]=>array(5) {
-                ["name"]=>
-                string(2) "VK"
-                ["desc"]=>
-                string(70) "Insert your custom link to show the VK icon. Leave blank to hide icon."
-                ["id"]=>
-                string(7) "vk_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-            [24]=>array(5) {
-                ["name"]=>
-                string(13) "Email Address"
-                ["desc"]=>
-                string(72) "Insert your custom link to show the mail icon. Leave blank to hide icon."
-                ["id"]=>
-                string(10) "email_link"
-                ["std"]=>
-                string(0) ""
-                ["type"]=>
-                string(4) "text"
-            }
-        }
-    }
-    </pre>',
-            'raw_html' => true,
+
+
         ),
+         */
         array (
             'id' => 'custom_color_scheme_element',
             'icon' => true,
@@ -642,42 +755,72 @@ $this->sections[] = array (
             'raw' => '<h3 style=\'margin: 0;\'>Custom Social Icon</h3>',
         ),
         array (
-            'desc' => 'This is the icon name that shows in the hover tooltip.',
             'id' => 'custom_icon_name',
             'type' => 'text',
-            'title' => 'Custom Icon Name',
+            'title' => __('Custom Icon Name','redux-framework-demo'),
+            'subtitle'  => __('Custom Icon Name.', 'redux-framework-demo'),
+            'desc' =>  __('This is the icon name that shows in the hover tooltip.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Custom Icon Name','redux-framework-demo'),
+                'content' => __('Custom Icon Name','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select an image file for your custom icon.',
             'id' => 'custom_icon_image',
             'type' => 'media',
-            'title' => 'Custom Icon Image',
+            'title' => __('Custom Icon Image','redux-framework-demo'),
+            'subtitle'  => __('Custom Icon Image.', 'redux-framework-demo'),
+            'desc' =>  __('Select an image file for your custom icon.','redux-framework-demo'),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Custom Icon Image','redux-framework-demo'),
+                'content' => __('Custom Icon Image','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Select an image file for the retina version of the icon. It should be 2x the size of main icon.',
             'id' => 'custom_icon_image_retina',
             'type' => 'media',
-            'title' => 'Custom Icon Image Retina',
+            'title' => __('Custom Icon Image Retina','redux-framework-demo'),
+            'subtitle'  => __('Custom Icon Image Retina.', 'redux-framework-demo'),
+            'desc' =>  __('Select an image file for the retina version of the icon. It should be 2x the size of main icon.','redux-framework-demo'),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Custom Icon Image Retina','redux-framework-demo'),
+                'content' => __('Custom Icon Image Retina','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'If retina icon is added, enter the standard icon (1x) version width, do not enter the retina icon width.',
             'id' => 'retina_icon_width',
             'type' => 'text',
-            'title' => 'Standard Icon Width for Retina Icon',
+            'title' => __('Standard Icon Width for Retina Icon','redux-framework-demo'),
+            'subtitle'  => __('Standard Icon Width for Retina Icon.', 'redux-framework-demo'),
+            'desc' =>  __('If retina icon is added, enter the standard icon (1x) version width, do not enter the retina icon width.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Standard Icon Width for Retina Icon','redux-framework-demo'),
+                'content' => __('Standard Icon Width for Retina Icon','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'If retina icon is added, enter the standard icon (1x) version height, do not enter the retina icon height.',
             'id' => 'retina_icon_height',
             'type' => 'text',
-            'title' => 'Standard Icon Height for Retina Icon',
+            'title' => __('Standard Icon Height for Retina Icon','redux-framework-demo'),
+            'subtitle'  => __('Standard Icon Height for Retina Icon.', 'redux-framework-demo'),
+            'desc' =>  __('If retina icon is added, enter the standard icon (1x) version height, do not enter the retina icon height.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Standard Icon Height for Retina Icon','redux-framework-demo'),
+                'content' => __('Standard Icon Height for Retina Icon','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Insert a link for your custom icon.',
             'id' => 'custom_icon_link',
             'type' => 'text',
-            'title' => 'Custom Icon Link',
+            'title' => __('Custom Icon Link','redux-framework-demo'),
+            'subtitle'  => __('Custom Icon Link.', 'redux-framework-demo'),
+            'desc' =>  __('Insert a link for your custom icon.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Custom Icon Link','redux-framework-demo'),
+                'content' => __('Custom Icon Link','redux-framework-demo'),
+            )
         ),
     ),
     'icon' => 'el-icon-cog',

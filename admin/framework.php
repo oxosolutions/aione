@@ -157,11 +157,12 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
             /**
               Used within different fields.
              * */
-            function getImageFiles($directory){
+            function getImageFiles($directory, $thumbnail = false){
                 // Background Images Reader
-
-                $backgrounds_path = get_template_directory(). '/images/'.$directory.'/';
-                $backgrounds_url = get_template_directory_uri(). '/images/'.$directory.'/';
+                $thumbnail_directory = '';
+                if($thumbnail){ $thumbnail_directory = 'tmb/'; }
+                $backgrounds_path = get_template_directory(). '/images/'.$directory.'/'.$thumbnail_directory;
+                $backgrounds_url = get_template_directory_uri(). '/images/'.$directory.'/'.$thumbnail_directory;
 
                 if (is_dir($backgrounds_path)) :
                     if ($backgrounds_dir = opendir($backgrounds_path)) :
@@ -177,6 +178,22 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
                 endif;
                 return $backgrounds;
             }
+
+            /**
+            Used to generate color presets.
+            **/
+            function getColorPresets($primary_color, $secondry_color){
+                //$preset = array();
+                $preset = array(
+                    'background_topbar_color'   =>  $primary_color,
+                    'topbar_text_color'   =>  $primary_color,
+                    'topbar_link_color'   =>  $secondry_color,
+                    //'background_topbar_color'   =>  '#dd3333',
+                    //'background_topbar_color'   =>  '#dd3333',
+                );
+                return $preset;
+            }
+
 
             ob_start();
 
@@ -366,6 +383,7 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
                 'opt_name' => 'theme_options',
                 'display_name' => 'Design Settings',
                 'display_version' => $this->theme->get('Version'),
+                'ajax_save' => true,
                 'page_slug' => 'design_settings',
                 'page_title' => 'Design Settings',
                 'dev_mode' => '0',

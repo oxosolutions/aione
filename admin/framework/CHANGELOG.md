@@ -1,5 +1,205 @@
 # Redux Framework Changelog
 
+## 3.4.3.9
+* Fixed     #2097 - Slash fix for ajax_save that was previously believed to be an isolated issue. Now applied on all ajax saves.
+
+## 3.4.3.8
+* Fixed:    #2086 - color_rgba improperly functioning when transparent mode set to false.
+
+## 3.4.3.7
+* Fixed     Import/Export bug where it wasn't running.
+* Modified  Locations of the core extensions directory as well as grunt configuration.
+
+## 3.4.3.6
+* Fixed     #2047 - Validation will now accept 0 as a value to be tested. Thanks @Ninos!
+* Added     url_slug validation with option flush_permalinks!
+* Fixed     Issue where the remove of background field was always showing an empty preview box. 
+* Modified  Turned ajax_save on by default for additional bug reports.  ;)
+* Modified  Added some margin above validation errors/warnings so they look better.
+* Modified  Removed previous element border for any section so it looks better.
+
+## 3.4.3.5
+* Fixed     #2081 - Section field hiding any field after.  Weird.
+
+## 3.4.3.4
+* Added     #2047 - `output_transparent` argument to output the blank color feature as 'transparent'.
+* Fixed     #2080 - missing 'rem' unit and inability to process float values.  Thanks to @HELWATANY for the fixes!
+* Fixed     #2043 - misaligned images in image_select field.
+
+## 3.4.3.3
+* Added:    #2064 - Merge argument for image_select. Thanks @Ninos
+* Modified: Import/Export is now an extensiona and decoupled from the core.
+* Fixed:    Spinner had a nasty number bug, now resolved.
+* Fixed:    #2076 - RTL bug with old ID's. Thanks @mahfoozroy.
+* Fixed:    #2072 - Ajax_save editor type bug fix.
+
+## 3.4.3.2
+* Fixed:    #2058 - Incorrect path in include statement for sysinfo.php
+
+## 3.4.3.1
+* Modified: Templates now have versioning with a warning (dev_mode only) if they are outdated from the core templates.
+
+## 3.4.3
+* Modified: Ajax saving now has overlay during save to avoid confusion for users.
+
+## 3.4.2.9
+* Modified: Template files even more for simplicity and ease.
+* Modified: Saving. Redux now has the ajax_save argument if you want it!
+* Modified: Validation warnings now work.
+
+## 3.4.2.8
+* Fixed:    Changed set_transient function to public to avoid errors in new templating code.
+
+## 3.4.2.7
+* Modified: Entire panel template is now decoupled from the theme and implemented with many filters for easy customization.
+
+## 3.4.2.6
+* Fixed:   #1478 - Import/export failing when two instances if Redux in use.  Thanks, @desaiuditd!
+* Fixed:   Section field not indenting properly, if at all.
+
+## 3.4.2.5
+* Added:   #2031 - Proper CSS sanitization for compliancy with WP.org. 
+
+## 3.4.2.4
+* Fixed:   #2027 - added isset()
+
+## 3.4.2.3
+* Fixed:   #2019 - Reset issues with PHP 5.2.  Thanks a bunch, @Webcreations907!
+
+## 3.4.2.2
+* Fixed:   #2023: Issue with custom submenus in menu.
+
+## 3.4.2.1
+* Fixed:   #2025: Issue with select sorting.
+
+## 3.4.2
+* Update:  ACE Editor.  Thanks @corradomatt.
+
+## 3.4.1
+* Fixed:   Small filesystem option with bad filter key reference.
+* Added:   Small return if $section filter returned the section empty.
+
+## 3.4.0
+* WP.org Release
+
+## 3.3.10.7
+* Fixed:    Reset section hook firing too early.
+
+## 3.3.10.6
+* Modified: The Redux Repeater field has landed!
+
+## 3.3.10.5
+* Fixed:    #1983 - color_rgba not outputting default values on first load (before save).
+
+## 3.3.10.4
+* Fixed:    Google font enqueues with opt_name to avoid collision with multiple Redux instances.
+
+## 3.3.10.3
+* Fixed:    #1980 - JS errors with sorter & sortable.
+* Fixed:    color_rgba field outputting incorrect information via output/compiler.
+
+## 3.3.10.2
+* Fixed:    #1979 - Goole fonts not properly loading in typography dropdown.
+
+## 3.3.10.1
+* Fixed:    Undefined index error on MU installs.
+
+## 3.3.10
+* Removed:  SASS compile of field CSS, for the time being.  Compiler remains in core.
+* Improved: Panel load time, most notable when not in dev_mode.  Better for your clients.  :)
+* Updated:  Elusive Font library.
+* Fixed:    #1961 - color_rgba field defaulting to black on reset.
+
+## 3.3.9.35
+* Fixed:    #1941 - Datepicker opened off screen.
+* Fixed:    #1756, #1957 - Slider issues.  Thanks @FFIN!
+* Fixed:    #1960 - Duplicate slide when clicking Add.  Again, thanks to @FFIN for the fix.
+* Added:    New filter: apply_filters 'redux/validate/{opt_name}/before_validation'
+* Fixed:    #1745 - Adding settings submenu to empty submenu now works.  Many, many thanks to @No3x for cracking this one!
+
+## 3.3.9.34
+* Fixed:    #1955 - Undefined index rgba in output routine.
+
+## 3.3.9.33
+* Modified: #1947 - Added display:none to TR tag under info field.
+
+## 3.3.9.32
+* Replaced: #1951 - Replaced develop branch of scssphp to master branch due to PHP 5.2 incompatibililty.
+
+## 3.3.9.31
+* Fixed:    #1943 - Removed premature DIV close.
+* Fixed:    #1945 - Media preview not rendering when default ID specified.
+
+## 3.3.9.30
+* Modified: #1930 - reorder 'psedo-class of link_color field.  Thanks @freddessaint
+* Modified: SASS compiler outputs to page by default.  Faster.
+* Fixed:    #1927 - Incorrect dir path to spectrum library in color_rgba field corrected.
+
+## 3.3.9.29
+* Modified: color_rgba field now usees spectrum color picker.  minicolors removed.  Just...too buggy.
+
+## 3.3.9.28
+* Modified: #1922 - Filesystem output function.
+
+## 3.3.9.27
+* Fixed:    Added PHP 5.2 support (ugh!) for SASS compiler.
+
+## 3.3.9.26
+* Fixed:    More SASS compiler tweaking.
+
+## 3.3.9.25
+* Fixed:    PHP errors when disabling SASS.
+
+## 3.3.9.24
+* Fixed     #1909 - malformed DIV class HTML in slider field.
+
+## 3.3.9.23
+* Removed   Argument for SASS compile file output location removed.  Didn't work, too much trouble.
+
+## 3.3.9.22
+* Fixed:    #1904 - select_image field not displaying saved value on page reload.
+
+## 3.3.9.21
+* Fixed:    SASS compile under multi-instance outputting incorrect CSS file
+
+## 3.3.9.20
+* Fixed:    redux-admin scss images converted to base64     
+
+## 3.3.9.17
+* Added     SASS compiler for admin CSS.
+* Added     SASS to CSS for grunt compiler.
+
+## 3.3.9.16
+* Added     SASS compiler for fields.
+
+## 3.3.9.16
+* Updated:  select2 3.5.2
+
+## 3.3.9.15
+* Fixed:    #1856 - Illegal offset string warnings in framework.php.  Thanks @CGlingener.
+* Fixed:    #1874 - Required operator 'contains' and 'not_contains' not working with select set to multi.
+* Fixed:    #1829 - Required operator '=' and '!=' not working with select set to multi.
+
+## 3.3.9.14  
+* Fixed:    #1870 - Border field doubling up on px in output/compiler.
+* Added:    `hidden` argument for fields.
+* Added:    `hidden` argument for sections.
+
+## 3.3.9.12
+* Fixed:    #1868 - Improper panel render when opening expanded, when `open_expanded` set to true.
+* Added:    `hide_expand` argument, to hide the expand options button.
+
+## 3.3.9.11
+* Fixed:    #1865 - Sortable select not saving proper order.
+* Fixed:    #1864 - Footer z-index CSS adjusted.
+
+## 3.3.9.10
+* Fixed:    #1848 - Import-export filed buttons not functioning properly.
+
+## 3.3.9.9
+* Fixed:    #1834 - Wordpress data dealing with IDs as array keys not rendering properly.
+* Fixed:    #1830 - Font lists were added in quotes.  Thanks @karimhossenbux.
+
 ## 3.3.9.8
 * Fixed:    #1798 - Fixed lazy load JS to only load visible sections. Much more optimized.
 

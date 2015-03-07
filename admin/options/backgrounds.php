@@ -5,10 +5,12 @@
  *  Body Background
  *
  *********************************************************************************************/
+
+
 $this->sections[] = array(
     'icon'      => 'el-icon-screen',
     'title'     => __('Background', 'redux-framework-demo'),
-    'desc'      => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo'),
+    'desc'      => __('<p class="description"></p><style>.pattern_chooser + span.tiles { margin-bottom:10px;} .background_image_chooser + span.tiles { background-size: cover; margin-bottom:10px; width:60px !important;height:45px;}</style>', 'redux-framework-demo'),
 
     'fields'    => array(
         array (
@@ -16,7 +18,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Body Background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for body background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -28,14 +30,16 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Body background Options',
-                'content' => 'Choose options for body background'
+                'title'   => __('Body Background Options','redux-framework-demo'),
+                'content' => __('Body Background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_body_color',
             'type'      => 'color',
-            'title'     => 'Body Background Color',
+            'title'     => __('Body Background Color','redux-framework-demo'),
+            'subtitle'  => __('Body Background Color', 'redux-framework-demo'),
+            'desc' => __('Body Background Color.', 'redux-framework-demo'),
             'transparent' => false,
             //'alpha'     => .5,
             //'selector'  => 'body',
@@ -43,47 +47,70 @@ $this->sections[] = array(
             //'output'      => '',
             //'required'      => array('background_body_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+            'title'   => __('Body Background Color','redux-framework-demo'),
+             'content' => __('Body Background Color','redux-framework-demo'),
+)
         ),
         array(
             'id'        => 'background_body_color_alpha',
             'type'      => 'slider',
             'title'     => __('Body Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Body Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_body_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+            'title'   => __('Body Background Color Alpha','redux-framework-demo'),
+            'content' => __('Body Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_body_gradient',
-            'title'     => 'Body Background Gradient',
+            'title'     => __('Body Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Body Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Body Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_body_options','equals','gradient'),
             'alpha'     => .5,
             'selector'  => 'body',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+    'title'   => __('Body Background Gradient','redux-framework-demo'),
+    'content' => __('Body Background Gradient','redux-framework-demo'),
+)
         ),
         array(
             'id'        => 'background_body_image',
-            'title'     => 'Body Background Image',
+            'title'     => __('Body Background Image','redux-framework-demo'),
+            'subtitle'  => __('Body Background Image', 'redux-framework-demo'),
+            'desc' => __('Body Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_body_options','equals','image'),
             'selector'  => 'body',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Body Background Image','redux-framework-demo'),
+                'content' => __('Body Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_body',
-            'title'     => 'Body Background Custom Image',
+            'title'     =>__( 'Body Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Body Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Body Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_body_options','equals','custom'),
             'background-color' => false,
@@ -98,30 +125,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Body Background Custom Image','redux-framework-demo'),
+                'content' => __('Body Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_body_pattern1',
-            'title'     => 'Body Background Pattern 1',
+            'title'     =>__( 'Body Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Body Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Body Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_body_options','equals','pattern1'),
             'selector'  => 'body',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Body Background Pattern 1','redux-framework-demo'),
+                'content' => __('Body Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_body_pattern2',
-            'title'     => 'Body Background Pattern 2',
+            'title'     =>__( 'Body Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Body Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Body Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_body_options','equals','pattern2'),
             'selector'  => 'body',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
-            'default' => '',
+            'class'     => 'pattern_chooser', 'options' => getImageFiles('patterns2', true),
+            'default' => '', 
+             
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Body Background Pattern 2','redux-framework-demo'),
+                'content' => __('Body Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 );
@@ -140,7 +185,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Header background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for header background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -152,13 +197,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'content' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Header background Options','redux-framework-demo'),
+                'content' => __('Header background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_header_color',
-            'title'     => 'Header Background Color',
+            'title'     =>__( 'Header Background Color','redux-framework-demo'),
+            'subtitle'  => __('Header Background Color', 'redux-framework-demo'),
+            'desc' => __('Header Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -167,47 +214,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_header_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+    'title'   => __('Header Background Color','redux-framework-demo'),
+    'content' => __('Header Background Color','redux-framework-demo'),
+)
         ),
         array(
             'id'        => 'background_header_color_alpha',
             'type'      => 'slider',
             'title'     => __('Header Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Header Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_header_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+    'title'   => __('Header Background Color Alpha','redux-framework-demo'),
+    'content' => __('Header Background Color Alpha','redux-framework-demo'),
+)
         ),
         array(
             'id'        => 'background_header_gradient',
-            'title'     => 'Header Background Gradient',
+            'title'     =>__( 'Header Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Header Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Header Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_header_options','equals','gradient'),
             'alpha'     => .5,
             'selector'  => 'header',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Header Background Gradient','redux-framework-demo'),
+                'content' => __('Header Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_header_image',
-            'title'     => 'Header Background Image',
+            'title'     =>__( 'Header Background Image','redux-framework-demo'),
+            'subtitle'  => __('Header Background Image', 'redux-framework-demo'),
+            'desc' => __('Header Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_header_options','equals','image'),
             'selector'  => 'header',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Header Background Image','redux-framework-demo'),
+                'content' => __('Header Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_header',
-            'title'     => 'Header Background Custom Image',
+            'title'     =>__( 'Header Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Header Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Header Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_header_options','equals','custom'),
             'background-color' => false,
@@ -222,30 +292,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Header  Background Custom Image','redux-framework-demo'),
+                'content' => __('Header  Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_header_pattern1',
-            'title'     => 'Header Background Pattern 1',
+            'title'     =>__( 'Header Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Header Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Header Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_header_options','equals','pattern1'),
             'selector'  => 'header',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Header Background Pattern 1','redux-framework-demo'),
+                'content' => __('Header Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_header_pattern2',
-            'title'     => 'Header Background Pattern 2',
+            'title'     =>__( 'Header Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Header Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Header Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_header_options','equals','pattern2'),
             'selector'  => 'header',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Header Background Pattern 2','redux-framework-demo'),
+                'content' => __('Header Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -265,7 +353,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Topbar background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for topbar background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -275,64 +363,89 @@ $this->sections[] = array(
                 'pattern1' => 'Pattern1',
                 'pattern2' => 'Pattern2',
             ),
-            'default'   => array('image','custom','pattern1'),
+            'default'   => array('color','gradient','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'content' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Topbar background Options','redux-framework-demo'),
+                'content' => __('Topbar background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_topbar_color',
-            'title'     => 'Topbar Background Color',
+            'title'     =>__( 'Topbar Background Color','redux-framework-demo'),
+            'subtitle'  => __('Topbar Background Color', 'redux-framework-demo'),
+            'desc' => __('Topbar Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
-            'alpha'     => .5,
+            //'alpha'     => .5,
             'selector'  => 'topbar',
             'mode'      => 'background-color',
             'output'      => '',
             //'required'      => array('background_topbar_options','equals','color'),
-            'default'      => '#d5d5d5',
-            'important' => false
+            'default'      => '#168dc5',
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Topbar Background Color','redux-framework-demo'),
+                'content' => __('Topbar Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_topbar_color_alpha',
             'type'      => 'slider',
             'title'     => __('Topbar Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Topbar Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_topbar_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Topbar Background Color Alpha','redux-framework-demo'),
+                'content' => __('Topbar Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_topbar_gradient',
-            'title'     => 'Topbar Background Gradient',
+            'title'     =>__( 'Topbar Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Topbar Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Topbar Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_topbar_options','equals','gradient'),
-            'alpha'     => .5,
+            //'alpha'     => .5,
             'selector'  => 'topbar',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Topbar Background Gradient','redux-framework-demo'),
+                'content' => __('Topbar Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_topbar_image',
-            'title'     => 'Topbar Background Image',
+            'title'     =>__( 'Topbar Background Image','redux-framework-demo'),
+            'subtitle'  => __('Topbar Background Image', 'redux-framework-demo'),
+            'desc' => __('Topbar Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_topbar_options','equals','image'),
             'selector'  => 'topbar',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Topbar Background Image','redux-framework-demo'),
+                'content' => __('Topbar Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_topbar',
-            'title'     => 'Topbar Background Custom Image',
+            'title'     =>__( 'Topbar Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Topbar Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Topbar Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_topbar_options','equals','custom'),
             'background-color' => false,
@@ -347,30 +460,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Topbar Background Custom Image','redux-framework-demo'),
+                'content' => __('Topbar Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_topbar_pattern1',
-            'title'     => 'Topbar Background Pattern 1',
+            'title'     =>__( 'Topbar Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Topbar Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Topbar Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_topbar_options','equals','pattern1'),
             'selector'  => 'topbar',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser', 
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Topbar Background Pattern 1','redux-framework-demo'),
+                'content' => __('Topbar Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_topbar_pattern2',
-            'title'     => 'Topbar Background Pattern 2',
+            'title'     =>__( 'Topbar Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Topbar Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Topbar Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_topbar_options','equals','pattern2'),
             'selector'  => 'topbar',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Topbar Background Pattern 2','redux-framework-demo'),
+                'content' => __('Topbar Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -390,7 +521,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Main Menu background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for nav background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -402,13 +533,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'content' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Main Menu background Options','redux-framework-demo'),
+                'content' => __('Main Menu background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_nav_color',
-            'title'     => 'Main Menu Background Color',
+            'title'     =>__( 'Main Menu Background Color','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Color', 'redux-framework-demo'),
+            'desc' => __('Main Menu Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -417,47 +550,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_nav_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Main Menu Background Color','redux-framework-demo'),
+                'content' => __('Main Menu Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_nav_color_alpha',
             'type'      => 'slider',
             'title'     => __('Main Menu Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_nav_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Main Menu Background Color Alpha','redux-framework-demo'),
+                'content' => __('Main Menu Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_nav_gradient',
-            'title'     => 'Main Menu Background Gradient',
+            'title'     =>__( 'Main Menu Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Main Menu Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_nav_options','equals','gradient'),
             'alpha'     => .5,
             'selector'  => 'nav',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Main Menu Background Gradient','redux-framework-demo'),
+                'content' => __('Main Menu Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_nav_image',
-            'title'     => 'Main Menu Background Image',
+            'title'     =>__( 'Main Menu Background Image','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Image', 'redux-framework-demo'),
+            'desc' => __('Main Menu Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_nav_options','equals','image'),
             'selector'  => 'nav',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Main Menu Background Image','redux-framework-demo'),
+                'content' => __('Main Menu Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_nav',
-            'title'     => 'Main Menu Background Custom Image',
+            'title'     =>__( 'Main Menu Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Main Menu Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_nav_options','equals','custom'),
             'background-color' => false,
@@ -472,30 +628,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Main Menu Background Custom Image','redux-framework-demo'),
+                'content' => __('Main Menu Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_nav_pattern1',
-            'title'     => 'Main Menu Background Pattern 1',
+            'title'     =>__( 'Main Menu Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Main Menu Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_nav_options','equals','pattern1'),
             'selector'  => 'nav',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Main Menu Background Pattern 1','redux-framework-demo'),
+                'content' => __('Main Menu Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_nav_pattern2',
-            'title'     => 'Main Menu Background Pattern 2',
+            'title'     =>__( 'Main Menu Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Main Menu Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Main Menu Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_nav_options','equals','pattern2'),
             'selector'  => 'nav',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Main Menu Background Pattern 2','redux-framework-demo'),
+                'content' => __('Main Menu Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -516,7 +690,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Page Title background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for pagetitle background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -528,13 +702,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'content' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Page Title background Options','redux-framework-demo'),
+                'content' => __('Page Title background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_pagetitle_color',
-            'title'     => 'Page Title Background Color',
+            'title'     =>__( 'Page Title Background Color','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Color', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -543,47 +719,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_pagetitle_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Color','redux-framework-demo'),
+                'content' => __('Page Title Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_pagetitle_color_alpha',
             'type'      => 'slider',
             'title'     => __('Page Title Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_pagetitle_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Page Title Background Color Alpha','redux-framework-demo'),
+                'content' => __('Page Title Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_pagetitle_gradient',
-            'title'     => 'Page Title Background Gradient',
+            'title'     =>__( 'Page Title Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_pagetitle_options','equals','gradient'),
             'alpha'     => .5,
             //'selector'  => 'page-title',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Gradient','redux-framework-demo'),
+                'content' => __('Page Title Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_pagetitle_image',
-            'title'     => 'Page Title Background Image',
+            'title'     =>__( 'Page Title Background Image','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Image', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_pagetitle_options','equals','image'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Image','redux-framework-demo'),
+                'content' => __('Page Title Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_pagetitle',
-            'title'     => 'Page Title Background Custom Image',
+            'title'     =>__( 'Page Title Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_pagetitle_options','equals','custom'),
             'background-color' => false,
@@ -598,30 +797,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Page Title Background Custom Image','redux-framework-demo'),
+                'content' => __('Page Title Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_pagetitle_pattern1',
-            'title'     => 'Page Title Background Pattern 1',
+            'title'     =>__( 'Page Title Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_pagetitle_options','equals','pattern1'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Pattern 1','redux-framework-demo'),
+                'content' => __('Page Title Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_pagetitle_pattern2',
-            'title'     => 'Page Title Background Pattern 2',
+            'title'     =>__( 'Page Title Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_pagetitle_options','equals','pattern2'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Pattern 2','redux-framework-demo'),
+                'content' => __('Page Title Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -643,7 +860,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Page background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for main background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -655,13 +872,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'content' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Page background Options','redux-framework-demo'),
+                'content' => __('Page background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_main_color',
-            'title'     => 'Page Background Color',
+            'title'     =>__( 'Page Background Color','redux-framework-demo'),
+            'subtitle'  => __('Page Background Color', 'redux-framework-demo'),
+            'desc' => __('Page Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -670,47 +889,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_main_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Page Background Color','redux-framework-demo'),
+                'content' => __('Page Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_main_color_alpha',
             'type'      => 'slider',
             'title'     => __('Page Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Page Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_main_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Page Background Color Alpha','redux-framework-demo'),
+                'content' => __('Page Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_main_gradient',
-            'title'     => 'Page Background Gradient',
+            'title'     =>__( 'Page Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Page Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Page Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_main_options','equals','gradient'),
             'alpha'     => .5,
             //'selector'  => 'page-title',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Page Background Gradient','redux-framework-demo'),
+                'content' => __('Page Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_main_image',
-            'title'     => 'Page Background Image',
+            'title'     =>__( 'Page Background Image','redux-framework-demo'),
+            'subtitle'  => __('Page Background Image', 'redux-framework-demo'),
+            'desc' => __('Page Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_main_options','equals','image'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Background Image','redux-framework-demo'),
+                'content' => __('Page Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_main',
-            'title'     => 'Page Background Custom Image',
+            'title'     =>__( 'Page Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Page Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Page Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_main_options','equals','custom'),
             'background-color' => false,
@@ -725,30 +967,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Page Background Custom Image','redux-framework-demo'),
+                'content' => __('Page Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_main_pattern1',
-            'title'     => 'Page Background Pattern 1',
+            'title'     =>__( 'Page Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Page Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Page Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_main_options','equals','pattern1'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Background Pattern 1','redux-framework-demo'),
+                'content' => __('Page Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_main_pattern2',
-            'title'     => 'Page Background Pattern 2',
+            'title'     =>__( 'Page Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Page Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Page Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_main_options','equals','pattern2'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Background Pattern 2','redux-framework-demo'),
+                'content' => __('Page Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -770,7 +1030,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Content background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for content background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -782,13 +1042,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'content' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Content background Options','redux-framework-demo'),
+                'content' => __('Content background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_content_color',
-            'title'     => 'Content Background Color',
+            'title'     =>__( 'Content Background Color','redux-framework-demo'),
+            'subtitle'  => __('Content Background Color', 'redux-framework-demo'),
+            'desc' => __('Content Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -797,47 +1059,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_content_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Content Background Color','redux-framework-demo'),
+                'content' => __('Content Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_content_color_alpha',
             'type'      => 'slider',
             'title'     => __('Content Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Content Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_content_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Content Background Color Alpha','redux-framework-demo'),
+                'content' => __('Content Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_content_gradient',
-            'title'     => 'Content Background Gradient',
+            'title'     =>__( 'Content Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Content Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Content Background Custom Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_content_options','equals','gradient'),
             'alpha'     => .5,
             //'selector'  => 'page-title',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Content Background Gradient','redux-framework-demo'),
+                'content' => __('Content Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_content_image',
-            'title'     => 'Content Background Image',
+            'title'     =>__( 'Content Background Image','redux-framework-demo'),
+            'subtitle'  => __('Content Background Image', 'redux-framework-demo'),
+            'desc' => __('Content Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_content_options','equals','image'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Content Background Image','redux-framework-demo'),
+                'content' => __('Content Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_content',
-            'title'     => 'Content Background Custom Image',
+            'title'     =>__( 'Content Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Content Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Content Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_content_options','equals','custom'),
             'background-color' => false,
@@ -852,30 +1137,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Content Background Custom Image','redux-framework-demo'),
+                'content' => __('Content Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_content_pattern1',
-            'title'     => 'Content Background Pattern 1',
+            'title'     =>__( 'Content Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Content Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Content Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_content_options','equals','pattern1'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Content Background Pattern 1','redux-framework-demo'),
+                'content' => __('Content Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_content_pattern2',
-            'title'     => 'Content Background Pattern 2',
+            'title'     =>__( 'Content Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Content Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Content Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_content_options','equals','pattern2'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Content Background Pattern 2','redux-framework-demo'),
+                'content' => __('Content Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -897,7 +1200,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Left Sidebar background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for left_sidebar background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -909,13 +1212,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'left_sidebar' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Left Sidebar background Options','redux-framework-demo'),
+                'content' => __('Left Sidebar background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_left_sidebar_color',
-            'title'     => 'Left Sidebar Background Color',
+            'title'     =>__( 'Left Sidebar Background Color','redux-framework-demo'),
+            'subtitle'  => __('Left Sidebar Background Color', 'redux-framework-demo'),
+            'desc' => __('Left Sidebar Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -924,47 +1229,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_left_sidebar_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Left Sidebar Background Color','redux-framework-demo'),
+                'content' => __('Left Sidebar Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_left_sidebar_color_alpha',
             'type'      => 'slider',
             'title'     => __('Left Sidebar Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Left Sidebar Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_left_sidebar_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Left Sidebar Background Color Alpha','redux-framework-demo'),
+                'content' => __('Left Sidebar Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_left_sidebar_gradient',
-            'title'     => 'Left Sidebar Background Gradient',
+            'title'     =>__( 'Left Sidebar Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Left Sidebar Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Left Sidebar Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_left_sidebar_options','equals','gradient'),
             'alpha'     => .5,
             //'selector'  => 'page-title',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Left Sidebar Background Gradient','redux-framework-demo'),
+                'content' => __('Left Sidebar Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_left_sidebar_image',
-            'title'     => 'Left Sidebar Background Image',
+            'title'     =>__( 'Left Sidebar Background Image','redux-framework-demo'),
+            'subtitle'  => __('Left Sidebar Background Image', 'redux-framework-demo'),
+            'desc' => __('Left Sidebar Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_left_sidebar_options','equals','image'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Left Sidebar Background Image','redux-framework-demo'),
+                'content' => __('Left Sidebar Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_left_sidebar',
-            'title'     => 'Left Sidebar Background Custom Image',
+            'title'     =>__( 'Left Sidebar Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Left Sidebar Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Left Sidebar Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_left_sidebar_options','equals','custom'),
             'background-color' => false,
@@ -979,30 +1307,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Left Sidebar Background Custom Image','redux-framework-demo'),
+                'content' => __('Left Sidebar Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_left_sidebar_pattern1',
-            'title'     => 'Left Sidebar Background Pattern 1',
+            'title'     =>__( 'Left Sidebar Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Left Sidebar Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Left Sidebar Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_left_sidebar_options','equals','pattern1'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Left Sidebar Background Pattern 1','redux-framework-demo'),
+                'content' => __('Left Sidebar Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_left_sidebar_pattern2',
-            'title'     => 'Left Sidebar Background Pattern 2',
+            'title'     =>__( 'Left Sidebar Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Left Sidebar Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Left Sidebar Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_left_sidebar_options','equals','pattern2'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Left Sidebar Background Pattern 2','redux-framework-demo'),
+                'content' => __('Left Sidebar Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -1025,7 +1371,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Right Sidebar background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for right_sidebar background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -1037,13 +1383,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'right_sidebar' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Right Sidebar background Options','redux-framework-demo'),
+                'content' => __('Right Sidebar background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_right_sidebar_color',
-            'title'     => 'Right Sidebar Background Color',
+            'title'     =>__( 'Right Sidebar Background Color','redux-framework-demo'),
+            'subtitle'  => __('Right Sidebar Background Color', 'redux-framework-demo'),
+            'desc' => __('Right Sidebar Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -1052,47 +1400,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_right_sidebar_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Right Sidebar Background Color','redux-framework-demo'),
+                'content' => __('Right Sidebar Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_right_sidebar_color_alpha',
             'type'      => 'slider',
             'title'     => __('Right Sidebar Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Right Sidebar Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_right_sidebar_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Right Sidebar Background Color Alpha','redux-framework-demo'),
+                'content' => __('Right Sidebar Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_right_sidebar_gradient',
-            'title'     => 'Right Sidebar Background Gradient',
+            'title'     =>__( 'Right Sidebar Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Right Sidebar Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Right Sidebar Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_right_sidebar_options','equals','gradient'),
             'alpha'     => .5,
             //'selector'  => 'page-title',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Right Sidebar Background Gradient','redux-framework-demo'),
+                'content' => __('Right Sidebar Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_right_sidebar_image',
-            'title'     => 'Right Sidebar Background Image',
+            'title'     =>__( 'Right Sidebar Background Image','redux-framework-demo'),
+            'subtitle'  => __('Right Sidebar Background Image', 'redux-framework-demo'),
+            'desc' => __('Right Sidebar Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_right_sidebar_options','equals','image'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Right Sidebar Background Image','redux-framework-demo'),
+                'content' => __('Right Sidebar Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_right_sidebar',
-            'title'     => 'Right Sidebar Background Custom Image',
+            'title'     =>__( 'Right Sidebar Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Right Sidebar Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Right Sidebar Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_right_sidebar_options','equals','custom'),
             'background-color' => false,
@@ -1107,30 +1478,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Right Sidebar Background Custom Image','redux-framework-demo'),
+                'content' => __('Right Sidebar Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_right_sidebar_pattern1',
-            'title'     => 'Right Sidebar Background Pattern 1',
+            'title'     =>__( 'Right Sidebar Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Right Sidebar Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Right Sidebar Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_right_sidebar_options','equals','pattern1'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Right Sidebar Background Pattern 1','redux-framework-demo'),
+                'content' => __('Right Sidebar Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_right_sidebar_pattern2',
-            'title'     => 'Right Sidebar Background Pattern 2',
+            'title'     =>__( 'Right Sidebar Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Right Sidebar Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Right Sidebar Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_right_sidebar_options','equals','pattern2'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Right Sidebar Background Pattern 2','redux-framework-demo'),
+                'content' => __('Right Sidebar Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -1153,7 +1542,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Footer background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for footer background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -1165,13 +1554,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'footer' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Footer background Options','redux-framework-demo'),
+                'content' => __('Footer background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_footer_color',
-            'title'     => 'Footer Background Color',
+            'title'     =>__( 'Footer Background Color','redux-framework-demo'),
+            'subtitle'  => __('Footer Background Color', 'redux-framework-demo'),
+            'desc' => __('Footer Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -1180,47 +1571,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_footer_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Footer Background Color','redux-framework-demo'),
+                'content' => __('Footer Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_footer_color_alpha',
             'type'      => 'slider',
             'title'     => __('Footer Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Footer Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_footer_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Footer Background Color Alpha','redux-framework-demo'),
+                'content' => __('Footer Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_footer_gradient',
-            'title'     => 'Footer Background Gradient',
+            'title'     =>__( 'Footer Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Footer Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Footer Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_footer_options','equals','gradient'),
             'alpha'     => .5,
             //'selector'  => 'page-title',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Footer Background Gradient','redux-framework-demo'),
+                'content' => __('Footer Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_footer_image',
-            'title'     => 'Footer Background Image',
+            'title'     =>__( 'Footer Background Image','redux-framework-demo'),
+            'subtitle'  => __('Footer Background Image', 'redux-framework-demo'),
+            'desc' => __('Footer Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_footer_options','equals','image'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Footer Background Image','redux-framework-demo'),
+                'content' => __('Footer Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_footer',
-            'title'     => 'Footer Background Custom Image',
+            'title'     =>__( 'Footer Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Footer Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Footer Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_footer_options','equals','custom'),
             'background-color' => false,
@@ -1235,30 +1649,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Footer Background Custom Image','redux-framework-demo'),
+                'content' => __('Footer Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_footer_pattern1',
-            'title'     => 'Footer Background Pattern 1',
+            'title'     =>__( 'Footer Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Footer Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Footer Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_footer_options','equals','pattern1'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Footer Background Pattern 1','redux-framework-demo'),
+                'content' => __('Footer Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_footer_pattern2',
-            'title'     => 'Footer Background Pattern 2',
+            'title'     =>__( 'Footer Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Footer Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Footer Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_footer_options','equals','pattern2'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Footer Background Pattern 2','redux-framework-demo'),
+                'content' => __('Footer Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 
@@ -1280,7 +1712,7 @@ $this->sections[] = array(
             'type' => 'button_set',
             'title' =>  __('Copyright Area background Options', 'redux-framework-demo'),
             'subtitle'  => __('Choose options for copyright background', 'redux-framework-demo'),
-            //'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
             'multi'    => true,
             'options' => array (
                 'color' => 'Color',
@@ -1292,13 +1724,15 @@ $this->sections[] = array(
             ),
             'default'   => array('image','custom','pattern1'),
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'copyright' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Copyright Area background Options','redux-framework-demo'),
+                'content' => __('Copyright Area background Options','redux-framework-demo'),
             )
         ),
         array(
             'id'        => 'background_copyright_color',
-            'title'     => 'Copyright Area Background Color',
+            'title'     =>__( 'Copyright Area Background Color','redux-framework-demo'),
+            'subtitle'  => __('Copyright Area Background Color', 'redux-framework-demo'),
+            'desc' => __('Copyright Area Background Color.', 'redux-framework-demo'),
             'type'      => 'color',
             'transparent' => false,
             'alpha'     => .5,
@@ -1307,47 +1741,70 @@ $this->sections[] = array(
             'output'      => '',
             //'required'      => array('background_copyright_options','equals','color'),
             'default'      => '#d5d5d5',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Copyright Area Background Color','redux-framework-demo'),
+                'content' => __('Copyright Area Background Color','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_copyright_color_alpha',
             'type'      => 'slider',
             'title'     => __('Copyright Area Background Color Alpha', 'redux-framework-demo'),
-            'subtitle'  => __('Visibility of Background Color', 'redux-framework-demo'),
+            'subtitle'  => __('Copyright Area Background Color Alpha', 'redux-framework-demo'),
             'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
             //'required'      => array('background_copyright_options','equals','color'),
             "default"   => 100,
             "min"       => 0,
             "step"      => 1,
             "max"       => 100,
-            'display_value' => 'label'
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Copyright Area Background Color Alpha','redux-framework-demo'),
+                'content' => __('Copyright Area Background Color Alpha','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_copyright_gradient',
-            'title'     => 'Copyright Area Background Gradient',
+            'title'     =>__( 'Copyright Area Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Copyright Area Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Copyright Area Background Gradient.', 'redux-framework-demo'),
             'type'      => 'color_gradient',
             'transparent' => false,
             //'required'      => array('background_copyright_options','equals','gradient'),
             'alpha'     => .5,
             //'selector'  => 'page-title',
             'mode'      => 'background-color',
-            'important' => false
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Copyright Area Background Gradient','redux-framework-demo'),
+                'content' => __('Copyright Area Background Gradient','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_copyright_image',
-            'title'     => 'Copyright Area Background Image',
+            'title'     =>__( 'Copyright Area Background Image','redux-framework-demo'),
+            'subtitle'  => __('Copyright Area Background Image', 'redux-framework-demo'),
+            'desc' => __('Copyright Area Background Image.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_copyright_options','equals','image'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('backgrounds'),
-            'default' => 'pattern1',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Copyright Area Background Image','redux-framework-demo'),
+                'content' => __('Copyright Area Background Image','redux-framework-demo'),
+            )
         ),
         array (
             'id'        => 'background_copyright',
-            'title'     => 'Copyright Area Background Custom Image',
+            'title'     =>__( 'Copyright Area Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Copyright Area Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Copyright Area Background Custom Image.', 'redux-framework-demo'),
             'type' => 'background',
             //'required'      => array('background_copyright_options','equals','custom'),
             'background-color' => false,
@@ -1362,30 +1819,48 @@ $this->sections[] = array(
                 'background-attachment' => 'scroll',
                 'background-position' => 'center top',
             ),
+            'hint' => array(
+                'title'   => __('Copyright Area Background Custom Image','redux-framework-demo'),
+                'content' => __('Copyright Area Background Custom Image','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_copyright_pattern1',
-            'title'     => 'Copyright Area Background Pattern 1',
+            'title'     =>__( 'Copyright Area Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Copyright Area Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Copyright Area Background Pattern 1.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_copyright_options','equals','pattern1'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Copyright Area Background Pattern 1','redux-framework-demo'),
+                'content' => __('Copyright Area Background Pattern 1','redux-framework-demo'),
+            )
         ),
         array(
             'id'        => 'background_copyright_pattern2',
-            'title'     => 'Copyright Area Background Pattern 2',
+            'title'     =>__( 'Copyright Area Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Copyright Area Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Copyright Area Background Pattern 2.', 'redux-framework-demo'),
             'type'      => 'image_select',
             //'required'      => array('background_copyright_options','equals','pattern2'),
             //'selector'  => 'page-title',
             'mode'      => 'background-image',
-            'options' => getImageFiles('patterns'),
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
             'default' => '',
             'tiles' => true,
             'presets' => false,
+            'hint' => array(
+                'title'   => __('Copyright Area Background Pattern 2','redux-framework-demo'),
+                'content' => __('Copyright Area Background Pattern 2','redux-framework-demo'),
+            )
         ),
     )
 

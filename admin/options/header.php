@@ -19,8 +19,8 @@ $this->sections[] = array(
             'off' => __('NO ', 'redux-framework-demo'),
             'default'   => true,
             'hint' => array(
-                'title'   => 'Show Sliding Bar',
-                'content' => 'Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.'
+                'title'   => __('Show Sliding Bar','redux-framework-demo'),
+                'content' =>  __('Sliding Bar is the area hidden at the top of website which can be slides down on clicking on <strong>+(Plus)</strong> button on right corner. Choose <strong>YES</strong> to show sliding bar, Choose <strong>NO</strong> to hide it. Default value is <strong>YES</strong>.','redux-framework-demo'),
             )
         ),
         array (
@@ -35,8 +35,8 @@ $this->sections[] = array(
             'compiler' => array('header_show_top_bar_class'),
             //'output' => array('body'),
             'hint' => array(
-                'title'   => 'Show Top Bar',
-                'content' => 'Top Bar is an area in header(above logo) you can use to show menu,date,contact no.,email,login/register buttons etc. Choose <strong>YES</strong> to show top bar on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
+                'title'   => __('Show Top Bar','redux-framework-demo'),
+                'content' => __('Top Bar is an area in header(above logo) you can use to show menu,date,contact no.,email,login/register buttons etc. Choose <strong>YES</strong> to show top bar on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.','redux-framework-demo'),
             )
         ),
         array (
@@ -49,8 +49,8 @@ $this->sections[] = array(
             'off' => __('NO ', 'redux-framework-demo'),
             'default'   => true,
             'hint' => array(
-                'title'   => 'Show Logo',
-                'content' => 'Logo is your company or brand logo or the your photo you want to show on your website header. Choose <strong>YES</strong> to show Logo on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
+                'title'   => __('Show Logo','redux-framework-demo'),
+                'content' => __('Logo is your company or brand logo or the your photo you want to show on your website header. Choose <strong>YES</strong> to show Logo on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.','redux-framework-demo'),
             )
         ),
         array (
@@ -63,8 +63,8 @@ $this->sections[] = array(
             'off' => __('NO ', 'redux-framework-demo'),
             'default'   => true,
             'hint' => array(
-                'title'   => 'Show Site Title',
-                'content' => 'Site Title is the Name of your website representing your business/brand or any other title you want to show on your website header. Choose <strong>YES</strong> to show Site Title on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
+                'title'   => __('Show Site Title','redux-framework-demo'),
+                'content' => __('Site Title is the Name of your website representing your business/brand or any other title you want to show on your website header. Choose <strong>YES</strong> to show Site Title on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.','redux-framework-demo'),
             )
         ),
         array (
@@ -77,8 +77,8 @@ $this->sections[] = array(
             'off' => __('NO ', 'redux-framework-demo'),
             'default'   => true,
             'hint' => array(
-                'title'   => 'Show Tagline',
-                'content' => 'Tagline is a slogan for your business/brand or any other sub-title you want to show on your website header. Choose <strong>YES</strong> to show Tagline on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
+                'title'   => __('Show Tagline','redux-framework-demo'),
+                'content' => __('Tagline is a slogan for your business/brand or any other sub-title you want to show on your website header. Choose <strong>YES</strong> to show Tagline on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.','redux-framework-demo'),
             )
         ),
         array (
@@ -91,8 +91,8 @@ $this->sections[] = array(
             'off' => __('NO ', 'redux-framework-demo'),
             'default'   => true,
             'hint' => array(
-                'title'   => 'Show Navigation',
-                'content' => 'Navigation is the main/primary menu on your website header. Choose <strong>YES</strong> to show Navigation on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
+                'title'   => __('Show Navigation','redux-framework-demo'),
+                'content' => __('Navigation is the main/primary menu on your website header. Choose <strong>YES</strong> to show Navigation on the header, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.','redux-framework-demo'),
             )
         ),
         /*
@@ -120,15 +120,20 @@ $this->sections[] = array(
         array (
             'id' => 'header_layout',
             'type' => 'image_select',
+            'title' => __('Select a Header Layout','redux-framework-demo'),
+            'subtitle'  => __('Select a Header Layout.', 'redux-framework-demo'),
             'options' => array (
-                'v1' => 'http://localhost/darlic/wp-content/themes/aione/images/patterns/header1.jpg',
-                'v2' => 'http://localhost/darlic/wp-content/themes/aione/images/patterns/header2.jpg',
-                'v3' => 'http://localhost/darlic/wp-content/themes/aione/images/patterns/header3.jpg',
-                'v4' => 'http://localhost/darlic/wp-content/themes/aione/images/patterns/header4.jpg',
-                'v5' => 'http://localhost/darlic/wp-content/themes/aione/images/patterns/header5.jpg',
+                'v1' => get_template_directory_uri(). '/images/header1.jpg',
+                'v2' => get_template_directory_uri(). '/images/header2.jpg',
+                'v3' => get_template_directory_uri(). '/images/header3.jpg',
+                'v4' => get_template_directory_uri(). '/images/header4.jpg',
+                'v5' => get_template_directory_uri(). '/images/header5.jpg',
             ),
-            'title' => 'Select a Header Layout',
             'default' => 'v4',
+            'hint' => array(
+                'title'   => __('Select a Header Layout','redux-framework-demo'),
+                'content' => __('Select a Header Layout','redux-framework-demo'),
+            )
         ),
         array (
             'id' => 'header_transparent',
@@ -138,52 +143,77 @@ $this->sections[] = array(
             'desc' => __('Default value is <strong>NO</strong>.', 'redux-framework-demo'),
             'on' => __('YES', 'redux-framework-demo'),
             'off' => __('NO ', 'redux-framework-demo'),
-            'default'   => true,
+            'default'   => false,
             'hint' => array(
-                'title'   => 'Transparent Header',
-                'content' => 'Choose <strong>YES</strong> to enable a transparent header that will display your slider behind it, Choose <strong>NO</strong> to show header inline. Default value is <strong>NO</strong>.'
+                'title'   => __('Transparent Header','redux-framework-demo'),
+                'content' => __('Choose <strong>YES</strong> to enable a transparent header that will display your slider behind it, Choose <strong>NO</strong> to show header inline. Default value is <strong>NO</strong>.','redux-framework-demo'),
             )
         ),
 
         array (
-            'desc' => 'Select which content displays in the right area of Header 4.',
             'id' => 'header_v4_content',
             'type' => 'select',
+            'title' => __('Header Content Area For Header #4','redux-framework-demo'),
+            'subtitle'  => __('Header Content Area For Header #4.', 'redux-framework-demo'),
+            'desc' => __('Select which content displays in the right area of Header 4.','redux-framework-demo'),
             'options' => array (
                 'Tagline' => 'Tagline',
                 'Search' => 'Search',
                 'TaglineAndSearch' => 'Tagline + Search',
                 'Banner' => 'Banner',
             ),
-            'title' => 'Header Content Area For Header #4',
             'default' => 'Tagline + Search',
+            'hint' => array(
+                'title'   => __('Header Content Area For Header #4','redux-framework-demo'),
+                'content' => __('Header Content Area For Header #4','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Add HTML banner code for Header #4. The banner or image will display in Header 4 as long as you have Banner selected for the Header Content Area For Header #4 option above.',
             'id' => 'header_banner_code',
             'type' => 'textarea',
-            'title' => 'Banner Code For Header #4',
+            'title' => __('Banner Code For Header #4','redux-framework-demo'),
+            'subtitle'  => __('Banner Code For Header #4.', 'redux-framework-demo'),
+            'desc' => __('Add HTML banner code for Header #4. The banner or image will display in Header 4 as long as you have Banner selected for the Header Content Area For Header #4 option above.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Banner Code For Header #4','redux-framework-demo'),
+                'content' => __('Banner Code For Header #4','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'Tagline will display on Header 4 as long as you have Tagline selected for the Header Content Area For Header #4 option above.',
             'id' => 'header_tagline',
             'type' => 'text',
-            'title' => 'Header Tagline',
+            'title' => __('Header Tagline','redux-framework-demo'),
+            'subtitle'  => __('Header Tagline.', 'redux-framework-demo'),
+            'desc' => __('Tagline will display on Header 4 as long as you have Tagline selected for the Header Content Area For Header #4 option above.','redux-framework-demo'),
             'default' => 'Insert Any Headline Or Link You Want Here',
+            'hint' => array(
+                'title'   => __('Header Tagline','redux-framework-demo'),
+                'content' => __('Header Tagline','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'In pixels, ex: 10px',
             'id' => 'margin_header_top',
             'type' => 'text',
-            'title' => 'Header Top Padding',
+            'title' => __('Header Top Padding','redux-framework-demo'),
+            'subtitle'  => __('Header Top Padding.', 'redux-framework-demo'),
+            'desc' => __('In pixels, ex: 10px','redux-framework-demo'),
             'default' => '0px',
+            'hint' => array(
+                'title'   => __('Header Top Padding','redux-framework-demo'),
+                'content' => __('Header Top Padding','redux-framework-demo'),
+            )
         ),
         array (
-            'desc' => 'In pixels, ex: 10px',
             'id' => 'margin_header_bottom',
             'type' => 'text',
-            'title' => 'Header Bottom Padding',
+            'title' => __('Header Bottom Padding','redux-framework-demo'),
+            'subtitle'  => __('Header Bottom Padding.', 'redux-framework-demo'),
+            'desc' => __('In pixels, ex: 10px','redux-framework-demo'),
             'default' => '0px',
+            'hint' => array(
+                'title'   => __('Header Bottom Padding','redux-framework-demo'),
+                'content' => __('Header Bottom Padding','redux-framework-demo'),
+            )
         )
 
 
@@ -198,9 +228,11 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Select which content displays in the top left area of the header.',
             'id' => 'topbar_left_content',
             'type'      => 'sortable',
+            'title' => __('Topbar Left Content','redux-framework-demo'),
+            'subtitle'  => __('Select content displayed on Topbar Left.', 'redux-framework-demo'),
+            'desc' => __('Select and re-arrange which content displays in the top left area of the header.','redux-framework-demo'),
             'mode'      => 'checkbox',
             'options' => array (
                 'date' => 'Date',
@@ -209,9 +241,9 @@ $this->sections[] = array(
                 'phone' => 'Phone',
                 'social' => 'Social Links',
                 'navigation' => 'Navigation',
-                'custom' => 'Custom',
+                'custom-left' => 'Custom Left',
             ),
-            'title' => 'Topbar Left Content',
+
             'default' => Array(
                 'date' => true,
                 'time' => true,
@@ -219,13 +251,19 @@ $this->sections[] = array(
                 'phone' => false,
                 'social' => false,
                 'navigation' => false,
-                'custom' => false,
+                'custom-left' => false,
             ),
+            'hint' => array(
+                'title'   => __('Topbar Left Content','redux-framework-demo'),
+            'content' => 'Topbar Left Content is the area at the top of website ........'
+        )
         ),
         array (
-            'desc' => 'Select which content displays in the top left area of the header.',
             'id' => 'topbar_right_content',
             'type'      => 'sortable',
+            'title' => __('Topbar Right Content','redux-framework-demo'),
+            'subtitle'  => __('Select content displayed on Topbar Right.', 'redux-framework-demo'),
+            'desc' => __('Select and re-arrange which content displays in the top right area of the header.','redux-framework-demo'),
             'mode'      => 'checkbox',
             'options' => array (
                 'date' => 'Date',
@@ -234,9 +272,9 @@ $this->sections[] = array(
                 'phone' => 'Phone',
                 'social' => 'Social Links',
                 'navigation' => 'Navigation',
-                'custom' => 'Custom',
+                'custom-right' => 'Custom Right',
             ),
-            'title' => 'Topbar Right Content',
+
             'default' => Array(
                 'date' => false,
                 'time' => false,
@@ -244,29 +282,60 @@ $this->sections[] = array(
                 'email' => true,
                 'social' => false,
                 'navigation' => false,
-                'custom' => false,
+                'custom-right' => false,
             ),
+            'hint' => array(
+                'title'   => __('Topbar Right Content','redux-framework-demo'),
+                'content' => 'Topbar Right Content is the area at the top of website ........'
+            )
         ),
         array (
-            'desc' => 'Phone number will display in the Contact Info section of your topbar.',
             'id' => 'topbar_number',
             'type' => 'text',
-            'title' => 'Topbar Phone Number',
-            'default' => '+91-987654321',
+            'title' => __('Topbar Phone Number','redux-framework-demo'),
+            'subtitle'  => __('Phone Number displayed on Topbar.', 'redux-framework-demo'),
+            'desc' => __('Phone number will display in the Contact Info section of your topbar.','redux-framework-demo'),
+            'default' => '+1-5555555555',
+            'hint' => array(
+                'title'   => __('Topbar Phone Number','redux-framework-demo'),
+                'content' => 'Topbar Phone Number  ........'
+            )
         ),
         array (
-            'desc' => 'Email address will display in the Contact Info section of your top header.',
             'id' => 'topbar_email',
             'type' => 'text',
-            'title' => 'Topbar Email Address',
+            'title' => __('Topbar Email Address','redux-framework-demo'),
+            'subtitle'  => __('Email displayed on Topbar.', 'redux-framework-demo'),
+            'desc' => __('Email address will display in the Contact Info section of your top header.','redux-framework-demo'),
             'default' => get_option( 'admin_email' ),
+            'hint' => array(
+                'title'   => __('Topbar Email Address','redux-framework-demo'),
+                'content' => 'Topbar Email Address ........'
+            )
         ),
         array (
-            'desc' => 'Email address will display in the Contact Info section of your top header.',
-            'id' => 'topbar_custom',
+            'id' => 'topbar_custom_left',
             'type' => 'text',
-            'title' => 'Topbar Custom Text',
+            'title' => __('Topbar Custom Text Left','redux-framework-demo'),
+            'subtitle'  => __('Custom Text displayed on Left Topbar.', 'redux-framework-demo'),
+            'desc' => __('You can put your custom text here','redux-framework-demo'),
             'default' => '',
+            'hint' => array(
+                'title'   => __('Topbar Custom Text Left','redux-framework-demo'),
+                'content' => 'Topbar Custom Text Left ........'
+            )
+        ),
+        array (
+            'id' => 'topbar_custom_right',
+            'type' => 'text',
+            'title' => __('Topbar Custom Text Right','redux-framework-demo'),
+            'subtitle'  => __('Custom Text displayed on right Topbar.', 'redux-framework-demo'),
+            'desc' => __('You can put your custom text here','redux-framework-demo'),
+            'default' => '',
+            'hint' => array(
+                'title'   => __('Topbar Custom Text Right','redux-framework-demo'),
+                'content' => 'Topbar Custom Text Right ........'
+            )
         ),
 
     )
@@ -278,15 +347,20 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Select if the slider shows below or above the header. This only works for the slider assigned in page options, not with shortcodes.',
             'id' => 'slider_position',
             'type' => 'select',
+            'title' => __('Slider Position','redux-framework-demo'),
+            'subtitle'  => __('Select Slider position on Page.', 'redux-framework-demo'),
+            'desc' => __('Select if the slider shows below or above the header. This only works for the slider assigned in page options, not with shortcodes.','redux-framework-demo'),
             'options' => array (
                 'Below' => 'Below',
                 'Above' => 'Above',
             ),
-            'title' => 'Slider Position',
             'default' => 'Below',
+            'hint' => array(
+                'title'   => __('Slider Position','redux-framework-demo'),
+                'content' => 'Select if the slider shows below or above the header ........'
+            )
         )
 
     )
@@ -299,41 +373,62 @@ $this->sections[] = array(
     'fields'    => array(
 
         array (
-            'desc' => 'Select a custom social icon color.',
             'id' => 'header_social_links_icon_color',
             'type' => 'color',
-            'title' => 'Header Social Icons Custom Color',
-            'default' => '#bebdbd',
+            'title' => __('Header Social Icons Custom Color','redux-framework-demo'),
+            'subtitle'  => __('Select Custom Color for Social Icons on Header.', 'redux-framework-demo'),
+            'desc' => __('Select a custom social icon color.','redux-framework-demo'),
+            'default' => '#FFFFFF',
+            'hint' => array(
+                'title'   => __('Header Social Icons Custom Color','redux-framework-demo'),
+                'content' => 'Header Social Icons Custom Color........'
+            )
         ),
         array (
-            'desc' => 'Controls the color of the social icons in the footer.',
             'id' => 'header_social_links_boxed',
-            'type' => 'select',
-            'options' => array (
-                'No' => 'No',
-                'Yes' => 'Yes',
-            ),
-            'title' => 'Header Social Icons Boxed',
+            'type' => 'switch',
+            'title' => __('Header Social Icons Boxed','redux-framework-demo'),
+            'subtitle'  => __('Select option to show Boxed Social Icons.', 'redux-framework-demo'),
+            'desc' => __('Select option to show Boxed Social Icons.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
             'default' => 'No',
+            'hint' => array(
+                'title'   => __('Header Social Icons Boxed','redux-framework-demo'),
+                'content' => 'Header Social Icons Boxed........'
+            )
         ),
         array (
-            'desc' => 'Select a custom social icon box color.',
             'id' => 'header_social_links_box_color',
             'type' => 'color',
-            'title' => 'Header Social Icons Custom Box Color',
+            'title' =>  __('Header Social Icons Custom Box Color','redux-framework-demo'),
+            'subtitle'  => __('Select color for Social Icons Custom Box.', 'redux-framework-demo'),
+            'desc' =>  __('Select a custom social icon box color.','redux-framework-demo'),
             'default' => '#e8e8e8',
+            'hint' => array(
+                'title'   => __('Header Social Icons Custom Box Color','redux-framework-demo'),
+                'content' => 'Header Social Icons Custom Box Color........'
+            )
         ),
         array (
-            'desc' => 'Boxradius for the social icons. In pixels, ex: 4px.',
             'id' => 'header_social_links_boxed_radius',
             'type' => 'text',
-            'title' => 'Header Social Icons Boxed Radius',
+            'title' => __('Header Social Icons Boxed Radius','redux-framework-demo'),
+            'subtitle'  => __('Select Boxed Radius for Header Social Icons.', 'redux-framework-demo'),
+            'desc' => __('Boxradius for the social icons. In pixels, ex: 4px.','redux-framework-demo'),
             'default' => '4px',
+            'hint' => array(
+                'title'   => __('Header Social Icons Boxed Radius','redux-framework-demo'),
+                'content' => 'Header Social Icons Boxed Radius........'
+            )
         ),
         array (
-            'desc' => 'Controls the tooltip position of the social icons in the footer.',
+
             'id' => 'header_social_links_tooltip_placement',
             'type' => 'select',
+            'title' =>  __('Header Social Icons Tooltip Position','redux-framework-demo'),
+            'desc' =>  __('Controls the tooltip position of the social icons in the footer.','redux-framework-demo'),
+            'subtitle'  => __('Controls the tooltip position of Header Social Icons.', 'redux-framework-demo'),
             'options' => array (
                 'Top' => 'Top',
                 'Right' => 'Right',
@@ -341,8 +436,11 @@ $this->sections[] = array(
                 'Left' => 'Left',
                 'None' => 'None',
             ),
-            'title' => 'Header Social Icons Tooltip Position',
             'default' => 'Bottom',
+            'hint' => array(
+                'title'   => __('Header Social Icons Tooltip Position','redux-framework-demo'),
+                'content' => 'Header Social Icons Tooltip Position........'
+            )
         )
 
 
@@ -355,47 +453,91 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Check to enable a fixed header when scrolling, uncheck to disable.',
             'id' => 'header_sticky',
-            'type' => 'checkbox',
-            'title' => 'Enable Sticky Header',
+            'type' => 'switch',
+            'title' => __('Enable Sticky Header','redux-framework-demo'),
+            'subtitle'  => __('To enable a fixed header when scrolling.', 'redux-framework-demo'),
+            'desc' => __('Select YES to enable a fixed header when scrolling, NO to disable.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
             'default' => 1,
+            'hint' => array(
+                'title'   => __('Enable Sticky Header','redux-framework-demo'),
+                'content' => 'Select YES to enable a fixed header when scrolling, NO to disable.......'
+            )
         ),
         array (
-            'desc' => 'Check to enable a fixed header when scrolling on tablets, uncheck to disable.',
             'id' => 'header_sticky_tablet',
-            'type' => 'checkbox',
-            'title' => 'Enable Sticky Header on Tablets',
+            'type' => 'switch',
+            'title' =>  __('Enable Sticky Header on Tablets','redux-framework-demo'),
+            'subtitle'  => __('To enable a fixed header when scrolling on Tablets.', 'redux-framework-demo'),
+            'desc' =>  __('Select YES to enable a fixed header when scrolling on tablets, NO to disable.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => 0,
+            'hint' => array(
+                'title'   => __('Enable Sticky Header on Tablets','redux-framework-demo'),
+                'content' => 'Select YES to enable a fixed header when scrolling on Tablets, NO to disable.......'
+            )
         ),
         array (
-            'desc' => 'Check to enable a fixed header when scrolling on mobiles, uncheck to disable.',
             'id' => 'header_sticky_mobile',
-            'type' => 'checkbox',
-            'title' => 'Enable Sticky Header on Mobiles',
-        ),array (
-            'desc' => 'Header v2 - v5 only. Set the opacity of background, <br />0.1 (lowest) to 1 (highest).',
+            'type' => 'switch',
+            'title' => __('Enable Sticky Header on Mobiles','redux-framework-demo'),
+            'subtitle'  => __('To enable a fixed header when scrolling on Mobiles.', 'redux-framework-demo'),
+            'desc' => __('Select YES to enable a fixed header when scrolling on Mobiles, NO to disable.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default' => 0,
+            'hint' => array(
+                'title'   => __('Enable Sticky Header on Mobiles','redux-framework-demo'),
+                'content' => 'Select YES to enable a fixed header when scrolling on Mobiles, NO to disable.......'
+            )
+        ),
+        array (
             'id' => 'header_sticky_opacity',
             'type' => 'text',
-            'title' => 'Sticky Header Opacity',
+            'title' => __('Sticky Header Opacity','redux-framework-demo'),
+            'subtitle'  => __('Set the opacity of background of Sticky Header.', 'redux-framework-demo'),
+            'desc' => __('Header v2 - v5 only. Set the opacity of background, <br />0.1 (lowest) to 1 (highest).','redux-framework-demo'),
             'default' => '0.97',
+            'hint' => array(
+                'title'   => __('Sticky Header Opacity','redux-framework-demo'),
+                'content' => 'Sticky Header Opacity..........'
+            )
         ),
         array (
-            'desc' => 'Controls the space between each menu item in the sticky header. Use a number without \'px\', default is 35. ex: 35',
             'id' => 'header_sticky_nav_padding',
             'type' => 'text',
-            'title' => 'Sticky Header Menu Item Padding',
+            'title' => __('Sticky Header Menu Item Padding','redux-framework-demo'),
+            'subtitle'  => __('Set the Padding of Sticky Header Menu Item.', 'redux-framework-demo'),
+            'desc' => __('Controls the space between each menu item in the sticky header. Use a number without \'px\', default is 35. ex: 35','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Sticky Header Menu Item Padding','redux-framework-demo'),
+                'content' => 'Sticky Header Menu Item Padding..........'
+            )
         ),
         array (
-            'desc' => 'Controls the font size of the menu items in the sticky header. Use a number without \'px\', default is 14. ex: 14',
             'id' => 'header_sticky_nav_font_size',
             'type' => 'text',
-            'title' => 'Sticky Header Navigation Font Size',
+            'title' => __('Sticky Header Navigation Font Size','redux-framework-demo'),
+            'subtitle'  => __('Set the Sticky Header Navigation Font Size.', 'redux-framework-demo'),
+            'desc' => __('Controls the font size of the menu items in the sticky header. Use a number without \'px\', default is 14. ex: 14','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Sticky Header Navigation Font Size','redux-framework-demo'),
+                'content' => 'Sticky Header Navigation Font Size..........'
+            )
         ),
         array (
-            'desc' => 'Controls the max-width of the sticky header logo. If your logo is too large and does not allow the menu to fit on one line, then use this option and insert a smaller width for your logo. ex: 120',
             'id' => 'header_sticky_logo_max_width',
             'type' => 'text',
-            'title' => 'Sticky Header Logo Width',
+            'title' => __('Sticky Header Logo Width','redux-framework-demo'),
+            'subtitle'  => __('Set the Sticky Header Logo Width.', 'redux-framework-demo'),
+            'desc' => __('Controls the max-width of the sticky header logo. If your logo is too large and does not allow the menu to fit on one line, then use this option and insert a smaller width for your logo. ex: 120','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Sticky Header Logo Width','redux-framework-demo'),
+                'content' => 'Sticky Header Logo Width..........'
+            )
         )
 
     )
@@ -407,73 +549,142 @@ $this->sections[] = array(
     'subsection' => true,
     'fields'    => array(
         array (
-            'desc' => 'Select an image file for your logo.',
             'id' => 'logo',
             'type' => 'media',
-            'title' => 'Logo',
+            'title' => __('Logo','redux-framework-demo'),
+            'subtitle'  => __('Select Logo Image.', 'redux-framework-demo'),
+            'desc' => __('Select an image file for your logo.','redux-framework-demo'),
             'default' => array (
-                'url' => 'http://localhost/darlic/wp-content/themes/aione/images/logo.png',
+                'url' => get_template_directory_uri().'/images/logo.png',
             ),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Logo','redux-framework-demo'),
+                'content' => 'Select an image file for your logo..........'
+            )
         ),
         array (
-            'desc' => 'Select an image file for the retina version of the logo. It should be exactly 2x the size of main logo.',
             'id' => 'logo_retina',
             'type' => 'media',
-            'title' => 'Logo (Retina Version @2x)',
+            'title' => __('Logo (Retina Version @2x)','redux-framework-demo'),
+            'subtitle'  => __('Select Logo Image(Retina Version @2x).', 'redux-framework-demo'),
+            'desc' => __('Select an image file for the retina version of the logo. It should be exactly 2x the size of main logo.','redux-framework-demo'),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Logo (Retina Version @2x)','redux-framework-demo'),
+                'content' => 'Select an image file for the retina version of the logo..........'
+            )
         ),
         array (
-            'desc' => 'If retina logo is uploaded, enter the standard logo (1x) version width, do not enter the retina logo width.',
             'id' => 'retina_logo_width',
             'type' => 'text',
-            'title' => 'Standard Logo Width for Retina Logo',
+            'title' => __('Standard Logo Width for Retina Logo','redux-framework-demo'),
+            'subtitle'  => __('Standard Logo Width for Retina Logo.', 'redux-framework-demo'),
+            'desc' => __('If retina logo is uploaded, enter the standard logo (1x) version width, do not enter the retina logo width.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Standard Logo Width for Retina Logo','redux-framework-demo'),
+                'content' => 'Standard Logo Width for Retina Logo..........'
+            )
         ),
         array (
-            'desc' => 'If retina logo is uploaded, enter the standard logo (1x) version height, do not enter the retina logo height.',
             'id' => 'retina_logo_height',
             'type' => 'text',
-            'title' => 'Standard Logo Height for Retina Logo',
+            'title' => __('Standard Logo Height for Retina Logo','redux-framework-demo'),
+            'subtitle'  => __('Standard Logo Height for Retina Logo.', 'redux-framework-demo'),
+            'desc' => __('If retina logo is uploaded, enter the standard logo (1x) version height, do not enter the retina logo height.','redux-framework-demo'),
+            'hint' => array(
+                'title'   => __('Standard Logo Height for Retina Logo','redux-framework-demo'),
+                'content' => 'Standard Logo Height for Retina Logo..........'
+            )
         ),
         array (
-            'desc' => 'Note: center only works on Header 5.',
             'id' => 'logo_alignment',
             'type' => 'select',
+            'title' => __('Logo Alignment','redux-framework-demo'),
+            'subtitle'  => __('Standard Logo Alignment.', 'redux-framework-demo'),
+            'desc' => __('Note: center only works on Header 5.','redux-framework-demo'),
             'options' => array (
                 'Left' => 'Left',
                 'Center' => 'Center',
                 'Right' => 'Right',
             ),
-            'title' => 'Logo Alignment',
             'default' => 'Left',
+            'hint' => array(
+            'title'   => __('Logo Alignment','redux-framework-demo'),
+            'content' => 'Logo Alignment..........'
+)
         ),
         array (
-            'desc' => 'In pixels, ex: 10px',
             'id' => 'margin_logo_left',
             'type' => 'text',
-            'title' => 'Logo Left Margin',
+            'title' => __('Logo Left Margin','redux-framework-demo'),
+            'subtitle'  => __('Logo Left Margin.', 'redux-framework-demo'),
+            'desc' => __('In pixels, ex: 10px','redux-framework-demo'),
             'default' => '0px',
+            'hint' => array(
+                'title'   => __('Logo Left Margin','redux-framework-demo'),
+                'content' => 'Logo Left Margin..........'
+            )
         ),
         array (
-            'desc' => 'In pixels, ex: 10px',
             'id' => 'margin_logo_right',
             'type' => 'text',
-            'title' => 'Logo Right Margin',
+            'title' => __('Logo Right Margin','redux-framework-demo'),
+            'subtitle'  => __('Logo Right Margin.', 'redux-framework-demo'),
+            'desc' => __('In pixels, ex: 10px','redux-framework-demo'),
             'default' => '0px',
+            'hint' => array(
+                'title'   => __('Logo Right Margin','redux-framework-demo'),
+                'content' => 'Logo Right Margin..........'
+            )
         ),
         array (
-            'desc' => 'In pixels, ex: 10px',
             'id' => 'margin_logo_top',
             'type' => 'text',
-            'title' => 'Logo Top Margin',
+            'title' => __('Logo Top Margin','redux-framework-demo'),
+            'subtitle'  => __('Logo Top Margin.', 'redux-framework-demo'),
+            'desc' => __('In pixels, ex: 10px','redux-framework-demo'),
             'default' => '10px',
+            'hint' => array(
+                'title'   => __('Logo Top Margin','redux-framework-demo'),
+                'content' => 'Logo Top Margin..........'
+            )
         ),
         array (
-            'desc' => 'In pixels, ex: 10px',
             'id' => 'margin_logo_bottom',
             'type' => 'text',
-            'title' => 'Logo Bottom Margin',
+            'title' => __('Logo Bottom Margin','redux-framework-demo'),
+            'subtitle'  => __('Logo Bottom Margin.', 'redux-framework-demo'),
+            'desc' => __('In pixels, ex: 10px','redux-framework-demo'),
             'default' => '10px',
+            'hint' => array(
+                'title'   => __('Logo Bottom Margin','redux-framework-demo'),
+                'content' => 'Logo Bottom Margin..........'
+            )
+        ),
+        array (
+            'id' => 'logo_text_top_margin',
+            'type' => 'text',
+            'title' => __('Logo Text Top Margin','redux-framework-demo'),
+            'subtitle'  => __('Logo Text Top Margin.', 'redux-framework-demo'),
+            'desc' =>__( 'In pixels, ex: 10px','redux-framework-demo'),
+            'default' => '10px',
+            'hint' => array(
+                'title'   => __('Logo Text Top Margin','redux-framework-demo'),
+                'content' => 'Logo Text Top Margin..........'
+            )
+        ),
+        array (
+            'id' => 'logo_text_margin_bottom',
+            'type' => 'text',
+            'title' => __('Logo Text Bottom Margin','redux-framework-demo'),
+            'subtitle'  => __('Logo Text Bottom Margin.', 'redux-framework-demo'),
+            'desc' => __('In pixels, ex: 10px','redux-framework-demo'),
+            'default' => '10px',
+            'hint' => array(
+                'title'   => __('Logo Text Bottom Margin','redux-framework-demo'),
+                'content' => 'Logo Text Bottom Margin..........'
+            )
         ),
         array (
             'id' => 'favicons',
@@ -482,39 +693,64 @@ $this->sections[] = array(
             'raw' => '<h3 style=\'margin: 0;\'>Favicon Options</h3>',
         ),
         array (
-            'desc' => 'Favicon for your website (16px x 16px).',
             'id' => 'favicon',
             'type' => 'media',
-            'title' => 'Favicon',
+            'title' => __('Favicon','redux-framework-demo'),
+            'subtitle'  => __('Favicon.', 'redux-framework-demo'),
+            'desc' => __('Favicon for your website (16px x 16px).','redux-framework-demo'),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Favicon','redux-framework-demo'),
+                'content' => 'Favicon..........'
+            )
         ),
         array (
-            'desc' => 'Favicon for Apple iPhone (57px x 57px).',
             'id' => 'iphone_icon',
             'type' => 'media',
-            'title' => 'Apple iPhone Icon Upload',
+            'title' => __('Apple iPhone Icon Upload','redux-framework-demo'),
+            'subtitle'  => __('Apple iPhone Icon Upload.', 'redux-framework-demo'),
+            'desc' => __('Favicon for Apple iPhone (57px x 57px).','redux-framework-demo'),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Apple iPhone Icon Upload','redux-framework-demo'),
+                'content' => 'Apple iPhone Icon Upload..........'
+            )
         ),
         array (
-            'desc' => 'Favicon for Apple iPhone Retina Version (114px x 114px).',
             'id' => 'iphone_icon_retina',
             'type' => 'media',
-            'title' => 'Apple iPhone Retina Icon Upload',
+            'title' => __('Apple iPhone Retina Icon Upload','redux-framework-demo'),
+            'subtitle'  => __('Apple iPhone Retina Icon Upload.', 'redux-framework-demo'),
+            'desc' => __('Favicon for Apple iPhone Retina Version (114px x 114px).','redux-framework-demo'),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Apple iPhone Retina Icon Upload','redux-framework-demo'),
+                'content' => 'Apple iPhone Retina Icon Upload..........'
+            )
         ),
         array (
-            'desc' => 'Favicon for Apple iPad (72px x 72px).',
             'id' => 'ipad_icon',
             'type' => 'media',
-            'title' => 'Apple iPad Icon Upload',
+            'title' => __('Apple iPad Icon Upload','redux-framework-demo'),
+            'subtitle'  => __('Apple iPad Icon Upload.', 'redux-framework-demo'),
+            'desc' => __('Favicon for Apple iPad (72px x 72px).','redux-framework-demo'),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Apple iPad Icon Upload','redux-framework-demo'),
+                'content' => 'Apple iPad Icon Upload..........'
+            )
         ),
         array (
-            'desc' => 'Favicon for Apple iPad Retina Version (144px x 144px).',
             'id' => 'ipad_icon_retina',
             'type' => 'media',
-            'title' => 'Apple iPad Retina Icon Upload',
+            'title' => __('Apple iPad Retina Icon Upload','redux-framework-demo'),
+            'subtitle'  => __('Apple iPad Retina Icon Upload.', 'redux-framework-demo'),
+            'desc' => __('Favicon for Apple iPad Retina Version (144px x 144px).','redux-framework-demo'),
             'url' => true,
+            'hint' => array(
+                'title'   => __('Apple iPad Retina Icon Upload','redux-framework-demo'),
+                'content' => 'Apple iPad Retina Icon Upload..........'
+            )
         )
 
     )
@@ -522,7 +758,8 @@ $this->sections[] = array(
 /*********************************************************************************************/
 $this->sections[] = array(
     'icon'      => 'el-icon-hand-up',
-    'title'     => __('Menu', 'redux-framework-demo'),
+    'title'     => __('Main Menu', 'redux-framework-demo'),
+    'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
     'subsection' => true,
     'fields'    => array(
         array (
@@ -537,7 +774,7 @@ $this->sections[] = array(
             'compiler' => array('main_nav_show_home_icon'),
             //'output' => array('main_nav_show_home_icon'),
             'hint' => array(
-                'title'   => 'Show Home Icon',
+                'title'   => __('Show Home Icon','redux-framework-demo'),
                 'content' => 'This option Enables/Disables <strong>Home Icon</strong> on main menu. Choose <strong>YES</strong> to home icon on main menu, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
             )
         ),
@@ -553,7 +790,7 @@ $this->sections[] = array(
             'compiler' => array('main_nav_show_home_link'),
             //'output' => array('main_nav_show_home_icon'),
             'hint' => array(
-                'title'   => 'Show Home Link',
+                'title' =>  __('Show Home Link', 'redux-framework-demo'),
                 'content' => 'This option Enables/Disables <strong>Home Link</strong> on main menu. Choose <strong>YES</strong> to show home icon on main menu, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
             )
         ),
@@ -569,7 +806,7 @@ $this->sections[] = array(
             'compiler' => array('main_nav_show_description'),
             //'output' => array('main_nav_show_home_icon'),
             'hint' => array(
-                'title'   => 'Show Menu Description',
+                'title' =>  __('Show Menu Description', 'redux-framework-demo'),
                 'content' => 'This option Enables/Disables <strong>Description</strong> on main menu. Choose <strong>YES</strong> to show description on main menu, Choose <strong>NO</strong> to remove it. Default value is <strong>NO</strong>.'
             )
         ),
@@ -585,7 +822,7 @@ $this->sections[] = array(
             'compiler' => array('main_nav_show_description'),
             //'output' => array('main_nav_show_home_icon'),
             'hint' => array(
-                'title'   => 'Show Search Icon in Main Menu',
+                'title' =>  __('Show Search Icon in Main Menu', 'redux-framework-demo'),
                 'content' => 'This option Enables/Disables <strong>Search Icon</strong> on main menu. Choose <strong>YES</strong> to show Search Icon on main menu, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
             ),
         ),
@@ -601,55 +838,117 @@ $this->sections[] = array(
             'compiler' => array('main_nav_icon_circle'),
             //'output' => array('main_nav_show_home_icon'),
             'hint' => array(
-                'title'   => 'Show Circle on Search Icon',
+                'title' =>  __('Show Circle on Search Icon', 'redux-framework-demo'),
                 'content' => 'This option Enables/Disables <strong>Show Circle</strong> on Search Icon. Choose <strong>YES</strong> to show Circle on Search Icon, Choose <strong>NO</strong> to remove it. Default value is <strong>YES</strong>.'
             ),
         ),
 
 
         array (
-            'desc' => 'Check to enable a circle border on the main menu cart and search icons.',
             'id' => 'main_nav_icon_circle',
             'type' => 'switch',
-            'title' => 'Enable Circle Border On Menu Icons',
+            'title' => __('Enable Circle Border On Menu Icons','redux-framework-demo'),
+            'subtitle'  => __('Enable Circle Border On Menu Icons.', 'redux-framework-demo'),
+            'desc' => __('YES to enable a circle border on the main menu cart and search icons.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default'   => true,
+            'hint' => array(
+                'title' =>  __('Enable Circle Border On Menu Icons', 'redux-framework-demo'),
+                'content' => 'Enable Circle Border On Menu Icons.........'
+            ),
         ),
         array (
-            'desc' => 'Check to group submenu to slideout elements on mobile menu.',
             'id' => 'mobile_nav_submenu_slideout',
             'type' => 'switch',
-            'title' => 'Mobile Menu Submenu Slide Outs',
+            'title' => __('Mobile Menu Submenu Slide Outs','redux-framework-demo'),
+            'subtitle'  => __('Mobile Menu Submenu Slide Outs.', 'redux-framework-demo'),
+            'desc' => __('Check to group submenu to slideout elements on mobile menu.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default'   => true,
+            'hint' => array(
+                'title' =>  __('Mobile Menu Submenu Slide Outs', 'redux-framework-demo'),
+                'content' => 'Mobile Menu Submenu Slide Outs.........'
+            ),
+        ),
+        array(
+            'id'            => 'main_nav_height',
+            'type'          => 'slider',
+            'title'         => __( 'Main Menu Height', 'redux-framework-demo' ),
+            'subtitle'      => __( 'Height of Main Navigation', 'redux-framework-demo' ),
+            'desc'          => __( 'Use <strong>Text Box</strong> or <strong>Slider</strong> to set the value. Default value is <strong>40</strong>.', 'redux-framework-demo' ),
+            'default'       => 40,
+            'min'           => 0,
+            'step'          => 1,
+            'max'           => 100,
+            'display_value' => 'text',
+            'hint' => array(
+                'title'   => __( 'Main Menu Height', 'redux-framework-demo' ),
+                'content' => __( 'Choose the height of main menu on header. Use <strong>Text Box</strong> or <strong>Slider</strong> to set the value. Default value is <strong>40</strong>.', 'redux-framework-demo' ),
+            ),
+        ),
+        array(
+            'id'            => 'main_nav_margin',
+            'type'          => 'slider',
+            'title'         => __( 'Main Menu Margin', 'redux-framework-demo' ),
+            'subtitle'      => __( 'Margin of Main Navigation', 'redux-framework-demo' ),
+            'desc'          => __( 'Use <strong>Text Box</strong> or <strong>Slider</strong> to set the margin between<strong>Main Menu Items</strong>. Default value is <strong>0</strong>.', 'redux-framework-demo' ),
+            'default'       => 0,
+            'min'           => 0,
+            'step'          => 1,
+            'max'           => 100,
+            'display_value' => 'text',
+            'hint' => array(
+                'title'   => __( 'Main Menu Item Margin', 'redux-framework-demo' ),
+                'content' => __( 'Choose the margin of main menu on header. Use <strong>Text Box</strong> or <strong>Slider</strong> to set the value. Default value is <strong>0</strong>.', 'redux-framework-demo' ),
+            ),
+        ),
+        array(
+            'id'            => 'main_nav_padding',
+            'type'          => 'slider',
+            'title'         => __( 'Main Menu Padding', 'redux-framework-demo' ),
+            'subtitle'      => __( 'Padding of Main Navigation', 'redux-framework-demo' ),
+            'desc'          => __( 'Use <strong>Text Box</strong> or <strong>Slider</strong> to set the padding between<strong>Main Menu Items</strong>. Default value is <strong>15</strong>.', 'redux-framework-demo' ),
+            'default'       => 15,
+            'min'           => 0,
+            'step'          => 1,
+            'max'           => 100,
+            'display_value' => 'text',
+            'hint' => array(
+                'title'   => __( 'Main Menu Item Padding', 'redux-framework-demo' ),
+                'content' => __( 'Choose the margin of main menu on header. Use <strong>Text Box</strong> or <strong>Slider</strong> to set the value. Default value is <strong>15</strong>.', 'redux-framework-demo' ),
+            ),
+        ),
+        array(
+            'id'            => 'dropdown_menu_width',
+            'type'          => 'slider',
+            'title'         => __( 'Sub Menu Dropdown Width', 'redux-framework-demo' ),
+            'subtitle'      => __( 'Width of Sub-Menu Dropdown', 'redux-framework-demo' ),
+            'desc'          => __( 'Use <strong>Text Box</strong> or <strong>Slider</strong> to set width of submenu dropdown of main menu on header. Default value is <strong>220</strong>.', 'redux-framework-demo' ),
+            'default'       => 220,
+            'min'           => 100,
+            'step'          => 5,
+            'max'           => 500,
+            'display_value' => 'text',
+            'hint' => array(
+                'title'   => __( 'dropdown_menu_width', 'redux-framework-demo' ),
+                'content' => __( 'Choose the width of submenu dropdown of main menu on header. Use <strong>Text Box</strong> or <strong>Slider</strong> to set the value. Default value is <strong>220</strong>.', 'redux-framework-demo' ),
+            ),
         ),
 
 
-
         array (
-            'desc' => 'Use a number without \'px\', default is 83. ex: 83',
-            'id' => 'main_nav_height',
-            'type' => 'text',
-            'title' => 'Main Nav Height',
-            'default' => '40',
-
-        ),
-        array (
-            'desc' => 'Use a number without \'px\', default is 35. ex: 35',
-            'id' => 'main_nav_padding',
-            'type' => 'text',
-            'title' => 'Menu Item Padding',
-            'default' => '35',
-        ),
-        array (
-            'desc' => 'In pixels, ex: 170px',
-            'id' => 'dropdown_menu_width',
-            'type' => 'text',
-            'title' => 'Main Menu Dropdown Width',
-            'default' => '170px',
-        ),
-        array (
-            'desc' => 'In pixels, ex: 100px',
             'id' => 'topmenu_dropwdown_width',
             'type' => 'text',
-            'title' => 'Top Menu Dropdown Width',
+            'title' => __('Top Menu Dropdown Width','redux-framework-demo' ),
+            'subtitle'      => __( 'Width of Top Menu Dropdown', 'redux-framework-demo' ),
+            'desc' => __('In pixels, ex: 100px','redux-framework-demo' ),
             'default' => '100px',
+            'hint' => array(
+                'title'   => __( 'Top Menu Dropdown Width', 'redux-framework-demo' ),
+                'content' => __( 'Choose the width of top menu dropdown of main menu on header. Use <strong>Text Box</strong> or <strong>Slider</strong> to set the value. Default value is <strong>220</strong>.', 'redux-framework-demo' ),
+            ),
         ),
         array(
             'id'        => 'nav-exclude-pages',
@@ -659,12 +958,17 @@ $this->sections[] = array(
             'title'     => __('Exclude Pages from Main Menu', 'redux-framework-demo'),
             'subtitle'  => __('Select pages you dont want to show on menu', 'redux-framework-demo'),
             'desc'      => __('The selected pages will be excluded from main menu if no menu is assigned to this this menu position..', 'redux-framework-demo'),
+            'hint' => array(
+                'title'   => __( 'Exclude Pages from Main Menu', 'redux-framework-demo' ),
+                'content' => __( 'Exclude Pages from Main Menu.', 'redux-framework-demo' ),
+            ),
         ),
         array (
-            'desc' => 'Choose Main Menu Animation',
             'id' => 'main_nav_animation',
             'type' => 'select',
-            'title' => 'Menu Animation',
+            'title' =>__('Menu Animation','redux-framework-demo'),
+            'subtitle'  => __('Menu Animation', 'redux-framework-demo'),
+            'desc' => __('Choose Main Menu Animation','redux-framework-demo'),
             'default' => 'slide',
             'options' => array (
                 'slide' => 'Slide',
@@ -672,13 +976,18 @@ $this->sections[] = array(
                 'topline' => 'Top Line',
                 'rotate' => '3D Rotate',
             ),
+            'hint' => array(
+                'title'   => __( 'Menu Animation', 'redux-framework-demo' ),
+                'content' => __( 'Menu Animation.', 'redux-framework-demo' ),
+            ),
         ),
 
         array (
-            'desc' => 'Choose Main Menu Animation Direction',
             'id' => 'main_nav_animation_direction',
             'type' => 'select',
-            'title' => 'Menu Animation Direction',
+            'title' => __('Menu Animation Direction','redux-framework-demo'),
+            'subtitle'  => __('Menu Animation Direction', 'redux-framework-demo'),
+            'desc' => __('Choose Main Menu Animation Direction','redux-framework-demo'),
             'required' => array('main_nav_animation', "=", array( 'slide', 'underline', 'topline','rotate' )),
             'default' => 'up',
             'options' => array (
@@ -687,15 +996,24 @@ $this->sections[] = array(
                 'left' => 'Left',
                 'right' => 'Right',
             ),
+            'hint' => array(
+                'title'   => __( 'Menu Animation Direction', 'redux-framework-demo' ),
+                'content' => __( 'Menu Animation Direction.', 'redux-framework-demo' ),
+            ),
         ),
 
 
         array (
-            'desc' => 'Set the font size for mega menu column titles (menu 2nd level labels). In pixels, ex: 18px',
             'id' => 'megamenu_title_size',
             'type' => 'text',
-            'title' => 'Mega Menu Column Title Size',
+            'title' => __('Mega Menu Column Title Size','redux-framework-demo'),
+            'subtitle'  => __('Mega Menu Column Title Size', 'redux-framework-demo'),
+            'desc' => __('Set the font size for mega menu column titles (menu 2nd level labels). In pixels, ex: 18px','redux-framework-demo'),
             'default' => '18px',
+            'hint' => array(
+                'title'   => __( 'Mega Menu Column Title Size', 'redux-framework-demo' ),
+                'content' => __( 'Mega Menu Column Title Size.', 'redux-framework-demo' ),
+            ),
         )
 
     )
@@ -708,37 +1026,76 @@ $this->sections[] = array(
     'fields'    => array(
 
         array (
-            'desc' => 'Check to enable the top Sliding Bar.',
             'id' => 'slidingbar_widgets',
-            'type' => 'checkbox',
-            'title' => 'Enable Sliding Bar',
+            'type' => 'switch',
+            'title' => __('Enable Sliding Bar','redux-framework-demo'),
+            'subtitle'  => __('Show top Sliding Bar', 'redux-framework-demo'),
+            'desc' => __('Enable the top Sliding Bar.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default'   => false,
+            'hint' => array(
+                'title'   => __( 'Enable Sliding Bar', 'redux-framework-demo' ),
+                'content' => __( 'Enable Sliding Bar.', 'redux-framework-demo' ),
+            ),
         ),
         array (
-            'desc' => 'Check to disable the top Sliding Bar on mobile devices.',
             'id' => 'mobile_slidingbar_widgets',
-            'type' => 'checkbox',
-            'title' => 'Disable Sliding Bar On Mobile',
+            'type' => 'switch',
+            'title' => __('Disable Sliding Bar On Mobile','redux-framework-demo'),
+            'subtitle'  => __('Disable Sliding Bar On Mobile', 'redux-framework-demo'),
+            'desc' => __('Disable the top Sliding Bar on mobile devices.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default'   => false,
+            'hint' => array(
+                'title'   => __( 'Disable Sliding Bar On Mobile', 'redux-framework-demo' ),
+                'content' => __( 'Disable Sliding Bar On Mobile.', 'redux-framework-demo' ),
+            ),
         ),
         array (
-            'desc' => 'Check to enable a top border on the Sliding Bar.',
             'id' => 'slidingbar_top_border',
-            'type' => 'checkbox',
-            'title' => 'Enable Top Border on Sliding Bar',
+            'type' => 'switch',
+            'title' => __('Enable Top Border on Sliding Bar','redux-framework-demo'),
+            'subtitle'  => __('Enable Top Border on Sliding Bar', 'redux-framework-demo'),
+            'desc' => __('Enable a top border on the Sliding Bar.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default'   => false,
+            'hint' => array(
+                'title'   => __( 'Enable Top Border on Sliding Bar', 'redux-framework-demo' ),
+                'content' => __( 'Enable Top Border on Sliding Bar.', 'redux-framework-demo' ),
+            ),
         ),
         array (
-            'desc' => 'Check the box to enable transparency on the Sliding Bar.',
             'id' => 'slidingbar_bg_color_transparency',
-            'type' => 'checkbox',
-            'title' => 'Enable Transparency on the Sliding Bar',
+            'type' => 'switch',
+            'title' => __('Enable Transparency on the Sliding Bar','redux-framework-demo'),
+            'subtitle'  => __('Enable Transparency on the Sliding Bar', 'redux-framework-demo'),
+            'desc' => __('Check the box to enable transparency on the Sliding Bar.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default'   => false,
+            'hint' => array(
+                'title'   => __('Enable Transparency on the Sliding Bar', 'redux-framework-demo' ),
+                'content' => __('Enable Transparency on the Sliding Bar.', 'redux-framework-demo' ),
+            ),
         ),
         array (
-            'desc' => 'Check the box to have the sliding bar open when the page loads.',
             'id' => 'slidingbar_open_on_load',
-            'type' => 'checkbox',
-            'title' => 'Sliding Bar Open On Page Load',
+            'type' => 'switch',
+            'title' => __('Sliding Bar Open On Page Load','redux-framework-demo'),
+            'subtitle'  => __('Sliding Bar Open On Page Load', 'redux-framework-demo'),
+            'desc' => __('Check the box to have the sliding bar open when the page loads.','redux-framework-demo'),
+            'on' => __('YES', 'redux-framework-demo'),
+            'off' => __('NO ', 'redux-framework-demo'),
+            'default'   => false,
+            'hint' => array(
+                'title'   => __('Sliding Bar Open On Page Load', 'redux-framework-demo' ),
+                'content' => __('Sliding Bar Open On Page Load.', 'redux-framework-demo' ),
+            ),
         ),
         array (
-            'desc' => 'Select the number of columns to display in the Sliding Bar.',
             'id' => 'slidingbar_widgets_columns',
             'options' => array (
                 1 => '1',
@@ -747,8 +1104,14 @@ $this->sections[] = array(
                 4 => '4',
             ),
             'type' => 'select',
-            'title' => 'Number of Sliding Bar Columns',
+            'title' => __('Number of Sliding Bar Columns','redux-framework-demo'),
+            'subtitle'  => __('Number of Sliding Bar Columns', 'redux-framework-demo'),
+            'desc' => __('Select the number of columns to display in the Sliding Bar.','redux-framework-demo'),
             'default' => '4',
+            'hint' => array(
+                'title'   => __('Number of Sliding Bar Columns', 'redux-framework-demo' ),
+                'content' => __('Number of Sliding Bar Columns.', 'redux-framework-demo' ),
+            ),
         )
 
     )

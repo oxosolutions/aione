@@ -13,3 +13,4 @@
     echo $social_icons->render_social_icons( $header_soical_icon_options );
     ?>
 </div>
+<div id="social-links-separator" class='topbar-item'></div>
