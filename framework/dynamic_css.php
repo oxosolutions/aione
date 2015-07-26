@@ -2221,6 +2221,10 @@ if($theme_options['imgframe_style_color']) {
     ?>
 }
 
+#sliders-container{
+    <?php echo get_background('slider'); ?>
+}
+
 
 #main{
     <?php if(get_post_meta($c_pageID, 'pyre_wide_page_bg', true)){ ?>

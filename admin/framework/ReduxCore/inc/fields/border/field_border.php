@@ -122,7 +122,7 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
             echo '<input type="hidden" class="field-units" value="px">';
 
             if ( isset( $this->field['all'] ) && $this->field['all'] == true ) {
-                echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el el-fullscreen icon-large"></i></span><input type="text" class="redux-border-all redux-border-input mini' . $this->field['class'] . '" placeholder="' . __( 'All', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-all" value="' . $this->value['top'] . '"></div>';
+                echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el el-fullscreen icon-large"></i></span><input type="text" class="redux-border-all redux-border-input mini ' . $this->field['class'] . '" placeholder="' . __( 'All', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-all" value="' . $this->value['top'] . '"></div>';
             }
 
             echo '<input type="hidden" class="redux-border-value" id="' . $this->field['id'] . '-top" name="' . $this->field['name'] . $this->field['name_suffix'] . '[border-top]" value="' . ( $this->value['top'] ? $this->value['top'] . 'px' : 0 ) . '">';
@@ -135,21 +135,21 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
                  * Top
                  * */
                 if ( $this->field['top'] === true ) {
-                    echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el el-arrow-up icon-large"></i></span><input type="text" class="redux-border-top redux-border-input mini' . $this->field['class'] . '" placeholder="' . __( 'Top', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-top" value="' . $this->value['top'] . '"></div>';
+                    echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el el-arrow-up icon-large"></i></span><input type="text" class="redux-border-top redux-border-input mini ' . $this->field['class'] . '" placeholder="' . __( 'Top', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-top" value="' . $this->value['top'] . '"></div>';
                 }
 
                 /**
                  * Right
                  * */
                 if ( $this->field['right'] === true ) {
-                    echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el el-arrow-right icon-large"></i></span><input type="text" class="redux-border-right redux-border-input mini' . $this->field['class'] . '" placeholder="' . __( 'Right', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-right" value="' . $this->value['right'] . '"></div>';
+                    echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el el-arrow-right icon-large"></i></span><input type="text" class="redux-border-right redux-border-input mini ' . $this->field['class'] . '" placeholder="' . __( 'Right', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-right" value="' . $this->value['right'] . '"></div>';
                 }
 
                 /**
                  * Bottom
                  * */
                 if ( $this->field['bottom'] === true ) {
-                    echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el el-arrow-down icon-large"></i></span><input type="text" class="redux-border-bottom redux-border-input mini' . $this->field['class'] . '" placeholder="' . __( 'Bottom', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-bottom" value="' . $this->value['bottom'] . '"></div>';
+                    echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el el-arrow-down icon-large"></i></span><input type="text" class="redux-border-bottom redux-border-input mini ' . $this->field['class'] . '" placeholder="' . __( 'Bottom', 'redux-framework' ) . '" rel="' . $this->field['id'] . '-bottom" value="' . $this->value['bottom'] . '"></div>';
                 }
 
                 /**
@@ -206,27 +206,39 @@ if ( ! class_exists( 'ReduxFramework_border' ) ) {
          */
         function enqueue() {
             $min = Redux_Functions::isMin();
-            wp_enqueue_style( 'select2-css' );
-            wp_enqueue_style( 'wp-color-picker' );
             
-            wp_enqueue_script(
-                'redux-field-border-js',
-                ReduxFramework::$_url . 'inc/fields/border/field_border' . $min . '.js',
-                array( 'jquery', 'select2-js', 'wp-color-picker', 'redux-js' ),
-                time(),
-                true
-            );
+            if (!wp_style_is ( 'select2-css' )) {
+                wp_enqueue_style( 'select2-css' );
+            }
+            
+            if (!wp_style_is ( 'wp-color-picker' )) {
+                wp_enqueue_style( 'wp-color-picker' );
+            }
+            
+            if (!wp_script_is ( 'redux-field-border-js' )) {
+                wp_enqueue_script(
+                    'redux-field-border-js',
+                    ReduxFramework::$_url . 'inc/fields/border/field_border' . $min . '.js',
+                    array( 'jquery', 'select2-js', 'wp-color-picker', 'redux-js' ),
+                    time(),
+                    true
+                );
+            }
 
             if ($this->parent->args['dev_mode']) {
-                wp_enqueue_style( 'redux-color-picker-css' );
+                if (!wp_style_is ( 'redux-color-picker-css' )) {
+                    wp_enqueue_style( 'redux-color-picker-css' );
+                }
                 
-                wp_enqueue_style(
-                    'redux-field-border-css',
-                    ReduxFramework::$_url . 'inc/fields/border/field_border.css',
-                    array(),
-                    time(),
-                    'all'
-                );
+                if (!wp_style_is ( 'redux-field-border-css' )) {
+                    wp_enqueue_style(
+                        'redux-field-border-css',
+                        ReduxFramework::$_url . 'inc/fields/border/field_border.css',
+                        array(),
+                        time(),
+                        'all'
+                    );
+                }
             }
         } //function
 

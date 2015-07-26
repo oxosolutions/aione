@@ -674,6 +674,174 @@ $this->sections[] = array(
     )
 
 );
+/*********************************************************************************************
+ *
+ *  Slider Background
+ *
+ *********************************************************************************************/
+$this->sections[] = array(
+    'icon'      => 'el-icon-screen',
+    'title'     => __('Slider Background', 'redux-framework-demo'),
+    'subsection' => true,
+    'fields'    => array(
+        array (
+            'id' => 'background_slider_options',
+            'type' => 'button_set',
+            'title' =>  __('Page Title background Options', 'redux-framework-demo'),
+            'subtitle'  => __('Choose options for pagetitle background', 'redux-framework-demo'),
+            'desc' => __('Default value is <strong>YES</strong>.', 'redux-framework-demo'),
+            'multi'    => true,
+            'options' => array (
+                'color' => 'Color',
+                'gradient' => 'Gradient',
+                'image' => 'Image',
+                'custom' => 'Custom Image',
+                'pattern1' => 'Pattern1',
+                'pattern2' => 'Pattern2',
+            ),
+            'default'   => array('image','custom','pattern1'),
+            'hint' => array(
+                'title'   => __('Page Title background Options','redux-framework-demo'),
+                'content' => __('Page Title background Options','redux-framework-demo'),
+            )
+        ),
+        array(
+            'id'        => 'background_slider_color',
+            'title'     =>__( 'Page Title Background Color','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Color', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Color.', 'redux-framework-demo'),
+            'type'      => 'color',
+            'transparent' => false,
+            'alpha'     => .5,
+            //'selector'  => 'page-title',
+            'mode'      => 'background-color',
+            'output'      => '',
+            //'required'      => array('background_slider_options','equals','color'),
+            'default'      => '#d5d5d5',
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Color','redux-framework-demo'),
+                'content' => __('Page Title Background Color','redux-framework-demo'),
+            )
+        ),
+        array(
+            'id'        => 'background_slider_color_alpha',
+            'type'      => 'slider',
+            'title'     => __('Page Title Background Color Alpha', 'redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Color Alpha', 'redux-framework-demo'),
+            'desc'      => __('Set Min: 1, max: 100, step: 1, default value: 100', 'redux-framework-demo'),
+            //'required'      => array('background_pagetitle_options','equals','color'),
+            "default"   => 100,
+            "min"       => 0,
+            "step"      => 1,
+            "max"       => 100,
+            'display_value' => 'label',
+            'hint' => array(
+                'title'   => __('Page Title Background Color Alpha','redux-framework-demo'),
+                'content' => __('Page Title Background Color Alpha','redux-framework-demo'),
+            )
+        ),
+        array(
+            'id'        => 'background_slider_gradient',
+            'title'     =>__( 'Page Title Background Gradient','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Gradient', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Gradient.', 'redux-framework-demo'),
+            'type'      => 'color_gradient',
+            'transparent' => false,
+            //'required'      => array('background_pagetitle_options','equals','gradient'),
+            'alpha'     => .5,
+            //'selector'  => 'page-title',
+            'mode'      => 'background-color',
+            'important' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Gradient','redux-framework-demo'),
+                'content' => __('Page Title Background Gradient','redux-framework-demo'),
+            )
+        ),
+        array(
+            'id'        => 'background_slider_image',
+            'title'     =>__( 'Page Title Background Image','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Image', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Image.', 'redux-framework-demo'),
+            'type'      => 'image_select',
+            //'required'      => array('background_pagetitle_options','equals','image'),
+            //'selector'  => 'page-title',
+            'mode'      => 'background-image',
+            'class'     => 'background_image_chooser',
+            'options' => getImageFiles('backgrounds', true),
+            'default' => '',
+            'tiles' => true,
+            'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Image','redux-framework-demo'),
+                'content' => __('Page Title Background Image','redux-framework-demo'),
+            )
+        ),
+        array (
+            'id'        => 'background_slider',
+            'title'     =>__( 'Page Title Background Custom Image','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Custom Image', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Custom Image.', 'redux-framework-demo'),
+            'type' => 'background',
+            //'required'      => array('background_pagetitle_options','equals','custom'),
+            'background-color' => false,
+            'background-clip' => true,
+            'background-origin' => true,
+            'preview_media' => false,
+            'default'   => array(
+                'background-repeat' => 'no-repeat',
+                'background-clip' => 'border-box',
+                'background-origin' => 'border-box',
+                'background-size' => 'cover',
+                'background-attachment' => 'scroll',
+                'background-position' => 'center top',
+            ),
+            'hint' => array(
+                'title'   => __('Page Title Background Custom Image','redux-framework-demo'),
+                'content' => __('Page Title Background Custom Image','redux-framework-demo'),
+            )
+        ),
+        array(
+            'id'        => 'background_slider_pattern1',
+            'title'     =>__( 'Page Title Background Pattern 1','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Pattern 1', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Pattern 1.', 'redux-framework-demo'),
+            'type'      => 'image_select',
+            //'required'      => array('background_pagetitle_options','equals','pattern1'),
+            //'selector'  => 'page-title',
+            'mode'      => 'background-image',
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns1', true),
+            'default' => '',
+            'tiles' => true,
+            'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Pattern 1','redux-framework-demo'),
+                'content' => __('Page Title Background Pattern 1','redux-framework-demo'),
+            )
+        ),
+        array(
+            'id'        => 'background_slider_pattern2',
+            'title'     =>__( 'Page Title Background Pattern 2','redux-framework-demo'),
+            'subtitle'  => __('Page Title Background Pattern 2', 'redux-framework-demo'),
+            'desc' => __('Page Title Background Pattern 2.', 'redux-framework-demo'),
+            'type'      => 'image_select',
+            //'required'      => array('background_pagetitle_options','equals','pattern2'),
+            //'selector'  => 'page-title',
+            'mode'      => 'background-image',
+            'class'     => 'pattern_chooser',
+            'options' => getImageFiles('patterns2', true),
+            'default' => '',
+            'tiles' => true,
+            'presets' => false,
+            'hint' => array(
+                'title'   => __('Page Title Background Pattern 2','redux-framework-demo'),
+                'content' => __('Page Title Background Pattern 2','redux-framework-demo'),
+            )
+        ),
+    )
+
+);
 
 /*********************************************************************************************
  *

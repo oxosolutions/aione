@@ -157,6 +157,7 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
             /**
               Used within different fields.
              * */
+
             function getImageFiles($directory, $thumbnail = false){
                 // Background Images Reader
                 $thumbnail_directory = '';
@@ -178,6 +179,7 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
                 endif;
                 return $backgrounds;
             }
+
 
             /**
             Used to generate color presets.
@@ -271,6 +273,8 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
 
             require_once(dirname(__FILE__). '/options/options.php');
 
+
+
 			
 
             $this->sections[] = array(
@@ -286,7 +290,23 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
                         'full_width'    => false,
                     ),
                 ),
-            );                     
+            );
+
+            $this->sections[] = array(
+                'title'     => __('Purchase', 'redux-framework-demo'),
+                'desc'      => __('Enter your licence kay for auto updates', 'redux-framework-demo'),
+                'icon'      => 'el-icon-refresh',
+                'fields'    => array(
+                    array(
+                        'id'=>'edd',
+                        'type' => 'edd',
+                        'title' => __('Your License Key', 'redux-framework-demo'),
+                        'subtitle' => __('Please enter a valid key.', 'redux-framework-demo'),
+                    ),
+                ),
+            );
+
+
                     
             $this->sections[] = array(
                 'type' => 'divide',
@@ -386,7 +406,7 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
                 'ajax_save' => true,
                 'page_slug' => 'design_settings',
                 'page_title' => 'Design Settings',
-                'dev_mode' => '0',
+                'dev_mode' => false,
                 'update_notice' => '0',
                 //'intro_text' => '<p>This text is displayed above the options panel. It isn\\’t required, but more info is always better! The intro_text field accepts all HTML.</p>’',
                 'footer_text' => '<style>span.default-mark{ display:inline !important;padding-left:5px;color:#D8D8D8 !important;}</style>',
@@ -503,6 +523,15 @@ if (!class_exists('admin_folder_Redux_Framework_config')) {
                 'icon'  => 'el-icon-linkedin'
             );
             */
+            $this->args['edd'] = array(
+                'mode'            => 'template', // template|plugin
+                'path'            => '', // Path to the plugin/template main file
+                'remote_api_url'  => 'http://oxosolutions.com/api.org',    // our store URL that is running EDD
+                'version'         => "4.3.6",  // current version number
+                'item_name'       => "Aione",      // name of this theme
+                'author'          => "OXO Solutions",    // author of this theme
+                'field_id'        => "edd", // ID of the field used by EDD
+            );
 
         }
 

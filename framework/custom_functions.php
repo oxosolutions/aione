@@ -1136,9 +1136,9 @@ if( ! function_exists( 'aione_display_sidenav' ) ) {
 		}
 
 		if( $post_parent ) {
-			$children = wp_list_pages( sprintf( 'title_li=&child_of=%s&echo=0', $post_parent ) );
+			$children = wp_list_pages( sprintf( 'title_li=&child_of=%s&echo=0&sort_column=menu_order,post_title', $post_parent ) );
 		} else {
-			$children = wp_list_pages( sprintf( 'title_li=&child_of=%s&echo=0', $post_id ) );
+			$children = wp_list_pages( sprintf( 'title_li=&child_of=%s&echo=0&sort_column=menu_order,post_title', $post_id ) );
 		}
 		if ( $children ) {
 			$html .= $children;
