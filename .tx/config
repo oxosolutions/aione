@@ -1,7 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[aione.aionepo]
-file_filter = languages/<lang>.po
-source_lang = en
-type = PO
