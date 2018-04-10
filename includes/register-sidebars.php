@@ -24,8 +24,8 @@ $aione_sidebar_right = array(
 $aione_topbar_left_args = array(
 	'name'          => __( 'Topbar Left', 'theme_text_domain' ),
 	'id'            => 'aione-topbar-left',
-	'description'   => '77777777',
-	'class'         => 'ooooo',
+	'description'   => '',
+	'class'         => '',
 	'before_widget' => '<div id="%1$s" class="aione-topbar-item widget %2$s">',
 	'after_widget'  => '</div>',
 	'before_title'  => '<span class="widgettitle">',
