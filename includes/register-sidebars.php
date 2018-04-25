@@ -2,21 +2,21 @@
 
 $aione_sidebar_left = array(
 	'name'          => __( 'Sidebar Left', 'aione_theme_locale' ),
-	'id'            => 'aione-sideba-left',
+	'id'            => 'aione-sidebar-left',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<h2 class="widgettitle">',
 	'after_title'   => '</h2>' 
 );
 $aione_sidebar_right = array(
 	'name'          => __( 'Sidebar Right', 'theme_text_domain' ),
-	'id'            => 'aione-sideba-right',
+	'id'            => 'aione-sidebar-right',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<h2 class="widgettitle">',
 	'after_title'   => '</h2>' 
 );
@@ -36,8 +36,8 @@ $aione_topbar_right_args = array(
 	'id'            => 'aione-topbar-right',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<span class="widgettitle">',
 	'after_title'   => '</span>' 
 );
@@ -47,8 +47,8 @@ $aione_header_banner_args = array(
 	'id'            => 'aione-header-banner',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<span class="widgettitle">',
 	'after_title'   => '</span>' 
 );
@@ -58,8 +58,8 @@ $aione_footer_column_args = array(
 	'id'            => 'footer-column',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<h3 class="widgettitle">',
 	'after_title'   => '</h3>' 
 );
@@ -69,8 +69,8 @@ $aione_copyright_left_args = array(
 	'id'            => 'aione-copyright-left',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<span class="widgettitle">',
 	'after_title'   => '</span>' 
 );
@@ -79,8 +79,8 @@ $aione_copyright_right_args = array(
 	'id'            => 'aione-copyright-right',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<span class="widgettitle">',
 	'after_title'   => '</span>' 
 );
@@ -90,8 +90,8 @@ $aione_pagetop_content_args = array(
 	'id'            => 'aione-pagetop-content',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<h2 class="widgettitle">',
 	'after_title'   => '</h2>' 
 );
@@ -101,8 +101,8 @@ $aione_pagebottom_content_args = array(
 	'id'            => 'aione-pagebottom-content',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<h2 class="widgettitle">',
 	'after_title'   => '</h2>' 
 );
@@ -111,8 +111,8 @@ $aione_contenttop_content_args = array(
 	'id'            => 'aione-contenttop-content',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<h2 class="widgettitle">',
 	'after_title'   => '</h2>' 
 );
@@ -121,8 +121,8 @@ $aione_contentbottom_content_args = array(
 	'id'            => 'aione-contentbottom-content',
 	'description'   => '',
 	'class'         => '',
-	'before_widget' => '<li id="%1$s" class="widget %2$s">',
-	'after_widget'  => '</li>',
+	'before_widget' => '<div id="%1$s" class="widget %2$s">',
+	'after_widget'  => '</div>',
 	'before_title'  => '<h2 class="widgettitle">',
 	'after_title'   => '</h2>' 
 );

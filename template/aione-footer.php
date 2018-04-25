@@ -11,13 +11,15 @@ endif;
 if ( is_active_sidebar( 'footer-column-4' ) ) : 
 	$count++;
 endif; 
-$col = 100/$count;
+if($count > 0){
+	$col = 100/$count;
+}
 $col=round($col);
 ?>
 
 
 <div id="aione_footer" class="aione-footer">
-	<div class="row-wrapper">
+	<div class="wrapper">
 		<div class="ar">
 			<?php if ( is_active_sidebar( 'footer-column' ) ) : ?>
 				<div class="ac l<?php echo $col ?>">			

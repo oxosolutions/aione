@@ -1,0 +1,227 @@
+/***************************************
+Aione Commmon
+***************************************/
+.aione-clear{
+	clear: both;
+}
+a{
+	-webkit-transition: all 180ms ease-in-out;
+	   -moz-transition: all 180ms ease-in-out;
+	        transition: all 180ms ease-in-out;
+}
+
+/***************************************
+Aione Layout
+***************************************/
+
+.aione-wrapper .wrapper{
+	width: 100%;
+	margin: 0 auto;
+}
+
+.aione-layout-wide .aione-topbar > .wrapper,
+.aione-layout-wide .aione-header > .wrapper,
+.aione-layout-wide .aione-slider > .wrapper,
+.aione-layout-wide .aione-pagetitle > .wrapper,
+.aione-layout-wide .aione-main > .wrapper,
+.aione-layout-wide .aione-footer > .wrapper,
+.aione-layout-wide .aione-copyright > .wrapper{
+	max-width: 1170px;
+	margin: 0 auto;
+}
+/***************************************
+Aione Topbar
+***************************************/
+.aione-topbar{
+	margin: 0;
+	padding: 0;
+	border-top: none;
+	background-color: #f2f2f2;
+}
+.aione-topbar .wrapper{
+	padding:10px 15px;
+}
+.aione-topbar,
+.aione-topbar a{
+	color:#454545;
+	font-size: 17.6px;
+	line-height: 1.4;
+	font-weight: 400;
+}
+.aione-topbar a:hover{
+	color:#333333;
+}
+
+.aione-topbar-left{
+	float:left;
+	text-align: left;
+}
+.aione-topbar-right{
+	float:right;
+	text-align: right;	
+}
+
+.aione-topbar .widget{
+	display: inline-block;
+	margin-right: 15px;
+}
+.aione-topbar .widget:last-child{
+	margin-right: 15px;
+}
+
+.aione-topbar .widget_nav_menu li{
+	display: inline-block;
+}
+.aione-topbar .widget_nav_menu li:after{
+	content:"/";
+	padding:0 10px;
+}
+.aione-topbar .widget_nav_menu li:last-child:after{
+	content:"";
+	padding:0;
+}
+/***************************************
+Aione Header
+***************************************/
+.aione-header .wrapper .ar .ac{
+	 padding-right: 0px;
+	 padding-left: 0px;
+}
+.aione-header .wrapper {
+
+}
+.aione-header .aione-header-item img{
+		width: 90px;
+		height: 90px;
+	}
+.aione-header .aione-header-title{
+		padding-top: 15px;
+		text-align: center;
+	}
+.aione-header .aione-header-item{
+		 margin-left: 0px;
+	}
+
+.aione-header-title .site-title{
+		color: #333;
+	    font-weight: 700;
+	}
+.site-description{
+		color: #2695c9;
+	}
+
+/***************************************
+Aione Header Bannner
+***************************************/
+
+/***************************************
+Aione Nav
+***************************************/
+
+.aione-nav.horizontal{
+		border-bottom: none;
+		padding-left:40px;
+	}
+	.aione-nav .aione-menu ul li a{
+		font-size: 16px;
+		color: #333333;
+	}
+	.aione-nav ul li a{
+		padding: 7px 22px;
+		font-size: 16px;
+	}
+	
+/***************************************
+Aione Slider
+***************************************/
+
+/***************************************
+Aione Page Title
+***************************************/
+
+/***************************************
+Aione Sidebar
+***************************************/
+
+/***************************************
+Aione Content
+***************************************/
+
+/***************************************
+Aione Footer
+***************************************/
+
+.aione-footer{
+		background-color: #222222;
+		margin: 0px;
+	}
+	.aione-footer .ar{
+		padding: 30px;
+	}
+	.aione-footer .widget h3{
+		text-align:left;
+		color:#ffffff;
+		font-size: 20px;
+		border-bottom: 2px solid #b2b2b2;
+		padding-bottom: 15px;
+	}
+	.aione-footer .widget ul li{
+		text-align:left;
+		line-height: 40px;
+		border-bottom: 1px solid #353535;
+	}
+	.aione-footer .widget ul li a{
+		color:#b2b2b2;
+	}
+	.aione-footer .widget .calendar_wrap th,.aione-footer .widget .calendar_wrap td {
+		padding: 3px 5px;
+		color:#b2b2b2;
+	}
+	.aione-footer .widget .calendar_wrap caption{
+		color:#b2b2b2;
+	}
+
+
+/***************************************
+Aione Copyright
+***************************************/
+.aione-copyright{
+	margin: 0;
+	padding: 0;
+	border-top: none;
+	background-color: #121212;
+}
+.aione-copyright .wrapper{
+	padding:10px 15px;
+}
+.aione-copyright,
+.aione-copyright a{
+	color:#a2a2a2;
+	font-size: 17.6px;
+	line-height: 1.4;
+	font-weight: 400;
+}
+.aione-copyright a:hover{
+	color:#ffffff;
+}
+
+.aione-copyright-left{
+	float:left;
+	text-align: left;
+}
+.aione-copyright-right{
+	float:right;
+	text-align: right;	
+}
+
+.aione-copyright .widget_nav_menu li{
+	display: inline-block;
+}
+.aione-copyright .widget_nav_menu li:after{
+	content:"/";
+	padding:0 10px;
+}
+.aione-copyright .widget_nav_menu li:last-child:after{
+	content:"";
+	padding:0;
+}
