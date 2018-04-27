@@ -65,6 +65,9 @@ Aione Topbar
 	text-align: center;	
 }
 
+.aione-topbar .widget .widgettitle{
+	display: none;
+}
 .aione-topbar .widget{
 	display: inline-block;
 	margin-right: 15px;
@@ -235,7 +238,9 @@ Aione Copyright
 	float:none;
 	text-align: center;	
 }
-
+.aione-copyright .widget .widgettitle{
+	display: none;
+}
 .aione-copyright .widget_nav_menu li{
 	display: inline-block;
 }
