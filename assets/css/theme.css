@@ -60,6 +60,10 @@ Aione Topbar
 	float:right;
 	text-align: right;	
 }
+.aione-topbar-center{
+	float:none;
+	text-align: center;	
+}
 
 .aione-topbar .widget{
 	display: inline-block;
@@ -83,32 +87,28 @@ Aione Topbar
 /***************************************
 Aione Header
 ***************************************/
-.aione-header .wrapper .ar .ac{
-	 padding-right: 0px;
-	 padding-left: 0px;
-}
-.aione-header .wrapper {
 
+.aione-header-logo,
+.aione-header-title,
+.aione-header-menu,
+.aione-header-banner{
+	display: inline-block;
 }
-.aione-header .aione-header-item img{
-		width: 90px;
-		height: 90px;
-	}
+.aione-header .aione-header-logo img{
+	max-height: 100px;
+}
 .aione-header .aione-header-title{
-		padding-top: 15px;
-		text-align: center;
-	}
-.aione-header .aione-header-item{
-		 margin-left: 0px;
-	}
+	padding-top: 15px;
+	text-align: left;
+}
 
 .aione-header-title .site-title{
-		color: #333;
-	    font-weight: 700;
-	}
+	color: #333;
+    font-weight: 700;
+}
 .site-description{
-		color: #2695c9;
-	}
+	color: #2695c9;
+}
 
 /***************************************
 Aione Header Bannner
@@ -138,7 +138,25 @@ Aione Slider
 /***************************************
 Aione Page Title
 ***************************************/
-
+.aione-pagetitle{
+	padding:20px 0;
+	text-align: center;
+	background-color: #f2f2f2;
+}
+.aione-pagetitle .title{
+	color: #333333;
+	margin: 0;
+	font-size: 36px;
+	line-height: 1.4;
+	text-align: center;
+}
+.aione-pagetitle .description{
+	color: #484848;
+	margin: 0;
+	font-size: 24px;
+	line-height: 1.4;
+	text-align: center;
+}
 /***************************************
 Aione Sidebar
 ***************************************/
@@ -212,6 +230,10 @@ Aione Copyright
 .aione-copyright-right{
 	float:right;
 	text-align: right;	
+}
+.aione-copyright-center{
+	float:none;
+	text-align: center;	
 }
 
 .aione-copyright .widget_nav_menu li{
