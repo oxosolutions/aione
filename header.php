@@ -7,7 +7,7 @@
 	
 	<?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class(); global $theme_options;?>>
 <div id="aione_wrapper" class="aione-wrapper layout-header-top aione-layout-wide">
 	<div class="wrapper">
 		<?php get_template_part('template/aione-topbar');  ?>
