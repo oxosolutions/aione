@@ -1,7 +1,5 @@
 <?php 
 global $theme_options;
-//$design_settings = get_option('design_settings');
-echo "=======<pre>";print_r($theme_options);echo "</pre>";
 $count=0; 
 if ( is_active_sidebar( 'aione-topbar-left' ) ) : 
 	$count++;
