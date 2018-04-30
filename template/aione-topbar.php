@@ -1,5 +1,5 @@
 <?php 
-//global $theme_options;
+global $theme_options;
 //$design_settings = get_option('design_settings');
 echo "=======<pre>";print_r($theme_options);echo "</pre>";
 $count=0; 
@@ -15,7 +15,7 @@ if($count > 0){
 	if($count == 1){
 		$aione_topbar_left_class = $aione_topbar_right_class = 'aione-topbar-center';
 	}
-	if($theme_options['header_show_top_bar'] == 1){
+	if($theme_options['show_top_bar'] == 1){
 	?>
 		<div id="aione_topbar" class="aione-topbar">
 			<div class="wrapper">
