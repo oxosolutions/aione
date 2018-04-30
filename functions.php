@@ -203,7 +203,16 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  */
 require get_template_directory() . '/includes/customize-menu.php';
 
+/**
+*
+*
+*/
+require 'custom-functions.php';
 
+/**
+*
+*
+*/
 
 if ( ! function_exists( 'register_aione_slider' ) ){
     function register_aione_slider() {
