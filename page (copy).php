@@ -14,11 +14,20 @@
 
 get_header(); ?>
 
-	<main id="primary aione_main" class="site-main aione-main">
+	<main id="primary" class="site-main">
+	<div id="aione_page_content" class="aione-main aione-page-content">
 	<div class="wrapper">
+		<div class="ar">
+		
 		<?php 
 		while ( have_posts() ) : the_post();
-		   get_template_part( 'template-parts/content', 'page' ); 
+			
+			?>
+			<div class="ac">
+			<?php get_template_part( 'template-parts/content', 'page' ); ?>
+			</div>
+			<?php
+
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
@@ -26,6 +35,8 @@ get_header(); ?>
 
 		endwhile; // End of the loop.
 		?>
+	</div>
+	</div><!-- .aione-page-content -->
 	</div><!-- .wrapper -->
 	</main><!-- #primary -->
 

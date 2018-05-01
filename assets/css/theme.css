@@ -97,13 +97,19 @@ Aione Header
 .aione-header-banner{
 	display: inline-block;
 }
-.aione-header .aione-header-logo img{
-	max-height: 100px;
+.aione-header-logo{
+	width: 10%;
+    float: left;
+}
+.aione-header-logo img{
+	width: auto;
+    height: 90px;
 }
 .aione-header .aione-header-title{
-	padding-top: 15px;
+	padding-top:20px;
 	text-align: left;
 }
+
 
 .aione-header-title .site-title{
 	color: #333;
@@ -116,6 +122,24 @@ Aione Header
 /***************************************
 Aione Header Bannner
 ***************************************/
+
+/***************************************
+Aione Pagetop
+***************************************/
+
+.aione-pagetop .widget_custom_html h3{
+	text-align: center;
+}
+.aione-main{
+	position: relative;
+}
+.aione-sidebar:before{
+	position: absolute;
+}
+.aione-sidebar{
+	position: inherit;
+}
+
 
 /***************************************
 Aione Nav

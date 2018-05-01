@@ -1,4 +1,4 @@
-<div id="aione_header_logo" class="aione-header-item">
+<div id="" class="aione-header-item">
 	<?php
 		the_custom_logo();
 	?> 

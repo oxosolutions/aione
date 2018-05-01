@@ -5,7 +5,7 @@
 	<p class="site-title aione-align-left font-size-28 m-0 font-weight-200"><?php bloginfo( 'name' ); ?></p>
 <?php endif; 
 $description = get_bloginfo( 'description', 'display' );
-if($theme_options['header_show_tagline'] == 1){
+if($theme_options['header_show_tagline'] == 1):
 	if ( $description || is_customize_preview() ) : 
 	?>
 	<span class="site-description">
@@ -13,5 +13,4 @@ if($theme_options['header_show_tagline'] == 1){
 	</span>
 	<?php
 	endif; 
-}
-?>
+endif;

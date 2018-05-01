@@ -16,7 +16,7 @@ if ( is_active_sidebar( 'footer-column-4' ) ) {
 if($count > 0):
 	$col = 100/$count;
 	$col=round($col);
-	if($theme_options['footer_widgets'] == 1){
+	if($theme_options['footer_widgets'] == 1):
 	?>
 	<footer id="aione_footer" class="aione-footer">
 		<div class="wrapper ar">
@@ -44,5 +44,5 @@ if($count > 0):
 		</div><!-- .wrapper -->
 	</footer><!-- .aione-footer -->
 <?php 
-  }
+  endif;
 endif;

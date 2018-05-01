@@ -1,6 +1,5 @@
 <?php 
 //TBD: Check ENABLED Check Global and pagewise Settings
-if( true ):
 if( is_active_sidebar( 'footer-column' )  ):
 
 	?>
@@ -11,5 +10,4 @@ if( is_active_sidebar( 'footer-column' )  ):
 		</div><!-- .wrapper -->
 	</div><!-- .aione-header-banner -->
 <?php
-endif;
 endif;

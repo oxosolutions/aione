@@ -14,6 +14,7 @@
 		<?php get_template_part('template/aione-header');  ?>
 		<?php get_template_part('template/aione-slider');  ?>
 		<?php get_template_part('template/aione-pagetitle');  ?>
+		<?php get_template_part('template/aione-pagetop');  ?>
 
 
 
