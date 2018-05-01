@@ -1,4 +1,5 @@
 <?php 
+global $theme_options;
 $count=0; 
 if ( is_active_sidebar( 'aione-copyright-left' ) ) : 
 	$count++;
@@ -12,6 +13,7 @@ if($count > 0){
 	if($count == 1){
 		$aione_copyright_left_class = $aione_copyright_right_class = 'aione-copyright-center';
 	}
+	if($theme_options['footer_copyright'] == 1){
 	?>
 	<div id="aione_copyright" class="aione-copyright">
 		<div class="wrapper">
@@ -31,4 +33,5 @@ if($count > 0){
 		</div><!-- .wrapper -->
 	</div><!-- .aione-copyright -->
 <?php
+	}
 }
