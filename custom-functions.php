@@ -54,7 +54,7 @@ class PerPageOptionsMetaboxes {
 
 		$post_types = get_post_types( array( 'public' => true ) );
 
-		$disallowed = array( 'page', 'post', 'attachment' );
+		$disallowed = array( 'page', 'post', 'attachment', 'aione-slider' );
 
 		foreach ( $post_types as $post_type ) {
 			if ( in_array( $post_type, $disallowed ) ) {
