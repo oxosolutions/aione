@@ -251,7 +251,7 @@ if(function_exists("register_field_group")){
 		'fields' => array (
 			array (
 				'key' => 'field_5ae1a03adc662',
-				'label' => 'Add Images',
+				'label' => 'Images',
 				'name' => 'aione_slider_add_images',
 				'type' => 'gallery',
 				'preview_size' => 'full',
@@ -263,7 +263,7 @@ if(function_exists("register_field_group")){
 				array (
 					'param' => 'post_type',
 					'operator' => '==',
-					'value' => 'slider',
+					'value' => 'aione-slider',
 					'order_no' => 0,
 					'group_no' => 0,
 				),
