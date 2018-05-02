@@ -279,6 +279,8 @@ function aione_slider_shortcode_callback( $atts ) {
 		'id' => '',
 		'class' => '',
 		'items' => '1',
+		'autoplay' => true,
+		'singleitem' => true,
 	), $atts, 'aione-slider' );
 
 	$slides = get_field('images', $atts['id']);
@@ -287,7 +289,7 @@ function aione_slider_shortcode_callback( $atts ) {
 			<div class="wrapper">';
 				if(!empty($slides)):
 					
-					$output .=  '<div id="aione_slider_'.$atts['id'].'" class="slider owl-carousel owl-theme gallery aione-theme" data-items="'.$atts['items'].'">';
+					$output .=  '<div id="aione_slider_'.$atts['id'].'" class="slider owl-carousel owl-theme gallery aione-theme" data-items="'.$atts['items'].'" data-autoplay="'.$atts['autoplay'].'" data-singleitem="'.$atts['singleitem'].'">';
 					//echo '<div id="aione_slider_'.$slider_id.'" class="aione-carousel owl-carousel owl-theme gallery aione-theme">';
 					foreach ($slides as $key => $slide) {
 						$output .= '<div class="aione-item">';
