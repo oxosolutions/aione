@@ -207,7 +207,7 @@ require get_template_directory() . '/includes/customize-menu.php';
 *
 *
 */
-require 'custom-functions.php';
+//require 'custom-functions.php';
 
 /**
 *
@@ -238,23 +238,101 @@ if ( ! function_exists( 'register_aione_slider' ) ){
                 'menu_icon' => 'dashicons-laptop',
                 'supports' => array( 'title'), 
                 'taxonomies' => array( '' ),
-                'has_archive' => false
+                'has_archive' => false,
+                'register_meta_box_cb' => 'aione_slider_metaboxes',
             )
         );
     }
 }
 add_action( 'init', 'register_aione_slider' );
-if(function_exists("register_field_group")){
+
+function aione_slider_metaboxes() {
+	add_meta_box(
+		'aione_slider_settings',
+		'Settings',
+		'aione_slider_settings_callback',
+		'aione-slider',
+		'side',
+		'default'
+	);
+	add_meta_box(
+		'aione_slider_docs',
+		'Slider shortcode',
+		'aione_slider_docs_callback',
+		'aione-slider',
+		'side',
+		'default'
+	);
+}
+
+function aione_slider_settings_callback(){
+	echo "settings";
+}
+
+function aione_slider_docs_callback(){
+	$id = get_the_ID();
+	echo '[aione-slider id="'.$id.'"]';
+}
+
+function aione_slider_shortcode_callback( $atts ) {
+	$atts = shortcode_atts( array(
+		'id' => '',
+		'class' => '',
+		'items' => '1',
+	), $atts, 'aione-slider' );
+
+	$slides = get_field('images', $atts['id']);
+	$output = '';
+	$output .= '<div id="aione_slider" class="aione-slider">
+			<div class="wrapper">';
+				if(!empty($slides)):
+					
+					$output .=  '<div id="aione_slider_'.$atts['id'].'" class="slider owl-carousel owl-theme gallery aione-theme" data-items="'.$atts['items'].'">';
+					//echo '<div id="aione_slider_'.$slider_id.'" class="aione-carousel owl-carousel owl-theme gallery aione-theme">';
+					foreach ($slides as $key => $slide) {
+						$output .= '<div class="aione-item">';
+							$output .= '<div class="aione-image">';
+								$output .= '<img src="'.$slide['url'].'" alt="'.$slide['alt'].'" />';
+
+							$output .= '</div>';
+							$output .= '<div class="aione-description">';
+								$output .= '<h2 class="title">'.$slide['title'].'</h2>';
+								$output .= '<h4 class="description">'.$slide['caption'].'</h4>';
+							$output .= '</div>';
+						$output .= '</div>';
+					}
+					$output .= '</div>';
+
+				endif;
+			$output .='<div class="aione-clear"></div><!-- .aione-clear -->
+			</div><!-- .wrapper -->
+		</div><!-- .aione-slider -->
+		<style type="text/css">
+			.aione-slider{
+				background-color: #f2f2f2;
+			}
+			.aione-description{ 
+				display:none;
+			}
+
+		</style>';
+	echo $output;	
+
+}
+add_shortcode( 'aione-slider', 'aione_slider_shortcode_callback' );
+
+if(function_exists("register_field_group"))
+{
 	register_field_group(array (
 		'id' => 'acf_slider',
 		'title' => 'Slider',
 		'fields' => array (
 			array (
-				'key' => 'field_5ae1a03adc662',
+				'key' => 'field_5ae2b58c4b319',
 				'label' => 'Images',
-				'name' => 'aione_slider_add_images',
+				'name' => 'images',
 				'type' => 'gallery',
-				'preview_size' => 'full',
+				'preview_size' => 'thumbnail',
 				'library' => 'all',
 			),
 		),
@@ -278,3 +356,4 @@ if(function_exists("register_field_group")){
 		'menu_order' => 0,
 	));
 }
+
