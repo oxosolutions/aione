@@ -266,7 +266,30 @@ function aione_slider_metaboxes() {
 }
 
 function aione_slider_settings_callback(){
-	echo "settings";
+	echo aione_slider_settings_form();
+}
+
+function aione_slider_settings_form(){
+	$output = '';
+	$output .= '
+		<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
+			<table class="form-table">
+				<tbody>
+					<tr>
+					<th scope="row"><label for="aione_slider_items">Items</label></th>
+					<td><input name="aione_slider_items" type="number" id="aione_slider_items" value="3" class=""><p class="description">The number of items you want to see on the screen.</p></td>
+					</tr>
+					<tr>
+					<th scope="row"><label for="aione_slider_margin">Margin</label></th>
+					<td><input name="aione_slider_margin" type="number" id="aione_slider_margin" value="0" class=""><p class="description">margin-right(px) on item.</p></td>
+					</tr>
+
+				</tbody>
+			</table>
+			<p class="submit"><input type="submit" id="submit_button" name="app_setting_save" class="button button-primary" value="Save Settings"></p>
+		</form>
+		';
+	return $output;	
 }
 
 function aione_slider_docs_callback(){
