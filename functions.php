@@ -265,252 +265,266 @@ function aione_slider_metaboxes() {
 	);
 }
 
-function aione_slider_settings_callback(){
-	echo aione_slider_settings_form();
+function aione_slider_settings_callback($post){
+	wp_nonce_field( 'aione_slider_settings_form_metabox_nonce', 'aione_slider_settings_form_nonce' ); 
+	echo aione_slider_settings_form($post);
+}
+add_action('save_post', 'aione_slider_settings_save_meta');
+function aione_slider_settings_save_meta($post_id ){
+	if( !isset( $_POST['aione_slider_settings_form_nonce'] ) || !wp_verify_nonce( $_POST['aione_slider_settings_form_nonce'],'aione_slider_settings_form_metabox_nonce') ) 
+    return;
+	if ( !current_user_can( 'edit_post', $post_id ))
+	    return;
+
+	update_post_meta( $post_id, 'aione-slider-settings', $_POST['aione_slider_settings']);
+
 }
 
-function aione_slider_settings_form(){
-	$output = '';
+function aione_slider_settings_form($post){
+	$settings   = get_post_meta( $post->ID, 'aione-slider-settings', true );
+	echo "<pre>";print_r($settings);echo "</pre>";
+	$aione_slider_settings = array();
+	$output = '';	
 	$output .= '
 		<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
 			<table class="form-table">
 				<tbody>
 					<tr>
 					<th scope="row"><label for="aione_slider_items">Items</label></th>
-					<td><input name="aione_slider_items" type="number" id="aione_slider_items" value="3" class=""><p class="description">The number of items you want to see on the screen.</p></td>
+					<td><input name="aione_slider_settings[items]" type="number" id="aione_slider_items" value="3" class=""><p class="description">The number of items you want to see on the screen.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_margin">Margin</label></th>
-					<td><input name="aione_slider_margin" type="number" id="aione_slider_margin" value="0" class=""><p class="description">margin-right(px) on item.</p></td>
+					<td><input name="aione_slider_settings[margin]" type="number" id="aione_slider_margin" value="0" class=""><p class="description">margin-right(px) on item.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_loop">Loop</label></th>
-					<td><select name="aione_slider_loop" id="aione_slider_loop">						
+					<td><select name="aione_slider_settings[loop]" id="aione_slider_loop">						
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Infinity loop. Duplicate last and first items to get loop illusion.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_center">Center</label></th>
-					<td><select name="aione_slider_center" id="aione_slider_center">						
+					<td><select name="aione_slider_settings[center]" id="aione_slider_center">						
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Center item. Works well with even an odd number of items.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_mouseDrag">mouseDrag</label></th>
-					<td><select name="aione_slider_mouseDrag" id="aione_slider_mouseDrag">						
+					<td><select name="aione_slider_settings[mouseDrag]" id="aione_slider_mouseDrag">					
 						<option value="true">True</option>
 						<option value="false">False</option>
 						</select><p class="description">Mouse drag enabled.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_touchDrag">touchDrag</label></th>
-					<td><select name="aione_slider_touchDrag" id="aione_slider_touchDrag">						
+					<td><select name="aaione_slider_settings[touchDrag]" id="aione_slider_touchDrag">					
 						<option value="true">True</option>
 						<option value="false">False</option>
 						</select><p class="description">Touch drag enabled.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_pullDrag">pullDrag</label></th>
-					<td><select name="aione_slider_pullDrag" id="aione_slider_pullDrag">						
+					<td><select name="aione_slider_settings[pullDrag]" id="aione_slider_pullDrag">					
 						<option value="true">True</option>
 						<option value="false">False</option>
 						</select><p class="description">Stage pull to edge.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_freeDrag">freeDrag</label></th>
-					<td><select name="aione_slider_freeDrag" id="aione_slider_freeDrag">						
+					<td><select name="aione_slider_settings[freeDrag]" id="aione_slider_freeDrag">					
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Item pull to edge.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_stagePadding">stagePadding</label></th>
-					<td><input name="aione_slider_stagePadding" type="number" id="aione_slider_stagePadding" value="0" class=""><p class="description">Padding left and right on stage (can see neighbours).</p></td>
+					<td><input name="aione_slider_settings[stagePadding]" type="number" id="aione_slider_stagePadding" value="0" class=""><p class="description">Padding left and right on stage (can see neighbours).</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_merge">Merge</label></th>
-					<td><select name="aione_slider_merge" id="aione_slider_merge">						
+					<td><select name="aione_slider_settings[merge]" id="aione_slider_merge">						
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Merge items. Looking for data-merge="{number}" inside item..</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_mergeFit">mergeFit</label></th>
-					<td><select name="aione_slider_mergeFit" id="aione_slider_mergeFit">						
+					<td><select name="aione_slider_settings[mergeFit]" id="aione_slider_mergeFit">					
 						<option value="true">True</option>
 						<option value="false">False</option>
 						</select><p class="description">Fit merged items if screen is smaller than items value.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_autoWidth">autoWidth</label></th>
-					<td><select name="aione_slider_autoWidth" id="aione_slider_autoWidth">						
+					<td><select name="aione_slider_settings[autoWidth]" id="aione_slider_autoWidth">					
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Set non grid content. Try using width style on divs.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_startPosition">startPosition</label></th>
-					<td><input name="aione_slider_startPosition" type="text" id="aione_slider_startPosition" value="0" class=""><p class="description">Start position or URL Hash string like "#id".</p></td>
+					<td><input name="aione_slider_settings[startPosition]" type="text" id="aione_slider_startPosition" value="0" class=""><p class="description">Start position or URL Hash string like "#id".</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_URLhashListener">URLhashListener</label></th>
-					<td><select name="aione_slider_URLhashListener" id="aione_slider_URLhashListener">					
+					<td><select name="aione_slider_settings[URLhashListener]" id="aione_slider_URLhashListener">		
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Listen to url hash changes. data-hash on items is required.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_nav">Nav</label></th>
-					<td><select name="aione_slider_nav" id="aione_slider_nav">					
+					<td><select name="aione_slider_settings[nav]" id="aione_slider_nav">					
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Show next/prev buttons.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_rewind">Rewind</label></th>
-					<td><select name="aione_slider_rewind" id="aione_slider_rewind">						
+					<td><select name="aione_slider_settings[rewind]" id="aione_slider_rewind">						
 						<option value="true">True</option>
 						<option value="false">False</option>
 						</select><p class="description">Go backwards when the boundary has reached.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_navText">navText</label></th>
-					<td><input name="aione_slider_navText" type="text" id="aione_slider_navText" value="[&#x27;next&#x27;,&#x27;prev&#x27;]" class=""><p class="description">HTML allowed.</p></td>
+					<td><input name="aione_slider_settings[navText]" type="text" id="aione_slider_navText" value="[&#x27;next&#x27;,&#x27;prev&#x27;]" class=""><p class="description">HTML allowed.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_navElement">navElement</label></th>
-					<td><input name="aione_slider_navElement" type="text" id="aione_slider_navElement" value="div" class=""><p class="description">DOM element type for a single directional navigation link.</p></td>
+					<td><input name="aione_slider_settings[navElement]" type="text" id="aione_slider_navElement" value="div" class=""><p class="description">DOM element type for a single directional navigation link.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_slideBy">slideBy</label></th>
-					<td><input name="aione_slider_slideBy" type="text" id="aione_slider_slideBy" value="1" class=""><p class="description">Navigation slide by x. "page" string can be set to slide by page.</p></td>
+					<td><input name="aione_slider_settings[slideBy]" type="text" id="aione_slider_slideBy" value="1" class=""><p class="description">Navigation slide by x. "page" string can be set to slide by page.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_slideTransition">slideTransition</label></th>
-					<td><input name="aione_slider_slideTransition" type="text" id="aione_slider_slideTransition" value="" class=""><p class="description">You can define the transition for the stage you want to use eg. linear.</p></td>
+					<td><input name="aione_slider_settings[slideTransition]" type="text" id="aione_slider_slideTransition" value="" class=""><p class="description">You can define the transition for the stage you want to use eg. linear.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_dots">Dots</label></th>
-					<td><select name="aione_slider_dots" id="aione_slider_dots">						
+					<td><select name="aione_slider_settings[dots]" id="aione_slider_dots">						
 						<option value="true">True</option>
 						<option value="false">False</option>
 						</select><p class="description">Show dots navigation.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_dotsEach">dotsEach</label></th>
-					<td><input name="aione_slider_dotsEach" type="text" id="aione_slider_dotsEach" value="false" class=""><p class="description">Show dots each x item.</p></td>
+					<td><input name="aione_slider_settings[dotsEach]" type="text" id="aione_slider_dotsEach" value="false" class=""><p class="description">Show dots each x item.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_dotsData">dotsData</label></th>
-					<td><select name="aione_slider_dotsData" id="aione_slider_dotsData">					
+					<td><select name="aione_slider_settings[dotsData]" id="aione_slider_dotsData">					
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Used by data-dot content.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_lazyLoad">lazyLoad</label></th>
-					<td><select name="aione_slider_lazyLoad" id="aione_slider_lazyLoad">					
+					<td><select name="aione_slider_settings[lazyLoad]" id="aione_slider_lazyLoad">					
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Lazy load images. data-src and data-src-retina for highres. Also load images into background inline style if element is not <img></p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_lazyLoadEager">lazyLoadEager</label></th>
-					<td><input name="aione_slider_lazyLoadEager" type="number" id="aione_slider_lazyLoadEager" value="0" class=""><p class="description">Eagerly pre-loads images to the right (and left when loop is enabled) based on how many items you want to preload.</p></td>
+					<td><input name="aione_slider_settings[lazyLoadEager]" type="number" id="aione_slider_lazyLoadEager" value="0" class=""><p class="description">Eagerly pre-loads images to the right (and left when loop is enabled) based on how many items you want to preload.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_autoplay">autoplay</label></th>
-					<td><select name="aione_slider_autoplay" id="aione_slider_autoplay">					
+					<td><select name="aione_slider_settings[autoplay]" id="aione_slider_autoplay">					
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Autoplay.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_autoplayTimeout">autoplayTimeout</label></th>
-					<td><input name="aione_slider_autoplayTimeout" type="number" id="aione_slider_autoplayTimeout" value="5000" class=""><p class="description">Autoplay interval timeout.</p></td>
+					<td><input name="aione_slider_settings[autoplayTimeout]" type="number" id="aione_slider_autoplayTimeout" value="5000" class=""><p class="description">Autoplay interval timeout.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_autoplayHoverPause">autoplayHoverPause</label></th>
-					<td><select name="aione_slider_autoplayHoverPause" id="aione_slider_autoplayHoverPause">			
+					<td><select name="aione_slider_settings[autoplayHoverPause]" id="aione_slider_autoplayHoverPause">
 						<option value="false">False</option>
 						<option value="true">True</option>
 						</select><p class="description">Pause on mouse hover.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_smartSpeed">smartSpeed</label></th>
-					<td><input name="aione_slider_smartSpeed" type="number" id="aione_slider_smartSpeed" value="250" class=""><p class="description">Speed Calculate. More info to come..</p></td>
+					<td><input name="aione_slider_settings[smartSpeed]" type="number" id="aione_slider_smartSpeed" value="250" class=""><p class="description">Speed Calculate. More info to come..</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_autoplaySpeed">autoplaySpeed</label></th>
-					<td><input name="aione_slider_autoplaySpeed" type="text" id="aione_slider_autoplaySpeed" value="false" class=""><p class="description">autoplay speed.</p></td>
+					<td><input name="aione_slider_settings[autoplaySpeed]" type="text" id="aione_slider_autoplaySpeed" value="false" class=""><p class="description">autoplay speed.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_navSpeed">navSpeed</label></th>
-					<td><input name="aione_slider_navSpeed" type="text" id="aione_slider_navSpeed" value="false" class=""><p class="description">Navigation speed.</p></td>
+					<td><input name="aione_slider_settings[navSpeed]" type="text" id="aione_slider_navSpeed" value="false" class=""><p class="description">Navigation speed.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_dotsSpeed">dotsSpeed</label></th>
-					<td><input name="aione_slider_dotsSpeed" type="text" id="aione_slider_dotsSpeed" value="false" class=""><p class="description">Pagination speed.</p></td>
+					<td><input name="aione_slider_settings[dotsSpeed]" type="text" id="aione_slider_dotsSpeed" value="false" class=""><p class="description">Pagination speed.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_dragEndSpeed">dragEndSpeed</label></th>
-					<td><input name="aione_slider_dragEndSpeed" type="text" id="aione_slider_dragEndSpeed" value="false" class=""><p class="description">Drag end speed.</p></td>
+					<td><input name="aione_slider_settings[dragEndSpeed]" type="text" id="aione_slider_dragEndSpeed" value="false" class=""><p class="description">Drag end speed.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_callbacks">Callbacks</label></th>
-					<td><select name="aione_slider_callbacks" id="aione_slider_callbacks">			
+					<td><select name="aione_slider_settings[callbacks]" id="aione_slider_callbacks">			
 						<option value="true">True</option>
 						<option value="false">False</option>						
 						</select><p class="description">Enable callback events.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_video">Video</label></th>
-					<td><select name="aione_slider_video" id="aione_slider_video">			
+					<td><select name="aione_slider_settings[video]" id="aione_slider_video">			
 						<option value="false">False</option>
 						<option value="true">True</option>												
 						</select><p class="description">Enable fetching YouTube/Vimeo/Vzaar videos.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_videoHeight">videoHeight</label></th>
-					<td><input name="aione_slider_videoHeight" type="text" id="aione_slider_videoHeight" value="false" class=""><p class="description">Set height for videos.</p></td>
+					<td><input name="aione_slider_settings[videoHeight]" type="text" id="aione_slider_videoHeight" value="false" class=""><p class="description">Set height for videos.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_videoWidth">videoWidth</label></th>
-					<td><input name="aione_slider_videoWidth" type="text" id="aione_slider_videoWidth" value="false" class=""><p class="description">Set width for videos.</p></td>
+					<td><input name="aione_slider_settings[videoWidth]" type="text" id="aione_slider_videoWidth" value="false" class=""><p class="description">Set width for videos.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_animateOut">animateOut</label></th>
-					<td><input name="aione_slider_animateOut" type="text" id="aione_slider_animateOut" value="false" class=""><p class="description">Class for CSS3 animation out.</p></td>
+					<td><input name="aione_slider_settings[animateOut]" type="text" id="aione_slider_animateOut" value="false" class=""><p class="description">Class for CSS3 animation out.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_animateIn">animateIn</label></th>
-					<td><input name="aione_slider_animateIn" type="text" id="aione_slider_animateIn" value="false" class=""><p class="description">Class for CSS3 animation in.</p></td>
+					<td><input name="aione_slider_settings[animateIn]" type="text" id="aione_slider_animateIn" value="false" class=""><p class="description">Class for CSS3 animation in.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_fallbackEasing">fallbackEasing</label></th>
-					<td><input name="aione_slider_fallbackEasing" type="text" id="aione_slider_fallbackEasing" value="swing" class=""><p class="description">Easing for CSS2 $.animate.</p></td>
+					<td><input name="aione_slider_settings[fallbackEasing]" type="text" id="aione_slider_fallbackEasing" value="swing" class=""><p class="description">Easing for CSS2 $.animate.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_itemElement">itemElement</label></th>
-					<td><input name="aione_slider_itemElement" type="text" id="aione_slider_itemElement" value="div" class=""><p class="description">DOM element type for aione-slider-item.</p></td>
+					<td><input name="aione_slider_settings[itemElement]" type="text" id="aione_slider_itemElement" value="div" class=""><p class="description">DOM element type for aione-slider-item.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_stageElement">stageElement</label></th>
-					<td><input name="aione_slider_stageElement" type="text" id="aione_slider_stageElement" value="div" class=""><p class="description">DOM element type for aione-slider-stage.</p></td>
+					<td><input name="aione_slider_settings[stageElement]" type="text" id="aione_slider_stageElement" value="div" class=""><p class="description">DOM element type for aione-slider-stage.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_navContainer">navContainer</label></th>
-					<td><input name="aione_slider_navContainer" type="text" id="aione_slider_navContainer" value="false" class=""><p class="description">Set your own container for nav.</p></td>
+					<td><input name="aione_slider_settings[navContainer]" type="text" id="aione_slider_navContainer" value="false" class=""><p class="description">Set your own container for nav.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_dotsContainer">dotsContainer</label></th>
-					<td><input name="aione_slider_dotsContainer" type="text" id="aione_slider_dotsContainer" value="false" class=""><p class="description">Set your own container for nav.</p></td>
+					<td><input name="aione_slider_settings[dotsContainer]" type="text" id="aione_slider_dotsContainer" value="false" class=""><p class="description">Set your own container for nav.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_checkVisible">checkVisible</label></th>
-					<td><select name="aione_slider_checkVisible" id="aione_slider_checkVisible">			
+					<td><select name="aione_slider_settings[checkVisible]" id="aione_slider_checkVisible">			
 						<option value="true">True</option>
 						<option value="false">False</option>												
 						</select><p class="description">If you know the carousel will always be visible you can set `checkVisibility` to `false` to prevent the expensive browser layout forced reflow the $element.is(":visible") does.</p></td>
@@ -522,6 +536,7 @@ function aione_slider_settings_form(){
 			<p class="submit"><input type="submit" id="submit_button" name="app_setting_save" class="button button-primary" value="Save Settings"></p>
 		</form>
 		';
+
 	return $output;	
 }
 
@@ -574,7 +589,7 @@ function aione_slider_shortcode_callback( $atts ) {
 			}
 
 		</style>';
-	echo $output;	
+	echo $output;
 
 }
 add_shortcode( 'aione-slider', 'aione_slider_shortcode_callback' );
