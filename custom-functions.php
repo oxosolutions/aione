@@ -922,4 +922,119 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 	}
 }
 
+
+/**********************/
+/**
+* Aione Social Share Widget
+* 
+*/
+add_action('widgets_init', create_function('', "register_widget('Aione_Social_Share_Widget');"));
+class Aione_Social_Share_Widget extends WP_Widget {
+
+    public function __construct() {
+	    $widget_options = array( 
+	      'classname' => 'aione_social_share_widget',
+	      'description' => 'Social Share Buttons',
+	    );
+	    parent::__construct( 'aione_social_share_widget', 'Aione Social Share', $widget_options );
+	    global $aione_social_share_accounts;
+		$aione_social_share_accounts = array(
+			'Facebook' => 'facebook',
+			'Flickr' => 'flickr',
+			'GitHub' => 'github',
+			'Google+' => 'googleplus',
+			'Instagram' => 'instagram',
+			'LinkedIn' => 'linkedin',
+			'Pinterest' => 'pinterest',
+			'RSS Feed' => 'rss',
+			'Tumblr' => 'tumblr',
+			'Twitter' => 'twitter',
+			'Vimeo' => 'vimeo',
+			'WordPress' => 'wordpress',
+			'YouTube' => 'youtube',
+			'Blogger' => 'blogger',
+			'Delicious' => 'delicious',
+			'Google +' => 'plus',
+		);
+
+	}
+	public function widget( $args, $instance ) {
+		global $aione_social_share_accounts;
+
+		$share_title = empty($instance['title']) ? 'Share on' : apply_filters('widget_title', $instance['title']);
+		
+		echo $before_widget;
+		?>
+		<script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery('.share').ShareLink({
+                    title: 'SocialShare jQuery plugin',
+                    text: 'SocialShare jQuery plugin for create share buttons and counters',
+                    image: 'http://cdn.myanimelist.net/images/characters/3/27890.jpg',
+                    url: 'https://github.com/AyumuKasuga/SocialShare'
+                });
+                jQuery('.counter').ShareCounter({
+                    url: 'http://google.com/',
+                    increment: true
+                });
+
+            });
+        </script>
+        <?php
+		
+		echo $before_title;
+		echo $share_title;
+		echo $after_title;
+		
+		foreach ($aione_social_share_accounts as $site => $id) {
+			if($instance[$id] == 'enable'){
+				?> 
+				<button class='btn btn-primary share s_<?php echo $id; ?>' type='button'>
+                    <?php echo $site; ?> <span class='badge counter c_<?php echo $id; ?>'></span>
+                </button>
+                <?php
+			}
+		}
+
+		
+		echo $after_widget;
+		
+	}
+	public function form( $instance ) { 
+		global $aione_social_share_accounts;
+
+		foreach ($aione_social_share_accounts as $site => $id) {
+			if(!isset($instance[$id])) { $instance[$id] = ''; }
+		}
+
+		if(!isset($instance['title'])) { $instance['title'] = ''; }
+		?>
+
+		<div class="aione_social_share_widget">
+
+		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
+		<input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
+
+		<?php foreach ($aione_social_share_accounts as $site => $id) : ?>
+			<?php if(esc_attr($instance[$id] == 'enable')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
+			<p class="label_options"><input type="checkbox" id="<?php echo $this->get_field_id($id); ?>" name="<?php echo $this->get_field_name($id); ?>" value="enable"<?php echo $checked; ?> /> <label for="<?php echo $this->get_field_id($id); ?>"><?php echo $site; ?> Share</label></p>
+		<?php endforeach; ?>
+
+		</div>
+		<?php
+	}
+	public function update( $new_instance, $old_instance ) {
+
+		global $aione_social_share_accounts;
+		$instance = array();
+
+		foreach ($aione_social_share_accounts as $site => $id) {
+			$instance[$id] = $new_instance[$id];
+		}
+	    
+		$instance['title'] = $new_instance['title'];
+
+		return $instance;
+	}
+}
 ?>
