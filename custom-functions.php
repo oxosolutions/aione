@@ -941,9 +941,7 @@ class Aione_Social_Share_Widget extends WP_Widget {
 		$aione_social_share_accounts = array(
 			'Facebook' => 'facebook',
 			'Flickr' => 'flickr',
-			'GitHub' => 'github',
 			'Google+' => 'googleplus',
-			'Instagram' => 'instagram',
 			'LinkedIn' => 'linkedin',
 			'Pinterest' => 'pinterest',
 			'RSS Feed' => 'rss',
@@ -955,6 +953,7 @@ class Aione_Social_Share_Widget extends WP_Widget {
 			'Blogger' => 'blogger',
 			'Delicious' => 'delicious',
 			'Google +' => 'plus',
+			'Whatsapp' => 'whatsapp',
 		);
 
 	}
@@ -963,18 +962,18 @@ class Aione_Social_Share_Widget extends WP_Widget {
 
 		$share_title = empty($instance['title']) ? 'Share on' : apply_filters('widget_title', $instance['title']);
 		
+		$title = get_the_title();
+		$url = get_permalink();
 		echo $before_widget;
 		?>
 		<script type="text/javascript">
             jQuery(document).ready(function(){
                 jQuery('.share').ShareLink({
-                    title: 'SocialShare jQuery plugin',
-                    text: 'SocialShare jQuery plugin for create share buttons and counters',
-                    image: 'http://cdn.myanimelist.net/images/characters/3/27890.jpg',
-                    url: 'https://github.com/AyumuKasuga/SocialShare'
+                    title: <?php echo '"'.$title.'"' ; ?>,
+                    url: <?php echo '"'.$url.'"' ; ?>
                 });
                 jQuery('.counter').ShareCounter({
-                    url: 'http://google.com/',
+                    url: <?php echo '"'.$url.'"' ; ?>,
                     increment: true
                 });
 
