@@ -55,10 +55,12 @@ Aione Topbar
 .aione-topbar-left{
 	float:left;
 	text-align: left;
+	width: 30%;
 }
 .aione-topbar-right{
 	float:right;
-	text-align: right;	
+	text-align: right;
+	width: 70%;	
 }
 .aione-topbar-center{
 	float:none;
@@ -88,14 +90,36 @@ Aione Topbar
 	padding:0;
 }
 /***************************************
+Aione Button
+***************************************/
+.aione-button{
+	margin: 0 0 0 0px;
+}
+.aione-button .ion-social-facebook{
+	color: #3b5998;
+}
+.aione-button .ion-social-linkedin{
+	color:#007bb5;
+}
+.aione-button .ion-social-pinterest{
+	color: #ca2027;
+}
+.aione-button .ion-social-twitter{
+	color: #2daae1;
+}
+
+/***************************************
 Aione Header
 ***************************************/
 
 .aione-header-logo,
 .aione-header-title,
 .aione-header-menu,
-.aione-header-banner{
+.aione-header-banner{	
 	display: inline-block;
+}
+.aione-header-menu{
+	padding-top: 10px;
 }
 .aione-header-logo{
 	width: 10%;
@@ -109,8 +133,6 @@ Aione Header
 	padding-top:20px;
 	text-align: left;
 }
-
-
 .aione-header-title .site-title{
 	color: #333;
     font-weight: 700;
@@ -126,9 +148,12 @@ Aione Header Bannner
 /***************************************
 Aione Pagetop
 ***************************************/
+#aione_pagetop .wrapper .widget_text .widgettitle{
+	padding-left: 90px;
+}
 
-.aione-pagetop .widget_custom_html h3{
-	text-align: center;
+.aione-pagetop .widgettitle{
+	padding-left: 90px;
 }
 .aione-main{
 	position: relative;
@@ -167,15 +192,14 @@ Aione Page Title
 ***************************************/
 .aione-pagetitle{
 	padding:20px 0;
-	text-align: center;
 	background-color: #f2f2f2;
 }
 .aione-pagetitle .title{
 	color: #333333;
 	margin: 0;
-	font-size: 36px;
+	font-size: 18px;
+    font-weight: 500;
 	line-height: 1.4;
-	text-align: center;
 }
 .aione-pagetitle .description{
 	color: #484848;

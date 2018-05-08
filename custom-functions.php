@@ -939,28 +939,28 @@ class Aione_Social_Share_Widget extends WP_Widget {
 	    parent::__construct( 'aione_social_share_widget', 'Aione Social Share', $widget_options );
 	    global $aione_social_share_accounts;
 		$aione_social_share_accounts = array(
-			'Facebook' => 'facebook',
+			'<i class="ion-social-facebook"></i>' => 'facebook',
 			'Flickr' => 'flickr',
-			'Google+' => 'googleplus',
-			'LinkedIn' => 'linkedin',
-			'Pinterest' => 'pinterest',
-			'RSS Feed' => 'rss',
-			'Tumblr' => 'tumblr',
-			'Twitter' => 'twitter',
-			'Vimeo' => 'vimeo',
-			'WordPress' => 'wordpress',
-			'YouTube' => 'youtube',
+			'<i class="ion-social-googleplus"></i>' => 'googleplus',
+			'<i class="ion-social-linkedin"></i>' => 'linkedin',
+			'<i class="ion-social-pinterest"></i>' => 'pinterest',
+			'<i class="ion-social-rss"></i>' => 'rss',
+			'<i class="ion-social-tumblr"></i>' => 'tumblr',
+			'<i class="ion-social-twitter"></i>' => 'twitter',
+			'<i class="ion-social-vimeo"></i>' => 'vimeo',
+			'<i class="ion-social-wordpress"></i>' => 'wordpress',
+			'<i class="ion-social-youtube"></i>' => 'youtube',
 			'Blogger' => 'blogger',
 			'Delicious' => 'delicious',
 			'Google +' => 'plus',
-			'Whatsapp' => 'whatsapp',
+			'<i class="ion-social-whatsapp"></i>' => 'whatsapp',
 		);
 
 	}
 	public function widget( $args, $instance ) {
 		global $aione_social_share_accounts;
 
-		$share_title = empty($instance['title']) ? 'Share on' : apply_filters('widget_title', $instance['title']);
+		$share_title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
 		
 		$title = get_the_title();
 		$url = get_permalink();
@@ -988,14 +988,12 @@ class Aione_Social_Share_Widget extends WP_Widget {
 		foreach ($aione_social_share_accounts as $site => $id) {
 			if($instance[$id] == 'enable'){
 				?> 
-				<button class='btn btn-primary share s_<?php echo $id; ?>' type='button'>
-                    <?php echo $site; ?> <span class='badge counter c_<?php echo $id; ?>'></span>
+				<button class='aione-button share s_<?php echo $id; ?>' type='button'>
+                    <?php echo $site; ?> 
                 </button>
                 <?php
 			}
 		}
-
-		
 		echo $after_widget;
 		
 	}
