@@ -6,6 +6,8 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	
 	<?php wp_head(); ?>
+
+	
 </head>
 <body <?php body_class(); ?>>
 <div id="aione_wrapper" class="aione-wrapper layout-header-top aione-layout-wide">

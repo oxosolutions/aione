@@ -34,4 +34,4 @@ if($count > 0):
 	</div><!-- .aione-copyright -->
 <?php
 	endif;
-endif;
+endif;?>

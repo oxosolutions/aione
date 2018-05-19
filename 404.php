@@ -8,10 +8,49 @@
  */
 
 get_header(); ?>
-	
-	<main id="primary" class="site-main">
 
-		<section class="error-404 not-found">
+<main id="primary aione_main" class="site-main aione-main">
+	<div class="wrapper">
+
+<?php
+global $theme_options;
+if($theme_options['sidebar_left_enable'] == 1):
+?>
+<section id="aione_sidebar_left" class="aione-sidebar-left">
+	<div id="" class="aione-sidebar">
+		<div class="wrapper">
+			<?php
+			if ( is_active_sidebar( 'aione-sidebar-left' ) ):
+				dynamic_sidebar( 'aione-sidebar-left' );
+			endif;
+			?>
+		</div>
+	</div>
+</section>
+<?php
+endif;
+?>
+
+<div id="aione_content" class="aione-content">
+<?php
+if($theme_options['content_top_area_enable'] == 1):
+?>
+<section id="aione_contenttop" class="aione-contenttop">
+	<div id="" class="aione-content-top">
+		<div class="wrapper">
+			<?php
+			if ( is_active_sidebar( 'aione-contenttop-content' ) ):
+				dynamic_sidebar( 'aione-contenttop-content' );
+			endif;
+			?>
+		</div>
+	</div>
+</section>
+<?php
+endif;
+?>
+
+<section class="error-404 not-found">
 			<header class="page-header">
 				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'gutenbergtheme' ); ?></h1>
 			</header><!-- .page-header -->
@@ -51,8 +90,49 @@ get_header(); ?>
 
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
+<?php
+if($theme_options['content_bottom_area_enable'] == 1):
+?>
+<section id="aione_contentbottom" class="aione-contentbottom">
+	<div id="" class="aione-content-bottom">
+		<div class="wrapper">
+			<?php
+			if ( is_active_sidebar( 'aione-contentbottom-content' ) ):
+				dynamic_sidebar( 'aione-contentbottom-content' );
+			endif;
+			?>
+		</div>
+	</div>
+</section>
+<?php
+endif;
+?>
+</div> <!-- #aione_content -->
+<?php
+if($theme_options['sidebar_right_enable'] == 1):
+?>
+<section id="aione_sidebar_right" class="aione-sidebar-right">
+	<div id="" class="aione-sidebar">
+		<div class="wrapper">
+			<?php
+			if ( is_active_sidebar( 'aione-sidebar-right' ) ):
+				dynamic_sidebar( 'aione-sidebar-right' );
+			endif;
+			?>
+		</div>
+	</div>
+</section>
+<?php
+endif;
+?>
+<div class="aione-clear"></div><!-- .aione-clear -->
 
+</div><!-- .wrapper -->
 	</main><!-- #primary -->
 
 <?php
 get_footer();
+
+
+
+

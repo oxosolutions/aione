@@ -1,6 +1,7 @@
 <?php global $theme_options; ?>
 <?php 
 if($theme_options['header_enable'] == 1):
+	
 	?>
 	<header id="aione_header" class="aione-header">
 		<div class="wrapper">
@@ -19,13 +20,15 @@ if($theme_options['header_enable'] == 1):
 				</div>
 			<?php
 			endif;
-			if($theme_options['header_show_navigation'] == 1):
+			// print_r($theme_options['header_layout'].'hello');
+			
+			// if($theme_options['header_show_navigation'] == 1  && $theme_options['header_layout'] == 1  ):
 			?>	
-				<div id="aione_header_menu" class="aione-header-menu">
+				<!-- <div id="aione_header_menu" class="aione-header-menu">
 					<?php get_template_part('template/aione-header-menu');  ?>
-				</div>
+				</div> -->
 			<?php
-			endif;
+			// endif;
 			if($theme_options['header_show_banner'] == 1):
 			?>
 				<div id="aione_header_banner" class="aione-header-banner">
@@ -37,5 +40,9 @@ if($theme_options['header_enable'] == 1):
 			<div class="aione-clear"></div><!-- .aione-clear -->
 		</div><!-- .wrapper -->
 	</header><!-- .aione-header -->
-<?php
+	<?php
+		if($theme_options['header_show_navigation'] == 1 ):	
+			 get_template_part('template/aione-header-menu');  
+		endif;
 endif;
+?>

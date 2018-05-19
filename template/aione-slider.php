@@ -30,15 +30,7 @@ if($theme_options['slider_enable'] == 1):?>
 			<div class="aione-clear"></div><!-- .aione-clear -->
 		</div><!-- .wrapper -->
 	</div><!-- .aione-slider -->
-	<style type="text/css">
-		.aione-slider{
-			background-color: #f2f2f2;
-		}
-		.aione-description{ 
-			display:none;
-		}
-
-	</style>
+	
 
 <?php
 endif;

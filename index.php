@@ -12,70 +12,98 @@
  * @package Gutenbergtheme
  */
 get_header(); ?>
-	<main id="aione_main" class="aione-main fullwidth">
-		<div class="wrapper">
-			<div class="aione-sidebar-left">
-				<div class="wrapper">
-					this is side bar left
-				</div>
+	<main id="aione_main" class="aione-main">
+		<?php
+	global $theme_options;
+	if($theme_options['sidebar_left_enable'] == 1):
+	?>
+	<section id="aione_sidebar_left" class="aione-sidebar-left">
+		<div id="" class="aione-sidebar">
+			<div class="wrapper">
+				<?php
+				if ( is_active_sidebar( 'aione-sidebar-left' ) ):
+					dynamic_sidebar( 'aione-sidebar-left' );
+				endif;
+				?>
 			</div>
-			<div class="aione-content">
-				<div class="wrapper">
-					<div class="aione-content-top">
-						<div class="wrapper">
-							
-						</div>
-					</div>
-					<div class="aione-page-content">
-						<div class="wrapper">
-							<?php 
-							if ( have_posts() ) :
-								if ( is_home() && ! is_front_page() ) : ?>
-									<header>
-										<h1 class="page-title screen-reader-text aione-align-center m-0"><?php single_post_title(); ?></h1>
-									</header>
-								<?php
-								endif;
-								?>
-								<div class="ar">
-								<?php
-									/* Start the Loop */
-									while ( have_posts() ) : the_post();
-										/*
-											* Include the Post-Format-specific template for the content.
-											* If you want to override this in a child theme, then include a file
-											* called content-___.php (where ___ is the Post Format name) and that will be used instead.
-											*/	
-										//get_template_part( 'template-parts/content', get_post_format() );
-										?>
-										<div class="ac">
-											<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
-										</div>
-										<?php
+		</div>
+	</section>
+	<?php
+	endif;
+	?>
 
-									endwhile;
-								?>
-								</div>
-								<?php
-								the_posts_navigation();
-							else :
-								get_template_part( 'template-parts/content', 'none' );
-							endif; ?>
-						</div>
-					</div>
-					<div class="aione-content-bottom">
-						<div class="wrapper">
-							
-						</div>
-					</div>		
-				</div>
+	<div id="aione_content" class="aione-content">
+	<?php
+	if($theme_options['content_top_area_enable'] == 1):
+	?>
+	<section id="aione_contenttop" class="aione-contenttop">
+		<div id="" class="aione-content-top">
+			<div class="wrapper">
+				<?php
+				if ( is_active_sidebar( 'aione-contenttop-content' ) ):
+					dynamic_sidebar( 'aione-contenttop-content' );
+				endif;
+				?>
 			</div>
-			<div class="aione-sidebar-right">
-				<div class="wrapper">
-					this is side bar right
-				</div>
+		</div>
+	</section>
+	<?php
+	endif;
+	?>
+		
+		<?php 
+		if ( have_posts() ) :		
+			/* Start the Loop */
+			while ( have_posts() ) : the_post(); ;
+				/*
+					* Include the Post-Format-specific template for the content.
+					* If you want to override this in a child theme, then include a file
+					* called content-___.php (where ___ is the Post Format name) and that will be used instead.
+					*/	
+				get_template_part( 'template-parts/content', get_post_format() );
+
+			endwhile;
+			the_posts_navigation();
+		else :
+			get_template_part( 'template-parts/content', 'none' );
+		endif; ?>
+	<?php
+	if($theme_options['content_bottom_area_enable'] == 1):
+	?>
+	<section id="aione_contentbottom" class="aione-contentbottom">
+		<div id="" class="aione-content-bottom">
+			<div class="wrapper">
+				<?php
+				if ( is_active_sidebar( 'aione-contentbottom-content' ) ):
+					dynamic_sidebar( 'aione-contentbottom-content' );
+				endif;
+				?>
 			</div>
-		</div><!-- .aione-post-content -->
+		</div>
+	</section>
+	<?php
+	endif;
+	?>
+	</div> <!-- #aione_content -->
+	<?php
+	if($theme_options['sidebar_right_enable'] == 1):
+	?>
+	<section id="aione_sidebar_right" class="aione-sidebar-right">
+		<div id="" class="aione-sidebar">
+			<div class="wrapper">
+				<?php
+				if ( is_active_sidebar( 'aione-sidebar-right' ) ):
+					dynamic_sidebar( 'aione-sidebar-right' );
+				endif;
+				?>
+			</div>
+		</div>
+	</section>
+	<?php
+	endif;
+	?>
+	<div class="aione-clear"></div><!-- .aione-clear -->	
+						
 	</main><!-- #primary -->
 	
 <?php

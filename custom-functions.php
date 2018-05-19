@@ -633,18 +633,10 @@ function aione_slider_shortcode_callback( $atts ) {
 					$output .= '</div>';
 
 				endif;
-			$output .='<div class="aione-clear"></div><!-- .aione-clear -->
-			</div><!-- .wrapper -->
-		</div><!-- .aione-slider -->
-		<style type="text/css">
-			.aione-slider{
-				background-color: #f2f2f2;
-			}
-			.aione-description{ 
-				display:none;
-			}
-
-		</style>';
+			$output .='<div class="aione-clear"></div>
+			</div>
+		</div>
+		';
 	echo $output;
 
 }

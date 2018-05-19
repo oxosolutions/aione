@@ -18,7 +18,6 @@ Aione Layout
 	width: 100%;
 	margin: 0 auto;
 }
-
 .aione-layout-wide .aione-topbar > .wrapper,
 .aione-layout-wide .aione-header > .wrapper,
 .aione-layout-wide .aione-slider > .wrapper,
@@ -26,7 +25,7 @@ Aione Layout
 .aione-layout-wide .aione-main > .wrapper,
 .aione-layout-wide .aione-footer > .wrapper,
 .aione-layout-wide .aione-copyright > .wrapper{
-	max-width: 1170px;
+	max-width: 1350px;
 	margin: 0 auto;
 }
 /***************************************
@@ -89,6 +88,13 @@ Aione Topbar
 	content:"";
 	padding:0;
 }
+.aione-topbar .aione_social_icons_widget ul > li{
+	display: inline-block;
+	margin-right: 5px;
+}
+.aione-topbar .aione_social_icons_widget ul > li i{
+	margin-right: 5pc;
+}
 /***************************************
 Aione Button
 ***************************************/
@@ -114,20 +120,31 @@ Aione Header
 
 .aione-header-logo,
 .aione-header-title,
-.aione-header-menu,
 .aione-header-banner{	
-	display: inline-block;
+	display: block;
+  float: right;
+}
+.aione-header-banner .widgettitle{
+  font-size: 20px;
+  color: #168dc5;
+  line-height: 1.4
+}
+.aione-header-banner .textwidget p{
+  text-align: right;
+  font-size: 16px;
 }
 .aione-header-menu{
-	padding-top: 10px;
+	text-align: center;
+  padding: 10px;
 }
+
 .aione-header-logo{
-	width: 10%;
+	width: auto;
     float: left;
 }
 .aione-header-logo img{
 	width: auto;
-    height: 90px;
+    height: 60px;
 }
 .aione-header .aione-header-title{
 	padding-top:20px;
@@ -140,6 +157,31 @@ Aione Header
 .site-description{
 	color: #2695c9;
 }
+.aione-nav .aione-menu li a:hover{
+	background: #3378bc;
+	color: white
+}
+.aione-menu > .menu-item{
+	position: relative;
+}
+.aione-menu .sub-menu{
+	display: none;	
+	background: #e8e8e8;
+	border-top: 2px solid #3378bc;
+	position: absolute;
+	z-index: 99;
+    width: 250px;
+}
+.aione-menu .sub-menu > li,
+.aione-menu .sub-menu > li > a{
+    width: 100%;
+}
+.aione-menu .menu-item:hover .sub-menu{
+	display: block;
+	
+}
+
+
 /***************************************
 Aione Header Bannner
 ***************************************/
@@ -156,12 +198,12 @@ Aione Pagetop
 .aione-main{
 	position: relative;
 }
-.aione-sidebar:before{
+/*.aione-sidebar:before{
 	position: absolute;
 }
 .aione-sidebar{
 	position: inherit;
-}
+}*/
 .entry-header .entry-title {
 	font-weight: 400;
     font-size: 50px;
@@ -171,9 +213,10 @@ Aione Pagetop
 Aione Nav
 ***************************************/
 
-.aione-nav.horizontal{
+	.aione-nav.horizontal{
 		border-bottom: none;
 		padding-left:40px;
+		background: #e8e8e8
 	}
 	.aione-nav .aione-menu ul li a{
 		font-size: 16px;
@@ -182,11 +225,22 @@ Aione Nav
 	.aione-nav ul li a{
 		padding: 7px 22px;
 		font-size: 16px;
+		display: inline-block;
+	}
+	.aione_nav{
+		height: 50px;
 	}
 	
 /***************************************
 Aione Slider
 ***************************************/
+.owl-carousel .owl-stage-outer{
+	width: 100%;
+}
+.aione-slider{
+	background-color: #ffffff;
+
+}
 
 /***************************************
 Aione Page Title
@@ -198,20 +252,27 @@ Aione Page Title
 .aione-pagetitle .title{
 	color: #333333;
 	margin: 0;
-	font-size: 18px;
+	font-size: 26px;
     font-weight: 500;
 	line-height: 1.4;
+	text-align: center;
 }
 .aione-pagetitle .description{
 	color: #484848;
 	margin: 0;
-	font-size: 24px;
+	font-size: 17px;
 	line-height: 1.4;
 	text-align: center;
 }
 /***************************************
 Aione Sidebar
 ***************************************/
+/*.aione-sidebar:before{
+	left: 0;
+}
+.aione-sidebar{
+  display:none;
+}*/
 
 /***************************************
 Aione Content
@@ -316,4 +377,363 @@ Aione Copyright
 }
 .aione-copyright .aione-copyright-left .textwidget p, .aione-copyright .aione-copyright-right .textwidget p{
 	color: #ffffff;
+}
+
+/***************************************
+Aione HomePage
+***************************************/
+
+    
+    .wave {
+        background: url(assets/images/banner_wave.svg) no-repeat top center;
+        pointer-events: none;
+        height: 200px;
+        background-size: cover;
+        position: absolute;
+        bottom: -44px;
+        width: 100%;
+      }
+        vertical-align: top;
+        padding: 5px;
+        }
+        .aione-header .site-title &gt; .title{
+          font-size: 32px;
+          font-style: italic;
+          font-weight: 600;
+          color: #168dc5;
+          line-height: 1.4;
+        }
+        .aione-header .site-title &gt; .tagline{
+        margin-left: 20px
+        }
+        .aione-nav &gt; .aione-menu{
+        float: right;
+        }
+        .aione-nav.horizontal{
+        border-bottom: none;
+        }
+        .aione-nav ul li a{
+        padding:0 12px;
+        }
+        .left-arrow,.right-arrow{
+        position: relative;
+        }
+        .left-arrow:before{
+        content: '\2190';
+        position: absolute;
+        font-size: 50px;
+        left: -50px;
+        top: 0
+
+        }
+        .right-arrow:after{
+        content: '\2192';
+        position: absolute;
+        font-size: 50px;
+        right: -50px;
+        top: 0
+        }
+        .aione-hiring{
+        background: url('assets/hiring+banner+2.jpg');position: relative;min-height: 200px;
+        }
+        .aione-hiring &gt; .overlay{
+        position: absolute;top: 0;bottom: 0;right: 0;left: 0;background-color: #168dc5b8
+        }*/
+        /******************************************************************************************/
+        /***********    aione-tabs-vertical ***********/
+        /******************************************************************************************/
+
+   
+    .aione-tabs-vertical-v2{
+    background-color: #e8e8e8;
+
+    }
+    .aione-tabs-vertical-v2 &gt; li{
+    font-size: 18px;
+    padding: 15px;
+    border-right: 2px solid #168dc5;
+    }
+    .aione-tabs-vertical-v2 &gt; li.active{
+    background-color: #168dc5;
+    color: white;
+    border-right: 2px solid #168dc5;
+    }
+    .round-icon{
+    width: 50px;
+        background: #454545;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+    }
+        /******************************************************************************************/
+        /***********    TIMELINE CSS    *******************/
+        /******************************************************************************************/
+
+        #timeline {
+      width: 100%;
+      height: 105px;
+      background-color: transparent;
+      font-size: 0;
+      position: relative;
+      min-width: 800px;
+    }
+    #timeline .line {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      left: 0;
+      margin-top: -1px;
+      background-color: #168dc5;
+      height: 2px;
+    }
+    #timeline .item {
+      height: 105px;
+      display: inline-block;
+      width: 14.285%;
+      position: relative;
+    }
+    #timeline .item:hover {
+      z-index: 5;
+    }
+    #timeline .item:hover .circle .inner-circle {
+      width: 30px;
+      height: 30px;
+      margin: 0px;
+    }
+    #timeline .item:hover .content-box {
+      opacity: 1;
+      visibility: visible;
+    }
+    #timeline .item p {
+      margin-bottom: 0;
+    }
+    #timeline .item img {
+      max-width: 150px;
+      margin-bottom: 10px;
+    }
+    #timeline .item .content-box {
+      background-color: #fff;
+      width: 200%;
+      border-radius: 10px;
+      padding: 40px;
+      text-align: left;
+      box-shadow: 0px 0px 34px 0px rgba(0, 0, 0, 0.2);
+      position: absolute;
+      top: 95px;
+      left: -50%;
+      right: 0;
+      margin: 0 auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+      z-index: 2;
+    }
+    #timeline .item .content-box.stacked-grid {
+      width: 300%;
+      top: -138px;
+      right: -265%;
+      left: auto;
+      font-size: 0;
+      padding: 20px;
+    }
+    #timeline .item .content-box.stacked-grid .banner {
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: teal;
+      line-height: 20px;
+      height: 20px;
+      text-align: center;
+      color: #fff;
+      border-radius: 10px;
+    }
+    #timeline .item .content-box.stacked-grid:before {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      height: 14px;
+      width: 14px;
+      left: -7px;
+      right: auto;
+      margin: auto 0;
+      margin-top: -7px;
+      border-radius: 3px;
+      background-color: #fff;
+      transform: rotate(45deg);
+    }
+    #timeline .item .content-box.stacked-grid .grid {
+      width: 50%;
+      display: inline-block;
+      padding: 40px;
+      height: 170px;
+    }
+    #timeline .item .content-box.stacked-grid .grid:nth-child(2) {
+      border-right: 1px solid grey;
+      border-bottom: 1px solid grey;
+    }
+    #timeline .item .content-box.stacked-grid .grid:nth-child(3) {
+      border-bottom: 1px solid grey;
+    }
+    #timeline .item .content-box.stacked-grid .grid:nth-child(4) {
+      border-right: 1px solid grey;
+    }
+    #timeline .item .content-box.side-by-side-grid {
+      width: 300%;
+      top: -68px;
+      left: -265%;
+      right: auto;
+      font-size: 0;
+      padding: 20px;
+    }
+    #timeline .item .content-box.side-by-side-grid:before {
+      content: " ";
+      position: absolute;
+      top: 50%;
+      height: 14px;
+      width: 14px;
+      right: -7px;
+      left: auto;
+      margin: auto 0;
+      margin-top: -7px;
+      border-radius: 3px;
+      background-color: #fff;
+      transform: rotate(45deg);
+    }
+    #timeline .item .content-box.side-by-side-grid .grid {
+      width: 50%;
+      display: inline-block;
+      padding: 40px;
+      height: 200px;
+    }
+    #timeline .item .content-box.side-by-side-grid .grid:nth-child(1) {
+      border-right: 1px solid grey;
+    }
+    #timeline .item .content-box:before {
+      content: " ";
+      position: absolute;
+      top: -7px;
+      height: 14px;
+      width: 14px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      border-radius: 3px;
+      background-color: #fff;
+      transform: rotate(45deg);
+    }
+    #timeline .item h7 {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      text-align: center;
+      left: 0;
+      font-size: 11px;
+      right: 0;
+      margin: 0 auto;
+      transition: all 0.5s ease;
+      color: #676767;
+    }
+    #timeline .item .circle {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      margin-top: -15px;
+      transition: all 0.5s ease;
+      width: 30px;
+      height: 30px;
+      background-color: #168dc5;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+    #timeline .item .circle:hover .inner-circle {
+      width: 30px;
+      height: 30px;
+      margin: 0px;
+    }
+    #timeline .item .circle .inner-circle {
+      width: 16px;
+      height: 16px;
+      margin: 7px;
+      border-radius: 50%;
+      background-color: #fff;
+      transition: all 0.5s ease;
+      z-index: 2;
+    }
+    #timeline .item.first .content-box {
+      left: 10%;
+    }
+    #timeline .item.first .content-box:before {
+      top: -7px;
+      height: 14px;
+      width: 14px;
+      left: -60%;
+      right: 0;
+      margin: 0 auto;
+    }
+    #timeline .item.last .content-box {
+      right: 10%;
+      left: auto;
+    }
+    #timeline .item.last .content-box:before {
+      top: -7px;
+      height: 14px;
+      width: 14px;
+      left: 0;
+      right: -60%;
+      margin: 0 auto;
+    }
+button:hover{
+    background-color: #0166a2;
+    color: #ffffff;
+    font-weight: 300;
+}
+.custom:hover{
+    border: 1px solid #e8e8e8;
+    background-color: #dce2e4;
+    padding: 19px;
+}
+
+/*********************************************/
+
+/***************************************
+Aione Sidebar
+***************************************/
+.aione-sidebar-left {
+  float:left;
+  width:25%;
+}
+.aione-sidebar-right {
+  float:right;
+  width:25%;
+}
+.aione-sidebar-left .aione-sidebar , .aione-sidebar-right .aione-sidebar{
+  width:100%;
+  border:1px solid;
+}
+.aione-sidebar:before {
+    content: "";
+    position: relative;
+    width: 0px;
+    top: 0;
+    bottom: 0;
+    background-color: #fff;
+}
+.aione-sidebar-left:after, .aione-sidebar-right:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/***************************************
+Aione Content
+***************************************/
+.aione-content {
+    width: 50%;
+    float: left;
+    position: relative;
+    border:1px solid;
 }
