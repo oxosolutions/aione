@@ -8,6 +8,9 @@ $page_description = '';
 if( is_post_type_archive() || is_archive()){
 	$page_title = get_the_archive_title();
 	$page_description = get_the_archive_description();
+	if(is_author()){
+		$page_title = get_the_author();
+	}
 }
 
 if(is_404()){
