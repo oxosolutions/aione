@@ -14,7 +14,6 @@ class PerPageOptionsMetaboxes {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_meta_boxes' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_script_loader' ) );
-		add_action( 'admin_head', array( $this, 'admin_css' ) );
 	}
 
 	/**
@@ -36,25 +35,19 @@ class PerPageOptionsMetaboxes {
 			wp_enqueue_script( 'thickbox' );
 	   		wp_enqueue_style( 'thickbox' );
 
+	   		wp_register_style( 'per-page-options-css', get_template_directory_uri() . '/assets/css/perpageoptions.css' );
+	   		wp_enqueue_style( 'per-page-options-css' );
+
 		}
 
 	}
-	/**
-     * Add admin CSS
-     */
-    public function admin_css() {
-
-        $theme_info = wp_get_theme();
-        echo '<link rel="stylesheet" type="text/css" href="' . get_template_directory_uri() . '/assets/css/perpageoptions.css?vesion=' . $theme_info->get( 'Version' ) . '">';
-        echo '<style type="text/css">.widget input { border-color: #DFDFDF !important; }</style>';
-
-    }
+	
 
 	public function add_meta_boxes() {
 
 		$post_types = get_post_types( array( 'public' => true ) );
 
-		$disallowed = array( 'page', 'post', 'attachment', 'aione-slider' );
+		/*$disallowed = array( 'page', 'post', 'attachment', 'aione-slider' );
 
 		foreach ( $post_types as $post_type ) {
 			if ( in_array( $post_type, $disallowed ) ) {
@@ -64,12 +57,60 @@ class PerPageOptionsMetaboxes {
 		}
 
 		$this->add_meta_box( 'post_options', 'Page Options', 'post' );
-		$this->add_meta_box( 'page_options', 'Page Options', 'page' );
+		$this->add_meta_box( 'page_options', 'Page Options', 'page' );*/
+
+		$disallowed = array( 'attachment', 'aione-slider' );
+		foreach ( $post_types as $post_type ) {
+			if ( in_array( $post_type, $disallowed ) ) {
+				continue;
+			}
+			$this->add_meta_box('aione_design_options', 'Aione Design Options', $post_type);
+		}
 
 	}
 
 	public function add_meta_box( $id, $label, $post_type ) {
-		add_meta_box( 'pyre_' . $id, $label, array( $this, $id ), $post_type );
+		add_meta_box( 'pyre_' . $id, $label, array( $this, $id ), $post_type, 'advanced', 'default',array('post_type' => $post_type) );
+	}
+
+	public function aione_design_options( ) {
+		$this->render_aione_design_options( array('header','slider','page_title_bar','page_settings','footer') );
+	}
+
+	public function render_aione_design_options( $requested_tabs, $post_type = 'default' ) {
+
+		$tabs_names = array(
+			'header'         => __( 'Header', 'gutenbergtheme' ),
+			'slider'         => __( 'Slider', 'gutenbergtheme' ),
+			'page_title_bar'         => __( 'Page Title Bar', 'gutenbergtheme' ),
+			'page_settings'         => __( 'Page Settings', 'gutenbergtheme' ),
+			'footer'         => __( 'Footer', 'gutenbergtheme' ),
+			
+		);
+		?>
+
+		<ul class="pyre_metabox_tabs">
+
+			<?php foreach( $requested_tabs as $key => $tab_name ) : ?>
+				<?php $class = ( $key === 0 ) ? "active" : ""; ?>
+				<li class="<?php echo $class; ?>"><a href="<?php echo $tab_name; ?>"><?php echo $tabs_names[$tab_name]; ?></a></li>
+			
+			<?php endforeach; ?>
+
+		</ul>
+
+		<div class="pyre_metabox">
+
+			<?php foreach ( $requested_tabs as $key => $tab_name ) : ?>
+				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo $tab_name; ?>">
+					<?php require_once( 'tabs/tab_' . $tab_name . '.php' ); ?>
+				</div>
+			<?php endforeach; ?>
+
+		</div>
+		<div class="clear"></div>
+		<?php
+
 	}
 
 	public function save_meta_boxes( $post_id ) {
@@ -86,7 +127,7 @@ class PerPageOptionsMetaboxes {
 
 	}
 
-	public function page_options() {
+	/*public function page_options() {
 		$this->render_option_tabs( array( 'sliders', 'page', 'header', 'footer', 'sidebars', 'background', 'portfolio_page',
 		'pagetitlebar','custom_code', 'seo', 'security' ) );
 	}
@@ -94,9 +135,9 @@ class PerPageOptionsMetaboxes {
 	public function post_options() {
 		$this->render_option_tabs( array( 'post', 'page', 'sliders', 'header', 'footer', 'sidebars', 'background',
 		'pagetitlebar', 'custom_code', 'seo', 'security' ) );
-	}
+	}*/
 
-	public function render_option_tabs( $requested_tabs, $post_type = 'default' ) {
+	/*public function render_option_tabs( $requested_tabs, $post_type = 'default' ) {
 
 		$tabs_names = array(
 			'sliders'        => __( 'Sliders', 'Aione' ),
@@ -140,7 +181,7 @@ class PerPageOptionsMetaboxes {
 		<div class="clear"></div>
 		<?php
 
-	}
+	}*/
 
 	public function text( $id, $label, $desc = '' ) {
 
@@ -176,7 +217,7 @@ class PerPageOptionsMetaboxes {
 			<div class="pyre_field">
 				<div class="oxo-shortcodes-arrow">&#xf107;</div>
 				<select id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>">
-					<?php foreach( $options as $key => $option ) : ?>
+					<?php foreach( $options as $key => $option ) : ?> 
 						<?php $selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : ''; ?>
 						<option <?php echo $selected; ?> value="<?php echo $key; ?>"><?php echo $option; ?></option>
 					<?php endforeach; ?>
@@ -261,7 +302,7 @@ class PerPageOptionsMetaboxes {
 	}
 
 }
-//$metaboxes = new PerPageOptionsMetaboxes;
+$metaboxes = new PerPageOptionsMetaboxes;
 
 
 /**
@@ -1025,5 +1066,9 @@ class Aione_Social_Share_Widget extends WP_Widget {
 
 		return $instance;
 	}
+}
+function get_aione_page_option($post_id,$meta_key){
+	$meta_value = get_post_meta( $post_id, $meta_key , true );
+	return $meta_value;
 }
 ?>

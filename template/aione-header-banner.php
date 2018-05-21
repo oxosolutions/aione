@@ -1,6 +1,5 @@
 <?php 
 //TBD: Check ENABLED Check Global and pagewise Settings
-if( true ):
 if( is_active_sidebar( 'aione-header-banner' )  ):
 
 	?>
@@ -12,5 +11,4 @@ if( is_active_sidebar( 'aione-header-banner' )  ):
 		</div><!-- .wrapper -->
 	</div><!-- .aione-header-banner -->
 <?php
-endif;
 endif;

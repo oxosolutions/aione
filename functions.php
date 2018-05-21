@@ -83,6 +83,9 @@ if ( ! function_exists( 'gutenbergtheme_setup' ) ) :
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
 
+		// Add support for post formats.
+		add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link', 'status' ) );
+
 		// Add support for custom color scheme.
 		add_theme_support( 'editor-color-palette',
 			'#0073aa',

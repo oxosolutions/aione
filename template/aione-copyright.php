@@ -1,5 +1,7 @@
 <?php 
 global $theme_options;
+global $post;
+$draw = false;
 $count=0; 
 if ( is_active_sidebar( 'aione-copyright-left' ) ) : 
 	$count++;
@@ -13,7 +15,16 @@ if($count > 0):
 	if($count == 1){
 		$aione_copyright_left_class = $aione_copyright_right_class = 'aione-copyright-center';
 	}
-	if($theme_options['footer_copyright'] == 1):
+	$pyre_footer_copyright = get_aione_page_option($post->ID,'pyre_footer_copyright');
+	$draw = $pyre_footer_copyright == 'yes' ? true 
+			: ( $pyre_footer_copyright == 'no' ? false 
+					: (($theme_options['footer_copyright'] == 1)
+						? true
+						: false
+					)
+			);
+	
+	if($draw == true):
 	?>
 	<div id="aione_copyright" class="aione-copyright">
 		<div class="wrapper">

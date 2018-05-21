@@ -1,11 +1,23 @@
 <?php 
 global $theme_options;
+global $post;
+$draw = false;
 
-$slider_id = $theme_options['select_slider'];
+$pyre_select_slider = get_aione_page_option($post->ID,'pyre_select_slider');
+$slider_id = $pyre_select_slider == 'default' ? $theme_options['select_slider'] 
+		: $pyre_select_slider;
+
 $slides = get_field('images', $slider_id);
 
-
-if($theme_options['slider_enable'] == 1):?>
+$pyre_slider_enable = get_aione_page_option($post->ID,'pyre_slider_enable');
+$draw = $pyre_slider_enable == 'yes' ? true 
+		: ( $pyre_slider_enable == 'no' ? false 
+				: (($theme_options['slider_enable'] == 1)
+					? true
+					: false
+				)
+		);
+if($draw == true):?>
 	<div id="aione_slider" class="aione-slider">
 		<div class="wrapper">
 			<?php if(!empty($slides)):

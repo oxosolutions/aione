@@ -21,7 +21,17 @@ get_header(); ?>
 	$aione_template = $aione_templates[$template_slug]['content'];
 
 	global $theme_options;
-	if($theme_options['sidebar_left_enable'] == 1):
+	global $post;
+	$draw = false;
+	$pyre_sidebar_left_enable = get_aione_page_option($post->ID,'pyre_sidebar_left_enable');
+	$draw = $pyre_sidebar_left_enable == 'yes' ? true 
+			: ( $pyre_sidebar_left_enable == 'no' ? false 
+					: (($theme_options['sidebar_left_enable'] == 1)
+						? true
+						: false
+					)
+			);
+	if($draw == true):
 	?>
 	<section id="aione_sidebar_left" class="aione-sidebar-left">
 		<div id="" class="aione-sidebar">
@@ -40,7 +50,15 @@ get_header(); ?>
 
 	<div id="aione_content" class="aione-content">
 	<?php
-	if($theme_options['content_top_area_enable'] == 1):
+	$pyre_content_top_area_enable = get_aione_page_option($post->ID,'pyre_content_top_area_enable');
+	$draw = $pyre_content_top_area_enable == 'yes' ? true 
+			: ( $pyre_content_top_area_enable == 'no' ? false 
+					: (($theme_options['content_top_area_enable'] == 1)
+						? true
+						: false
+					)
+			);
+	if($draw == true):
 	?>
 	<section id="aione_contenttop" class="aione-contenttop">
 		<div id="" class="aione-content-top">
@@ -83,7 +101,15 @@ get_header(); ?>
 	?>
 
 	<?php
-	if($theme_options['content_bottom_area_enable'] == 1):
+	$pyre_content_bottom_area_enable = get_aione_page_option($post->ID,'pyre_content_bottom_area_enable');
+	$draw = $pyre_content_bottom_area_enable == 'yes' ? true 
+			: ( $pyre_content_bottom_area_enable == 'no' ? false 
+					: (($theme_options['content_bottom_area_enable'] == 1)
+						? true
+						: false
+					)
+			);
+	if($draw == true):
 	?>
 	<section id="aione_contentbottom" class="aione-contentbottom">
 		<div id="" class="aione-content-bottom">
@@ -101,7 +127,15 @@ get_header(); ?>
 	?>
 	</div> <!-- #aione_content -->
 	<?php
-	if($theme_options['sidebar_right_enable'] == 1):
+	$pyre_sidebar_right_enable = get_aione_page_option($post->ID,'pyre_sidebar_right_enable');
+	$draw = $pyre_sidebar_right_enable == 'yes' ? true 
+			: ( $pyre_sidebar_right_enable == 'no' ? false 
+					: (($theme_options['sidebar_right_enable'] == 1)
+						? true
+						: false
+					)
+			);
+	if($draw == true):
 	?>
 	<section id="aione_sidebar_right" class="aione-sidebar-right">
 		<div id="" class="aione-sidebar">

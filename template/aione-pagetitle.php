@@ -8,9 +8,6 @@ $page_description = '';
 if( is_post_type_archive() || is_archive()){
 	$page_title = get_the_archive_title();
 	$page_description = get_the_archive_description();
-	if(is_author()){
-		$page_title = get_the_author();
-	}
 }
 
 if(is_404()){
@@ -32,36 +29,46 @@ if(is_search()){
 	$page_description = "";
 }
 
-/*if(is_archive()){
-	if (is_category()) {
-		$page_title = single_cat_title('Category: ', false);
-		$page_description = category_description();
-	}
-	if (is_author()) {
-		$page_title = get_the_author();
-		$page_description = "";
-	}
-	if (is_tag()) {
-		$page_title = single_tag_title('Tag: ', false);
-		$page_description = tag_description();
-	}
-	if (is_year()) {
-		$page_title =   get_the_archive_title();
-		$page_description = get_the_archive_description();
-	}
-}*/
-
-
 global $theme_options;
-if($theme_options['page_title_bar'] == 1): ?>
+global $post;
+$draw = false;
+$pyre_page_title_bar = get_aione_page_option($post->ID,'pyre_page_title_bar');
+$draw = $pyre_page_title_bar == 'yes' ? true 
+		: ( $pyre_page_title_bar == 'no' ? false 
+				: (($theme_options['page_title_bar'] == 1)
+					? true
+					: false
+				)
+		);
+if($draw == true): ?>
 	<div id="aione_pagetitle" class="aione-pagetitle bg-red pv-30">
 		<div class="wrapper">
-			<?php if($theme_options['page_title_bar_enable_title'] == 1): ?>
+			<?php 
+			$pyre_page_title_bar_enable_title = get_aione_page_option($post->ID,'pyre_page_title_bar_enable_title');
+			$draw = $pyre_page_title_bar_enable_title == 'yes' ? true 
+					: ( $pyre_page_title_bar_enable_title == 'no' ? false 
+							: (($theme_options['page_title_bar_enable_title'] == 1)
+								? true
+								: false
+							)
+					);
+			if($draw == true): 
+			?>
 				<h1 class="title">
 					<?php echo $page_title; ?>
 				</h1>
 			<?php endif; ?>
-			<?php if($theme_options['page_title_bar_enable_description'] == 1): ?>
+			<?php 
+			$pyre_page_title_bar_enable_description = get_aione_page_option($post->ID,'pyre_page_title_bar_enable_description');
+			$draw = $pyre_page_title_bar_enable_description == 'yes' ? true 
+					: ( $pyre_page_title_bar_enable_description == 'no' ? false 
+							: (($theme_options['page_title_bar_enable_description'] == 1)
+								? true
+								: false
+							)
+					);
+			if($draw == true):
+			?>
 				<h2 class="description">
 					<?php echo $page_description;?>				
 				</h2>

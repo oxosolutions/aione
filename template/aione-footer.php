@@ -1,5 +1,7 @@
 <?php 
 global $theme_options;
+global $post;
+$draw = false;
 $count=0; 
 if ( is_active_sidebar( 'footer-column' ) ) {
 	$count++;
@@ -16,7 +18,16 @@ if ( is_active_sidebar( 'footer-column-4' ) ) {
 if($count > 0):
 	$col = 100/$count;
 	$col=round($col);
-	if($theme_options['footer_widgets'] == 1):
+	$pyre_footer_widgets = get_aione_page_option($post->ID,'pyre_footer_widgets');
+	$draw = $pyre_footer_widgets == 'yes' ? true 
+			: ( $pyre_footer_widgets == 'no' ? false 
+					: (($theme_options['footer_widgets'] == 1)
+						? true
+						: false
+					)
+			);
+	
+	if($draw == true):
 	?>
 	<footer id="aione_footer" class="aione-footer">
 		<div class="wrapper ar">

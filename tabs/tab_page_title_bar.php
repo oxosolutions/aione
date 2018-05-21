@@ -1,44 +1,44 @@
 <?php
 
 $this->select(
-	'footer_widgets',
-	__( 'Footer Widgets', 'gutenbergtheme' ),
+	'page_title_bar',
+	__( 'Enable Page Title Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
 		'yes' => __( 'Yes', 'gutenbergtheme' ),
 		'no'  => __( 'No', 'gutenbergtheme' )
 	),
-	__( 'Footer Widgets', 'gutenbergtheme' )
+	__( 'Enable Page Title Bar', 'gutenbergtheme' )
 );
 $this->select(
-	'footer_100_width',
-	__( '100% Footer Width', 'gutenbergtheme' ),
+	'page_title_100_width',
+	__( '100% Page Title Width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
 		'yes' => __( 'Yes', 'gutenbergtheme' ),
 		'no'  => __( 'No', 'gutenbergtheme' )
 	),
-	__( '100% Footer Width', 'gutenbergtheme' )
+	__( '100% Page Title Width', 'gutenbergtheme' )
 );
 $this->select(
-	'footer_copyright',
-	__( 'Copyright Bar', 'gutenbergtheme' ),
+	'page_title_bar_enable_title',
+	__( 'Show Title on Page Title Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
 		'yes' => __( 'Yes', 'gutenbergtheme' ),
 		'no'  => __( 'No', 'gutenbergtheme' )
 	),
-	__( 'Copyright Bar', 'gutenbergtheme' )
+	__( 'Show Title on Page Title Bar', 'gutenbergtheme' )
 );
 $this->select(
-	'footer_copyright_100_width',
-	__( '100% Copyright Bar Width', 'gutenbergtheme' ),
+	'page_title_bar_enable_description',
+	__( 'Show Description on Page Title Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
 		'yes' => __( 'Yes', 'gutenbergtheme' ),
 		'no'  => __( 'No', 'gutenbergtheme' )
 	),
-	__( '100% Copyright Bar Width', 'gutenbergtheme' )
+	__( 'Show Description on Page Title Bar', 'gutenbergtheme' )
 );
 
 

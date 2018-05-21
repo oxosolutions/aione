@@ -1,5 +1,7 @@
 <?php 
 global $theme_options;
+global $post;
+$draw = false;
 $count=0; 
 if ( is_active_sidebar( 'aione-topbar-left' ) ) : 
 	$count++;
@@ -13,7 +15,17 @@ if($count > 0):
 	if($count == 1):
 		$aione_topbar_left_class = $aione_topbar_right_class = 'aione-topbar-center';
 	endif;
-	if($theme_options['show_top_bar'] == 1):
+
+	$pyre_show_top_bar = get_aione_page_option($post->ID,'pyre_show_top_bar');
+	$draw = $pyre_show_top_bar == 'yes' ? true 
+			: ( $pyre_show_top_bar == 'no' ? false 
+					: (($theme_options['show_top_bar'] == 1)
+						? true
+						: false
+					)
+			);
+	
+	if($draw == true):
 	?>
 		<div id="aione_topbar" class="aione-topbar">
 			<div class="wrapper">
