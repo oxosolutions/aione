@@ -74,7 +74,7 @@ class PerPageOptionsMetaboxes {
 	}
 
 	public function aione_design_options( ) {
-		$this->render_aione_design_options( array('header','slider','page_title_bar','page_settings','footer') );
+		$this->render_aione_design_options( array('header','slider','page_title_bar','page_settings','footer','custom_code') );
 	}
 
 	public function render_aione_design_options( $requested_tabs, $post_type = 'default' ) {
@@ -85,6 +85,7 @@ class PerPageOptionsMetaboxes {
 			'page_title_bar'         => __( 'Page Title Bar', 'gutenbergtheme' ),
 			'page_settings'         => __( 'Page Settings', 'gutenbergtheme' ),
 			'footer'         => __( 'Footer', 'gutenbergtheme' ),
+			'custom_code'         => __( 'Custom Code', 'gutenbergtheme' ),
 			
 		);
 		?>

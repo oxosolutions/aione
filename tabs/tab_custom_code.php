@@ -2,14 +2,14 @@
 
 $this->textarea(
 	'custom_css',
-	__( 'Custom CSS', 'Aione' ),
-	__( 'Insert custom css for the page.', 'Aione' )
+	__( 'Custom CSS', 'gutenbergtheme' ),
+	__( 'Insert custom css for the page.', 'gutenbergtheme' )
 );
 
 $this->textarea(
 	'custom_js',
-	__( 'Custom JS', 'Aione' ),
-	__( 'Insert custom JS for the page.', 'Aione' )
+	__( 'Custom JS', 'gutenbergtheme' ),
+	__( 'Insert custom JS for the page.', 'gutenbergtheme' )
 );
 
 
