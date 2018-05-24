@@ -497,7 +497,7 @@
   resize: none;
 }
 
-.pyre_metabox_tabs a {
+/*.pyre_metabox_tabs a {
 }
 .pyre_metabox_tabs a:before {
   font-family: 'icomoon';
@@ -508,7 +508,6 @@
   text-transform: none;
   line-height: 1;
 
-  /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-right: 8px;
@@ -548,7 +547,7 @@
 
 .pyre_metabox_tabs a[href^="post"]:before {
   content: "\e619";
-}
+}*/
 
 .pyre_upload {
   display: table;

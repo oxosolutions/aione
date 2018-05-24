@@ -706,6 +706,7 @@ Aione Sidebar
 .aione-sidebar-left {
   float:left;
   width:25%;
+  padding: 0 24px;
 }
 .aione-sidebar-right {
   float:right;
@@ -713,7 +714,7 @@ Aione Sidebar
 }
 .aione-sidebar-left .aione-sidebar , .aione-sidebar-right .aione-sidebar{
   width:100%;
-  border:1px solid;
+
 }
 .aione-sidebar:before {
     content: "";
@@ -732,8 +733,47 @@ Aione Sidebar
 Aione Content
 ***************************************/
 .aione-content {
-    width: 50%;
     float: left;
     position: relative;
-    border:1px solid;
+}
+
+.aione-pagetop{
+    background: #f9f9f9;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.aione-sidebar .widgettitle{
+  font-size:20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #757575
+}
+.aione-sidebar .list > li{
+  margin-bottom: 10px;
+  color: #757575;
+}
+.aione-sidebar .list > li > .comment-by{
+  font-weight: 600;
+}
+.aione-content .entry-header .entry-title,
+.aione-content .aione-content-top .widgettitle,
+.aione-content .aione-content-bottom .widgettitle{
+  font-size:30px;
+  text-align: left;
+  margin: 0 0 25.6px 0;
+
+}
+.aione-content .entry-content,
+.aione-content .textwidget{
+  line-height: 1.6
+}
+.aione-main .aione-content{
+  width: 100%
+}
+.aione-main.has-sidebar-left .aione-content{
+  width: 75%;
+}
+.aione-main.has-sidebar-right .aione-content{
+  width: 50%;
 }

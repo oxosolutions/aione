@@ -70,3 +70,7 @@ if ( ! function_exists( 'gutenbergtheme_header_style' ) ) :
 		<?php
 	}
 endif;
+
+
+/***********************************/
+

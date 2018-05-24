@@ -16,7 +16,7 @@ $this->textarea(
 $this->textarea(
 	'meta_keywords',
 	__( 'Meta Keywords', 'gutenbergtheme' ),
-	__( 'Enter a series of keywords relevant to the page.', 'gutenbergtheme' )
+	__( 'Enter a series of keywords relevant to the page with comma sepration.<br/>For eg: Wordpress, Theme, Page, Post', 'gutenbergtheme' )
 );
 
 printf( '<h3>%s</h3>', __( 'Social Networks Listing:', 'gutenbergtheme' ) );

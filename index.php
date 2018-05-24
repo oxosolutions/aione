@@ -12,10 +12,12 @@
  * @package Gutenbergtheme
  */
 get_header(); ?>
-	<main id="aione_main" class="aione-main">
-		<?php
-	global $theme_options;
-	if($theme_options['sidebar_left_enable'] == 1):
+	<?php
+		global $theme_options;
+	?>
+	<main id="aione_main" class="aione-main ">
+	<?php
+		if($theme_options['sidebar_left_enable'] == 1):
 	?>
 	<section id="aione_sidebar_left" class="aione-sidebar-left">
 		<div id="" class="aione-sidebar">

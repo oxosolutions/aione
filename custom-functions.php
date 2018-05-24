@@ -30,8 +30,11 @@ class PerPageOptionsMetaboxes {
 			wp_enqueue_script( 'jquery.biscuit', get_template_directory_uri() . '/assets/js/jquery.biscuit.js', array( 'jquery' ), $theme_info->get( 'Version' ) );
 
 			wp_register_script( 'per-page-options-js', get_template_directory_uri() . '/assets/js/perpageoptions.js', array( 'jquery' ), $theme_info->get( 'Version' ) );
+			wp_register_script( 'ace-editor-js', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js', array( 'jquery' ), $theme_info->get( 'Version' ) );
+
 			wp_enqueue_script( 'jquery.biscuit' );
 			wp_enqueue_script( 'per-page-options-js' );
+			wp_enqueue_script( 'ace-editor-js' );
 			wp_enqueue_script( 'thickbox' );
 	   		wp_enqueue_style( 'thickbox' );
 
@@ -254,6 +257,74 @@ class PerPageOptionsMetaboxes {
 
 	}
 
+	public function ace_editor ($id, $label, $desc = '',$default=''){
+		global $post;
+		$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
+		$value = ( metadata_exists( 'post', $post->ID, 'pyre_'. $id ) ) ? $db_value : $default;
+
+		?>
+		<div class="pyre_metabox_field">
+			<div class="pyre_desc">
+				<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+				<?php if ( $desc ) : ?>
+					<p><?php echo $desc; ?></p>
+				<?php endif; ?>
+			</div>
+			<div class="pyre_field">
+				<textarea style="display:none;" name="pyre_<?php echo $id; ?>"><?php echo $value;?></textarea>
+				<div id="pyre_<?php echo $id; ?>"></div>
+			</div>
+		</div>
+		<script>
+		    function cssEditor(){
+		    	var csstempValue = $('textarea[name="pyre_custom_css"]').val(); 
+		    	var cssEditor = ace.edit("pyre_custom_css");
+	    		cssEditor.setTheme("ace/theme/twilight");
+				cssEditor.session.setMode("ace/mode/css");
+				cssEditor.session.setValue(csstempValue);
+				cssEditor.setOptions({
+				    autoScrollEditorIntoView: true,
+				    fontSize: "14px"
+				});			
+				
+				var cssinput = $('textarea[name="pyre_custom_css"]');
+			    cssEditor.getSession().on("change", function () {
+			        cssinput.val(cssEditor.getSession().getValue());
+			    });
+		    }
+		    function jsEditor(){
+		    	var jstempValue = $('textarea[name="pyre_custom_js"]').val(); 
+		    	var jsEditor = ace.edit("pyre_custom_js");
+	    		jsEditor.setTheme("ace/theme/twilight");
+				jsEditor.session.setMode("ace/mode/javascript");
+				jsEditor.session.setValue(jstempValue);
+				jsEditor.setOptions({
+				    autoScrollEditorIntoView: true
+				});			
+				
+				var jsinput = $('textarea[name="pyre_custom_js"]');
+			    jsEditor.getSession().on("change", function () {
+			        jsinput.val(jsEditor.getSession().getValue());
+			    });
+		    }
+		</script>
+		<?php 
+		if($id == "custom_css"):
+			?><script> cssEditor();</script><?php
+		endif;
+		if($id == "custom_js"):
+			?><script> jsEditor();</script><?php
+		endif;	
+		?>
+		<style type="text/css" media="screen">
+		    .ace_editor {
+				border: 1px solid lightgray;
+				height: 200px;
+			}
+		</style>
+		<?php
+	}
+
 	public function textarea( $id, $label, $desc = '', $default = '' ) {
 		global $post;
 		$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
@@ -274,7 +345,7 @@ class PerPageOptionsMetaboxes {
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
-				<textarea cols="120" rows="<?php echo $rows; ?>" id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>"><?php echo $value; ?></textarea>
+				 <textarea cols="120" rows="<?php echo $rows; ?>" id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>"><?php echo $value; ?></textarea> 
 			</div>
 		</div>
 		<?php
@@ -1073,4 +1144,6 @@ function get_aione_page_option($post_id,$meta_key){
 	$meta_value = get_post_meta( $post_id, $meta_key , true );
 	return $meta_value;
 }
+
+
 ?>
