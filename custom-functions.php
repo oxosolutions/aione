@@ -35,6 +35,7 @@ class PerPageOptionsMetaboxes {
 			wp_enqueue_script( 'jquery.biscuit' );
 			wp_enqueue_script( 'per-page-options-js' );
 			wp_enqueue_script( 'ace-editor-js' );
+			wp_enqueue_script('media-upload');
 			wp_enqueue_script( 'thickbox' );
 	   		wp_enqueue_style( 'thickbox' );
 
@@ -365,11 +366,49 @@ class PerPageOptionsMetaboxes {
 			</div>
 			<div class="pyre_field">
 				<div class="pyre_upload">
-					<div><input name="pyre_<?php echo $id; ?>" class="upload_field" id="pyre_<?php echo $id; ?>" type="text" value="<?php echo get_post_meta( $post->ID, 'pyre_' . $id, true ); ?>" /></div>
-					<div class="oxo_upload_button_container"><input class="oxo_upload_button" type="button" value="<?php _e( 'Browse', 'Aione' ); ?>" /></div>
+					
+					<?php $saved = get_post_meta( $post->ID, 'pyre_'.$id, true );?>
+					<input type="url" class="large-text" name="pyre_<?php echo $id; ?>" id="media_upload_btn" value="<?php echo esc_attr( $saved ); ?>"><br>
+
+					<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php _e( 'Upload Media', 'Aione' )?></button>
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+		jQuery(document).ready(function($){
+			'use strict';
+			// Instantiates the variable that holds the media library frame.
+			var metaImageFrame;
+			// Runs when the media button is clicked.
+			$( 'body' ).click(function(e) {
+				// Get the btn
+				var btn = e.target;
+				// Check if it's the upload button
+				if ( !btn || !$( btn ).attr( 'data-media-uploader-target' ) ) return;
+				// Get the field target
+				var field = $( btn ).data( 'media-uploader-target' );
+				// Prevents the default action from occuring.
+				e.preventDefault();
+				// Sets up the media library frame
+				metaImageFrame = wp.media.frames.metaImageFrame = wp.media({
+					title: 'Choose or Upload Media',
+					button: { text:  'Use this file' },
+				});
+				// Runs when an image is selected.
+				metaImageFrame.on('select', function() {
+					// Grabs the attachment selection and creates a JSON representation of the model.
+					var media_attachment = metaImageFrame.state().get('selection').first().toJSON();
+					// Sends the attachment URL to our custom image input field.
+					$( field ).val(media_attachment.url);
+				});
+
+				// Opens the media library frame.
+				metaImageFrame.open();
+
+			});
+
+		});
+		</script>
 		<?php
 
 	}

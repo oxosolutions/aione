@@ -6,6 +6,10 @@
 	$pyre_custom_css = get_aione_page_option($post->ID,'pyre_custom_css');
 	$pyre_meta_description = get_aione_page_option($post->ID,'pyre_meta_description');
 	$pyre_meta_keywords = get_aione_page_option($post->ID,'pyre_meta_keywords');
+	$pyre_og_title = get_aione_page_option($post->ID,'pyre_og_title');
+	$pyre_og_description = get_aione_page_option($post->ID,'pyre_og_description');
+	$pyre_og_url = get_aione_page_option($post->ID,'pyre_og_url');
+	$pyre_og_image = get_aione_page_option($post->ID,'pyre_og_image');
 	?>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,30 +23,44 @@
 		echo '<meta name="keywords" content="'.sanitize_textarea_field($pyre_meta_keywords).'">';
 	endif;
 	?>
-<!-- Schema.org markup for Google+ -->	
-<!-- <meta itemprop="name" content="The Name or Title Here">
-<meta itemprop="description" content="This is the page description">
-<meta itemprop="image" content="http://www.example.com/image.jpg"> -->
-<!-- Twitter Card data -->
-<!-- <meta name="twitter:card" content="product">
-<meta name="twitter:site" content="@publisher_handle">
-<meta name="twitter:title" content="Page Title">
-<meta name="twitter:description" content="Page description less than 200 characters">
-<meta name="twitter:creator" content="@author_handle">
-<meta name="twitter:image" content="http://www.example.com/image.jpg">
-<meta name="twitter:data1" content="$3">
-<meta name="twitter:label1" content="Price">
-<meta name="twitter:data2" content="Black">
-<meta name="twitter:label2" content="Color"> -->
-<!-- Open Graph data -->
-<!-- <meta property="og:title" content="Title Here" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://www.example.com/" />
-<meta property="og:image" content="http://example.com/image.jpg" />
-<meta property="og:description" content="Description Here" />
-<meta property="og:site_name" content="Site Name, i.e. Moz" />
-<meta property="og:price:amount" content="15.00" />
-<meta property="og:price:currency" content="USD" /> -->
+	<?php
+	if($pyre_og_title != ""){
+		echo '<meta property="og:title" content="'.sanitize_text_field($pyre_og_title).'" />';
+		echo '<meta name="twitter:title" content="'.sanitize_text_field($pyre_og_title).'" />';
+	} else {
+		echo '<meta property="og:title" content="'.get_the_title($post->ID).'" />';
+		echo '<meta name="twitter:title" content="'.get_the_title($post->ID).'" />';
+	}
+	?>
+	<?php
+	if($pyre_og_description != ""){
+		echo '<meta property="og:description" content="'.sanitize_textarea_field($pyre_og_description).'" />';
+		echo '<meta name="twitter:description" content="'.sanitize_textarea_field($pyre_og_description).'" />';
+	} else {
+		echo '<meta property="og:description" content="'.get_the_content($post->ID).'" />';
+		echo '<meta name="twitter:description" content="'.get_the_content($post->ID).'" />';
+	}
+	?>
+	<?php
+	if($pyre_og_url != ""){
+		echo '<meta property="og:url" content="'.sanitize_text_field($pyre_og_url).'" />';
+		echo '<meta name="twitter:url" content="'.sanitize_text_field($pyre_og_url).'" />';
+	} else {
+		echo '<meta property="og:url" content="'.get_the_permalink($post->ID).'" />';
+		echo '<meta name="twitter:url" content="'.get_the_permalink($post->ID).'" />';
+	}
+	?>
+	<?php
+		echo '<meta property="og:site_name" content="'.get_bloginfo().'" />';
+		echo '<meta name="twitter:site" content="'.get_bloginfo().'" />';
+	?>
+	<?php 
+	if($pyre_og_image != ""){
+		echo '<meta property="og:image" content="'.sanitize_text_field($pyre_og_image).'" />';
+		echo '<meta name="twitter:image" content="'.sanitize_text_field($pyre_og_image).'" />';
+	}
+	?>
+
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	
 	<?php wp_head(); ?>
