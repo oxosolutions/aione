@@ -7,7 +7,7 @@ $pyre_select_slider = get_aione_page_option($post->ID,'pyre_select_slider');
 $slider_id = $pyre_select_slider == 'default' ? $theme_options['select_slider'] 
 		: $pyre_select_slider;
 
-$slides = get_field('images', $slider_id);
+$slides = @get_post_meta('images', $slider_id);
 
 $pyre_slider_enable = get_aione_page_option($post->ID,'pyre_slider_enable');
 $draw = $pyre_slider_enable == 'yes' ? true 
@@ -31,8 +31,13 @@ if($draw == true):?>
 
 						echo '</div>';
 						echo '<div class="aione-description">';
+							if(!empty($slide['title'])){
 							echo '<h2 class="title">'.$slide['title'].'</h2>';
+							}
+							if(!empty($slide['caption'])){
+
 							echo '<h4 class="description">'.$slide['caption'].'</h4>';
+							}
 						echo '</div>';
 					echo '</div>';
 				}

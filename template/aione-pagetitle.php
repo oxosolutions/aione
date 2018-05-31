@@ -68,11 +68,14 @@ if($draw == true): ?>
 							)
 					);
 			if($draw == true):
+				if(!empty($page_description)):
 			?>
+
 				<h2 class="description">
 					<?php echo $page_description;?>				
 				</h2>
-			<?php endif; ?>
+			<?php endif;
+			endif; ?>
 			<div class="aione-clear"></div><!-- .aione-clear -->
 		</div><!-- .wrapper -->
 	</div><!-- .aione-pagetitle -->

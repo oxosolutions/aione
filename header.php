@@ -69,6 +69,11 @@
 		echo "<style>".$pyre_custom_css."</style>";
 	endif;
 	?>
+
+	<script>
+	    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+	</script>
+
 	
 </head>
 <body <?php body_class(); ?>>

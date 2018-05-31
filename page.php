@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-	<main id="primary aione_main" class="site-main aione-main">
+	<main id="aione_main" class="site-main aione-main">
 
 	<?php
 	global $theme_options;
@@ -31,7 +31,7 @@ get_header(); ?>
 	if($draw == true):
 	?>
 	<section id="aione_sidebar_left" class="aione-sidebar-left">
-		<div id="" class="aione-sidebar">
+		<div  class="aione-sidebar">
 			<div class="wrapper">
 				<?php
 				if ( is_active_sidebar( 'aione-sidebar-left' ) ):
@@ -58,7 +58,7 @@ get_header(); ?>
 	if($draw == true):
 	?>
 	<section id="aione_contenttop" class="aione-contenttop">
-		<div id="" class="aione-content-top">
+		<div  class="aione-content-top">
 			<div class="wrapper">
 				<?php
 				if ( is_active_sidebar( 'aione-contenttop-content' ) ):
@@ -94,7 +94,7 @@ get_header(); ?>
 	if($draw == true):
 	?>
 	<section id="aione_contentbottom" class="aione-contentbottom">
-		<div id="" class="aione-content-bottom">
+		<div  class="aione-content-bottom">
 			<div class="wrapper">
 				<?php
 				if ( is_active_sidebar( 'aione-contentbottom-content' ) ):
@@ -120,7 +120,7 @@ get_header(); ?>
 	if($draw == true):
 	?>
 	<section id="aione_sidebar_right" class="aione-sidebar-right">
-		<div id="" class="aione-sidebar">
+		<div  class="aione-sidebar">
 			<div class="wrapper">
 				<?php
 				if ( is_active_sidebar( 'aione-sidebar-right' ) ):
