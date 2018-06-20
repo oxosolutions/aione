@@ -504,6 +504,14 @@ function aione_slider_settings_form($post){
 					<td><input name="aione_slider_settings[items]" type="number" id="aione_slider_items" value="<?php echo isset($settings['items'])? $settings['items'] : '3' ?>" class=""><p class="description">The number of items you want to see on the screen.</p></td>
 					</tr>
 					<tr>
+					<th scope="row"><label for="aione_slider_theme">Theme</label></th>
+					<td><select name="aione_slider_settings[theme]" id="aione_slider_theme">
+						<option value="dark" <?php if($settings['theme'] == 'dark') {echo "selected = selected";} ?>>Dark</option>
+						<option value="light" <?php if($settings['theme'] == 'light') {echo "selected = selected";} ?>>Light</option>
+						<option value="blue" <?php if($settings['theme'] == 'blue') {echo "selected = selected";} ?>>Blue</option>
+					</select></td>
+					</tr>
+					<tr>
 					<th scope="row"><label for="aione_slider_margin">Margin</label></th>
 					<td><input name="aione_slider_settings[margin]" type="text" id="aione_slider_margin" value="<?php echo isset($settings['margin'])? $settings['margin'] : '0' ?>" class=""><p class="description">margin-right(px) on item.</p></td>
 					</tr>
@@ -520,6 +528,22 @@ function aione_slider_settings_form($post){
 						<option value="false" <?php if($settings['center'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if($settings['center'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Center item. Works well with even an odd number of items.</p></td>
+					</tr>
+					<tr>
+					<th scope="row"><label for="aione_slider_caption">Image Caption</label></th>
+					<td><input name="aione_slider_settings[caption]" type="radio" id="aione_slider_caption" value="1" class="" <?php if($settings['caption'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption]" type="radio" id="aione_slider_caption" value="0" class="" <?php if($settings['caption'] == '0' || $settings['caption'] == '') {echo "checked = checked";}?>>OFF</td>
+					</tr>
+					<tr>
+					<th scope="row"><label for="aione_slider_caption_title">Image Caption Title</label></th>
+					<td><input name="aione_slider_settings[caption_title]" type="radio" id="aione_slider_caption_title" value="1" class="" <?php if($settings['caption_title'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_title]" type="radio" id="aione_slider_caption_title" value="0" class="" <?php if($settings['caption_title'] == '0' || $settings['caption_title'] == '') {echo "checked = checked";}?>>OFF</td>
+					</tr>
+					<tr>
+					<th scope="row"><label for="aione_slider_caption_description">Image Caption Description</label></th>
+					<td><input name="aione_slider_settings[caption_description]" type="radio" id="aione_slider_caption_description" value="1" class="" <?php if($settings['caption_description'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_description]" type="radio" id="aione_slider_caption_description" value="0" class="" <?php if($settings['caption_description'] == '0' || $settings['caption_description'] == '') {echo "checked = checked";}?>>OFF</td>
+					</tr>
+					<tr>
+					<th scope="row"><label for="aione_slider_caption_link">Image Caption Link</label></th>
+					<td><input name="aione_slider_settings[caption_link]" type="radio" id="aione_slider_caption_link" value="1" class="" <?php if($settings['caption_link'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_link]" type="radio" id="aione_slider_caption_link" value="0" class="" <?php if($settings['caption_link'] == '0' || $settings['caption_link'] == '') {echo "checked = checked";}?>>OFF</td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_mouseDrag">mouseDrag</label></th>
@@ -743,7 +767,7 @@ function aione_slider_settings_form($post){
 
 				</tbody>
 			</table>
-			<p class="submit"><input type="submit" id="submit_button" name="app_setting_save" class="button button-primary" value="Save Settings"></p>
+			<!-- <p class="submit"><input type="submit" id="submit_button" name="app_setting_save" class="button button-primary" value="Save Settings"></p> -->
 		</form>
 	<?php
 }
@@ -756,8 +780,8 @@ function aione_slider_docs_callback(){
 * Aione Slider Shortcode Callback
 * 
 */
-add_shortcode( 'aione-slider', 'aione_slider_shortcode_callback' );
-function aione_slider_shortcode_callback( $atts ) {
+add_shortcode( 'aione-slider', 'aione_slider_shortcode' );
+function aione_slider_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
 		'id' => '',
 		'class' => '',
@@ -765,26 +789,37 @@ function aione_slider_shortcode_callback( $atts ) {
 
 	$slides = get_field('images', $atts['id']);
 	$settings   = get_post_meta($atts['id'], 'aione-slider-settings', true );
-    $data_setiings_string = '';
-    foreach($settings as $setting_key => $setting_value){
-        $setting_key = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $setting_key));
-        $data_setiings_string .= 'data-'.$setting_key.'="'.$setting_value.'" ';
+	$skip_settings   = array('theme');
+    $slider_classes = array('slider','owl-carousel','owl-theme','gallery','aione-theme');
+    $slider_data = array();
+
+    if(is_array($settings)){
+    	foreach($settings as $setting_key => $setting_value){
+	    	if(in_array($setting_key, $skip_settings)){
+	    		continue;
+	    	}
+	        $setting_key = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $setting_key));
+	        $slider_data[] = 'data-'.$setting_key.'="'.$setting_value.'" ';
+	    }
     }
+    
+    $slider_classes[] = $settings['theme'];
+    $slider_classes = implode(" ",$slider_classes);
+    $slider_data = implode(" ",$slider_data);
 	
 	$output = '';
 	$output .= '<div id="aione_slider" class="aione-slider">
 			<div class="wrapper">';
 				if(!empty($slides)):
 					
-					$output .=  '<div id="aione_slider_'.$atts['id'].'" class="slider owl-carousel owl-theme gallery aione-theme" '.$data_setiings_string.'>';
-					//echo '<div id="aione_slider_'.$slider_id.'" class="aione-carousel owl-carousel owl-theme gallery aione-theme">';
+					$output .=  '<div id="aione_slider_'.$atts['id'].'" class="'.$slider_classes.'" '.$slider_data.'>';
 					foreach ($slides as $key => $slide) {
-						$output .= '<div class="aione-item">';
-							$output .= '<div class="aione-image">';
+						$output .= '<div class="slider-item">';
+							$output .= '<div class="slider-image">';
 								$output .= '<img src="'.$slide['url'].'" alt="'.$slide['alt'].'" />';
 
 							$output .= '</div>';
-							$output .= '<div class="aione-description">';
+							$output .= '<div class="slider-description">';
 								$output .= '<h2 class="title">'.$slide['title'].'</h2>';
 								$output .= '<h4 class="description">'.$slide['caption'].'</h4>';
 							$output .= '</div>';
@@ -845,7 +880,12 @@ if(function_exists("register_field_group")){
 * Aione Slider Widget
 * 
 */
-add_action('widgets_init', create_function('', "register_widget('Aione_Slider_Widget');"));
+/* create_function is deprecated in php 7.2 */
+//add_action('widgets_init', create_function('', "register_widget('Aione_Slider_Widget');"));
+add_action('widgets_init', function() {
+		register_widget('Aione_Slider_Widget');
+	}
+);
 class Aione_Slider_Widget extends WP_Widget {
 
     public function __construct() {
@@ -910,7 +950,11 @@ class Aione_Slider_Widget extends WP_Widget {
 * Aione Social Icons Widget
 * 
 */
-add_action('widgets_init', create_function('', "register_widget('Aione_Social_Icons_Widget');"));
+//add_action('widgets_init', create_function('', "register_widget('Aione_Social_Icons_Widget');"));
+add_action('widgets_init', function() {
+		register_widget('Aione_Social_Icons_Widget');
+	}
+);
 class Aione_Social_Icons_Widget extends WP_Widget {
 
     public function __construct() {
@@ -1080,7 +1124,11 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 * Aione Social Share Widget
 * 
 */
-add_action('widgets_init', create_function('', "register_widget('Aione_Social_Share_Widget');"));
+//add_action('widgets_init', create_function('', "register_widget('Aione_Social_Share_Widget');"));
+add_action('widgets_init', function() {
+		register_widget('Aione_Social_Share_Widget');
+	}
+);
 class Aione_Social_Share_Widget extends WP_Widget {
 
     public function __construct() {
