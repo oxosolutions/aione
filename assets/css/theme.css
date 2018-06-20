@@ -25,7 +25,7 @@ Aione Layout
 .aione-layout-wide .aione-main > .wrapper,
 .aione-layout-wide .aione-footer > .wrapper,
 .aione-layout-wide .aione-copyright > .wrapper{
-	max-width: 1350px;
+	max-width: 1200px;
 	margin: 0 auto;
 }
 /***************************************
@@ -135,7 +135,7 @@ Aione Header
 }
 .aione-header-menu{
 	text-align: center;
-  padding: 10px;
+  padding: 0;
 }
 
 .aione-header-logo{
@@ -144,7 +144,7 @@ Aione Header
 }
 .aione-header-logo img{
 	width: auto;
-    height: 60px;
+    height: 100px;
 }
 .aione-header .aione-header-title{
 	padding-top:20px;
@@ -215,7 +215,6 @@ Aione Nav
 
 	.aione-nav.horizontal{
 		border-bottom: none;
-		padding-left:40px;
 		background: #e8e8e8
 	}
 	.aione-nav .aione-menu ul li a{

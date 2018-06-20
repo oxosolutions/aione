@@ -505,7 +505,7 @@ function aione_slider_settings_form($post){
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_margin">Margin</label></th>
-					<td><input name="aione_slider_settings[margin]" type="number" id="aione_slider_margin" value="<?php echo isset($settings['margin'])? $settings['margin'] : '0' ?>" class=""><p class="description">margin-right(px) on item.</p></td>
+					<td><input name="aione_slider_settings[margin]" type="text" id="aione_slider_margin" value="<?php echo isset($settings['margin'])? $settings['margin'] : '0' ?>" class=""><p class="description">margin-right(px) on item.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_loop">Loop</label></th>
@@ -764,12 +764,19 @@ function aione_slider_shortcode_callback( $atts ) {
 	), $atts, 'aione-slider' );
 
 	$slides = get_field('images', $atts['id']);
+	$settings   = get_post_meta($atts['id'], 'aione-slider-settings', true );
+    $data_setiings_string = '';
+    foreach($settings as $setting_key => $setting_value){
+        $setting_key = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $setting_key));
+        $data_setiings_string .= 'data-'.$setting_key.'="'.$setting_value.'" ';
+    }
+	
 	$output = '';
 	$output .= '<div id="aione_slider" class="aione-slider">
 			<div class="wrapper">';
 				if(!empty($slides)):
 					
-					$output .=  '<div id="aione_slider_'.$atts['id'].'" class="slider owl-carousel owl-theme gallery aione-theme">';
+					$output .=  '<div id="aione_slider_'.$atts['id'].'" class="slider owl-carousel owl-theme gallery aione-theme" '.$data_setiings_string.'>';
 					//echo '<div id="aione_slider_'.$slider_id.'" class="aione-carousel owl-carousel owl-theme gallery aione-theme">';
 					foreach ($slides as $key => $slide) {
 						$output .= '<div class="aione-item">';

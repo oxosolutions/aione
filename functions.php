@@ -144,16 +144,16 @@ function gutenbergtheme_fonts_url() {
  * Enqueue scripts and styles.
  */
 function aione_scripts() {
-	wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css' );
+	wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css?v='.time() );
 	wp_register_style( 'aione-theme', get_template_directory_uri() . '/assets/css/theme.css', array('aione'), time(), 'all' ); 
 	wp_register_style( 'aione-color', get_template_directory_uri() . '/assets/css/color-blue.css', array('aione','aione-theme'), time(), 'all' );
-	wp_register_style( 'aione-font', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' );
+	// wp_register_style( 'aione-font', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' );
 	//wp_register_style( 'gutenbergthemeblocks-style', get_template_directory_uri() . '/assets/css/blocks.css' );
 	wp_register_style( 'aione-icons', 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' );
 	wp_enqueue_script( 'gutenbergtheme-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
 	wp_enqueue_script( 'gutenbergtheme-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 	wp_enqueue_script( 'aione-vendor', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), '20151215', true );
-	wp_enqueue_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), time(), true );
+	wp_enqueue_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.js', array(), time(), true );
 	wp_enqueue_script( 'aione-share', get_template_directory_uri() . '/assets/js/SocialShare.js', array('jquery'), time(), true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

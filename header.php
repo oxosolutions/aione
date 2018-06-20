@@ -2,6 +2,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<?php
+	global $theme_options;
 	global $post;
 	$pyre_custom_css = get_aione_page_option($post->ID,'pyre_custom_css');
 	$pyre_meta_description = get_aione_page_option($post->ID,'pyre_meta_description');
@@ -65,8 +66,11 @@
 	
 	<?php wp_head(); ?>
 	<?php
+	if($theme_options['custom_css'] != ""){
+		echo "<style type='text/css'>".$theme_options['custom_css']."</style>";
+	}
 	if($pyre_custom_css != "") :
-		echo "<style>".$pyre_custom_css."</style>";
+		echo "<style type='text/css'>".$pyre_custom_css."</style>";
 	endif;
 	?>
 
@@ -74,6 +78,34 @@
 	    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
 	</script>
 
+	<!-- Common Structured Data -->
+	<?php
+	if ( has_custom_logo() ){ 
+        $logo = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+    }
+    ?>
+	<script type="application/ld+json">
+        {
+			"@context": "http://schema.org",
+			"@type": "Organization",
+			"name": "<?php echo get_bloginfo();?>",
+			"url": "<?php echo home_url() ;?>",
+			"logo": "<?php echo $logo[0];?>",
+         	"contactPoint": [
+         		{ 
+         			"@type": "ContactPoint",
+         			"telephone": "+91-183-2401000",
+         			"contactType": "customer service"
+         		}
+         	],
+         	"potentialAction": {
+         		"@type": "SearchAction",
+         		"target": "<?php echo home_url('/');?>?q={search}",
+         		"query-input": "required name=search"
+         	}
+        }         
+      </script>
+	<!-- Common Structured Data End -->
 	
 </head>
 <body <?php body_class(); ?>>

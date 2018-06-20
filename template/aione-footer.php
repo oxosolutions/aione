@@ -1,5 +1,5 @@
 <?php 
-global $theme_options;
+global $theme_options; 
 global $post;
 $draw = false;
 $count=0; 
@@ -57,3 +57,4 @@ if($count > 0):
 <?php 
   endif;
 endif;
+	
