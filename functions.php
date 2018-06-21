@@ -149,7 +149,7 @@ function aione_scripts() {
 	wp_register_style( 'aione-color', get_template_directory_uri() . '/assets/css/color-blue.css', array('aione','aione-theme'), time(), 'all' );
 	// wp_register_style( 'aione-font', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' );
 	//wp_register_style( 'gutenbergthemeblocks-style', get_template_directory_uri() . '/assets/css/blocks.css' );
-	wp_register_style( 'aione-icons', 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' );
+	// wp_register_style( 'aione-icons', 'https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css' );
 	wp_enqueue_script( 'gutenbergtheme-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
 	wp_enqueue_script( 'gutenbergtheme-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 	wp_enqueue_script( 'aione-vendor', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), '20151215', true );

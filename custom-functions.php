@@ -506,9 +506,9 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_theme">Theme</label></th>
 					<td><select name="aione_slider_settings[theme]" id="aione_slider_theme">
-						<option value="dark" <?php if($settings['theme'] == 'dark') {echo "selected = selected";} ?>>Dark</option>
-						<option value="light" <?php if($settings['theme'] == 'light') {echo "selected = selected";} ?>>Light</option>
-						<option value="blue" <?php if($settings['theme'] == 'blue') {echo "selected = selected";} ?>>Blue</option>
+						<option value="aione" <?php if($settings['theme'] == 'aione') {echo "selected = selected";} ?>>Aione</option>
+						<option value="darlic" <?php if($settings['theme'] == 'darlic') {echo "selected = selected";} ?>>Darlic</option>
+						<option value="oxo" <?php if($settings['theme'] == 'oxo') {echo "selected = selected";} ?>>OXO</option>
 					</select></td>
 					</tr>
 					<tr>
@@ -787,53 +787,89 @@ function aione_slider_shortcode( $atts ) {
 		'class' => '',
 	), $atts, 'aione-slider' );
 
-	$slides = get_field('images', $atts['id']);
-	$settings   = get_post_meta($atts['id'], 'aione-slider-settings', true );
-	$skip_settings   = array('theme');
-    $slider_classes = array('slider','owl-carousel','owl-theme','gallery','aione-theme');
-    $slider_data = array();
-
-    if(is_array($settings)){
-    	foreach($settings as $setting_key => $setting_value){
-	    	if(in_array($setting_key, $skip_settings)){
-	    		continue;
-	    	}
-	        $setting_key = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $setting_key));
-	        $slider_data[] = 'data-'.$setting_key.'="'.$setting_value.'" ';
-	    }
-    }
-    
-    $slider_classes[] = $settings['theme'];
-    $slider_classes = implode(" ",$slider_classes);
-    $slider_data = implode(" ",$slider_data);
-	
 	$output = '';
-	$output .= '<div id="aione_slider" class="aione-slider">
-			<div class="wrapper">';
-				if(!empty($slides)):
-					
-					$output .=  '<div id="aione_slider_'.$atts['id'].'" class="'.$slider_classes.'" '.$slider_data.'>';
-					foreach ($slides as $key => $slide) {
-						$output .= '<div class="slider-item">';
-							$output .= '<div class="slider-image">';
-								$output .= '<img src="'.$slide['url'].'" alt="'.$slide['alt'].'" />';
+	$slider_id = $atts['id'];
 
-							$output .= '</div>';
-							$output .= '<div class="slider-description">';
-								$output .= '<h2 class="title">'.$slide['title'].'</h2>';
-								$output .= '<h4 class="description">'.$slide['caption'].'</h4>';
-							$output .= '</div>';
-						$output .= '</div>';
+	if ( get_post_status ( $slider_id ) == 'publish' ) {
+		if ( get_post_type( $slider_id ) == 'aione-slider' ) {
+
+			$slides = get_field('images', $slider_id);
+
+
+
+			$settings   = get_post_meta($atts['id'], 'aione-slider-settings', true );
+			$skip_settings   = array(
+			'theme',
+			'caption',
+			'caption_title',
+			'caption_description',
+			'caption_link',
+			'URLhashListener',
+			);
+			$slider_classes = array('slider','owl-carousel');
+			$slider_data = array();
+
+			if(is_array($settings)){
+				foreach($settings as $setting_key => $setting_value){
+					if(in_array($setting_key, $skip_settings)){
+						continue;
 					}
+				    $setting_key = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $setting_key));
+				    $slider_data[] = 'data-'.$setting_key.'="'.$setting_value.'" ';
+				}
+			}
+
+			$slider_classes[] = $settings['theme'];
+			$slider_classes = implode(" ",$slider_classes);
+			$slider_data = implode(" ",$slider_data);
+
+
+
+
+
+			/*
+
+			echo '<div style="display:none">';
+			echo "<br>caption === ".$settings['caption'];
+			echo "<br>caption_title === ".$settings['caption_title'];
+			echo "<br>caption_description === ".$settings['caption_description'];
+			echo "<br>caption_link === ".$settings['caption_link'];
+			echo '</div>';
+
+			echo "<pre>";
+			print_r($slider_classes);
+			echo "</pre>";
+			*/
+
+			if(!empty($slides)):
+				$output .=  '<div id="aione_slider_'.$atts['id'].'" class="'.$slider_classes.'" '.$slider_data.'>';
+				foreach ($slides as $key => $slide) {
+					$output .= '<div class="slider-item">';
+						$output .= '<div class="slider-image">';
+							$output .= '<img src="'.@$slide['url'].'" alt="'.@$slide['alt'].'" />';
+						$output .= '</div>';
+						if($settings['caption']){
+							$output .= '<div class="slider-caption">';
+								if($settings['caption_title']){
+									$output .= '<h3 class="caption-title">'.@$slide['title'].'</h3>';
+								}
+								if($settings['caption_description']){
+									$output .= '<p class="caption-description">'.@$slide['caption'].'</p>';
+								}
+							$output .= '</div>';
+						}
 					$output .= '</div>';
-
-				endif;
-			$output .='<div class="aione-clear"></div>
-			</div>
-		</div>
-		';
+				}
+				$output .= '</div>';
+			endif;
+			$output .='<div class="aione-clear"></div>';
+		} else {
+			$output .= '<div class="aione-message warning">Invalid Slider</div>';
+		}
+	} else {
+		$output .= '<div class="aione-message warning">Invalid Slider</div>';
+	}
 	echo $output;
-
 }
 
 /**
@@ -959,27 +995,27 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 
     public function __construct() {
 	    $widget_options = array( 
-	      'classname' => 'aione_social_icons_widget',
+	      'classname' => 'aione-social-icons-widget',
 	      'description' => 'Displays a list of social media website icons and a link to your profile.',
 	    );
 	    parent::__construct( 'aione_social_icons_widget', 'Aione Social Icons', $widget_options );
 
 	    global $asiw_social_accounts;
 		$asiw_social_accounts = array(
-			'Email' => 'email',
 			'Facebook' => 'facebook',
+			'Twitter' => 'twitter',
+			'YouTube' => 'youtube',
+			'Google+' => 'google-plus',
+			'LinkedIn' => 'linkedin',
+			'Instagram' => 'instagram',
+			'Email' => 'email',
 			'Flickr' => 'flickr',
 			'GitHub' => 'github',
-			'Google+' => 'googleplus',
-			'Instagram' => 'instagram',
-			'LinkedIn' => 'linkedin',
 			'Pinterest' => 'pinterest',
 			'RSS Feed' => 'rss',
 			'Tumblr' => 'tumblr',
-			'Twitter' => 'twitter',
 			'Vimeo' => 'vimeo',
 			'WordPress' => 'wordpress',
-			'YouTube' => 'youtube'
 		);
 
 		if( has_filter('aione_social_icon_accounts') ) {
@@ -1019,9 +1055,9 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 				
 
 				if($asiw_labels != 'show') { $asiw_data['label'] = ''; }
-				else { $asiw_data['label'] = '<span class="social-icon-label">'.$label.'</span>'; }
+				else { $asiw_data['label'] = '<span class="label">'.$label.'</span>'; }
 
-				$format = '<li class="%1$s"><a href="%2$s" target="_blank"><i class="fa fa-%1$s"></i>%3$s</a></li>';
+				$format = '<li class="%1$s"><a href="%2$s" target="_blank"><span class="icon"><i class="fa fa-%1$s"></i></span>%3$s</a></li>';
 
 				$asiw_icon_output = apply_filters('social_icon_output', $format);
 				echo vsprintf($asiw_icon_output, $asiw_data);
@@ -1239,5 +1275,33 @@ function get_aione_page_option($post_id,$meta_key){
 	return $meta_value;
 }
 
+function is_fullwidth($component){
+	global $theme_options;
+	global $post;
+	$fullwidth = false;
+
+	$page_option = get_aione_page_option($post->ID,'pyre_'.$component.'_100_width');
+
+
+	if($page_option == 'default'){
+		if($theme_options[$component.'_100_width']){
+			$fullwidth = true;
+		}
+	} else{
+		if($page_option == 'yes'){
+			$fullwidth = true;
+		}
+	}
+	//echo "<br>page_option == ".$page_option;
+	//echo "<br>theme_options == ".$theme_options[$component.'_100_width'];
+
+	if($fullwidth){
+		$fullwidth_class = "fullwidth";
+	} else {
+		$fullwidth_class = "";
+	}
+
+	return $fullwidth_class;
+}
 
 ?>

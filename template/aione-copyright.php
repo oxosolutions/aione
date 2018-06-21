@@ -26,7 +26,7 @@ if($count > 0):
 	
 	if($draw == true):
 	?>
-	<div id="aione_copyright" class="aione-copyright">
+	<div id="aione_copyright" class="aione-copyright <?php echo is_fullwidth('footer_copyright');?>">
 		<div class="wrapper">
 			<?php 
 			if ( is_active_sidebar( 'aione-copyright-left' ) ){
