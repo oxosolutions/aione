@@ -15,7 +15,7 @@ $draw = $pyre_header_enable == 'yes' ? true
 if($draw == true):
 	
 	?>
-	<header id="aione_header" class="aione-header">
+	<header id="aione_header" class="aione-header <?php echo is_fullwidth('header');?>">
 		<div class="wrapper">
 			<?php 
 			$pyre_header_show_logo = get_aione_page_option($post->ID,'pyre_header_show_logo');

@@ -27,7 +27,7 @@ if($count > 0):
 	
 	if($draw == true):
 	?>
-		<div id="aione_topbar" class="aione-topbar">
+		<div id="aione_topbar" class="aione-topbar <?php echo is_fullwidth('top_bar');?>">
 			<div class="wrapper">
 				<?php 
 				if ( is_active_sidebar( 'aione-topbar-left' ) ):

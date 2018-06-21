@@ -468,7 +468,7 @@ function aione_slider_metaboxes() {
 	);
 	add_meta_box(
 		'aione_slider_docs',
-		'Slider shortcode',
+		'Slider Shortcode',
 		'aione_slider_docs_callback',
 		'aione-slider',
 		'side',
@@ -597,6 +597,13 @@ function aione_slider_settings_form($post){
 						<option value="false" <?php if($settings['autoWidth'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if($settings['autoWidth'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Set non grid content. Try using width style on divs.</p></td>
+					</tr>
+					<tr>
+					<th scope="row"><label for="aione_slider_autoHight">autoHight</label></th>
+					<td><select name="aione_slider_settings[autoHight]" id="aione_slider_autoHight">					
+						<option value="false" <?php if($settings['autoHight'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if($settings['autoHight'] == 'true') {echo "selected = selected";} ?>>True</option>
+						</select></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_startPosition">startPosition</label></th>
@@ -869,7 +876,7 @@ function aione_slider_shortcode( $atts ) {
 	} else {
 		$output .= '<div class="aione-message warning">Invalid Slider</div>';
 	}
-	echo $output;
+	return $output;
 }
 
 /**
@@ -1028,6 +1035,9 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 		
 		$asiw_title = empty($instance['title']) ? 'Follow Us' : apply_filters('widget_title', $instance['title']);
 		$asiw_icon_size = $instance['icon_size'];
+		$asiw_icon_theme = $instance['icon_theme'];
+		$asiw_icon_style = $instance['icon_style'];
+		$asiw_icon_direction = $instance['icon_direction'];
 		$asiw_labels = $instance['labels'];
 		
 		echo $before_widget;
@@ -1035,49 +1045,41 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 		echo $before_title;
 		echo $asiw_title;
 		echo $after_title;
-		
 
-		if($asiw_labels == 'show') { $ul_class = 'show-labels '; }
-		else { $ul_class = ''; }
-		$ul_class .= 'fa-'.$asiw_icon_size;
-		
+		$classes = array();
+		$classes[] = 'aione-social-icons';
+		if($asiw_labels == 'show') { $classes[] = 'labels'; }
+		if($asiw_icon_direction == 'vertical') { $classes[] = 'vertical'; }
+		$classes[] = $asiw_icon_size;
+		$classes[] = $asiw_icon_theme;
+		$classes[] = $asiw_icon_style;
 
-		echo apply_filters('social_icon_opening_tag', '<ul class="'.$ul_class.'">'); 
+		$classes = implode(" ",$classes);
+
+
+		echo apply_filters('social_icon_opening_tag', '<ul class="'.$classes.'">'); 
 
 		foreach($asiw_social_accounts as $label => $id) : 
-			 if($instance[$id] != '' && $instance[$id] != 'http://') :
+			if($instance[$id] != '' && $instance[$id] != 'http://') :
 				global $asiw_data;
 				global $asiw_icon_output;
-
 				
 				$asiw_data['id'] = $id;
 				$asiw_data['url'] = $instance[$id];
 				
-
 				if($asiw_labels != 'show') { $asiw_data['label'] = ''; }
 				else { $asiw_data['label'] = '<span class="label">'.$label.'</span>'; }
 
-				$format = '<li class="%1$s"><a href="%2$s" target="_blank"><span class="icon"><i class="fa fa-%1$s"></i></span>%3$s</a></li>';
+				$format = '<li class="%1$s"><a href="%2$s" target="_blank"><span class="icon"></span><span class="label">%3$s</span></a></li>';
 
 				$asiw_icon_output = apply_filters('social_icon_output', $format);
 				echo vsprintf($asiw_icon_output, $asiw_data);
-
-				/*<li>
-				<a class="facebook" href="https://www.facebook.com/oxosolutions" target="_blank">
-				<i class="fa fa-facebook"></i>
-				</a>
-				</li>*/
-
-			 endif; 
+			endif; 
 		 endforeach; 
-		// echo "<pre>";print_r($asiw_social_accounts);echo "</pre>";
-		// echo "<pre>";print_r($asiw_data);echo "</pre>";
 		 echo apply_filters('social_icon_closing_tag', '</ul>'); 
-
-		
 		echo $after_widget;
-		
 	}
+
 	public function form( $instance ) {
 		global $asiw_social_accounts;
 
@@ -1088,6 +1090,9 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 
 		if(!isset($instance['title'])) { $instance['title'] = ''; }
 		if(!isset($instance['icon_size'])) { $instance['icon_size'] = 'lg'; }
+		if(!isset($instance['icon_theme'])) { $instance['icon_theme'] = 'dark'; }
+		if(!isset($instance['icon_style'])) { $instance['icon_style'] = 'square'; }
+		if(!isset($instance['icon_direction'])) { $instance['icon_direction'] = 'horizontal'; }
 		if(!isset($instance['labels'])) { $instance['labels'] = ''; }
 		?>
 
@@ -1099,14 +1104,28 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 		<?php
 		$asiw_sizes = array(
 			'none' => 'none',
-			'xs' => 'xs',
-			'sm' => 'sm',
-			'lg' => 'lg',
-			'2x' => '2x',
-			'3x' => '3x',
-			'5x' => '5x',
-			'7x' => '7x',
-			'10x' => '10x',
+			'Small' => 'small',
+			'Medium' => 'medium',
+			'Large' => 'large',
+			'Extra Large' => 'xlarge',
+		);
+		$asiw_theme = array(
+			'Colored' => 'colored',
+			'Dark' => 'dark',
+			'Dark Solid' => 'dark-solid',
+			'Dark Outline' => 'dark-outline',
+			'Light' => 'light',
+			'Light Solid' => 'light-solid',
+			'Light Outline' => 'light-outline',
+		);
+		$asiw_style = array(
+			'Square' => 'square',
+			'Rounded' => 'rounded',
+			'Circle' => 'circle',
+		);
+		$asiw_direction = array(
+			'Horizontal' => 'horizontal',
+			'Vertical' => 'vertical',
 		);
 		?>
 
@@ -1116,6 +1135,51 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 			foreach($asiw_sizes as $option => $value) :
 
 				if(esc_attr($instance['icon_size'] == $value)) { $selected = ' selected="selected"'; }
+				else { $selected = ''; }
+			?>
+			
+				<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+			
+			<?php endforeach; ?>
+			</select>
+		</p>
+
+		<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_theme'); ?>">Icon Theme:</label>
+			<select id="<?php echo $this->get_field_id('icon_theme'); ?>" name="<?php echo $this->get_field_name('icon_theme'); ?>">
+			<?php
+			foreach($asiw_theme as $option => $value) :
+
+				if(esc_attr($instance['icon_theme'] == $value)) { $selected = ' selected="selected"'; }
+				else { $selected = ''; }
+			?>
+			
+				<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+			
+			<?php endforeach; ?>
+			</select>
+		</p>
+
+		<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_style'); ?>">Icon Style:</label>
+			<select id="<?php echo $this->get_field_id('icon_style'); ?>" name="<?php echo $this->get_field_name('icon_style'); ?>">
+			<?php
+			foreach($asiw_style as $option => $value) :
+
+				if(esc_attr($instance['icon_style'] == $value)) { $selected = ' selected="selected"'; }
+				else { $selected = ''; }
+			?>
+			
+				<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+			
+			<?php endforeach; ?>
+			</select>
+		</p>
+
+		<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_direction'); ?>">Icon Direction:</label>
+			<select id="<?php echo $this->get_field_id('icon_direction'); ?>" name="<?php echo $this->get_field_name('icon_direction'); ?>">
+			<?php
+			foreach($asiw_direction as $option => $value) :
+
+				if(esc_attr($instance['icon_direction'] == $value)) { $selected = ' selected="selected"'; }
 				else { $selected = ''; }
 			?>
 			
@@ -1148,6 +1212,9 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 
 		$instance['title'] = $new_instance['title'];
 		$instance['icon_size'] = $new_instance['icon_size'];
+		$instance['icon_theme'] = $new_instance['icon_theme'];
+		$instance['icon_style'] = $new_instance['icon_style'];
+		$instance['icon_direction'] = $new_instance['icon_direction'];
 		$instance['labels'] = $new_instance['labels'];
 
 		return $instance;
