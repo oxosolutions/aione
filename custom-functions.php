@@ -1012,7 +1012,7 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 			'Facebook' => 'facebook',
 			'Twitter' => 'twitter',
 			'YouTube' => 'youtube',
-			'Google+' => 'google-plus',
+			'Google+' => 'googleplus',
 			'LinkedIn' => 'linkedin',
 			'Instagram' => 'instagram',
 			'Email' => 'email',
