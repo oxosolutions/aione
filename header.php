@@ -106,7 +106,21 @@
         }         
       </script>
 	<!-- Common Structured Data End -->
-	
+	<?php
+	$post_type = get_post_type();
+	$aione_components = get_option('aione-components');
+	$aione_component = $aione_components[$post_type];
+	$template_single_slug = $aione_component['single_template'];
+
+	$aione_templates = get_option('aione-templates');
+	$aione_single_structured_data = $aione_templates[$template_single_slug]['structured_data'];
+
+	if($template_slug != 'single'){
+		echo '<script type="application/ld+json">';
+		echo do_shortcode($aione_single_structured_data);
+		echo "</script>";
+	} 
+	?>
 </head>
 <body <?php body_class(); ?>>
 <div id="aione_wrapper" class="aione-wrapper layout-header-top aione-layout-wide">

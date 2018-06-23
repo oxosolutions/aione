@@ -1371,4 +1371,23 @@ function is_fullwidth($component){
 	return $fullwidth_class;
 }
 
+/**
+* Shortcode [icon]
+* 
+*/
+add_shortcode( 'aione-icon', 'aione_icon_shortcode' );
+function aione_icon_shortcode( $atts ) {
+	$atts = shortcode_atts( array(
+		'class' => '',
+	), $atts, 'aione-icon' );
+
+	$output = '';
+	$aione_icon = $atts['class'];
+
+	if($aione_icon){
+		$output = '<i class="'.$aione_icon.'"></i>';
+	}
+	return $output;
+}
+
 ?>
