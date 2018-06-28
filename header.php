@@ -65,14 +65,37 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	
 	<?php wp_head(); ?>
+	<style>
 	<?php
 	if($theme_options['custom_css'] != ""){
-		echo "<style type='text/css'>".$theme_options['custom_css']."</style>";
+		echo $theme_options['custom_css'];
 	}
 	if($pyre_custom_css != "") :
-		echo "<style type='text/css'>".$pyre_custom_css."</style>";
+		echo $pyre_custom_css;
 	endif;
+
+	if(@$theme_options['site_layout'] == 'boxed'){
+		echo "
+			.aione-wrapper .wrapper{
+				max-width: ".$theme_options['site_width'].";
+			}
+		";
+	}
+	if(@$theme_options['site_layout'] == 'wide'){
+		echo "
+			.aione-layout-wide .aione-topbar > .wrapper, 
+			.aione-layout-wide .aione-header > .wrapper, 
+			.aione-layout-wide .aione-slider > .wrapper, 
+			.aione-layout-wide .aione-pagetitle > .wrapper, 
+			.aione-layout-wide .aione-main > .wrapper, 
+			.aione-layout-wide .aione-footer > .wrapper, 
+			.aione-layout-wide .aione-copyright > .wrapper {
+				max-width: ".$theme_options['site_width'].";
+			}
+		";
+	}
 	?>
+	</style>
 
 	<script>
 	    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
