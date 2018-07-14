@@ -13,6 +13,7 @@ function aione_per_page_menu( $pyre_displayed_menu ) {
 	return $args;
 }*/	
 global $post;
+global $theme_options;
 $args = array(
 	'theme_location' => 'menu-1',
 	'menu_id'        => 'primary-menu',

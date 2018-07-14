@@ -92,8 +92,8 @@ $aione_pagetop_content_args = array(
 	'class'         => '',
 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '</div>',
-	'before_title'  => '<h3 class="widgettitle">',
-	'after_title'   => '</h3>' 
+	'before_title'  => '<span class="widgettitle">',
+	'after_title'   => '</span>' 
 );
 
 $aione_pagebottom_content_args = array(
@@ -103,8 +103,8 @@ $aione_pagebottom_content_args = array(
 	'class'         => '',
 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '</div>',
-	'before_title'  => '<h3 class="widgettitle">',
-	'after_title'   => '</h3>' 
+	'before_title'  => '<span class="widgettitle">',
+	'after_title'   => '</span>' 
 );
 $aione_contenttop_content_args = array(
 	'name'          => __( 'Content Top Area', 'theme_text_domain' ),
@@ -113,8 +113,8 @@ $aione_contenttop_content_args = array(
 	'class'         => '',
 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '</div>',
-	'before_title'  => '<h3 class="widgettitle">',
-	'after_title'   => '</h3>' 
+	'before_title'  => '<span class="widgettitle">',
+	'after_title'   => '</span>' 
 );
 $aione_contentbottom_content_args = array(
 	'name'          => __( 'Content Bottom Area', 'theme_text_domain' ),
@@ -123,8 +123,8 @@ $aione_contentbottom_content_args = array(
 	'class'         => '',
 	'before_widget' => '<div id="%1$s" class="widget %2$s">',
 	'after_widget'  => '</div>',
-	'before_title'  => '<h3 class="widgettitle">',
-	'after_title'   => '</h3>' 
+	'before_title'  => '<span class="widgettitle">',
+	'after_title'   => '</span>' 
 );
 
 register_sidebar( $aione_topbar_left_args ); 

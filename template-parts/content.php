@@ -1,21 +1,13 @@
-<?php
-/**
- * Template part for displaying posts
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package Gutenbergtheme
- */
-
-?>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>> 
+<article id="post_<?php the_ID(); ?>" <?php post_class(); ?>> 
+	<div class="featured-image aione-rounded">
+		<?php the_post_thumbnail( 'full' ); ?>
+    </div>
 	<header class="entry-header">
 		<?php 
 		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title aione-align-center m-0">', '</h1>' );
+			the_title( '<h1 class="entry-title">','</h1>' );
 		else :
-			the_title( '<h2 class="entry-title aione-align-center m-0"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
 		endif;
 
 		//if ( 'post' === get_post_type() ) : ?>

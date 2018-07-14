@@ -4,6 +4,7 @@
 	<?php
 	global $theme_options;
 	global $post;
+	//echo "<pre>";print_r($post);echo "</pre>";
 	$pyre_custom_css = get_aione_page_option($post->ID,'pyre_custom_css');
 	$pyre_meta_description = get_aione_page_option($post->ID,'pyre_meta_description');
 	$pyre_meta_keywords = get_aione_page_option($post->ID,'pyre_meta_keywords');
@@ -38,8 +39,11 @@
 		echo '<meta property="og:description" content="'.sanitize_textarea_field($pyre_og_description).'" />';
 		echo '<meta name="twitter:description" content="'.sanitize_textarea_field($pyre_og_description).'" />';
 	} else {
-		echo '<meta property="og:description" content="'.get_the_content($post->ID).'" />';
-		echo '<meta name="twitter:description" content="'.get_the_content($post->ID).'" />';
+		//echo '<meta property="og:description" content="'.get_the_content($post->ID).'" />';
+		//echo '<meta name="twitter:description" content="'.get_the_content($post->ID).'" />';
+		$content = strip_tags( wp_kses_no_null( wp_trim_words( $post->post_content, $num_words = 30, $more = null ) ) );
+		echo '<meta property="og:description" content="'.$content.'" />';
+		echo '<meta name="twitter:description" content="'.$content.'" />';
 	}
 	?>
 	<?php
@@ -65,38 +69,70 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	
 	<?php wp_head(); ?>
+	<!-- DESIGN SETTING CSS START -->
 	<style>
 	<?php
-	if($theme_options['custom_css'] != ""){
-		echo $theme_options['custom_css'];
+	/****** Top Bar *****/
+	if($theme_options['top_bar_customize_enable']) { 
+		echo '
+		.aione-topbar{
+			background-color: '.$theme_options['top_bar_background_color'].';
+			color: '.$theme_options['top_bar_text_color'].';
+		}
+		.aione-topbar a{
+			color: '.$theme_options['top_bar_link_color'].';	
+		}
+		.aione-topbar a:hover{
+			color: '.$theme_options['top_bar_link_hover_color'].';				
+		}
+		';
 	}
-	if($pyre_custom_css != "") :
-		echo $pyre_custom_css;
-	endif;
-
-	if(@$theme_options['site_layout'] == 'boxed'){
-		echo "
-			.aione-wrapper .wrapper{
-				max-width: ".$theme_options['site_width'].";
-			}
-		";
+	/****** Top Bar END*****/
+	/****** Header *****/
+	if($theme_options['header_customize_enable']) { 
+		echo '
+		.aione-header-banner{
+			background-color: '.$theme_options['header_background_color'].';
+			color: '.$theme_options['header_text_color'].';
+		}
+		.aione-header-banner a{
+			color: '.$theme_options['header_link_color'].';	
+		}
+		.aione-header-banner a:hover{
+			color: '.$theme_options['header_link_hover_color'].';				
+		}
+		';
 	}
-	if(@$theme_options['site_layout'] == 'wide'){
-		echo "
-			.aione-layout-wide .aione-topbar > .wrapper, 
-			.aione-layout-wide .aione-header > .wrapper, 
-			.aione-layout-wide .aione-slider > .wrapper, 
-			.aione-layout-wide .aione-pagetitle > .wrapper, 
-			.aione-layout-wide .aione-main > .wrapper, 
-			.aione-layout-wide .aione-footer > .wrapper, 
-			.aione-layout-wide .aione-copyright > .wrapper {
-				max-width: ".$theme_options['site_width'].";
-			}
-		";
+	/****** Header END*****/
+	/****** Menu *****/
+	if($theme_options['main_menu_customize_enable']) { 
+		echo '
+		.aione-header-banner{
+			background-color: '.$theme_options['main_menu_background_color'].';
+			color: '.$theme_options['header_text_color'].';
+		}
+		.aione-header-banner a{
+			color: '.$theme_options['header_link_color'].';	
+		}
+		.aione-header-banner a:hover{
+			color: '.$theme_options['header_link_hover_color'].';				
+		}
+		';
 	}
+	/****** Menu END*****/
 	?>
 	</style>
-
+	<!-- DESIGN SETTING CSS START END -->
+	<!-- CUSTOM CSS START -->
+	<?php
+	if($theme_options['custom_css'] != ""){
+		echo "<style type='text/css'>".$theme_options['custom_css']."</style>";
+	}
+	if($pyre_custom_css != "") :
+		echo "<style type='text/css'>".$pyre_custom_css."</style>";
+	endif;
+	?>
+	<!-- CUSTOM CSS END -->
 	<script>
 	    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
 	</script>
@@ -132,29 +168,48 @@
 	<?php
 	$post_type = get_post_type();
 	$aione_components = get_option('aione-components');
-	$aione_component = $aione_components[$post_type];
-	$template_single_slug = $aione_component['single_template'];
+	$aione_component = @$aione_components[$post_type];
+	$template_single_slug = @$aione_component['single_template'];
 
 	$aione_templates = get_option('aione-templates');
-	$aione_single_structured_data = $aione_templates[$template_single_slug]['structured_data'];
+	$aione_single_structured_data = @$aione_templates[$template_single_slug]['structured_data'];
 
-	if($template_slug != 'single'){
+	if($template_single_slug != 'single'){
 		echo '<script type="application/ld+json">';
 		echo do_shortcode($aione_single_structured_data);
 		echo "</script>";
 	} 
 	?>
+	<style>
+		.aione-layout-wide .aione-topbar > .wrapper, 
+		.aione-layout-wide .aione-header > .wrapper, 
+		.aione-layout-wide .aione-slider > .wrapper, 
+		.aione-layout-wide .aione-pagetitle > .wrapper, 
+		.aione-layout-wide .aione-main > .wrapper, 
+		.aione-layout-wide .aione-footer > .wrapper, 
+		.aione-layout-wide .aione-copyright > .wrapper{
+			max-width:<?php echo $theme_options['site_width'].";"; ?>
+		}
+		.aione-layout-boxed > .wrapper{
+			max-width:<?php echo $theme_options['site_width'].";"; ?>
+		}
+	</style>
+	<?php
+		$wrapper_classes = ['aione-wrapper'];
+		$wrapper_classes[] = 'layout-header-'.$theme_options['header_position'];
+		$wrapper_classes[] = 'aione-layout-'.$theme_options['site_layout'];
+		if( is_enabled('sidebar_left_enable') ){ $wrapper_classes[] = 'sidebar-left'; }
+		if( is_enabled('sidebar_right_enable') ){ $wrapper_classes[] = 'sidebar-right'; }
+		$wrapper_classes[] = 'color-scheme-'.$theme_options['color_scheme'];
+		$wrapper_classes = implode(" ",$wrapper_classes);
+	?>
 </head>
-<body <?php body_class(); ?>>
-<div id="aione_wrapper" class="aione-wrapper layout-header-top aione-layout-wide">
+<body <?php body_class(); ?> > 
+<div id="aione_wrapper" class="<?php echo @$wrapper_classes; ?>">
 	<div class="wrapper">
 		<?php get_template_part('template/aione-topbar');  ?>
 		<?php get_template_part('template/aione-header');  ?>
 		<?php get_template_part('template/aione-slider');  ?>
 		<?php get_template_part('template/aione-pagetitle');  ?>
 		<?php get_template_part('template/aione-pagetop');  ?>
-
-
-
-
-
+		<?php get_template_part('template/aione-test');  ?>

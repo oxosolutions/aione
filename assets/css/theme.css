@@ -1,20 +1,24 @@
 /***************************************
 Aione Commmon
 ***************************************/
+
 .aione-clear{
 	clear: both;
 }
 a{
+	color:#168dc5;
 	-webkit-transition: all 180ms ease-in-out;
 	   -moz-transition: all 180ms ease-in-out;
 	        transition: all 180ms ease-in-out;
 }
-
+a:hover{
+	color:#1570a6;
+}
 /***************************************
 Aione Layout
 ***************************************/
 
-.aione-wrapper .wrapper{
+.aione-wrapper > .wrapper{
 	width: 100%;
 	margin: 0 auto;
 }
@@ -25,7 +29,7 @@ Aione Layout
 .aione-layout-wide .aione-main > .wrapper,
 .aione-layout-wide .aione-footer > .wrapper,
 .aione-layout-wide .aione-copyright > .wrapper{
-	max-width: 1600px;
+	max-width: 1200px;
 	margin: 0 auto;
 }
 
@@ -38,16 +42,26 @@ Aione Layout
 .aione-layout-wide .aione-copyright.fullwidth > .wrapper{
   max-width: 100%;
 }
+
+.aione-main > .wrapper{
+	padding-top: 30px;
+}
+.aione-main > .wrapper::after{
+	content: '';
+	display: table;
+	clear: both;
+}
 /***************************************
 Aione Topbar
 ***************************************/
+
 .aione-topbar{
 	margin: 0;
 	padding: 0;
 	border-top: none;
 	background-color: #f2f2f2;
 }
-.aione-topbar .wrapper{
+.aione-topbar > .wrapper{
   padding: 2px 0;
   height: 40px;
   line-height: 36px;
@@ -97,17 +111,7 @@ Aione Topbar
   float: right;
 }
 
-.aione-topbar .widget_nav_menu li{
-	display: inline-block;
-}
-.aione-topbar .widget_nav_menu li:after{
-	content:"/";
-	padding:0 10px;
-}
-.aione-topbar .widget_nav_menu li:last-child:after{
-	content:"";
-	padding:0;
-}
+
 .aione-topbar .aione_social_icons_widget ul > li{
 	display: inline-block;
 	margin-right: 5px;
@@ -116,7 +120,6 @@ Aione Topbar
 	margin-right: 5px;
 }
 
-
 /***************************************
 Aione Header
 ***************************************/
@@ -124,7 +127,7 @@ Aione Header
 .aione-header-logo,
 .aione-header-title,
 .aione-header-banner{	
-	display: block;
+  display: block;
   float: right;
 }
 .aione-header-banner .widgettitle{
@@ -135,10 +138,9 @@ Aione Header
 .aione-header-banner .textwidget p{
   text-align: right;
   font-size: 16px;
-  
 }
 .aione-header-menu{
-	text-align: center;
+  text-align: center;
   padding: 0;
 }
 
@@ -173,6 +175,8 @@ Aione Header
 	background: #e8e8e8;
 	border-top: 2px solid #3378bc;
 	position: absolute;
+	top: 38px;
+	left: 0;
 	z-index: 99;
     width: 250px;
 }
@@ -185,33 +189,28 @@ Aione Header
 	
 }
 
-
 /***************************************
 Aione Header Bannner
 ***************************************/
 
+
 /***************************************
 Aione Pagetop
 ***************************************/
-#aione_pagetop .wrapper .widget_text .widgettitle{
-	padding-left: 90px;
-}
 .aione-pagetop .widgettitle{
-	padding-left: 90px;
+	display: none;
 }
-.aione-main{
-	position: relative;
+
+ 
+
+/***************************************
+Aione Pagebottom
+***************************************/
+.aione-pagebottom .widgettitle{
+	display: none;
 }
-/*.aione-sidebar:before{
-	position: absolute;
-}
-.aione-sidebar{
-	position: inherit;
-}*/
-.entry-header .entry-title {
-	font-weight: 400;
-    font-size: 50px;
-}
+
+
 
 /***************************************
 Aione Nav
@@ -225,6 +224,13 @@ Aione Nav
 		font-size: 16px;
 		color: #333333;
 	}
+	.aione-nav .sub-menu > li{
+		display: inline-block;
+	}
+	.aione-nav .sub-menu > li > a{
+		padding: 0;
+
+	}
 	.aione-nav ul li a{
 		padding: 7px 22px;
 		font-size: 16px;
@@ -237,6 +243,7 @@ Aione Nav
 /***************************************
 Aione Slider
 ***************************************/
+
 .owl-carousel .owl-stage-outer{
 	width: 100%;
 }
@@ -267,78 +274,37 @@ Aione Page Title
 	line-height: 1.4;
 	text-align: center;
 }
-/***************************************
-Aione Sidebar
-***************************************/
-/*.aione-sidebar:before{
-	left: 0;
-}
-.aione-sidebar{
-  display:none;
-}*/
-
-/***************************************
-Aione Content
-***************************************/
 
 /***************************************
 Aione Footer
 ***************************************/
 
-	.aione-footer{
-		background-color: #222222;
-		margin: 0px;
-	}
-	.aione-footer .ar{
-		padding: 30px 0;
-	}
-	.aione-footer .widget h3{
-		text-align:left;
-		color:#ffffff;
-		font-size: 20px;
-		border-bottom: 2px solid #b2b2b2;
-		padding-bottom: 15px;
-	}
-	.aione-footer .widget ul li{
-		text-align:left;
-		line-height: 40px;
-		border-bottom: 1px solid #353535;
-	}
-	.aione-footer .widget ul li a{
-		color:#b2b2b2;
-	}
-	.aione-footer .widget .calendar_wrap th,.aione-footer .widget .calendar_wrap td {
-		padding: 3px 5px;
-		color:#b2b2b2;
-	}
-	.aione-footer .widget .calendar_wrap caption{
-		color:#b2b2b2;
-	}
-	.aione-footer .widget ul li a{
-		color: #fff;
-		font-size: 18px;
-	}
-	 #wp-calendar thead tr th, #wp-calendar caption, #wp-calendar tbody tr td{
-		color: #ffffff;
-	}
-	.aione-footer .textwidget{
-		color: #fff;
-	    line-height: 25px;
-	    letter-spacing: 1.1px;
-	}
-	.aione-footer .textwidget p{
-		text-align:justify;
-	}
+.aione-footer{
+	background-color: #222222;
+	margin: 0px;
+}
+.aione-footer.dark{
+	background-color: #222222;
+}
+.aione-footer.light{
+	background-color: #f5f5f5;
+}
+.aione-footer .ar{
+	padding: 30px 0;
+}
+
+
 /***************************************
 Aione Copyright
 ***************************************/
+
 .aione-copyright{
 	margin: 0;
 	padding: 0;
 	border-top: none;
 	background-color: #121212;
 }
-.aione-copyright .wrapper{
+.aione-copyright > .wrapper{
 	padding:10px 0;
 }
 .aione-copyright,
@@ -351,7 +317,6 @@ Aione Copyright
 .aione-copyright a:hover{
 	color:#ffffff;
 }
-
 .aione-copyright-left{
 	float:left;
 	text-align: left;
@@ -381,81 +346,621 @@ Aione Copyright
 .aione-copyright .aione-copyright-left .textwidget p, .aione-copyright .aione-copyright-right .textwidget p{
 	color: #ffffff;
 }
+.aione-copyright .aione-social-icons-widget > ul{
+	margin-bottom: 0;
+}
 
 /***************************************
 Aione Sidebar
 ***************************************/
-.aione-sidebar-left {
-  float:left;
-  width:25%;
-  padding: 0 24px;
+.aione-sidebar:before{
+	display:none;
 }
-.aione-sidebar-right {
-  float:right;
-  width:25%;
-}
-.aione-sidebar-left .aione-sidebar , .aione-sidebar-right .aione-sidebar{
-  width:100%;
-
-}
-.aione-sidebar:before {
-    content: "";
+.aione-sidebar {
+    width: 30%;
     position: relative;
-    width: 0px;
-    top: 0;
-    bottom: 0;
-    background-color: #fff;
 }
-.aione-sidebar-left:after, .aione-sidebar-right:after {
-    content: "";
-    display: block;
-    clear: both;
+.aione-wrapper.sidebar-left.sidebar-right .aione-sidebar{
+    width: 25%;
+}
+/***************************************
+Aione Sidebar Left
+***************************************/
+.aione-sidebar-left {
+	float:left;
+}
+.aione-main.sidebar-left .aione-sidebar-left > .wrapper{
+	margin-right: 30px;
+}
+/***************************************
+Aione Sidebar Right
+***************************************/
+.aione-sidebar-right {
+	float:right;
+}
+.aione-main.sidebar-right .aione-sidebar-right > .wrapper{
+	margin-left: 30px;
 }
 /***************************************
 Aione Content
 ***************************************/
-.aione-content {
-    float: left;
-    position: relative;
+.aione-contenttop .widgettitle,
+.aione-contentbottom .widgettitle{
+	display: none
+}
+.aione-main .aione-page-content{ 
+	width: 100%;
+	float:left;
+	box-sizing: border-box;
+}
+.aione-wrapper.sidebar-left .aione-main .aione-page-content,
+.aione-wrapper.sidebar-right .aione-main .aione-page-content{ 
+	width: 70%; 
+}
+.aione-wrapper.sidebar-left .aione-main .aione-page-content{
+	padding-left: 30px;
+}
+.aione-wrapper.sidebar-right .aione-main .aione-page-content{ 
+	padding-right: 30px;
+}
+.aione-wrapper.sidebar-left.sidebar-right .aione-main .aione-page-content{
+	width: 50%; 
 }
 
-.aione-pagetop{
-    background: #f9f9f9;
-    padding: 20px;
+
+.widget_search .search-field{
+	width:100%;
+}
+.widget_categories{
+
+}
+.widget_categories .cat-item{
+
+}
+.widget_categories .cat-item a{
+	
+}
+/***************************************
+Aione Blog
+***************************************/
+.search-form .screen-reader-text{
+	  display: none;
+}
+.search-form input[type=submit] {
+	 display: none;
+	}
+ input[type=search] {
+		font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+   
+    min-height: 40px;
+    padding: 0;
+    margin: 0;
+    text-indent: 15px;
+    color: #747474;
+    background-color: #faf8f7;
+    border: 1px solid #e8e8e8;
+    outline: 0;
+    text-shadow: none;
+    box-shadow: none;
+    font-family: "Open Sans",Arial,Helvetica,sans-serif;
+    box-sizing: border-box;
+    transition: all .2s ease-in-out;
+    border-radius: 0;
+}
+.aione-sidebar .widgettitle{
+	  font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #333;
+}
+/***************************************
+Aione Single
+***************************************/
+.featured-image {
+	overflow:hidden; 
+	margin: 0 0 20px 0;
+}
+.featured-image img{
+	width:100%;
+	height:auto;
+}
+.entry-header .entry-title {
+    font-size: 30px;
+    margin: 0 0 20px 0;
+}
+.entry-header .entry-meta{
+    font-size: 18px;
+    line-height: 20px;
+    margin: 0 0 10px 0;
+}
+.entry-content{
+	margin: 0 0 20px 0;
+	font-size: 16px;
+	font-weight: normal;
+}
+.entry-content p{
+	font-size: 16px;
+	font-weight: normal;
+}
+.entry-footer{
+	margin: 0 0 10px 0;
+	border: 1px solid #e8e8e8;
+    padding: 10px;
+}
+.entry-footer::after{
+	content: '';
+	display: table;
+	clear: both;
+}
+.entry-footer .edit-link{
+	padding-left: 10px;
+}
+.navigation {
+    border: 1px solid #e8e8e8;
+    padding: 10px;
+    margin: 0 0 20px 0;
+}
+.navigation::after{
+	content: '';
+	display: table;
+	clear: both;
+}
+.navigation .screen-reader-text{
+	display: none;
+}
+.navigation .nav-links .nav-next,
+.navigation .nav-links .nav-previous{
+
+}
+.navigation .nav-links .nav-next{
+	float: right;
+}
+.navigation .nav-links .nav-previous{
+	float: left;
+}
+.navigation .nav-links .nav-next a,
+.navigation .nav-links .nav-previous a{
+	font-size: 18px;
+    line-height: 30px;
+    padding: 0;
+    color: #ffffff;
+    background: #168dc5;
+    display: inline-block;
+}
+.navigation .nav-links .nav-next a{
+	padding-left: 10px;
+}
+.navigation .nav-links .nav-previous a{
+	padding-right: 10px;
+}
+.navigation .nav-links .nav-next a:hover,
+.navigation .nav-links .nav-previous a:hover{
+    background: #1570a6;
+}
+.navigation .nav-links .nav-next > a >i,
+.navigation .nav-links .nav-previous > a > i{
+	display: inline-block;
+	padding: 0 10px;
+}
+
+.comment-respond .comment-reply-title{
+	margin: 0;
     font-size: 20px;
 }
+.comment-respond  .comment-notes{
+	font-size: 16px;
+	line-height: 20px;
+	margin: 0 0 10px 0;
+}
+.comment-respond label{
+    font-size: 16px;
+    line-height: 20px;
+    min-width: 100px;
+    margin: 0 0 10px 0;
+    display: inline-block;
+}
+.comment-respond .comment-form-comment{
+    margin: 0 0 10px 0;
+}
+.comment-respond .comment-form-comment textarea{
+	height:110px;
+	font-size: 16px;
+	line-height: 20px;
+	text-indent: 0px;
+	padding: 4px 10px;
+}
+.comment-respond .comment-form-cookies-consent{
+	display:none;
+}
+.comment-respond .submit{
+	background-color: #168dc5;
+    padding: 8px 20px;
+}
+/************************************
+	List Blog Page
+************************************/
 
+.blog .post-navigation{
+	display: none;
+}
+.entry-content p{
+	line-height: 1.6;
+}
+
+
+/************************************************
+List Blog Design
+************************************************/
+.list-blog{
+	padding-right: 20px;
+	margin-bottom: 40px;
+}
+.list-blog .entry-header .entry-title{
+	margin: 0 0 10px 0;
+}
+.list-blog .entry-header .entry-title a{
+	color: #757575;
+}
+.list-blog .entry-header .entry-meta{
+	color: #a9a9a9;
+	font-size: 16px;
+}
+.list-blog .entry-content{
+	font-size:16px;
+	line-height: 1.3;
+	margin: 0 0 10px 0;
+}
+.list-blog .entry-footer{
+	padding: 0;
+	border:none;
+}
+.list-blog .entry-footer .read-more-link{
+    border: 1px solid #44b0ed;
+    display: inline-block;
+    padding: 10px 30px 10px 10px;
+	position: relative;
+}
+.list-blog .read-more-link:after{
+	right: 10px;
+	content: "\f3d1";
+	line-height: 17px;
+	position: absolute;
+	font-family:'Ionicons'; 
+}
+
+/************************************************
+Common Widget Style in sidebars
+************************************************/
+
+.aione-sidebar .widget{
+
+}
 .aione-sidebar .widgettitle{
-  font-size:20px;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #757575
+	color: #263238;
+	font-size: 17px;
 }
-.aione-sidebar .list > li{
-  margin-bottom: 10px;
-  color: #757575;
+.aione-sidebar .widget ul > li{
+    padding: 10px 0;
+	border-bottom: 1px solid #e8e8e8;
 }
-.aione-sidebar .list > li > .comment-by{
-  font-weight: 600;
+.aione-sidebar .widget ul > li:last-child{
+	border-bottom: none;
 }
-.aione-content .entry-header .entry-title,
-.aione-content .aione-content-top .widgettitle,
-.aione-content .aione-content-bottom .widgettitle{
-  font-size:30px;
-  text-align: left;
-  margin: 0 0 25.6px 0;
+.aione-sidebar .widget ul > li > a{
+	display: block;
+}
 
+/*********[   Categories Widget   ]***************/
+
+.aione-sidebar .widget_categories ul > li{
+	text-align: right;
 }
-.aione-content .entry-content,
-.aione-content .textwidget{
-  line-height: 1.6
+.aione-sidebar .widget_categories ul > li:after{
+	content: '';
+	display: block;
+	clear: left;
 }
-.aione-main .aione-content{
-  width: 100%
+.aione-sidebar .widget_categories ul > li > a{
+	float: left;
+	color: #757575;
 }
-.aione-main.has-sidebar-left .aione-content{
-  width: 75%;
+
+/*********[   Recent Post Widget   ]***************/
+
+.aione-sidebar .widget_recent_entries ul > li > a{
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 6px;
+	color: #757575;
 }
-.aione-main.has-sidebar-right .aione-content{
-  width: 50%;
+.aione-sidebar .widget_recent_entries ul > li > span{
+	color: #999;
+	font-size:13px;
+}
+
+/*********[   Social Icons Widget   ]***************/
+
+.aione-sidebar .aione-social-icons-widget ul > li{
+	padding: 0;
+	border-bottom: none;
+}
+
+/*********[   Calender Widget   ]***************/
+
+.aione-sidebar .calendar_wrap thead tr th,
+.aione-sidebar .calendar_wrap caption,
+.aione-sidebar .calendar_wrap tbody tr td{
+	line-height: 40px;
+    width: 40px;
+    text-align: center;
+}
+.aione-sidebar .calendar_wrap thead{
+	border-bottom:1px solid #e8e8e8;
+}
+.aione-sidebar .calendar_wrap table {
+	margin: 0 auto;
+    border: 1px solid #e8e8e8;
+}
+.aione-sidebar .calendar_wrap caption{
+	width: auto;
+}
+
+/*********[   Meta and Archive Widget   ]***************/
+
+.aione-sidebar .widget_meta  ul > li > a,
+.aione-sidebar .widget_archive ul > li > a{
+	color: #757575;
+}
+
+/*********[   Pages Widget   ]***************/
+
+.aione-sidebar .widget_pages li > a{
+	color: #757575;
+}
+
+/*********[   Gallery Widget   ]***************/
+
+.aione-sidebar .gallery .gallery-icon.landscape > a{
+	display: inline-block;
+	padding: 0 10px 10px 0;
+}
+.aione-sidebar .gallery-item .gallery-icon.landscape img{
+	width: -webkit-fill-available;
+}
+
+/*********[   Menu Widget   ]***************/
+.aione-sidebar .widget_nav_menu .sub-menu{
+	top: 0;
+    z-index: 99;
+    width: 300px;
+	display: none;
+	position: absolute;
+    background-color: white;
+    box-shadow: 1px 1px 4px 1px #e8e8e8;
+}
+.aione-sidebar.aione-sidebar-right .widget_nav_menu .sub-menu{
+	right: 100%;
+}
+.aione-sidebar.aione-sidebar-left .widget_nav_menu .sub-menu{
+	left: 100%;
+}
+.aione-sidebar .widget_nav_menu .sub-menu li,
+.aione-sidebar .widget_nav_menu .sub-menu li > a{
+	display: block;
+}
+.aione-sidebar .widget_nav_menu .sub-menu li > a{
+	padding: 10px 5px; 
+}
+.aione-sidebar .widget_nav_menu .sub-menu li > a:hover{
+	background-color: #e8e8e8;
+}
+.aione-sidebar .widget_nav_menu .menu-item:hover .sub-menu{
+	display: block;
+}
+.aione-sidebar .widget_nav_menu ul > li{
+	display:block;
+	padding: 0;
+	position: relative;
+}
+.aione-sidebar .widget_nav_menu ul > li > a{
+	display:block;
+	padding: 10px 0;
+	font-size: 17px;
+	color: #757575;
+}
+
+/************************************************
+Common Widget Style in footer
+************************************************/
+.aione-footer .widget h3{
+	text-align:left;
+	color:#ffffff;
+	font-size: 20px;
+	border-bottom: 2px solid #b2b2b2;
+	padding-bottom: 15px;
+}
+.aione-footer .widget ul li{
+	text-align:left;
+	line-height: 40px;
+	border-bottom: 1px solid #353535;
+}
+.aione-footer .widget ul li a{
+	color: #fff;
+	display: block;
+	font-size: 18px;
+}
+
+/*********[   Text Widget   ]***************/
+
+.aione-footer .textwidget{
+	color: #fff;
+    line-height: 25px;
+    letter-spacing: 1.1px;
+}
+.aione-footer .textwidget p{
+	text-align:justify;
+}
+
+/*********[   Recent Post Widget   ]***************/
+
+.aione-footer .widget_recent_entries ul > li{
+	padding: 10px 0;
+}
+.aione-footer .widget_recent_entries ul > li > a{
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.6;
+	
+}
+.aione-footer .widget_recent_entries ul > li > span{
+	color: #999;
+	font-size:13px;
+	display: block;
+	line-height: 1.6;
+	margin-top: 6px;
+}
+
+/*********[   Social Icons Widget   ]***************/
+
+.aione-footer .aione-social-icons-widget ul li{
+	text-align: center;
+}
+
+/*********[   Gallery Widget   ]***************/
+
+.aione-footer .gallery .gallery-icon.landscape > a{
+	display: inline-block;
+	padding: 0 10px 10px 0;
+}
+.aione-footer .gallery-item .gallery-icon.landscape img{
+	width: -webkit-fill-available;
+}
+
+/*********[   Calender Widget   ]***************/
+.aione-footer .calendar_wrap thead tr th,
+.aione-footer .calendar_wrap caption,
+.aione-footer .calendar_wrap tbody tr td{
+	line-height: 40px;
+    width: 40px;
+    text-align: center;
+    color: white
+}
+.aione-footer .calendar_wrap thead{
+	border-bottom:1px solid #e8e8e8;
+}
+.aione-footer .calendar_wrap table {
+	margin: 0 auto;
+    border: 1px solid #e8e8e8;
+}
+.aione-footer .calendar_wrap caption{
+	width: auto;
+}
+
+/*********[   Navigation Widget   ]***************/
+.aione-footer .widget_nav_menu .sub-menu{
+	background-color: rgba(232, 232, 232, 0.1);
+	display: none;
+}
+.aione-footer .widget_nav_menu .menu-item:hover .sub-menu{
+	display: block;
+}
+.aione-footer .widget_nav_menu .sub-menu li > a{
+	padding: 5px 10px; 
+}
+.aione-footer .widget_nav_menu .sub-menu li > a:hover{
+	background-color: #212121;
+}
+
+/************************************************
+Common Widget Style in Topbar
+************************************************/
+
+/*********[   Navigation Widget   ]***************/
+.aione-topbar .widget_nav_menu .sub-menu{
+	display: none;
+	position: absolute;
+    width: 300px;
+    background: white;
+    z-index: 99;
+    box-shadow: 1px 1px 4px 1px #e8e8e8;
+}
+.aione-topbar .widget_nav_menu .sub-menu li,
+.aione-topbar .widget_nav_menu .sub-menu li > a{
+	display: block;
+}
+.aione-topbar .widget_nav_menu .sub-menu li > a{
+	padding: 5px 10px; 
+}
+.aione-topbar .widget_nav_menu .sub-menu li > a:hover{
+	background-color: #e8e8e8;
+}
+.aione-topbar .widget_nav_menu .menu-item:hover .sub-menu{
+	display: block;
+}
+.aione-topbar .widget_nav_menu li{
+	display: inline-block;
+}
+.aione-topbar .widget_nav_menu li:after{
+	content:"|";
+	padding:0 10px;
+}
+.aione-topbar .widget_nav_menu .sub-menu li:after,
+.aione-topbar .widget_nav_menu li:last-child:after{
+	content:"";
+	padding:0;
+}
+
+/*********[   Meta Widget   ]***************/
+.aione-topbar .widget_meta ul > li{
+	display: inline-block;
+	padding: 0 10px;
+}
+
+/************************************************
+Common Comment Style
+************************************************/
+.comments-area .comments-title{
+	font-size: 18px;
+}
+.comments-area .comment-meta .comment-author{
+	float: left;
+	line-height: 40px;
+}
+.comments-area .comment-meta .comment-author img{
+	height: 40px;
+	width: 40px;
+}
+.comments-area .comment-meta .comment-author > *{
+	line-height: 40px;
+    display: inline-block;
+    vertical-align: top;
+}
+.comments-area .comment-meta .comment-metadata{
+	float: right;
+}
+.comments-area .comment-meta:after{
+	content: '';
+	display: block;
+	clear: left;
+}
+.comments-area .comment-content p{
+	margin-left: 40px;
+	line-height: 1.5;
+	margin-bottom: 20px;
+}
+.comments-area .reply{
+	margin-bottom: 10px;
+}
+.comments-area .reply a{
+	margin-left: 40px;
+    border: 1px solid #168dc5;
+    padding: 5px 10px;
+    margin-bottom: 26px;
+}
+.comments-area .comment-list > li{
+    border: 1px solid #e8e8e8;
+    padding: 10px;
+    margin-bottom: 10px;
 }

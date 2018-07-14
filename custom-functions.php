@@ -133,62 +133,6 @@ class PerPageOptionsMetaboxes {
 
 	}
 
-	/*public function page_options() {
-		$this->render_option_tabs( array( 'sliders', 'page', 'header', 'footer', 'sidebars', 'background', 'portfolio_page',
-		'pagetitlebar','custom_code', 'seo', 'security' ) );
-	}
-
-	public function post_options() {
-		$this->render_option_tabs( array( 'post', 'page', 'sliders', 'header', 'footer', 'sidebars', 'background',
-		'pagetitlebar', 'custom_code', 'seo', 'security' ) );
-	}*/
-
-	/*public function render_option_tabs( $requested_tabs, $post_type = 'default' ) {
-
-		$tabs_names = array(
-			'sliders'        => __( 'Sliders', 'Aione' ),
-			'page'           => __( 'Page', 'Aione' ),
-			'post'           => __( 'Post', 'Aione' ),
-			'header'         => __( 'Header', 'Aione' ),
-			'footer'         => __( 'Footer', 'Aione' ),
-			'sidebars'       => __( 'Sidebars', 'Aione' ),
-			'background'     => __( 'Background', 'Aione' ),
-			'portfolio'      => __( 'Portfolio', 'Aione' ),
-			'pagetitlebar'   => __( 'Page Title Bar', 'Aione' ),
-			'portfolio_page' => __( 'Portfolio', 'Aione' ),
-			'portfolio_post' => __( 'Portfolio', 'Aione' ),
-			'product'        => __( 'Product', 'Aione' ),
-			'custom_code'     => __( 'Custom Code', 'Aione' ),
-			'seo'			 => __( 'SEO', 'Aione' ),
-			'security'       => __( 'Security', 'Aione' ),
-			
-		);
-		?>
-
-		<ul class="pyre_metabox_tabs">
-
-			<?php foreach( $requested_tabs as $key => $tab_name ) : ?>
-				<?php $class = ( $key === 0 ) ? "active" : ""; ?>
-				<li class="<?php echo $class; ?>"><a href="<?php echo $tab_name; ?>"><?php echo $tabs_names[$tab_name]; ?></a></li>
-			
-			<?php endforeach; ?>
-
-		</ul>
-
-		<div class="pyre_metabox">
-
-			<?php foreach ( $requested_tabs as $key => $tab_name ) : ?>
-				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo $tab_name; ?>">
-					<?php require_once( 'tabs/tab_' . $tab_name . '.php' ); ?>
-				</div>
-			<?php endforeach; ?>
-
-		</div>
-		<div class="clear"></div>
-		<?php
-
-	}*/
-
 	public function text( $id, $label, $desc = '' ) {
 
 		global $post;
@@ -221,7 +165,7 @@ class PerPageOptionsMetaboxes {
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
-				<div class="oxo-shortcodes-arrow">&#xf107;</div>
+				<div class="oxo-shortcodes-arrow">&#xf3d0;</div>
 				<select id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>">
 					<?php foreach( $options as $key => $option ) : ?> 
 						<?php $selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : ''; ?>
@@ -463,7 +407,7 @@ function aione_slider_metaboxes() {
 		'Settings',
 		'aione_slider_settings_callback',
 		'aione-slider',
-		'side',
+		'normal',
 		'default'
 	);
 	add_meta_box(
@@ -492,8 +436,7 @@ function aione_slider_settings_save_meta($post_id ){
 }
 
 function aione_slider_settings_form($post){
-	$settings   = get_post_meta( $post->ID, 'aione-slider-settings', true );
-	//echo "<pre>";print_r($settings);echo "</pre>";
+	$settings   = get_post_meta( $post->ID, 'aione-slider-settings', false );
 	$aione_slider_settings = array();
 	?>	
 		<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
@@ -506,9 +449,9 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_theme">Theme</label></th>
 					<td><select name="aione_slider_settings[theme]" id="aione_slider_theme">
-						<option value="aione" <?php if($settings['theme'] == 'aione') {echo "selected = selected";} ?>>Aione</option>
-						<option value="darlic" <?php if($settings['theme'] == 'darlic') {echo "selected = selected";} ?>>Darlic</option>
-						<option value="oxo" <?php if($settings['theme'] == 'oxo') {echo "selected = selected";} ?>>OXO</option>
+						<option value="aione" <?php if(@$settings['theme'] == 'aione') {echo "selected = selected";} ?>>Aione</option>
+						<option value="darlic" <?php if(@$settings['theme'] == 'darlic') {echo "selected = selected";} ?>>Darlic</option>
+						<option value="oxo" <?php if(@$settings['theme'] == 'oxo') {echo "selected = selected";} ?>>OXO</option>
 					</select></td>
 					</tr>
 					<tr>
@@ -518,59 +461,59 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_loop">Loop</label></th>
 					<td><select name="aione_slider_settings[loop]" id="aione_slider_loop">				
-						<option value="false" <?php if($settings['loop'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['loop'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['loop'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['loop'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Infinity loop. Duplicate last and first items to get loop illusion.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_center">Center</label></th>
 					<td><select name="aione_slider_settings[center]" id="aione_slider_center">			
-						<option value="false" <?php if($settings['center'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['center'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['center'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['center'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Center item. Works well with even an odd number of items.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_caption">Image Caption</label></th>
-					<td><input name="aione_slider_settings[caption]" type="radio" id="aione_slider_caption" value="1" class="" <?php if($settings['caption'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption]" type="radio" id="aione_slider_caption" value="0" class="" <?php if($settings['caption'] == '0' || $settings['caption'] == '') {echo "checked = checked";}?>>OFF</td>
+					<td><input name="aione_slider_settings[caption]" type="radio" id="aione_slider_caption" value="1" class="" <?php if(@$settings['caption'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption]" type="radio" id="aione_slider_caption" value="0" class="" <?php if(@$settings['caption'] == '0' || @$settings['caption'] == '') {echo "checked = checked";}?>>OFF</td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_caption_title">Image Caption Title</label></th>
-					<td><input name="aione_slider_settings[caption_title]" type="radio" id="aione_slider_caption_title" value="1" class="" <?php if($settings['caption_title'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_title]" type="radio" id="aione_slider_caption_title" value="0" class="" <?php if($settings['caption_title'] == '0' || $settings['caption_title'] == '') {echo "checked = checked";}?>>OFF</td>
+					<td><input name="aione_slider_settings[caption_title]" type="radio" id="aione_slider_caption_title" value="1" class="" <?php if(@$settings['caption_title'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_title]" type="radio" id="aione_slider_caption_title" value="0" class="" <?php if(@$settings['caption_title'] == '0' || @$settings['caption_title'] == '') {echo "checked = checked";}?>>OFF</td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_caption_description">Image Caption Description</label></th>
-					<td><input name="aione_slider_settings[caption_description]" type="radio" id="aione_slider_caption_description" value="1" class="" <?php if($settings['caption_description'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_description]" type="radio" id="aione_slider_caption_description" value="0" class="" <?php if($settings['caption_description'] == '0' || $settings['caption_description'] == '') {echo "checked = checked";}?>>OFF</td>
+					<td><input name="aione_slider_settings[caption_description]" type="radio" id="aione_slider_caption_description" value="1" class="" <?php if(@$settings['caption_description'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_description]" type="radio" id="aione_slider_caption_description" value="0" class="" <?php if(@$settings['caption_description'] == '0' || @$settings['caption_description'] == '') {echo "checked = checked";}?>>OFF</td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_caption_link">Image Caption Link</label></th>
-					<td><input name="aione_slider_settings[caption_link]" type="radio" id="aione_slider_caption_link" value="1" class="" <?php if($settings['caption_link'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_link]" type="radio" id="aione_slider_caption_link" value="0" class="" <?php if($settings['caption_link'] == '0' || $settings['caption_link'] == '') {echo "checked = checked";}?>>OFF</td>
+					<td><input name="aione_slider_settings[caption_link]" type="radio" id="aione_slider_caption_link" value="1" class="" <?php if(@$settings['caption_link'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_link]" type="radio" id="aione_slider_caption_link" value="0" class="" <?php if(@$settings['caption_link'] == '0' || @$settings['caption_link'] == '') {echo "checked = checked";}?>>OFF</td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_mouseDrag">mouseDrag</label></th>
 					<td><select name="aione_slider_settings[mouseDrag]" id="aione_slider_mouseDrag">	
-						<option value="true" <?php if($settings['mouseDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
-						<option value="false" <?php if($settings['mouseDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['mouseDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['mouseDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
 						</select><p class="description">Mouse drag enabled.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_touchDrag">touchDrag</label></th>
 					<td><select name="aaione_slider_settings[touchDrag]" id="aione_slider_touchDrag">					
-						<option value="true" <?php if($settings['touchDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
-						<option value="false" <?php if($settings['touchDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['touchDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['touchDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
 						</select><p class="description">Touch drag enabled.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_pullDrag">pullDrag</label></th>
 					<td><select name="aione_slider_settings[pullDrag]" id="aione_slider_pullDrag">					
-						<option value="true" <?php if($settings['pullDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
-						<option value="false" <?php if($settings['pullDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['pullDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['pullDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
 						</select><p class="description">Stage pull to edge.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_freeDrag">freeDrag</label></th>
 					<td><select name="aione_slider_settings[freeDrag]" id="aione_slider_freeDrag">					
-						<option value="false" <?php if($settings['freeDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['freeDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['freeDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['freeDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Item pull to edge.</p></td>
 					</tr>
 					<tr>
@@ -580,29 +523,29 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_merge">Merge</label></th>
 					<td><select name="aione_slider_settings[merge]" id="aione_slider_merge">						
-						<option value="false" <?php if($settings['merge'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['merge'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['merge'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['merge'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Merge items. Looking for data-merge="{number}" inside item..</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_mergeFit">mergeFit</label></th>
 					<td><select name="aione_slider_settings[mergeFit]" id="aione_slider_mergeFit">					
-						<option value="true" <?php if($settings['mergeFit'] == 'true') {echo "selected = selected";} ?>>True</option>
-						<option value="false" <?php if($settings['mergeFit'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['mergeFit'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['mergeFit'] == 'false') {echo "selected = selected";} ?>>False</option>
 						</select><p class="description">Fit merged items if screen is smaller than items value.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_autoWidth">autoWidth</label></th>
 					<td><select name="aione_slider_settings[autoWidth]" id="aione_slider_autoWidth">					
-						<option value="false" <?php if($settings['autoWidth'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['autoWidth'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['autoWidth'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['autoWidth'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Set non grid content. Try using width style on divs.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_autoHight">autoHight</label></th>
 					<td><select name="aione_slider_settings[autoHight]" id="aione_slider_autoHight">					
-						<option value="false" <?php if($settings['autoHight'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['autoHight'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['autoHight'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['autoHight'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select></td>
 					</tr>
 					<tr>
@@ -612,22 +555,22 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_URLhashListener">URLhashListener</label></th>
 					<td><select name="aione_slider_settings[URLhashListener]" id="aione_slider_URLhashListener">		
-						<option value="false" <?php if($settings['URLhashListener'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['URLhashListener'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['URLhashListener'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['URLhashListener'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Listen to url hash changes. data-hash on items is required.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_nav">Nav</label></th>
 					<td><select name="aione_slider_settings[nav]" id="aione_slider_nav">					
-						<option value="false" <?php if($settings['nav'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['nav'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['nav'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['nav'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Show next/prev buttons.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_rewind">Rewind</label></th>
 					<td><select name="aione_slider_settings[rewind]" id="aione_slider_rewind">						
-						<option value="true" <?php if($settings['rewind'] == 'true') {echo "selected = selected";} ?>>True</option>
-						<option value="false" <?php if($settings['rewind'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['rewind'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['rewind'] == 'false') {echo "selected = selected";} ?>>False</option>
 						</select><p class="description">Go backwards when the boundary has reached.</p></td>
 					</tr>
 					<tr>
@@ -649,8 +592,8 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_dots">Dots</label></th>
 					<td><select name="aione_slider_settings[dots]" id="aione_slider_dots">						
-						<option value="true" <?php if($settings['dots'] == 'true') {echo "selected = selected";} ?>>True</option>
-						<option value="false" <?php if($settings['dots'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['dots'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['dots'] == 'false') {echo "selected = selected";} ?>>False</option>
 						</select><p class="description">Show dots navigation.</p></td>
 					</tr>
 					<tr>
@@ -660,15 +603,15 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_dotsData">dotsData</label></th>
 					<td><select name="aione_slider_settings[dotsData]" id="aione_slider_dotsData">					
-						<option value="false" <?php if($settings['dotsData'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['dotsData'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['dotsData'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['dotsData'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Used by data-dot content.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_lazyLoad">lazyLoad</label></th>
 					<td><select name="aione_slider_settings[lazyLoad]" id="aione_slider_lazyLoad">					
-						<option value="false" <?php if($settings['lazyLoad'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['lazyLoad'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['lazyLoad'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['lazyLoad'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Lazy load images. data-src and data-src-retina for highres. Also load images into background inline style if element is not <img></p></td>
 					</tr>
 					<tr>
@@ -678,8 +621,8 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_autoplay">autoplay</label></th>
 					<td><select name="aione_slider_settings[autoplay]" id="aione_slider_autoplay">					
-						<option value="false" <?php if($settings['autoplay'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['autoplay'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['autoplay'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['autoplay'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Autoplay.</p></td>
 					</tr>
 					<tr>
@@ -689,8 +632,8 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_autoplayHoverPause">autoplayHoverPause</label></th>
 					<td><select name="aione_slider_settings[autoplayHoverPause]" id="aione_slider_autoplayHoverPause">
-						<option value="false" <?php if($settings['autoplayHoverPause'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['autoplayHoverPause'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['autoplayHoverPause'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['autoplayHoverPause'] == 'true') {echo "selected = selected";} ?>>True</option>
 						</select><p class="description">Pause on mouse hover.</p></td>
 					</tr>
 					<tr>
@@ -716,15 +659,15 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_callbacks">Callbacks</label></th>
 					<td><select name="aione_slider_settings[callbacks]" id="aione_slider_callbacks">			
-						<option value="true" <?php if($settings['callbacks'] == 'true') {echo "selected = selected";} ?>>True</option>
-						<option value="false" <?php if($settings['callbacks'] == 'false') {echo "selected = selected";} ?>>False</option>						
+						<option value="true" <?php if(@$settings['callbacks'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['callbacks'] == 'false') {echo "selected = selected";} ?>>False</option>						
 						</select><p class="description">Enable callback events.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_video">Video</label></th>
 					<td><select name="aione_slider_settings[video]" id="aione_slider_video">			
-						<option value="false" <?php if($settings['video'] == 'false') {echo "selected = selected";} ?>>False</option>
-						<option value="true" <?php if($settings['video'] == 'true') {echo "selected = selected";} ?>>True</option>												
+						<option value="false" <?php if(@$settings['video'] == 'false') {echo "selected = selected";} ?>>False</option>
+						<option value="true" <?php if(@$settings['video'] == 'true') {echo "selected = selected";} ?>>True</option>												
 						</select><p class="description">Enable fetching YouTube/Vimeo/Vzaar videos.</p></td>
 					</tr>
 					<tr>
@@ -766,8 +709,8 @@ function aione_slider_settings_form($post){
 					<tr>
 					<th scope="row"><label for="aione_slider_checkVisible">checkVisible</label></th>
 					<td><select name="aione_slider_settings[checkVisible]" id="aione_slider_checkVisible">			
-						<option value="true" <?php if($settings['checkVisible'] == 'true') {echo "selected = selected";} ?>>True</option>
-						<option value="false" <?php if($settings['checkVisible'] == 'false') {echo "selected = selected";} ?>>False</option>												
+						<option value="true" <?php if(@$settings['checkVisible'] == 'true') {echo "selected = selected";} ?>>True</option>
+						<option value="false" <?php if(@$settings['checkVisible'] == 'false') {echo "selected = selected";} ?>>False</option>												
 						</select><p class="description">If you know the carousel will always be visible you can set `checkVisibility` to `false` to prevent the expensive browser layout forced reflow the $element.is(":visible") does.</p></td>
 					</tr>
 
@@ -883,39 +826,104 @@ function aione_slider_shortcode( $atts ) {
 * Register Aione Slider Custom Field "Gallery"
 * 
 */
-if(function_exists("register_field_group")){
-	register_field_group(array (
-		'id' => 'acf_slider',
-		'title' => 'Slider',
-		'fields' => array (
-			array (
-				'key' => 'field_5ae2b58c4b319',
-				'label' => 'Images',
-				'name' => 'images',
-				'type' => 'gallery',
-				'preview_size' => 'thumbnail',
-				'library' => 'all',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'aione-slider',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'normal',
-			'layout' => 'no_box',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
-	));
+if(class_exists('acf')){ 
+	add_action( 'init', 'register_custom_acf_fields' );
+} else { 
+	add_action( 'admin_notices', 'aione_acf_admin_notice' );
+}
+
+function register_custom_acf_fields() { 
+	if(class_exists('acf_field_gallery')){
+		$acf_version = get_option('acf_version', false);
+		if($acf_version < 5){
+			if(function_exists("register_field_group")){
+				register_field_group(array (
+					'id' => 'acf_aione_gallery',
+					'title' => 'Aione Gallery',
+					'fields' => array (
+						array (
+							'key' => 'aione_slider_images',
+							'label' => 'Images',
+							'name' => 'aione_slider_images',
+							'type' => 'gallery',
+							'preview_size' => 'thumbnail',
+							'library' => 'all',
+						),
+					),
+					'location' => array (
+						array (
+							array (
+								'param' => 'post_type',
+								'operator' => '==',
+								'value' => 'aione-slider',
+								'order_no' => 0,
+								'group_no' => 0,
+							),
+						),
+					),
+					'options' => array (
+						'position' => 'normal',
+						'style'                 => 'seamless', // default
+						'layout' => 'no_box',
+						'hide_on_screen' => array (
+						),
+					),
+					'menu_order' => 0,
+				));
+			} 
+		} else {
+			if ( function_exists( 'acf_add_local_field_group' ) ) {
+				// ACF Group: Aione Gallery
+				acf_add_local_field_group( array (
+					'key'      => 'acf_aione_gallery',
+					'title'    => 'Aione Gallery',
+					'location' => array (
+						array (
+							array (
+								'param'    => 'post_type',
+								'operator' => '==',
+								'value'    => 'aione-slider',
+							),
+						),
+					),
+					'menu_order'            => 0,
+					'position'              => 'normal',
+					'style'                 => 'seamless', // default
+					'label_placement'       => 'top',
+					'instruction_placement' => 'label',
+					'hide_on_screen'        => '',
+				) );
+				// Images
+				acf_add_local_field( array(
+					'key'          => 'aione_slider_images',
+					'label'        => 'Images',
+					'name'         => 'aione_slider_images',
+					'parent'       => 'acf_aione_gallery',
+					'type' => 'gallery',
+					'preview_size' => 'thumbnail',
+					'library' => 'all',
+				) );
+			}
+		}	
+	} else {
+		add_action( 'admin_notices', 'aione_gallery_admin_notice' );
+	}
+	
+}
+
+function aione_acf_admin_notice() {
+    ?>
+    <div class="notice error my-acf-notice is-dismissible" >
+        <p><?php _e( 'ACF Plugin is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'gutenbergtheme' ); ?></p>
+    </div>
+    <?php
+}
+function aione_gallery_admin_notice() {
+    ?>
+    <div class="notice error my-acf-notice is-dismissible" >
+        <p><?php _e( 'ACF Gallery AddOn is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'gutenbergtheme' ); ?></p>
+    </div>
+    <?php
 }
 
 
@@ -1337,7 +1345,7 @@ class Aione_Social_Share_Widget extends WP_Widget {
 		return $instance;
 	}
 }
-function get_aione_page_option($post_id,$meta_key){
+function get_aione_page_option($post_id , $meta_key){
 	$meta_value = get_post_meta( $post_id, $meta_key , true );
 	return $meta_value;
 }
@@ -1359,8 +1367,7 @@ function is_fullwidth($component){
 			$fullwidth = true;
 		}
 	}
-	//echo "<br>page_option == ".$page_option;
-	//echo "<br>theme_options == ".$theme_options[$component.'_100_width'];
+	
 
 	if($fullwidth){
 		$fullwidth_class = "fullwidth";
@@ -1370,6 +1377,36 @@ function is_fullwidth($component){
 
 	return $fullwidth_class;
 }
+
+function is_enabled($component){
+	global $theme_options;
+	global $post;
+	$is_enabled = false;
+
+	$page_option = get_aione_page_option($post->ID, 'pyre_'.$component);
+
+	//echo "<br>ID ==".$post->ID;
+	//echo "<br>PAGE OPTIONS ==".$page_option;
+
+	if($page_option == 'default'){
+		if($theme_options[$component]){
+			$is_enabled = true;
+		}
+	} else{
+		if($page_option == 'yes'){
+			$is_enabled = true;
+		}
+	}
+	
+	return $is_enabled;
+}
+
+function empty_sidebar_message(){
+	$output = '';
+	$output .= '<h3>Empty Widget Area</h3>';
+
+	return $output;
+};
 
 /**
 * Shortcode [icon]
@@ -1389,5 +1426,44 @@ function aione_icon_shortcode( $atts ) {
 	}
 	return $output;
 }
+
+/*
+*
+*
+*/
+if(!class_exists('Aione_Admin')){
+	add_action( 'admin_notices', 'aione_admin_notice' );
+}
+function aione_admin_notice() {
+    ?>
+    <div class="notice error aione-admin-notice is-dismissible" >
+        <p><?php _e( 'For complete design setting "Aione Admin" plugin is necessary, install it now! 
+        ', 'gutenbergtheme' ); ?></p>
+    </div>
+    <?php
+}
+
+/* 
+To delete the created blocks 
+Remove it after use
+*/
+/*add_action('init', 'g7g_modify_wp_block', 1111);
+function g7g_modify_wp_block() {
+	
+	global $wp_post_types;
+	
+	$cpt = 'wp_block';
+	
+	if (empty($wp_post_types[$cpt]) || !is_object($wp_post_types[$cpt]) || empty($wp_post_types[$cpt]->labels)) return;
+	
+	$wp_post_types[$cpt]->show_ui      = true;
+	$wp_post_types[$cpt]->show_in_menu = true;
+	$wp_post_types[$cpt]->_edit_link   = 'post.php?post=%d';
+	
+}*/
+
+
+
+
 
 ?>
