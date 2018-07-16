@@ -232,6 +232,41 @@
 		'; 
 	}
 	/****** Page Bottom Area END*****/
+	/****** Footer*****/
+	if($theme_options['footer_customize_enable']){
+		echo '
+			.aione-footer {
+				background-color: '.$theme_options['footer_background_color'].';
+				color: '.$theme_options['footer_text_color'].';
+			}
+			.aione-footer .widgettitle{
+				color: '.$theme_options['footer_heading_color'].';
+			}
+			.aione-footer a{
+				color: '.$theme_options['footer_link_color'].';
+			}
+			.aione-footer a:hover{
+				color: '.$theme_options['footer_link_hover_color'].';
+			}
+		'; 
+	}
+	/****** Footer END*****/
+	/****** Copyright*****/
+	if($theme_options['footer_copyright_customize_enable']){
+		echo '
+			.aione-copyright {
+				background-color: '.$theme_options['footer_copyright_background_color'].';
+				color: '.$theme_options['footer_copyright_text_color'].';
+			}
+			.aione-copyright a{
+				color: '.$theme_options['footer_copyright_link_color'].';
+			}
+			.aione-copyright a:hover{
+				color: '.$theme_options['footer_copyright_link_hover_color'].';
+			}
+		'; 
+	}
+	/****** Copyright END*****/
 	?>
 	</style>
 	<!-- DESIGN SETTING CSS START END -->
