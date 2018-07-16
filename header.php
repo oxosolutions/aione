@@ -156,6 +156,25 @@
 		'; 
 	}
 	/****** Page Title Bar END*****/
+	/****** SIDEBAR END*****/
+	if($theme_options['sidebar_customize_enable']){
+		echo '
+			.aione-sidebar{
+				background-color: '.$theme_options['sidebar_background_color'].';
+				color: '.$theme_options['sidebar_text_color'].';
+			}
+			.aione-sidebar .widgettitle{
+				color: '.$theme_options['sidebar_heading_color'].';
+			}
+			.aione-sidebar .widget_nav_menu ul > li > a{
+				color: '.$theme_options['sidebar_link_color'].';				
+			}
+			.aione-sidebar .widget_nav_menu ul > li > a:hover{
+				color: '.$theme_options['sidebar_link_hover_color'].';				
+			}
+		'; 
+	}
+	/****** SIDEBAR END*****/
 	?>
 	</style>
 	<!-- DESIGN SETTING CSS START END -->
