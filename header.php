@@ -156,6 +156,25 @@
 		'; 
 	}
 	/****** Page Title Bar END*****/
+	/****** Page Top Area END*****/
+	if($theme_options['page_top_area_customize_enable']){
+		echo '
+			.aione-pagetop{
+				background-color: '.$theme_options['page_top_area_background_color'].';
+				color: '.$theme_options['page_top_area_text_color'].';
+			}
+			.aione-pagetop .widgettitle{
+				color: '.$theme_options['page_top_area_heading_color'].';
+			}
+			.aione-pagetop a{
+				color: '.$theme_options['page_top_area_link_color'].';
+			}
+			.aione-pagetop a:hover{
+				color: '.$theme_options['page_top_area_link_hover_color'].';
+			}
+		'; 
+	}
+	/****** Page Top Area END*****/
 	/****** SIDEBAR END*****/
 	if($theme_options['sidebar_customize_enable']){
 		echo '
@@ -175,6 +194,25 @@
 		'; 
 	}
 	/****** SIDEBAR END*****/
+	/****** Page Bottom Area END*****/
+	if($theme_options['page_bottom_area_customize_enable']){
+		echo '
+			.aione-pagebottom{
+				background-color: '.$theme_options['page_bottom_area_background_color'].';
+				color: '.$theme_options['page_bottom_area_text_color'].';
+			}
+			.aione-pagebottom .widgettitle{
+				color: '.$theme_options['page_bottom_area_heading_color'].';
+			}
+			.aione-pagebottom a{
+				color: '.$theme_options['page_bottom_area_link_color'].';
+			}
+			.aione-pagebottom a:hover{
+				color: '.$theme_options['page_bottom_area_link_hover_color'].';
+			}
+		'; 
+	}
+	/****** Page Bottom Area END*****/
 	?>
 	</style>
 	<!-- DESIGN SETTING CSS START END -->
