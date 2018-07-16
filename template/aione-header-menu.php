@@ -29,7 +29,7 @@ if(is_page() || is_single()){
 }
 
 ?>
-<nav id="aione_nav" class="aione-nav horizontal light">
+<nav id="aione_nav" class="aione-nav <?php echo $theme_options['main_nav_layout'];?>">
     <div class="aione-nav-background"></div>
 	<div class="aione-header-menu">
 		<?php

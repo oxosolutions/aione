@@ -104,22 +104,58 @@
 		';
 	}
 	/****** Header END*****/
-	/****** Menu *****/
-	if($theme_options['main_menu_customize_enable']) { 
+	/****** Menu *****/ 
+	if($theme_options['main_nav_customize_enable']) { 
 		echo '
-		.aione-header-banner{
+		.aione-nav.horizontal,.aione-nav.vertical{
 			background-color: '.$theme_options['main_menu_background_color'].';
-			color: '.$theme_options['header_text_color'].';
 		}
-		.aione-header-banner a{
-			color: '.$theme_options['header_link_color'].';	
+		.aione-nav ul.aione-menu li a{
+			color: '.$theme_options['main_nav_link_color'].';	
 		}
-		.aione-header-banner a:hover{
-			color: '.$theme_options['header_link_hover_color'].';				
+		.aione-nav ul.aione-menu li a:hover{
+			background-color: '.$theme_options['main_nav_link_active_background_color'].';
+			color: '.$theme_options['main_nav_link_hover_color'].';				
 		}
-		';
+		.aione-nav ul.aione-menu li.current-menu-item a{
+			background-color: '.$theme_options['main_nav_link_hover_background_color'].';
+			color: '.$theme_options['main_nav_link_active_color'].';	
+		}
+		.aione-nav ul.aione-menu li.current-menu-item a:hover{
+			background-color: '.$theme_options['main_nav_link_active_background_hover_color'].';
+			color: '.$theme_options['main_nav_link_active_hover_color'].';	
+		}
+		.aione-nav ul.aione-menu ul.sub-menu{
+			background-color: '.$theme_options['second_level_menu_background_color'].';
+		}
+		.aione-nav ul.aione-menu ul.sub-menu li a{
+			color: '.$theme_options['second_level_menu_link_color'].';	
+		}
+		.aione-nav ul.aione-menu ul.sub-menu li a:hover{
+			background-color: '.$theme_options['second_level_menu_link_background_hover_color'].';
+			color: '.$theme_options['second_level_menu_link_hover_color'].';	
+		}
+		'; 
 	}
 	/****** Menu END*****/
+	/****** Page Title Bar*****/
+	if($theme_options['page_title_bar_customize_enable']){
+		echo '
+		.aione-pagetitle {
+			background-color: '.$theme_options['page_title_bar_background_color'].';
+		}
+		.aione-pagetitle .title{
+			color: '.$theme_options['page_title_bar_text_color'].';
+		}
+		.aione-pagetitle a{
+			color: '.$theme_options['page_title_bar_link_color'].';
+		}
+		.aione-pagetitle a:hover{
+			color: '.$theme_options['page_title_bar_link_hover_color'].';
+		}
+		'; 
+	}
+	/****** Page Title Bar END*****/
 	?>
 	</style>
 	<!-- DESIGN SETTING CSS START END -->
