@@ -194,6 +194,25 @@
 		'; 
 	}
 	/****** SIDEBAR END*****/
+	/****** PAGE END*****/
+	if($theme_options['page_customize_enable']){
+		echo '
+		.aione-page-content{
+			background-color: '.$theme_options['page_background_color'].';
+			color: '.$theme_options['page_text_color'].';
+		}
+		.aione-page-content h1,.aione-page-content h2,.aione-page-content h3,.aione-page-content h4,.aione-page-content h5,.aione-page-content h6,{
+			color: '.$theme_options['page_heading_color'].';
+		}
+		.aione-page-content a{
+			color: '.$theme_options['page_link_color'].';
+		}
+		.aione-page-content a:hover{
+			color: '.$theme_options['page_link_hover_color'].';
+		}
+		'; 
+	}
+	/****** PAGE END*****/
 	/****** Page Bottom Area END*****/
 	if($theme_options['page_bottom_area_customize_enable']){
 		echo '
