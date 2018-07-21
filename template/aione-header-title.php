@@ -3,6 +3,8 @@ global $theme_options;
 global $post;
 $draw = false;
 ?>
+<div id="aione_header_title" class="aione-header-title">
+
 <?php if ( is_front_page() && is_home() ) : ?>
 	<h2 class="site-title aione-align-left font-size-28 m-0 font-weight-200"><?php bloginfo( 'name' ); ?></h2>
 <?php else : ?>
@@ -26,3 +28,5 @@ if($draw == true):
 	<?php
 	endif; 
 endif;
+?>
+</div>

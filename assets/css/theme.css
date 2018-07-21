@@ -63,7 +63,8 @@ Aione Topbar
 }
 .aione-topbar > .wrapper{
   padding: 2px 0;
-  height: 40px;
+  min-height: 40px;
+  max-height: 120px;
   line-height: 36px;
   overflow:hidden; 
   box-sizing: border-box;
@@ -120,6 +121,9 @@ Aione Topbar
 	margin-right: 5px;
 }
 
+.aione-topbar .aione-social-icons{
+	margin-bottom: 0;
+}
 /***************************************
 Aione Header
 ***************************************/
@@ -128,8 +132,10 @@ Aione Header
 .aione-header-title,
 .aione-header-banner{	
   display: block;
-  float: right;
 }
+.aione-header-banner{
+  float: right;
+}	
 .aione-header-banner .widgettitle{
   font-size: 20px;
   color: #168dc5;
@@ -140,8 +146,16 @@ Aione Header
   font-size: 16px;
 }
 .aione-header-menu{
-  text-align: center;
   padding: 0;
+}
+.aione-nav.align-left .aione-header-menu{
+  text-align: left;
+}
+.aione-nav.align-right .aione-header-menu{
+  text-align: right;
+}
+.aione-nav.align-center .aione-header-menu{
+  text-align: center;
 }
 
 .aione-header-logo{
@@ -150,7 +164,6 @@ Aione Header
 }
 .aione-header-logo img{
 	width: auto;
-    height: 100px;
 }
 .aione-header .aione-header-title{
 	padding-top:20px;
@@ -200,7 +213,6 @@ Aione Nav
 
 	.aione-nav.horizontal{
 		border-bottom: none;
-		background: #e8e8e8
 	}
 	.aione-nav .aione-menu ul li a{
 		font-size: 16px;
@@ -675,7 +687,6 @@ Common Widget Style in sidebars
 .aione-sidebar .calendar_wrap caption,
 .aione-sidebar .calendar_wrap tbody tr td{
 	line-height: 40px;
-    width: 40px;
     text-align: center;
 }
 .aione-sidebar .calendar_wrap thead{
@@ -684,6 +695,7 @@ Common Widget Style in sidebars
 .aione-sidebar .calendar_wrap table {
 	margin: 0 auto;
     border: 1px solid #e8e8e8;
+    width: 100%;
 }
 .aione-sidebar .calendar_wrap caption{
 	width: auto;
@@ -764,14 +776,22 @@ Common Widget Style in footer
 	padding-bottom: 15px;
 }
 .aione-footer .widget ul li{
-	text-align:left;
 	line-height: 40px;
 	border-bottom: 1px solid #353535;
+	text-align: left;
 }
 .aione-footer .widget ul li a{
 	color: #fff;
 	display: block;
 	font-size: 18px;
+    
+}
+/*********[   Categories Widget   ]***************/
+.aione-footer .widget_categories ul li{
+	text-align: right;
+}
+.aione-footer .widget_categories ul li a{
+	float: left;
 }
 
 /*********[   Text Widget   ]***************/
@@ -806,9 +826,14 @@ Common Widget Style in footer
 
 /*********[   Social Icons Widget   ]***************/
 
-.aione-footer .aione-social-icons-widget ul li{
-	text-align: center;
+.aione-footer .widget.aione-social-icons-widget ul li{
+	
 }
+.aione-footer .widget.aione-social-icons-widget ul li a{
+	
+}
+
+
 
 /*********[   Gallery Widget   ]***************/
 

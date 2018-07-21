@@ -91,14 +91,14 @@
 	/****** Header *****/
 	if($theme_options['header_customize_enable']) { 
 		echo '
-		.aione-header-banner{
+		.aione-header{
 			background-color: '.$theme_options['header_background_color'].';
 			color: '.$theme_options['header_text_color'].';
 		}
-		.aione-header-banner a{
+		.aione-header a{
 			color: '.$theme_options['header_link_color'].';	
 		}
-		.aione-header-banner a:hover{
+		.aione-header a:hover{
 			color: '.$theme_options['header_link_hover_color'].';				
 		}
 		';
@@ -108,7 +108,7 @@
 	if($theme_options['main_nav_customize_enable']) { 
 		echo '
 		.aione-nav.horizontal,.aione-nav.vertical{
-			background-color: '.$theme_options['main_menu_background_color'].';
+			background-color: '.$theme_options['main_nav_background_color'].';
 		}
 		.aione-nav ul.aione-menu li a{
 			color: '.$theme_options['main_nav_link_color'].';	
@@ -340,6 +340,7 @@
 		.aione-layout-boxed > .wrapper{
 			max-width:<?php echo $theme_options['site_width'].";"; ?>
 		}
+		
 	</style>
 	<?php
 		$wrapper_classes = ['aione-wrapper'];
@@ -354,7 +355,6 @@
 <body <?php body_class(); ?> > 
 <div id="aione_wrapper" class="<?php echo @$wrapper_classes; ?>">
 	<div class="wrapper">
-		<?php get_template_part('template/aione-topbar');  ?>
 		<?php get_template_part('template/aione-header');  ?>
 		<?php get_template_part('template/aione-slider');  ?>
 		<?php get_template_part('template/aione-pagetitle');  ?>
