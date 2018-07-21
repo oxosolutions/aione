@@ -72,6 +72,26 @@
 	<!-- DESIGN SETTING CSS START -->
 	<style>
 	<?php
+	
+	echo '
+	.aione-layout-wide .aione-topbar > .wrapper, 
+	.aione-layout-wide .aione-header > .wrapper, 
+	.aione-layout-wide .aione-slider > .wrapper, 
+	.aione-layout-wide .aione-pagetitle > .wrapper, 
+	.aione-layout-wide .aione-main > .wrapper, 
+	.aione-layout-wide .aione-footer > .wrapper, 
+	.aione-layout-wide .aione-copyright > .wrapper,
+	.aione-layout-boxed > .wrapper,
+	.aione-header.fixed,
+	.aione-footer.fixed{
+		max-width: '.$theme_options['site_width'].';
+	}
+	.aione-header.fixed,
+	.aione-footer.fixed{
+		width: '.$theme_options['site_width'].';
+	}
+	';
+ 
 	/****** Top Bar *****/
 	if($theme_options['top_bar_customize_enable']) { 
 		echo '
@@ -326,30 +346,14 @@
 		echo do_shortcode($aione_single_structured_data);
 		echo "</script>";
 	} 
-	?>
-	<style>
-		.aione-layout-wide .aione-topbar > .wrapper, 
-		.aione-layout-wide .aione-header > .wrapper, 
-		.aione-layout-wide .aione-slider > .wrapper, 
-		.aione-layout-wide .aione-pagetitle > .wrapper, 
-		.aione-layout-wide .aione-main > .wrapper, 
-		.aione-layout-wide .aione-footer > .wrapper, 
-		.aione-layout-wide .aione-copyright > .wrapper{
-			max-width:<?php echo $theme_options['site_width'].";"; ?>
-		}
-		.aione-layout-boxed > .wrapper{
-			max-width:<?php echo $theme_options['site_width'].";"; ?>
-		}
-		
-	</style>
-	<?php
-		$wrapper_classes = ['aione-wrapper'];
-		$wrapper_classes[] = 'layout-header-'.$theme_options['header_position'];
-		$wrapper_classes[] = 'aione-layout-'.$theme_options['site_layout'];
-		if( is_enabled('sidebar_left_enable') ){ $wrapper_classes[] = 'sidebar-left'; }
-		if( is_enabled('sidebar_right_enable') ){ $wrapper_classes[] = 'sidebar-right'; }
-		$wrapper_classes[] = 'color-scheme-'.$theme_options['color_scheme'];
-		$wrapper_classes = implode(" ",$wrapper_classes);
+
+	$wrapper_classes = ['aione-wrapper'];
+	$wrapper_classes[] = 'layout-header-'.$theme_options['header_position'];
+	$wrapper_classes[] = 'aione-layout-'.$theme_options['site_layout'];
+	if( is_enabled('sidebar_left_enable') ){ $wrapper_classes[] = 'sidebar-left'; }
+	if( is_enabled('sidebar_right_enable') ){ $wrapper_classes[] = 'sidebar-right'; }
+	$wrapper_classes[] = 'color-scheme-'.$theme_options['color_scheme'];
+	$wrapper_classes = implode(" ",$wrapper_classes);
 	?>
 </head>
 <body <?php body_class(); ?> > 

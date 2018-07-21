@@ -44,7 +44,7 @@ if ( ! function_exists( 'aionetheme_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'aione' ),
+			'primary-menu' => esc_html__( 'Primary', 'aione' ),
 		) );
 
 		/*
@@ -60,10 +60,12 @@ if ( ! function_exists( 'aionetheme_setup' ) ) :
 		) );
 
 		// Set up the WordPress core custom background feature.
+		/*
 		add_theme_support( 'custom-background', apply_filters( '_s_custom_background_args', array(
 			'default-color' => 'ffffff',
 			'default-image' => '',
 		) ) );
+		*/
 
 		// Add theme support for selective refresh for widgets.
 		add_theme_support( 'customize-selective-refresh-widgets' );
@@ -87,12 +89,16 @@ if ( ! function_exists( 'aionetheme_setup' ) ) :
 		add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link', 'status' ) );
 
 		// Add support for custom color scheme.
+		
 		add_theme_support( 'editor-color-palette',
+			'#168dc5',
+			'#1570a6',
 			'#0073aa',
 			'#229fd8',
 			'#eee',
 			'#444'
 		);
+		
 
 		add_theme_support( 'wp-block-styles' );
 
@@ -129,7 +135,7 @@ function aione_scripts() {
 	wp_enqueue_script( 'aionetheme-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
 	wp_enqueue_script( 'aionetheme-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 	wp_enqueue_script( 'aione-vendor', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), '20151215', true );
-	wp_enqueue_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.js', array(), time(), true );
+	wp_enqueue_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), time(), true );
 	wp_enqueue_script( 'aione-share', get_template_directory_uri() . '/assets/js/SocialShare.js', array('jquery'), time(), true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
