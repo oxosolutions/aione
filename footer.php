@@ -1,7 +1,9 @@
 		<?php get_template_part('template/aione-pagebottom');  ?>
 		<?php get_template_part('template/aione-footer');  ?>
 		<?php get_template_part('template/aione-copyright');  ?>
-
+		<?php if(@$theme_options['header_position'] != 'top'){ 
+			echo '</div>';
+		} ?>
 		<a href="#aione_wrapper" class="scrolltop"></a>
 		
 		</div><!-- .wrapper -->

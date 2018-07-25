@@ -78,18 +78,18 @@
 	.aione-layout-wide .aione-header > .wrapper, 
 	.aione-layout-wide .aione-slider > .wrapper, 
 	.aione-layout-wide .aione-pagetitle > .wrapper, 
+	.aione-layout-wide .aione-pagetop > .wrapper, 
+	.aione-layout-wide .aione-pagebottom > .wrapper, 
 	.aione-layout-wide .aione-main > .wrapper, 
 	.aione-layout-wide .aione-footer > .wrapper, 
 	.aione-layout-wide .aione-copyright > .wrapper,
-	.aione-layout-boxed > .wrapper,
-	.aione-header.fixed,
-	.aione-footer.fixed{
+	.aione-layout-boxed > .wrapper{
 		max-width: '.$theme_options['site_width'].';
 	}
-	.aione-header.fixed,
-	.aione-footer.fixed{
-		width: '.$theme_options['site_width'].';
-	}
+// 	.aione-header.fixed,
+// 	.aione-footer.fixed{
+// 		width: '.$theme_options['site_width'].';
+// 	}
 	';
  
 	/****** Top Bar *****/
@@ -183,7 +183,13 @@
 				background-color: '.$theme_options['page_top_area_background_color'].';
 				color: '.$theme_options['page_top_area_text_color'].';
 			}
-			.aione-pagetop .widgettitle{
+			.aione-pagetop .widgettitle,
+			.aione-pagetop h1,
+			.aione-pagetop h2,
+			.aione-pagetop h3,
+			.aione-pagetop h4,
+			.aione-pagetop h5,
+			.aione-pagetop h6{
 				color: '.$theme_options['page_top_area_heading_color'].';
 			}
 			.aione-pagetop a{
@@ -360,6 +366,9 @@
 <div id="aione_wrapper" class="<?php echo @$wrapper_classes; ?>">
 	<div class="wrapper">
 		<?php get_template_part('template/aione-header');  ?>
+		<?php if(@$theme_options['header_position'] != 'top'){ 
+			echo '<div class="content-wrapper">';
+		} ?>
 		<?php get_template_part('template/aione-slider');  ?>
 		<?php get_template_part('template/aione-pagetitle');  ?>
 		<?php get_template_part('template/aione-pagetop');  ?>

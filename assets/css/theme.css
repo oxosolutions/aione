@@ -26,6 +26,8 @@ Aione Layout
 .aione-layout-wide .aione-header > .wrapper,
 .aione-layout-wide .aione-slider > .wrapper,
 .aione-layout-wide .aione-pagetitle > .wrapper,
+.aione-layout-wide .aione-pagetop > .wrapper,
+.aione-layout-wide .aione-pagebottom > .wrapper,
 .aione-layout-wide .aione-main > .wrapper,
 .aione-layout-wide .aione-footer > .wrapper,
 .aione-layout-wide .aione-copyright > .wrapper{
@@ -970,4 +972,89 @@ Common Comment Style
     border: 1px solid #e8e8e8;
     padding: 10px;
     margin-bottom: 10px;
+}
+/*********************************************
+   HEADER LEFT, HEADER RIGHT and HEADER TOP
+*********************************************/
+.layout-header-left .header-wrapper{
+	width: 250px;
+	float: left;
+	border-right: 1px solid #e8e8e8;
+}
+.layout-header-right .header-wrapper{
+	width: 250px;
+	float: right;
+	border-left: 1px solid #e8e8e8;
+}
+.layout-header-left .aione-header,
+.layout-header-right .aione-header{
+	float: none;
+	padding: 10px;
+}
+.aione-nav
+.layout-header-left .aione-topbar-left,
+.layout-header-left .aione-topbar-right,
+.layout-header-right .aione-topbar-left,
+.layout-header-right .aione-topbar-right{
+	width: 100%;
+}
+.layout-header-left .aione-topbar .widget_nav_menu li,
+.layout-header-right .aione-topbar .widget_nav_menu li,
+.layout-header-left .aione-topbar .widget_meta ul > li,
+.layout-header-right .aione-topbar .widget_meta ul > li{
+	display: block;
+	text-align: left;
+}
+.layout-header-left .aione-topbar .widget_nav_menu li:after,
+.layout-header-right .aione-topbar .widget_nav_menu li:after{
+	content: '';
+}
+.layout-header-left .aione-topbar > .wrapper,
+.layout-header-right .aione-topbar > .wrapper{
+	max-height: initial;
+}
+.layout-header-left .aione-topbar  .widget,
+.layout-header-right .aione-topbar  .widget{
+	float: none;
+	display: block;
+	text-align: center;
+}
+.layout-header-left .aione-nav ul li,
+.layout-header-right .aione-nav ul li{
+ 	display: block;
+}
+.layout-header-left .aione-nav ul li a,
+.layout-header-right .aione-nav ul li a{
+	display: block;
+}
+/************Review again*/
+.layout-header-left .aione-header-logo img,
+.layout-header-right .aione-header-logo img{
+	width: auto;
+	height: auto;
+}
+.layout-header-left .aione-header-banner .textwidget p,
+.layout-header-right .aione-header-banner .textwidget p{
+	text-align: center;
+}
+.layout-header-left .aione-menu .sub-menu,
+.layout-header-right .aione-menu .sub-menu{
+	position: initial;
+}
+.layout-header-left .aione-header > .wrapper > div,
+.layout-header-right .aione-header > .wrapper > div{
+	margin-bottom: 10px;
+}
+.content-wrapper .aione-main,
+.content-wrapper .aione-pagetop {
+	padding: 15px;
+}
+.layout-header-left .content-wrapper,
+.layout-header-right .content-wrapper{
+	width: calc( 100% - 251px );
+	float: left;
+}
+.layout-header-left .header-wrapper:before{
+	content: '';
+	
 }

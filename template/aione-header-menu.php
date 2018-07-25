@@ -5,7 +5,7 @@ if( is_enabled('header_show_navigation') ):
 	global $theme_options;
 
 	$args = array(
-		'theme_location' => 'menu-1',
+		'theme_location' => 'primary-menu',
 		'menu_id'        => 'primary-menu',
 		'menu_class'     => 'aione-menu',
 		'depth'          => 3,
@@ -18,6 +18,7 @@ if( is_enabled('header_show_navigation') ):
 			$args['menu'] = $pyre_displayed_menu; 
 		endif;
 	}
+
 	$nav_classes = array('aione-nav');
 	$nav_classes[] = @$theme_options['main_nav_layout'];
 	$nav_classes[] = 'align-'.@$theme_options['main_nav_alignment'];
