@@ -246,8 +246,17 @@
 				background-color: '.$theme_options['page_bottom_area_background_color'].';
 				color: '.$theme_options['page_bottom_area_text_color'].';
 			}
-			.aione-pagebottom .widgettitle{
+
+			.aione-pagebottom .widgettitle,
+			.aione-pagebottom h1,
+			.aione-pagebottom h2,
+			.aione-pagebottom h3,
+			.aione-pagebottom h4,
+			.aione-pagebottom h5,		
+			.aione-pagebottom h6{
 				color: '.$theme_options['page_bottom_area_heading_color'].';
+				
+			
 			}
 			.aione-pagebottom a{
 				color: '.$theme_options['page_bottom_area_link_color'].';
