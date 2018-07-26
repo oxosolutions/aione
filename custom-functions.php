@@ -436,7 +436,7 @@ function aione_slider_settings_save_meta($post_id ){
 }
 
 function aione_slider_settings_form($post){
-	$settings   = get_post_meta( $post->ID, 'aione-slider-settings', false );
+	$settings   = get_post_meta( $post->ID, 'aione-slider-settings', true );
 	$aione_slider_settings = array();
 	?>	
 		<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
@@ -742,10 +742,7 @@ function aione_slider_shortcode( $atts ) {
 
 	if ( get_post_status ( $slider_id ) == 'publish' ) {
 		if ( get_post_type( $slider_id ) == 'aione-slider' ) {
-
-			$slides = get_field('images', $slider_id);
-
-
+			$slides = get_field('aione_slider_images', $slider_id);
 
 			$settings   = get_post_meta($atts['id'], 'aione-slider-settings', true );
 			$skip_settings   = array(
@@ -826,6 +823,12 @@ function aione_slider_shortcode( $atts ) {
 * Register Aione Slider Custom Field "Gallery"
 * 
 */
+/**
+ * Enable ACF 5 early access
+ * Requires at least version ACF 4.4.12 to work
+ */
+define('ACF_EARLY_ACCESS', '5');
+
 if(class_exists('acf')){ 
 	add_action( 'init', 'register_custom_acf_fields' );
 } else { 
@@ -846,7 +849,7 @@ function register_custom_acf_fields() {
 							'label' => 'Images',
 							'name' => 'aione_slider_images',
 							'type' => 'gallery',
-							'preview_size' => 'thumbnail',
+							'preview_size' => 'full',
 							'library' => 'all',
 						),
 					),
@@ -863,7 +866,7 @@ function register_custom_acf_fields() {
 					),
 					'options' => array (
 						'position' => 'normal',
-						'style'                 => 'seamless', // default
+						'style'   => 'seamless', // default
 						'layout' => 'no_box',
 						'hide_on_screen' => array (
 						),
