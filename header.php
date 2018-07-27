@@ -76,6 +76,7 @@
 	echo '
 	.aione-layout-wide .aione-topbar > .wrapper, 
 	.aione-layout-wide .aione-header > .wrapper, 
+	.aione-layout-wide .primary-nav > .wrapper, 
 	.aione-layout-wide .aione-slider > .wrapper, 
 	.aione-layout-wide .aione-pagetitle > .wrapper, 
 	.aione-layout-wide .aione-pagetop > .wrapper, 
@@ -125,38 +126,42 @@
 	}
 	/****** Header END*****/
 	/****** Menu *****/ 
+	
 	if($theme_options['main_nav_customize_enable']) { 
 		echo '
-		.aione-nav.horizontal,.aione-nav.vertical{
+		.primary-nav{
+			height: '.$theme_options['main_nav_height'].'px;
 			background-color: '.$theme_options['main_nav_background_color'].';
 		}
-		.aione-nav ul.aione-menu li a{
+		.primary-nav .aione-nav > ul > li > a {
+			line-height: '.$theme_options['main_nav_height'].'px;
 			color: '.$theme_options['main_nav_link_color'].';	
 		}
-		.aione-nav ul.aione-menu li a:hover{
-			background-color: '.$theme_options['main_nav_link_active_background_color'].';
-			color: '.$theme_options['main_nav_link_hover_color'].';				
-		}
-		.aione-nav ul.aione-menu li.current-menu-item a{
+		.primary-nav .aione-nav > ul > li > a:hover,
+		.primary-nav .aione-nav > ul > li.current-menu-item > a,
+		.primary-nav .aione-nav > ul > li.current-menu-item > a:hover,
+		.primary-nav .aione-nav > ul > li.current-menu-parent > a,
+		.primary-nav .aione-nav > ul > li.current-menu-parent > a:hover{
+			color: '.$theme_options['main_nav_link_hover_color'].';	
 			background-color: '.$theme_options['main_nav_link_hover_background_color'].';
-			color: '.$theme_options['main_nav_link_active_color'].';	
 		}
-		.aione-nav ul.aione-menu li.current-menu-item a:hover{
-			background-color: '.$theme_options['main_nav_link_active_background_hover_color'].';
-			color: '.$theme_options['main_nav_link_active_hover_color'].';	
+		.primary-nav .aione-nav > ul > li > ul.sub-menu {
+			color: '.$theme_options['submenu_background_color'].';	
 		}
-		.aione-nav ul.aione-menu ul.sub-menu{
-			background-color: '.$theme_options['second_level_menu_background_color'].';
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li > a {
+			color: '.$theme_options['submenu_link_color'].';	
 		}
-		.aione-nav ul.aione-menu ul.sub-menu li a{
-			color: '.$theme_options['second_level_menu_link_color'].';	
-		}
-		.aione-nav ul.aione-menu ul.sub-menu li a:hover{
-			background-color: '.$theme_options['second_level_menu_link_background_hover_color'].';
-			color: '.$theme_options['second_level_menu_link_hover_color'].';	
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li > a:hover,
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-item > a,
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-item > a:hover,
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-parent > a,
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-parent > a:hover{
+			color: '.$theme_options['submenu_link_hover_color'].';	
+			background-color: '.$theme_options['submenu_link_background_hover_color'].';
 		}
 		'; 
 	}
+	
 	/****** Menu END*****/
 	/****** Page Title Bar*****/
 	if($theme_options['page_title_bar_customize_enable']){

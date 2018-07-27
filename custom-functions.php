@@ -1361,7 +1361,7 @@ function is_fullwidth($component){
 	$page_option = get_aione_page_option($post->ID,'pyre_'.$component.'_100_width');
 
 
-	if($page_option == 'default'){
+	if($page_option == 'default' || empty(@$page_option)){
 		if($theme_options[$component.'_100_width']){
 			$fullwidth = true;
 		}
