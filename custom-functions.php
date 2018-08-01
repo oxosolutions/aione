@@ -1077,11 +1077,12 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 				
 				$asiw_data['id'] = $id;
 				$asiw_data['url'] = $instance[$id];
+				$asiw_data['title'] = $label;
 				
 				if($asiw_labels != 'show') { $asiw_data['label'] = ''; }
-				else { $asiw_data['label'] = '<span class="label">'.$label.'</span>'; }
+				else { $asiw_data['label'] = $label; }
 
-				$format = '<li class="%1$s"><a href="%2$s" target="_blank" rel="noopener" title="%3$s"><span class="icon"></span><span class="label">%3$s</span></a></li>';
+				$format = '<li class="%1$s"><a href="%2$s" target="_blank" rel="noopener" title="%3$s"><span class="icon"></span><span class="label">%4$s</span></a></li>';
 
 				$asiw_icon_output = apply_filters('social_icon_output', $format);
 				echo vsprintf($asiw_icon_output, $asiw_data);
