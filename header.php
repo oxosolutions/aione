@@ -66,6 +66,8 @@
 	}
 	?>
 
+	<meta name="theme-color" content="#168dc5"/>
+
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	
 	<?php wp_head(); ?>
@@ -275,16 +277,21 @@
 	/****** Footer*****/
 	if($theme_options['footer_customize_enable']){
 		echo '
-			.aione-footer {
+			.aione-footer { 
 				background-color: '.$theme_options['footer_background_color'].';
+			}
+			.aione-footer .widget,
+			.aione-footer .textwidget {
 				color: '.$theme_options['footer_text_color'].';
 			}
-			.aione-footer .widgettitle{
+			.aione-footer .widget .widgettitle{
 				color: '.$theme_options['footer_heading_color'].';
 			}
+			.aione-footer .widget ul li a,
 			.aione-footer a{
 				color: '.$theme_options['footer_link_color'].';
 			}
+			.aione-footer .widget ul li a:hover,
 			.aione-footer a:hover{
 				color: '.$theme_options['footer_link_hover_color'].';
 			}

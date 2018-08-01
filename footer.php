@@ -4,7 +4,7 @@
 		<?php if(@$theme_options['header_position'] != 'top'){ 
 			echo '</div>';
 		} ?>
-		<a href="#aione_wrapper" class="scrolltop"></a>
+		<a href="#aione_wrapper" class="scrolltop" title="Scroll to top of the page"></a>
 		
 		</div><!-- .wrapper -->
 	</div><!-- .aione-wrapper -->

@@ -1,8 +1,9 @@
+<?php global $post; ?>
 <?php if( is_enabled('page_title_bar') ): ?>
 
 	<?php
 	$page_title = get_the_title();
-	$page_description = '';
+	$page_description = get_aione_page_option($post->ID,'pyre_page_title_bar_description_text');
 
 	if( is_post_type_archive() || is_archive()){
 		$page_title = get_the_archive_title();
@@ -20,12 +21,10 @@
 		} else {
 			$page_title = single_post_title('',false);
 		}	
-		$page_description = '';
 	}
 
 	if(is_search()){
 		$page_title = "Search";
-		$page_description = "";
 	}
 	?>
 	<div id="aione_pagetitle" class="aione-pagetitle <?php echo is_fullwidth('page_title');?>">

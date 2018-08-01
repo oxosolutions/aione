@@ -40,6 +40,9 @@ $this->select(
 	),
 	__( 'Show Description on Page Title Bar', 'gutenbergtheme' )
 );
-
+$this->textarea(
+	'page_title_bar_description_text',
+	__( 'Description text on Page Title Bar', 'gutenbergtheme' )
+);
 
 // Omit closing PHP tag to avoid "Headers already sent" issues.
