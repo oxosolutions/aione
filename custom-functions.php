@@ -1468,6 +1468,4 @@ function g7g_modify_wp_block() {
 
 
 
-
-
 ?>
