@@ -148,7 +148,7 @@
 			background-color: '.$theme_options['main_nav_link_hover_background_color'].';
 		}
 		.primary-nav .aione-nav > ul > li > ul.sub-menu {
-			color: '.$theme_options['submenu_background_color'].';	
+			background-color: '.$theme_options['submenu_background_color'].';	
 		}
 		.primary-nav .aione-nav > ul > li > ul.sub-menu > li > a {
 			color: '.$theme_options['submenu_link_color'].';	
