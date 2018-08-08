@@ -1,5 +1,8 @@
-<?php if( is_enabled('page_top_area_enable') ): ?>
-	<section id="aione_pagetop" class="aione-pagetop <?php echo is_fullwidth('page_top_area'); ?>">
+<?php 
+global $post;
+
+if( is_enabled( $post->ID, 'page_top_area_enable') ): ?>
+	<section id="aione_pagetop" class="aione-pagetop <?php echo is_fullwidth( $post->ID, 'page_top_area'); ?>">
 		<div class="wrapper">
 			<?php
 			if ( is_active_sidebar( 'aione-pagetop-content' ) ){

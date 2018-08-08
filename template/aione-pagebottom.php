@@ -1,4 +1,7 @@
-<?php if( is_enabled('page_bottom_area_enable') ): ?>	
+<?php 
+global $post;
+
+if( is_enabled( $post->ID, 'page_bottom_area_enable') ): ?>	
 	<div id="aione_pagebottom" class="aione-pagebottom">
 		<div class="wrapper">
 			<?php

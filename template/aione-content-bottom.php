@@ -1,4 +1,7 @@
-<?php if( is_enabled('content_bottom_area_enable') ): ?>
+<?php 
+global $post;
+
+if( is_enabled( $post->ID, 'content_bottom_area_enable') ): ?>
 	<section id="aione_contentbottom" class="aione-contentbottom">
 		<div class="wrapper">
 			<?php

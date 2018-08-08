@@ -6,7 +6,7 @@ $header_classes = array('aione-header');
 if(@$theme_options['header_sticky']){
 	$header_classes[] = 'sticky';
 }
-$header_classes[] = is_fullwidth('header');
+$header_classes[] = is_fullwidth( $post->ID, 'header');
 $header_classes = implode(' ', $header_classes);		
 
 if(@$theme_options['header_position'] != 'top'){ 
@@ -14,14 +14,14 @@ if(@$theme_options['header_position'] != 'top'){
 }
 
 get_template_part('template/aione-topbar');
-if(is_enabled('header_enable')): ?>
+if(is_enabled( $post->ID, 'header_enable')): ?>
 	<header id="aione_header" class="<?php echo $header_classes; ?>">
 		<div class="wrapper">
 			<?php 
-			if(is_enabled('header_show_logo')){
+			if(is_enabled( $post->ID, 'header_show_logo')){
 					get_template_part('template/aione-header-logo');	
 			}
-			if(is_enabled('header_show_site_title')){
+			if(is_enabled( $post->ID, 'header_show_site_title')){
 				get_template_part('template/aione-header-title');
 			}
 
@@ -29,7 +29,7 @@ if(is_enabled('header_enable')): ?>
 				get_template_part('template/aione-header-menu');
 			}
 
-			if(is_enabled('header_show_banner')){
+			if(is_enabled( $post->ID, 'header_show_banner')){
 				get_template_part('template/aione-header-banner');
 			}
 			?>	

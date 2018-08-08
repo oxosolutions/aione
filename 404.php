@@ -1,5 +1,7 @@
-<?php get_header();?>
-<main id="aione_main" class="aione-main <?php echo is_fullwidth('page');?>">
+<?php get_header();
+global $post;
+?>
+<main id="aione_main" class="aione-main <?php echo is_fullwidth( $post->ID, 'page');?>">
 	<div class="wrapper">
 
 		<?php get_template_part( 'template/aione-sidebar-left'); ?>

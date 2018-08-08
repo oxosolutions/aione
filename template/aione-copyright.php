@@ -15,7 +15,7 @@ if($count > 0):
 	if($count == 1){
 		$aione_copyright_left_class = $aione_copyright_right_class = 'aione-copyright-center';
 	}
-	$pyre_footer_copyright = get_aione_page_option($post->ID,'pyre_footer_copyright');
+	$pyre_footer_copyright = get_aione_page_option( $post->ID, 'pyre_footer_copyright');
 	$draw = $pyre_footer_copyright == 'yes' ? true 
 			: ( $pyre_footer_copyright == 'no' ? false 
 					: (($theme_options['footer_copyright'] == 1)
@@ -26,7 +26,7 @@ if($count > 0):
 	
 	if($draw == true):
 	?>
-	<div id="aione_copyright" class="aione-copyright <?php echo is_fullwidth('footer_copyright');?>">
+	<div id="aione_copyright" class="aione-copyright <?php echo is_fullwidth( $post->ID, 'footer_copyright');?>">
 		<div class="wrapper">
 			<?php 
 			if ( is_active_sidebar( 'aione-copyright-left' ) ){

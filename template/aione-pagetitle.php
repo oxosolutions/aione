@@ -1,7 +1,7 @@
-<?php global $post; ?>
-<?php if( is_enabled('page_title_bar') ): ?>
+<?php global $post;
 
-	<?php
+if( is_enabled( $post->ID, 'page_title_bar') ):
+	
 	$page_title = get_the_title();
 	$page_description = get_aione_page_option($post->ID,'pyre_page_title_bar_description_text');
 
@@ -27,15 +27,15 @@
 		$page_title = "Search";
 	}
 	?>
-	<div id="aione_pagetitle" class="aione-pagetitle <?php echo is_fullwidth('page_title');?>">
+	<div id="aione_pagetitle" class="aione-pagetitle <?php echo is_fullwidth( $post->ID, 'page_title');?>">
 		<div class="wrapper">
 			<?php 
-			if( is_enabled('page_title_bar_enable_title')  && !empty($page_title)): ?>
+			if( is_enabled( $post->ID, 'page_title_bar_enable_title')  && !empty($page_title)): ?>
 				<h1 class="title">
 					<?php echo $page_title; ?>
 				</h1>
 			<?php endif;
-			if( is_enabled('page_title_bar_enable_description') && !empty($page_description)): ?>
+			if( is_enabled( $post->ID, 'page_title_bar_enable_description') && !empty($page_description)): ?>
 				<h2 class="description">
 					<?php echo $page_description;?>				
 				</h2>

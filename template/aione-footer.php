@@ -29,7 +29,7 @@ if($count > 0):
 	
 	if($draw == true):
 	?>
-	<footer id="aione_footer" class="aione-footer <?php echo is_fullwidth('footer');?>">
+	<footer id="aione_footer" class="aione-footer <?php echo is_fullwidth( $post->ID, 'footer');?>">
 		<div class="wrapper ar">
 			<?php if ( is_active_sidebar( 'footer-column' ) ) : ?>
 				<div class="ac s100 l<?php echo $col ?> ">

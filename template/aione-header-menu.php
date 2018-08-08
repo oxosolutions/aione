@@ -1,13 +1,14 @@
 <?php	
-if( is_enabled('header_show_navigation') ):
+global $post;
+global $theme_options;
 
-	global $post;
-	global $theme_options;
+if( is_enabled( $post->ID, 'header_show_navigation') ):
+
 
 	$nav_classes = array('primary-nav');
 	$nav_classes[] = 'align-'.@$theme_options['main_nav_alignment'];
 	$nav_classes[] = 'position-'.@$theme_options['main_nav_position'];
-	$nav_classes[] = is_fullwidth('main_nav');
+	$nav_classes[] = is_fullwidth( $post->ID, 'main_nav');
 
 	$menu_classes = array('wrapper');
 	$menu_classes[] = 'aione-nav';

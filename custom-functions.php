@@ -1354,12 +1354,12 @@ function get_aione_page_option($post_id , $meta_key){
 	return $meta_value;
 }
 
-function is_fullwidth($component){
+function is_fullwidth($id,$component){
 	global $theme_options;
 	global $post;
 	$fullwidth = false;
 
-	$page_option = get_aione_page_option($post->ID,'pyre_'.$component.'_100_width');
+	$page_option = get_aione_page_option($id,'pyre_'.$component.'_100_width');
 
 
 	if($page_option == 'default' || empty(@$page_option)){
@@ -1382,22 +1382,24 @@ function is_fullwidth($component){
 	return $fullwidth_class;
 }
 
-function is_enabled($component){
+function is_enabled( $id, $component ){
 	global $theme_options;
 	global $post;
 	$is_enabled = false;
 
-	$page_option = get_aione_page_option($post->ID, 'pyre_'.$component);
+	$page_option = get_aione_page_option($id, 'pyre_'.$component);
 
-	//echo "<br>ID ==".$post->ID;
-	//echo "<br>PAGE OPTIONS ==".$page_option;
+	// echo "<br>ID ==".$post->ID;
+	// echo "<br>component ==".$component;
+	// echo "<br>PAGE OPTIONS ==".$page_option;
+	// echo "<br>THEME OPTIONS ==".$theme_options[$component];
 
-	if($page_option == 'default'){
-		if($theme_options[$component]){
+	if( $page_option == 'default' || empty(@$page_option) ){
+		if( $theme_options[$component] ){
 			$is_enabled = true;
 		}
 	} else{
-		if($page_option == 'yes'){
+		if( $page_option == 'yes' ){
 			$is_enabled = true;
 		}
 	}
