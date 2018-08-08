@@ -1,11 +1,10 @@
 <?php 
 global $theme_options;
-global $post;
 ?>
 <article id="post_<?php the_ID(); ?>" <?php post_class(); ?>> 
 	<div class="ar list-blog">
 		<div class="ac s100 m50 l40">
-			<?php if (has_post_thumbnail( $post->ID ) && $theme_options['blog_archive_featured_image_enable'] == 1 ){ ?>
+			<?php if (has_post_thumbnail( get_the_ID() ) && $theme_options['blog_archive_featured_image_enable'] == 1 ){ ?>
 			<div class="featured-image aione-rounded">
 				<?php the_post_thumbnail( 'medium' ); ?>	
 		    </div>
