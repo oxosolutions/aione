@@ -104,13 +104,13 @@ Aione Topbar
 .aione-topbar .widget .widgettitle{
 	display: none;
 }
-.aione-topbar .widget{
+/*.aione-topbar .widget{
   display: inline-block;
   margin-right: 15px;
 }
 .aione-topbar .widget:last-child{
 	margin-right: 0px;
-}
+}*/
 .aione-topbar .aione-topbar-left .widget{
   float: left;
 }

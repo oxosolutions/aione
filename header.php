@@ -128,15 +128,21 @@
 	}
 	/****** Header END*****/
 	/****** Menu *****/ 
+	echo '
+		.primary-nav{
+			height: '.$theme_options['main_nav_height'].'px;
+		}
+		.primary-nav .aione-nav > ul > li > a {
+			line-height: '.$theme_options['main_nav_height'].'px;
+		}
+		';
 	
 	if($theme_options['main_nav_customize_enable']) { 
 		echo '
 		.primary-nav{
-			height: '.$theme_options['main_nav_height'].'px;
 			background-color: '.$theme_options['main_nav_background_color'].';
 		}
 		.primary-nav .aione-nav > ul > li > a {
-			line-height: '.$theme_options['main_nav_height'].'px;
 			color: '.$theme_options['main_nav_link_color'].';	
 		}
 		.primary-nav .aione-nav > ul > li > a:hover,
