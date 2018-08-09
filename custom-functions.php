@@ -575,7 +575,7 @@ function aione_slider_settings_form($post){
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_navText">navText</label></th>
-					<td><input name="aione_slider_settings[navText]" type="text" id="aione_slider_navText" value="<?php echo isset($settings['navText'])? $settings['navText'] : '[&#x27;next&#x27;,&#x27;prev&#x27;]' ?>" class=""><p class="description">HTML allowed.</p></td>
+					<td><input name="aione_slider_settings[navText]" type="text" id="aione_slider_navText" value="<?php echo isset($settings['navText'])? $settings['navText'] : '' ?>" class=""><p class="description">HTML allowed.</p></td>
 					</tr>
 					<tr>
 					<th scope="row"><label for="aione_slider_navElement">navElement</label></th>
