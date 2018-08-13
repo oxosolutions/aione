@@ -1,7 +1,5 @@
 <?php 
-global $post;
-
-if( is_enabled( $post->ID, 'sidebar_left_enable') ): ?>
+if( is_enabled( get_page_id(), 'sidebar_left_enable') ): ?>
 	<aside id="aione_sidebar_left" class="aione-sidebar aione-sidebar-left">
 		<div class="wrapper">
 			<?php

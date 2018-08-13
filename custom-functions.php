@@ -1382,17 +1382,37 @@ function is_fullwidth($id,$component){
 	return $fullwidth_class;
 }
 
+function get_page_id(){
+	$blog = false;
+	global $post;
+    if ( is_front_page() && is_home() ) {
+        $blog = false;
+    } elseif ( is_front_page() ) {
+        $blog = false;
+    } elseif ( is_home() ) {
+        $blog = true; 
+    } else {
+       $blog = false;
+    }
+
+    if($blog == true){
+    	return get_option( 'page_for_posts' ); // Returns blog page ID
+    } else {
+    	return $post->ID;
+    }
+}
+
 function is_enabled( $id, $component ){
 	global $theme_options;
-	global $post;
 	$is_enabled = false;
 
 	$page_option = get_aione_page_option($id, 'pyre_'.$component);
 
-	// echo "<br>ID ==".$post->ID;
-	// echo "<br>component ==".$component;
-	// echo "<br>PAGE OPTIONS ==".$page_option;
-	// echo "<br>THEME OPTIONS ==".$theme_options[$component];
+	/*echo "<br>ID ==".$post->ID;
+	echo "<br>ID ==".$id;
+	echo "<br>component ==".$component;
+	echo "<br>PAGE OPTIONS ==".$page_option;
+	echo "<br>THEME OPTIONS ==".$theme_options[$component];*/
 
 	if( $page_option == 'default' || empty(@$page_option) ){
 		if( $theme_options[$component] ){
