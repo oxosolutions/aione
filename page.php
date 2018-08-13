@@ -1,9 +1,6 @@
 <?php get_header(); 
 global $post;
-echo "<br>ID==".$post->ID;
-echo "<br>";
 ?>
-PAGE.PHP
 <main id="aione_main" class="aione-main <?php echo is_fullwidth( $post->ID, 'page');?>">
 	<div class="wrapper">
 
