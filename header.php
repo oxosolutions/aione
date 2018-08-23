@@ -69,9 +69,32 @@
 	<meta name="theme-color" content="#168dc5"/>
 
 	<link rel="profile" href="http://gmpg.org/xfn/11">
+
 	
 	<?php wp_head(); ?>
-	<!-- DESIGN SETTING CSS START -->
+
+	<?php
+
+	$upload = wp_upload_dir();
+    $upload_url = $upload['baseurl'];
+	$upload_path = $upload['basedir'];
+
+
+    if( is_ssl() ){
+      	$upload_url = str_replace( 'http://', 'https://', $upload_url );
+    } else {
+      	$upload_url = str_replace( 'https://', 'http://', $upload_url );
+    }
+
+    $manifest_url = $upload_url.'/pwa/manifest.json';
+    $manifest_path = $upload_path.'/pwa/manifest.json';
+    
+    if(file_exists( $manifest_path )){
+    	//echo '<link rel="manifest" href="'.$manifest_url.'">';
+    } 
+    ?>
+    
+	<!-- DESIGN SETTINGS CSS START -->
 	<style>
 	<?php
 	

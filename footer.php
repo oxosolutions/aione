@@ -20,7 +20,38 @@
 	if($pyre_custom_js != "") {
 		echo "<script>".$pyre_custom_js."</script>";
 	}
-	?>
+    $upload = wp_upload_dir();
+    $upload_url = $upload['baseurl'];
+	$upload_path = $upload['basedir'];
+	/*
+    if( is_ssl() ){
+      	$upload_url = str_replace( 'http://', 'https://', $upload_url );
+    } else {
+      	$upload_url = str_replace( 'https://', 'http://', $upload_url );
+    }*/
+    $serviceworker_url = $upload_url.'/pwa/serviceworker.js';
+    $serviceworker_path = $upload_path.'/pwa/serviceworker.js';
 
+	?>
+	<script >
+		if ('serviceWorker' in navigator) {
+			//navigator.serviceWorker.register('/serviceworker.js', { scope: '/' }).then(function(reg) {
+			var serviceworkerPath = '<?php echo $serviceworker_url; ?>';
+			navigator.serviceWorker.register(serviceworkerPath).then(function(reg) {
+
+			if(reg.installing) {
+				console.log('Service worker installing');
+			} else if(reg.waiting) {
+				console.log('Service worker installed');
+			} else if(reg.active) {
+				console.log('Service worker active');
+			}
+			 console.log('ServiceWorker registration successful with scope: ', reg.scope);
+
+			}).catch(function(error) {
+				console.log('Registration failed with ' + error);
+			});
+		}
+    </script>
 	</body>
 </html>
