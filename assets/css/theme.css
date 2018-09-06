@@ -248,8 +248,8 @@ Mobile Nav
     top: 2px;
     bottom: 2px;
     display: block;
-    border-top: 2px solid #ffffff;
-    border-bottom: 2px solid #ffffff;
+    border-top: 2px solid #333333;
+    border-bottom: 2px solid #333333;
     transition:all 140ms ease-in-out;
 }
 .primary-nav .aione-nav-background:after {
@@ -260,7 +260,7 @@ Mobile Nav
     bottom: 0;
     display: block;
     margin: -1px 0 0 0;
-    border-top: 2px solid #ffffff;
+    border-top: 2px solid #333333;
     transition:all 140ms ease-in-out;
 }
 .primary-nav .aione-nav-background.active:before {
@@ -287,8 +287,11 @@ Mobile Nav
     .primary-nav .aione-nav > ul{
         margin-top: 50px;
         width: 100%;
-        background: #168dc5;
+        background: #333333;
         text-align: center;
+    }
+    .primary-nav .aione-nav > ul > li > a{
+        border-bottom:1px solid #454545;
     }
 }
 .primary-nav .aione-nav.mobile-nav{
