@@ -212,6 +212,88 @@ Aione Nav
 .primary-nav .aione-nav.horizontal>ul>li>ul {
     overflow: hidden;
 }
+
+
+
+
+
+/***************************************
+Mobile Nav
+***************************************/
+.ua-device-mobile .hide-on-mobile{
+    display:none;
+}
+.ua-device-desktop .hide-on-desktop{
+    display:none;
+}
+.primary-nav{
+    position: relative;
+}
+.primary-nav .aione-nav-background {
+    display: none;
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 0;
+    top: 50%;
+    right: 20px;
+    cursor: pointer;
+    z-index: 999;
+}
+.primary-nav .aione-nav-background:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 2px;
+    bottom: 2px;
+    display: block;
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transition:all 140ms ease-in-out;
+}
+.primary-nav .aione-nav-background:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    bottom: 0;
+    display: block;
+    margin: -1px 0 0 0;
+    border-top: 2px solid #ffffff;
+    transition:all 140ms ease-in-out;
+}
+.primary-nav .aione-nav-background.active:before {
+    border-bottom: none;
+    transform: rotate(-45deg);
+    top: 8px;
+    left: 3px;
+}
+.primary-nav .aione-nav-background.active:after {
+    transform: rotate(45deg);
+    top: 9px;
+    left: -3px;
+}
+@media only screen and (max-width:901px) {
+    .primary-nav .aione-nav-background {
+        display: block;
+    }
+    .primary-nav .aione-nav{
+        display:none;
+    }
+    .aione-nav.horizontal>ul>li{
+        float:none;
+    }
+    .primary-nav .aione-nav > ul{
+        margin-top: 50px;
+        width: 100%;
+        background: #168dc5;
+        text-align: center;
+    }
+}
+.primary-nav .aione-nav.mobile-nav{
+    display:block;
+}
 /*
 
 
@@ -1083,4 +1165,68 @@ Common Comment Style
 .layout-header-left .header-wrapper:before{
 	content: '';
 	
+}
+
+/*********************************************
+PAGINATION
+*********************************************/
+.pagination {
+	text-align: center;
+}
+.pagination > a,
+.pagination > span{
+	background: #454545;
+    color: #ffffff;
+    margin: 0 10px 10px 0;
+    text-align: center;
+    min-width: 40px;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 40px;
+	padding:0 15px;
+	transition: all 180ms ease-in-out;
+}
+.pagination > a:hover,
+.pagination > span:hover{
+	background: #333333;
+}
+.pagination > .current {
+    background: #168dc5;
+}
+.pagination > .current:hover {
+    background: #1570a6;
+}
+.pagination > .pagination-prev,
+.pagination > .pagination-next{
+	padding:0 15px;
+	position: relative;
+}
+.pagination > .pagination-prev > .page-prev,
+.pagination > .pagination-next > .page-next{
+    display: inline-block;
+    width: 16px;
+}
+.pagination > .pagination-prev > .page-prev:before{
+	content: "";
+    position: absolute;
+    border-top: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    transform: rotate(-45deg);
+    top: 50%;
+    left: 17px;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 0;
+}
+.pagination > .pagination-next > .page-next:before{
+	content: "";
+    position: absolute;
+    border-top: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    transform: rotate(45deg);
+    top: 50%;
+    right: 17px;
+    width: 12px;
+    height: 12px;
+    margin: -6px 0 0 0;
 }

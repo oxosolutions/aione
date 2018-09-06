@@ -24,6 +24,12 @@ $(document).ready(function() {
 		}
 	});
 
+	$(document).on('click', '.primary-nav .aione-nav-background', function(e) {
+		e.preventDefault();
+		$(this).toggleClass("active");
+		$('.primary-nav .aione-nav').toggleClass("mobile-nav");
+	});
+
 
 	/*****************************************************
 	/*  Show Form Fields when conditions are true
