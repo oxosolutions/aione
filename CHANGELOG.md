@@ -16,3 +16,6 @@ FIXED: Mobile nav z index was conflicting with slider
 
 ## 7.0.1.10 06-09-2018
 FIXED: Menu alignment when menu is indide header
+
+## 7.0.1.11 06-09-2018
+FIXED: Mobile first sidebar layout
