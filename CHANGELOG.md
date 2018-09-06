@@ -10,3 +10,6 @@ UPDATED: Mobile Nav Design
 
 ## 7.0.1.8 06-09-2018
 ADDED: Functionality Aione Data Table
+
+## 7.0.1.9 06-09-2018
+FIXED: Mobile nav z index was conflicting with slider

@@ -1,7 +1,12 @@
 /***************************************
 Aione Commmon
 ***************************************/
-
+.ua-device-mobile .hide-on-mobile{
+    display:none;
+}
+.ua-device-desktop .hide-on-desktop{
+    display:none;
+}
 .aione-clear{
 	clear: both;
 }
@@ -220,12 +225,6 @@ Aione Nav
 /***************************************
 Mobile Nav
 ***************************************/
-.ua-device-mobile .hide-on-mobile{
-    display:none;
-}
-.ua-device-desktop .hide-on-desktop{
-    display:none;
-}
 .primary-nav{
     position: relative;
 }
@@ -280,6 +279,7 @@ Mobile Nav
     }
     .primary-nav .aione-nav{
         display:none;
+	    z-index: 9997;
     }
     .aione-nav.horizontal>ul>li{
         float:none;
