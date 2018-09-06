@@ -175,6 +175,8 @@ Aione Header
 .aione-header-logo{
 	width: auto;
     float: left;
+    position: relative;
+    z-index: 9998;
 }
 .aione-header-logo img{
 	width: auto;
@@ -210,9 +212,6 @@ Aione Nav
 .aione-header-menu{
   padding: 0;
 }
-.primary-nav{
-	display: inline-block;
-}
 .primary-nav.align-left .aione-nav{
   text-align: left;
 }
@@ -224,9 +223,11 @@ Aione Nav
 }
 .primary-nav.align-right.position-inside{
 	float:right;
+	display: inline-block;
 } 
 .primary-nav.align-left.position-inside{
 	float:left;
+	display: inline-block;
 }
 .primary-nav .aione-nav{
 	background-color: transparent;
