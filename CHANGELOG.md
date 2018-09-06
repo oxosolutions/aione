@@ -7,3 +7,6 @@ FIXED: Blog Pagination Design
 
 ## 7.0.1.7 06-09-2018
 UPDATED: Mobile Nav Design
+
+## 7.0.1.8 06-09-2018
+ADDED: Functionality Aione Data Table
