@@ -62,6 +62,22 @@ Aione Layout
 	display: table;
 	clear: both;
 }
+
+@media only screen and (max-width: 993px){
+	.aione-sidebar-left {
+	    width: 100%;
+	    float:none;
+	}
+	.aione-page-content {
+	    width: 100%;
+	    float:none;
+	}
+	.aione-sidebar-left {
+	    width: 100%;
+	    float:none;
+	}
+} 
+
 /***************************************
 Aione Topbar
 ***************************************/
@@ -194,6 +210,9 @@ Aione Nav
 .aione-header-menu{
   padding: 0;
 }
+.primary-nav{
+	display: inline-block;
+}
 .primary-nav.align-left .aione-nav{
   text-align: left;
 }
@@ -202,6 +221,12 @@ Aione Nav
 }
 .primary-nav.align-center .aione-nav{
   text-align: center;
+}
+.primary-nav.align-right.position-inside{
+	float:right;
+} 
+.primary-nav.align-left.position-inside{
+	float:left;
 }
 .primary-nav .aione-nav{
 	background-color: transparent;

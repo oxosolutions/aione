@@ -13,3 +13,6 @@ ADDED: Functionality Aione Data Table
 
 ## 7.0.1.9 06-09-2018
 FIXED: Mobile nav z index was conflicting with slider
+
+## 7.0.1.10 06-09-2018
+FIXED: Menu alignment when menu is indide header
