@@ -112,10 +112,12 @@
 	.aione-layout-boxed > .wrapper{
 		max-width: '.$theme_options['site_width'].';
 	}
-// 	.aione-header.fixed,
-// 	.aione-footer.fixed{
-// 		width: '.$theme_options['site_width'].';
-// 	}
+	/*
+ 	.aione-header.fixed,
+ 	.aione-footer.fixed{
+ 		width: '.$theme_options['site_width'].';
+ 	}
+	*/
 	';
  
 	/****** Top Bar *****/
@@ -349,10 +351,10 @@
 	<!-- CUSTOM CSS START -->
 	<?php
 	if($theme_options['custom_css'] != ""){
-		echo "<style type='text/css'>".$theme_options['custom_css']."</style>";
+		echo "<style>".$theme_options['custom_css']."</style>";
 	}
 	if($pyre_custom_css != "") :
-		echo "<style type='text/css'>".$pyre_custom_css."</style>";
+		echo "<style>".$pyre_custom_css."</style>";
 	endif;
 	?>
 	<!-- CUSTOM CSS END -->
@@ -410,6 +412,8 @@
 	if( is_enabled( $post->ID, 'sidebar_right_enable') ){ $wrapper_classes[] = 'sidebar-right'; }
 	$wrapper_classes[] = 'color-scheme-'.$theme_options['color_scheme'];
 	$wrapper_classes = implode(" ",$wrapper_classes);
+
+
 	?>
 </head>
 <body <?php body_class(); ?> > 

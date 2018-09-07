@@ -184,8 +184,8 @@ function aionetheme_fonts_url() {
 }
 
 /* Remove type='text/javascript' and type='text/css' for accesiblity */
-//add_filter( 'style_loader_tag',  'clean_style_tag'  );
-//add_filter( 'script_loader_tag', 'clean_script_tag'  );
+//add_filter( 'style_loader_tag',  'clean_style_tag', 10, 2 );
+add_filter( 'script_loader_tag', 'clean_script_tag', 10, 2 );
 
 
 /**
