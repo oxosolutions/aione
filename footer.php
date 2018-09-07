@@ -4,12 +4,32 @@
 		<?php if(@$theme_options['header_position'] != 'top'){ 
 			echo '</div>';
 		} ?>
+
+		<?php 
+
+		if (class_exists('ProSites')) {
+		    $pro_sites_object = new ProSites();
+			$pro_sites_level = $pro_sites_object->get_level();
+			if(1){
+				?>
+				<div class="aione-powered-by">
+					<div class="wrapper">
+						Powered by <a class="aione-tooltip" title=" Darlic® is registered trademark of OXO IT SOLUTIONS PRIVATE LIMITED" href="https://darlic.com">Darlic®</a>. <a class="aione-tooltip" title="Create Free Website with Darlic® " href="https://darlic.com/create">Create Free Website</a>
+					</div><!-- .wrapper -->
+				</div><!-- .aione-powered-by -->
+
+				<?php
+			}
+		}
+		?>
 		<a href="#aione_wrapper" class="scrolltop" title="Scroll to top of the page"></a>
 		
 		</div><!-- .wrapper -->
 	</div><!-- .aione-wrapper -->
 
 	<?php wp_footer(); ?>
+
+
 	<?php
 	global $post;
 	global $theme_options;

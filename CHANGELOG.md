@@ -29,3 +29,6 @@ UPDATED: Gravity Form CSS
 ## 7.1.0.2 07-09-2018
 ADDED: Shortcode date
 ADDED: Shortcode info
+
+## 7.1.0.3 07-09-2018
+ADDED: Powered by

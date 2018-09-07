@@ -109,6 +109,7 @@
 	.aione-layout-wide .aione-main > .wrapper, 
 	.aione-layout-wide .aione-footer > .wrapper, 
 	.aione-layout-wide .aione-copyright > .wrapper,
+	.aione-layout-wide .aione-powered-by > .wrapper,
 	.aione-layout-boxed > .wrapper{
 		max-width: '.$theme_options['site_width'].';
 	}
