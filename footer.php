@@ -10,7 +10,7 @@
 		if (class_exists('ProSites')) {
 		    $pro_sites_object = new ProSites();
 			$pro_sites_level = $pro_sites_object->get_level();
-			if(1){
+			if($pro_sites_level < 3){
 				?>
 				<div class="aione-powered-by">
 					<div class="wrapper">
