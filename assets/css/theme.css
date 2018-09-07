@@ -1264,3 +1264,39 @@ PAGINATION
     height: 12px;
     margin: -6px 0 0 0;
 }
+
+
+/***********************************
+Gravityform
+***********************************/
+.gfield{
+    display:block;
+}
+
+.gfield .gfield_label{
+    color: #747474;
+    text-align: left;.
+    display: block;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0 0 5px 0;
+    word-wrap: break-word;
+    font-family: "Open Sans",Arial,Helvetica,sans-serif;
+}
+.gform_wrapper:after{
+    content:"";
+    display:table;
+    clear:both;
+}
+.gform_wrapper .validation_error,
+.gform_wrapper .validation_message{
+    color:#f44336;
+}
+.gform_wrapper .validation_error{
+    margin-bottom: 20px;
+}
+.gform_wrapper .validation_message{
+    padding-top: 10px; 
+} 

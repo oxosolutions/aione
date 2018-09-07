@@ -20,5 +20,8 @@ FIXED: Menu alignment when menu is indide header
 ## 7.0.1.11 06-09-2018
 FIXED: Mobile first sidebar layout
 
-## 7.1.0.0 06-09-2018
+## 7.1.0.0 07-09-2018
 RELEASE: 7.1.0.0 Stable Release
+
+## 7.1.0.1 07-09-2018
+UPDATED: Gravity Form CSS
