@@ -25,3 +25,7 @@ RELEASE: 7.1.0.0 Stable Release
 
 ## 7.1.0.1 07-09-2018
 UPDATED: Gravity Form CSS
+
+## 7.1.0.2 07-09-2018
+ADDED: Shortcode date
+ADDED: Shortcode info

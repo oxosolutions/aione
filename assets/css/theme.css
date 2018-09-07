@@ -169,6 +169,7 @@ Aione Header
 .aione-header .aione-header-title{
 	padding-top:20px;
 	text-align: left;
+	display:inline-block;
 }
 .aione-header-title .site-title{
 	color: #333;

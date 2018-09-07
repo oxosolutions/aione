@@ -1453,6 +1453,29 @@ function aione_icon_shortcode( $atts ) {
 	return $output;
 }
 
+add_shortcode( 'date', 'aione_date_shortcode' );
+function aione_date_shortcode( $atts ) {
+	$atts = shortcode_atts( array(
+		'format' => 'jS F Y',
+	), $atts, 'aione-date' );
+
+	$output = '';
+	$output = date($atts['format']);
+	return $output;
+}
+
+//https://developer.wordpress.org/reference/functions/get_bloginfo/
+add_shortcode( 'info', 'aione_info_shortcode' );
+function aione_info_shortcode( $atts ) {
+	$atts = shortcode_atts( array(
+		'show' => 'name',
+	), $atts, 'aione-date' );
+
+	$output = '';
+	$output = get_bloginfo( $atts['show'], $filter );
+	return $output;
+}
+
 /*
 *
 *
