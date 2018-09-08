@@ -170,6 +170,9 @@ Aione Header
     position: relative;
     z-index: 9998;
 }
+.aione-header-logo a{
+	display:inline-block;
+}
 .aione-header-logo img{
 	width: auto;
 }
@@ -195,6 +198,20 @@ Aione Header
     line-height: 20px;
     margin: 0;
     display: block;
+}
+
+.aione-wrapper.layout-header-left .aione-header-logo,
+.aione-wrapper.layout-header-right .aione-header-logo{
+    float: none;
+    text-align:center;
+    display:block;
+}
+
+.aione-wrapper.layout-header-left .aione-header-title,
+.aione-wrapper.layout-header-right .aione-header-title{
+    float: none;
+    text-align:center;
+    display:block;
 }
 /***************************************
 Aione Header Bannner
@@ -246,6 +263,11 @@ Aione Nav
 }
 .primary-nav .aione-nav.horizontal>ul>li>ul {
     overflow: hidden;
+}
+
+.aione-wrapper.layout-header-left .primary-nav.vertical .aione-nav > ul ,
+.aione-wrapper.layout-header-right .primary-nav.vertical .aione-nav > ul {
+    display: block;
 }
 
 
@@ -1239,9 +1261,10 @@ Common Comment Style
 	width: calc( 100% - 251px );
 	float: left;
 }
-.layout-header-left .header-wrapper:before{
-	content: '';
-	
+.layout-header-left .header-wrapper:sfter{
+	content: "";
+    clear: both;
+    display: table;
 }
 
 /*********************************************
