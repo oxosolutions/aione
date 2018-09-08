@@ -32,3 +32,6 @@ ADDED: Shortcode info
 
 ## 7.1.0.3 07-09-2018
 ADDED: Powered by
+
+## 7.1.0.4 08-09-2018
+FIXED: Site title and tagline markups and css

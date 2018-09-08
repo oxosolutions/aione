@@ -108,6 +108,12 @@ Aione Topbar
 	text-align: center;	
 }
 
+.aione-topbar .aione-topbar-left .widget{
+	margin-right: 8px;
+}
+.aione-topbar .aione-topbar-right .widget{
+	margin-left: 8px;
+}
 .aione-topbar .widget .widgettitle{
 	display: none;
 }
@@ -168,16 +174,27 @@ Aione Header
 	width: auto;
 }
 .aione-header .aione-header-title{
-	padding-top:20px;
 	text-align: left;
 	display:inline-block;
 }
 .aione-header-title .site-title{
-	color: #333;
-    font-weight: 700;
+    margin: 0;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #484c55;
+    display: block;
+}
+.aione-header-title.no-tagline .site-title{
+	font-size: 36px;
+    line-height: 50px;
 }
 .site-description{
-	color: #2695c9;
+	color: #595959;
+    font-size: 16px;
+    line-height: 20px;
+    margin: 0;
+    display: block;
 }
 /***************************************
 Aione Header Bannner
