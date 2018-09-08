@@ -403,6 +403,14 @@ if ( ! function_exists( 'register_aione_slider' ) ){
 */
 function aione_slider_metaboxes() {
 	add_meta_box(
+		'aione_slider_type',
+		'Slider Type',
+		'aione_slider_type_callback',
+		'aione-slider',
+		'advanced',
+		'high'
+	);
+	add_meta_box(
 		'aione_slider_settings',
 		'Settings',
 		'aione_slider_settings_callback',
@@ -419,7 +427,33 @@ function aione_slider_metaboxes() {
 		'default'
 	);
 }
+function aione_slider_type_callback($post){
+	wp_nonce_field( 'aione_slider_type_form_metabox_nonce', 'aione_slider_type_form_nonce' );
+	echo aione_slider_type_form($post);
 
+}
+function aione_slider_type_form($post){
+	$slider_type_meta   = get_post_meta( $post->ID, 'aione-slider-type', true );
+	$aione_slider_type = array();
+	?>	
+	<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
+		<table class="form-table">
+			<tbody>
+				<tr>
+					<th scope="row"><label for="aione_slider_type">Slider Type</label></th>
+					<td><select name="aione_slider_type[type]" id="aione_slider_type">
+						<option value="image" <?php if(@$slider_type_meta['type'] == 'image') {echo "selected = selected";} ?>>Image Slider</option>
+						<option value="post" <?php if(@$slider_type_meta['type'] == 'post') {echo "selected = selected";} ?>>Post Type</option>
+						<option value="testimonial" <?php if(@$slider_type_meta['type'] == 'testimonial') {echo "selected = selected";} ?>>Testimonial</option>
+						<option value="text" <?php if(@$slider_type_meta['type'] == 'text') {echo "selected = selected";} ?>>Text Slider</option>
+					</select></td>
+				</tr>
+
+			</tbody>
+		</table>
+	</form>
+	<?php
+}
 function aione_slider_settings_callback($post){
 	wp_nonce_field( 'aione_slider_settings_form_metabox_nonce', 'aione_slider_settings_form_nonce' ); 
 	echo aione_slider_settings_form($post);
@@ -1438,7 +1472,7 @@ function empty_sidebar_message(){
 * Shortcode [icon]
 * 
 */
-add_shortcode( 'aione-icon', 'aione_icon_shortcode' );
+/*add_shortcode( 'aione-icon', 'aione_icon_shortcode' );
 function aione_icon_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
 		'class' => '',
@@ -1451,9 +1485,9 @@ function aione_icon_shortcode( $atts ) {
 		$output = '<i class="'.$aione_icon.'"></i>';
 	}
 	return $output;
-}
+}*/
 
-add_shortcode( 'date', 'aione_date_shortcode' );
+/*add_shortcode( 'date', 'aione_date_shortcode' );
 function aione_date_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
 		'format' => 'jS F Y',
@@ -1462,10 +1496,10 @@ function aione_date_shortcode( $atts ) {
 	$output = '';
 	$output = date($atts['format']);
 	return $output;
-}
+}*/
 
 //https://developer.wordpress.org/reference/functions/get_bloginfo/
-add_shortcode( 'info', 'aione_info_shortcode' );
+/*add_shortcode( 'info', 'aione_info_shortcode' );
 function aione_info_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
 		'show' => 'name',
@@ -1474,7 +1508,7 @@ function aione_info_shortcode( $atts ) {
 	$output = '';
 	$output = get_bloginfo( $atts['show'], $filter );
 	return $output;
-}
+}*/
 
 /*
 *

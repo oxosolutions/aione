@@ -253,4 +253,4 @@ require get_template_directory() . '/includes/customize-menu.php';
 *
 */
 require 'custom-functions.php';
-
+require get_template_directory() . '/blocks/main.php';
