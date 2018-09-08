@@ -256,6 +256,9 @@ Aione Nav
 .primary-nav .aione-nav > ul{
 	display: inline-block;
 }
+.primary-nav .aione-nav.vertical > ul{
+	display: block;
+}
 .primary-nav .aione-nav > ul > li > a {
 	padding: 0 12px;
 	font-size: 16px;
@@ -265,14 +268,11 @@ Aione Nav
     overflow: hidden;
 }
 
-.aione-wrapper.layout-header-left .primary-nav.vertical .aione-nav > ul ,
-.aione-wrapper.layout-header-right .primary-nav.vertical .aione-nav > ul {
-    display: block;
+
+.aione-wrapper.layout-header-left .primary-nav ,
+.aione-wrapper.layout-header-right .primary-nav{
+    height: auto !important;
 }
-
-
-
-
 
 /***************************************
 Mobile Nav
@@ -292,6 +292,15 @@ Mobile Nav
     cursor: pointer;
     z-index: 9999;
 }
+.header-wrapper .primary-nav {
+	min-height: 40px;
+}
+
+.header-wrapper .primary-nav .aione-nav-background {
+	top: 20px;
+    right: 20px;
+}
+
 .primary-nav .aione-nav-background:before {
     content: "";
     position: absolute;
@@ -336,8 +345,10 @@ Mobile Nav
     .aione-nav.horizontal>ul>li{
         float:none;
     }
+    .primary-nav .aione-nav{
+        padding-top: 50px;
+    }
     .primary-nav .aione-nav > ul{
-        margin-top: 50px;
         width: 100%;
         background: #333333;
         text-align: center;
@@ -1184,16 +1195,28 @@ Common Comment Style
 /*********************************************
    HEADER LEFT, HEADER RIGHT and HEADER TOP
 *********************************************/
-.layout-header-left .header-wrapper{
-	width: 250px;
-	float: left;
-	border-right: 1px solid #e8e8e8;
-}
+.layout-header-left .header-wrapper,
 .layout-header-right .header-wrapper{
-	width: 250px;
-	float: right;
-	border-left: 1px solid #e8e8e8;
+	width: 100%;
+	float: none;
+	border-left: none;
+	border-right: none;
 }
+
+@media only screen and (min-width: 901px){
+	.layout-header-left .header-wrapper{
+		width: 250px;
+		float: left;
+		border-right: 1px solid #e8e8e8;
+	}
+	.layout-header-right .header-wrapper{
+		width: 250px;
+		float: right;
+		border-left: 1px solid #e8e8e8;
+	}
+
+}
+
 .layout-header-left .aione-header,
 .layout-header-right .aione-header{
 	float: none;
@@ -1258,10 +1281,19 @@ Common Comment Style
 }
 .layout-header-left .content-wrapper,
 .layout-header-right .content-wrapper{
-	width: calc( 100% - 251px );
-	float: left;
+	width: 100%;
+	float: none;
 }
-.layout-header-left .header-wrapper:sfter{
+
+@media only screen and (min-width: 901px){
+	.layout-header-left .content-wrapper,
+	.layout-header-right .content-wrapper{
+		width: calc( 100% - 251px );
+		float: left;
+	}
+}
+.layout-header-left .header-wrapper:after,
+.layout-header-right .header-wrapper:after{
 	content: "";
     clear: both;
     display: table;

@@ -155,7 +155,7 @@
 	/****** Header END*****/
 	/****** Menu *****/ 
 	echo '
-		.primary-nav{
+		.aione-wrapper.layout-header-top .primary-nav{
 			height: '.$theme_options['main_nav_height'].'px;
 		}
 		.primary-nav .aione-nav > ul > li > a {
