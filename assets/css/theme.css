@@ -1421,19 +1421,20 @@ Login Form
 /***********************************
 User Links
 ***********************************/
-.user-links a{
+.user-links{
+    display:inline-block;
+}
+
+.aione-topbar .user-links a{
     color: #368dc4;
     background-color: #ffffff;
     border-radius: 100px;
     padding: 4px 20px;
 }
-.user-links{
-    display:inline-block;
-}
-.user-welcome{ 
+
+.aione-topbar  .user-welcome{ 
     margin-right: 10px;
-    color: #fff;
-    
+    color: #fff; 
 }
 
 
