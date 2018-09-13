@@ -40,3 +40,6 @@ FIXED: Site title and tagline markups and css
 ADDED: Aione list
 ADDED: CSS Styles
 FIXED: Position Powered by
+
+## 7.1.0.6 13-09-2018
+UPDATED: Powered by link
