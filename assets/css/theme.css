@@ -1608,3 +1608,11 @@ label:blank,
 label:empty {
   padding: 0
 }
+
+
+.wp-caption-text {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 6px 0;
+}
