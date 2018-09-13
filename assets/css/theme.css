@@ -53,10 +53,42 @@ Aione Layout
 .aione-layout-wide .aione-main.fullwidth > .wrapper,
 .aione-layout-wide .aione-footer.fullwidth > .wrapper,
 .aione-layout-wide .aione-copyright.fullwidth > .wrapper,
+.aione-layout-wide .aione-powered-by.fullwidth > .wrapper,
 .aione-layout-wide .aione-section.fullwidth > .wrapper{
   max-width: 100%;
 }
 
+.aione-layout-boxed .aione-topbar > .wrapper,
+.aione-layout-boxed .aione-header > .wrapper,
+.aione-layout-boxed .primary-nav > .wrapper,
+.aione-layout-boxed .aione-slider > .wrapper,
+.aione-layout-boxed .aione-pagetitle > .wrapper,
+.aione-layout-boxed .aione-pagetop > .wrapper,
+.aione-layout-boxed .aione-pagebottom > .wrapper,
+.aione-layout-boxed .aione-main > .wrapper,
+.aione-layout-boxed .aione-footer > .wrapper,
+.aione-layout-boxed .aione-copyright > .wrapper,
+.aione-layout-boxed .aione-powered-by > .wrapper,
+.aione-layout-boxed .aione-section > .wrapper{
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.aione-layout-boxed .aione-topbar.fullwidth > .wrapper,
+.aione-layout-boxed .aione-header.fullwidth > .wrapper,
+.aione-layout-boxed .primary-nav.fullwidth > .wrapper,
+.aione-layout-boxed .aione-slider.fullwidth > .wrapper,
+.aione-layout-boxed .aione-pagetitle.fullwidth > .wrapper,
+.aione-layout-boxed .aione-pagetop.fullwidth > .wrapper,
+.aione-layout-boxed .aione-pagebottom.fullwidth > .wrapper,
+.aione-layout-boxed .aione-main.fullwidth > .wrapper,
+.aione-layout-boxed .aione-footer.fullwidth > .wrapper,
+.aione-layout-boxed .aione-copyright.fullwidth > .wrapper,
+.aione-layout-boxed .aione-powered-by.fullwidth > .wrapper,
+.aione-layout-boxed .aione-section.fullwidth > .wrapper{
+	padding-left: 0px;
+	padding-right: 0px;
+}
 .aione-main > .wrapper{
 	padding-top: 30px;
 }
@@ -516,8 +548,8 @@ Aione Copyright
 	content:"";
 	padding:0;
 }
-.aione-copyright .aione-copyright-left .textwidget p, .aione-copyright .aione-copyright-right .textwidget p{
-	color: #ffffff;
+.aione-copyright .aione-copyright-left .textwidget p, 
+.aione-copyright .aione-copyright-right .textwidget p{
 }
 .aione-copyright .aione-social-icons-widget > ul{
 	margin-bottom: 0;
