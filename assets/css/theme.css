@@ -998,15 +998,15 @@ Common Widget Style in footer
 	border-bottom: 2px solid #b2b2b2;
 	padding-bottom: 15px;
 }
-.aione-footer .widget ul li{
+.aione-footer .widget_nav_menu ul li{
 	line-height: 40px;
 	border-bottom: 1px solid #353535;
 	text-align: left;
 }
-.aione-footer .widget ul li a{
-	color: #fff;
+.aione-footer .widget_nav_menu ul li a{
+	color: #ffffff;
 	display: block;
-	font-size: 18px;
+	font-size: 16px;
     
 }
 /*********[   Categories Widget   ]***************/
@@ -1053,7 +1053,7 @@ Common Widget Style in footer
 	
 }
 .aione-footer .widget.aione-social-icons-widget ul li a{
-	
+	text-align: center;
 }
 
 
@@ -1615,4 +1615,65 @@ label:empty {
     font-weight: 400;
     line-height: 1.5;
     padding: 6px 0;
+}
+
+
+
+/***********************************
+Aione List
+***********************************/
+
+.aione-list{
+    margin-bottom: 20px;
+    font-size: 17.6px;
+    line-height: 30px;
+}
+.aione-list > li{
+}
+.aione-list > li a{
+
+}
+.aione-list > li .aione-icon{
+    margin-right:10px;
+    font-size:24px;
+    line-height:24px;
+    margin-top:4px;
+    display:inline-block;
+}
+.aione-list.small{
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 22px;
+}
+.aione-list.small > li .aione-icon{
+    margin-right:6px;
+    font-size:18px;
+    line-height:20px;
+    margin-top:0px;
+}
+.aione-list.medium{
+    margin-bottom: 20px;
+    font-size: 20px;
+    line-height: 30px;
+}
+.aione-list.medium > li .aione-icon{
+    margin-right:6px;
+    font-size:24px;
+    line-height:30px;
+}
+.aione-list.large{
+    margin-bottom: 20px;
+    font-size: 30px;
+    line-height: 40px;
+}
+.aione-list.large > li .aione-icon{
+    margin-right:15px;
+    font-size:30px;
+    line-height:30px;
+}
+.aione-list.theme-solid > li{
+    border-bottom:1px solid #e8e8e8;
+}
+.aione-list.theme-dotted > li{
+    border-bottom:1px dotted #e8e8e8;
 }

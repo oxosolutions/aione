@@ -35,3 +35,8 @@ ADDED: Powered by
 
 ## 7.1.0.4 08-09-2018
 FIXED: Site title and tagline markups and css
+
+## 7.1.0.5 13-09-2018
+ADDED: Aione list
+ADDED: CSS Styles
+FIXED: Position Powered by
