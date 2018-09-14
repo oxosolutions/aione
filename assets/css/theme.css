@@ -1709,3 +1709,30 @@ Aione List
 .aione-list.theme-dotted > li{
     border-bottom:1px dotted #e8e8e8;
 }
+
+
+/***********************************
+Aione App Builder View Profile
+***********************************/
+.account-content-title-heading-center{
+	text-align:center;
+	border-bottom: 1px solid #e8e8e8;
+	padding:15px;
+	}
+.user-detail-label{
+	float: left;
+	width:50%;
+	box-sizing: border-box;
+	display:block;
+	font-weight:600;
+	color:#233638;
+}
+.user-detail-value{
+	float: left;
+	width:50%;
+	box-sizing: border-box;
+	display:block;
+}
+.aione-list.theme-solid > li{
+	padding:15px;
+}
