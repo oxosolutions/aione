@@ -51,6 +51,16 @@ $this->select(
 	__( '100% Page bottom Area width', 'gutenbergtheme' )
 );
 $this->select(
+	'page_padding_enable',
+	__( 'Enable Page Padding', 'gutenbergtheme' ),
+	array(
+		'default' => __( 'Default', 'gutenbergtheme' ),
+		'yes' => __( 'Yes', 'gutenbergtheme' ),
+		'no'  => __( 'No', 'gutenbergtheme' )
+	),
+	__( 'Enable Page Padding', 'gutenbergtheme' )
+);
+$this->select(
 	'sidebar_left_enable',
 	__( 'Enable Left Sidebar', 'gutenbergtheme' ),
 	array(

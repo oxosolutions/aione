@@ -43,3 +43,6 @@ FIXED: Position Powered by
 
 ## 7.1.0.6 13-09-2018
 UPDATED: Powered by link
+
+## 7.1.0.7 19-09-2018
+ADDED: Page padding option and css in global and per page options

@@ -108,6 +108,9 @@ Aione Layout
 	padding-right: 0px;
 }
 .aione-main > .wrapper{
+	padding-top: 0px;
+}
+.aione-main.page-padding > .wrapper{
 	padding-top: 30px;
 }
 .aione-main > .wrapper::after{
