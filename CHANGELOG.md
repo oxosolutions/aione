@@ -46,3 +46,6 @@ UPDATED: Powered by link
 
 ## 7.1.0.7 19-09-2018
 ADDED: Page padding option and css in global and per page options
+
+## 7.1.0.8 22-09-2018
+ADDED: Page content padding option and css in global and per page options

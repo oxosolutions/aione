@@ -100,6 +100,15 @@ $this->select(
 	),
 	__( 'Enable Content Bottom Area', 'gutenbergtheme' )
 ); 
-
+$this->select(
+	'page_content_padding_enable',
+	__( 'Enable Page Content Padding', 'gutenbergtheme' ),
+	array(
+		'default' => __( 'Default', 'gutenbergtheme' ),
+		'yes' => __( 'Yes', 'gutenbergtheme' ),
+		'no'  => __( 'No', 'gutenbergtheme' )
+	),
+	__( 'Enable Page Content Padding', 'gutenbergtheme' )
+);
 
 // Omit closing PHP tag to avoid "Headers already sent" issues.
