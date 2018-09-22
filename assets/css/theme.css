@@ -113,6 +113,12 @@ Aione Layout
 .aione-main.page-padding > .wrapper{
 	padding-top: 30px;
 }
+.aione-page-content > .wrapper{
+	padding-top: 0px;
+}
+.aione-main.page-content-padding .aione-page-content > .wrapper{
+	padding-top: 30px;
+}
 .aione-main > .wrapper::after{
 	content: '';
 	display: table;

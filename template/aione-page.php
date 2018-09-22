@@ -12,6 +12,10 @@ if ( is_enabled( $post->ID, 'page_padding_enable' ) ){
 	$main_classes[] = 'page-padding';
 }
 
+if ( is_enabled( $post->ID, 'page_content_padding_enable' ) ){ 
+	$main_classes[] = 'page-content-padding';
+}
+
 $main_classes[] = is_fullwidth( $post->ID, 'page' );
 
 $main_classes = implode(" ", $main_classes);
