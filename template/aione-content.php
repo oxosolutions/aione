@@ -1,6 +1,8 @@
 <?php
 global $theme_options;
 global $post;
+
+echo "<br>ID = ".$post->ID;
 /*$posts_page_id = get_option( 'page_for_posts' );
 echo "*****************".$posts_page_id;*/
 $post_type = @get_post_type($post->ID);
