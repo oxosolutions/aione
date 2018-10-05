@@ -49,3 +49,6 @@ ADDED: Page padding option and css in global and per page options
 
 ## 7.1.0.8 22-09-2018
 ADDED: Page content padding option and css in global and per page options
+
+## 7.1.0.9 05-10-2018
+FIXED: HTML Filters

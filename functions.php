@@ -254,3 +254,12 @@ require get_template_directory() . '/includes/customize-menu.php';
 */
 require 'custom-functions.php';
 require get_template_directory() . '/blocks/main.php';
+
+add_action( 'init', 'kses_unfiltered_html' );
+function kses_unfiltered_html() {
+    //$user = wp_get_current_user();
+
+    if ( current_user_can('edit_pages') || current_user_can('edit_posts')){
+        kses_remove_filters();
+    }
+}
