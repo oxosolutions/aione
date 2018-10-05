@@ -75,12 +75,12 @@ if ( ! function_exists( 'aionetheme_setup' ) ) :
 		 *
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
-		add_theme_support( 'custom-logo', array(
+		/*add_theme_support( 'custom-logo', array(
 			'height'      => 250,
 			'width'       => 250,
 			'flex-width'  => true,
 			'flex-height' => true,
-		) );
+		) );*/
 
 		// Add support for full and wide align images.
 		add_theme_support( 'align-wide' );
