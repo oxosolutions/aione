@@ -1,5 +1,5 @@
 <?php
-// Template Name: Empty
+// Template Name: API
 
 header('Access-Control-Allow-Origin: *');  
 header('Content-Type: application/json');
