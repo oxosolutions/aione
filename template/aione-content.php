@@ -59,8 +59,8 @@ if ( have_posts() ) :
 
 		if( is_single() ){
 			the_post_navigation( array(
-				'prev_text' => '<i class="ion-ios-arrow-back"></i> %title',
-				'next_text' => '%title <i class="ion-ios-arrow-forward"></i>',
+				'prev_text' => '<i class="ion-ios-arrow-back"></i> Previous',
+				'next_text' => 'Next <i class="ion-ios-arrow-forward"></i>',
 			) );
 		}
 
