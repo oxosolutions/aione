@@ -55,3 +55,6 @@ FIXED: HTML Filters
 
 ## 7.1.0.10 05-10-2018
 ADDED: Template Clean
+
+## 7.1.0.11 22-10-2018
+FIXED: Link on logo
