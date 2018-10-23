@@ -58,3 +58,6 @@ ADDED: Template Clean
 
 ## 7.1.0.11 22-10-2018
 FIXED: Link on logo
+
+## 7.1.0.12 23-10-2018
+ADDED: Darlic theme styles for slider

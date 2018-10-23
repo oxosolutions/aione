@@ -15,7 +15,99 @@ aione-bg-test{
     background-image:url("https://www.toptal.com/designers/subtlepatterns/patterns/grid_noise.png"); 
     background-image:url("https://www.toptal.com/designers/subtlepatterns/patterns/double_lined.png"); 
 }
+/***************************************
+Slider Theme Darlic
+***************************************/
+.slider.darlic .owl-dots {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+}
+.slider.darlic .owl-dots .owl-dot {
+  display: inline-block;
+  zoom: 1
+}
+.slider.darlic .owl-dots .owl-dot span {
+  width: 15px;
+  height: 15px;
+  margin: 0 4px;
+  background: rgba(255,255,255,.3);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 1px solid #666;
+  opacity: 1;
+  display: block;
+  -moz-transition: all .1s ease-in-out;
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out
+}
+.slider.darlic .owl-dots .owl-dot:hover span {
+  background-color: #666
+}
+.slider.darlic .owl-dots .owl-dot.active span {
+  background: #168dc5;
+  border-color: #168dc5
+}
+.slider.darlic .owl-nav .owl-next,
+.slider.darlic .owl-nav .owl-prev {
+  position: absolute;
+  top: 50%;
+  margin: -30px 0 0 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  text-transform: uppercase;
+  height: 60px;
+  font-size: 40px;
+  font-weight: 100;
+  line-height: 60px;
+  padding: 0;
+  color: rgba(255,255,255,.5);
+  background: rgba(0,0,0,.3);
+  -moz-transition: all .1s ease-in-out;
+  -webkit-transition: all .1s ease-in-out;
+  transition: all .1s ease-in-out
+}
+.slider.darlic .owl-nav .owl-next:hover,
+.slider.darlic .owl-nav .owl-prev:hover,
+.slider.darlic:hover .owl-nav .owl-next,
+.slider.darlic:hover .owl-nav .owl-prev {
+  color: #fff;
+  background: rgba(0,0,0,.6)
+}
+.slider.darlic .owl-nav .owl-prev {
+  left: 0
+}
+.slider.darlic .owl-nav .owl-next {
+  right: 0
+}
 
+.slider.darlic .slider-caption{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px 20px 30px 20px;
+    background-color: rgba(0,0,0,0.6);
+}
+.slider.darlic .slider-caption .caption-title,
+.slider.darlic .slider-caption .caption-description{
+  text-align: center;
+} 
+.slider.darlic .slider-caption .caption-title{
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+}
+.slider.darlic .slider-caption .caption-description{
+    font-size: 18px;
+    font-weight: 400;
+    color: #d6d6d6;
+}
 /***************************************
 Aione Commmon
 ***************************************/
