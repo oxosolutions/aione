@@ -185,12 +185,13 @@ function aionetheme_fonts_url() {
 
 /* Remove type='text/javascript' and type='text/css' for accesiblity */
 //add_filter( 'style_loader_tag',  'clean_style_tag', 10, 2 );
-add_filter( 'script_loader_tag', 'clean_script_tag', 10, 2 );
+//add_filter( 'script_loader_tag', 'clean_script_tag', 10, 2 );
 
 
 /**
  * Clean up output of stylesheet <link> tags
  */
+
 function clean_style_tag( $input ) {
     preg_match_all( "!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches );
     if ( empty( $matches[2] ) ) {
@@ -205,6 +206,7 @@ function clean_style_tag( $input ) {
 /**
  * Clean up output of <script> tags
  */
+
 function clean_script_tag( $input ) {
     $input = str_replace( "type='text/javascript' ", '', $input );
 
@@ -239,6 +241,7 @@ require get_template_directory() . '/includes/register-sidebars.php';
 /**
  * Load Jetpack compatibility file.
  */
+
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/includes/jetpack.php';
 }
@@ -253,7 +256,8 @@ require get_template_directory() . '/includes/customize-menu.php';
 *
 */
 require 'custom-functions.php';
-require get_template_directory() . '/blocks/main.php';
+// require get_template_directory() . '/blocks/main.php';
+
 
 add_action( 'init', 'kses_unfiltered_html' );
 function kses_unfiltered_html() {
