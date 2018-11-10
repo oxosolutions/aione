@@ -407,7 +407,7 @@
 		echo "</script>";
 	} 
 
-	$wrapper_classes = ['aione-wrapper'];
+	$wrapper_classes = array('aione-wrapper');
 	$wrapper_classes[] = 'layout-header-'.$theme_options['header_position'];
 	$wrapper_classes[] = 'aione-layout-'.$theme_options['site_layout'];
 	if( is_enabled( $post->ID, 'sidebar_left_enable') ){ $wrapper_classes[] = 'sidebar-left'; }
@@ -415,10 +415,21 @@
 	$wrapper_classes[] = 'color-scheme-'.$theme_options['color_scheme'];
 	$wrapper_classes = implode(" ",$wrapper_classes);
 
-
+	$body_classes = array();
+	if( is_user_logged_in() ){
+		$user = wp_get_current_user();
+		$user_roles = $user->roles;
+		if( is_array( $user_roles ) ){
+			foreach ($user_roles as $key => $user_role) {
+				$body_classes[] = "user-role-".$user_role;
+			}
+		}
+	}
+	$body_classes = implode( " ", $body_classes );
+	
 	?>
 </head>
-<body <?php body_class(); ?> > 
+<body <?php body_class( $body_classes ); ?>> 
 <div id="aione_wrapper" class="<?php echo @$wrapper_classes; ?>">
 	<div class="wrapper">
 		<?php get_template_part('template/aione-header');  ?>

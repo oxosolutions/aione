@@ -61,3 +61,6 @@ FIXED: Link on logo
 
 ## 7.1.0.12 23-10-2018
 ADDED: Darlic theme styles for slider
+
+## 7.1.0.13 10-11-2018
+ADDED: User role(s) body classes
