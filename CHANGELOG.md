@@ -64,3 +64,6 @@ ADDED: Darlic theme styles for slider
 
 ## 7.1.0.13 10-11-2018
 ADDED: User role(s) body classes
+
+## 7.1.0.14 15-11-2018
+ADDED: Slider capabilities
