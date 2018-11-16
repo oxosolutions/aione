@@ -6,7 +6,21 @@ if( is_enabled( $post->ID, 'page_title_bar') ):
 	$page_description = get_aione_page_option($post->ID,'pyre_page_title_bar_description_text');
 
 	if( is_post_type_archive() || is_archive()){
-		$page_title = get_the_archive_title();
+
+		if ( is_category() ) {
+	        $page_title = single_cat_title( '', false );
+	    } elseif ( is_tag() ) {
+	        $page_title = single_tag_title( '', false );
+	    } elseif ( is_author() ) {
+	        $page_title = '<span class="vcard">' . get_the_author() . '</span>';
+	    } elseif ( is_post_type_archive() ) {
+	        $page_title = post_type_archive_title( '', false );
+	    } elseif ( is_tax() ) {
+	        $page_title = single_term_title( '', false );
+	    } else {
+			$page_title = get_the_archive_title();
+	    }
+
 		$page_description = get_the_archive_description();
 	}
 

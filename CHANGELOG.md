@@ -67,3 +67,6 @@ ADDED: User role(s) body classes
 
 ## 7.1.0.14 15-11-2018
 ADDED: Slider capabilities
+
+## 7.1.0.15 16-11-2018
+ADDED: Post Nevigation links

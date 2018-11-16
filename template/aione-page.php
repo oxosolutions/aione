@@ -32,6 +32,12 @@ $main_classes = implode(" ", $main_classes);
 				<?php get_template_part( 'template/aione-content'); ?>
 
 				<?php get_template_part( 'template/aione-content-bottom'); ?>
+
+				<?php 
+				if( is_post_type_archive() || is_archive()){
+					posts_nav_link();
+				}
+				?>
 			</div> <!-- .wrapper -->
 		</div> <!-- .aione-page-content -->
 		
