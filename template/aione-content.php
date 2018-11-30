@@ -17,6 +17,11 @@ $aione_template_archive = @$aione_templates[$archive_template_slug]['content'];
 
 /*
 echo "<pre>";
+print_r($aione_templates);
+echo "</pre>";
+*/
+/*
+echo "<pre>";
 echo "<br>posID ==".$post->ID;
 echo "<br>aione_components ==";
 print_r($aione_components);

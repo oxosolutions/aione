@@ -70,3 +70,6 @@ ADDED: Slider capabilities
 
 ## 7.1.0.15 16-11-2018
 ADDED: Post Nevigation links
+
+## 7.1.0.16 30-11-2018
+ADDED: Per page sidebar selection

@@ -70,6 +70,20 @@ $this->select(
 	),
 	__( 'Enable Left Sidebar', 'gutenbergtheme' )
 );
+
+$sidebars = array();
+$sidebars['default'] = __( 'Default', 'gutenbergtheme' );
+foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) {
+	$sidebar_id = $sidebar['id'];
+	$sidebars[$sidebar_id] = ucwords( $sidebar['name']);
+}
+
+$this->select(
+	'sidebar_left',
+	__( 'Select Left Sidebar', 'gutenbergtheme' ),
+	$sidebars,
+	__( 'Select Left Sidebar', 'gutenbergtheme' )
+);
 $this->select(
 	'sidebar_right_enable',
 	__( 'Enable Right Sidebar', 'gutenbergtheme' ),
@@ -79,6 +93,12 @@ $this->select(
 		'no'  => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Right Sidebar', 'gutenbergtheme' )
+);
+$this->select(
+	'sidebar_right',
+	__( 'Select Right Sidebar', 'gutenbergtheme' ),
+	$sidebars,
+	__( 'Select Right Sidebar', 'gutenbergtheme' )
 );
 $this->select(
 	'content_top_area_enable',
