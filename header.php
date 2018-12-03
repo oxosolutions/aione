@@ -410,8 +410,11 @@
 	$wrapper_classes = array('aione-wrapper');
 	$wrapper_classes[] = 'layout-header-'.$theme_options['header_position'];
 	$wrapper_classes[] = 'aione-layout-'.$theme_options['site_layout'];
-	if( is_enabled( $post->ID, 'sidebar_left_enable') ){ $wrapper_classes[] = 'sidebar-left'; }
-	if( is_enabled( $post->ID, 'sidebar_right_enable') ){ $wrapper_classes[] = 'sidebar-right'; }
+
+	if( is_enabled_sidebar( 'left' ) ){ $wrapper_classes[] = 'sidebar-left'; }
+	if( is_enabled_sidebar( 'right') ){ $wrapper_classes[] = 'sidebar-right'; }
+
+
 	$wrapper_classes[] = 'color-scheme-'.$theme_options['color_scheme'];
 	$wrapper_classes = implode(" ",$wrapper_classes);
 

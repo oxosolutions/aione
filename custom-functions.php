@@ -1607,4 +1607,151 @@ function g7g_modify_wp_block() {
 
 
 
-?>
+function is_enabled_sidebar( $sidebar_position ){
+
+	global $theme_options;
+	global $post;
+
+	// get Post Type e.g.'movie'
+	$post_type = @get_post_type($post->ID);
+
+	// Fetch 'compponents' from options
+	$aione_components = @get_option('aione-components');
+
+	// Filter perticular 'component' from 'components'
+	$aione_component = @$aione_components[$post_type];
+
+
+	// get 'templete' slug for Single/Page
+	$template_slug_single = @$aione_component['single_template'];
+
+	// get 'templete' slug for Blog/Archive
+	$template_slug_archive = @$aione_component['archive_template'];
+
+
+	// Fetch 'templates' from options
+	$aione_templates = @get_option('aione-templates');
+
+	// get 'templete' for Single/Page
+	$aione_template_single =  @$aione_templates[$template_slug_single];
+	// get 'templete' for Blog/Archive
+	$aione_template_archive =  @$aione_templates[$template_slug_archive];
+
+	// sidebar single
+	$is_enabled_single = @$aione_template_single['template_sidebar_left_enable'];
+
+	// sidebar  archive
+	$is_enabled_archive = @$aione_template_archive['template_sidebar_'.$sidebar_position.'_enable'];
+
+	// Global Options
+	$is_enabled = $theme_options['sidebar_'.$sidebar_position.'_enable'];
+
+	if ( is_archive() ) { 
+		if( isset( $template_slug_archive ) ) { 
+			if( $is_enabled_archive == 'no' ) {
+				$is_enabled = 0;
+			}
+			if( $is_enabled_archive == 'yes' ) {
+				$is_enabled = 1;
+			}
+		}
+	}
+	if( is_single() ) { 
+
+		//Template Options Enable
+		if( isset( $template_slug_single ) ) {
+			if( $is_enabled_single == 'no' ) {
+				$is_enabled = 0;
+			}
+			if( $is_enabled_single == 'yes' ) {
+				$is_enabled = 1;
+			}
+		}
+
+		//Per page Options Enable
+		$is_enabled_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position.'_enable' );
+		if( $is_enabled_custom == 'no' ) {
+			$is_enabled = 0;
+		}
+		if( $is_enabled_custom == 'yes' ) {
+			$is_enabled = 1;
+		}
+	}
+	if( is_page() ) {
+		$is_enabled = is_enabled( get_page_id(), 'sidebar_'.$sidebar_position.'_enable');
+	}
+
+	return $is_enabled;
+
+}
+
+function aione_get_sidebar( $sidebar_position ){
+
+	global $post;
+
+	// get Post Type e.g.'movie'
+	$post_type = @get_post_type($post->ID);
+
+	// Fetch 'compponents' from options
+	$aione_components = @get_option('aione-components');
+
+	// Filter perticular 'component' from 'components'
+	$aione_component = @$aione_components[$post_type];
+
+
+	// get 'templete' slug for Single/Page
+	$template_slug_single = @$aione_component['single_template'];
+
+	// get 'templete' slug for Blog/Archive
+	$template_slug_archive = @$aione_component['archive_template'];
+
+
+	// Fetch 'templates' from options
+	$aione_templates = @get_option('aione-templates');
+
+	// get 'templete' for Single/Page
+	$aione_template_single =  @$aione_templates[$template_slug_single];
+	// get 'templete' for Blog/Archive
+	$aione_template_archive =  @$aione_templates[$template_slug_archive];
+
+	// sidebar single
+	$sidebar_single = @$aione_template_single['template_sidebar_'.$sidebar_position];
+
+	// sidebar  archive
+	$sidebar_archive = @$aione_template_archive['template_sidebar_'.$sidebar_position];
+
+	// Global Options
+	$sidebar = 'aione-sidebar-'.$sidebar_position;
+
+
+	if ( is_archive() ) { 
+
+		//Template Options Left Sidebar
+		if( !empty( $sidebar_archive ) && $sidebar_archive != 'default' ){
+			$sidebar = $sidebar_archive;
+		}
+	} 
+
+	if( is_single() ) { 
+
+		//Template Options Left Sidebar
+		if( !empty( $sidebar_single ) && $sidebar_single != 'default' ){
+			$sidebar = $sidebar_single;
+		}
+
+		//Per page Options Left Sidebar
+		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
+		if( $sidebar_custom != 'default') {
+			$sidebar = $sidebar_custom;
+		}
+	}
+
+	if( is_page() ) {
+		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
+		if( $sidebar_custom != 'default') {
+			$sidebar = $sidebar_custom;
+		}
+	}
+
+	return $sidebar;
+}

@@ -73,3 +73,6 @@ ADDED: Post Nevigation links
 
 ## 7.1.0.16 30-11-2018
 ADDED: Per page sidebar selection
+
+## 7.1.0.17 03-12-2018
+UPDATED: Custom Sidebars Design and functionality
