@@ -1638,7 +1638,7 @@ function is_enabled_sidebar( $sidebar_position ){
 	$aione_template_archive =  @$aione_templates[$template_slug_archive];
 
 	// sidebar single
-	$is_enabled_single = @$aione_template_single['template_sidebar_left_enable'];
+	$is_enabled_single = @$aione_template_single['template_sidebar_'.$sidebar_position.'_enable'];
 
 	// sidebar  archive
 	$is_enabled_archive = @$aione_template_archive['template_sidebar_'.$sidebar_position.'_enable'];
@@ -1741,14 +1741,14 @@ function aione_get_sidebar( $sidebar_position ){
 
 		//Per page Options Left Sidebar
 		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
-		if( $sidebar_custom != 'default') {
+		if( !empty( $sidebar_custom ) && $sidebar_custom != 'default') {
 			$sidebar = $sidebar_custom;
 		}
 	}
 
 	if( is_page() ) {
 		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
-		if( $sidebar_custom != 'default') {
+		if( !empty( $sidebar_custom ) && $sidebar_custom != 'default') {
 			$sidebar = $sidebar_custom;
 		}
 	}

@@ -76,3 +76,6 @@ ADDED: Per page sidebar selection
 
 ## 7.1.0.17 03-12-2018
 UPDATED: Custom Sidebars Design and functionality
+
+## 7.1.0.18 03-12-2018
+FIXED: Fixed Issue with custom sidebars
