@@ -79,3 +79,6 @@ UPDATED: Custom Sidebars Design and functionality
 
 ## 7.1.0.18 03-12-2018
 FIXED: Fixed Issue with custom sidebars
+
+## 7.1.0.19 05-12-2018
+ADDED: Social Share widget

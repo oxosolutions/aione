@@ -1139,6 +1139,12 @@ Common Widget Style in sidebars
 	color: #757575;
 }
 
+
+.aione-sidebar .aione_social_share_widget ul > li{
+    padding: 0;
+  border-bottom: none;
+}
+
 /************************************************
 Common Widget Style in footer
 ************************************************/

@@ -37,10 +37,10 @@ class PerPageOptionsMetaboxes {
 			wp_enqueue_script( 'ace-editor-js' );
 			wp_enqueue_script('media-upload');
 			wp_enqueue_script( 'thickbox' );
-	   		wp_enqueue_style( 'thickbox' );
+			wp_enqueue_style( 'thickbox' );
 
-	   		wp_register_style( 'per-page-options-css', get_template_directory_uri() . '/assets/css/perpageoptions.css' );
-	   		wp_enqueue_style( 'per-page-options-css' );
+			wp_register_style( 'per-page-options-css', get_template_directory_uri() . '/assets/css/perpageoptions.css' );
+			wp_enqueue_style( 'per-page-options-css' );
 
 		}
 
@@ -100,7 +100,7 @@ class PerPageOptionsMetaboxes {
 			<?php foreach( $requested_tabs as $key => $tab_name ) : ?>
 				<?php $class = ( $key === 0 ) ? "active" : ""; ?>
 				<li class="<?php echo $class; ?>"><a href="<?php echo $tab_name; ?>"><?php echo $tabs_names[$tab_name]; ?></a></li>
-			
+
 			<?php endforeach; ?>
 
 		</ul>
@@ -221,37 +221,37 @@ class PerPageOptionsMetaboxes {
 			</div>
 		</div>
 		<script>
-		    function cssEditor(){
-		    	var csstempValue = $('textarea[name="pyre_custom_css"]').val(); 
-		    	var cssEditor = ace.edit("pyre_custom_css");
-	    		cssEditor.setTheme("ace/theme/twilight");
+			function cssEditor(){
+				var csstempValue = $('textarea[name="pyre_custom_css"]').val(); 
+				var cssEditor = ace.edit("pyre_custom_css");
+				cssEditor.setTheme("ace/theme/twilight");
 				cssEditor.session.setMode("ace/mode/css");
 				cssEditor.session.setValue(csstempValue);
 				cssEditor.setOptions({
-				    autoScrollEditorIntoView: true,
-				    fontSize: "14px"
+					autoScrollEditorIntoView: true,
+					fontSize: "14px"
 				});			
 				
 				var cssinput = $('textarea[name="pyre_custom_css"]');
-			    cssEditor.getSession().on("change", function () {
-			        cssinput.val(cssEditor.getSession().getValue());
-			    });
-		    }
-		    function jsEditor(){
-		    	var jstempValue = $('textarea[name="pyre_custom_js"]').val(); 
-		    	var jsEditor = ace.edit("pyre_custom_js");
-	    		jsEditor.setTheme("ace/theme/twilight");
+				cssEditor.getSession().on("change", function () {
+					cssinput.val(cssEditor.getSession().getValue());
+				});
+			}
+			function jsEditor(){
+				var jstempValue = $('textarea[name="pyre_custom_js"]').val(); 
+				var jsEditor = ace.edit("pyre_custom_js");
+				jsEditor.setTheme("ace/theme/twilight");
 				jsEditor.session.setMode("ace/mode/javascript");
 				jsEditor.session.setValue(jstempValue);
 				jsEditor.setOptions({
-				    autoScrollEditorIntoView: true
+					autoScrollEditorIntoView: true
 				});			
 				
 				var jsinput = $('textarea[name="pyre_custom_js"]');
-			    jsEditor.getSession().on("change", function () {
-			        jsinput.val(jsEditor.getSession().getValue());
-			    });
-		    }
+				jsEditor.getSession().on("change", function () {
+					jsinput.val(jsEditor.getSession().getValue());
+				});
+			}
 		</script>
 		<?php 
 		if($id == "custom_css"):
@@ -262,63 +262,63 @@ class PerPageOptionsMetaboxes {
 		endif;	
 		?>
 		<style type="text/css" media="screen">
-		    .ace_editor {
-				border: 1px solid lightgray;
-				height: 200px;
-			}
-		</style>
-		<?php
-	}
-
-	public function textarea( $id, $label, $desc = '', $default = '' ) {
-		global $post;
-		$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
-		$value = ( metadata_exists( 'post', $post->ID, 'pyre_'. $id ) ) ? $db_value : $default;
-		$rows = 10;
-		if ( $id == 'heading' || $id == 'caption' ) {
-			$rows = 5;
-		} else if ( 'page_title_custom_text' == $id || 'page_title_custom_subheader' == $id ) {
-			$rows = 1;
+		.ace_editor {
+			border: 1px solid lightgray;
+			height: 200px;
 		}
-		?>
+	</style>
+	<?php
+}
 
-		<div class="pyre_metabox_field">
-			<div class="pyre_desc">
-				<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
-				<?php if ( $desc ) : ?>
-					<p><?php echo $desc; ?></p>
-				<?php endif; ?>
-			</div>
-			<div class="pyre_field">
-				 <textarea cols="120" rows="<?php echo $rows; ?>" id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>"><?php echo $value; ?></textarea> 
-			</div>
-		</div>
-		<?php
-
+public function textarea( $id, $label, $desc = '', $default = '' ) {
+	global $post;
+	$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
+	$value = ( metadata_exists( 'post', $post->ID, 'pyre_'. $id ) ) ? $db_value : $default;
+	$rows = 10;
+	if ( $id == 'heading' || $id == 'caption' ) {
+		$rows = 5;
+	} else if ( 'page_title_custom_text' == $id || 'page_title_custom_subheader' == $id ) {
+		$rows = 1;
 	}
+	?>
 
-	public function upload( $id, $label, $desc = '' ) {
-		global $post;
-		?>
+	<div class="pyre_metabox_field">
+		<div class="pyre_desc">
+			<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+			<?php if ( $desc ) : ?>
+				<p><?php echo $desc; ?></p>
+			<?php endif; ?>
+		</div>
+		<div class="pyre_field">
+			<textarea cols="120" rows="<?php echo $rows; ?>" id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>"><?php echo $value; ?></textarea> 
+		</div>
+	</div>
+	<?php
 
-		<div class="pyre_metabox_field">
-			<div class="pyre_desc">
-				<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
-				<?php if ( $desc ) : ?>
-					<p><?php echo $desc; ?></p>
-				<?php endif; ?>
-			</div>
-			<div class="pyre_field">
-				<div class="pyre_upload">
-					
-					<?php $saved = get_post_meta( $post->ID, 'pyre_'.$id, true );?>
-					<input type="url" class="large-text" name="pyre_<?php echo $id; ?>" id="media_upload_btn" value="<?php echo esc_attr( $saved ); ?>"><br>
+}
 
-					<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php _e( 'Upload Media', 'Aione' )?></button>
-				</div>
+public function upload( $id, $label, $desc = '' ) {
+	global $post;
+	?>
+
+	<div class="pyre_metabox_field">
+		<div class="pyre_desc">
+			<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+			<?php if ( $desc ) : ?>
+				<p><?php echo $desc; ?></p>
+			<?php endif; ?>
+		</div>
+		<div class="pyre_field">
+			<div class="pyre_upload">
+
+				<?php $saved = get_post_meta( $post->ID, 'pyre_'.$id, true );?>
+				<input type="url" class="large-text" name="pyre_<?php echo $id; ?>" id="media_upload_btn" value="<?php echo esc_attr( $saved ); ?>"><br>
+
+				<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php _e( 'Upload Media', 'Aione' )?></button>
 			</div>
 		</div>
-		<script type="text/javascript">
+	</div>
+	<script type="text/javascript">
 		jQuery(document).ready(function($){
 			'use strict';
 			// Instantiates the variable that holds the media library frame.
@@ -352,10 +352,10 @@ class PerPageOptionsMetaboxes {
 			});
 
 		});
-		</script>
-		<?php
+	</script>
+	<?php
 
-	}
+}
 
 }
 $metaboxes = new PerPageOptionsMetaboxes;
@@ -367,46 +367,46 @@ $metaboxes = new PerPageOptionsMetaboxes;
 */
 add_action( 'init', 'register_aione_slider' );
 if ( ! function_exists( 'register_aione_slider' ) ){
-    function register_aione_slider() {
-        register_post_type( 'aione-slider',
-            array(
-                'labels' => array(
-                    'name' => 'Slider',
-                    'singular_name' => 'Slider',
-                    'add_new' => 'Add New',
-                    'add_new_item' => 'Add New Slider',
-                    'edit' => 'Edit',
-                    'edit_item' => 'Edit Slider',
-                    'new_item' => 'New Slider',
-                    'view' => 'View',
-                    'view_item' => 'View Slider',
-                    'search_items' => 'Search Slider',
-                    'not_found' => 'No Slider found',
-                    'not_found_in_trash' => 'No Slider found in Trash',
-                    'parent' => ''
-                ),
-                'public' => true,
-                'menu_position' => 15,
-                'menu_icon' => 'dashicons-laptop',
-                'capability_type' => 'slider',
-                'capabilities' => array(
-			        'publish_posts' => 'publish_slider',
-			        'edit_posts' => 'edit_slider',
-			        'edit_others_posts' => 'edit_others_slider',
-			        'delete_posts' => 'delete_slider',
-			        'delete_others_posts' => 'delete_others_slider',
-			        'read_private_posts' => 'read_private_slider',
-			        'edit_post' => 'edit_slider',
-			        'delete_post' => 'delete_slider',
-			        'read_post' => 'read_slider',
-			    ),
-                'supports' => array( 'title'), 
-                'taxonomies' => array( '' ),
-                'has_archive' => false,
-                'register_meta_box_cb' => 'aione_slider_metaboxes',
-            )
-        );
-    }
+	function register_aione_slider() {
+		register_post_type( 'aione-slider',
+			array(
+				'labels' => array(
+					'name' => 'Slider',
+					'singular_name' => 'Slider',
+					'add_new' => 'Add New',
+					'add_new_item' => 'Add New Slider',
+					'edit' => 'Edit',
+					'edit_item' => 'Edit Slider',
+					'new_item' => 'New Slider',
+					'view' => 'View',
+					'view_item' => 'View Slider',
+					'search_items' => 'Search Slider',
+					'not_found' => 'No Slider found',
+					'not_found_in_trash' => 'No Slider found in Trash',
+					'parent' => ''
+				),
+				'public' => true,
+				'menu_position' => 15,
+				'menu_icon' => 'dashicons-laptop',
+				'capability_type' => 'slider',
+				'capabilities' => array(
+					'publish_posts' => 'publish_slider',
+					'edit_posts' => 'edit_slider',
+					'edit_others_posts' => 'edit_others_slider',
+					'delete_posts' => 'delete_slider',
+					'delete_others_posts' => 'delete_others_slider',
+					'read_private_posts' => 'read_private_slider',
+					'edit_post' => 'edit_slider',
+					'delete_post' => 'delete_slider',
+					'read_post' => 'read_slider',
+				),
+				'supports' => array( 'title'), 
+				'taxonomies' => array( '' ),
+				'has_archive' => false,
+				'register_meta_box_cb' => 'aione_slider_metaboxes',
+			)
+		);
+	}
 }
 
 /**
@@ -473,9 +473,9 @@ function aione_slider_settings_callback($post){
 add_action('save_post', 'aione_slider_settings_save_meta');
 function aione_slider_settings_save_meta($post_id ){
 	if( !isset( $_POST['aione_slider_settings_form_nonce'] ) || !wp_verify_nonce( $_POST['aione_slider_settings_form_nonce'],'aione_slider_settings_form_metabox_nonce') ) 
-    return;
+		return;
 	if ( !current_user_can( 'edit_post', $post_id ))
-	    return;
+		return;
 
 	update_post_meta( $post_id, 'aione-slider-settings', $_POST['aione_slider_settings']);
 
@@ -485,286 +485,286 @@ function aione_slider_settings_form($post){
 	$settings   = get_post_meta( $post->ID, 'aione-slider-settings', true );
 	$aione_slider_settings = array();
 	?>	
-		<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
-			<table class="form-table">
-				<tbody>
-					<tr>
+	<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
+		<table class="form-table">
+			<tbody>
+				<tr>
 					<th scope="row"><label for="aione_slider_items">Items</label></th>
 					<td><input name="aione_slider_settings[items]" type="number" id="aione_slider_items" value="<?php echo isset($settings['items'])? $settings['items'] : '3' ?>" class=""><p class="description">The number of items you want to see on the screen.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_theme">Theme</label></th>
 					<td><select name="aione_slider_settings[theme]" id="aione_slider_theme">
 						<option value="aione" <?php if(@$settings['theme'] == 'aione') {echo "selected = selected";} ?>>Aione</option>
 						<option value="darlic" <?php if(@$settings['theme'] == 'darlic') {echo "selected = selected";} ?>>Darlic</option>
 						<option value="oxo" <?php if(@$settings['theme'] == 'oxo') {echo "selected = selected";} ?>>OXO</option>
 					</select></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_margin">Margin</label></th>
 					<td><input name="aione_slider_settings[margin]" type="text" id="aione_slider_margin" value="<?php echo isset($settings['margin'])? $settings['margin'] : '0' ?>" class=""><p class="description">margin-right(px) on item.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_loop">Loop</label></th>
 					<td><select name="aione_slider_settings[loop]" id="aione_slider_loop">				
 						<option value="false" <?php if(@$settings['loop'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['loop'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Infinity loop. Duplicate last and first items to get loop illusion.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Infinity loop. Duplicate last and first items to get loop illusion.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_center">Center</label></th>
 					<td><select name="aione_slider_settings[center]" id="aione_slider_center">			
 						<option value="false" <?php if(@$settings['center'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['center'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Center item. Works well with even an odd number of items.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Center item. Works well with even an odd number of items.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_caption">Image Caption</label></th>
 					<td><input name="aione_slider_settings[caption]" type="radio" id="aione_slider_caption" value="1" class="" <?php if(@$settings['caption'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption]" type="radio" id="aione_slider_caption" value="0" class="" <?php if(@$settings['caption'] == '0' || @$settings['caption'] == '') {echo "checked = checked";}?>>OFF</td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_caption_title">Image Caption Title</label></th>
 					<td><input name="aione_slider_settings[caption_title]" type="radio" id="aione_slider_caption_title" value="1" class="" <?php if(@$settings['caption_title'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_title]" type="radio" id="aione_slider_caption_title" value="0" class="" <?php if(@$settings['caption_title'] == '0' || @$settings['caption_title'] == '') {echo "checked = checked";}?>>OFF</td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_caption_description">Image Caption Description</label></th>
 					<td><input name="aione_slider_settings[caption_description]" type="radio" id="aione_slider_caption_description" value="1" class="" <?php if(@$settings['caption_description'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_description]" type="radio" id="aione_slider_caption_description" value="0" class="" <?php if(@$settings['caption_description'] == '0' || @$settings['caption_description'] == '') {echo "checked = checked";}?>>OFF</td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_caption_link">Image Caption Link</label></th>
 					<td><input name="aione_slider_settings[caption_link]" type="radio" id="aione_slider_caption_link" value="1" class="" <?php if(@$settings['caption_link'] == '1') {echo "checked = checked";}?>>ON<br/><input name="aione_slider_settings[caption_link]" type="radio" id="aione_slider_caption_link" value="0" class="" <?php if(@$settings['caption_link'] == '0' || @$settings['caption_link'] == '') {echo "checked = checked";}?>>OFF</td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_mouseDrag">mouseDrag</label></th>
 					<td><select name="aione_slider_settings[mouseDrag]" id="aione_slider_mouseDrag">	
 						<option value="true" <?php if(@$settings['mouseDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
 						<option value="false" <?php if(@$settings['mouseDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
-						</select><p class="description">Mouse drag enabled.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Mouse drag enabled.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_touchDrag">touchDrag</label></th>
 					<td><select name="aaione_slider_settings[touchDrag]" id="aione_slider_touchDrag">					
 						<option value="true" <?php if(@$settings['touchDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
 						<option value="false" <?php if(@$settings['touchDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
-						</select><p class="description">Touch drag enabled.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Touch drag enabled.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_pullDrag">pullDrag</label></th>
 					<td><select name="aione_slider_settings[pullDrag]" id="aione_slider_pullDrag">					
 						<option value="true" <?php if(@$settings['pullDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
 						<option value="false" <?php if(@$settings['pullDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
-						</select><p class="description">Stage pull to edge.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Stage pull to edge.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_freeDrag">freeDrag</label></th>
 					<td><select name="aione_slider_settings[freeDrag]" id="aione_slider_freeDrag">					
 						<option value="false" <?php if(@$settings['freeDrag'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['freeDrag'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Item pull to edge.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Item pull to edge.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_stagePadding">stagePadding</label></th>
 					<td><input name="aione_slider_settings[stagePadding]" type="number" id="aione_slider_stagePadding" value="<?php echo isset($settings['stagePadding'])? $settings['items'] : '0' ?>" class=""><p class="description">Padding left and right on stage (can see neighbours).</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_merge">Merge</label></th>
 					<td><select name="aione_slider_settings[merge]" id="aione_slider_merge">						
 						<option value="false" <?php if(@$settings['merge'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['merge'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Merge items. Looking for data-merge="{number}" inside item..</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Merge items. Looking for data-merge="{number}" inside item..</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_mergeFit">mergeFit</label></th>
 					<td><select name="aione_slider_settings[mergeFit]" id="aione_slider_mergeFit">					
 						<option value="true" <?php if(@$settings['mergeFit'] == 'true') {echo "selected = selected";} ?>>True</option>
 						<option value="false" <?php if(@$settings['mergeFit'] == 'false') {echo "selected = selected";} ?>>False</option>
-						</select><p class="description">Fit merged items if screen is smaller than items value.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Fit merged items if screen is smaller than items value.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_autoWidth">autoWidth</label></th>
 					<td><select name="aione_slider_settings[autoWidth]" id="aione_slider_autoWidth">					
 						<option value="false" <?php if(@$settings['autoWidth'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['autoWidth'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Set non grid content. Try using width style on divs.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Set non grid content. Try using width style on divs.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_autoHight">autoHight</label></th>
 					<td><select name="aione_slider_settings[autoHight]" id="aione_slider_autoHight">					
 						<option value="false" <?php if(@$settings['autoHight'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['autoHight'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select></td>
-					</tr>
-					<tr>
+					</select></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_startPosition">startPosition</label></th>
 					<td><input name="aione_slider_settings[startPosition]" type="text" id="aione_slider_startPosition" value="<?php echo isset($settings['startPosition'])? $settings['startPosition'] : '0' ?>" class=""><p class="description">Start position or URL Hash string like "#id".</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_URLhashListener">URLhashListener</label></th>
 					<td><select name="aione_slider_settings[URLhashListener]" id="aione_slider_URLhashListener">		
 						<option value="false" <?php if(@$settings['URLhashListener'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['URLhashListener'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Listen to url hash changes. data-hash on items is required.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Listen to url hash changes. data-hash on items is required.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_nav">Nav</label></th>
 					<td><select name="aione_slider_settings[nav]" id="aione_slider_nav">					
 						<option value="false" <?php if(@$settings['nav'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['nav'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Show next/prev buttons.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Show next/prev buttons.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_rewind">Rewind</label></th>
 					<td><select name="aione_slider_settings[rewind]" id="aione_slider_rewind">						
 						<option value="true" <?php if(@$settings['rewind'] == 'true') {echo "selected = selected";} ?>>True</option>
 						<option value="false" <?php if(@$settings['rewind'] == 'false') {echo "selected = selected";} ?>>False</option>
-						</select><p class="description">Go backwards when the boundary has reached.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Go backwards when the boundary has reached.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_navText">navText</label></th>
 					<td><input name="aione_slider_settings[navText]" type="text" id="aione_slider_navText" value="<?php echo isset($settings['navText'])? $settings['navText'] : '' ?>" class=""><p class="description">HTML allowed.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_navElement">navElement</label></th>
 					<td><input name="aione_slider_settings[navElement]" type="text" id="aione_slider_navElement" value="<?php echo isset($settings['navElement'])? $settings['navElement'] : 'div' ?>" class=""><p class="description">DOM element type for a single directional navigation link.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_slideBy">slideBy</label></th>
 					<td><input name="aione_slider_settings[slideBy]" type="text" id="aione_slider_slideBy" value="<?php echo isset($settings['slideBy'])? $settings['slideBy'] : '1' ?>" class=""><p class="description">Navigation slide by x. "page" string can be set to slide by page.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_slideTransition">slideTransition</label></th>
 					<td><input name="aione_slider_settings[slideTransition]" type="text" id="aione_slider_slideTransition" value="<?php echo isset($settings['slideTransition'])? $settings['slideTransition'] : '' ?>" class=""><p class="description">You can define the transition for the stage you want to use eg. linear.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_dots">Dots</label></th>
 					<td><select name="aione_slider_settings[dots]" id="aione_slider_dots">						
 						<option value="true" <?php if(@$settings['dots'] == 'true') {echo "selected = selected";} ?>>True</option>
 						<option value="false" <?php if(@$settings['dots'] == 'false') {echo "selected = selected";} ?>>False</option>
-						</select><p class="description">Show dots navigation.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Show dots navigation.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_dotsEach">dotsEach</label></th>
 					<td><input name="aione_slider_settings[dotsEach]" type="text" id="aione_slider_dotsEach" value="<?php echo isset($settings['dotsEach'])? $settings['dotsEach'] : 'false' ?>" class=""><p class="description">Show dots each x item.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_dotsData">dotsData</label></th>
 					<td><select name="aione_slider_settings[dotsData]" id="aione_slider_dotsData">					
 						<option value="false" <?php if(@$settings['dotsData'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['dotsData'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Used by data-dot content.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Used by data-dot content.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_lazyLoad">lazyLoad</label></th>
 					<td><select name="aione_slider_settings[lazyLoad]" id="aione_slider_lazyLoad">					
 						<option value="false" <?php if(@$settings['lazyLoad'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['lazyLoad'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Lazy load images. data-src and data-src-retina for highres. Also load images into background inline style if element is not <img></p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Lazy load images. data-src and data-src-retina for highres. Also load images into background inline style if element is not <img></p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_lazyLoadEager">lazyLoadEager</label></th>
 					<td><input name="aione_slider_settings[lazyLoadEager]" type="number" id="aione_slider_lazyLoadEager" value="<?php echo isset($settings['lazyLoadEager'])? $settings['lazyLoadEager'] : '0' ?>" class=""><p class="description">Eagerly pre-loads images to the right (and left when loop is enabled) based on how many items you want to preload.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_autoplay">autoplay</label></th>
 					<td><select name="aione_slider_settings[autoplay]" id="aione_slider_autoplay">					
 						<option value="false" <?php if(@$settings['autoplay'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['autoplay'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Autoplay.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Autoplay.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_autoplayTimeout">autoplayTimeout</label></th>
 					<td><input name="aione_slider_settings[autoplayTimeout]" type="number" id="aione_slider_autoplayTimeout" value="<?php echo isset($settings['autoplayTimeout'])? $settings['autoplayTimeout'] : '5000' ?>" class=""><p class="description">Autoplay interval timeout.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_autoplayHoverPause">autoplayHoverPause</label></th>
 					<td><select name="aione_slider_settings[autoplayHoverPause]" id="aione_slider_autoplayHoverPause">
 						<option value="false" <?php if(@$settings['autoplayHoverPause'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['autoplayHoverPause'] == 'true') {echo "selected = selected";} ?>>True</option>
-						</select><p class="description">Pause on mouse hover.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Pause on mouse hover.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_smartSpeed">smartSpeed</label></th>
 					<td><input name="aione_slider_settings[smartSpeed]" type="number" id="aione_slider_smartSpeed" value="<?php echo isset($settings['smartSpeed'])? $settings['smartSpeed'] : '250' ?>" class=""><p class="description">Speed Calculate. More info to come..</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_autoplaySpeed">autoplaySpeed</label></th>
 					<td><input name="aione_slider_settings[autoplaySpeed]" type="text" id="aione_slider_autoplaySpeed" value="<?php echo isset($settings['autoplaySpeed'])? $settings['autoplaySpeed'] : 'false' ?>" class=""><p class="description">autoplay speed.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_navSpeed">navSpeed</label></th>
 					<td><input name="aione_slider_settings[navSpeed]" type="text" id="aione_slider_navSpeed" value="<?php echo isset($settings['navSpeed'])? $settings['navSpeed'] : 'false' ?>" class=""><p class="description">Navigation speed.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_dotsSpeed">dotsSpeed</label></th>
 					<td><input name="aione_slider_settings[dotsSpeed]" type="text" id="aione_slider_dotsSpeed" value="<?php echo isset($settings['dotsSpeed'])? $settings['dotsSpeed'] : 'false' ?>" class=""><p class="description">Pagination speed.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_dragEndSpeed">dragEndSpeed</label></th>
 					<td><input name="aione_slider_settings[dragEndSpeed]" type="text" id="aione_slider_dragEndSpeed" value="<?php echo isset($settings['dragEndSpeed'])? $settings['dragEndSpeed'] : 'false' ?>" class=""><p class="description">Drag end speed.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_callbacks">Callbacks</label></th>
 					<td><select name="aione_slider_settings[callbacks]" id="aione_slider_callbacks">			
 						<option value="true" <?php if(@$settings['callbacks'] == 'true') {echo "selected = selected";} ?>>True</option>
 						<option value="false" <?php if(@$settings['callbacks'] == 'false') {echo "selected = selected";} ?>>False</option>						
-						</select><p class="description">Enable callback events.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Enable callback events.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_video">Video</label></th>
 					<td><select name="aione_slider_settings[video]" id="aione_slider_video">			
 						<option value="false" <?php if(@$settings['video'] == 'false') {echo "selected = selected";} ?>>False</option>
 						<option value="true" <?php if(@$settings['video'] == 'true') {echo "selected = selected";} ?>>True</option>												
-						</select><p class="description">Enable fetching YouTube/Vimeo/Vzaar videos.</p></td>
-					</tr>
-					<tr>
+					</select><p class="description">Enable fetching YouTube/Vimeo/Vzaar videos.</p></td>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_videoHeight">videoHeight</label></th>
 					<td><input name="aione_slider_settings[videoHeight]" type="text" id="aione_slider_videoHeight" value="<?php echo isset($settings['videoHeight'])? $settings['videoHeight'] : 'false' ?>" class=""><p class="description">Set height for videos.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_videoWidth">videoWidth</label></th>
 					<td><input name="aione_slider_settings[videoWidth]" type="text" id="aione_slider_videoWidth" value="<?php echo isset($settings['videoWidth'])? $settings['videoWidth'] : 'false' ?>" class=""><p class="description">Set width for videos.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_animateOut">animateOut</label></th>
 					<td><input name="aione_slider_settings[animateOut]" type="text" id="aione_slider_animateOut" value="<?php echo isset($settings['animateOut'])? $settings['animateOut'] : 'false' ?>" class=""><p class="description">Class for CSS3 animation out.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_animateIn">animateIn</label></th>
 					<td><input name="aione_slider_settings[animateIn]" type="text" id="aione_slider_animateIn" value="<?php echo isset($settings['animateIn'])? $settings['animateIn'] : 'false' ?>" class=""><p class="description">Class for CSS3 animation in.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_fallbackEasing">fallbackEasing</label></th>
 					<td><input name="aione_slider_settings[fallbackEasing]" type="text" id="aione_slider_fallbackEasing" value="<?php echo isset($settings['fallbackEasing'])? $settings['fallbackEasing'] : 'swing' ?>" class=""><p class="description">Easing for CSS2 $.animate.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_itemElement">itemElement</label></th>
 					<td><input name="aione_slider_settings[itemElement]" type="text" id="aione_slider_itemElement" value="<?php echo isset($settings['itemElement'])? $settings['itemElement'] : 'div' ?>" class=""><p class="description">DOM element type for aione-slider-item.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_stageElement">stageElement</label></th>
 					<td><input name="aione_slider_settings[stageElement]" type="text" id="aione_slider_stageElement" value="<?php echo isset($settings['stageElement'])? $settings['stageElement'] : 'div' ?>" class=""><p class="description">DOM element type for aione-slider-stage.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_navContainer">navContainer</label></th>
 					<td><input name="aione_slider_settings[navContainer]" type="text" id="aione_slider_navContainer" value="<?php echo isset($settings['navContainer'])? $settings['navContainer'] : 'false' ?>" class=""><p class="description">Set your own container for nav.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_dotsContainer">dotsContainer</label></th>
 					<td><input name="aione_slider_settings[dotsContainer]" type="text" id="aione_slider_dotsContainer" value="<?php echo isset($settings['dotsContainer'])? $settings['dotsContainer'] : 'false' ?>" class=""><p class="description">Set your own container for nav.</p></td>
-					</tr>
-					<tr>
+				</tr>
+				<tr>
 					<th scope="row"><label for="aione_slider_checkVisible">checkVisible</label></th>
 					<td><select name="aione_slider_settings[checkVisible]" id="aione_slider_checkVisible">			
 						<option value="true" <?php if(@$settings['checkVisible'] == 'true') {echo "selected = selected";} ?>>True</option>
 						<option value="false" <?php if(@$settings['checkVisible'] == 'false') {echo "selected = selected";} ?>>False</option>												
-						</select><p class="description">If you know the carousel will always be visible you can set `checkVisibility` to `false` to prevent the expensive browser layout forced reflow the $element.is(":visible") does.</p></td>
-					</tr>
+					</select><p class="description">If you know the carousel will always be visible you can set `checkVisibility` to `false` to prevent the expensive browser layout forced reflow the $element.is(":visible") does.</p></td>
+				</tr>
 
 
-				</tbody>
-			</table>
-			<!-- <p class="submit"><input type="submit" id="submit_button" name="app_setting_save" class="button button-primary" value="Save Settings"></p> -->
-		</form>
+			</tbody>
+		</table>
+		<!-- <p class="submit"><input type="submit" id="submit_button" name="app_setting_save" class="button button-primary" value="Save Settings"></p> -->
+	</form>
 	<?php
 }
 
@@ -792,12 +792,12 @@ function aione_slider_shortcode( $atts ) {
 
 			$settings   = get_post_meta($atts['id'], 'aione-slider-settings', true );
 			$skip_settings   = array(
-			'theme',
-			'caption',
-			'caption_title',
-			'caption_description',
-			'caption_link',
-			'URLhashListener',
+				'theme',
+				'caption',
+				'caption_title',
+				'caption_description',
+				'caption_link',
+				'URLhashListener',
 			);
 			$slider_classes = array('slider','owl-carousel');
 			$slider_data = array();
@@ -807,8 +807,8 @@ function aione_slider_shortcode( $atts ) {
 					if(in_array($setting_key, $skip_settings)){
 						continue;
 					}
-				    $setting_key = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $setting_key));
-				    $slider_data[] = 'data-'.$setting_key.'="'.$setting_value.'" ';
+					$setting_key = strtolower(preg_replace('/(?<!^)[A-Z]/', '-$0', $setting_key));
+					$slider_data[] = 'data-'.$setting_key.'="'.$setting_value.'" ';
 				}
 			}
 
@@ -838,19 +838,19 @@ function aione_slider_shortcode( $atts ) {
 				$output .=  '<div id="aione_slider_'.$atts['id'].'" class="'.$slider_classes.'" '.$slider_data.'>';
 				foreach ($slides as $key => $slide) {
 					$output .= '<div class="slider-item">';
-						$output .= '<div class="slider-image">';
-							$output .= '<img src="'.@$slide['url'].'" alt="'.@$slide['alt'].'" />';
-						$output .= '</div>';
-						if($settings['caption']){
-							$output .= '<div class="slider-caption">';
-								if($settings['caption_title']){
-									$output .= '<h3 class="caption-title">'.@$slide['title'].'</h3>';
-								}
-								if($settings['caption_description']){
-									$output .= '<p class="caption-description">'.@$slide['caption'].'</p>';
-								}
-							$output .= '</div>';
+					$output .= '<div class="slider-image">';
+					$output .= '<img src="'.@$slide['url'].'" alt="'.@$slide['alt'].'" />';
+					$output .= '</div>';
+					if($settings['caption']){
+						$output .= '<div class="slider-caption">';
+						if($settings['caption_title']){
+							$output .= '<h3 class="caption-title">'.@$slide['title'].'</h3>';
 						}
+						if($settings['caption_description']){
+							$output .= '<p class="caption-description">'.@$slide['caption'].'</p>';
+						}
+						$output .= '</div>';
+					}
 					$output .= '</div>';
 				}
 				$output .= '</div>';
@@ -961,18 +961,18 @@ function register_custom_acf_fields() {
 }
 
 function aione_acf_admin_notice() {
-    ?>
-    <div class="notice error my-acf-notice is-dismissible" >
-        <p><?php _e( 'ACF Plugin is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'gutenbergtheme' ); ?></p>
-    </div>
-    <?php
+	?>
+	<div class="notice error my-acf-notice is-dismissible" >
+		<p><?php _e( 'ACF Plugin is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'gutenbergtheme' ); ?></p>
+	</div>
+	<?php
 }
 function aione_gallery_admin_notice() {
-    ?>
-    <div class="notice error my-acf-notice is-dismissible" >
-        <p><?php _e( 'ACF Gallery AddOn is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'gutenbergtheme' ); ?></p>
-    </div>
-    <?php
+	?>
+	<div class="notice error my-acf-notice is-dismissible" >
+		<p><?php _e( 'ACF Gallery AddOn is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'gutenbergtheme' ); ?></p>
+	</div>
+	<?php
 }
 
 
@@ -983,17 +983,17 @@ function aione_gallery_admin_notice() {
 /* create_function is deprecated in php 7.2 */
 //add_action('widgets_init', create_function('', "register_widget('Aione_Slider_Widget');"));
 add_action('widgets_init', function() {
-		register_widget('Aione_Slider_Widget');
-	}
+	register_widget('Aione_Slider_Widget');
+}
 );
 class Aione_Slider_Widget extends WP_Widget {
 
-    public function __construct() {
-	    $widget_options = array( 
-	      'classname' => 'aione_slider_widget',
-	      'description' => 'List of Aione Sliders',
-	    );
-	    parent::__construct( 'aione_slider_widget', 'Aione slider', $widget_options );
+	public function __construct() {
+		$widget_options = array( 
+			'classname' => 'aione_slider_widget',
+			'description' => 'List of Aione Sliders',
+		);
+		parent::__construct( 'aione_slider_widget', 'Aione slider', $widget_options );
 	}
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance[ 'title' ] );
@@ -1001,91 +1001,98 @@ class Aione_Slider_Widget extends WP_Widget {
 		echo $args['before_widget'] . $args['before_title'] . $args['after_title']; 
 		
 		do_shortcode('[aione-slider id="'.$instance[ 'slider' ].'"]');
-      
-        echo $args['after_widget'];
+
+		echo $args['after_widget'];
 	}
 	public function form( $instance ) {
 		$args = array(
-      	'post_type' => 'aione-slider',
-      	'posts_per_page' => -1,
-      	'post_status' => 'publish'
-      );
-      
-      $custom_posts = new WP_Query($args);
+			'post_type' => 'aione-slider',
+			'posts_per_page' => -1,
+			'post_status' => 'publish'
+		);
 
-	  $title = ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
-	  <p>
-	    <label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
-	    <input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" />
-	  </p>
-	  <p>
-	    <label for="<?php echo $this->get_field_id( 'slider' ); ?>">Select Slider:</label>
-	    <select id="<?php echo $this->get_field_id( 'slider' ); ?>" name="<?php echo $this->get_field_name( 'slider' ); ?>">
-	    	<?php 
-	    	if ($custom_posts->have_posts() ) { 
-				foreach($custom_posts->posts as $slider){ 
-					$selected_html = '';
-					if ($slider->post_name==$instance['slider']) {
-						$selected_html = " selected='selected'";
-					}
-					echo "<option value='".$slider->ID."' ".$selected_html.">".$slider->post_title."</option>";
-				
-				} 
-			}
-	    	?>
-	    </select>
-	  </p>
-	  <?php 
+		$custom_posts = new WP_Query($args);
+
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
+			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'slider' ); ?>">Select Slider:</label>
+			<select id="<?php echo $this->get_field_id( 'slider' ); ?>" name="<?php echo $this->get_field_name( 'slider' ); ?>">
+				<?php 
+				if ($custom_posts->have_posts() ) { 
+					foreach($custom_posts->posts as $slider){ 
+						$selected_html = '';
+						if ($slider->post_name==$instance['slider']) {
+							$selected_html = " selected='selected'";
+						}
+						echo "<option value='".$slider->ID."' ".$selected_html.">".$slider->post_title."</option>";
+
+					} 
+				}
+				?>
+			</select>
+		</p>
+		<?php 
 	}
 	public function update( $new_instance, $old_instance ) {
-	  $instance = $old_instance;
-	  $instance[ 'title' ] = strip_tags( $new_instance[ 'title' ] );
-	  $instance[ 'slider' ] = strip_tags( $new_instance[ 'slider' ] );
-	  return $instance;
+		$instance = $old_instance;
+		$instance[ 'title' ] = strip_tags( $new_instance[ 'title' ] );
+		$instance[ 'slider' ] = strip_tags( $new_instance[ 'slider' ] );
+		return $instance;
 	}
 }
 
-/**********************/
-/**
+/**********************
+*
 * Aione Social Icons Widget
 * 
-*/
-//add_action('widgets_init', create_function('', "register_widget('Aione_Social_Icons_Widget');"));
+***********************/
+
 add_action('widgets_init', function() {
-		register_widget('Aione_Social_Icons_Widget');
-	}
+	register_widget('Aione_Social_Icons_Widget');
+}
 );
+
 class Aione_Social_Icons_Widget extends WP_Widget {
 
-    public function __construct() {
-	    $widget_options = array( 
-	      'classname' => 'aione-social-icons-widget',
-	      'description' => 'Displays a list of social media website icons and a link to your profile.',
-	    );
-	    parent::__construct( 'aione_social_icons_widget', 'Aione Social Icons', $widget_options );
+	public function __construct() {
 
-	    global $asiw_social_accounts;
+		$widget_options = array( 
+			'classname' => 'aione-social-icons-widget',
+			'description' => 'Displays a list of social media website icons and a link to your profile.',
+		);
+
+		parent::__construct( 'aione_social_icons_widget', 'Aione Social Icons', $widget_options );
+
+		global $asiw_social_accounts;
+
 		$asiw_social_accounts = array(
-			'Facebook' => 'facebook',
-			'Twitter' => 'twitter',
-			'YouTube' => 'youtube',
-			'Google+' => 'googleplus',
-			'LinkedIn' => 'linkedin',
-			'Instagram' => 'instagram',
-			'Email' => 'email',
-			'Flickr' => 'flickr',
-			'GitHub' => 'github',
-			'Pinterest' => 'pinterest',
-			'RSS Feed' => 'rss',
-			'Tumblr' => 'tumblr',
-			'Vimeo' => 'vimeo',
-			'WordPress' => 'wordpress',
+			'Facebook'	=>	'facebook',
+			'Twitter'	=>	'twitter',
+			'YouTube'	=>	'youtube',
+			'Google+'	=>	'googleplus',
+			'LinkedIn'	=>	'linkedin',
+			'Instagram'	=>	'instagram',
+			// 'Email'		=>	'email',
+			'Flickr'	=>	'flickr',
+			'GitHub'	=>	'github',
+			'Pinterest'	=>	'pinterest',
+			'RSS Feed'	=>	'rss',
+			'Tumblr'	=>	'tumblr',
+			'Vimeo'		=>	'vimeo',
+			'WordPress'	=>	'wordpress',
 		);
 
 		if( has_filter('aione_social_icon_accounts') ) {
 			$asiw_social_accounts = apply_filters('aione_social_icon_accounts', $asiw_social_accounts);
 		}
+
 	}
+
+
 	public function widget( $args, $instance ) {
 		global $asiw_social_accounts;
 		extract($args);
@@ -1133,8 +1140,8 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 				$asiw_icon_output = apply_filters('social_icon_output', $format);
 				echo vsprintf($asiw_icon_output, $asiw_data);
 			endif; 
-		 endforeach; 
-		 echo apply_filters('social_icon_closing_tag', '</ul>'); 
+		endforeach; 
+		echo apply_filters('social_icon_closing_tag', '</ul>'); 
 		echo $after_widget;
 	}
 
@@ -1143,7 +1150,256 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 
 		foreach ($asiw_social_accounts as $site => $id) {
 			if(!isset($instance[$id])) { $instance[$id] = ''; }
-			elseif($instance[$id] == 'http://') { $instance[$id] = ''; }
+		elseif($instance[$id] == 'http://') { $instance[$id] = ''; }
+	}
+
+	if(!isset($instance['title'])) { $instance['title'] = ''; }
+	if(!isset($instance['icon_size'])) { $instance['icon_size'] = 'lg'; }
+	if(!isset($instance['icon_theme'])) { $instance['icon_theme'] = 'dark'; }
+	if(!isset($instance['icon_style'])) { $instance['icon_style'] = 'square'; }
+	if(!isset($instance['icon_direction'])) { $instance['icon_direction'] = 'horizontal'; }
+	if(!isset($instance['labels'])) { $instance['labels'] = ''; }
+	?>
+
+	<div class="aione_social_icons_widget">
+
+		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
+			<input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
+
+			<?php
+			$asiw_sizes = array(
+				'none' => 'none',
+				'Small' => 'small',
+				'Medium' => 'medium',
+				'Large' => 'large',
+				'Extra Large' => 'xlarge',
+			);
+			$asiw_theme = array(
+				'Colored' => 'colored',
+				'Dark' => 'dark',
+				'Dark Solid' => 'dark-solid',
+				'Dark Outline' => 'dark-outline',
+				'Light' => 'light',
+				'Light Solid' => 'light-solid',
+				'Light Outline' => 'light-outline',
+			);
+			$asiw_style = array(
+				'Square' => 'square',
+				'Rounded' => 'rounded',
+				'Circle' => 'circle',
+			);
+			$asiw_direction = array(
+				'Horizontal' => 'horizontal',
+				'Vertical' => 'vertical',
+			);
+			?>
+
+			<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_size'); ?>">Icon Size:</label>
+				<select id="<?php echo $this->get_field_id('icon_size'); ?>" name="<?php echo $this->get_field_name('icon_size'); ?>">
+					<?php
+					foreach($asiw_sizes as $option => $value) :
+
+						if(esc_attr($instance['icon_size'] == $value)) { $selected = ' selected="selected"'; }
+						else { $selected = ''; }
+						?>
+
+						<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+
+					<?php endforeach; ?>
+				</select>
+			</p>
+
+			<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_theme'); ?>">Icon Theme:</label>
+				<select id="<?php echo $this->get_field_id('icon_theme'); ?>" name="<?php echo $this->get_field_name('icon_theme'); ?>">
+					<?php
+					foreach($asiw_theme as $option => $value) :
+
+						if(esc_attr($instance['icon_theme'] == $value)) { $selected = ' selected="selected"'; }
+						else { $selected = ''; }
+						?>
+
+						<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+
+					<?php endforeach; ?>
+				</select>
+			</p>
+
+			<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_style'); ?>">Icon Style:</label>
+				<select id="<?php echo $this->get_field_id('icon_style'); ?>" name="<?php echo $this->get_field_name('icon_style'); ?>">
+					<?php
+					foreach($asiw_style as $option => $value) :
+
+						if(esc_attr($instance['icon_style'] == $value)) { $selected = ' selected="selected"'; }
+						else { $selected = ''; }
+						?>
+
+						<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+
+					<?php endforeach; ?>
+				</select>
+			</p>
+
+			<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_direction'); ?>">Icon Direction:</label>
+				<select id="<?php echo $this->get_field_id('icon_direction'); ?>" name="<?php echo $this->get_field_name('icon_direction'); ?>">
+					<?php
+					foreach($asiw_direction as $option => $value) :
+
+						if(esc_attr($instance['icon_direction'] == $value)) { $selected = ' selected="selected"'; }
+						else { $selected = ''; }
+						?>
+
+						<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+
+					<?php endforeach; ?>
+				</select>
+			</p>
+
+			<?php if(esc_attr($instance['labels'] == 'show')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
+			<p class="label_options"><input type="checkbox" id="<?php echo $this->get_field_id('labels'); ?>" name="<?php echo $this->get_field_name('labels'); ?>" value="show"<?php echo $checked; ?> /> <label for="<?php echo $this->get_field_id('labels'); ?>">Show Labels</label></p>
+
+			<ul class="aione_social_accounts">
+				<?php foreach ($asiw_social_accounts as $site => $id) : ?>
+					<li><label for="<?php echo $this->get_field_id($id); ?>" class="<?php echo $id; ?>"><?php echo $site; ?>:</label>
+						<input class="widefat" type="text" id="<?php echo $this->get_field_id($id); ?>" name="<?php echo $this->get_field_name($id); ?>" value="<?php echo esc_attr($instance[$id]); ?>" placeholder="http://" /></li>
+					<?php endforeach; ?>
+				</ul>
+
+			</div>
+			<?php
+		}
+		public function update( $new_instance, $old_instance ) {
+			global $asiw_social_accounts;
+			$instance = array();
+
+			foreach ($asiw_social_accounts as $site => $id) {
+				$instance[$id] = $new_instance[$id];
+			}
+
+			$instance['title'] = $new_instance['title'];
+			$instance['icon_size'] = $new_instance['icon_size'];
+			$instance['icon_theme'] = $new_instance['icon_theme'];
+			$instance['icon_style'] = $new_instance['icon_style'];
+			$instance['icon_direction'] = $new_instance['icon_direction'];
+			$instance['labels'] = $new_instance['labels'];
+
+			return $instance;
+		}
+	}
+
+
+/**********************
+*
+* Aione Social Share Widget
+* 
+***********************/
+
+add_action( 'widgets_init' , function() {
+	register_widget( 'Aione_Social_Share_Widget' );
+}
+);
+
+class Aione_Social_Share_Widget extends WP_Widget {
+
+	public function __construct() {
+
+		$widget_options = array( 
+			'classname'	=>	'aione_social_share_widget',
+			'description'	=>	'Social Share Buttons',
+		);
+
+		parent::__construct( 'aione_social_share_widget', 'Aione Social Share', $widget_options );
+
+		global $aione_social_share_accounts;
+
+		$aione_social_share_accounts = array(
+			'Facebook' 		=> 'facebook',
+			'Flickr' 		=> 'flickr',
+			'Google Plus' 	=> 'googleplus',
+			'LinkedIn' 		=> 'linkedin',
+			'pinterest' 	=> 'pinterest',
+			'RSS' 			=> 'rss',
+			'tumblr' 		=> 'tumblr',
+			'twitter' 		=> 'twitter',
+			'vimeo' 		=> 'vimeo',
+			'wordpress' 	=> 'wordpress',
+			'youtube' 		=> 'youtube',
+			// 'Blogger' 		=> 'blogger',
+			// 'Delicious' 	=> 'delicious',
+			// 'Google +' 		=> 'plus',
+			'whatsapp' 		=> 'whatsapp',
+		);
+
+	}
+	
+	public function widget( $args, $instance ) {
+
+		extract($args);
+
+		global $aione_social_share_accounts;
+
+		$share_title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+		$share_icon_size = $instance['icon_size'];
+		$share_icon_theme = $instance['icon_theme'];
+		$share_icon_style = $instance['icon_style'];
+		$share_icon_direction = $instance['icon_direction'];
+		$share_labels = $instance['labels'];
+		
+		echo $before_widget;
+		
+		echo $before_title;
+		echo $share_title;
+		echo $after_title;
+		
+		$title = get_the_title();
+		$url = get_permalink();
+		?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('.share').ShareLink({
+					title: <?php echo '"'.$title.'"' ; ?>,
+					url: <?php echo '"'.$url.'"' ; ?>
+				});
+				jQuery('.counter').ShareCounter({
+					url: <?php echo '"'.$url.'"' ; ?>,
+					increment: true
+				});
+
+			});
+		</script>
+		<?php
+
+		$classes = array();
+		$classes[] = 'aione-social-icons';
+		// $classes[] = 'labels';
+		if($share_labels == 'show') { $classes[] = 'labels'; }
+		if($share_icon_direction == 'vertical') { $classes[] = 'vertical'; }
+		$classes[] = $share_icon_size;
+		$classes[] = $share_icon_theme;
+		$classes[] = $share_icon_style;
+		
+		$classes = implode(" ",$classes);
+
+		echo apply_filters('social_icon_opening_tag', '<ul class="'.$classes.'">');
+
+		foreach ($aione_social_share_accounts as $site => $id) {
+			if($instance[$id] == 'enable'){
+
+				echo '<li class="share '.$id.' s_'.$id.'"><a title="'.$site.'"><span class="icon"></span><span class="label">'.$site.'</span></a></li>';
+			}
+		}
+		
+		echo apply_filters('social_icon_closing_tag', '</ul>'); 
+		echo $after_widget;
+		
+	}
+
+
+	public function form( $instance ) { 
+
+		global $aione_social_share_accounts;
+
+		foreach ($aione_social_share_accounts as $site => $id) {
+			if(!isset($instance[$id])) { $instance[$id] = ''; }
 		}
 
 		if(!isset($instance['title'])) { $instance['title'] = ''; }
@@ -1154,294 +1410,182 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 		if(!isset($instance['labels'])) { $instance['labels'] = ''; }
 		?>
 
-		<div class="aione_social_icons_widget">
-
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
-		<input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
-
-		<?php
-		$asiw_sizes = array(
-			'none' => 'none',
-			'Small' => 'small',
-			'Medium' => 'medium',
-			'Large' => 'large',
-			'Extra Large' => 'xlarge',
-		);
-		$asiw_theme = array(
-			'Colored' => 'colored',
-			'Dark' => 'dark',
-			'Dark Solid' => 'dark-solid',
-			'Dark Outline' => 'dark-outline',
-			'Light' => 'light',
-			'Light Solid' => 'light-solid',
-			'Light Outline' => 'light-outline',
-		);
-		$asiw_style = array(
-			'Square' => 'square',
-			'Rounded' => 'rounded',
-			'Circle' => 'circle',
-		);
-		$asiw_direction = array(
-			'Horizontal' => 'horizontal',
-			'Vertical' => 'vertical',
-		);
-		?>
-
-		<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_size'); ?>">Icon Size:</label>
-			<select id="<?php echo $this->get_field_id('icon_size'); ?>" name="<?php echo $this->get_field_name('icon_size'); ?>">
-			<?php
-			foreach($asiw_sizes as $option => $value) :
-
-				if(esc_attr($instance['icon_size'] == $value)) { $selected = ' selected="selected"'; }
-				else { $selected = ''; }
-			?>
-			
-				<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
-			
-			<?php endforeach; ?>
-			</select>
-		</p>
-
-		<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_theme'); ?>">Icon Theme:</label>
-			<select id="<?php echo $this->get_field_id('icon_theme'); ?>" name="<?php echo $this->get_field_name('icon_theme'); ?>">
-			<?php
-			foreach($asiw_theme as $option => $value) :
-
-				if(esc_attr($instance['icon_theme'] == $value)) { $selected = ' selected="selected"'; }
-				else { $selected = ''; }
-			?>
-			
-				<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
-			
-			<?php endforeach; ?>
-			</select>
-		</p>
-
-		<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_style'); ?>">Icon Style:</label>
-			<select id="<?php echo $this->get_field_id('icon_style'); ?>" name="<?php echo $this->get_field_name('icon_style'); ?>">
-			<?php
-			foreach($asiw_style as $option => $value) :
-
-				if(esc_attr($instance['icon_style'] == $value)) { $selected = ' selected="selected"'; }
-				else { $selected = ''; }
-			?>
-			
-				<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
-			
-			<?php endforeach; ?>
-			</select>
-		</p>
-
-		<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_direction'); ?>">Icon Direction:</label>
-			<select id="<?php echo $this->get_field_id('icon_direction'); ?>" name="<?php echo $this->get_field_name('icon_direction'); ?>">
-			<?php
-			foreach($asiw_direction as $option => $value) :
-
-				if(esc_attr($instance['icon_direction'] == $value)) { $selected = ' selected="selected"'; }
-				else { $selected = ''; }
-			?>
-			
-				<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
-			
-			<?php endforeach; ?>
-			</select>
-		</p>
-
-		<?php if(esc_attr($instance['labels'] == 'show')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
-		<p class="label_options"><input type="checkbox" id="<?php echo $this->get_field_id('labels'); ?>" name="<?php echo $this->get_field_name('labels'); ?>" value="show"<?php echo $checked; ?> /> <label for="<?php echo $this->get_field_id('labels'); ?>">Show Labels</label></p>
-
-		<ul class="aione_social_accounts">
-			<?php foreach ($asiw_social_accounts as $site => $id) : ?>
-				<li><label for="<?php echo $this->get_field_id($id); ?>" class="<?php echo $id; ?>"><?php echo $site; ?>:</label>
-					<input class="widefat" type="text" id="<?php echo $this->get_field_id($id); ?>" name="<?php echo $this->get_field_name($id); ?>" value="<?php echo esc_attr($instance[$id]); ?>" placeholder="http://" /></li>
-			<?php endforeach; ?>
-		</ul>
-
-		</div>
-		<?php
-	}
-	public function update( $new_instance, $old_instance ) {
-	    global $asiw_social_accounts;
-		$instance = array();
-
-		foreach ($asiw_social_accounts as $site => $id) {
-			$instance[$id] = $new_instance[$id];
-		}
-
-		$instance['title'] = $new_instance['title'];
-		$instance['icon_size'] = $new_instance['icon_size'];
-		$instance['icon_theme'] = $new_instance['icon_theme'];
-		$instance['icon_style'] = $new_instance['icon_style'];
-		$instance['icon_direction'] = $new_instance['icon_direction'];
-		$instance['labels'] = $new_instance['labels'];
-
-		return $instance;
-	}
-}
-
-
-/**********************/
-/**
-* Aione Social Share Widget
-* 
-*/
-//add_action('widgets_init', create_function('', "register_widget('Aione_Social_Share_Widget');"));
-add_action('widgets_init', function() {
-		register_widget('Aione_Social_Share_Widget');
-	}
-);
-class Aione_Social_Share_Widget extends WP_Widget {
-
-    public function __construct() {
-	    $widget_options = array( 
-	      'classname' => 'aione_social_share_widget',
-	      'description' => 'Social Share Buttons',
-	    );
-	    parent::__construct( 'aione_social_share_widget', 'Aione Social Share', $widget_options );
-	    global $aione_social_share_accounts;
-		$aione_social_share_accounts = array(
-			'<i class="ion-social-facebook"></i>' => 'facebook',
-			'Flickr' => 'flickr',
-			'<i class="ion-social-googleplus"></i>' => 'googleplus',
-			'<i class="ion-social-linkedin"></i>' => 'linkedin',
-			'<i class="ion-social-pinterest"></i>' => 'pinterest',
-			'<i class="ion-social-rss"></i>' => 'rss',
-			'<i class="ion-social-tumblr"></i>' => 'tumblr',
-			'<i class="ion-social-twitter"></i>' => 'twitter',
-			'<i class="ion-social-vimeo"></i>' => 'vimeo',
-			'<i class="ion-social-wordpress"></i>' => 'wordpress',
-			'<i class="ion-social-youtube"></i>' => 'youtube',
-			'Blogger' => 'blogger',
-			'Delicious' => 'delicious',
-			'Google +' => 'plus',
-			'<i class="ion-social-whatsapp"></i>' => 'whatsapp',
-		);
-
-	}
-	public function widget( $args, $instance ) {
-		global $aione_social_share_accounts;
-
-		$share_title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
-		
-		$title = get_the_title();
-		$url = get_permalink();
-		echo $before_widget;
-		?>
-		<script type="text/javascript">
-            jQuery(document).ready(function(){
-                jQuery('.share').ShareLink({
-                    title: <?php echo '"'.$title.'"' ; ?>,
-                    url: <?php echo '"'.$url.'"' ; ?>
-                });
-                jQuery('.counter').ShareCounter({
-                    url: <?php echo '"'.$url.'"' ; ?>,
-                    increment: true
-                });
-
-            });
-        </script>
-        <?php
-		
-		echo $before_title;
-		echo $share_title;
-		echo $after_title;
-		
-		foreach ($aione_social_share_accounts as $site => $id) {
-			if($instance[$id] == 'enable'){
-				?> 
-				<button class='aione-button share s_<?php echo $id; ?>' type='button'>
-                    <?php echo $site; ?> 
-                </button>
-                <?php
-			}
-		}
-		echo $after_widget;
-		
-	}
-	public function form( $instance ) { 
-		global $aione_social_share_accounts;
-
-		foreach ($aione_social_share_accounts as $site => $id) {
-			if(!isset($instance[$id])) { $instance[$id] = ''; }
-		}
-
-		if(!isset($instance['title'])) { $instance['title'] = ''; }
-		?>
-
 		<div class="aione_social_share_widget">
 
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
-		<input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
+			<p><label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
+				<input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
 
-		<?php foreach ($aione_social_share_accounts as $site => $id) : ?>
-			<?php if(esc_attr($instance[$id] == 'enable')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
-			<p class="label_options"><input type="checkbox" id="<?php echo $this->get_field_id($id); ?>" name="<?php echo $this->get_field_name($id); ?>" value="enable"<?php echo $checked; ?> /> <label for="<?php echo $this->get_field_id($id); ?>"><?php echo $site; ?> Share</label></p>
-		<?php endforeach; ?>
+				<?php
+				$share_sizes = array(
+					'none' => 'none',
+					'Small' => 'small',
+					'Medium' => 'medium',
+					'Large' => 'large',
+					'Extra Large' => 'xlarge',
+				);
+				$share_theme = array(
+					'Colored' => 'colored',
+					'Dark' => 'dark',
+					'Dark Solid' => 'dark-solid',
+					'Dark Outline' => 'dark-outline',
+					'Light' => 'light',
+					'Light Solid' => 'light-solid',
+					'Light Outline' => 'light-outline',
+				);
+				$share_style = array(
+					'Square' => 'square',
+					'Rounded' => 'rounded',
+					'Circle' => 'circle',
+				);
+				$share_direction = array(
+					'Horizontal' => 'horizontal',
+					'Vertical' => 'vertical',
+				);
+				?>
 
-		</div>
-		<?php
-	}
-	public function update( $new_instance, $old_instance ) {
+				<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_size'); ?>">Icon Size:</label>
+					<select id="<?php echo $this->get_field_id('icon_size'); ?>" name="<?php echo $this->get_field_name('icon_size'); ?>">
+						<?php
+						foreach($share_sizes as $option => $value) :
 
-		global $aione_social_share_accounts;
-		$instance = array();
+							if(esc_attr($instance['icon_size'] == $value)) { $selected = ' selected="selected"'; }
+							else { $selected = ''; }
+							?>
+							
+							<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+							
+						<?php endforeach; ?>
+					</select>
+				</p>
 
-		foreach ($aione_social_share_accounts as $site => $id) {
-			$instance[$id] = $new_instance[$id];
+				<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_theme'); ?>">Icon Theme:</label>
+					<select id="<?php echo $this->get_field_id('icon_theme'); ?>" name="<?php echo $this->get_field_name('icon_theme'); ?>">
+						<?php
+						foreach($share_theme as $option => $value) :
+
+							if(esc_attr($instance['icon_theme'] == $value)) { $selected = ' selected="selected"'; }
+							else { $selected = ''; }
+							?>
+
+							<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+
+						<?php endforeach; ?>
+					</select>
+				</p>
+
+				<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_style'); ?>">Icon Style:</label>
+					<select id="<?php echo $this->get_field_id('icon_style'); ?>" name="<?php echo $this->get_field_name('icon_style'); ?>">
+						<?php
+						foreach($share_style as $option => $value) :
+
+							if(esc_attr($instance['icon_style'] == $value)) { $selected = ' selected="selected"'; }
+							else { $selected = ''; }
+							?>
+
+							<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+
+						<?php endforeach; ?>
+					</select>
+				</p>
+
+				<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_direction'); ?>">Icon Direction:</label>
+					<select id="<?php echo $this->get_field_id('icon_direction'); ?>" name="<?php echo $this->get_field_name('icon_direction'); ?>">
+						<?php
+						foreach($share_direction as $option => $value) :
+
+							if(esc_attr($instance['icon_direction'] == $value)) { $selected = ' selected="selected"'; }
+							else { $selected = ''; }
+							?>
+
+							<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+
+						<?php endforeach; ?>
+					</select>
+				</p>
+
+				<?php if(esc_attr($instance['labels'] == 'show')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
+				<p class="label_options">
+					<input type="checkbox" id="<?php echo $this->get_field_id('labels'); ?>" name="<?php echo $this->get_field_name('labels'); ?>" value="show"<?php echo $checked; ?> /> 
+					<label for="<?php echo $this->get_field_id('labels'); ?>">Show Labels</label>
+				</p>
+
+				<?php foreach ($aione_social_share_accounts as $site => $id) : ?>
+					<?php if(esc_attr($instance[$id] == 'enable')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
+					<p class="label_options">
+						<input type="checkbox" id="<?php echo $this->get_field_id($id); ?>" name="<?php echo $this->get_field_name($id); ?>" value="enable"<?php echo $checked; ?> />
+						<label for="<?php echo $this->get_field_id($id); ?>"><?php echo $site; ?> Share</label>
+					</p>
+				<?php endforeach; ?>
+
+			</div>
+			<?php
 		}
-	    
-		$instance['title'] = $new_instance['title'];
+		public function update( $new_instance, $old_instance ) {
 
-		return $instance;
-	}
-}
-function get_aione_page_option($post_id , $meta_key){
-	$meta_value = get_post_meta( $post_id, $meta_key , true );
-	return $meta_value;
-}
+			global $aione_social_share_accounts;
+			$instance = array();
 
-function is_fullwidth($id,$component){
-	global $theme_options;
-	global $post;
-	$fullwidth = false;
+			foreach ($aione_social_share_accounts as $site => $id) {
+				$instance[$id] = $new_instance[$id];
+			}
 
-	$page_option = get_aione_page_option($id,'pyre_'.$component.'_100_width');
+			$instance['title'] = $new_instance['title'];
+			$instance['icon_size'] = $new_instance['icon_size'];
+			$instance['icon_theme'] = $new_instance['icon_theme'];
+			$instance['icon_style'] = $new_instance['icon_style'];
+			$instance['icon_direction'] = $new_instance['icon_direction'];
+			$instance['labels'] = $new_instance['labels'];
 
-
-	if($page_option == 'default' || empty(@$page_option)){
-		if($theme_options[$component.'_100_width']){
-			$fullwidth = true;
-		}
-	} else{
-		if($page_option == 'yes'){
-			$fullwidth = true;
+			return $instance;
 		}
 	}
-	
-
-	if($fullwidth){
-		$fullwidth_class = "fullwidth";
-	} else {
-		$fullwidth_class = "";
+	function get_aione_page_option($post_id , $meta_key){
+		$meta_value = get_post_meta( $post_id, $meta_key , true );
+		return $meta_value;
 	}
 
-	return $fullwidth_class;
-}
+	function is_fullwidth($id,$component){
+		global $theme_options;
+		global $post;
+		$fullwidth = false;
 
-function get_page_id(){
-	$blog = false;
-	global $post;
-    if ( is_front_page() && is_home() ) {
-        $blog = false;
-    } elseif ( is_front_page() ) {
-        $blog = false;
-    } elseif ( is_home() ) {
-        $blog = true; 
-    } else {
-       $blog = false;
-    }
+		$page_option = get_aione_page_option($id,'pyre_'.$component.'_100_width');
 
-    if($blog == true){
+
+		if($page_option == 'default' || empty(@$page_option)){
+			if($theme_options[$component.'_100_width']){
+				$fullwidth = true;
+			}
+		} else{
+			if($page_option == 'yes'){
+				$fullwidth = true;
+			}
+		}
+
+
+		if($fullwidth){
+			$fullwidth_class = "fullwidth";
+		} else {
+			$fullwidth_class = "";
+		}
+
+		return $fullwidth_class;
+	}
+
+	function get_page_id(){
+		$blog = false;
+		global $post;
+		if ( is_front_page() && is_home() ) {
+			$blog = false;
+		} elseif ( is_front_page() ) {
+			$blog = false;
+		} elseif ( is_home() ) {
+			$blog = true; 
+		} else {
+			$blog = false;
+		}
+
+		if($blog == true){
     	return get_option( 'page_for_posts' ); // Returns blog page ID
     } else {
     	return $post->ID;
@@ -1530,12 +1674,12 @@ if(!class_exists('Aione_Admin')){
 	add_action( 'admin_notices', 'aione_admin_notice' );
 }
 function aione_admin_notice() {
-    ?>
-    <div class="notice error aione-admin-notice is-dismissible" >
-        <p><?php _e( 'For complete design setting "Aione Admin" plugin is necessary, install it now! 
-        ', 'gutenbergtheme' ); ?></p>
-    </div>
-    <?php
+	?>
+	<div class="notice error aione-admin-notice is-dismissible" >
+		<p><?php _e( 'For complete design setting "Aione Admin" plugin is necessary, install it now! 
+		', 'gutenbergtheme' ); ?></p>
+	</div>
+	<?php
 }
 
 
@@ -1551,39 +1695,39 @@ function clean_class($string) {
 
 
 function aione_data_table($headers, $data, $id='aione-',$class = 'compact'){  
-    $columns = array();
-    foreach ($headers as $key => $header){
-        $columns[] = clean_class($header);
-    }
+	$columns = array();
+	foreach ($headers as $key => $header){
+		$columns[] = clean_class($header);
+	}
 
-    $output = "";
-    $output .= '<div class="aione-search aione-table" >';
-    $output .= '<div class="field">';
-    $output .= '<input autofocus type="text" class="aione-search-input" data-search="'.implode(' ',$columns).'" placeholder="Search">';
-    $output .= '</div>';
-    $output .= '<div class="clear"></div>';
-    $output .= '<table class="'.$class.'">';
-    $output .= '<thead>';
-    $output .= '<tr>';
-    foreach ($headers as $key => $header){
-        $output .= '<th class="aione-sort-button" data-sort="'.$columns[$key].'">'.$header.'</th>';
-    }
-    $output .= '</tr>';
-    $output .= '</thead>';
-    $output .= '<tbody class="aione-search-list">';
-    if(!empty($data)){
-        foreach ($data as $record_key => $record){
-            $output .= '<tr>';
-            foreach ($record as $key => $value){
-                $output .= '<td class="'.$columns[$key].'">'.$value.'</td>';
-            }
-            $output .= '</tr>';
-        }
-    }
-    $output .= '</tbody>';
-    $output .= '</table>';
-    $output .= '</div>';
-    return $output;
+	$output = "";
+	$output .= '<div class="aione-search aione-table" >';
+	$output .= '<div class="field">';
+	$output .= '<input autofocus type="text" class="aione-search-input" data-search="'.implode(' ',$columns).'" placeholder="Search">';
+	$output .= '</div>';
+	$output .= '<div class="clear"></div>';
+	$output .= '<table class="'.$class.'">';
+	$output .= '<thead>';
+	$output .= '<tr>';
+	foreach ($headers as $key => $header){
+		$output .= '<th class="aione-sort-button" data-sort="'.$columns[$key].'">'.$header.'</th>';
+	}
+	$output .= '</tr>';
+	$output .= '</thead>';
+	$output .= '<tbody class="aione-search-list">';
+	if(!empty($data)){
+		foreach ($data as $record_key => $record){
+			$output .= '<tr>';
+			foreach ($record as $key => $value){
+				$output .= '<td class="'.$columns[$key].'">'.$value.'</td>';
+			}
+			$output .= '</tr>';
+		}
+	}
+	$output .= '</tbody>';
+	$output .= '</table>';
+	$output .= '</div>';
+	return $output;
 }
 
 /* 
@@ -1604,7 +1748,6 @@ function g7g_modify_wp_block() {
 	$wp_post_types[$cpt]->_edit_link   = 'post.php?post=%d';
 	
 }*/
-
 
 
 function is_enabled_sidebar( $sidebar_position ){

@@ -35,7 +35,43 @@ $main_classes = implode(" ", $main_classes);
 
 				<?php 
 				if( is_post_type_archive() || is_archive()){
+
 					posts_nav_link();
+
+					// posts_nav_link();
+					/*
+					$args = array(
+						'base'               => '%_%',
+						'format'             => '?paged=%#%',
+						'total'              => 1,
+						'current'            => 0,
+						'show_all'           => false,
+						'end_size'           => 1,
+						'mid_size'           => 2,
+						'prev_next'          => true,
+						'prev_text'          => __('« Previous'),
+						'next_text'          => __('Next »'),
+						'type'               => 'plain',
+						'add_args'           => false,
+						'add_fragment'       => '',
+						'before_page_number' => '',
+						'after_page_number'  => ''
+					);
+
+					echo paginate_links( $args );
+
+					*/
+					global $wp_query;
+
+					$big = 999999999; // need an unlikely integer
+
+					echo paginate_links( array(
+						'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+						'format' => '?paged=%#%',
+						'current' => max( 1, get_query_var('paged') ),
+						'total' => $wp_query->max_num_pages
+					) );
+
 				}
 				?>
 			</div> <!-- .wrapper -->
