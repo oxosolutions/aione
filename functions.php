@@ -256,7 +256,7 @@ require get_template_directory() . '/includes/customize-menu.php';
 *
 */
 require 'custom-functions.php';
-// require get_template_directory() . '/blocks/main.php';
+require get_template_directory() . '/blocks/main.php';
 
 
 add_action( 'init', 'kses_unfiltered_html' );

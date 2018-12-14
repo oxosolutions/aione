@@ -82,3 +82,6 @@ FIXED: Fixed Issue with custom sidebars
 
 ## 7.1.0.19 05-12-2018
 ADDED: Social Share widget
+
+## 7.1.0.20 10-12-2018
+UPDATED: Footer and service worker
