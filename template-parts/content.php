@@ -1,5 +1,4 @@
 <article id="post_<?php the_ID(); ?>" <?php post_class(); ?>> 
-	<?php the_ID(); ?>
 	<div class="featured-image aione-rounded">
 		<?php the_post_thumbnail( 'full' ); ?>
     </div>

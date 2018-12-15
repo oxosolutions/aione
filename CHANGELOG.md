@@ -88,3 +88,6 @@ UPDATED: Footer and service worker
 
 ## 7.2.0.0 15-12-2018
 ADDED: Added Aione Blocks for Gutenberg in 5.0
+
+## 7.2.0.1 15-12-2018
+FIXED: Fixed minor issue
