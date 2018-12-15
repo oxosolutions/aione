@@ -42,7 +42,7 @@ class AioneBlocks {
 		wp_enqueue_script(
 			'aione-blocks',
 			$this->path.'blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element' ),
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' , 'wp-components' ),
 			filemtime( $this->realPath. 'blocks.build.js' ) // filemtime — Gets file modification time.
 		);
 
