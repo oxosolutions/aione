@@ -584,18 +584,19 @@ Aione Page Title
 	background-color: #f2f2f2;
 }
 .aione-pagetitle .title{
-	color: #333333;
 	margin: 0;
-	font-size: 26px;
-    font-weight: 500;
-	line-height: 1.4;
+  color: #333333;
+  font-size: 48px;
+  line-height: 1.5;
+  font-weight: 100;
 	text-align: center;
 }
 .aione-pagetitle .description{
-	color: #484848;
 	margin: 0;
-	font-size: 17px;
-	line-height: 1.4;
+  color: #484848;
+  font-size: 22.5px;
+  line-height: 1.5;
+  font-weight: 100;
 	text-align: center;
 }
 
@@ -1461,6 +1462,26 @@ Common Comment Style
 /*********************************************
 PAGINATION
 *********************************************/
+.pagination{
+  margin-bottom: 12px;
+}
+.pagination li.active a, 
+.pagination li.active span{
+  color:#ffffff;
+}
+.pagination li{
+  display: inline-block;
+  margin: 0 4px 8px 4px;
+}
+.pagination li.double{
+  width: 80px;
+}
+
+
+/*********************************************
+Blog PAGINATION
+*********************************************/
+
 .pagination {
 	text-align: center;
 }

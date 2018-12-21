@@ -91,3 +91,10 @@ ADDED: Added Aione Blocks for Gutenberg in 5.0
 
 ## 7.2.0.1 15-12-2018
 FIXED: Fixed minor issue
+
+## 7.2.0.2 21-12-2018
+ADDED: Custom posts per page in archieve pagination
+ADDED: Added post status in custom template
+ADDED: added upcomming-tag shortcode
+ADDED: Orderby and order fields in custom template
+UPDATED: Blog shortcode

@@ -25,9 +25,9 @@ print_r($post_type);
 echo "<br>single_template_slug ==".$single_template_slug;
 echo "</pre>";*/
 ?>
-<?php 
-if(isset($single_template_slug) && $single_template_slug != 'single'){ 
-	echo do_shortcode($aione_template_single);
+<?php  
+if( isset( $archive_template_slug ) && $archive_template_slug != 'archive'){ 
+	echo do_shortcode( $aione_template_archive );
 } else { 
 ?>
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

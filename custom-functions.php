@@ -1898,3 +1898,78 @@ function aione_get_sidebar( $sidebar_position ){
 
 	return $sidebar;
 }
+
+function aione_pagination($wp_query = null) {
+	if($wp_query == null){
+		global $wp_query;
+	}
+	$big = 999999999; // need an unlikely integer
+	$current_page = get_query_var('paged');
+	$total_pages = $wp_query->max_num_pages;
+
+	$args = array(
+		'base' 				=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+		'format'			=> '?paged=%#%',
+		'total'				=> $total_pages,
+		'current'			=> max( 1, $current_page ),
+		'show_all'			=> false,
+		'end_size'			=> 2,
+		'mid_size'			=> 2,
+		'prev_next'			=> false,
+		'prev_text'			=> '<i class="ion-ios-arrow-back"></i>',
+		'next_text'			=> '<i class="ion-ios-arrow-forward"></i>',
+		'type'				=> 'array',
+		'add_args'			=> false,
+		'add_fragment'		=> '',
+		'before_page_number'=> '',
+		'after_page_number'	=> ''
+	);
+
+	$pages =  paginate_links( $args ); 
+
+	$output = '';
+
+	$output .= '<ul class="pagination">';
+
+	if( $current_page == 1 || $current_page == 0 ){
+		$output .= '<li class="page first disabled"><span><i class="ion-ios-arrow-back"></i><i class="ion-ios-arrow-back"></i></span></li>';
+		$output .= '<li class="page prev disabled"><span><i class="ion-ios-arrow-back"></i></span></li>';
+	} else {
+		$prev_page = $current_page - 1;
+		$output .= '<li class="page first"><a href="'.esc_url( get_pagenum_link( 1 ) ).'"><span><i class="ion-ios-arrow-back"></i><i class="ion-ios-arrow-back"></i></span></a></li>';
+		$output .= '<li class="page prev"><a href="'.esc_url( get_pagenum_link( $prev_page ) ).'"><span><i class="ion-ios-arrow-back"></i></span></a></li>';
+	}
+
+	if( is_array( $pages ) ){
+		foreach ($pages as $key => $page) {
+
+			$classes = array();
+			$classes[] = 'page';
+
+			$page_number = strip_tags($page);
+
+			if( $current_page > 0 && $current_page == $page_number ){
+				$classes[] = 'active';
+			}
+			if( $current_page == 0 && 1 == $page_number ){
+				$classes[] = 'active';
+			}
+			$classes = implode(' ', $classes);
+			$output .= '<li class="'.$classes.'">'.$page.'</li>';
+		}
+	}
+
+	if( $current_page == $total_pages ){
+		$output .= '<li class="page next disabled"><span><i class="ion-ios-arrow-forward"></i></span></li>';
+		$output .= '<li class="page last disabled"><span><i class="ion-ios-arrow-forward"></i><i class="ion-ios-arrow-forward"></i></span></li>';
+	} else {
+		$next_page = $current_page + 1;
+		$output .= '<li class="page next"><a href="'.esc_url( get_pagenum_link( $next_page ) ).'"><span><i class="ion-ios-arrow-forward"></i></span></a></li>';
+		$output .= '<li class="page last"><a href="'.esc_url( get_pagenum_link( $total_pages ) ).'"><span><i class="ion-ios-arrow-forward"></i><i class="ion-ios-arrow-forward"></i></span></a></li>';
+	}
+	
+	$output .= '</ul>';
+
+	return $output;
+}
+

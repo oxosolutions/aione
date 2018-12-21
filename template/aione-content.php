@@ -2,6 +2,7 @@
 global $theme_options;
 global $post;
 
+
 //echo "<br>ID = ".$post->ID;
 /*$posts_page_id = get_option( 'page_for_posts' );
 echo "*****************".$posts_page_id;*/
@@ -15,44 +16,54 @@ $aione_templates = @get_option('aione-templates');
 $aione_template_single = @$aione_templates[$single_template_slug]['content'];
 $aione_template_archive = @$aione_templates[$archive_template_slug]['content'];
 
-/*
-echo "<pre>";
-print_r($aione_templates);
-echo "</pre>";
-*/
-/*
-echo "<pre>";
-echo "<br>posID ==".$post->ID;
-echo "<br>aione_components ==";
-print_r($aione_components);
-echo "<br>aione_component ==";
-print_r($aione_component);
-echo "<br>single_template_slug ==".$single_template_slug;
-echo "<br>archive_template_slug ==".$archive_template_slug;
 
-echo "<br>get_post_type ==".get_post_type();
-echo "<br>get_post_type ==".get_post_format();
-echo "<br>is_search ==".is_search();
-echo "<br>is_archive ==".is_archive();
-echo "<br>is_single ==".is_single();
-echo "<br>single_template_slug ==".single_template_slug();
-echo "<br>archive_template_slug ==".archive_template_slug();
+if(isset($archive_template_slug) && $archive_template_slug != "archive"){
+	global $wp_query;
+	$ppp = $aione_templates[$archive_template_slug]['template_posts_per_page'];
+	$order_by = $aione_templates[$archive_template_slug]['template_posts_order_by'];
+	$order = $aione_templates[$archive_template_slug]['template_posts_order'];
+	$template_posts_status_array = $aione_templates[$archive_template_slug]['template_posts_status'];
+	$post_status = array('publish');
+	if(!empty($template_posts_status_array)){
+		$post_status = array_keys($template_posts_status_array);
+	}
+	
+	$args = array_merge( 
+		$wp_query->query, 
+		array( 
+			'posts_per_page' => $ppp , 
+			'orderby' => $order_by  , 
+			'order' => $order ,
+			'post_status' => $post_status
+		) 
+	);
+	query_posts( $args );
+}
 
-*/
+/*echo "<pre>";
+print_r($wp_query);
+echo "</pre>===";*/
+
+
 if ( have_posts() ) :
 
 	while ( have_posts() ) : the_post();
 		if( is_search() ){ 
 			get_template_part( 'template-parts/content', 'search' );
-		} else if ( is_home() ) {  
-			get_template_part( 'template-parts/blog', get_post_format() );
-		} else if ( is_archive() ) { 
+		} else if ( is_home() ) {   
+			//get_template_part( 'template-parts/blog', get_post_format() );
+			if(isset($archive_template_slug) && $archive_template_slug != 'archive'){ 
+				echo do_shortcode($aione_template_archive);
+			} else { 
+				get_template_part( 'template-parts/blog', get_post_format() );
+			}
+		} else if ( is_archive() ) {   
 			if(isset($archive_template_slug) && $archive_template_slug != 'archive'){ 
 				echo do_shortcode($aione_template_archive);
 			} else { 
 				get_template_part( 'template-parts/content', get_post_format() );
 			}			
-		} else if( is_single() ) { 
+		} else if( is_single() ) {   
 			if(isset($single_template_slug) && $single_template_slug != 'single'){ 
 				echo do_shortcode($aione_template_single);
 			} else { 

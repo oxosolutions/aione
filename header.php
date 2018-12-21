@@ -207,6 +207,9 @@
 		.aione-pagetitle .title{
 			color: '.$theme_options['page_title_bar_text_color'].';
 		}
+		.aione-pagetitle .description{
+			color: '.$theme_options['page_title_bar_text_color'].';
+		}
 		.aione-pagetitle a{
 			color: '.$theme_options['page_title_bar_link_color'].';
 		}
