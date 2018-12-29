@@ -1882,3 +1882,15 @@ Aione App Builder View Profile
 .aione-list.theme-solid > li{
 	padding:15px;
 }
+
+
+/***********************************
+Aione More
+***********************************/
+.aione-more .aione-more-content{ display:none;}
+.aione-more.active .aione-more-content{ display:inline;}
+.aione-more .aione-more-toggle{ 
+    color:#168dc5;
+    cursor:pointer;
+    padding-left:5px;
+}

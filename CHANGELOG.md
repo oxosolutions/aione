@@ -98,3 +98,6 @@ ADDED: Added post status in custom template
 ADDED: added upcomming-tag shortcode
 ADDED: Orderby and order fields in custom template
 UPDATED: Blog shortcode
+
+## 7.2.0.3 29-12-2018
+FIXED: Fixed pagination

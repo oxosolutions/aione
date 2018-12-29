@@ -57,6 +57,8 @@ if ( ! function_exists( 'aionetheme_setup' ) ) :
 			'comment-list',
 			'gallery',
 			'caption',
+			'script',
+			'style',
 		) );
 
 		// Set up the WordPress core custom background feature.

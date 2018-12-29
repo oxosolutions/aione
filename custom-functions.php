@@ -261,7 +261,7 @@ class PerPageOptionsMetaboxes {
 			?><script> jsEditor();</script><?php
 		endif;	
 		?>
-		<style type="text/css" media="screen">
+		<style media="screen">
 		.ace_editor {
 			border: 1px solid lightgray;
 			height: 200px;
@@ -318,7 +318,7 @@ public function upload( $id, $label, $desc = '' ) {
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript">
+	<script>
 		jQuery(document).ready(function($){
 			'use strict';
 			// Instantiates the variable that holds the media library frame.
@@ -1353,7 +1353,7 @@ class Aione_Social_Share_Widget extends WP_Widget {
 		$title = get_the_title();
 		$url = get_permalink();
 		?>
-		<script type="text/javascript">
+		<script>
 			jQuery(document).ready(function(){
 				jQuery('.share').ShareLink({
 					title: <?php echo '"'.$title.'"' ; ?>,
@@ -1906,6 +1906,10 @@ function aione_pagination($wp_query = null) {
 	$big = 999999999; // need an unlikely integer
 	$current_page = get_query_var('paged');
 	$total_pages = $wp_query->max_num_pages;
+
+	if( $total_pages == 1 ){
+		return '';
+	}
 
 	$args = array(
 		'base' 				=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
