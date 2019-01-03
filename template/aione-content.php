@@ -69,7 +69,13 @@ if ( have_posts() ) :
 			} else { 
 				get_template_part( 'template-parts/content', get_post_format() );
 			}
-		}else {
+		} elseif(is_attachment()){
+			if(isset($single_template_slug) && $single_template_slug != 'single'){ 
+				echo do_shortcode($aione_template_single);
+			} else { 
+				get_template_part( 'template-parts/content', get_post_format() );
+			}
+		} else {
 			get_template_part( 'template-parts/content', get_post_type() );
 		}
 

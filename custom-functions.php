@@ -13,6 +13,7 @@ class PerPageOptionsMetaboxes {
 
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_meta_boxes' ) );
+		add_action( 'edit_attachment', array( $this, 'save_meta_boxes' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_script_loader' ) );
 	}
 
@@ -63,7 +64,8 @@ class PerPageOptionsMetaboxes {
 		$this->add_meta_box( 'post_options', 'Page Options', 'post' );
 		$this->add_meta_box( 'page_options', 'Page Options', 'page' );*/
 
-		$disallowed = array( 'attachment', 'aione-slider' );
+		//$disallowed = array( 'attachment', 'aione-slider' );
+		$disallowed = array( 'aione-slider' );
 		foreach ( $post_types as $post_type ) {
 			if ( in_array( $post_type, $disallowed ) ) {
 				continue;

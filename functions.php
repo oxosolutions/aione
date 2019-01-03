@@ -126,8 +126,8 @@ add_action( 'after_setup_theme', 'aionetheme_content_width', 0 );
  * Enqueue scripts and styles.
  */
 function aione_scripts() {
-	wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css' );
-	wp_register_style( 'aione-theme', get_template_directory_uri() . '/assets/css/theme.css', array('aione'), time(), 'all' ); 
+	wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), false, 'all' );
+	wp_register_style( 'aione-theme', get_template_directory_uri() . '/assets/css/theme.min.css', array('aione'), time(), 'all' ); 
 	//wp_register_style( 'aione-color', get_template_directory_uri() . '/assets/css/color-blue.css', array('aione','aione-theme'), time(), 'all' );
 	
 	
