@@ -101,3 +101,6 @@ UPDATED: Blog shortcode
 
 ## 7.2.0.3 29-12-2018
 FIXED: Fixed pagination
+
+## 7.2.0.4 03-01-2019
+ADDED: Custom template for media
