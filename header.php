@@ -16,9 +16,11 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php
-	if($pyre_meta_description != "") :
+	if( !empty( $pyre_meta_description ) ){
 		echo '<meta name="description" content="'.sanitize_textarea_field($pyre_meta_description).'">';
-	endif;
+	} else {
+		echo '<meta name="description" content="'.get_the_title().'">';	
+	}
 	?>
 	<?php
 	if($pyre_meta_keywords != "") :
@@ -90,7 +92,7 @@
     $manifest_path = $upload_path.'/pwa/manifest.json';
     
     if(file_exists( $manifest_path )){
-    	//echo '<link rel="manifest" href="'.$manifest_url.'">';
+    	echo '<link rel="manifest" href="'.$manifest_url.'">';
     } 
     ?>
     
@@ -408,11 +410,12 @@
 
 	$aione_templates = get_option('aione-templates');
 	$aione_single_structured_data = @$aione_templates[$template_single_slug]['structured_data'];
-
+	
 	if($template_single_slug != 'single'){
 		echo '<script type="application/ld+json">';
 		$aione_single_structured_data_string = do_shortcode($aione_single_structured_data);
 		$aione_single_structured_data_text = strip_tags($aione_single_structured_data_string);
+
 		echo $aione_single_structured_data_text;
 		echo "</script>";
 	} 

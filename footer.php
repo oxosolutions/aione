@@ -37,7 +37,7 @@ $custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
 		$serviceworker = "
 			if ('serviceWorker' in navigator) {
 				//navigator.serviceWorker.register('/serviceworker.js', { scope: '/' }).then(function(reg) {
-				var serviceworkerPath = '<?php echo $serviceworker_url; ?>';
+				var serviceworkerPath = '".$serviceworker_url."';
 				navigator.serviceWorker.register(serviceworkerPath).then(function(reg) {
 
 				if(reg.installing) {

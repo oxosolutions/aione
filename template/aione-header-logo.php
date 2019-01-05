@@ -2,13 +2,17 @@
 	<?php
 	global $theme_options;
 	$logo = $theme_options['header_logo'];
+	$logo_alt = $logo['alt'];
+	if( empty( $logo_alt ) ){
+		$logo_alt = get_bloginfo( 'name' );
+	}
 	/*
 	echo "<pre>";
 	print_r($logo);
 	echo "</pre>";
 	*/
 	?>
-	<a href="<?php echo get_bloginfo( 'url'); ?>">
-	<img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['alt']; ?>" width="<?php echo $logo['width']; ?>" height="<?php echo $logo['height']; ?>">
+	<a href="<?php echo get_bloginfo( 'url'); ?>" title="<?php echo get_bloginfo( 'name' ); ?> Logo">
+	<img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo_alt; ?>" width="<?php echo $logo['width']; ?>" height="<?php echo $logo['height']; ?>">
 	</a>
 </div>
