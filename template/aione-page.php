@@ -23,7 +23,7 @@ $main_classes = implode(" ", $main_classes);
 
 ?>
 <main id="aione_main" class="aione-main <?php echo @$main_classes;?>">
-	<div class="wrapper">
+	<div class="wrapper ar">
 
 		<?php get_template_part( 'template/aione-sidebar-left'); ?>
 

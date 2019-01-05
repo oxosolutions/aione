@@ -411,7 +411,9 @@
 
 	if($template_single_slug != 'single'){
 		echo '<script type="application/ld+json">';
-		echo do_shortcode($aione_single_structured_data);
+		$aione_single_structured_data_string = do_shortcode($aione_single_structured_data);
+		$aione_single_structured_data_text = strip_tags($aione_single_structured_data_string);
+		echo $aione_single_structured_data_text;
 		echo "</script>";
 	} 
 

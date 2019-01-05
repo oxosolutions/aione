@@ -1891,6 +1891,20 @@ function aione_get_sidebar( $sidebar_position ){
 		}
 	}
 
+	if( is_attachment() ) { 
+
+		//Template Options Left Sidebar
+		if( !empty( $sidebar_single ) && $sidebar_single != 'default' ){
+			$sidebar = $sidebar_single;
+		}
+
+		//Per page Options Left Sidebar
+		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
+		if( !empty( $sidebar_custom ) && $sidebar_custom != 'default') {
+			$sidebar = $sidebar_custom;
+		}
+	}
+
 	if( is_page() ) {
 		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
 		if( !empty( $sidebar_custom ) && $sidebar_custom != 'default') {
