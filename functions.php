@@ -127,14 +127,14 @@ add_action( 'after_setup_theme', 'aionetheme_content_width', 0 );
  */
 function aione_scripts() {
 	wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), false, 'all' );
-	wp_register_style( 'aione-theme', get_template_directory_uri() . '/assets/css/theme.min.css', array('aione'), time(), 'all' ); 
+	wp_register_style( 'aione-theme', get_template_directory_uri() . '/assets/css/theme.min.css', array('aione'), false, 'all' ); 
 	//wp_register_style( 'aione-color', get_template_directory_uri() . '/assets/css/color-blue.css', array('aione','aione-theme'), time(), 'all' );
 	
 	
 	wp_enqueue_style( 'aionetheme-fonts', aionetheme_fonts_url(), array(), null );
 
 	
-	wp_enqueue_script( 'aionetheme-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'aionetheme-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), false, true );
 	// wp_enqueue_script( 'aionetheme-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 	wp_enqueue_script( 'aione-vendor', get_template_directory_uri() . '/assets/js/vendor.min.js', array(), '20151215', true );
 	wp_enqueue_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), time(), true );
@@ -217,8 +217,11 @@ function clean_script_tag( $input ) {
 
 /**
  * Implement the Custom Header feature.
+ * Removed on 2019/01/07
+ * Delete this file if no issue
  */
-require get_template_directory() . '/includes/custom-header.php';
+
+// require get_template_directory() . '/includes/custom-header.php';
 
 /**
  * Custom template tags for this theme.
@@ -269,3 +272,14 @@ function kses_unfiltered_html() {
         kses_remove_filters();
     }
 }
+
+function aione_admin_editor_style( $hook ) {
+	/*
+    if ( 'edit.php' != $hook ) {
+        return;
+    }
+    */
+    wp_register_style( 'aione-admin-editor-css', get_template_directory_uri() . '/assets/css/aione-admin-editor.css', false, '1.0.0' );
+    wp_enqueue_style( 'aione-admin-editor-css' );
+}
+add_action( 'admin_enqueue_scripts', 'aione_admin_editor_style' );
