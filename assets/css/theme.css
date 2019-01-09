@@ -851,7 +851,9 @@ Aione Single
 }
 .entry-content p{
 	font-size: 16px;
-	font-weight: normal;
+  line-height: 1.6;
+  font-weight: normal;
+  margin-bottom: 1em;
 }
 .entry-footer{
 	margin: 0 0 10px 0;
@@ -953,9 +955,6 @@ Aione Single
 
 .blog .post-navigation{
 	display: none;
-}
-.entry-content p{
-	line-height: 1.6;
 }
 
 
@@ -1599,7 +1598,7 @@ Login Form
 /***********************************
 User Links
 ***********************************/
-.user-links{
+.aione-topbar .user-links{
     display:inline-block;
 }
 

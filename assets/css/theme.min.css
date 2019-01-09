@@ -200,7 +200,7 @@ input[type=search]{font-size:18px;line-height:28px;font-weight:400;min-height:40
 .entry-header .entry-title{font-size:30px;margin:0 0 20px 0;}
 .entry-header .entry-meta{font-size:18px;line-height:20px;margin:0 0 10px 0;}
 .entry-content{margin:0 0 20px 0;font-size:16px;font-weight:normal;}
-.entry-content p{font-size:16px;font-weight:normal;}
+.entry-content p{font-size: 16px;line-height: 1.6;font-weight: normal;margin-bottom: 1em;}
 .entry-footer{margin:0 0 10px 0;border:1px solid #e8e8e8;padding:10px;}
 .entry-footer::after{content:'';display:table;clear:both;}
 .entry-footer .edit-link{padding-left:10px;}
@@ -227,7 +227,6 @@ input[type=search]{font-size:18px;line-height:28px;font-weight:400;min-height:40
 .comment-respond .comment-form-cookies-consent{display:none;}
 .comment-respond .submit{background-color:#168dc5;padding:8px 20px;}
 .blog .post-navigation{display:none;}
-.entry-content p{line-height:1.6;}
 .list-blog{padding-right:20px;margin-bottom:40px;}
 .list-blog .entry-header .entry-title{margin:0 0 10px 0;}
 .list-blog .entry-header .entry-title a{color:#757575;}
@@ -382,7 +381,7 @@ display:block;font-size:16px;line-height:22px;font-weight:400;padding:0;margin:0
 .gform_wrapper .validation_message{color:#f44336;}
 .gform_wrapper .validation_error{margin-bottom:20px;}
 .gform_wrapper .validation_message{padding-top:10px;}
-.user-links{display:inline-block;}
+.aione-topbar .user-links{display:inline-block;}
 .aione-topbar .user-links a{color:#368dc4;background-color:#ffffff;border-radius:100px;padding:4px 20px;}
 .aione-topbar .user-welcome{margin-right:10px;color:#fff;}
 input[type=date],
