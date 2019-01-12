@@ -3,14 +3,17 @@ global $post, $theme_options;
 
 $global_js = $theme_options['custom_js'];
 $custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
+
 ?>
-		<?php get_template_part('template/aione-pagebottom');  ?>
-		<?php get_template_part('template/aione-footer');  ?>
-		<?php get_template_part('template/aione-copyright');  ?>
-		<?php get_template_part('template/aione-powered-by');  ?>
-		<?php if(@$theme_options['header_position'] != 'top'){ 
+		<?php get_template_part( 'template/aione-pagebottom' );  ?>
+		<?php get_template_part( 'template/aione-footer' );  ?>
+		<?php get_template_part( 'template/aione-copyright' );  ?>
+		<?php get_template_part( 'template/aione-powered-by' );  ?>
+
+		<?php if( @$theme_options['header_position'] != 'top' ) { 
 			echo '</div>';
 		} ?>
+
 		<a href="#aione_wrapper" class="scrolltop" title="Scroll to top of the page"></a>
 		
 		</div><!-- .wrapper -->
@@ -22,7 +25,10 @@ $custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
 	$upload = wp_upload_dir();
     $upload_url = $upload['baseurl'];
 	$upload_path = $upload['basedir'];
+
 	/*
+	_to_be_deleted
+
     if( is_ssl() ){
       	$upload_url = str_replace( 'http://', 'https://', $upload_url );
     } else {
@@ -59,7 +65,7 @@ $custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
 	if( !empty( $global_js ) || !empty( $custom_js ) || !empty( $serviceworker ) ) {
 		echo "<script>";
 
-		if( !empty( $global_js ) ){
+		if( !empty( $global_js ) ) {
 			echo $global_js;
 		}
 
@@ -67,7 +73,7 @@ $custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
 			echo $custom_js;
 		}
 
-		if( !empty( $serviceworker ) ){
+		if( !empty( $serviceworker ) ) {
 			echo $serviceworker;
 		}
 

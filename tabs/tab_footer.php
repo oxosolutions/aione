@@ -5,8 +5,8 @@ $this->select(
 	__( 'Footer Widgets', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Footer Widgets', 'gutenbergtheme' )
 );
@@ -15,8 +15,8 @@ $this->select(
 	__( '100% Footer Width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( '100% Footer Width', 'gutenbergtheme' )
 );
@@ -25,8 +25,8 @@ $this->select(
 	__( 'Copyright Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Copyright Bar', 'gutenbergtheme' )
 );
@@ -35,8 +35,8 @@ $this->select(
 	__( '100% Copyright Bar Width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes' 	  => __( 'Yes', 'gutenbergtheme' ),
+		'no'  	  => __( 'No', 'gutenbergtheme' )
 	),
 	__( '100% Copyright Bar Width', 'gutenbergtheme' )
 );

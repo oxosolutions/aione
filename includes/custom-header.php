@@ -26,7 +26,7 @@ function gutenbergtheme_custom_header_setup() {
 		'wp-head-callback'       => 'gutenbergtheme_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'gutenbergtheme_custom_header_setup' );
+// add_action( 'after_setup_theme', 'gutenbergtheme_custom_header_setup' );
 
 if ( ! function_exists( 'gutenbergtheme_header_style' ) ) :
 	/**

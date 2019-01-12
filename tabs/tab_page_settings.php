@@ -5,8 +5,8 @@ $this->select(
 	__( '100% Page width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( '100% Page width', 'gutenbergtheme' )
 );
@@ -15,8 +15,8 @@ $this->select(
 	__( 'Enable Page Top Area', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Page Top Area', 'gutenbergtheme' )
 );
@@ -25,8 +25,8 @@ $this->select(
 	__( '100% Page Top Area width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( '100% Page Top Area width', 'gutenbergtheme' )
 );
@@ -35,8 +35,8 @@ $this->select(
 	__( 'Enable Page Bottom Area', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Page Bottom Area', 'gutenbergtheme' )
 );
@@ -45,8 +45,8 @@ $this->select(
 	__( '100% Page bottom Area width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( '100% Page bottom Area width', 'gutenbergtheme' )
 );
@@ -55,8 +55,8 @@ $this->select(
 	__( 'Enable Page Padding', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Page Padding', 'gutenbergtheme' )
 );
@@ -65,8 +65,8 @@ $this->select(
 	__( 'Enable Left Sidebar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Left Sidebar', 'gutenbergtheme' )
 );
@@ -89,8 +89,8 @@ $this->select(
 	__( 'Enable Right Sidebar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Right Sidebar', 'gutenbergtheme' )
 );
@@ -105,8 +105,8 @@ $this->select(
 	__( 'Enable Content Top Area', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Content Top Area', 'gutenbergtheme' )
 ); 
@@ -115,8 +115,8 @@ $this->select(
 	__( 'Enable Content Bottom Area', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Content Bottom Area', 'gutenbergtheme' )
 ); 
@@ -125,8 +125,8 @@ $this->select(
 	__( 'Enable Page Content Padding', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Page Content Padding', 'gutenbergtheme' )
 );

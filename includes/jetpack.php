@@ -37,7 +37,7 @@ function gutenbergtheme_jetpack_setup() {
 		),
 	) );
 }
-add_action( 'after_setup_theme', 'gutenbergtheme_jetpack_setup' );
+// add_action( 'after_setup_theme', 'gutenbergtheme_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.

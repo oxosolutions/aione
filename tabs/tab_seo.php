@@ -1,24 +1,74 @@
-<section class="preview">
-	<div id="logoGoogle"> 
-		<img id="" width="100%" height="100%" class="" src="https://www.portent.com/images/2014/08/google-logo-94x34.jpg" >
-	</div>
-	<div class="clear"></div>
-	<div id="preview_title"></div>
-	<div id="preview_link"><?php echo get_permalink(); ?></div>
-	<div id="preview_description"></div>
+<section class="aione-serp-preview">
+	<div class="aione-serp-preview-label">SERP Preview</div>
+	<div class="aione-serp-preview-title"><?php echo get_post_meta( get_the_ID(), 'pyre_title_tag', true );?></div>
+	<div class="aione-serp-preview-link"><?php echo get_permalink(); ?></div>
+	<div class="aione-serp-preview-description"><?php echo get_post_meta( get_the_ID(), 'pyre_meta_description', true );?></div>
 </section>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#pyre_title_tag').on("input", function() {
 		  var tInput = this.value;
-		  $('#preview_title').text(tInput);
+		  $('.aione-serp-preview-title').text(tInput);
 		});
 		$('#pyre_meta_description').on("input", function() {
 		  var dInput = this.value;
-		  $('#preview_description').text(dInput);
+		  $('.aione-serp-preview-description').text(dInput);
 		});
 	});
 </script>
+<style>
+.aione-serp-preview{
+	display: block;
+	max-width: 592px;
+	padding-bottom: 10px;
+	border: 1px solid #e8e8e8;
+}
+.aione-serp-preview-label{
+	color:#595959;
+	margin-bottom: 10px;
+	font-size:18px;
+	font-weight:400;
+	line-height:1.6;
+    padding-left: 10px;
+	border-bottom: 1px solid #e8e8e8;
+}
+.aione-serp-preview-title{
+	color: #1a0dab;
+	cursor: pointer;
+	display: block;
+	font-family: arial, sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 18px;
+	padding-left: 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.aione-serp-preview-title:hover{
+	text-decoration:underline; 
+}
+.aione-serp-preview-link{
+    color: #006621;
+    font-size: 14px;
+    padding-top: 2px;
+    line-height: 14px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    font-style: normal;
+}
+.aione-serp-preview-description{
+	color: #545454;
+	font-size: 14px;
+	line-height: 18px;
+	height: 36px;
+	overflow: hidden;
+	padding-top: 2px;
+	padding-left: 10px;
+	word-wrap: break-word;
+	font-family: arial, sans-serif;
+}
+</style>
 <?php 
 printf( '<h3>%s</h3>', __( 'Search Engine Listing:', 'gutenbergtheme' ) );
 

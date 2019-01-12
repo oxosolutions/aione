@@ -1,5 +1,5 @@
 <?php
-if( is_active_sidebar( 'aione-header-banner' )  ):?>
+if( is_active_sidebar( 'aione-header-banner' )  ) : ?>
 	<div id="aione_header_banner" class="aione-header-banner">
 		<div class="aione-header-banner">
 			<div class="wrapper">

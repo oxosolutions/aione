@@ -5,8 +5,8 @@ $this->select(
 	__( 'Show Top Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Choose to show or hide the topbar.', 'gutenbergtheme' )
 );
@@ -15,8 +15,8 @@ $this->select(
 	__( '100% Top bar width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Set Yes to set the top bar to 100% of the browser width. Only works with wide layout mode.', 'gutenbergtheme' )
 );
@@ -25,8 +25,8 @@ $this->select(
 	__( 'Show header', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Select Yes to show Header' , 'gutenbergtheme' )
 );
@@ -35,8 +35,8 @@ $this->select(
 	__( '100% Header Width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes' 	  => __( 'Yes', 'gutenbergtheme' ),
+		'no'  	  => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Set Yes to set the header to 100% of the browser width. Only works with wide layout mode.' , 'gutenbergtheme' )
 );
@@ -45,8 +45,8 @@ $this->select(
 	__( 'Show Logo', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable the logo on header.' , 'gutenbergtheme' )
 );
@@ -55,8 +55,8 @@ $this->select(
 	__( 'Show Site Title', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable the site title on header.' , 'gutenbergtheme' )
 );
@@ -65,8 +65,8 @@ $this->select(
 	__( 'Show Tagline', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable the Tagline on header.' , 'gutenbergtheme' )
 );
@@ -75,8 +75,8 @@ $this->select(
 	__( 'Show Naviagtion', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Navigation on header' , 'gutenbergtheme' )
 );
@@ -98,8 +98,8 @@ $this->select(
 	__( 'Show Home Icon', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable home icon on main menu' , 'gutenbergtheme' )
 );
@@ -108,8 +108,8 @@ $this->select(
 	__( 'Show Home Link', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable home link on main menu' , 'gutenbergtheme' )
 );
@@ -118,8 +118,8 @@ $this->select(
 	__( 'Show Menu Description', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable menu description on main menu' , 'gutenbergtheme' )
 );
@@ -128,8 +128,8 @@ $this->select(
 	__( 'Show Search Icon in Main Menu', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Search on main menu' , 'gutenbergtheme' )
 );
@@ -138,8 +138,8 @@ $this->select(
 	__( 'Dropdown Menu Indicator', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable arrow indicators next to parent level menu items' , 'gutenbergtheme' )
 );
@@ -148,8 +148,8 @@ $this->select(
 	__( 'Show Banner', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Banner on header' , 'gutenbergtheme' )
 );
@@ -158,8 +158,8 @@ $this->select(
 	__( 'Show Sliding Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable the top sliding bar.' , 'gutenbergtheme' )
 );

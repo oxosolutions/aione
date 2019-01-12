@@ -104,3 +104,6 @@ FIXED: Fixed pagination
 
 ## 7.2.0.4 03-01-2019
 ADDED: Custom template for media
+
+## 7.3.0.0 12-01-2019
+UPDATED: Revised all css and optimized for seo 

@@ -1,7 +1,7 @@
 <article id="post_<?php the_ID(); ?>" <?php post_class(); ?>> 
 	<div class="featured-image aione-rounded">
 		<?php the_post_thumbnail( 'full' ); ?>
-    </div>
+	</div>
 	<header class="entry-header">
 		<?php 
 		if ( is_singular() ) :
@@ -20,23 +20,23 @@
 
 	<div class="entry-content">
 		<?php
-			the_content( sprintf(
-				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'gutenbergtheme' ),
-					array(
-						'span' => array(
-							'class' => array(),
-						),
-					)
-				),
-				get_the_title()
-			) );
+		the_content( sprintf(
+			wp_kses(
+				/* translators: %s: Name of current post. Only visible to screen readers */
+				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'gutenbergtheme' ),
+				array(
+					'span'  => array(
+						'class' => array(),
+					),
+				)
+			),
+			get_the_title()
+		) );
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'gutenbergtheme' ),
-				'after'  => '</div>',
-			) );
+		wp_link_pages( array(
+			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'gutenbergtheme' ),
+			'after'  => '</div>',
+		) );
 		?>
 	</div><!-- .entry-content -->
 

@@ -8,25 +8,19 @@
  */
 
 global $post;
-$post_type = @get_post_type($post->ID);
-$aione_components = @get_option('aione-components');
+$post_type = @get_post_type( $post->ID );
+$aione_components = @get_option( 'aione-components' );
 $aione_component = @$aione_components[$post_type];
 $single_template_slug = @$aione_component['single_template'];
 $archive_template_slug = @$aione_component['archive_template'];
 
-$aione_templates = @get_option('aione-templates');
+$aione_templates = @get_option( 'aione-templates' );
 $aione_template_single = @$aione_templates[$single_template_slug]['content'];
 $aione_template_archive = @$aione_templates[$archive_template_slug]['content'];
-
-/*echo "<pre>";
-echo "<br>posID ==".$post->ID;
-echo "<br>post_type ==";
-print_r($post_type);
-echo "<br>single_template_slug ==".$single_template_slug;
-echo "</pre>";*/
 ?>
+
 <?php  
-if( isset( $archive_template_slug ) && $archive_template_slug != 'archive'){ 
+if( isset( $archive_template_slug ) && $archive_template_slug != 'archive' ) { 
 	echo do_shortcode( $aione_template_archive );
 } else { 
 ?>

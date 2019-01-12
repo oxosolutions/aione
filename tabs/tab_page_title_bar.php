@@ -5,8 +5,8 @@ $this->select(
 	__( 'Enable Page Title Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Enable Page Title Bar', 'gutenbergtheme' )
 );
@@ -15,8 +15,8 @@ $this->select(
 	__( '100% Page Title Width', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( '100% Page Title Width', 'gutenbergtheme' )
 );
@@ -25,8 +25,8 @@ $this->select(
 	__( 'Show Title on Page Title Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Show Title on Page Title Bar', 'gutenbergtheme' )
 );
@@ -35,8 +35,8 @@ $this->select(
 	__( 'Show Description on Page Title Bar', 'gutenbergtheme' ),
 	array(
 		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' => __( 'Yes', 'gutenbergtheme' ),
-		'no'  => __( 'No', 'gutenbergtheme' )
+		'yes'     => __( 'Yes', 'gutenbergtheme' ),
+		'no'      => __( 'No', 'gutenbergtheme' )
 	),
 	__( 'Show Description on Page Title Bar', 'gutenbergtheme' )
 );
