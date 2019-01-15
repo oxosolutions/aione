@@ -2,23 +2,23 @@
 
 $this->select(
 	'slider_enable',
-	__( 'Show Slider on Page', 'gutenbergtheme' ),
+	__( 'Show Slider on Page', 'aione' ),
 	array(
-		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes'     => __( 'Yes', 'gutenbergtheme' ),
-		'no'      => __( 'No', 'gutenbergtheme' )
+		'default' => __( 'Default', 'aione' ),
+		'yes'     => __( 'Yes', 'aione' ),
+		'no'      => __( 'No', 'aione' )
 	),
-	__( 'Show Slider on Page', 'gutenbergtheme' )
+	__( 'Show Slider on Page', 'aione' )
 );
 $this->select(
 	'slider_100_width',
-	__( '100% Slider Width', 'gutenbergtheme' ),
+	__( '100% Slider Width', 'aione' ),
 	array(
-		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes'     => __( 'Yes', 'gutenbergtheme' ),
-		'no'      => __( 'No', 'gutenbergtheme' )
+		'default' => __( 'Default', 'aione' ),
+		'yes'     => __( 'Yes', 'aione' ),
+		'no'      => __( 'No', 'aione' )
 	),
-	__( 'Enables 100% Slider Width.', 'gutenbergtheme' )
+	__( 'Enables 100% Slider Width.', 'aione' )
 );
 $args = array(
   'post_type'      => 'aione-slider', 
@@ -35,9 +35,9 @@ foreach ( $sliders as $slider ) {
 
 $this->select(
 	'select_slider',
-	__( 'Select Slider', 'gutenbergtheme' ),
+	__( 'Select Slider', 'aione' ),
 	$slider_select,
-	__( 'Select Slider on this page.', 'gutenbergtheme' )
+	__( 'Select Slider on this page.', 'aione' )
 );
 
 // Omit closing PHP tag to avoid "Headers already sent" issues.

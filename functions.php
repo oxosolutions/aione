@@ -258,7 +258,7 @@ require get_template_directory() . '/includes/customize-menu.php';
 require get_template_directory() . '/custom-functions.php';
 
 // Aione Blocks
-require get_template_directory() . '/blocks/main.php';
+// require get_template_directory() . '/blocks/main.php';
 
 
 add_action( 'init', 'kses_unfiltered_html' );

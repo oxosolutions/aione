@@ -61,7 +61,7 @@ class AioneBlocks {
 			array(
 				array(
 					'slug' => 'aione-blocks',
-					'title' => __( 'Aione Blocks', 'aione-blocks' ),
+					'title' => __( 'Aione Blocks', 'aione' ),
 				),
 			)
 		);

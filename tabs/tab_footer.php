@@ -2,43 +2,43 @@
 
 $this->select(
 	'footer_widgets',
-	__( 'Footer Widgets', 'gutenbergtheme' ),
+	__( 'Footer Widgets', 'aione' ),
 	array(
-		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes'     => __( 'Yes', 'gutenbergtheme' ),
-		'no'      => __( 'No', 'gutenbergtheme' )
+		'default' => __( 'Default', 'aione' ),
+		'yes'     => __( 'Yes', 'aione' ),
+		'no'      => __( 'No', 'aione' )
 	),
-	__( 'Footer Widgets', 'gutenbergtheme' )
+	__( 'Footer Widgets', 'aione' )
 );
 $this->select(
 	'footer_100_width',
-	__( '100% Footer Width', 'gutenbergtheme' ),
+	__( '100% Footer Width', 'aione' ),
 	array(
-		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes'     => __( 'Yes', 'gutenbergtheme' ),
-		'no'      => __( 'No', 'gutenbergtheme' )
+		'default' => __( 'Default', 'aione' ),
+		'yes'     => __( 'Yes', 'aione' ),
+		'no'      => __( 'No', 'aione' )
 	),
-	__( '100% Footer Width', 'gutenbergtheme' )
+	__( '100% Footer Width', 'aione' )
 );
 $this->select(
 	'footer_copyright',
-	__( 'Copyright Bar', 'gutenbergtheme' ),
+	__( 'Copyright Bar', 'aione' ),
 	array(
-		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes'     => __( 'Yes', 'gutenbergtheme' ),
-		'no'      => __( 'No', 'gutenbergtheme' )
+		'default' => __( 'Default', 'aione' ),
+		'yes'     => __( 'Yes', 'aione' ),
+		'no'      => __( 'No', 'aione' )
 	),
-	__( 'Copyright Bar', 'gutenbergtheme' )
+	__( 'Copyright Bar', 'aione' )
 );
 $this->select(
 	'footer_copyright_100_width',
-	__( '100% Copyright Bar Width', 'gutenbergtheme' ),
+	__( '100% Copyright Bar Width', 'aione' ),
 	array(
-		'default' => __( 'Default', 'gutenbergtheme' ),
-		'yes' 	  => __( 'Yes', 'gutenbergtheme' ),
-		'no'  	  => __( 'No', 'gutenbergtheme' )
+		'default' => __( 'Default', 'aione' ),
+		'yes' 	  => __( 'Yes', 'aione' ),
+		'no'  	  => __( 'No', 'aione' )
 	),
-	__( '100% Copyright Bar Width', 'gutenbergtheme' )
+	__( '100% Copyright Bar Width', 'aione' )
 );
 
 

@@ -39177,6 +39177,12 @@ input[type=file]:hover {
   position: absolute;
   top: 50%
 }
+.commentlist .bypostauthor {
+  font-weight: 700
+}
+.commentlist li ul.children li.bypostauthor {
+  font-weight: 700
+}
 img {
   max-width: 100%
 }

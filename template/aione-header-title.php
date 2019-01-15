@@ -14,7 +14,7 @@ endif;
 
 ?>
 <div id="aione_header_title" class="aione-header-title <?php echo $description_class; ?>">
-	<a href="<?php echo get_bloginfo( 'url' ); ?>">
+	<a href="<?php echo esc_url( home_url() ); ?>">
 		
 		<?php if( is_enabled( $post->ID, 'header_show_site_title' ) ) : ?>
 			<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>

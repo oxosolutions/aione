@@ -86,13 +86,13 @@ class PerPageOptionsMetaboxes {
 	public function render_aione_design_options( $requested_tabs, $post_type = 'default' ) {
 
 		$tabs_names = array(
-			'header'         => __( 'Header', 'gutenbergtheme' ),
-			'slider'         => __( 'Slider', 'gutenbergtheme' ),
-			'page_title_bar'         => __( 'Page Title Bar', 'gutenbergtheme' ),
-			'page_settings'         => __( 'Page Settings', 'gutenbergtheme' ),
-			'footer'         => __( 'Footer', 'gutenbergtheme' ),
-			'custom_code'         => __( 'Custom Code', 'gutenbergtheme' ),
-			'seo'         => __( 'SEO', 'gutenbergtheme' ),
+			'header'         => __( 'Header', 'aione' ),
+			'slider'         => __( 'Slider', 'aione' ),
+			'page_title_bar'         => __( 'Page Title Bar', 'aione' ),
+			'page_settings'         => __( 'Page Settings', 'aione' ),
+			'footer'         => __( 'Footer', 'aione' ),
+			'custom_code'         => __( 'Custom Code', 'aione' ),
+			'seo'         => __( 'SEO', 'aione' ),
 			
 		);
 		?>
@@ -111,7 +111,7 @@ class PerPageOptionsMetaboxes {
 
 			<?php foreach ( $requested_tabs as $key => $tab_name ) : ?>
 				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo $tab_name; ?>">
-					<?php require_once( 'tabs/tab_' . $tab_name . '.php' ); ?>
+					<?php get_template_part( 'tabs/tab_' . $tab_name ); ?>
 				</div>
 			<?php endforeach; ?>
 
@@ -469,14 +469,14 @@ function register_custom_acf_fields() {
 function aione_acf_admin_notice() {
 	?>
 	<div class="notice error my-acf-notice is-dismissible" >
-		<p><?php _e( 'ACF Plugin is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'gutenbergtheme' ); ?></p>
+		<p><?php _e( 'ACF Plugin is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'aione' ); ?></p>
 	</div>
 	<?php
 }
 function aione_gallery_admin_notice() {
 	?>
 	<div class="notice error my-acf-notice is-dismissible" >
-		<p><?php _e( 'ACF Gallery AddOn is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'gutenbergtheme' ); ?></p>
+		<p><?php _e( 'ACF Gallery AddOn is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'aione' ); ?></p>
 	</div>
 	<?php
 }
@@ -1183,7 +1183,7 @@ function aione_admin_notice() {
 	?>
 	<div class="notice error aione-admin-notice is-dismissible" >
 		<p><?php _e( 'For complete design setting "Aione Admin" plugin is necessary, install it now! 
-		', 'gutenbergtheme' ); ?></p>
+		', 'aione' ); ?></p>
 	</div>
 	<?php
 }

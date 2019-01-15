@@ -10,7 +10,7 @@
 	}
 	
 	?>
-	<a href="<?php echo get_bloginfo( 'url' ); ?>" title="<?php echo get_bloginfo( 'name' ); ?> Logo">
+	<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo get_bloginfo( 'name' ); ?> Logo">
 		<img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo_alt; ?>" width="<?php echo $logo['width']; ?>" height="<?php echo $logo['height']; ?>">
 	</a>
 </div>

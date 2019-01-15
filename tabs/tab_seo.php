@@ -70,48 +70,48 @@
 }
 </style>
 <?php 
-printf( '<h3>%s</h3>', __( 'Search Engine Listing:', 'gutenbergtheme' ) );
+printf( '<h3>%s</h3>', __( 'Search Engine Listing:', 'aione' ) );
 
 $this->text(
 	'title_tag',
-	__( ' Title Tag', 'gutenbergtheme' ),
-	__( '<strong>50 and 60 characters </strong> (spaces included)', 'gutenbergtheme' )
+	__( ' Title Tag', 'aione' ),
+	__( '<strong>50 and 60 characters </strong> (spaces included)', 'aione' )
 );
 
 $this->textarea(
 	'meta_description',
-	__( 'Meta Description', 'gutenbergtheme' ),
-	__( '<strong>70 and 320 characters (spaces included)</strong>', 'gutenbergtheme' )
+	__( 'Meta Description', 'aione' ),
+	__( '<strong>70 and 320 characters (spaces included)</strong>', 'aione' )
 );
 
 $this->textarea(
 	'meta_keywords',
-	__( 'Meta Keywords', 'gutenbergtheme' ),
-	__( 'Enter a series of keywords relevant to the page with comma sepration.<br/>For eg: Wordpress, Theme, Page, Post', 'gutenbergtheme' )
+	__( 'Meta Keywords', 'aione' ),
+	__( 'Enter a series of keywords relevant to the page with comma sepration.<br/>For eg: Wordpress, Theme, Page, Post', 'aione' )
 );
 
-printf( '<h3>%s</h3>', __( 'Social Networks Listing:', 'gutenbergtheme' ) );
+printf( '<h3>%s</h3>', __( 'Social Networks Listing:', 'aione' ) );
 
 $this->text(
 	'og_title',
-	__( 'Title', 'gutenbergtheme' ),
-	__( '', 'gutenbergtheme' )
+	__( 'Title', 'aione' ),
+	__( '', 'aione' )
 );
 
 $this->textarea(
 	'og_description',
-	__( 'Description', 'gutenbergtheme' ),
-	__( '', 'gutenbergtheme' )
+	__( 'Description', 'aione' ),
+	__( '', 'aione' )
 );
 
 $this->upload(
 	'og_image',
-	__( 'Image', 'gutenbergtheme' ),
-	__( 'Select an image.', 'gutenbergtheme' )
+	__( 'Image', 'aione' ),
+	__( 'Select an image.', 'aione' )
 );
 $this->text(
 	'og_url',
-	__( 'URL', 'gutenbergtheme' ),
-	__( '', 'gutenbergtheme' )
+	__( 'URL', 'aione' ),
+	__( '', 'aione' )
 );
 

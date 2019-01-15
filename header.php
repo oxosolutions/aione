@@ -382,7 +382,7 @@
 	<!-- Common Structured Data -->
 	<?php
 	if ( has_custom_logo() ) { 
-        $logo = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), 'full' );
+        $logo = $theme_options['header_logo']['url'];
     }
     ?>
 	<script type="application/ld+json">
@@ -391,7 +391,7 @@
 			"@type": "Organization",
 			"name": "<?php echo get_bloginfo(); ?>",
 			"url": "<?php echo home_url(); ?>",
-			"logo": "<?php echo $logo[0]; ?>",
+			"logo": "<?php echo $logo; ?>",
          	"contactPoint": [
          		{ 
          			"@type": "ContactPoint",
