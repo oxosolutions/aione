@@ -27,7 +27,7 @@ if( isset( $archive_template_slug ) && $archive_template_slug != 'archive' ) {
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<header class="entry-header">
 			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
+			<!--_to_be_deleted-->
 			<?php// if ( 'post' === get_post_type() ) : ?>
 			<div class="entry-meta">
 				<?php gutenbergtheme_posted_on(); ?>
@@ -42,6 +42,7 @@ if( isset( $archive_template_slug ) && $archive_template_slug != 'archive' ) {
 		<footer class="entry-footer">
 			<?php gutenbergtheme_entry_footer(); ?>
 		</footer><!-- .entry-footer -->
+		<!--_to_be_deleted-->
 	</article><!-- #post-<?php the_ID(); ?> -->
 <?php
 }

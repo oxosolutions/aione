@@ -9,7 +9,7 @@
 		else :
 			the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
 		endif;
-
+		//_to_be_deleted
 		//if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
 			<?php gutenbergtheme_posted_on(); ?>
@@ -43,4 +43,5 @@
 	<footer class="entry-footer">
 		<?php gutenbergtheme_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
+	<!--_to_be_deleted-->
 </article><!-- #post-<?php the_ID(); ?> -->

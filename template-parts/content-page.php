@@ -9,6 +9,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<!--_to_be_deleted-->
 	<!--
 	<header class="entry-header">
 		<?php //the_title( '<h2 class="entry-title aione-align-center m-0">', '</h2>' ); ?>
@@ -48,5 +49,6 @@
 			?>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
+	<!--_to_be_deleted-->
 </article><!-- #post-<?php the_ID(); ?> -->
 

@@ -34,4 +34,5 @@ global $theme_options;
 			</footer><!-- .entry-footer -->
 		</div>
 	</div>
+	<!--_to_be_deleted-->
 </article><!-- #post-<?php the_ID(); ?> -->

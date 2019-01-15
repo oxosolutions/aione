@@ -37317,10 +37317,26 @@ $(document).ready(function() {
 	})
 
 	/*****************************************************
-	/*  Aione Collapsible
+	/*  Aione More
 	/*****************************************************/
+		
+	try{
+		$( ".aione-more" ).each( function() {
+			var html = $(this).html();
+			if($(this).hasClass('active')){
+				var toggle = 'Show Less';
+			} else {
+				var toggle = 'Show More';
+			}
+			var output = '<span class="aione-more-content">' + html + '</span>'
+			+'<a href="#" class="aione-more-toggle">'+ toggle +'</a>';
+			$(this).html( output );
+		});
+	}catch(e){
+		console.log(e);
+	}
 
-	$('.aione-more-toggle').click(function(e){
+	$(document).on('click', '.aione-more-toggle', function(e){
 		e.preventDefault();
 		$(this).parent().toggleClass('active');
 		if($(this).parent().hasClass('active')){
@@ -37328,12 +37344,10 @@ $(document).ready(function() {
 		} else {
 			$(this).html('Show More');
 		} 
-	});
-
+	}); 
 	
 
-
-
+	
 
 	/*****************************************************
 	/*  Hide Menu
