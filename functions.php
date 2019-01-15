@@ -234,6 +234,9 @@ require get_template_directory() . '/includes/register-sidebars.php';
 //Register Aione Slider
 require get_template_directory() . '/includes/register-aione-slider.php';
 
+// Shortcodes
+require get_template_directory() . '/includes/shortcodes.php';
+
 //Custom template tags for this theme.
 require get_template_directory() . '/includes/template-tags.php';
 
