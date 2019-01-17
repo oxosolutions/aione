@@ -21,7 +21,7 @@ $main_classes[] = is_fullwidth( $post->ID, 'page' );
 $main_classes = implode(" ", $main_classes);
 
 ?>
-<main id="aione_main" class="aione-main <?php echo @$main_classes; ?>">
+<main id="aione_main" class="aione-main <?php echo esc_html($main_classes); ?>">
 	<div class="wrapper ar">
 
 		<?php get_template_part( 'template/aione-sidebar-left' ); ?>

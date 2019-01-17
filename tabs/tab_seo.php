@@ -1,8 +1,8 @@
 <section class="aione-serp-preview">
 	<div class="aione-serp-preview-label">SERP Preview</div>
-	<div class="aione-serp-preview-title"><?php echo get_post_meta( get_the_ID(), 'pyre_title_tag', true );?></div>
-	<div class="aione-serp-preview-link"><?php echo get_permalink(); ?></div>
-	<div class="aione-serp-preview-description"><?php echo get_post_meta( get_the_ID(), 'pyre_meta_description', true );?></div>
+	<div class="aione-serp-preview-title"><?php echo esc_html( get_post_meta( get_the_ID(), 'pyre_title_tag', true ) );?></div>
+	<div class="aione-serp-preview-link"><?php echo esc_url( get_permalink() ); ?></div>
+	<div class="aione-serp-preview-description"><?php echo esc_html( get_post_meta( get_the_ID(), 'pyre_meta_description', true ) );?></div>
 </section>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -70,7 +70,7 @@
 }
 </style>
 <?php 
-printf( '<h3>%s</h3>', __( 'Search Engine Listing:', 'aione' ) );
+printf( '<h3>%s</h3>', esc_html( __( 'Search Engine Listing:', 'aione' ) ) );
 
 $this->text(
 	'title_tag',
@@ -90,18 +90,18 @@ $this->textarea(
 	__( 'Enter a series of keywords relevant to the page with comma sepration.<br/>For eg: Wordpress, Theme, Page, Post', 'aione' )
 );
 
-printf( '<h3>%s</h3>', __( 'Social Networks Listing:', 'aione' ) );
+printf( '<h3>%s</h3>', esc_html( __( 'Social Networks Listing:', 'aione' ) ) );
 
 $this->text(
 	'og_title',
 	__( 'Title', 'aione' ),
-	__( '', 'aione' )
+	__( 'Title', 'aione' )
 );
 
 $this->textarea(
 	'og_description',
 	__( 'Description', 'aione' ),
-	__( '', 'aione' )
+	__( 'Description', 'aione' )
 );
 
 $this->upload(
@@ -112,6 +112,6 @@ $this->upload(
 $this->text(
 	'og_url',
 	__( 'URL', 'aione' ),
-	__( '', 'aione' )
+	__( 'Description', 'aione' )
 );
 

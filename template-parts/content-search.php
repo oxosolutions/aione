@@ -8,15 +8,15 @@
  */
 
 global $post;
-$post_type = @get_post_type( $post->ID );
-$aione_components = @get_option( 'aione-components' );
-$aione_component = @$aione_components[$post_type];
-$single_template_slug = @$aione_component['single_template'];
-$archive_template_slug = @$aione_component['archive_template'];
+$post_type = get_post_type( $post->ID );
+$aione_components = get_option( 'aione-components' );
+$aione_component = $aione_components[$post_type];
+$single_template_slug = $aione_component['single_template'];
+$archive_template_slug = $aione_component['archive_template'];
 
-$aione_templates = @get_option( 'aione-templates' );
-$aione_template_single = @$aione_templates[$single_template_slug]['content'];
-$aione_template_archive = @$aione_templates[$archive_template_slug]['content'];
+$aione_templates = get_option( 'aione-templates' );
+$aione_template_single = $aione_templates[$single_template_slug]['content'];
+$aione_template_archive = $aione_templates[$archive_template_slug]['content'];
 ?>
 
 <?php  
@@ -27,8 +27,7 @@ if( isset( $archive_template_slug ) && $archive_template_slug != 'archive' ) {
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<header class="entry-header">
 			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-			<!--_to_be_deleted-->
-			<?php// if ( 'post' === get_post_type() ) : ?>
+			
 			<div class="entry-meta">
 				<?php gutenbergtheme_posted_on(); ?>
 			</div><!-- .entry-meta -->

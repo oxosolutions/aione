@@ -101,7 +101,7 @@ class PerPageOptionsMetaboxes {
 
 			<?php foreach( $requested_tabs as $key => $tab_name ) : ?>
 				<?php $class = ( $key === 0 ) ? "active" : ""; ?>
-				<li class="<?php echo $class; ?>"><a href="<?php echo $tab_name; ?>"><?php echo $tabs_names[$tab_name]; ?></a></li>
+				<li class="<?php echo esc_html($class); ?>"><a href="<?php echo esc_html($tab_name); ?>"><?php echo esc_html($tabs_names[$tab_name]); ?></a></li>
 
 			<?php endforeach; ?>
 
@@ -110,8 +110,8 @@ class PerPageOptionsMetaboxes {
 		<div class="pyre_metabox">
 
 			<?php foreach ( $requested_tabs as $key => $tab_name ) : ?>
-				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo $tab_name; ?>">
-					<?php get_template_part( 'tabs/tab_' . $tab_name ); ?>
+				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo esc_html($tab_name); ?>">
+					<?php require_once( 'tabs/tab_' . $tab_name.'.php' ); ?>
 				</div>
 			<?php endforeach; ?>
 
@@ -142,13 +142,13 @@ class PerPageOptionsMetaboxes {
 
 		<div class="pyre_metabox_field">
 			<div class="pyre_desc">
-				<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+				<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
 				<?php if ( $desc ) : ?>
 					<p><?php echo $desc; ?></p>
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
-				<input type="text" id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>" value="<?php echo get_post_meta( $post->ID, 'pyre_' . $id, true ); ?>" />
+				<input type="text" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>" value="<?php echo esc_html(get_post_meta( $post->ID, 'pyre_' . $id, true )); ?>" />
 			</div>
 		</div>
 		<?php
@@ -161,17 +161,17 @@ class PerPageOptionsMetaboxes {
 
 		<div class="pyre_metabox_field">
 			<div class="pyre_desc">
-				<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+				<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
 				<?php if ( $desc ) : ?>
 					<p><?php echo $desc; ?></p>
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
 				<div class="oxo-shortcodes-arrow">&#xf3d0;</div>
-				<select id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>">
+				<select id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>">
 					<?php foreach( $options as $key => $option ) : ?> 
 						<?php $selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : ''; ?>
-						<option <?php echo $selected; ?> value="<?php echo $key; ?>"><?php echo $option; ?></option>
+						<option <?php echo esc_html($selected); ?> value="<?php echo esc_html($key); ?>"><?php echo esc_html($option); ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
@@ -186,16 +186,16 @@ class PerPageOptionsMetaboxes {
 
 		<div class="pyre_metabox_field">
 			<div class="pyre_desc">
-				<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+				<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
 				<?php if ( $desc ) : ?>
 					<p><?php echo $desc; ?></p>
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
-				<select multiple="multiple" id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>[]">
+				<select multiple="multiple" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>[]">
 					<?php foreach ( $options as $key => $option ) : ?>
 						<?php $selected = ( is_array( get_post_meta( $post->ID, 'pyre_' . $id, true ) ) && in_array( $key, get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ) ? 'selected="selected"' : ''; ?>
-						<option <?php echo $selected; ?> value="<?php echo $key; ?>"><?php echo $option; ?></option>
+						<option <?php echo esc_html($selected); ?> value="<?php echo esc_html($key); ?>"><?php echo esc_html($option); ?></option>
 					<?php endforeach; ?>
 				</select>
 			</div>
@@ -212,14 +212,14 @@ class PerPageOptionsMetaboxes {
 		?>
 		<div class="pyre_metabox_field">
 			<div class="pyre_desc">
-				<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+				<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
 				<?php if ( $desc ) : ?>
 					<p><?php echo $desc; ?></p>
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
-				<textarea style="display:none;" name="pyre_<?php echo $id; ?>"><?php echo $value;?></textarea>
-				<div id="pyre_<?php echo $id; ?>"></div>
+				<textarea style="display:none;" name="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($value);?></textarea>
+				<div id="pyre_<?php echo esc_html($id); ?>"></div>
 			</div>
 		</div>
 		<script>
@@ -286,13 +286,13 @@ public function textarea( $id, $label, $desc = '', $default = '' ) {
 
 	<div class="pyre_metabox_field">
 		<div class="pyre_desc">
-			<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+			<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
 			<?php if ( $desc ) : ?>
 				<p><?php echo $desc; ?></p>
 			<?php endif; ?>
 		</div>
 		<div class="pyre_field">
-			<textarea cols="120" rows="<?php echo $rows; ?>" id="pyre_<?php echo $id; ?>" name="pyre_<?php echo $id; ?>"><?php echo $value; ?></textarea> 
+			<textarea cols="120" rows="<?php echo esc_html($rows); ?>" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($value); ?></textarea> 
 		</div>
 	</div>
 	<?php
@@ -305,7 +305,7 @@ public function upload( $id, $label, $desc = '' ) {
 
 	<div class="pyre_metabox_field">
 		<div class="pyre_desc">
-			<label for="pyre_<?php echo $id; ?>"><?php echo $label; ?></label>
+			<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
 			<?php if ( $desc ) : ?>
 				<p><?php echo $desc; ?></p>
 			<?php endif; ?>
@@ -314,9 +314,9 @@ public function upload( $id, $label, $desc = '' ) {
 			<div class="pyre_upload">
 
 				<?php $saved = get_post_meta( $post->ID, 'pyre_'.$id, true );?>
-				<input type="url" class="large-text" name="pyre_<?php echo $id; ?>" id="media_upload_btn" value="<?php echo esc_attr( $saved ); ?>"><br>
+				<input type="url" class="large-text" name="pyre_<?php echo esc_html($id); ?>" id="media_upload_btn" value="<?php echo esc_attr( $saved ); ?>"><br>
 
-				<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php _e( 'Upload Media', 'Aione' )?></button>
+				<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php _e( 'Upload Media', 'aione' )?></button>
 			</div>
 		</div>
 	</div>
@@ -367,7 +367,7 @@ $metaboxes = new PerPageOptionsMetaboxes;
 
 function aione_slider_docs_callback(){
 	$id = get_the_ID();
-	echo '[aione-slider id="'.$id.'"]';
+	echo '[aione-slider id="'.esc_html($id).'"]';
 }
 
 
@@ -863,10 +863,10 @@ class Aione_Social_Share_Widget extends WP_Widget {
 			jQuery(document).ready(function(){
 				jQuery('.share').ShareLink({
 					title: <?php echo '"'.$title.'"' ; ?>,
-					url: <?php echo '"'.$url.'"' ; ?>
+					url: <?php echo '"'.esc_url( $url ).'"' ; ?>
 				});
 				jQuery('.counter').ShareCounter({
-					url: <?php echo '"'.$url.'"' ; ?>,
+					url: <?php echo '"'.esc_url( $url ).'"' ; ?>,
 					increment: true
 				});
 
@@ -890,7 +890,7 @@ class Aione_Social_Share_Widget extends WP_Widget {
 		foreach ($aione_social_share_accounts as $site => $id) {
 			if($instance[$id] == 'enable'){
 
-				echo '<li class="share '.$id.' s_'.$id.'"><a title="'.$site.'"><span class="icon"></span><span class="label">'.$site.'</span></a></li>';
+				echo '<li class="share '.esc_html( $id ).' s_'.esc_html( $id ).'"><a title="'.esc_html( $site ).'"><span class="icon"></span><span class="label">'.esc_html( $site ).'</span></a></li>';
 			}
 		}
 		
@@ -1058,7 +1058,7 @@ class Aione_Social_Share_Widget extends WP_Widget {
 		$page_option = get_aione_page_option($id,'pyre_'.$component.'_100_width');
 
 
-		if($page_option == 'default' || empty(@$page_option)){
+		if($page_option == 'default' || empty($page_option)){
 			if($theme_options[$component.'_100_width']){
 				$fullwidth = true;
 			}
@@ -1110,7 +1110,7 @@ function is_enabled( $id, $component ){
 	echo "<br>PAGE OPTIONS ==".$page_option;
 	echo "<br>THEME OPTIONS ==".$theme_options[$component];*/
 
-	if( $page_option == 'default' || empty(@$page_option) ){
+	if( $page_option == 'default' || empty($page_option) ){
 		if( $theme_options[$component] ){
 			$is_enabled = true;
 		}
@@ -1262,35 +1262,35 @@ function is_enabled_sidebar( $sidebar_position ){
 	global $post;
 
 	// get Post Type e.g.'movie'
-	$post_type = @get_post_type($post->ID);
+	$post_type = get_post_type($post->ID);
 
 	// Fetch 'compponents' from options
-	$aione_components = @get_option('aione-components');
+	$aione_components = get_option('aione-components');
 
 	// Filter perticular 'component' from 'components'
-	$aione_component = @$aione_components[$post_type];
+	$aione_component = $aione_components[$post_type];
 
 
 	// get 'templete' slug for Single/Page
-	$template_slug_single = @$aione_component['single_template'];
+	$template_slug_single = $aione_component['single_template'];
 
 	// get 'templete' slug for Blog/Archive
-	$template_slug_archive = @$aione_component['archive_template'];
+	$template_slug_archive = $aione_component['archive_template'];
 
 
 	// Fetch 'templates' from options
-	$aione_templates = @get_option('aione-templates');
+	$aione_templates = get_option('aione-templates');
 
 	// get 'templete' for Single/Page
-	$aione_template_single =  @$aione_templates[$template_slug_single];
+	$aione_template_single =  $aione_templates[$template_slug_single];
 	// get 'templete' for Blog/Archive
-	$aione_template_archive =  @$aione_templates[$template_slug_archive];
+	$aione_template_archive =  $aione_templates[$template_slug_archive];
 
 	// sidebar single
-	$is_enabled_single = @$aione_template_single['template_sidebar_'.$sidebar_position.'_enable'];
+	$is_enabled_single = $aione_template_single['template_sidebar_'.$sidebar_position.'_enable'];
 
 	// sidebar  archive
-	$is_enabled_archive = @$aione_template_archive['template_sidebar_'.$sidebar_position.'_enable'];
+	$is_enabled_archive = $aione_template_archive['template_sidebar_'.$sidebar_position.'_enable'];
 
 	// Global Options
 	$is_enabled = $theme_options['sidebar_'.$sidebar_position.'_enable'];
@@ -1339,35 +1339,35 @@ function aione_get_sidebar( $sidebar_position ){
 	global $post;
 
 	// get Post Type e.g.'movie'
-	$post_type = @get_post_type($post->ID);
+	$post_type = get_post_type($post->ID);
 
 	// Fetch 'compponents' from options
-	$aione_components = @get_option('aione-components');
+	$aione_components = get_option('aione-components');
 
 	// Filter perticular 'component' from 'components'
-	$aione_component = @$aione_components[$post_type];
+	$aione_component = $aione_components[$post_type];
 
 
 	// get 'templete' slug for Single/Page
-	$template_slug_single = @$aione_component['single_template'];
+	$template_slug_single = $aione_component['single_template'];
 
 	// get 'templete' slug for Blog/Archive
-	$template_slug_archive = @$aione_component['archive_template'];
+	$template_slug_archive = $aione_component['archive_template'];
 
 
 	// Fetch 'templates' from options
-	$aione_templates = @get_option('aione-templates');
+	$aione_templates = get_option('aione-templates');
 
 	// get 'templete' for Single/Page
-	$aione_template_single =  @$aione_templates[$template_slug_single];
+	$aione_template_single =  $aione_templates[$template_slug_single];
 	// get 'templete' for Blog/Archive
-	$aione_template_archive =  @$aione_templates[$template_slug_archive];
+	$aione_template_archive =  $aione_templates[$template_slug_archive];
 
 	// sidebar single
-	$sidebar_single = @$aione_template_single['template_sidebar_'.$sidebar_position];
+	$sidebar_single = $aione_template_single['template_sidebar_'.$sidebar_position];
 
 	// sidebar  archive
-	$sidebar_archive = @$aione_template_archive['template_sidebar_'.$sidebar_position];
+	$sidebar_archive = $aione_template_archive['template_sidebar_'.$sidebar_position];
 
 	// Global Options
 	$sidebar = 'aione-sidebar-'.$sidebar_position;

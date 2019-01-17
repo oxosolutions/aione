@@ -10,7 +10,7 @@ $custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
 		<?php get_template_part( 'template/aione-copyright' );  ?>
 		<?php get_template_part( 'template/aione-powered-by' );  ?>
 
-		<?php if( @$theme_options['header_position'] != 'top' ) { 
+		<?php if( $theme_options['header_position'] != 'top' ) { 
 			echo '</div>';
 		} ?>
 
@@ -66,14 +66,17 @@ $custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
 		echo "<script>";
 
 		if( !empty( $global_js ) ) {
+			// do not add escape js without testing
 			echo $global_js;
 		}
 
 		if( !empty( $custom_js ) ) {
+			// do not add escape js without testing
 			echo $custom_js;
 		}
 
 		if( !empty( $serviceworker ) ) {
+			// do not add escape js without testing
 			echo $serviceworker;
 		}
 

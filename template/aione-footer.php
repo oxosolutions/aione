@@ -32,25 +32,25 @@ if( $count > 0 ) :
 	
 	if( $draw == true ) :
 		?>
-		<footer id="aione_footer" class="aione-footer <?php echo is_fullwidth( $post->ID, 'footer' ); ?>">
+		<footer id="aione_footer" class="aione-footer <?php echo esc_html( is_fullwidth( $post->ID, 'footer' ) ); ?>">
 			<div class="wrapper ar">
 				<?php if ( is_active_sidebar( 'footer-column' ) ) : ?>
-					<div class="ac s100 l<?php echo $col ?> ">
+					<div class="ac s100 l<?php echo esc_html( $col ) ?> ">
 						<?php dynamic_sidebar( 'footer-column' ); ?>
 					</div>
 				<?php endif; ?>
 				<?php if ( is_active_sidebar( 'footer-column-2' ) ) : ?>
-					<div class="ac s100 l<?php echo $col ?> ">		
+					<div class="ac s100 l<?php echo esc_html( $col ) ?> ">		
 						<?php dynamic_sidebar( 'footer-column-2' ); ?>
 					</div>
 				<?php endif; ?>
 				<?php if ( is_active_sidebar( 'footer-column-3' ) ) : ?>
-					<div class="ac s100 l<?php echo $col ?> ">
+					<div class="ac s100 l<?php echo esc_html( $col ) ?> ">
 						<?php dynamic_sidebar( 'footer-column-3' ); ?>
 					</div>
 				<?php endif; ?>
 				<?php if ( is_active_sidebar( 'footer-column-4' ) ) : ?>
-					<div class="ac s100 l<?php echo $col ?> ">
+					<div class="ac s100 l<?php echo esc_html( $col ) ?> ">
 						<?php dynamic_sidebar( 'footer-column-4' ); ?>
 					</div>
 				<?php endif; ?>

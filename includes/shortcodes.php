@@ -68,15 +68,15 @@ function aione_slider_shortcode( $atts ) {
 				foreach ($slides as $key => $slide) {
 					$output .= '<div class="slider-item">';
 					$output .= '<div class="slider-image">';
-					$output .= '<img src="'.@$slide['url'].'" alt="'.@$slide['alt'].'" />';
+					$output .= '<img src="'.$slide['url'].'" alt="'.$slide['alt'].'" />';
 					$output .= '</div>';
 					if($settings['caption']){
 						$output .= '<div class="slider-caption">';
 						if($settings['caption_title']){
-							$output .= '<h3 class="caption-title">'.@$slide['title'].'</h3>';
+							$output .= '<h3 class="caption-title">'.$slide['title'].'</h3>';
 						}
 						if($settings['caption_description']){
-							$output .= '<p class="caption-description">'.@$slide['caption'].'</p>';
+							$output .= '<p class="caption-description">'.$slide['caption'].'</p>';
 						}
 						$output .= '</div>';
 					}

@@ -10,7 +10,7 @@
 	}
 	
 	?>
-	<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo get_bloginfo( 'name' ); ?> Logo">
-		<img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo_alt; ?>" width="<?php echo $logo['width']; ?>" height="<?php echo $logo['height']; ?>">
+	<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_html( get_bloginfo( 'name' ) ); ?> Logo">
+		<img src="<?php echo esc_url( $logo['url'] ); ?>" alt="<?php echo esc_html( $logo_alt ); ?>" width="<?php echo esc_html( $logo['width'] ); ?>" height="<?php echo esc_html( $logo['height'] ); ?>">
 	</a>
 </div>

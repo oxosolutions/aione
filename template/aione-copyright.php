@@ -27,16 +27,16 @@ if( $count > 0 ) :
 	
 	if( $draw == true ) :
 		?>
-		<div id="aione_copyright" class="aione-copyright <?php echo is_fullwidth( $post->ID, 'footer_copyright'); ?>">
+		<div id="aione_copyright" class="aione-copyright <?php echo esc_html( is_fullwidth( $post->ID, 'footer_copyright') ); ?>">
 			<div class="wrapper">
 				<?php 
 				if ( is_active_sidebar( 'aione-copyright-left' ) ) {
-					echo '<div class="'.$aione_copyright_left_class.'">';
+					echo '<div class="'.esc_html( $aione_copyright_left_class ).'">';
 					dynamic_sidebar( 'aione-copyright-left' );
 					echo '</div>';
 				}
 				if ( is_active_sidebar( 'aione-copyright-right' ) ) {
-					echo '<div class="'.$aione_copyright_right_class.'">';
+					echo '<div class="'.esc_html( $aione_copyright_right_class ).'">';
 					dynamic_sidebar( 'aione-copyright-right' );
 					echo '</div>';
 				}

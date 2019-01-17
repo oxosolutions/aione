@@ -10,16 +10,16 @@ if( is_enabled( $post->ID, 'show_top_bar' ) ) :
 	}
 	?>
 
-	<div id="aione_topbar" class="aione-topbar <?php echo is_fullwidth( $post->ID, 'top_bar' ); ?>">
+	<div id="aione_topbar" class="aione-topbar <?php echo esc_html(is_fullwidth( $post->ID, 'top_bar' )); ?>">
 		<div class="wrapper">
 			<?php 
 			if ( is_active_sidebar( 'aione-topbar-left' ) ) :
-				echo '<div class="'.$aione_topbar_left_class.'">';
+				echo '<div class="'.esc_html($aione_topbar_left_class).'">';
 					dynamic_sidebar( 'aione-topbar-left' );
 				echo '</div>';
 			endif;
 			if ( is_active_sidebar( 'aione-topbar-right' ) ) :
-				echo '<div class="'.$aione_topbar_right_class.'">';
+				echo '<div class="'.esc_html($aione_topbar_right_class).'">';
 					dynamic_sidebar( 'aione-topbar-right' );
 				echo '</div>';
 			endif;

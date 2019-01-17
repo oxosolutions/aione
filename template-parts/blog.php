@@ -22,15 +22,15 @@ global $theme_options;
 
 			<div class="entry-content"> 
 				<?php if( $theme_options['blog_archive_content_length'] == 'Excerpt' ) {
-					echo wp_trim_words( get_the_content(), $theme_options['blog_archive_excerpt_length'], '...' );
+					echo esc_html( wp_trim_words( get_the_content(), $theme_options['blog_archive_excerpt_length'], '...' ) );
 				} else {
-					echo get_the_content();
+					echo esc_html( wp_trim_words( get_the_content() ) );
 				}
 				?>
 			</div><!-- .entry-content -->
 
 			<footer class="entry-footer">
-				<a class="read-more-link" href="<?php echo get_permalink(); ?>">Read more</a>
+				<a class="read-more-link" href="<?php echo esc_url(get_permalink()); ?>">Read more</a>
 			</footer><!-- .entry-footer -->
 		</div>
 	</div>
