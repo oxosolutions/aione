@@ -107,3 +107,15 @@ ADDED: Custom template for media
 
 ## 7.3.0.0 12-01-2019
 UPDATED: Revised all css and optimized for seo 
+
+## 7.3.0.1 17-01-2019
+UPDATED: Revised coding standards 
+
+## 7.3.0.2 17-01-2019
+UPDATED: Revised coding standards 
+
+## 7.3.0.3 17-01-2019
+UPDATED: Revised coding standards 
+
+## 7.3.0.4 17-01-2019
+FIXED: Fixed pagination issue

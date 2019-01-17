@@ -316,7 +316,7 @@ public function upload( $id, $label, $desc = '' ) {
 				<?php $saved = get_post_meta( $post->ID, 'pyre_'.$id, true );?>
 				<input type="url" class="large-text" name="pyre_<?php echo esc_html($id); ?>" id="media_upload_btn" value="<?php echo esc_attr( $saved ); ?>"><br>
 
-				<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php _e( 'Upload Media', 'aione' )?></button>
+				<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php esc_html_e( 'Upload Media', 'aione' )?></button>
 			</div>
 		</div>
 	</div>
@@ -1453,6 +1453,7 @@ function aione_pagination($wp_query = null) {
 
 	$output = '';
 
+
 	$output .= '<ul class="pagination">';
 
 	if( $current_page == 1 || $current_page == 0 ){
@@ -1465,7 +1466,7 @@ function aione_pagination($wp_query = null) {
 	}
 
 	if( is_array( $pages ) ){
-		foreach ($pages as $key => $page) {
+		foreach ( $pages as $key => $page ) {
 
 			$classes = array();
 			$classes[] = 'page';
@@ -1487,7 +1488,11 @@ function aione_pagination($wp_query = null) {
 		$output .= '<li class="page next disabled"><span><i class="ion-ios-arrow-forward"></i></span></li>';
 		$output .= '<li class="page last disabled"><span><i class="ion-ios-arrow-forward"></i><i class="ion-ios-arrow-forward"></i></span></li>';
 	} else {
-		$next_page = $current_page + 1;
+		if( $current_page == 1 || $current_page == 0 ) {
+			$next_page = 2;
+		} else {
+			$next_page = $current_page + 1;
+		}
 		$output .= '<li class="page next"><a href="'.esc_url( get_pagenum_link( $next_page ) ).'"><span><i class="ion-ios-arrow-forward"></i></span></a></li>';
 		$output .= '<li class="page last"><a href="'.esc_url( get_pagenum_link( $total_pages ) ).'"><span><i class="ion-ios-arrow-forward"></i><i class="ion-ios-arrow-forward"></i></span></a></li>';
 	}

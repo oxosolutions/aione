@@ -39185,18 +39185,16 @@ input[type=file]:hover {
 }
 .pagination {
   text-align: center;
-  margin-bottom: 12px
+  margin-bottom: 1em
 }
 .pagination li {
   display: inline-block;
-  margin: 0 4px 8px 4px;
   padding: 0;
-  margin: 0;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 2.5em;
+  height: 2.5em;
+  line-height: 2.5em;
   text-align: center;
-  border-radius: 0;
+  margin: 0 4px 8px 4px;
   background-color: #fff;
   border: 1px solid #e8e8e8;
   -webkit-transition: all 180ms ease-out;
@@ -39206,66 +39204,44 @@ input[type=file]:hover {
   transition: all 180ms ease-out
 }
 .pagination li:hover {
-  background-color: #f8f8f8
-}
-.pagination li.active a,
-.pagination li.active span {
-  color: #fff
+  background-color: #e8e8e8
 }
 .pagination li.active {
-  background-color: #0073aa;
-  border: 1px solid #0073aa
+  background-color: #222a2d;
+  border: 1px solid #222a2d
 }
 .pagination li.active:hover {
-  background-color: #006698;
-  border: 1px solid #006698
-}
-.pagination li.active span {
-  color: #fff
-}
-.pagination li.double {
-  width: 80px
+  background-color: #191e21;
+  border: 1px solid #191e21
 }
 .pagination li.disabled {
   background-color: #f8f8f8;
   border: 1px solid #e8e8e8;
   cursor: no-drop
 }
-.pagination li.disabled span {
-  color: #999
+.pagination.double li {
+  width: 5em
 }
 .pagination li a,
 .pagination li span {
-  background: #454545;
-  color: #fff;
-  margin: 0 10px 10px 0;
-  text-align: center;
-  min-width: 40px;
-  display: inline-block;
-  font-size: 16px;
-  line-height: 40px;
-  padding: 0 15px;
-  transition: all 180ms ease-in-out;
-  color: #666;
   display: block;
   padding: 0;
-  font-size: 16px;
-  line-height: 40px;
+  font-size: 1em;
+  line-height: 2.5em;
   text-align: center;
-  -webkit-transition: all 150ms ease-out;
-  -moz-transition: all 150ms ease-out;
-  -o-transition: all 150ms ease-out;
-  transition: all 150ms ease-out
+  -webkit-transition: all 180ms ease-out;
+  -moz-transition: all 180ms ease-out;
+  -ms-transition: all 180ms ease-out;
+  -o-transition: all 180ms ease-out;
+  transition: all 180ms ease-out
 }
-.pagination > a:hover,
-.pagination > span:hover {
-  background: #333
+.pagination li.active a,
+.pagination li.active span {
+  color: #fff
 }
-.pagination > .current {
-  background: #168dc5
-}
-.pagination > .current:hover {
-  background: #1570a6
+.pagination li.disabled a,
+.pagination li.disabled span {
+  color: #999
 }
 .pagination > .pagination-next,
 .pagination > .pagination-prev {
@@ -39275,31 +39251,31 @@ input[type=file]:hover {
 .pagination > .pagination-next > .page-next,
 .pagination > .pagination-prev > .page-prev {
   display: inline-block;
-  width: 16px
+  width: 1em
 }
 .pagination > .pagination-prev > .page-prev:before {
   content: "";
-  position: absolute;
-  border-top: 1px solid #fff;
-  border-left: 1px solid #fff;
-  transform: rotate(-45deg);
   top: 50%;
   left: 17px;
   width: 12px;
   height: 12px;
-  margin: -6px 0 0 0
+  margin: -6px 0 0 0;
+  position: absolute;
+  transform: rotate(-45deg);
+  border-left: 1px solid #fff;
+  border-top: 1px solid #fff
 }
 .pagination > .pagination-next > .page-next:before {
   content: "";
-  position: absolute;
-  border-top: 1px solid #fff;
-  border-right: 1px solid #fff;
-  transform: rotate(45deg);
   top: 50%;
   right: 17px;
   width: 12px;
   height: 12px;
-  margin: -6px 0 0 0
+  margin: -6px 0 0 0;
+  position: absolute;
+  transform: rotate(45deg);
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff
 }
 img {
   max-width: 100%
