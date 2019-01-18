@@ -128,6 +128,38 @@ td,
 th {
   padding: 0
 }
+.rtl .aione-header {
+  text-align: left
+}
+.aione-wrapper {
+  margin: 0;
+  padding: 0
+}
+.aione-layout-wide {
+  width: 100%
+}
+.aione-row:after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both
+}
+.aione-wrapper.no-header .aione-main {
+  padding-top: 0
+}
+.aione-layout-boxed .wrapper {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto
+}
+.aione-layout-wide .aione-copyright .wrapper,
+.aione-layout-wide .aione-footer .wrapper,
+.aione-layout-wide .aione-header .wrapper,
+.aione-layout-wide .aione-main .wrapper {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto
+}
 .aione-topbar {
   margin: 0;
   padding: 0;
@@ -151,6 +183,9 @@ th {
 }
 .aione-topbar a:hover {
   color: #fff
+}
+.aione-topbar p {
+  margin-bottom: 0
 }
 .aione-topbar-left {
   float: left;
@@ -472,55 +507,6 @@ th {
 .aione-header .aione-header-right .aione-header-item .aione-profile-widget .profile-menu li a:hover {
   color: #fff;
   background-color: #168dc5
-}
-.aione-sidebar {
-  width: 200px;
-  float: left;
-  position: relative
-}
-.aione-sidebar:before {
-  content: "";
-  position: fixed;
-  width: 200px;
-  top: 0;
-  bottom: 0;
-  background-color: #20252f
-}
-.aione-main.sidebar-small .aione-sidebar {
-  width: 40px
-}
-.aione-main.sidebar-small .aione-sidebar:before {
-  width: 40px
-}
-.aione-sidebar.fixed-sidebar {
-  position: fixed;
-  bottom: 0
-}
-.aione-wrapper.no-sidebar .aione-main {
-  padding-top: 0
-}
-.aione-content {
-  width: calc(100% - 210px);
-  float: right;
-  position: relative
-}
-.aione-main.sidebar-small .aione-content {
-  width: calc(100% - 50px)
-}
-.aione-main.fullwidth .aione-content {
-  width: 100%;
-  float: none
-}
-.aione-page-content {
-  min-height: 400px
-}
-.aione-wrapper.no-sidebar .aione-main .aione-content {
-  width: 100%;
-  float: none
-}
-.page-content {
-  padding-right: 0;
-  padding-left: 230px!important
 }
 .aione-nav {
   color: #454545;
@@ -1295,6 +1281,55 @@ th {
   background-color: #787a7e;
   border-radius: 6px
 }
+.aione-content {
+  width: calc(100% - 210px);
+  float: right;
+  position: relative
+}
+.aione-main.sidebar-small .aione-content {
+  width: calc(100% - 50px)
+}
+.aione-main.fullwidth .aione-content {
+  width: 100%;
+  float: none
+}
+.aione-page-content {
+  min-height: 400px
+}
+.aione-wrapper.no-sidebar .aione-main .aione-content {
+  width: 100%;
+  float: none
+}
+.page-content {
+  padding-right: 0;
+  padding-left: 230px!important
+}
+.aione-sidebar {
+  width: 200px;
+  float: left;
+  position: relative
+}
+.aione-sidebar:before {
+  content: "";
+  position: fixed;
+  width: 200px;
+  top: 0;
+  bottom: 0;
+  background-color: #20252f
+}
+.aione-main.sidebar-small .aione-sidebar {
+  width: 40px
+}
+.aione-main.sidebar-small .aione-sidebar:before {
+  width: 40px
+}
+.aione-sidebar.fixed-sidebar {
+  position: fixed;
+  bottom: 0
+}
+.aione-wrapper.no-sidebar .aione-main {
+  padding-top: 0
+}
 .aione-footer {
   color: #b4b4b4;
   margin: 0;
@@ -1398,6 +1433,9 @@ th {
 .aione-copyright .aione-social-icons-widget > ul {
   margin-bottom: 0
 }
+.aione-copyright p {
+  margin-bottom: 0
+}
 .aione-powered-by {
   margin: 0;
   padding: 0;
@@ -1417,7 +1455,4 @@ th {
 }
 .aione-powered-by a:hover {
   color: #fff
-}
-.rtl .aione-header {
-  text-align: left
 }

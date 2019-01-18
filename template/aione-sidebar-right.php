@@ -10,7 +10,7 @@ if( $is_enabled ) : ?>
 			if ( is_active_sidebar( $sidebar_right ) ) {
 				dynamic_sidebar( $sidebar_right );
 			} else {
-				echo empty_sidebar_message();
+				echo '<h3>'.esc_html( empty_sidebar_message() ).'</h3>';
 			}
 			?>
 		</div> <!-- .wrapper -->

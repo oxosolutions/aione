@@ -521,12 +521,12 @@ class Aione_Slider_Widget extends WP_Widget {
 
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
-			<input type="text" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" />
+			<label for="<?php echo esc_html( $this->get_field_id( 'title' ) ); ?>">Title:</label>
+			<input type="text" id="<?php echo esc_html( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_html( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'slider' ); ?>">Select Slider:</label>
-			<select id="<?php echo $this->get_field_id( 'slider' ); ?>" name="<?php echo $this->get_field_name( 'slider' ); ?>">
+			<label for="<?php echo esc_html( $this->get_field_id( 'slider' ) ); ?>">Select Slider:</label>
+			<select id="<?php echo esc_html( $this->get_field_id( 'slider' ) ); ?>" name="<?php echo esc_html( $this->get_field_name( 'slider' ) ); ?>">
 				<?php 
 				if ($custom_posts->have_posts() ) { 
 					foreach($custom_posts->posts as $slider){ 
@@ -534,7 +534,7 @@ class Aione_Slider_Widget extends WP_Widget {
 						if ($slider->post_name==$instance['slider']) {
 							$selected_html = " selected='selected'";
 						}
-						echo "<option value='".$slider->ID."' ".$selected_html.">".$slider->post_title."</option>";
+						echo "<option value='".esc_html( $slider->ID )."' ".esc_html( $selected_html ).">".esc_html( $slider->post_title )."</option>";
 
 					} 
 				}
@@ -669,8 +669,8 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 
 	<div class="aione_social_icons_widget">
 
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
-			<input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id('title') ); ?>">Title:</label>
+			<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('title') ); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
 
 			<?php
 			$asiw_sizes = array(
@@ -700,23 +700,23 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 			);
 			?>
 
-			<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_size'); ?>">Icon Size:</label>
-				<select id="<?php echo $this->get_field_id('icon_size'); ?>" name="<?php echo $this->get_field_name('icon_size'); ?>">
+			<p class="icon_options"><label for="<?php echo esc_html( $this->get_field_id('icon_size') ); ?>">Icon Size:</label>
+				<select id="<?php echo esc_html( $this->get_field_id('icon_size') ); ?>" name="<?php echo esc_html( $this->get_field_name('icon_size') ); ?>">
 					<?php
 					foreach($asiw_sizes as $option => $value) :
 
-						if(esc_attr($instance['icon_size'] == $value)) { $selected = ' selected="selected"'; }
+						if ( esc_attr( $instance['icon_size'] == $value ) ) { $selected = ' selected="selected"'; }
 						else { $selected = ''; }
 						?>
 
-						<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+						<option value="<?php echo esc_html( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-			<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_theme'); ?>">Icon Theme:</label>
-				<select id="<?php echo $this->get_field_id('icon_theme'); ?>" name="<?php echo $this->get_field_name('icon_theme'); ?>">
+			<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>">Icon Theme:</label>
+				<select id="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_theme') ); ?>">
 					<?php
 					foreach($asiw_theme as $option => $value) :
 
@@ -724,14 +724,14 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 						else { $selected = ''; }
 						?>
 
-						<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+						<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-			<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_style'); ?>">Icon Style:</label>
-				<select id="<?php echo $this->get_field_id('icon_style'); ?>" name="<?php echo $this->get_field_name('icon_style'); ?>">
+			<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>">Icon Style:</label>
+				<select id="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_style') ); ?>">
 					<?php
 					foreach($asiw_style as $option => $value) :
 
@@ -739,14 +739,14 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 						else { $selected = ''; }
 						?>
 
-						<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+						<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-			<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_direction'); ?>">Icon Direction:</label>
-				<select id="<?php echo $this->get_field_id('icon_direction'); ?>" name="<?php echo $this->get_field_name('icon_direction'); ?>">
+			<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>">Icon Direction:</label>
+				<select id="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_direction') ); ?>">
 					<?php
 					foreach($asiw_direction as $option => $value) :
 
@@ -754,19 +754,19 @@ class Aione_Social_Icons_Widget extends WP_Widget {
 						else { $selected = ''; }
 						?>
 
-						<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+						<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-			<?php if(esc_attr($instance['labels'] == 'show')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
-			<p class="label_options"><input type="checkbox" id="<?php echo $this->get_field_id('labels'); ?>" name="<?php echo $this->get_field_name('labels'); ?>" value="show"<?php echo $checked; ?> /> <label for="<?php echo $this->get_field_id('labels'); ?>">Show Labels</label></p>
+			<?php if( esc_attr( $instance['labels'] == 'show' ) ) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
+			<p class="label_options"><input type="checkbox" id="<?php echo esc_attr( $this->get_field_id('labels') ); ?>" name="<?php echo esc_attr( $this->get_field_name('labels') ); ?>" value="show"<?php echo esc_html( $checked ); ?> /> <label for="<?php echo esc_attr( $this->get_field_id('labels') ); ?>">Show Labels</label></p>
 
 			<ul class="aione_social_accounts">
 				<?php foreach ($asiw_social_accounts as $site => $id) : ?>
-					<li><label for="<?php echo $this->get_field_id($id); ?>" class="<?php echo $id; ?>"><?php echo $site; ?>:</label>
-						<input class="widefat" type="text" id="<?php echo $this->get_field_id($id); ?>" name="<?php echo $this->get_field_name($id); ?>" value="<?php echo esc_attr($instance[$id]); ?>" placeholder="http://" /></li>
+					<li><label for="<?php echo esc_attr( $this->get_field_id($id) ); ?>" class="<?php echo esc_attr( $id ); ?>"><?php echo esc_attr( $site ); ?>:</label>
+						<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id($id) ); ?>" name="<?php echo esc_attr( $this->get_field_name($id) ); ?>" value="<?php echo esc_attr($instance[$id]); ?>" placeholder="http://" /></li>
 					<?php endforeach; ?>
 				</ul>
 
@@ -918,8 +918,8 @@ class Aione_Social_Share_Widget extends WP_Widget {
 
 		<div class="aione_social_share_widget">
 
-			<p><label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
-				<input class="widefat" type="text" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
+			<p><label for="<?php echo esc_attr( $this->get_field_id('title') ); ?>">Title:</label>
+				<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('title') ); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
 
 				<?php
 				$share_sizes = array(
@@ -949,53 +949,53 @@ class Aione_Social_Share_Widget extends WP_Widget {
 				);
 				?>
 
-				<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_size'); ?>">Icon Size:</label>
-					<select id="<?php echo $this->get_field_id('icon_size'); ?>" name="<?php echo $this->get_field_name('icon_size'); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_size') ); ?>">Icon Size:</label>
+					<select id="<?php echo esc_attr( $this->get_field_id('icon_size') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_size') ); ?>">
 						<?php
-						foreach($share_sizes as $option => $value) :
+						foreach( $share_sizes as $option => $value ) :
 
-							if(esc_attr($instance['icon_size'] == $value)) { $selected = ' selected="selected"'; }
+							if( esc_attr( $instance['icon_size'] == $value ) ) { $selected = ' selected="selected"'; }
 							else { $selected = ''; }
 							?>
 							
-							<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+							<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 							
 						<?php endforeach; ?>
 					</select>
 				</p>
 
-				<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_theme'); ?>">Icon Theme:</label>
-					<select id="<?php echo $this->get_field_id('icon_theme'); ?>" name="<?php echo $this->get_field_name('icon_theme'); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>">Icon Theme:</label>
+					<select id="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_theme') ); ?>">
 						<?php
-						foreach($share_theme as $option => $value) :
+						foreach( $share_theme as $option => $value ) :
 
-							if(esc_attr($instance['icon_theme'] == $value)) { $selected = ' selected="selected"'; }
+							if( esc_attr( $instance['icon_theme'] == $value ) ) { $selected = ' selected="selected"'; }
 							else { $selected = ''; }
 							?>
 
-							<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+							<option value="<?php echo esc_html( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 
 						<?php endforeach; ?>
 					</select>
 				</p>
 
-				<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_style'); ?>">Icon Style:</label>
-					<select id="<?php echo $this->get_field_id('icon_style'); ?>" name="<?php echo $this->get_field_name('icon_style'); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>">Icon Style:</label>
+					<select id="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_style') ); ?>">
 						<?php
-						foreach($share_style as $option => $value) :
+						foreach( $share_style as $option => $value ) :
 
 							if(esc_attr($instance['icon_style'] == $value)) { $selected = ' selected="selected"'; }
 							else { $selected = ''; }
 							?>
 
-							<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+							<option value="<?php echo esc_html( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 
 						<?php endforeach; ?>
 					</select>
 				</p>
 
-				<p class="icon_options"><label for="<?php echo $this->get_field_id('icon_direction'); ?>">Icon Direction:</label>
-					<select id="<?php echo $this->get_field_id('icon_direction'); ?>" name="<?php echo $this->get_field_name('icon_direction'); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>">Icon Direction:</label>
+					<select id="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_direction') ); ?>">
 						<?php
 						foreach($share_direction as $option => $value) :
 
@@ -1003,23 +1003,23 @@ class Aione_Social_Share_Widget extends WP_Widget {
 							else { $selected = ''; }
 							?>
 
-							<option value="<?php echo $value; ?>"<?php echo $selected; ?>><?php echo $option; ?></option>
+							<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
 
 						<?php endforeach; ?>
 					</select>
 				</p>
 
-				<?php if(esc_attr($instance['labels'] == 'show')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
+				<?php if( esc_attr($instance['labels'] == 'show') ) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
 				<p class="label_options">
-					<input type="checkbox" id="<?php echo $this->get_field_id('labels'); ?>" name="<?php echo $this->get_field_name('labels'); ?>" value="show"<?php echo $checked; ?> /> 
-					<label for="<?php echo $this->get_field_id('labels'); ?>">Show Labels</label>
+					<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id('labels') ); ?>" name="<?php echo esc_attr( $this->get_field_name('labels') ); ?>" value="show"<?php echo esc_html( $checked ); ?> /> 
+					<label for="<?php echo esc_attr( $this->get_field_id('labels') ); ?>">Show Labels</label>
 				</p>
 
 				<?php foreach ($aione_social_share_accounts as $site => $id) : ?>
 					<?php if(esc_attr($instance[$id] == 'enable')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
 					<p class="label_options">
-						<input type="checkbox" id="<?php echo $this->get_field_id($id); ?>" name="<?php echo $this->get_field_name($id); ?>" value="enable"<?php echo $checked; ?> />
-						<label for="<?php echo $this->get_field_id($id); ?>"><?php echo $site; ?> Share</label>
+						<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id($id) ); ?>" name="<?php echo esc_attr( $this->get_field_name($id) ); ?>" value="enable"<?php echo esc_html( $checked ); ?> />
+						<label for="<?php echo esc_attr( $this->get_field_id($id) ); ?>"><?php echo esc_html( $site ); ?> Share</label>
 					</p>
 				<?php endforeach; ?>
 
@@ -1125,7 +1125,7 @@ function is_enabled( $id, $component ){
 
 function empty_sidebar_message(){
 	$output = '';
-	$output .= '<h3>Empty Widget Area</h3>';
+	$output .= 'Empty Widget Area';
 
 	return $output;
 };
@@ -1182,7 +1182,7 @@ if(!class_exists('Aione_Admin')){
 function aione_admin_notice() {
 	?>
 	<div class="notice error aione-admin-notice is-dismissible" >
-		<p><?php _e( 'For complete design setting "Aione Admin" plugin is necessary, install it now! 
+		<p><?php esc_html_e( 'For complete design setting "Aione Admin" plugin is necessary, install it now! 
 		', 'aione' ); ?></p>
 	</div>
 	<?php

@@ -36,7 +36,7 @@ $main_classes = implode(" ", $main_classes);
 
 				<?php 
 				if( is_post_type_archive() || is_archive() || is_home() || is_search()) {
-					echo aione_pagination();
+					echo wp_kses_post( aione_pagination() );
 				}
 				?>
 			</div> <!-- .wrapper -->

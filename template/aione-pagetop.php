@@ -8,7 +8,7 @@ if( is_enabled( $post->ID, 'page_top_area_enable' ) ) : ?>
 			if ( is_active_sidebar( 'aione-pagetop-content' ) ) {
 				dynamic_sidebar( 'aione-pagetop-content' );
 			} else {
-				echo empty_sidebar_message();
+				echo '<h3>'.esc_html( empty_sidebar_message() ).'</h3>';
 			}
 			?>
 		</div><!-- .wrapper -->

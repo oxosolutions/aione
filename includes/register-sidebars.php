@@ -54,7 +54,8 @@ $aione_header_banner_args = array(
 );
 
 $aione_footer_column_args = array(
-	'name'          => __( 'Footer Column %d', 'aione' ),
+	/* translators: %1$s is replaced with "string" */
+	'name'          => __( 'Footer Column %1$s', 'aione' ),
 	'id'            => 'footer-column',
 	'description'   => '',
 	'class'         => '',

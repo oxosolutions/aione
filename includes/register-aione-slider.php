@@ -8,44 +8,44 @@ if ( ! function_exists( 'register_aione_slider' ) ){
 	function register_aione_slider() {
 		register_post_type( 'aione-slider',
 			array(
-				'labels' => array(
-					'name' => 'Slider',
-					'singular_name' => 'Slider',
-					'add_new' => 'Add New',
-					'add_new_item' => 'Add New Slider',
-					'edit' => 'Edit',
-					'edit_item' => 'Edit Slider',
-					'new_item' => 'New Slider',
-					'view' => 'View',
-					'view_item' => 'View Slider',
-					'search_items' => 'Search Slider',
-					'not_found' => 'No Slider found',
+				   	'labels'             => array(
+					'name'               => 'Slider',
+					'singular_name'      => 'Slider',
+					'add_new'            => 'Add New',
+					'add_new_item'       => 'Add New Slider',
+					'edit'               => 'Edit',
+					'edit_item'          => 'Edit Slider',
+					'new_item'           => 'New Slider',
+					'view'               => 'View',
+					'view_item'          => 'View Slider',
+					'search_items'       => 'Search Slider',
+					'not_found'          => 'No Slider found',
 					'not_found_in_trash' => 'No Slider found in Trash',
-					'parent' => ''
+					'parent'             => ''
 				),
-				'public' => true,
-				'menu_position' => 15,
-				'menu_icon' => 'dashicons-laptop',
-				'capability_type' => 'slider',
-				'capabilities' => array(
-					'publish_posts' => 'publish_slider',
-					'edit_posts' => 'edit_slider',
-					'edit_others_posts' => 'edit_others_slider',
-					'delete_posts' => 'delete_slider',
+					'public'              => true,
+					'menu_position'       => 15,
+					'menu_icon'           => 'dashicons-laptop',
+					'capability_type'     => 'slider',
+					'capabilities'        => array(
+					'publish_posts'       => 'publish_slider',
+					'edit_posts'          => 'edit_slider',
+					'edit_others_posts'   => 'edit_others_slider',
+					'delete_posts'        => 'delete_slider',
 					'delete_others_posts' => 'delete_others_slider',
-					'read_private_posts' => 'read_private_slider',
-					'edit_post' => 'edit_slider',
-					'delete_post' => 'delete_slider',
-					'read_post' => 'read_slider',
+					'read_private_posts'  => 'read_private_slider',
+					'edit_post'           => 'edit_slider',
+					'delete_post'         => 'delete_slider',
+					'read_post'           => 'read_slider',
 				),
-				'supports' => array( 'title'), 
-				'taxonomies' => array( '' ),
-				'has_archive' => false,
-				'register_meta_box_cb' => 'aione_slider_metaboxes',
-			)
-		);
+				    'supports'             => array( 'title'), 
+					'taxonomies'           => array( '' ),
+					'has_archive'          => false,
+					'register_meta_box_cb' => 'aione_slider_metaboxes',
+				)
+			);
+		}
 	}
-}
 
 /**
 * Add Meta Boxes to Aione Slider
@@ -79,11 +79,11 @@ function aione_slider_metaboxes() {
 }
 function aione_slider_type_callback($post){
 	wp_nonce_field( 'aione_slider_type_form_metabox_nonce', 'aione_slider_type_form_nonce' );
-	echo aione_slider_type_form($post);
+	echo esc_html( aione_slider_type_form( $post ) );
 
 }
 function aione_slider_type_form($post){
-	$slider_type_meta   = get_post_meta( $post->ID, 'aione-slider-type', true );
+	$slider_type_meta = get_post_meta( $post->ID, 'aione-slider-type', true );
 	$aione_slider_type = array();
 	?>	
 	<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
@@ -98,7 +98,6 @@ function aione_slider_type_form($post){
 						<option value="text" <?php if($slider_type_meta['type'] == 'text') {echo "selected = selected";} ?>>Text Slider</option>
 					</select></td>
 				</tr>
-
 			</tbody>
 		</table>
 	</form>
@@ -106,7 +105,7 @@ function aione_slider_type_form($post){
 }
 function aione_slider_settings_callback($post){
 	wp_nonce_field( 'aione_slider_settings_form_metabox_nonce', 'aione_slider_settings_form_nonce' ); 
-	echo aione_slider_settings_form($post);
+	echo esc_html( aione_slider_settings_form( $post ) );
 }
 add_action('save_post', 'aione_slider_settings_save_meta');
 function aione_slider_settings_save_meta($post_id ){
@@ -115,12 +114,12 @@ function aione_slider_settings_save_meta($post_id ){
 	if ( !current_user_can( 'edit_post', $post_id ))
 		return;
 
-	update_post_meta( $post_id, 'aione-slider-settings', $_POST['aione_slider_settings']);
+	update_post_meta( $post_id, 'aione-slider-settings', sanitize_text_field( $_POST['aione_slider_settings'] ) );
 
 }
 
 function aione_slider_settings_form($post){
-	$settings   = get_post_meta( $post->ID, 'aione-slider-settings', true );
+	$settings = get_post_meta( $post->ID, 'aione-slider-settings', true );
 	$aione_slider_settings = array();
 	?>	
 	<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">

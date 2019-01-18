@@ -386,11 +386,11 @@
 	<?php
 	if( $theme_options['custom_css'] != "" ) {
 		// do not add escape html
-		echo $theme_options['custom_css'];
+		echo wp_kses_post($theme_options['custom_css']);
 	}
 	if( $pyre_custom_css != "" ) :
 		// do not add escape html
-		echo $pyre_custom_css;
+		echo wp_kses_post($pyre_custom_css);
 	endif;
 	?>
 	</style>

@@ -66,18 +66,15 @@ $custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
 		echo "<script>";
 
 		if( !empty( $global_js ) ) {
-			// do not add escape js without testing
-			echo $global_js;
+			echo wp_kses_post($global_js);
 		}
 
 		if( !empty( $custom_js ) ) {
-			// do not add escape js without testing
-			echo $custom_js;
+			echo wp_kses_post($custom_js);
 		}
 
 		if( !empty( $serviceworker ) ) {
-			// do not add escape js without testing
-			echo $serviceworker;
+			echo wp_kses_post($serviceworker);
 		}
 
 		echo "</script>";

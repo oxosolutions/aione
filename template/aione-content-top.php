@@ -6,7 +6,7 @@ if( is_enabled( get_page_id(), 'content_top_area_enable') ): ?>
 			if ( is_active_sidebar( 'aione-contenttop-content' ) ) {
 				dynamic_sidebar( 'aione-contenttop-content' );
 			} else {
-				echo empty_sidebar_message();
+				echo '<h3>'.esc_html( empty_sidebar_message() ).'</h3>';
 			}
 			?>
 		</div> <!-- .wrapper -->
