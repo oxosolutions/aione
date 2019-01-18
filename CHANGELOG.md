@@ -119,3 +119,6 @@ UPDATED: Revised coding standards
 
 ## 7.3.0.4 17-01-2019
 FIXED: Fixed pagination issue
+
+## 7.3.0.5 18-01-2019
+UPDATED: Updated CSS 

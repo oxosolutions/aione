@@ -128,6 +128,23 @@ td,
 th {
   padding: 0
 }
+img {
+  max-width: 100%
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3)
+}
+::-webkit-scrollbar-thumb {
+  background: #454545;
+  -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.5)
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #888
+}
 .rtl .aione-header {
   text-align: left
 }
@@ -159,6 +176,127 @@ th {
   max-width: 1600px;
   margin-left: auto;
   margin-right: auto
+}
+.aione-wrapper > .wrapper {
+  width: 100%;
+  margin: 0 auto
+}
+.aione-layout-wide .aione-copyright > .wrapper,
+.aione-layout-wide .aione-footer > .wrapper,
+.aione-layout-wide .aione-header > .wrapper,
+.aione-layout-wide .aione-main > .wrapper,
+.aione-layout-wide .aione-pagebottom > .wrapper,
+.aione-layout-wide .aione-pagetitle > .wrapper,
+.aione-layout-wide .aione-pagetop > .wrapper,
+.aione-layout-wide .aione-powered-by > .wrapper,
+.aione-layout-wide .aione-section > .wrapper,
+.aione-layout-wide .aione-slider > .wrapper,
+.aione-layout-wide .aione-topbar > .wrapper,
+.aione-layout-wide .primary-nav > .wrapper {
+  max-width: 1200px;
+  margin: 0 auto
+}
+.aione-layout-wide .aione-copyright.fullwidth > .wrapper,
+.aione-layout-wide .aione-footer.fullwidth > .wrapper,
+.aione-layout-wide .aione-header.fullwidth > .wrapper,
+.aione-layout-wide .aione-main.fullwidth > .wrapper,
+.aione-layout-wide .aione-pagebottom.fullwidth > .wrapper,
+.aione-layout-wide .aione-pagetitle.fullwidth > .wrapper,
+.aione-layout-wide .aione-pagetop.fullwidth > .wrapper,
+.aione-layout-wide .aione-powered-by.fullwidth > .wrapper,
+.aione-layout-wide .aione-section.fullwidth > .wrapper,
+.aione-layout-wide .aione-slider.fullwidth > .wrapper,
+.aione-layout-wide .aione-topbar.fullwidth > .wrapper,
+.aione-layout-wide .primary-nav.fullwidth > .wrapper {
+  max-width: 100%
+}
+.aione-layout-boxed .aione-copyright > .wrapper,
+.aione-layout-boxed .aione-footer > .wrapper,
+.aione-layout-boxed .aione-header > .wrapper,
+.aione-layout-boxed .aione-main > .wrapper,
+.aione-layout-boxed .aione-pagebottom > .wrapper,
+.aione-layout-boxed .aione-pagetitle > .wrapper,
+.aione-layout-boxed .aione-pagetop > .wrapper,
+.aione-layout-boxed .aione-powered-by > .wrapper,
+.aione-layout-boxed .aione-section > .wrapper,
+.aione-layout-boxed .aione-slider > .wrapper,
+.aione-layout-boxed .aione-topbar > .wrapper,
+.aione-layout-boxed .primary-nav > .wrapper {
+  padding-left: 20px;
+  padding-right: 20px
+}
+.aione-layout-boxed .aione-copyright.fullwidth > .wrapper,
+.aione-layout-boxed .aione-footer.fullwidth > .wrapper,
+.aione-layout-boxed .aione-header.fullwidth > .wrapper,
+.aione-layout-boxed .aione-main.fullwidth > .wrapper,
+.aione-layout-boxed .aione-pagebottom.fullwidth > .wrapper,
+.aione-layout-boxed .aione-pagetitle.fullwidth > .wrapper,
+.aione-layout-boxed .aione-pagetop.fullwidth > .wrapper,
+.aione-layout-boxed .aione-powered-by.fullwidth > .wrapper,
+.aione-layout-boxed .aione-section.fullwidth > .wrapper,
+.aione-layout-boxed .aione-slider.fullwidth > .wrapper,
+.aione-layout-boxed .aione-topbar.fullwidth > .wrapper,
+.aione-layout-boxed .primary-nav.fullwidth > .wrapper {
+  padding-left: 0;
+  padding-right: 0
+}
+.aione-main > .wrapper {
+  padding-top: 0
+}
+.aione-main.page-padding > .wrapper {
+  padding-top: 30px
+}
+.aione-page-content > .wrapper {
+  padding-top: 0
+}
+.aione-main.page-content-padding .aione-page-content > .wrapper {
+  padding-top: 30px
+}
+.aione-main > .wrapper::after {
+  content: '';
+  display: table;
+  clear: both
+}
+.scrolltop {
+  opacity: 0;
+  margin: 0;
+  padding: 0;
+  right: 1.5%;
+  bottom: 0;
+  width: 40px;
+  height: 30px;
+  z-index: 103;
+  position: fixed;
+  text-align: center;
+  display: inline-block;
+  background-color: #1685c2;
+  border-radius: 5px 5px 0 0;
+  -webkit-transition: all 280ms ease-in-out;
+  -moz-transition: all 280ms ease-in-out;
+  transition: all 280ms ease-in-out
+}
+.scrolltop:hover {
+  background-color: #1570a6
+}
+.scrolltop:before {
+  content: '';
+  top: 14px;
+  left: 13px;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  display: inline-block;
+  border-top: 1px solid #fff;
+  border-right: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-transition: all 280ms ease-in-out;
+  -moz-transition: all 280ms ease-in-out;
+  transition: all 280ms ease-in-out
+}
+.scrolltop.active {
+  opacity: 1
 }
 .aione-topbar {
   margin: 0;
@@ -1118,6 +1256,26 @@ th {
   top: 0;
   opacity: 1
 }
+.aione-pagetitle {
+  padding: 20px 0;
+  background-color: #f2f2f2
+}
+.aione-pagetitle .title {
+  margin: 0;
+  color: #333;
+  font-size: 48px;
+  line-height: 1.5;
+  font-weight: 100;
+  text-align: center
+}
+.aione-pagetitle .description {
+  margin: 0;
+  color: #484848;
+  font-size: 22.5px;
+  line-height: 1.5;
+  font-weight: 100;
+  text-align: center
+}
 .aione-page-header {
   padding: 10px;
   border-bottom: 1px solid #e8e8e8
@@ -1299,6 +1457,41 @@ th {
 .aione-wrapper.no-sidebar .aione-main .aione-content {
   width: 100%;
   float: none
+}
+.aione-sidebar:before {
+  display: none
+}
+.aione-sidebar {
+  width: 100%;
+  float: none;
+  position: relative;
+  margin-bottom: 20px
+}
+@media only screen and (min-width:993px) {
+  .aione-sidebar {
+    width: 30%;
+    position: relative;
+    margin-bottom: 0
+  }
+  .aione-wrapper.sidebar-left.sidebar-right .aione-sidebar {
+    width: 25%
+  }
+}
+@media only screen and (min-width:993px) {
+  .aione-sidebar-left {
+    float: left
+  }
+  .aione-main.sidebar-left .aione-sidebar-left > .wrapper {
+    margin-right: 30px
+  }
+}
+@media only screen and (min-width:993px) {
+  .aione-sidebar-right {
+    float: right
+  }
+  .aione-main.sidebar-right .aione-sidebar-right > .wrapper {
+    margin-left: 30px
+  }
 }
 .page-content {
   padding-right: 0;
