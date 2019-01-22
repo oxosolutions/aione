@@ -1431,7 +1431,7 @@ var _wp$components = wp.components,
 
 registerBlockType('aione-blocks/aione-button', {
     title: __('Aione Button'),
-    icon: 'carrot',
+    icon: 'nametag',
     category: 'aione-blocks',
     keywords: [__('Button'), __('Aione')],
     attributes: {
@@ -1673,7 +1673,7 @@ var _wp$components = wp.components,
 
 registerBlockType('aione-blocks/aione-social-icons', {
     title: __('Aione Social Icons'),
-    icon: 'carrot',
+    icon: 'facebook-alt',
     category: 'aione-blocks',
     keywords: [__('Social Icons'), __('Social Links'), __('Aione')],
     supports: {
@@ -2415,7 +2415,7 @@ var _wp$components = wp.components,
 
 registerBlockType('aione-blocks/aione-social-share', {
     title: __('Aione Social Share'),
-    icon: 'carrot',
+    icon: 'share',
     category: 'aione-blocks',
     keywords: [__('Social Share'), __('Social Icons'), __('Aione')],
     supports: {
@@ -2757,7 +2757,7 @@ var _wp$components = wp.components,
 
 registerBlockType('aione-blocks/aione-accordian', {
     title: __('Aione Accordian'),
-    icon: 'carrot',
+    icon: 'list-view',
     category: 'aione-blocks',
     keywords: [__('Accordian'), __('Aione')],
     attributes: {
@@ -2922,7 +2922,7 @@ var name = 'aione-blocks/aione-tabs';
 
 registerBlockType('aione-blocks/aione-tabs', {
     title: __('Aione Tabs'),
-    icon: 'carrot',
+    icon: 'welcome-widgets-menus',
     category: 'aione-blocks',
     keywords: [__('Tabs'), __('Aione')],
     attributes: {
@@ -28438,7 +28438,7 @@ registerBlockType('aione-blocks/aione-tabs-tab', {
     title: __('Tab'),
     parent: ['aione-blocks/aione-tabs'],
     description: __('A single tab within a tabs block.'),
-    icon: 'carrot',
+    icon: 'welcome-widgets-menus',
     category: 'aione-blocks',
     supports: {
 
@@ -28912,7 +28912,7 @@ var _wp$components = wp.components,
 
 registerBlockType('aione-blocks/aione-icon', {
     title: __('Aione Icon'), // Block title.
-    icon: 'editor-textcolor',
+    icon: 'smiley',
     category: 'aione-blocks',
     keywords: [__('icon'), __('svg'), __('Aione')],
     attributes: {
@@ -29021,7 +29021,7 @@ var InnerBlocks = wp.editor.InnerBlocks;
 
 registerBlockType('aione-blocks/aione-wrapper', {
     title: __('Aione Wrapper'), // Block title.
-    icon: 'editor-textcolor',
+    icon: 'editor-contract',
     category: 'aione-blocks',
     keywords: [__('div'), __('wrapper'), __('Aione')],
 
@@ -29068,7 +29068,7 @@ var InnerBlocks = wp.editor.InnerBlocks;
 
 registerBlockType('aione-blocks/aione-span', {
     title: __('Aione Span'), // Block title.
-    icon: 'editor-textcolor',
+    icon: 'minus',
     category: 'aione-blocks',
     keywords: [__('span'), __('Aione')],
 
@@ -29180,7 +29180,7 @@ var attributes = {
 
 registerBlockType('aione-blocks/aione-slider', {
     title: __('Aione Slider'), // Block title.
-    icon: 'editor-textcolor',
+    icon: 'slides',
     category: 'aione-blocks',
     keywords: [__('slider'), __('Aione')],
     attributes: attributes,

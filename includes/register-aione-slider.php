@@ -108,21 +108,21 @@ function aione_slider_settings_callback($post){
 	echo esc_html( aione_slider_settings_form( $post ) );
 }
 add_action('save_post', 'aione_slider_settings_save_meta');
-function aione_slider_settings_save_meta($post_id ){
+function aione_slider_settings_save_meta($post_id ){ 
 	if( !isset( $_POST['aione_slider_settings_form_nonce'] ) || !wp_verify_nonce( $_POST['aione_slider_settings_form_nonce'],'aione_slider_settings_form_metabox_nonce') ) 
 		return;
 	if ( !current_user_can( 'edit_post', $post_id ))
 		return;
-
-	update_post_meta( $post_id, 'aione-slider-settings', sanitize_text_field( $_POST['aione_slider_settings'] ) );
+	update_post_meta( $post_id, 'aione-slider-type',  $_POST['aione_slider_type'] );
+	update_post_meta( $post_id, 'aione-slider-settings',  $_POST['aione_slider_settings'] );
 
 }
 
-function aione_slider_settings_form($post){
+function aione_slider_settings_form($post){ 
 	$settings = get_post_meta( $post->ID, 'aione-slider-settings', true );
 	$aione_slider_settings = array();
 	?>	
-	<form name="" class="" id="" method="post" action="" enctype="multipart/form-data">
+	<!-- <form name="" class="" id="" method="post" action="" enctype="multipart/form-data"> -->
 		<table class="form-table">
 			<tbody>
 				<tr>
@@ -180,7 +180,7 @@ function aione_slider_settings_form($post){
 				</tr>
 				<tr>
 					<th scope="row"><label for="aione_slider_touchDrag">touchDrag</label></th>
-					<td><select name="aaione_slider_settings[touchDrag]" id="aione_slider_touchDrag">					
+					<td><select name="aione_slider_settings[touchDrag]" id="aione_slider_touchDrag">					
 						<option value="true" <?php if( $settings['touchDrag'] == 'true' ) { echo "selected = selected"; } ?>>True</option>
 						<option value="false" <?php if( $settings['touchDrag'] == 'false' ) { echo "selected = selected"; } ?>>False</option>
 					</select><p class="description">Touch drag enabled.</p></td>
@@ -401,6 +401,6 @@ function aione_slider_settings_form($post){
 			</tbody>
 		</table>
 		<!-- <p class="submit"><input type="submit" id="submit_button" name="app_setting_save" class="button button-primary" value="Save Settings"></p> -->
-	</form>
+	<!-- </form> -->
 	<?php
 }
