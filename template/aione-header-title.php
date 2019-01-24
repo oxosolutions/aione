@@ -13,7 +13,7 @@ if( !is_enabled( $post->ID, 'header_show_tagline' ) || empty( $description ) ) :
 endif;
 
 ?>
-<div id="aione_header_title" class="aione-header-title <?php echo esc_html($description_class); ?>">
+<div id="aione_header_title" class="aione-header-title <?php echo esc_html( $description_class ); ?>">
 	<a href="<?php echo esc_url( home_url() ); ?>">
 		
 		<?php if( is_enabled( $post->ID, 'header_show_site_title' ) ) : ?>
@@ -24,7 +24,7 @@ endif;
 			$description = get_bloginfo( 'description', 'display' );
 			if ( $description || is_customize_preview() ) : ?>
 				<h2 class="site-description">
-					<?php echo esc_html($description); ?>
+					<?php echo esc_html( $description ); ?>
 				</h2>
 			<?php endif; ?>
 		<?php endif; ?>

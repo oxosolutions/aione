@@ -52,7 +52,7 @@ if( is_enabled( $post->ID, 'page_title_bar' ) ) :
 			<?php endif;
 			if( is_enabled( $post->ID, 'page_title_bar_enable_description' ) && !empty( $page_description ) ) : ?>
 				<h2 class="description">
-					<?php echo esc_html( $page_description ); ?>				
+					<?php echo wp_kses_post( $page_description ); ?>		
 				</h2>
 			<?php endif; ?>
 			<div class="aione-clear"></div><!-- .aione-clear -->

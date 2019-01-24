@@ -28502,7 +28502,8 @@ var _wp$editor = wp.editor,
     InnerBlocks = _wp$editor.InnerBlocks;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    ToggleControl = _wp$components.ToggleControl;
+    ToggleControl = _wp$components.ToggleControl,
+    TextControl = _wp$components.TextControl;
 
 
 registerBlockType('aione-blocks/aione-section', {
@@ -28514,6 +28515,10 @@ registerBlockType('aione-blocks/aione-section', {
         fullWidth: {
             type: 'boolean',
             default: true
+        },
+        id: {
+            type: 'string',
+            default: ''
         }
     },
     edit: function edit(props) {
@@ -28528,7 +28533,9 @@ registerBlockType('aione-blocks/aione-section', {
             };
         };
 
-        var fullWidth = props.attributes.fullWidth;
+        var _props$attributes = props.attributes,
+            fullWidth = _props$attributes.fullWidth,
+            id = _props$attributes.id;
 
 
         var togglefullWidth = function togglefullWidth() {
@@ -28538,6 +28545,9 @@ registerBlockType('aione-blocks/aione-section', {
         if (fullWidth === true) {
             classes = 'fullwidth';
         }
+        var onChangeid = function onChangeid(customID) {
+            props.setAttributes({ id: customID });
+        };
 
         return [isSelected && wp.element.createElement(
             InspectorControls,
@@ -28552,13 +28562,18 @@ registerBlockType('aione-blocks/aione-section', {
                         label: __('Fullwidth'),
                         checked: !!fullWidth,
                         onChange: togglefullWidth
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: 'Additional CSS Id',
+                        value: id,
+                        onChange: onChangeid
                     })
                 )
             )
         ), wp.element.createElement(
             'section',
             { key: 'editable',
-                className: 'aione-section' + ' ' + classes
+                className: 'aione-section' + ' ' + classes, id: id
             },
             wp.element.createElement(
                 'div',
@@ -28568,7 +28583,9 @@ registerBlockType('aione-blocks/aione-section', {
         )];
     },
     save: function save(props) {
-        var fullWidth = props.attributes.fullWidth;
+        var _props$attributes2 = props.attributes,
+            fullWidth = _props$attributes2.fullWidth,
+            id = _props$attributes2.id;
 
 
         var classes = '';
@@ -28579,7 +28596,7 @@ registerBlockType('aione-blocks/aione-section', {
         return wp.element.createElement(
             'section',
             {
-                className: 'aione-section' + ' ' + classes
+                className: 'aione-section' + ' ' + classes, id: id
             },
             wp.element.createElement(
                 'div',

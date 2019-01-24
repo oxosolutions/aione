@@ -41,7 +41,7 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php gutenbergtheme_entry_footer(); ?>
+		<?php //gutenbergtheme_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 	<!--_to_be_deleted-->
 </article><!-- #post-<?php the_ID(); ?> -->

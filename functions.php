@@ -126,7 +126,7 @@ add_action( 'wp_enqueue_scripts', 'aione_styles' );
 function aione_scripts() {
     wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
     wp_enqueue_style( 'aione' );
-    wp_register_style( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
+    wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
 	wp_enqueue_script( 'aione-js' );
 
 	//wp_deregister_script( 'wp-embed' );

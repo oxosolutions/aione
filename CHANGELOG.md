@@ -122,3 +122,7 @@ FIXED: Fixed pagination issue
 
 ## 7.3.0.5 18-01-2019
 UPDATED: Updated CSS 
+
+
+## 7.3.0.6 24-01-2019
+UPDATED: Updated Section Block
