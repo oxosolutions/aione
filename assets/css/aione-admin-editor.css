@@ -39612,11 +39612,11 @@ div.ppt {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-transition: all 180ms ease-out;
-  -moz-transition: all 180ms ease-out;
-  -ms-transition: all 180ms ease-out;
-  -o-transition: all 180ms ease-out;
-  transition: all 180ms ease-out
+  -webkit-transition: all 180ms ease-in-out;
+  -moz-transition: all 180ms ease-in-out;
+  -ms-transition: all 180ms ease-in-out;
+  -o-transition: all 180ms ease-in-out;
+  transition: all 180ms ease-in-out
 }
 .aione-button:hover {
   background-color: #191e21
@@ -39721,25 +39721,11 @@ div.ppt {
   border-color: #1570a6
 }
 html {
-  line-height: 1.4;
-  font-family: "Open Sans",Arial,sans-serif;
+  color: #525a5f;
+  line-height: 1.6;
   font-weight: 400;
-  color: #606c71
-}
-a {
-  text-decoration: none
-}
-a {
-  color: #168dc5;
-  -webkit-transition: all 180ms ease-in-out;
-  -moz-transition: all 180ms ease-in-out;
-  transition: all 180ms ease-in-out
-}
-a:hover {
-  color: #1570a6
-}
-html {
-  line-height: 1.4
+  letter-spacing: .8px;
+  font-family: Arial,Helvetica,sans-serif
 }
 @media only screen and (min-width:0) {
   html {
@@ -39756,20 +39742,26 @@ html {
     font-size: 17.6px
   }
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  line-height: 1.5em;
-  font-weight: 400
+body {
+  line-height: 1.6
+}
+a {
+  color: #095e86;
+  text-decoration: none;
+  -webkit-transition: all 180ms ease-in-out;
+  -moz-transition: all 180ms ease-in-out;
+  -ms-transition: all 180ms ease-in-out;
+  -o-transition: all 180ms ease-in-out;
+  transition: all 180ms ease-in-out
+}
+a:hover {
+  color: #064f72
 }
 p {
   font-size: 1em;
   line-height: 1.6em;
   font-weight: 400;
-  margin-bottom: 1em
+  margin-bottom: 2em
 }
 p:empty {
   display: none;
@@ -39785,16 +39777,9 @@ strong {
 dfn {
   font-style: italic
 }
-h1 {
-  font-size: 2em;
-  margin: .67em 0
-}
 mark {
   background: #ff0;
   color: #000
-}
-small {
-  font-size: 80%
 }
 sub,
 sup {
@@ -39808,6 +39793,15 @@ sup {
 }
 sub {
   bottom: -.25em
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.6em;
+  font-weight: 400
 }
 h1 a,
 h1 span,
@@ -39826,34 +39820,32 @@ h6 span {
   font-weight: inherit
 }
 h1 {
-  font-size: 64px;
-  line-height: 110%;
-  margin: 32px 0 25.6px 0
+  font-size: 2.625em;
+  margin: 0 0 .67em 0
 }
 h2 {
-  font-size: 48px;
-  line-height: 110%;
-  margin: 24px 0 19.2px 0
+  font-size: 2.25em;
+  margin: 0 0 .75em 0
 }
 h3 {
-  font-size: 32px;
-  line-height: 110%;
-  margin: 16px 0 12.8px 0
+  font-size: 2em;
+  margin: 0 0 .83em 0
 }
 h4 {
-  font-size: 24px;
-  line-height: 110%;
-  margin: 12px 0 9.6px 0
+  font-size: 1.5em;
+  margin: 0 0 1em 0
 }
 h5 {
-  font-size: 18px;
-  line-height: 110%;
-  margin: 9px 0 7.2px 0
+  font-size: 1.17em;
+  margin: 0 0 1.5em 0
 }
 h6 {
-  font-size: 16px;
-  line-height: 110%;
-  margin: 8px 0 6.4px 0
+  font-size: 1em;
+  margin: 0 0 1.67em 0
+}
+h5,
+h6 {
+  font-weight: bolder
 }
 em {
   font-style: italic
@@ -40526,6 +40518,105 @@ small {
 }
 .line-height-100 {
   line-height: 100px
+}
+.aione-list {
+  margin-bottom: 1.25em;
+  font-size: 1.1em;
+  line-height: 2em
+}
+.aione-list.small {
+  font-size: 1em;
+  line-height: 1.375em
+}
+.aione-list.medium {
+  font-size: 1.17em;
+  line-height: 1.875em
+}
+.aione-list.large {
+  font-size: 1.5em;
+  line-height: 2em
+}
+.aione-list > li {
+  padding-left: 2em;
+  position: relative
+}
+.aione-list.medium > li {
+  padding-left: 2.25em
+}
+.aione-list.large > li {
+  padding-left: 2.5em
+}
+.aione-list > li:before {
+  left: 0;
+  content: "\f28a";
+  font-weight: inherit;
+  line-height: 1.5em;
+  speak: none;
+  text-align: center;
+  position: absolute;
+  display: inline-block;
+  font-family: Ionicons;
+  font-style: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased
+}
+.aione-list > li:before {
+  width: 2em;
+  line-height: 1.5em
+}
+.aione-list.medium > li:before {
+  width: 2.25em;
+  line-height: 1.875em
+}
+.aione-list.large > li:before {
+  width: 2.5em;
+  line-height: 2em
+}
+.aione-list > li .aione-icon {
+  margin-right: 10px;
+  font-size: 24px;
+  line-height: 24px;
+  margin-top: 4px;
+  display: inline-block
+}
+.aione-list.small > li .aione-icon {
+  margin-right: 6px;
+  font-size: 18px;
+  line-height: 20px;
+  margin-top: 0
+}
+.aione-list.medium > li .aione-icon {
+  margin-right: 6px;
+  font-size: 24px;
+  line-height: 30px
+}
+.aione-list.large > li .aione-icon {
+  margin-right: 15px;
+  font-size: 30px;
+  line-height: 30px
+}
+.aione-list.theme-default > li:before {
+  height: 1px;
+  content: "";
+  background-color: #909090;
+  top: 50%
+}
+.aione-list.small.theme-default > li:before {
+  width: 1.7em
+}
+.aione-list.medium.theme-default > li:before {
+  width: 2em
+}
+.aione-list.large.theme-default > li:before {
+  width: 2.3em
+}
+.aione-list.theme-solid > li {
+  border-bottom: 1px solid #e8e8e8
+}
+.aione-list.theme-dotted > li {
+  border-bottom: 1px dotted #e8e8e8
 }
 .bg-gradient.gradient-1 {
   background-color: rgba(0,0,0,.85);

@@ -350,12 +350,14 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 	?>
 	<?php
 	if( $theme_options['custom_css'] != "" ) {
-		// do not add escape html
-		echo wp_kses_post($theme_options['custom_css']);
+		// do not use filter esc_html; It breaks css
+		// do not add wp_kses_post; it converts > to &gt;
+		echo $theme_options['custom_css'];
 	}
 	if( $pyre_custom_css != "" ) :
-		// do not add escape html
-		echo wp_kses_post($pyre_custom_css);
+		// do not use filter esc_html; It breaks css
+		// do not use filter wp_kses_post; it converts > to &gt;
+		echo $pyre_custom_css;
 	endif;
 	?>
 	</style>

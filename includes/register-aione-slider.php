@@ -121,6 +121,7 @@ function aione_slider_settings_save_meta($post_id ){
 function aione_slider_settings_form($post){ 
 	$settings = get_post_meta( $post->ID, 'aione-slider-settings', true );
 	$aione_slider_settings = array();
+	//echo "<pre>";print_r($settings);echo "</pre>";
 	?>	
 	<!-- <form name="" class="" id="" method="post" action="" enctype="multipart/form-data"> -->
 		<table class="form-table">
@@ -201,7 +202,7 @@ function aione_slider_settings_form($post){
 				</tr>
 				<tr>
 					<th scope="row"><label for="aione_slider_stagePadding">stagePadding</label></th>
-					<td><input name="aione_slider_settings[stagePadding]" type="number" id="aione_slider_stagePadding" value="<?php echo isset($settings['stagePadding'])? esc_html( $settings['items'] ) : '0' ?>" class=""><p class="description">Padding left and right on stage (can see neighbours).</p></td>
+					<td><input name="aione_slider_settings[stagePadding]" type="number" id="aione_slider_stagePadding" value="<?php echo isset($settings['stagePadding'])? esc_html( $settings['stagePadding'] ) : '0' ?>" class=""><p class="description">Padding left and right on stage (can see neighbours).</p></td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="aione_slider_merge">Merge</label></th>

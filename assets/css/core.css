@@ -99,9 +99,6 @@ nav,
 section {
   display: block
 }
-body {
-  line-height: 1
-}
 ol,
 ul {
   list-style: none
@@ -372,14 +369,15 @@ img {
 .aione-header-banner {
   float: right
 }
-.aione-header-banner .widgettitle {
-  font-size: 20px;
-  color: #168dc5;
-  line-height: 1.4
+.aione-header-banner,
+.aione-header-banner .widget .aione-header-banner p {
+  text-align: right
 }
-.aione-header-banner .textwidget p {
-  text-align: right;
-  font-size: 16px
+.aione-header-banner p {
+  margin-bottom: 0
+}
+.aione-header-banner .widgettitle {
+  font-size: 1.25em
 }
 .aione-header-logo {
   width: auto;

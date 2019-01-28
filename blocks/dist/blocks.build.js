@@ -2891,12 +2891,13 @@ var _wp$components = wp.components,
 
 
 var getAioneTabsTemplate = function getAioneTabsTemplate(attributes) {
-    var tabsCount = attributes.tabsCount;
+    var tabsCount = attributes.tabsCount,
+        tabActive = attributes.tabActive;
 
     var result = [];
 
     for (var k = 1; k <= tabsCount; k++) {
-        result.push(['aione-blocks/aione-tabs-tab', { tabNumber: k }]);
+        result.push(['aione-blocks/aione-tabs-tab', { tabNumber: k, active: tabActive }]);
     }
 
     return result;
@@ -28448,6 +28449,9 @@ registerBlockType('aione-blocks/aione-tabs-tab', {
 
         tabNumber: {
             type: 'number'
+        },
+        active: {
+            type: 'number'
         }
     },
 
@@ -28473,14 +28477,21 @@ registerBlockType('aione-blocks/aione-tabs-tab', {
 
 
     save: function save(props) {
-        var tabNumber = props.attributes.tabNumber;
+        var _props$attributes = props.attributes,
+            tabNumber = _props$attributes.tabNumber,
+            active = _props$attributes.active;
 
 
         var className = 'aione-tab';
 
+        var activeClass = '';
+        if (active == tabNumber) {
+            activeClass = 'active';
+        }
+
         return wp.element.createElement(
             'div',
-            { id: 'tab_' + tabNumber, className: className },
+            { id: 'tab_' + tabNumber, className: className + ' ' + activeClass },
             wp.element.createElement(InnerBlocks.Content, null)
         );
     }
