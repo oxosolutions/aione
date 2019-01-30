@@ -1607,15 +1607,15 @@ img {
   border-top: none;
   text-align: center;
   color: #a8a8a8;
-  font-size: 16px;
-  line-height: 40px;
+  font-size: 1em;
+  line-height: 2.5em;
   font-weight: 400;
   background-color: #191e21
 }
 .aione-powered-by a {
   color: #a8a8a8;
-  font-size: 16px;
-  line-height: 40px;
+  font-size: 1em;
+  line-height: 2.5em;
   font-weight: 400
 }
 .aione-powered-by a:hover {
