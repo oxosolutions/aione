@@ -42881,6 +42881,23 @@ ul.aione-list.theme-tree {
   -o-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0)
 }
+.equal > .ac {
+  position: relative
+}
+.equal > .ac > .wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0
+}
+.equal > .ac > .wrapper .aione-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0
+}
 .aione-accordion .aione-item {
   border: 1px solid #e8e8e8;
   border-bottom: none

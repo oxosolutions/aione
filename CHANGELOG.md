@@ -128,3 +128,6 @@ UPDATED: Updated Section Block
 
 ## 7.3.0.7 29-01-2019
 ADDED: Aione List
+
+## 7.3.0.8 30-01-2019
+ADDED: Equal Heights

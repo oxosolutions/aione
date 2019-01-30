@@ -365,11 +365,11 @@ $metaboxes = new PerPageOptionsMetaboxes;
 
 
 
-function aione_slider_docs_callback(){
+/*function aione_slider_docs_callback(){
 	$id = get_the_ID();
 	echo '[aione-slider id="'.esc_html($id).'"]';
 }
-
+*/
 
 /**
 * Register Aione Slider Custom Field "Gallery"
@@ -381,7 +381,7 @@ function aione_slider_docs_callback(){
  */
 define('ACF_EARLY_ACCESS', '5');
 
-if(class_exists('acf')){ 
+/*if(class_exists('acf')){ 
 	add_action( 'init', 'register_custom_acf_fields' );
 } else { 
 	add_action( 'admin_notices', 'aione_acf_admin_notice' );
@@ -464,9 +464,9 @@ function register_custom_acf_fields() {
 		add_action( 'admin_notices', 'aione_gallery_admin_notice' );
 	}
 	
-}
+}*/
 
-function aione_acf_admin_notice() {
+/*function aione_acf_admin_notice() {
 	?>
 	<div class="notice error my-acf-notice is-dismissible" >
 		<p><?php _e( 'ACF Plugin is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'aione' ); ?></p>
@@ -479,7 +479,7 @@ function aione_gallery_admin_notice() {
 		<p><?php _e( 'ACF Gallery AddOn is necessary for slider to work properly, install it now! <a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Click Here!</a>', 'aione' ); ?></p>
 	</div>
 	<?php
-}
+}*/
 
 
 /**
