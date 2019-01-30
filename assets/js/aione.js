@@ -27138,7 +27138,7 @@ $(document).ready(function() {
         var element_id = $(this).attr("id");
         if(element_id != undefined){
             if(aione_typing_elements.indexOf(element_id) != -1) {
-                //Slider with same ID already exists
+                //typing with same ID already exists
                 element_id = element_id+'_'+Math.floor(Math.random()*100000000);
                 $(this).attr("id", element_id);
                 aione_typing_elements.push(element_id);
@@ -27146,7 +27146,7 @@ $(document).ready(function() {
                 aione_typing_elements.push(element_id);
             }
         } else {
-            var element_id = 'slider_id_'+Math.floor(Math.random()*100000000);
+            var element_id = 'typing_'+Math.floor(Math.random()*100000000);
             $(this).attr("id", element_id);
             aione_typing_elements.push(element_id);
         }

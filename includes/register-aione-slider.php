@@ -8,7 +8,7 @@ if ( ! function_exists( 'register_aione_slider' ) ){
 	function register_aione_slider() {
 		register_post_type( 'aione-slider',
 			array(
-				   	'labels'             => array(
+			   	'labels'             => array(
 					'name'               => 'Slider',
 					'singular_name'      => 'Slider',
 					'add_new'            => 'Add New',
@@ -23,11 +23,11 @@ if ( ! function_exists( 'register_aione_slider' ) ){
 					'not_found_in_trash' => 'No Slider found in Trash',
 					'parent'             => ''
 				),
-					'public'              => true,
-					'menu_position'       => 15,
-					'menu_icon'           => 'dashicons-laptop',
-					'capability_type'     => 'slider',
-					'capabilities'        => array(
+				'public'              => true,
+				'menu_position'       => 15,
+				'menu_icon'           => 'dashicons-laptop',
+				'capability_type'     => 'slider',
+				'capabilities'        => array(
 					'publish_posts'       => 'publish_slider',
 					'edit_posts'          => 'edit_slider',
 					'edit_others_posts'   => 'edit_others_slider',
@@ -38,14 +38,14 @@ if ( ! function_exists( 'register_aione_slider' ) ){
 					'delete_post'         => 'delete_slider',
 					'read_post'           => 'read_slider',
 				),
-				    'supports'             => array( 'title'), 
-					'taxonomies'           => array( '' ),
-					'has_archive'          => false,
-					'register_meta_box_cb' => 'aione_slider_metaboxes',
-				)
-			);
-		}
+			    'supports'             => array( 'title'), 
+				'taxonomies'           => array( '' ),
+				'has_archive'          => false,
+				'register_meta_box_cb' => 'aione_slider_metaboxes',
+			)
+		);
 	}
+}
 
 /**
 * Add Meta Boxes to Aione Slider
