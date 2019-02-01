@@ -61,7 +61,6 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 				**/
 				font-family: "'.$theme_options['font']['font-family'].'";
 				font-weight: '.esc_html($theme_options['font']['font-weight']).';
-				color:'.esc_html($theme_options['font']['color']).';
 			}';
 
 	} else {
@@ -73,7 +72,6 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 				**/
 				font-family: '.$theme_options['font']['font-family'].';
 				font-weight: '.esc_html($theme_options['font']['font-weight']).';
-				color:'.esc_html($theme_options['font']['color']).';
 			}';
 	}
 

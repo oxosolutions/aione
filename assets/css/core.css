@@ -298,6 +298,8 @@ img {
 .aione-topbar {
   margin: 0;
   padding: 0;
+  color: #b2b2b2;
+  line-height: 36px;
   border-top: none;
   background-color: #23282d
 }
@@ -305,22 +307,25 @@ img {
   padding: 2px 0;
   min-height: 40px;
   max-height: 120px;
-  line-height: 36px;
   overflow: hidden;
+  line-height: inherit;
   box-sizing: border-box
 }
 .aione-topbar,
 .aione-topbar a {
   color: #b2b2b2;
-  font-size: 17.6px;
+  font-size: 1em;
   font-weight: 400;
-  line-height: 36px
+  line-height: 36px;
+  line-height: inherit
 }
 .aione-topbar a:hover {
   color: #fff
 }
 .aione-topbar p {
-  margin-bottom: 0
+  font-size: 1em;
+  margin-bottom: 0;
+  line-height: inherit
 }
 .aione-topbar-left {
   float: left;
