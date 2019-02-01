@@ -27080,7 +27080,6 @@ $(window).resize(function(){
 });
 $(document).ready(function() {
 
-
 	/** Initialize Sliders ***************************************************/
 	init_sliders();
 
@@ -27090,8 +27089,14 @@ $(document).ready(function() {
 	/** Detect Browser ***************************************************/
 	$('body').addClass("ua-"+$.browser.name);
 	$('body').addClass("ua-version-"+$.browser.versionNumber);
-	
 
+	/*****************************************************
+	/*  Primary Nav Hover Animation
+	/*****************************************************/
+	$('.primary-nav ul li a span').each( function(){
+        $(this).attr('data-hover', $(this).text() );
+    });
+	
 
 	/*****************************************************
 	/*  Aione Toggle

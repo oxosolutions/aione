@@ -132,6 +132,8 @@ ADDED: Aione List
 ## 7.3.0.8 30-01-2019
 ADDED: Equal Heights
 
-
 ## 7.3.0.9 31-01-2019
 ADDED: Flexbox CSS
+
+## 7.3.0.10 01-02-2019
+ADDED: Primary Nav Hover Animation
