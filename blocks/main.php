@@ -23,6 +23,8 @@ class AioneBlocks {
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 		add_filter( 'block_categories', array( $this, 'aione_block_category' ),10,2);
 		
+		add_action('wp_ajax_aione_map_block_save_key', array($this, 'save_key'));
+        add_action('wp_ajax_nopriv_aione_map_block_save_key', array($this, 'save_key'));
 
 		require_once get_template_directory(). '/blocks/block.php';
 		
@@ -45,6 +47,16 @@ class AioneBlocks {
 			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' , 'wp-components' ),
 			filemtime( $this->realPath. 'blocks.build.js' ) // filemtime — Gets file modification time.
 		);
+
+		$api_key = get_option('aione-map-block-key')?get_option('aione-map-block-key'):'AIzaSyAjyDspiPfzEfjRSS5fQzm-3jHFjHxeXB4';
+
+		$aione_blocks = array(
+	      'api_key' => $api_key
+	    );
+
+		wp_localize_script( 'aione-blocks', 'aione_blocks', $aione_blocks );
+
+    	wp_enqueue_script('aione-blocks');
 
 		// Styles.
 		/*wp_enqueue_style(

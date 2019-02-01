@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 29);
+/******/ 	return __webpack_require__(__webpack_require__.s = 30);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -261,9 +261,9 @@ process.umask = function () {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(37);
-} else {
   module.exports = __webpack_require__(38);
+} else {
+  module.exports = __webpack_require__(39);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -671,9 +671,9 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(3),
-    isKey = __webpack_require__(65),
-    stringToPath = __webpack_require__(69),
-    toString = __webpack_require__(98);
+    isKey = __webpack_require__(66),
+    stringToPath = __webpack_require__(70),
+    toString = __webpack_require__(99);
 
 /**
  * Casts `value` to a path array if it's not one.
@@ -820,7 +820,7 @@ module.exports = assocIndexOf;
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isKeyable = __webpack_require__(94);
+var isKeyable = __webpack_require__(95);
 
 /**
  * Gets the data for `map`.
@@ -997,9 +997,9 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(41);
+  module.exports = __webpack_require__(42);
 } else {
-  module.exports = __webpack_require__(44);
+  module.exports = __webpack_require__(45);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -1009,8 +1009,8 @@ if (process.env.NODE_ENV === 'production') {
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(9),
-    getRawTag = __webpack_require__(67),
-    objectToString = __webpack_require__(68);
+    getRawTag = __webpack_require__(68),
+    objectToString = __webpack_require__(69);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -1042,7 +1042,7 @@ module.exports = baseGetTag;
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var freeGlobal = __webpack_require__(66);
+var freeGlobal = __webpack_require__(67);
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -1092,8 +1092,8 @@ module.exports = isObjectLike;
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsNative = __webpack_require__(76),
-    getValue = __webpack_require__(81);
+var baseIsNative = __webpack_require__(77),
+    getValue = __webpack_require__(82);
 
 /**
  * Gets the native function at `key` of `object`.
@@ -1164,11 +1164,11 @@ if (process.env.NODE_ENV !== 'production') {
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(39)(isValidElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(40)(isValidElement, throwOnDirectAccess);
 } else {
   // By explicitly using `prop-types` you are opting into new production behavior.
   // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(40)();
+  module.exports = __webpack_require__(41)();
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -1181,9 +1181,9 @@ if (process.env.NODE_ENV !== 'production') {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(42);
-} else {
   module.exports = __webpack_require__(43);
+} else {
+  module.exports = __webpack_require__(44);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -1283,7 +1283,7 @@ module.exports = isIndex;
 /* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseIsArguments = __webpack_require__(107),
+var baseIsArguments = __webpack_require__(108),
     isObjectLike = __webpack_require__(19);
 
 /** Used for built-in method references. */
@@ -1350,33 +1350,479 @@ module.exports = identity;
 
 /***/ }),
 /* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function() {
+  return root.Date.now();
+};
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        result = wait - timeSinceLastCall;
+
+    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+  }
+
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(now());
+  }
+
+  function debounced() {
+    var time = now(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+/**
+ * Creates a throttled function that only invokes `func` at most once per
+ * every `wait` milliseconds. The throttled function comes with a `cancel`
+ * method to cancel delayed `func` invocations and a `flush` method to
+ * immediately invoke them. Provide `options` to indicate whether `func`
+ * should be invoked on the leading and/or trailing edge of the `wait`
+ * timeout. The `func` is invoked with the last arguments provided to the
+ * throttled function. Subsequent calls to the throttled function return the
+ * result of the last `func` invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the throttled function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.throttle` and `_.debounce`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to throttle.
+ * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=true]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new throttled function.
+ * @example
+ *
+ * // Avoid excessively updating the position while scrolling.
+ * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
+ *
+ * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+ * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
+ * jQuery(element).on('click', throttled);
+ *
+ * // Cancel the trailing throttled invocation.
+ * jQuery(window).on('popstate', throttled.cancel);
+ */
+function throttle(func, wait, options) {
+  var leading = true,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  if (isObject(options)) {
+    leading = 'leading' in options ? !!options.leading : leading;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+  return debounce(func, wait, {
+    'leading': leading,
+    'maxWait': wait,
+    'trailing': trailing
+  });
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && objectToString.call(value) == symbolTag);
+}
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+module.exports = throttle;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+
+/***/ }),
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Button_button_js__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Button_button_js__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Button_button_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Button_button_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SocialLinks_socialLinks_js__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SocialLinks_socialLinks_js__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SocialLinks_socialLinks_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SocialLinks_socialLinks_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialShare_socialShare_js__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialShare_socialShare_js__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialShare_socialShare_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SocialShare_socialShare_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Accordian_accordian_js__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Accordian_accordian_js__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Accordian_accordian_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Accordian_accordian_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Tabs_tabs_js__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Tabs_tab_js__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Section_section_js__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Tabs_tabs_js__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Tabs_tab_js__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Section_section_js__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Section_section_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Section_section_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Row_row_js__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Row_row_js__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Row_row_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__Row_row_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Column_column_js__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Column_column_js__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Column_column_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__Column_column_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Title_title_js__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Icon_icon_js__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Title_title_js__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Icon_icon_js__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Icon_icon_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__Icon_icon_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Wrapper_wrapper_js__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Wrapper_wrapper_js__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Wrapper_wrapper_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__Wrapper_wrapper_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Slider_slider_js__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__GoogleMap_googlemap_js__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Slider_slider_js__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__GoogleMap_googlemap_js__ = __webpack_require__(127);
 /**
  * Aione Blocks
  *
@@ -1405,7 +1851,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 /**
@@ -1650,7 +2096,7 @@ registerBlockType('aione-blocks/aione-button', {
 });
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 /**
@@ -2392,7 +2838,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
 });
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 /**
@@ -2732,7 +3178,7 @@ registerBlockType('aione-blocks/aione-social-share', {
 });
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 /**
@@ -2858,12 +3304,12 @@ registerBlockType('aione-blocks/aione-accordian', {
 });
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export name */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__);
 /**
  * BLOCK: Aione Tabs.
@@ -3066,7 +3512,7 @@ registerBlockType('aione-blocks/aione-tabs', {
                         label: __('Select Theme:'),
                         value: theme,
                         onChange: onChangeTheme,
-                        options: [{ value: 'theme-clean', label: 'Theme Clean' }, { value: 'theme-bold', label: 'Theme Bold' }, { value: 'theme-pastel', label: 'Theme Pastel' }, { value: 'theme-pointer', label: 'Theme Pointer' }, { value: 'theme-arrow', label: 'Theme Arrow' }]
+                        options: [{ value: 'theme-clean', label: 'Theme Clean' }, { value: 'theme-bold', label: 'Theme Bold' }, { value: 'theme-pastel', label: 'Theme Pastel' }, { value: 'theme-pointer', label: 'Theme Pointer' }, { value: 'theme-arrow', label: 'Theme Arrow' }, { value: 'theme-orange', label: 'Theme Orange' }]
                     }),
                     wp.element.createElement(ToggleControl, {
                         label: __('Enable Margin'),
@@ -3201,7 +3647,7 @@ registerBlockType('aione-blocks/aione-tabs', {
 });
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3221,15 +3667,15 @@ Object.defineProperty(exports, 'arrayMove', {
   }
 });
 
-var _SortableContainer2 = __webpack_require__(36);
+var _SortableContainer2 = __webpack_require__(37);
 
 var _SortableContainer3 = _interopRequireDefault(_SortableContainer2);
 
-var _SortableElement2 = __webpack_require__(49);
+var _SortableElement2 = __webpack_require__(50);
 
 var _SortableElement3 = _interopRequireDefault(_SortableElement2);
 
-var _SortableHandle2 = __webpack_require__(50);
+var _SortableHandle2 = __webpack_require__(51);
 
 var _SortableHandle3 = _interopRequireDefault(_SortableHandle2);
 
@@ -3243,7 +3689,7 @@ exports.sortableElement = _SortableElement3.default;
 exports.sortableHandle = _SortableHandle3.default;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3275,7 +3721,7 @@ var _invariant = __webpack_require__(5);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _Manager = __webpack_require__(48);
+var _Manager = __webpack_require__(49);
 
 var _Manager2 = _interopRequireDefault(_Manager);
 
@@ -4004,7 +4450,7 @@ function sortableContainer(WrappedComponent) {
 }
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4035,7 +4481,7 @@ unstable_ConcurrentMode:x,unstable_Profiler:u,__SECRET_INTERNALS_DO_NOT_USE_OR_Y
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5926,7 +6372,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6489,7 +6935,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6555,7 +7001,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6811,7 +7257,7 @@ var li={default:ki},mi=li&&ki||li;module.exports=mi.default||mi;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6840,7 +7286,7 @@ exports.unstable_shouldYield=function(){return!f&&(null!==c&&c.expirationTime<l|
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7551,7 +7997,7 @@ exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(6)))
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7576,7 +8022,7 @@ var React = __webpack_require__(1);
 var _assign = __webpack_require__(2);
 var checkPropTypes = __webpack_require__(14);
 var scheduler = __webpack_require__(23);
-var tracing = __webpack_require__(45);
+var tracing = __webpack_require__(46);
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -27644,22 +28090,22 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(46);
-} else {
   module.exports = __webpack_require__(47);
+} else {
+  module.exports = __webpack_require__(48);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27676,7 +28122,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interac
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28107,7 +28553,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28191,7 +28637,7 @@ function sortByIndex(_ref2, _ref3) {
 }
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28339,7 +28785,7 @@ function sortableElement(WrappedComponent) {
 }
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28416,7 +28862,7 @@ function sortableHandle(WrappedComponent) {
 }
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28498,7 +28944,7 @@ registerBlockType('aione-blocks/aione-tabs-tab', {
 });
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 /**
@@ -28619,7 +29065,7 @@ registerBlockType('aione-blocks/aione-section', {
 });
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports) {
 
 /**
@@ -28666,7 +29112,7 @@ registerBlockType('aione-blocks/aione-row', {
 });
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports) {
 
 /**
@@ -28791,11 +29237,11 @@ registerBlockType('aione-blocks/aione-column', {
 });
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__heading_tag__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__heading_tag__ = __webpack_require__(57);
 /**
  * BLOCK: Aione Section.
  */
@@ -28906,7 +29352,7 @@ registerBlockType('aione-blocks/aione-title', {
 });
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28922,7 +29368,7 @@ function Section(_ref) {
 }
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports) {
 
 /**
@@ -29035,7 +29481,7 @@ registerBlockType('aione-blocks/aione-icon', {
 });
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports) {
 
 /**
@@ -29114,11 +29560,11 @@ registerBlockType('aione-blocks/aione-wrapper', {
 });
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__edit__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__edit__ = __webpack_require__(61);
 /**
  * BLOCK: Aione Wrapper.
  */
@@ -29227,13 +29673,13 @@ registerBlockType('aione-blocks/aione-slider', {
 });
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_pick__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_pick__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_pick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_pick__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times__ = __webpack_require__(121);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_times__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -29539,11 +29985,11 @@ var SliderEdit = function (_Component) {
 /* harmony default export */ __webpack_exports__["a"] = (SliderEdit);
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var basePick = __webpack_require__(62),
-    flatRest = __webpack_require__(109);
+var basePick = __webpack_require__(63),
+    flatRest = __webpack_require__(110);
 
 /**
  * Creates an object composed of the picked `object` properties.
@@ -29570,11 +30016,11 @@ module.exports = pick;
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var basePickBy = __webpack_require__(63),
-    hasIn = __webpack_require__(104);
+var basePickBy = __webpack_require__(64),
+    hasIn = __webpack_require__(105);
 
 /**
  * The base implementation of `_.pick` without support for individual
@@ -29595,11 +30041,11 @@ module.exports = basePick;
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(64),
-    baseSet = __webpack_require__(101),
+var baseGet = __webpack_require__(65),
+    baseSet = __webpack_require__(102),
     castPath = __webpack_require__(7);
 
 /**
@@ -29631,7 +30077,7 @@ module.exports = basePickBy;
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(7),
@@ -29661,7 +30107,7 @@ module.exports = baseGet;
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(3),
@@ -29696,7 +30142,7 @@ module.exports = isKey;
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -29707,7 +30153,7 @@ module.exports = freeGlobal;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(9);
@@ -29759,7 +30205,7 @@ module.exports = getRawTag;
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -29787,10 +30233,10 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoizeCapped = __webpack_require__(70);
+var memoizeCapped = __webpack_require__(71);
 
 /** Used to match property names within property paths. */
 var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
@@ -29820,10 +30266,10 @@ module.exports = stringToPath;
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var memoize = __webpack_require__(71);
+var memoize = __webpack_require__(72);
 
 /** Used as the maximum memoize cache size. */
 var MAX_MEMOIZE_SIZE = 500;
@@ -29852,10 +30298,10 @@ module.exports = memoizeCapped;
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(72);
+var MapCache = __webpack_require__(73);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -29931,14 +30377,14 @@ module.exports = memoize;
 
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var mapCacheClear = __webpack_require__(73),
-    mapCacheDelete = __webpack_require__(93),
-    mapCacheGet = __webpack_require__(95),
-    mapCacheHas = __webpack_require__(96),
-    mapCacheSet = __webpack_require__(97);
+var mapCacheClear = __webpack_require__(74),
+    mapCacheDelete = __webpack_require__(94),
+    mapCacheGet = __webpack_require__(96),
+    mapCacheHas = __webpack_require__(97),
+    mapCacheSet = __webpack_require__(98);
 
 /**
  * Creates a map cache object to store key-value pairs.
@@ -29969,12 +30415,12 @@ module.exports = MapCache;
 
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Hash = __webpack_require__(74),
-    ListCache = __webpack_require__(86),
-    Map = __webpack_require__(92);
+var Hash = __webpack_require__(75),
+    ListCache = __webpack_require__(87),
+    Map = __webpack_require__(93);
 
 /**
  * Removes all key-value entries from the map.
@@ -29996,14 +30442,14 @@ module.exports = mapCacheClear;
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hashClear = __webpack_require__(75),
-    hashDelete = __webpack_require__(82),
-    hashGet = __webpack_require__(83),
-    hashHas = __webpack_require__(84),
-    hashSet = __webpack_require__(85);
+var hashClear = __webpack_require__(76),
+    hashDelete = __webpack_require__(83),
+    hashGet = __webpack_require__(84),
+    hashHas = __webpack_require__(85),
+    hashSet = __webpack_require__(86);
 
 /**
  * Creates a hash object.
@@ -30034,7 +30480,7 @@ module.exports = Hash;
 
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(10);
@@ -30055,13 +30501,13 @@ module.exports = hashClear;
 
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isFunction = __webpack_require__(77),
-    isMasked = __webpack_require__(78),
+var isFunction = __webpack_require__(78),
+    isMasked = __webpack_require__(79),
     isObject = __webpack_require__(11),
-    toSource = __webpack_require__(80);
+    toSource = __webpack_require__(81);
 
 /**
  * Used to match `RegExp`
@@ -30108,7 +30554,7 @@ module.exports = baseIsNative;
 
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(17),
@@ -30151,10 +30597,10 @@ module.exports = isFunction;
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var coreJsData = __webpack_require__(79);
+var coreJsData = __webpack_require__(80);
 
 /** Used to detect methods masquerading as native. */
 var maskSrcKey = (function() {
@@ -30177,7 +30623,7 @@ module.exports = isMasked;
 
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var root = __webpack_require__(18);
@@ -30189,7 +30635,7 @@ module.exports = coreJsData;
 
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -30221,7 +30667,7 @@ module.exports = toSource;
 
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports) {
 
 /**
@@ -30240,7 +30686,7 @@ module.exports = getValue;
 
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports) {
 
 /**
@@ -30263,7 +30709,7 @@ module.exports = hashDelete;
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(10);
@@ -30299,7 +30745,7 @@ module.exports = hashGet;
 
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(10);
@@ -30328,7 +30774,7 @@ module.exports = hashHas;
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeCreate = __webpack_require__(10);
@@ -30357,14 +30803,14 @@ module.exports = hashSet;
 
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var listCacheClear = __webpack_require__(87),
-    listCacheDelete = __webpack_require__(88),
-    listCacheGet = __webpack_require__(89),
-    listCacheHas = __webpack_require__(90),
-    listCacheSet = __webpack_require__(91);
+var listCacheClear = __webpack_require__(88),
+    listCacheDelete = __webpack_require__(89),
+    listCacheGet = __webpack_require__(90),
+    listCacheHas = __webpack_require__(91),
+    listCacheSet = __webpack_require__(92);
 
 /**
  * Creates an list cache object.
@@ -30395,7 +30841,7 @@ module.exports = ListCache;
 
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports) {
 
 /**
@@ -30414,7 +30860,7 @@ module.exports = listCacheClear;
 
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(12);
@@ -30455,7 +30901,7 @@ module.exports = listCacheDelete;
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(12);
@@ -30480,7 +30926,7 @@ module.exports = listCacheGet;
 
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(12);
@@ -30502,7 +30948,7 @@ module.exports = listCacheHas;
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var assocIndexOf = __webpack_require__(12);
@@ -30534,7 +30980,7 @@ module.exports = listCacheSet;
 
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(20),
@@ -30547,7 +30993,7 @@ module.exports = Map;
 
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(13);
@@ -30571,7 +31017,7 @@ module.exports = mapCacheDelete;
 
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports) {
 
 /**
@@ -30592,7 +31038,7 @@ module.exports = isKeyable;
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(13);
@@ -30614,7 +31060,7 @@ module.exports = mapCacheGet;
 
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(13);
@@ -30636,7 +31082,7 @@ module.exports = mapCacheHas;
 
 
 /***/ }),
-/* 97 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getMapData = __webpack_require__(13);
@@ -30664,10 +31110,10 @@ module.exports = mapCacheSet;
 
 
 /***/ }),
-/* 98 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(99);
+var baseToString = __webpack_require__(100);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -30698,11 +31144,11 @@ module.exports = toString;
 
 
 /***/ }),
-/* 99 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(9),
-    arrayMap = __webpack_require__(100),
+    arrayMap = __webpack_require__(101),
     isArray = __webpack_require__(3),
     isSymbol = __webpack_require__(8);
 
@@ -30741,7 +31187,7 @@ module.exports = baseToString;
 
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports) {
 
 /**
@@ -30768,10 +31214,10 @@ module.exports = arrayMap;
 
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assignValue = __webpack_require__(102),
+var assignValue = __webpack_require__(103),
     castPath = __webpack_require__(7),
     isIndex = __webpack_require__(26),
     isObject = __webpack_require__(11),
@@ -30821,10 +31267,10 @@ module.exports = baseSet;
 
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(103),
+var baseAssignValue = __webpack_require__(104),
     eq = __webpack_require__(24);
 
 /** Used for built-in method references. */
@@ -30855,7 +31301,7 @@ module.exports = assignValue;
 
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var defineProperty = __webpack_require__(25);
@@ -30886,11 +31332,11 @@ module.exports = baseAssignValue;
 
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseHasIn = __webpack_require__(105),
-    hasPath = __webpack_require__(106);
+var baseHasIn = __webpack_require__(106),
+    hasPath = __webpack_require__(107);
 
 /**
  * Checks if `path` is a direct or inherited property of `object`.
@@ -30926,7 +31372,7 @@ module.exports = hasIn;
 
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports) {
 
 /**
@@ -30945,14 +31391,14 @@ module.exports = baseHasIn;
 
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(7),
     isArguments = __webpack_require__(27),
     isArray = __webpack_require__(3),
     isIndex = __webpack_require__(26),
-    isLength = __webpack_require__(108),
+    isLength = __webpack_require__(109),
     toKey = __webpack_require__(21);
 
 /**
@@ -30990,7 +31436,7 @@ module.exports = hasPath;
 
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(17),
@@ -31014,7 +31460,7 @@ module.exports = baseIsArguments;
 
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -31055,12 +31501,12 @@ module.exports = isLength;
 
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var flatten = __webpack_require__(110),
-    overRest = __webpack_require__(114),
-    setToString = __webpack_require__(116);
+var flatten = __webpack_require__(111),
+    overRest = __webpack_require__(115),
+    setToString = __webpack_require__(117);
 
 /**
  * A specialized version of `baseRest` which flattens the rest array.
@@ -31077,10 +31523,10 @@ module.exports = flatRest;
 
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseFlatten = __webpack_require__(111);
+var baseFlatten = __webpack_require__(112);
 
 /**
  * Flattens `array` a single level deep.
@@ -31105,11 +31551,11 @@ module.exports = flatten;
 
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayPush = __webpack_require__(112),
-    isFlattenable = __webpack_require__(113);
+var arrayPush = __webpack_require__(113),
+    isFlattenable = __webpack_require__(114);
 
 /**
  * The base implementation of `_.flatten` with support for restricting flattening.
@@ -31149,7 +31595,7 @@ module.exports = baseFlatten;
 
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, exports) {
 
 /**
@@ -31175,7 +31621,7 @@ module.exports = arrayPush;
 
 
 /***/ }),
-/* 113 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(9),
@@ -31201,10 +31647,10 @@ module.exports = isFlattenable;
 
 
 /***/ }),
-/* 114 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var apply = __webpack_require__(115);
+var apply = __webpack_require__(116);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeMax = Math.max;
@@ -31243,7 +31689,7 @@ module.exports = overRest;
 
 
 /***/ }),
-/* 115 */
+/* 116 */
 /***/ (function(module, exports) {
 
 /**
@@ -31270,11 +31716,11 @@ module.exports = apply;
 
 
 /***/ }),
-/* 116 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseSetToString = __webpack_require__(117),
-    shortOut = __webpack_require__(119);
+var baseSetToString = __webpack_require__(118),
+    shortOut = __webpack_require__(120);
 
 /**
  * Sets the `toString` method of `func` to return `string`.
@@ -31290,10 +31736,10 @@ module.exports = setToString;
 
 
 /***/ }),
-/* 117 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var constant = __webpack_require__(118),
+var constant = __webpack_require__(119),
     defineProperty = __webpack_require__(25),
     identity = __webpack_require__(28);
 
@@ -31318,7 +31764,7 @@ module.exports = baseSetToString;
 
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports) {
 
 /**
@@ -31350,7 +31796,7 @@ module.exports = constant;
 
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports) {
 
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
@@ -31393,12 +31839,12 @@ module.exports = shortOut;
 
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseTimes = __webpack_require__(121),
-    castFunction = __webpack_require__(122),
-    toInteger = __webpack_require__(123);
+var baseTimes = __webpack_require__(122),
+    castFunction = __webpack_require__(123),
+    toInteger = __webpack_require__(124);
 
 /** Used as references for various `Number` constants. */
 var MAX_SAFE_INTEGER = 9007199254740991;
@@ -31450,7 +31896,7 @@ module.exports = times;
 
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports) {
 
 /**
@@ -31476,7 +31922,7 @@ module.exports = baseTimes;
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var identity = __webpack_require__(28);
@@ -31496,10 +31942,10 @@ module.exports = castFunction;
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toFinite = __webpack_require__(124);
+var toFinite = __webpack_require__(125);
 
 /**
  * Converts `value` to an integer.
@@ -31538,10 +31984,10 @@ module.exports = toInteger;
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toNumber = __webpack_require__(125);
+var toNumber = __webpack_require__(126);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -31586,7 +32032,7 @@ module.exports = toFinite;
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(11),
@@ -31658,16 +32104,18 @@ module.exports = toNumber;
 
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon__ = __webpack_require__(127);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_throttle__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_throttle__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inspector__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_throttle__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_throttle__);
 /**
  * Block Aione Map
  */
+
 
 
 
@@ -31741,11 +32189,11 @@ registerBlockType('aione-blocks/aione-map', {
         },
         address: {
             type: 'string',
-            default: 'Theater District, New York, USA'
+            default: 'OXO Solutions, Amritsar'
         },
         api_key: {
             type: 'string',
-            default: 'AIzaSyAjyDspiPfzEfjRSS5fQzm-3jHFjHxeXB4'
+            default: aione_blocks.api_key
         }
     },
     edit: function edit(props) {
@@ -31775,78 +32223,7 @@ registerBlockType('aione-blocks/aione-map', {
             api_key = _props$attributes.api_key;
 
 
-        return [isSelected && wp.element.createElement(
-            InspectorControls,
-            null,
-            wp.element.createElement(
-                PanelBody,
-                { title: __('Settings'), initialOpen: true },
-                wp.element.createElement(TextControl, {
-                    label: 'Address',
-                    value: address,
-                    onChange: function onChange(address) {
-                        return setAttributes({ address: address });
-                    }
-                })
-            ),
-            wp.element.createElement(
-                PanelBody,
-                null,
-                wp.element.createElement(RangeControl, {
-                    beforeIcon: 'arrow-left-alt2',
-                    afterIcon: 'arrow-right-alt2',
-                    label: 'Zoom',
-                    value: zoom,
-                    onChange: function onChange(zoom) {
-                        return setAttributes({ zoom: zoom });
-                    },
-                    min: 1,
-                    max: 21
-                })
-            ),
-            wp.element.createElement(
-                PanelBody,
-                null,
-                wp.element.createElement(RangeControl, {
-                    beforeIcon: 'arrow-left-alt2',
-                    afterIcon: 'arrow-right-alt2',
-                    label: 'Problems? We are here to help!',
-                    value: height,
-                    onChange: function onChange(height) {
-                        return setAttributes({ height: height });
-                    },
-                    min: 50,
-                    max: 1000
-                })
-            ),
-            wp.element.createElement(
-                PanelBody,
-                null,
-                wp.element.createElement(TextControl, {
-                    label: 'API Key',
-                    help: wp.element.createElement(
-                        'p',
-                        null,
-                        'Please create your API key on the',
-                        ' ',
-                        wp.element.createElement(
-                            'a',
-                            { href: 'https://console.developers.google.com', target: '_blank' },
-                            'Google Console'
-                        ),
-                        '. ',
-                        'This is a requirement enforced by Google'
-                    ),
-                    value: api_key,
-                    onChange: function onChange(api_key) {
-                        if (!api_key) {
-                            api_key = 'AIzaSyAjyDspiPfzEfjRSS5fQzm-3jHFjHxeXB4';
-                        }
-                        setAttributes({ api_key: api_key });
-                    }
-                })
-            )
-        ), wp.element.createElement(
+        return [wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__inspector__["a" /* default */], props), wp.element.createElement(
             'div',
             null,
             maphtml
@@ -31867,7 +32244,7 @@ registerBlockType('aione-blocks/aione-map', {
 });
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31881,450 +32258,167 @@ var icon = wp.element.createElement(
 /* harmony default export */ __webpack_exports__["a"] = (icon);
 
 /***/ }),
-/* 128 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 129 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {/**
- * lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright jQuery Foundation and other contributors <https://jquery.org/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_throttle__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_throttle__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-/** Used as the `TypeError` message for "Functions" methods. */
-var FUNC_ERROR_TEXT = 'Expected a function';
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
+ * Internal block libraries
  */
-var objectToString = objectProto.toString;
 
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMax = Math.max,
-    nativeMin = Math.min;
+
+
+var Component = wp.element.Component;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    ButtonGroup = _wp$components.ButtonGroup,
+    CheckboxControl = _wp$components.CheckboxControl,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    PanelColor = _wp$components.PanelColor,
+    RadioControl = _wp$components.RadioControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
+    ToggleControl = _wp$components.ToggleControl,
+    Toolbar = _wp$components.Toolbar,
+    SelectControl = _wp$components.SelectControl;
 
 /**
- * Gets the timestamp of the number of milliseconds that have elapsed since
- * the Unix epoch (1 January 1970 00:00:00 UTC).
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Date
- * @returns {number} Returns the timestamp.
- * @example
- *
- * _.defer(function(stamp) {
- *   console.log(_.now() - stamp);
- * }, _.now());
- * // => Logs the number of milliseconds it took for the deferred invocation.
+ * Create an Inspector Controls wrapper Component
  */
-var now = function() {
-  return root.Date.now();
-};
 
-/**
- * Creates a debounced function that delays invoking `func` until after `wait`
- * milliseconds have elapsed since the last time the debounced function was
- * invoked. The debounced function comes with a `cancel` method to cancel
- * delayed `func` invocations and a `flush` method to immediately invoke them.
- * Provide `options` to indicate whether `func` should be invoked on the
- * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
- * with the last arguments provided to the debounced function. Subsequent
- * calls to the debounced function return the result of the last `func`
- * invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the debounced function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.debounce` and `_.throttle`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to debounce.
- * @param {number} [wait=0] The number of milliseconds to delay.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=false]
- *  Specify invoking on the leading edge of the timeout.
- * @param {number} [options.maxWait]
- *  The maximum time `func` is allowed to be delayed before it's invoked.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new debounced function.
- * @example
- *
- * // Avoid costly calculations while the window size is in flux.
- * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
- *
- * // Invoke `sendMail` when clicked, debouncing subsequent calls.
- * jQuery(element).on('click', _.debounce(sendMail, 300, {
- *   'leading': true,
- *   'trailing': false
- * }));
- *
- * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
- * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
- * var source = new EventSource('/stream');
- * jQuery(source).on('message', debounced);
- *
- * // Cancel the trailing debounced invocation.
- * jQuery(window).on('popstate', debounced.cancel);
- */
-function debounce(func, wait, options) {
-  var lastArgs,
-      lastThis,
-      maxWait,
-      result,
-      timerId,
-      lastCallTime,
-      lastInvokeTime = 0,
-      leading = false,
-      maxing = false,
-      trailing = true;
+var Inspector = function (_Component) {
+    _inherits(Inspector, _Component);
 
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  wait = toNumber(wait) || 0;
-  if (isObject(options)) {
-    leading = !!options.leading;
-    maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
+    function Inspector() {
+        _classCallCheck(this, Inspector);
 
-  function invokeFunc(time) {
-    var args = lastArgs,
-        thisArg = lastThis;
+        var _this = _possibleConstructorReturn(this, (Inspector.__proto__ || Object.getPrototypeOf(Inspector)).apply(this, arguments));
 
-    lastArgs = lastThis = undefined;
-    lastInvokeTime = time;
-    result = func.apply(thisArg, args);
-    return result;
-  }
-
-  function leadingEdge(time) {
-    // Reset any `maxWait` timer.
-    lastInvokeTime = time;
-    // Start the timer for the trailing edge.
-    timerId = setTimeout(timerExpired, wait);
-    // Invoke the leading edge.
-    return leading ? invokeFunc(time) : result;
-  }
-
-  function remainingWait(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime,
-        result = wait - timeSinceLastCall;
-
-    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
-  }
-
-  function shouldInvoke(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime;
-
-    // Either this is the first call, activity has stopped and we're at the
-    // trailing edge, the system time has gone backwards and we're treating
-    // it as the trailing edge, or we've hit the `maxWait` limit.
-    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
-      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
-  }
-
-  function timerExpired() {
-    var time = now();
-    if (shouldInvoke(time)) {
-      return trailingEdge(time);
+        _this.updateApiKey = _this.updateApiKey.bind(_this);
+        _this.updateApiKeyThrottled = __WEBPACK_IMPORTED_MODULE_0_lodash_throttle___default()(_this.updateApiKey, 3000);
+        return _this;
     }
-    // Restart the timer.
-    timerId = setTimeout(timerExpired, remainingWait(time));
-  }
 
-  function trailingEdge(time) {
-    timerId = undefined;
+    _createClass(Inspector, [{
+        key: 'updateApiKey',
+        value: function updateApiKey(key) {
+            aione_blocks.api_key = key;
 
-    // Only invoke if we have `lastArgs` which means `func` has been
-    // debounced at least once.
-    if (trailing && lastArgs) {
-      return invokeFunc(time);
-    }
-    lastArgs = lastThis = undefined;
-    return result;
-  }
+            fetch(ajaxurl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: "action=aione_map_block_save_key&api_key=" + key
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
 
-  function cancel() {
-    if (timerId !== undefined) {
-      clearTimeout(timerId);
-    }
-    lastInvokeTime = 0;
-    lastArgs = lastCallTime = lastThis = timerId = undefined;
-  }
+            var _props = this.props,
+                _props$attributes = _props.attributes,
+                zoom = _props$attributes.zoom,
+                height = _props$attributes.height,
+                address = _props$attributes.address,
+                api_key = _props$attributes.api_key,
+                setAttributes = _props.setAttributes;
 
-  function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
-  }
 
-  function debounced() {
-    var time = now(),
-        isInvoking = shouldInvoke(time);
+            return wp.element.createElement(
+                InspectorControls,
+                null,
+                wp.element.createElement(
+                    PanelBody,
+                    null,
+                    wp.element.createElement(TextControl, {
+                        label: 'Address',
+                        value: address,
+                        onChange: function onChange(address) {
+                            return setAttributes({ address: address });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    null,
+                    wp.element.createElement(RangeControl, {
+                        beforeIcon: 'arrow-left-alt2',
+                        afterIcon: 'arrow-right-alt2',
+                        label: 'Zoom',
+                        value: zoom,
+                        onChange: function onChange(zoom) {
+                            return setAttributes({ zoom: zoom });
+                        },
+                        min: 1,
+                        max: 21
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    null,
+                    wp.element.createElement(RangeControl, {
+                        beforeIcon: 'arrow-left-alt2',
+                        afterIcon: 'arrow-right-alt2',
+                        label: 'Problems? We are here to help!',
+                        value: height,
+                        onChange: function onChange(height) {
+                            return setAttributes({ height: height });
+                        },
+                        min: 50,
+                        max: 1000
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    null,
+                    wp.element.createElement(TextControl, {
+                        label: 'API Key',
+                        help: wp.element.createElement(
+                            'p',
+                            null,
+                            'Please create your API key on the',
+                            ' ',
+                            wp.element.createElement(
+                                'a',
+                                { href: 'https://console.developers.google.com', target: '_blank' },
+                                'Google Console'
+                            ),
+                            '. ',
+                            'This is a requirement enforced by Google'
+                        ),
+                        value: api_key,
+                        onChange: function onChange(api_key) {
+                            if (!api_key) {
+                                api_key = aione_blocks.api_key;
+                            }
+                            setAttributes({ api_key: api_key });
+                            _this2.updateApiKeyThrottled(api_key);
+                        }
+                    })
+                )
+            );
+        }
+    }]);
 
-    lastArgs = arguments;
-    lastThis = this;
-    lastCallTime = time;
+    return Inspector;
+}(Component);
 
-    if (isInvoking) {
-      if (timerId === undefined) {
-        return leadingEdge(lastCallTime);
-      }
-      if (maxing) {
-        // Handle invocations in a tight loop.
-        timerId = setTimeout(timerExpired, wait);
-        return invokeFunc(lastCallTime);
-      }
-    }
-    if (timerId === undefined) {
-      timerId = setTimeout(timerExpired, wait);
-    }
-    return result;
-  }
-  debounced.cancel = cancel;
-  debounced.flush = flush;
-  return debounced;
-}
-
-/**
- * Creates a throttled function that only invokes `func` at most once per
- * every `wait` milliseconds. The throttled function comes with a `cancel`
- * method to cancel delayed `func` invocations and a `flush` method to
- * immediately invoke them. Provide `options` to indicate whether `func`
- * should be invoked on the leading and/or trailing edge of the `wait`
- * timeout. The `func` is invoked with the last arguments provided to the
- * throttled function. Subsequent calls to the throttled function return the
- * result of the last `func` invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the throttled function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.throttle` and `_.debounce`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to throttle.
- * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=true]
- *  Specify invoking on the leading edge of the timeout.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new throttled function.
- * @example
- *
- * // Avoid excessively updating the position while scrolling.
- * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
- *
- * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
- * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
- * jQuery(element).on('click', throttled);
- *
- * // Cancel the trailing throttled invocation.
- * jQuery(window).on('popstate', throttled.cancel);
- */
-function throttle(func, wait, options) {
-  var leading = true,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  if (isObject(options)) {
-    leading = 'leading' in options ? !!options.leading : leading;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-  return debounce(func, wait, {
-    'leading': leading,
-    'maxWait': wait,
-    'trailing': trailing
-  });
-}
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
-}
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-  return typeof value == 'symbol' ||
-    (isObjectLike(value) && objectToString.call(value) == symbolTag);
-}
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject(other) ? (other + '') : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = value.replace(reTrim, '');
-  var isBinary = reIsBinary.test(value);
-  return (isBinary || reIsOctal.test(value))
-    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-    : (reIsBadHex.test(value) ? NAN : +value);
-}
-
-module.exports = throttle;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* harmony default export */ __webpack_exports__["a"] = (Inspector);
 
 /***/ })
 /******/ ]);
