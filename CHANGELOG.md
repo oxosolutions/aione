@@ -137,3 +137,7 @@ ADDED: Flexbox CSS
 
 ## 7.3.0.10 01-02-2019
 ADDED: Primary Nav Hover Animation
+
+## 7.3.0.11 01-02-2019
+FIXED: Blog Sidebar Issue
+ADDED: Orange Theme to Aione tabs

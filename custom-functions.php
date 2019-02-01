@@ -1295,7 +1295,19 @@ function is_enabled_sidebar( $sidebar_position ){
 	// Global Options
 	$is_enabled = $theme_options['sidebar_'.$sidebar_position.'_enable'];
 
-	if ( is_archive() ) { 
+
+
+	if ( is_archive() ) {  
+		if( isset( $template_slug_archive ) ) { 
+			if( $is_enabled_archive == 'no' ) {
+				$is_enabled = 0;
+			}
+			if( $is_enabled_archive == 'yes' ) {
+				$is_enabled = 1;
+			}
+		}
+	}
+	if(is_home()){
 		if( isset( $template_slug_archive ) ) { 
 			if( $is_enabled_archive == 'no' ) {
 				$is_enabled = 0;
