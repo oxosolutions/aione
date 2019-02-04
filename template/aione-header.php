@@ -8,6 +8,7 @@ if( $theme_options['header_sticky'] ) {
 	$header_classes[] = 'sticky';
 }
 
+$header_classes[] = 'logo-alignment-'.$theme_options['header_logo_alignment'];
 $header_classes[] = is_fullwidth( $post->ID, 'header');
 $header_classes = implode(' ', $header_classes);		
 

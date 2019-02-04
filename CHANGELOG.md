@@ -141,3 +141,7 @@ ADDED: Primary Nav Hover Animation
 ## 7.3.0.11 01-02-2019
 FIXED: Blog Sidebar Issue
 ADDED: Orange Theme to Aione tabs
+
+## 7.3.0.12 04-02-2019
+ADDED: Logo Alignment Option
+ADDED: Export Reusable Blocks

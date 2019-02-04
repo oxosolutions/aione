@@ -96,6 +96,30 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 
 /**
+* Show Reusable blocks in wordpress export content area to export
+*
+* from one site to another site
+*
+*/
+function aione_support_reusable_block_export( $post_type_args, $post_type ) {
+	if ( 'wp_block' === $post_type ) {
+		// $post_type_args['public'] = true;
+		$post_type_args['can_export'] = true;
+		// $post_type_args['show_in_menu'] = true;
+
+		/*
+		echo "<pre style='padding:50px 0 0 200px'>";
+		print_r($post_type_args);
+		echo "</pre>";
+		*/
+
+	}
+
+	return $post_type_args;
+}
+add_filter( 'register_post_type_args', 'aione_support_reusable_block_export', 10, 2 );
+
+/**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
  * Priority 0 to make it available to lower priority callbacks.

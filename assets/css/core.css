@@ -419,14 +419,29 @@ img {
   margin: 0;
   display: block
 }
+.aione-header.logo-alignment-center .aione-header-logo,
 .aione-wrapper.layout-header-left .aione-header-logo,
-.aione-wrapper.layout-header-right .aione-header-logo {
+.aione-wrapper.layout-header-left .aione-header-title,
+.aione-wrapper.layout-header-right .aione-header-logo,
+.aione-wrapper.layout-header-right .aione-header-title {
   float: none;
   text-align: center;
   display: block
 }
+.aione-header.logo-alignment-right .aione-header-logo {
+  float: right;
+  display: block
+}
+.aione-header.logo-alignment-center .aione-header-title,
 .aione-wrapper.layout-header-left .aione-header-title,
 .aione-wrapper.layout-header-right .aione-header-title {
+  float: none;
+  text-align: center;
+  display: block
+}
+.aione-header.logo-alignment-center .aione-header-banner,
+.aione-wrapper.layout-header-left .aione-header-banner,
+.aione-wrapper.layout-header-right .aione-header-banner {
   float: none;
   text-align: center;
   display: block

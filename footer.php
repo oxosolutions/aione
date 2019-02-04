@@ -111,6 +111,8 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 			}
 			';
 	}
+
+
  
 	/****** Top Bar *****/
 	if( $theme_options['top_bar_customize_enable'] ) { 
@@ -141,6 +143,13 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 		.aione-header a:hover{
 			color: '.esc_html($theme_options['header_link_hover_color']).';				
 		}
+		';
+	}
+	if( $theme_options['logo_height'] ) { 
+		echo '
+			.aione-header-logo > a > img{
+				height: '.esc_html( $theme_options['logo_height'] ).'px
+			}
 		';
 	}
 	/****** Header END*****/
