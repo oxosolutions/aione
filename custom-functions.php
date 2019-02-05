@@ -1584,70 +1584,62 @@ function breadcrumb_shorten_string($string, $shorten_style='word', $wordcount=4,
 		}
 	}
 }
+function breadcrumb_get_page_childs($breadcrumb_separator){
+	global $post;
+	$home = get_page(get_option('page_on_front'));
+	
+	$html = '';
+	
+	for ($i = count($post->ancestors)-1; $i >= 0; $i--) {
+		if (($home->ID) != ($post->ancestors[$i]))
+			{
+				$html.= '<span  class="separator">'.$breadcrumb_separator.'</span>';
+				$html.= '<a href="';
+				$html.= get_permalink($post->ancestors[$i]); 
+				$html.= '">';
+				$html.= get_the_title($post->ancestors[$i]);
+				$html.= '</a>';
+			}
+	}
+	
+	$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.breadcrumb_shorten_string(get_the_title()).'</a>';
+	
+	return $html;
+}
 add_shortcode( 'aione-breadcrumbs', 'aione_breadcrumbs_callback' );
 function aione_breadcrumbs_callback(){
 	global $post;
 	$breadcrumb_separator = get_option( 'aione_breadcrumb_separator' );
 	$html= "";
-	/*echo '<div class="breadcrumb">';
-		if (!is_front_page()) {
-	        echo '<a href="';
-	        echo get_option('home');
-	        echo '">';
-	        bloginfo('name');
-	        echo "</a> ".$separator;
-
-	        if ( is_category() || is_single() ) {
-		        the_category(', ');
-		        if ( is_single() ) {
-		            echo $separator;
-		            the_title();
-		        }
-	        } elseif ( is_page() && $post->post_parent ) {
-	            $home = get_page(get_option('page_on_front'));
-	            for ($i = count($post->ancestors)-1; $i >= 0; $i--) {
-	                if (($home->ID) != ($post->ancestors[$i])) {
-	                        echo '<a href="';
-	                        echo get_permalink($post->ancestors[$i]); 
-	                        echo '">';
-	                        echo get_the_title($post->ancestors[$i]);
-	                        echo "</a>".$separator;
-	                }
-	        	}
-		    	echo the_title();
-	        } elseif (is_page()) {
-		        echo the_title();
-		    } elseif (is_404()) {
-		        echo "404";
-		    } else {
-		        bloginfo('name');
-		    }
-		}
-	echo '</div>';*/
 	$html.= '<div class="breadcrumb">';
-		if(is_front_page() && is_home()){
-			$html.= '<a title="'.bloginfo('name').'" href="#">'.bloginfo('name').'</a><span>'.$breadcrumb_separator.'</span>';			
-		} elseif( is_front_page()){
-			$html.= '<a title="'.bloginfo('name').'" href="#">'.bloginfo('name').'</a><span>'.$breadcrumb_separator.'</span>';
-		} elseif( is_home()){					
-			$html.= '<span  class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.get_page(get_option('page_for_posts'))->post_title.'</a><span class="separator">'.$breadcrumb_separator.'</span>';
-		} else if(is_attachment()){
+		if(is_front_page() && is_home()){ 
+			$html.= '<a title="'.get_bloginfo('name').'" href="#">'.get_bloginfo('name').'</a>';			
+		} elseif( is_front_page()){ 
+			$html.= '<a title="'.get_bloginfo('name').'" href="#">'.get_bloginfo('name').'</a>';
+		} elseif( is_home()){	 	
+			$html.= '<a title="'.get_bloginfo('name').'" href="#">'.get_bloginfo('name').'</a>';			
+			$html.= '<span  class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.get_page(get_option('page_for_posts'))->post_title.'</a>';
+		} else if(is_attachment()){ 
 			$current_attachment_id = get_query_var('attachment_id');
 			$current_attachment_link = get_attachment_link($current_attachment_id);				
 			
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
 			
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="'.$current_attachment_link.'">'.get_the_title().'</a><span>'.$breadcrumb_separator.'</span>';
-		}else if(is_singular()){			
+			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="'.$current_attachment_link.'">'.get_the_title().'</a>';
+		}else if(is_singular()){		
 			$post_parent_id = wp_get_post_parent_id(get_the_ID());
 			$parent_title = get_the_title($post_parent_id);
 			$paren_get_permalink = get_permalink($post_parent_id);
 			
 			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
 			
-			if(is_page() && $post->post_parent){
-					$html.= $this->breadcrumb_get_page_childs(); 
-			}else{
+			if(is_page()){ 
+				if($post->post_parent){
+					$html.= breadcrumb_get_page_childs($breadcrumb_separator); 
+				} else {
+					$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.breadcrumb_shorten_string(get_the_title()).'</a>';
+				}
+			}else{ 
 				$permalink_structure = get_option('permalink_structure',true);
 				$permalink_structure = str_replace('%postname%','',$permalink_structure);
 				$permalink_structure = str_replace('%post_id%','',$permalink_structure);															
@@ -1671,27 +1663,27 @@ function aione_breadcrumbs_callback(){
 				$html_permalink = '';
 				
 				
-				if(!empty($permalink_structure) ){
-					if(in_array('%year%',$permalink_items)){
-						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$get_year_link.'">'.breadcrumb_shorten_string($post_date_year,$breadcrumb_word_char, $breadcrumb_word_char_count, $breadcrumb_word_char_end).'</a>';
+				if(!empty($permalink_structure) && get_post_type()=='post'){ 
+					if(in_array('%year%',$permalink_items)){ 
+						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$get_year_link.'">'.breadcrumb_shorten_string($post_date_year).'</a>';
 					}
 
-					if(in_array('%monthnum%',$permalink_items)){
-						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$get_month_link.'">'.breadcrumb_shorten_string($post_date_month, $breadcrumb_word_char, $breadcrumb_word_char_count, $breadcrumb_word_char_end).'</a>';
+					if(in_array('%monthnum%',$permalink_items)){ 
+						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$get_month_link.'">'.breadcrumb_shorten_string($post_date_month).'</a>';
 					}										
 							
-					if(in_array('%author%',$permalink_items)){
-						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$author_posts_url.'">'.breadcrumb_shorten_string($author_name, $breadcrumb_word_char, $breadcrumb_word_char_count, $breadcrumb_word_char_end).'</a>';
+					if(in_array('%author%',$permalink_items)){ 
+						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$author_posts_url.'">'.breadcrumb_shorten_string($author_name).'</a>';
 
 					}										
 							
-					if(in_array('%day%',$permalink_items)){
-						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a itemprop="item" title="'.get_the_title().'" href="'.$get_day_link.'">'.breadcrumb_shorten_string($post_date_day, $breadcrumb_word_char, $breadcrumb_word_char_count, $breadcrumb_word_char_end).'</a>';
+					if(in_array('%day%',$permalink_items)){ 
+						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a itemprop="item" title="'.get_the_title().'" href="'.$get_day_link.'">'.breadcrumb_shorten_string($post_date_day).'</a>';
 					}
 																	
-					if(in_array('%category%',$permalink_items)){
+					if(in_array('%category%',$permalink_items)){ 
 						$post_categories = get_the_category();
-						if(!empty($post_categories)){
+						if(!empty($post_categories)){ 
 
 							$parent_cat_links = get_category_parents( $post_categories[0]->term_id, true, ',' );
 							
@@ -1701,23 +1693,24 @@ function aione_breadcrumbs_callback(){
 								$html_permalink .= '<span class="separator">'.$breadcrumb_separator.'</span>'.$link.'';
 							}
 						}
-						$html.= $html_permalink;
+						
 					}
-
-					$html.= '<span  class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.breadcrumb_shorten_string(get_the_title(),$breadcrumb_word_char, $breadcrumb_word_char_count, $breadcrumb_word_char_end).'</a><span class="separator">'.$breadcrumb_separator.'</span>';
-
+					$html.= $html_permalink;
 				}
+
+				$html.= '<span  class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.breadcrumb_shorten_string(get_the_title()).'</a>';
+
 			}
-		} else if(is_category()){						
+		} else if(is_category()){					
 			$current_cat_id = get_query_var('cat');
 			$parent_cat_links = get_category_parents( $current_cat_id, true, ',' );
-			
 			$parent_cat_links = explode(",",$parent_cat_links);
-			
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
 			
 			foreach($parent_cat_links as $link){
-				$html.= '<span class="separator">'.$breadcrumb_separator.'</span>'.$link.'';
+				if($link){
+					$html.= '<span class="separator">'.$breadcrumb_separator.'</span>'.$link;
+				}
 			}
 		} else if(is_tag()){						
 			$current_tag_id = get_query_var('tag_id');
@@ -1726,39 +1719,39 @@ function aione_breadcrumbs_callback(){
 						
 			$current_tag_link = get_tag_link($current_tag_id);;	
 			
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
 						
-			$html.= '<a  title="'.bloginfo('name').'" href="'.$current_tag_link.'">'.$current_tag_name.'</a><span class="separator">'.$breadcrumb_separator.'</span>';
+			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_bloginfo('name').'" href="'.$current_tag_link.'">'.$current_tag_name.'</a>';
 		} else if(is_author()){						
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
 			
 			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="'.esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ).'">'.get_the_author().'</a>';
 		} else if(is_search()){		
 			$current_query = sanitize_text_field(get_query_var('s'));
 			
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
 			
 			if(empty($current_query)){
 				$current_query = __('Search:','aione');
 			}else {
 				$current_query = __('Search:','aione').' '.$current_query;
 			}
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="#">'.$current_query.'</a><span class="separator">'.$breadcrumb_separator.'</span>';			
-		} else if(is_year()){
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';
+			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="#">'.$current_query.'</a>';			
+		} else if(is_year()){ 
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
 			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="#">'.get_the_date('Y').'</a>';
-		} else if(is_month()){
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';
+		} else if(is_month()){ 
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
 			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="#">'.get_the_date('F').'</a>';
-		} else if(is_date()){
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="#">'.get_the_date().'</a></li>';
-		} elseif(is_404()){
-			$html.= '<a  title="'.bloginfo('name').'" href="'.get_bloginfo('url').'">'.bloginfo('name').'</a>';	
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="#">404</a></li>';
+		} else if(is_date()){ 
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
+			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="#">'.get_the_date().'</a>';
+		} elseif(is_404()){ 
+			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';	
+			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="#">404</a>';
 
-		}else{
-			$html.= '-------';
+		}else{ 
+			$html.= '';
 		}	 
 
 	$html.= '</div>';
