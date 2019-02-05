@@ -152,12 +152,6 @@ img {
 .aione-layout-wide {
   width: 100%
 }
-.aione-row:after {
-  content: "";
-  display: block;
-  width: 100%;
-  clear: both
-}
 .aione-wrapper.no-header .aione-main {
   padding-top: 0
 }
@@ -254,46 +248,10 @@ img {
   display: table;
   clear: both
 }
-.scrolltop {
-  opacity: 0;
-  margin: 0;
-  padding: 0;
-  right: 1.5%;
-  bottom: 0;
-  width: 40px;
-  height: 30px;
-  z-index: 103;
-  position: fixed;
-  text-align: center;
-  display: inline-block;
-  background-color: #1685c2;
-  border-radius: 5px 5px 0 0;
-  -webkit-transition: all 280ms ease-in-out;
-  -moz-transition: all 280ms ease-in-out;
-  transition: all 280ms ease-in-out
-}
-.scrolltop:hover {
-  background-color: #1570a6
-}
-.scrolltop:before {
-  content: '';
-  top: 14px;
-  left: 13px;
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  display: inline-block;
-  border-top: 1px solid #fff;
-  border-right: 1px solid #fff;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  -webkit-transition: all 280ms ease-in-out;
-  -moz-transition: all 280ms ease-in-out;
-  transition: all 280ms ease-in-out
-}
-.scrolltop.active {
-  opacity: 1
+@media only screen and (min-width:993px) {
+  .layout-header-left > .wrapper {
+    display: flex
+  }
 }
 .aione-topbar {
   margin: 0;
@@ -365,6 +323,56 @@ img {
 }
 .aione-topbar .aione-social-icons {
   margin-bottom: 0
+}
+.aione-topbar .widget_nav_menu .sub-menu {
+  display: none;
+  position: absolute;
+  width: 300px;
+  background: #fff;
+  z-index: 99;
+  box-shadow: 1px 1px 4px 1px #e8e8e8
+}
+.aione-topbar .widget_nav_menu .sub-menu li,
+.aione-topbar .widget_nav_menu .sub-menu li > a {
+  display: block
+}
+.aione-topbar .widget_nav_menu .sub-menu li > a {
+  padding: 5px 10px
+}
+.aione-topbar .widget_nav_menu .sub-menu li > a:hover {
+  background-color: #e8e8e8
+}
+.aione-topbar .widget_nav_menu .menu-item:hover .sub-menu {
+  display: block
+}
+.aione-topbar .widget_nav_menu li {
+  display: inline-block
+}
+.aione-topbar .widget_nav_menu li:after {
+  content: "|";
+  padding: 0 10px
+}
+.aione-topbar .widget_nav_menu .sub-menu li:after,
+.aione-topbar .widget_nav_menu li:last-child:after {
+  content: "";
+  padding: 0
+}
+.aione-topbar .user-links {
+  display: inline-block
+}
+.aione-topbar .user-links a {
+  color: #368dc4;
+  background-color: #fff;
+  border-radius: 100px;
+  padding: 4px 20px
+}
+.aione-topbar .user-welcome {
+  margin-right: 10px;
+  color: #fff
+}
+.aione-topbar .widget_meta ul > li {
+  display: inline-block;
+  padding: 0 10px
 }
 .aione-header-banner,
 .aione-header-logo,
@@ -663,6 +671,97 @@ img {
 .aione-header .aione-header-right .aione-header-item .aione-profile-widget .profile-menu li a:hover {
   color: #fff;
   background-color: #168dc5
+}
+.layout-header-left .header-wrapper,
+.layout-header-right .header-wrapper {
+  width: 100%;
+  float: none;
+  border-left: none;
+  border-right: none
+}
+@media only screen and (min-width:993px) {
+  .layout-header-left .header-wrapper {
+    width: 250px;
+    float: left
+  }
+  .layout-header-right .header-wrapper {
+    width: 250px;
+    float: right
+  }
+}
+.layout-header-left .aione-header,
+.layout-header-right .aione-header {
+  float: none;
+  padding: 10px
+}
+.layout-header-left .aione-topbar-left,
+.layout-header-left .aione-topbar-right,
+.layout-header-right .aione-topbar-left,
+.layout-header-right .aione-topbar-right {
+  width: 100%
+}
+.layout-header-left .aione-topbar .widget_meta ul > li,
+.layout-header-left .aione-topbar .widget_nav_menu li,
+.layout-header-right .aione-topbar .widget_meta ul > li,
+.layout-header-right .aione-topbar .widget_nav_menu li {
+  display: block;
+  text-align: left
+}
+.layout-header-left .aione-topbar .widget_nav_menu li:after,
+.layout-header-right .aione-topbar .widget_nav_menu li:after {
+  content: ''
+}
+.layout-header-left .aione-topbar > .wrapper,
+.layout-header-right .aione-topbar > .wrapper {
+  max-height: initial
+}
+.layout-header-left .aione-topbar .widget,
+.layout-header-right .aione-topbar .widget {
+  float: none;
+  display: block;
+  text-align: center
+}
+.layout-header-left .aione-nav ul li,
+.layout-header-right .aione-nav ul li {
+  display: block
+}
+.layout-header-left .aione-nav ul li a,
+.layout-header-right .aione-nav ul li a {
+  display: block
+}
+.layout-header-left .aione-header-banner .textwidget p,
+.layout-header-right .aione-header-banner .textwidget p {
+  text-align: center
+}
+.layout-header-left .aione-menu .sub-menu,
+.layout-header-right .aione-menu .sub-menu {
+  position: initial
+}
+.layout-header-left .aione-header > .wrapper > div,
+.layout-header-right .aione-header > .wrapper > div {
+  margin-bottom: 10px
+}
+.content-wrapper .aione-main,
+.content-wrapper .aione-pagetop {
+  padding: 15px
+}
+.layout-header-left .content-wrapper,
+.layout-header-right .content-wrapper {
+  width: 100%;
+  float: none
+}
+@media only screen and (min-width:993px) {
+  .layout-header-left .content-wrapper,
+  .layout-header-right .content-wrapper {
+    width: calc(100% - 250px);
+    float: left
+  }
+}
+.layout-header-left .header-wrapper:after,
+.layout-header-right .header-wrapper:after {
+  content: "";
+  clear: both;
+  display: table
 }
 .aione-nav {
   color: #454545;
@@ -1274,6 +1373,178 @@ img {
   top: 0;
   opacity: 1
 }
+.primary-nav:after {
+  content: "";
+  clear: both;
+  display: table
+}
+.aione-nav.horizontal {
+  border-bottom: none;
+  position: relative
+}
+.aione-header-menu {
+  padding: 0
+}
+.primary-nav.align-left .aione-nav {
+  text-align: left
+}
+.primary-nav.align-right .aione-nav {
+  text-align: right
+}
+.primary-nav.align-center .aione-nav {
+  text-align: center
+}
+.primary-nav.align-right.position-inside {
+  float: right;
+  display: inline-block
+}
+.primary-nav.align-left.position-inside {
+  float: left;
+  display: inline-block
+}
+.primary-nav .aione-nav {
+  background-color: transparent
+}
+.primary-nav .aione-nav > ul {
+  display: inline-block
+}
+.primary-nav .aione-nav.vertical > ul {
+  display: block
+}
+.primary-nav .aione-nav > ul > li > a {
+  padding: 0 12px;
+  font-size: 16px;
+  line-height: 50px
+}
+.primary-nav .aione-nav.horizontal > ul > li > ul {
+  overflow: hidden
+}
+.aione-wrapper.layout-header-left .primary-nav,
+.aione-wrapper.layout-header-right .primary-nav {
+  height: auto!important
+}
+.primary-nav {
+  position: relative
+}
+.primary-nav .aione-nav-background {
+  display: none;
+  position: absolute;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 0;
+  top: 50%;
+  right: 20px;
+  cursor: pointer;
+  z-index: 9999
+}
+.header-wrapper .primary-nav {
+  min-height: 40px
+}
+.header-wrapper .primary-nav .aione-nav-background {
+  top: 20px;
+  right: 20px
+}
+.primary-nav .aione-nav-background:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 2px;
+  bottom: 2px;
+  display: block;
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+  transition: all 140ms ease-in-out
+}
+.primary-nav .aione-nav-background:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  bottom: 0;
+  display: block;
+  margin: -1px 0 0 0;
+  border-top: 2px solid #333;
+  transition: all 140ms ease-in-out
+}
+.primary-nav .aione-nav-background.active:before {
+  border-bottom: none;
+  transform: rotate(-45deg);
+  top: 8px;
+  left: 3px
+}
+.primary-nav .aione-nav-background.active:after {
+  transform: rotate(45deg);
+  top: 9px;
+  left: -3px
+}
+@media only screen and (max-width:901px) {
+  .primary-nav .aione-nav-background {
+    display: block
+  }
+  .primary-nav .aione-nav {
+    display: none;
+    z-index: 9997
+  }
+  .aione-nav.horizontal > ul > li {
+    float: none
+  }
+  .primary-nav .aione-nav {
+    padding-top: 50px
+  }
+  .primary-nav .aione-nav > ul {
+    width: 100%;
+    background: #333;
+    text-align: center
+  }
+  .primary-nav .aione-nav > ul > li > a {
+    border-bottom: 1px solid #454545
+  }
+}
+.primary-nav .aione-nav.mobile-nav {
+  display: block
+}
+.aione-nav .aione-nav-toggle {
+  width: 20px;
+  position: relative;
+  clear: both;
+  display: none
+}
+.aione-nav .aione-nav-toggle.active {
+  display: inline-block
+}
+.aione-nav .aione-nav-toggle .nav-toggle {
+  display: block;
+  position: relative;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  margin: 10px 0
+}
+.aione-nav .aione-nav-toggle .nav-toggle:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 2px;
+  bottom: 2px;
+  display: block;
+  border-top: 2px solid #787878;
+  border-bottom: 2px solid #787878
+}
+.aione-nav .aione-nav-toggle .nav-toggle:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  bottom: 0;
+  display: block;
+  margin: -1px 0 0 0;
+  border-top: 2px solid #787878
+}
+.aione-nav .aione-nav-toggle:hover .nav-toggle:after,
+.aione-nav .aione-nav-toggle:hover .nav-toggle:before {
+  border-color: #666
+}
 .aione-pagetitle {
   padding: 20px 0;
   background-color: #f2f2f2
@@ -1480,6 +1751,33 @@ img {
   padding-right: 0;
   padding-left: 230px!important
 }
+.aione-contentbottom .widgettitle,
+.aione-contenttop .widgettitle {
+  display: none
+}
+.aione-main .aione-page-content {
+  width: 100%;
+  float: none;
+  box-sizing: border-box;
+  margin-bottom: 20px
+}
+@media only screen and (min-width:993px) {
+  .aione-wrapper.sidebar-left .aione-main .aione-page-content,
+  .aione-wrapper.sidebar-right .aione-main .aione-page-content {
+    width: 70%;
+    float: left;
+    margin-bottom: 0
+  }
+  .aione-wrapper.sidebar-left .aione-main .aione-page-content {
+    padding-left: 30px
+  }
+  .aione-wrapper.sidebar-right .aione-main .aione-page-content {
+    padding-right: 30px
+  }
+  .aione-wrapper.sidebar-left.sidebar-right .aione-main .aione-page-content {
+    width: 50%
+  }
+}
 .aione-sidebar:before {
   display: none
 }
@@ -1514,6 +1812,126 @@ img {
   .aione-main.sidebar-right .aione-sidebar-right > .wrapper {
     margin-left: 30px
   }
+}
+.aione-sidebar .widgettitle {
+  color: #263238;
+  font-size: 17px
+}
+.aione-sidebar .widget ul > li {
+  padding: 10px 0;
+  border-bottom: 1px solid #e8e8e8
+}
+.aione-sidebar .widget ul > li:last-child {
+  border-bottom: none
+}
+.aione-sidebar .widget ul > li > a {
+  display: block
+}
+.aione-sidebar .widget_categories ul > li {
+  text-align: right
+}
+.aione-sidebar .widget_categories ul > li:after {
+  content: '';
+  display: block;
+  clear: left
+}
+.aione-sidebar .widget_categories ul > li > a {
+  float: left;
+  color: #757575
+}
+.aione-sidebar .widget_recent_entries ul > li > a {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #757575
+}
+.aione-sidebar .widget_recent_entries ul > li > span {
+  color: #999;
+  font-size: 13px
+}
+.aione-sidebar .aione-social-icons-widget ul > li {
+  padding: 0;
+  border-bottom: none
+}
+.aione-sidebar .calendar_wrap caption,
+.aione-sidebar .calendar_wrap tbody tr td,
+.aione-sidebar .calendar_wrap thead tr th {
+  line-height: 40px;
+  text-align: center
+}
+.aione-sidebar .calendar_wrap thead {
+  border-bottom: 1px solid #e8e8e8
+}
+.aione-sidebar .calendar_wrap table {
+  margin: 0 auto;
+  border: 1px solid #e8e8e8;
+  width: 100%
+}
+.aione-sidebar .calendar_wrap caption {
+  width: auto
+}
+.aione-sidebar .widget_archive ul > li > a,
+.aione-sidebar .widget_meta ul > li > a {
+  color: #757575
+}
+.aione-sidebar .widget_pages li > a {
+  color: #757575
+}
+.aione-sidebar .gallery .gallery-icon.landscape > a {
+  display: inline-block;
+  padding: 0 10px 10px 0
+}
+.aione-sidebar .gallery-item .gallery-icon.landscape img {
+  width: -webkit-fill-available
+}
+.aione-sidebar .widget_nav_menu .sub-menu {
+  top: 0;
+  z-index: 99;
+  width: 300px;
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 1px 1px 4px 1px #e8e8e8
+}
+.aione-sidebar.aione-sidebar-right .widget_nav_menu .sub-menu {
+  right: 100%
+}
+.aione-sidebar.aione-sidebar-left .widget_nav_menu .sub-menu {
+  left: 100%
+}
+.aione-sidebar .widget_nav_menu .sub-menu li,
+.aione-sidebar .widget_nav_menu .sub-menu li > a {
+  display: block
+}
+.aione-sidebar .widget_nav_menu .sub-menu li > a {
+  padding: 10px 5px
+}
+.aione-sidebar .widget_nav_menu .sub-menu li > a:hover {
+  background-color: #e8e8e8
+}
+.aione-sidebar .widget_nav_menu .menu-item:hover .sub-menu {
+  display: block
+}
+.aione-sidebar .widget_nav_menu ul > li {
+  display: block;
+  padding: 0;
+  position: relative
+}
+.aione-sidebar .widget_nav_menu ul > li > a {
+  display: block;
+  padding: 10px 0;
+  font-size: 17px;
+  color: #757575
+}
+.aione-sidebar .aione_social_share_widget ul > li {
+  padding: 0;
+  border-bottom: none
+}
+.aione-sidebar .widgettitle {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #333
 }
 .aione-footer {
   color: #b4b4b4;
@@ -1557,6 +1975,93 @@ img {
 .aione-footer.dark a:active,
 .aione-footer.dark a:hover {
   color: #e8e8e8
+}
+.aione-footer .widget h3 {
+  text-align: left;
+  color: #fff;
+  font-size: 20px;
+  border-bottom: 2px solid #b2b2b2;
+  padding-bottom: 15px
+}
+.aione-footer .widget_nav_menu ul li {
+  line-height: 40px;
+  border-bottom: 1px solid #353535;
+  text-align: left
+}
+.aione-footer .widget_nav_menu ul li a {
+  color: #fff;
+  display: block;
+  font-size: 16px
+}
+.aione-footer .widget_categories ul li {
+  text-align: right
+}
+.aione-footer .widget_categories ul li a {
+  float: left
+}
+.aione-footer .textwidget {
+  color: #fff;
+  line-height: 25px;
+  letter-spacing: 1.1px
+}
+.aione-footer .textwidget p {
+  text-align: justify
+}
+.aione-footer .widget_recent_entries ul > li {
+  padding: 10px 0
+}
+.aione-footer .widget_recent_entries ul > li > a {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6
+}
+.aione-footer .widget_recent_entries ul > li > span {
+  color: #999;
+  font-size: 13px;
+  display: block;
+  line-height: 1.6;
+  margin-top: 6px
+}
+.aione-footer .widget.aione-social-icons-widget ul li a {
+  text-align: center
+}
+.aione-footer .gallery .gallery-icon.landscape > a {
+  display: inline-block;
+  padding: 0 10px 10px 0
+}
+.aione-footer .gallery-item .gallery-icon.landscape img {
+  width: -webkit-fill-available
+}
+.aione-footer .calendar_wrap caption,
+.aione-footer .calendar_wrap tbody tr td,
+.aione-footer .calendar_wrap thead tr th {
+  line-height: 40px;
+  width: 40px;
+  text-align: center;
+  color: #fff
+}
+.aione-footer .calendar_wrap thead {
+  border-bottom: 1px solid #e8e8e8
+}
+.aione-footer .calendar_wrap table {
+  margin: 0 auto;
+  border: 1px solid #e8e8e8
+}
+.aione-footer .calendar_wrap caption {
+  width: auto
+}
+.aione-footer .widget_nav_menu .sub-menu {
+  background-color: rgba(232,232,232,.1);
+  display: none
+}
+.aione-footer .widget_nav_menu .menu-item:hover .sub-menu {
+  display: block
+}
+.aione-footer .widget_nav_menu .sub-menu li > a {
+  padding: 5px 10px
+}
+.aione-footer .widget_nav_menu .sub-menu li > a:hover {
+  background-color: #212121
 }
 .aione-copyright {
   color: #acacac;

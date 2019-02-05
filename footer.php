@@ -133,6 +133,10 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 	/****** Header *****/
 	if( $theme_options['header_customize_enable'] ) { 
 		echo '
+
+		.header-wrapper{
+			background-color: '.esc_html($theme_options['header_background_color']).';
+		}
 		.aione-header{
 			background-color: '.esc_html($theme_options['header_background_color']).';
 			color: '.esc_html($theme_options['header_text_color']).';

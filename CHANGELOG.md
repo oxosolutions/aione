@@ -145,3 +145,7 @@ ADDED: Orange Theme to Aione tabs
 ## 7.3.0.12 04-02-2019
 ADDED: Logo Alignment Option
 ADDED: Export Reusable Blocks
+
+## 7.3.0.13 06-02-2019
+UPDATED: CSS Reorganization
+UPDATED: Header Left/Right Design
