@@ -1820,6 +1820,8 @@ function aione_breadcrumbs_callback()
 				}
 				$html .= $html_permalink;
 			}
+
+			$html .= '<li><a href="#">' . ucwords(get_post_type(get_the_ID())) . '<span></span></a></li>';
 			$html .= '<li><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string(get_the_title()) . '<span></span></a></li>';
 
 		}
@@ -1881,7 +1883,10 @@ function aione_breadcrumbs_callback()
 	echo $html;
 }
 
-
+/**
+ * Aione Fontsize Widget
+ * 
+ */
 add_action('widgets_init', function () {
 	register_widget('Aione_Fontsize_Widget');
 });
@@ -1921,10 +1926,10 @@ add_shortcode('aione-fontsize', 'aione_fontsize_callback');
 function aione_fontsize_callback()
 {
 	$html = "";
-	$html .= '<ul class="aione-SizeChanger">';
-	$html .= '<li><a>-A</a></li>';
-	$html .= '<li><a>A</a></li>';
-	$html .= '<li><a>+A</a></li>';
+	$html .= '<ul class="aione-FontSize">';
+	$html .= '<li><a href="#">-A</a></li>';
+	$html .= '<li><a href="#">A</a></li>';
+	$html .= '<li><a href="#">+A</a></li>';
 	$html .= '</ul>';
 
 	echo $html;

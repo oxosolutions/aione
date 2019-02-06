@@ -399,7 +399,7 @@ img {
   z-index: 9998
 }
 .aione-header-logo a {
-  display: inline-block
+  display: block
 }
 .aione-header-logo img {
   width: auto
@@ -1554,7 +1554,6 @@ img {
   color: #333;
   font-size: 48px;
   line-height: 1.5;
-  font-weight: 100;
   text-align: center
 }
 .aione-pagetitle .description {
