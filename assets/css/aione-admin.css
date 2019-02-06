@@ -42657,6 +42657,70 @@ ul.aione-list.theme-checkmark {
 .scrolltop.active {
   opacity: 1
 }
+.aione-fontsize {
+  list-style: none
+}
+.aione-fontsize li {
+  display: block;
+  float: left;
+  width: 36px;
+  line-height: 24px;
+  padding-top: 10px;
+  margin-left: 2px;
+  position: relative;
+  text-align: center;
+  box-sizing: border-box;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.15);
+  -webkit-transition: all 180ms ease-in-out;
+  -moz-transition: all 180ms ease-in-out;
+  -ms-transition: all 180ms ease-in-out;
+  -o-transition: all 180ms ease-in-out;
+  transition: all 180ms ease-in-out
+}
+.aione-fontsize li:hover {
+  background: rgba(255,255,255,.3);
+  border: 1px solid rgba(255,255,255,.3)
+}
+.aione-fontsize li a {
+  display: block
+}
+.aione-fontsize li a:before {
+  content: "";
+  top: 6px;
+  left: 50%;
+  width: 9px;
+  height: 1px;
+  margin-left: -5px;
+  position: absolute;
+  background-color: #fff
+}
+.aione-fontsize li a:after {
+  content: "";
+  top: 2px;
+  left: 50%;
+  height: 9px;
+  width: 1px;
+  margin-left: -1px;
+  position: absolute;
+  background-color: #fff
+}
+.aione-fontsize .aione-fontsize-decrease a:after {
+  display: none
+}
+.aione-fontsize .aione-fontsize-reset a:before {
+  top: 3px;
+  width: 9px;
+  height: 9px;
+  margin-left: -6px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background-color: transparent
+}
+.aione-fontsize .aione-fontsize-reset a:after {
+  display: none
+}
 .equal > .ac {
   position: relative
 }
