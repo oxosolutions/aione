@@ -47071,6 +47071,12 @@ input[type=file]:hover {
 .gform_wrapper .validation_message {
   padding-top: 10px
 }
+.gform_confirmation_message {
+  color: #388e3c
+}
+.gfield_required {
+  color: #f44336
+}
 input[type=date],
 input[type=email],
 input[type=number],
@@ -55679,4 +55685,3 @@ body.stop-scrolling {
   margin-left: 6px;
   float: right
 }
-/*# sourceMappingURL=assets/maps/aione.css.map */

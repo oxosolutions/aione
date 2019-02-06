@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Gutenbergtheme custom functions and definitions
  *
@@ -8,49 +9,53 @@
  */
 
 
-class PerPageOptionsMetaboxes {
-	public function __construct() {
+class PerPageOptionsMetaboxes
+{
+	public function __construct()
+	{
 
-		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
-		add_action( 'save_post', array( $this, 'save_meta_boxes' ) );
-		add_action( 'edit_attachment', array( $this, 'save_meta_boxes' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_script_loader' ) );
+		add_action('add_meta_boxes', array($this, 'add_meta_boxes'));
+		add_action('save_post', array($this, 'save_meta_boxes'));
+		add_action('edit_attachment', array($this, 'save_meta_boxes'));
+		add_action('admin_enqueue_scripts', array($this, 'admin_script_loader'));
 	}
 
 	/**
 	 * Load backend scripts
 	 */
-	function admin_script_loader() {
+	function admin_script_loader()
+	{
 
 		global $pagenow;
 
-		if ( is_admin() && ( in_array( $pagenow, array( 'post-new.php', 'post.php' ) ) ) ) {
+		if (is_admin() && (in_array($pagenow, array('post-new.php', 'post.php')))) {
 
 			$theme_info = wp_get_theme();
 
-			wp_register_script( 'jquery.biscuit', get_template_directory_uri() . '/assets/js/jquery.biscuit.js', array( 'jquery' ), $theme_info->get( 'Version' ) );
+			wp_register_script('jquery.biscuit', get_template_directory_uri() . '/assets/js/jquery.biscuit.js', array('jquery'), $theme_info->get('Version'));
 
-			wp_register_script( 'per-page-options-js', get_template_directory_uri() . '/assets/js/perpageoptions.js', array( 'jquery' ), $theme_info->get( 'Version' ) );
-			wp_register_script( 'ace-editor-js', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js', array( 'jquery' ), $theme_info->get( 'Version' ) );
+			wp_register_script('per-page-options-js', get_template_directory_uri() . '/assets/js/perpageoptions.js', array('jquery'), $theme_info->get('Version'));
+			wp_register_script('ace-editor-js', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js', array('jquery'), $theme_info->get('Version'));
 
-			wp_enqueue_script( 'jquery.biscuit' );
-			wp_enqueue_script( 'per-page-options-js' );
-			wp_enqueue_script( 'ace-editor-js' );
+			wp_enqueue_script('jquery.biscuit');
+			wp_enqueue_script('per-page-options-js');
+			wp_enqueue_script('ace-editor-js');
 			wp_enqueue_script('media-upload');
-			wp_enqueue_script( 'thickbox' );
-			wp_enqueue_style( 'thickbox' );
+			wp_enqueue_script('thickbox');
+			wp_enqueue_style('thickbox');
 
-			wp_register_style( 'per-page-options-css', get_template_directory_uri() . '/assets/css/perpageoptions.css' );
-			wp_enqueue_style( 'per-page-options-css' );
+			wp_register_style('per-page-options-css', get_template_directory_uri() . '/assets/css/perpageoptions.css');
+			wp_enqueue_style('per-page-options-css');
 
 		}
 
 	}
-	
 
-	public function add_meta_boxes() {
 
-		$post_types = get_post_types( array( 'public' => true ) );
+	public function add_meta_boxes()
+	{
+
+		$post_types = get_post_types(array('public' => true));
 
 		/*$disallowed = array( 'page', 'post', 'attachment', 'aione-slider' );
 
@@ -65,9 +70,9 @@ class PerPageOptionsMetaboxes {
 		$this->add_meta_box( 'page_options', 'Page Options', 'page' );*/
 
 		//$disallowed = array( 'attachment', 'aione-slider' );
-		$disallowed = array( 'aione-slider' );
-		foreach ( $post_types as $post_type ) {
-			if ( in_array( $post_type, $disallowed ) ) {
+		$disallowed = array('aione-slider');
+		foreach ($post_types as $post_type) {
+			if (in_array($post_type, $disallowed)) {
 				continue;
 			}
 			$this->add_meta_box('aione_design_options', 'Aione Design Options', $post_type);
@@ -75,32 +80,35 @@ class PerPageOptionsMetaboxes {
 
 	}
 
-	public function add_meta_box( $id, $label, $post_type ) {
-		add_meta_box( 'pyre_' . $id, $label, array( $this, $id ), $post_type, 'advanced', 'default',array('post_type' => $post_type) );
+	public function add_meta_box($id, $label, $post_type)
+	{
+		add_meta_box('pyre_' . $id, $label, array($this, $id), $post_type, 'advanced', 'default', array('post_type' => $post_type));
 	}
 
-	public function aione_design_options( ) {
-		$this->render_aione_design_options( array('header','slider','page_title_bar','page_settings','footer','custom_code','seo') );
+	public function aione_design_options()
+	{
+		$this->render_aione_design_options(array('header', 'slider', 'page_title_bar', 'page_settings', 'footer', 'custom_code', 'seo'));
 	}
 
-	public function render_aione_design_options( $requested_tabs, $post_type = 'default' ) {
+	public function render_aione_design_options($requested_tabs, $post_type = 'default')
+	{
 
 		$tabs_names = array(
-			'header'         => __( 'Header', 'aione' ),
-			'slider'         => __( 'Slider', 'aione' ),
-			'page_title_bar'         => __( 'Page Title Bar', 'aione' ),
-			'page_settings'         => __( 'Page Settings', 'aione' ),
-			'footer'         => __( 'Footer', 'aione' ),
-			'custom_code'         => __( 'Custom Code', 'aione' ),
-			'seo'         => __( 'SEO', 'aione' ),
-			
+			'header' => __('Header', 'aione'),
+			'slider' => __('Slider', 'aione'),
+			'page_title_bar' => __('Page Title Bar', 'aione'),
+			'page_settings' => __('Page Settings', 'aione'),
+			'footer' => __('Footer', 'aione'),
+			'custom_code' => __('Custom Code', 'aione'),
+			'seo' => __('SEO', 'aione'),
+
 		);
 		?>
 
 		<ul class="pyre_metabox_tabs">
 
-			<?php foreach( $requested_tabs as $key => $tab_name ) : ?>
-				<?php $class = ( $key === 0 ) ? "active" : ""; ?>
+			<?php foreach ($requested_tabs as $key => $tab_name) : ?>
+				<?php $class = ($key === 0) ? "active" : ""; ?>
 				<li class="<?php echo esc_html($class); ?>"><a href="<?php echo esc_html($tab_name); ?>"><?php echo esc_html($tabs_names[$tab_name]); ?></a></li>
 
 			<?php endforeach; ?>
@@ -109,9 +117,9 @@ class PerPageOptionsMetaboxes {
 
 		<div class="pyre_metabox">
 
-			<?php foreach ( $requested_tabs as $key => $tab_name ) : ?>
+			<?php foreach ($requested_tabs as $key => $tab_name) : ?>
 				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo esc_html($tab_name); ?>">
-					<?php require_once( 'tabs/tab_' . $tab_name.'.php' ); ?>
+					<?php require_once('tabs/tab_' . $tab_name . '.php'); ?>
 				</div>
 			<?php endforeach; ?>
 
@@ -119,58 +127,61 @@ class PerPageOptionsMetaboxes {
 		<div class="clear"></div>
 		<?php
 
+}
+
+public function save_meta_boxes($post_id)
+{
+
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+		return;
 	}
 
-	public function save_meta_boxes( $post_id ) {
-
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-			return;
+	foreach ($_POST as $key => $value) {
+		if (strstr($key, 'pyre_')) {
+			update_post_meta($post_id, $key, $value);
 		}
-
-		foreach ( $_POST as $key => $value ) {
-			if ( strstr( $key, 'pyre_') ) {
-				update_post_meta( $post_id, $key, $value );
-			}
-		}
-
 	}
 
-	public function text( $id, $label, $desc = '' ) {
+}
 
-		global $post;
-		?>
+public function text($id, $label, $desc = '')
+{
+
+	global $post;
+	?>
 
 		<div class="pyre_metabox_field">
 			<div class="pyre_desc">
 				<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
-				<?php if ( $desc ) : ?>
+				<?php if ($desc) : ?>
 					<p><?php echo $desc; ?></p>
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
-				<input type="text" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>" value="<?php echo esc_html(get_post_meta( $post->ID, 'pyre_' . $id, true )); ?>" />
+				<input type="text" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>" value="<?php echo esc_html(get_post_meta($post->ID, 'pyre_' . $id, true)); ?>" />
 			</div>
 		</div>
 		<?php
 
-	}
+}
 
-	public function select( $id, $label, $options, $desc = '' ) {
-		global $post;
-		?>
+public function select($id, $label, $options, $desc = '')
+{
+	global $post;
+	?>
 
 		<div class="pyre_metabox_field">
 			<div class="pyre_desc">
 				<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
-				<?php if ( $desc ) : ?>
+				<?php if ($desc) : ?>
 					<p><?php echo $desc; ?></p>
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
 				<div class="oxo-shortcodes-arrow">&#xf3d0;</div>
 				<select id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>">
-					<?php foreach( $options as $key => $option ) : ?> 
-						<?php $selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : ''; ?>
+					<?php foreach ($options as $key => $option) : ?> 
+						<?php $selected = ($key == get_post_meta($post->ID, 'pyre_' . $id, true)) ? 'selected="selected"' : ''; ?>
 						<option <?php echo esc_html($selected); ?> value="<?php echo esc_html($key); ?>"><?php echo esc_html($option); ?></option>
 					<?php endforeach; ?>
 				</select>
@@ -178,23 +189,24 @@ class PerPageOptionsMetaboxes {
 		</div>
 		<?php
 
-	}
+}
 
-	public function multiple( $id, $label, $options, $desc = '' ) {
-		global $post;
-		?>
+public function multiple($id, $label, $options, $desc = '')
+{
+	global $post;
+	?>
 
 		<div class="pyre_metabox_field">
 			<div class="pyre_desc">
 				<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
-				<?php if ( $desc ) : ?>
+				<?php if ($desc) : ?>
 					<p><?php echo $desc; ?></p>
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
 				<select multiple="multiple" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>[]">
-					<?php foreach ( $options as $key => $option ) : ?>
-						<?php $selected = ( is_array( get_post_meta( $post->ID, 'pyre_' . $id, true ) ) && in_array( $key, get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ) ? 'selected="selected"' : ''; ?>
+					<?php foreach ($options as $key => $option) : ?>
+						<?php $selected = (is_array(get_post_meta($post->ID, 'pyre_' . $id, true)) && in_array($key, get_post_meta($post->ID, 'pyre_' . $id, true))) ? 'selected="selected"' : ''; ?>
 						<option <?php echo esc_html($selected); ?> value="<?php echo esc_html($key); ?>"><?php echo esc_html($option); ?></option>
 					<?php endforeach; ?>
 				</select>
@@ -202,23 +214,24 @@ class PerPageOptionsMetaboxes {
 		</div>
 		<?php
 
-	}
+}
 
-	public function ace_editor ($id, $label, $desc = '',$default=''){
-		global $post;
-		$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
-		$value = ( metadata_exists( 'post', $post->ID, 'pyre_'. $id ) ) ? $db_value : $default;
+public function ace_editor($id, $label, $desc = '', $default = '')
+{
+	global $post;
+	$db_value = get_post_meta($post->ID, 'pyre_' . $id, true);
+	$value = (metadata_exists('post', $post->ID, 'pyre_' . $id)) ? $db_value : $default;
 
-		?>
+	?>
 		<div class="pyre_metabox_field">
 			<div class="pyre_desc">
 				<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
-				<?php if ( $desc ) : ?>
+				<?php if ($desc) : ?>
 					<p><?php echo $desc; ?></p>
 				<?php endif; ?>
 			</div>
 			<div class="pyre_field">
-				<textarea style="display:none;" name="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($value);?></textarea>
+				<textarea style="display:none;" name="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($value); ?></textarea>
 				<div id="pyre_<?php echo esc_html($id); ?>"></div>
 			</div>
 		</div>
@@ -256,13 +269,13 @@ class PerPageOptionsMetaboxes {
 			}
 		</script>
 		<?php 
-		if($id == "custom_css"):
-			?><script> cssEditor();</script><?php
-		endif;
-		if($id == "custom_js"):
-			?><script> jsEditor();</script><?php
-		endif;	
-		?>
+	if ($id == "custom_css") :
+	?><script> cssEditor();</script><?php
+																																endif;
+																																if ($id == "custom_js") :
+																																?><script> jsEditor();</script><?php
+																																																														endif;
+																																																														?>
 		<style media="screen">
 		.ace_editor {
 			border: 1px solid lightgray;
@@ -270,16 +283,18 @@ class PerPageOptionsMetaboxes {
 		}
 	</style>
 	<?php
+
 }
 
-public function textarea( $id, $label, $desc = '', $default = '' ) {
+public function textarea($id, $label, $desc = '', $default = '')
+{
 	global $post;
-	$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
-	$value = ( metadata_exists( 'post', $post->ID, 'pyre_'. $id ) ) ? $db_value : $default;
+	$db_value = get_post_meta($post->ID, 'pyre_' . $id, true);
+	$value = (metadata_exists('post', $post->ID, 'pyre_' . $id)) ? $db_value : $default;
 	$rows = 10;
-	if ( $id == 'heading' || $id == 'caption' ) {
+	if ($id == 'heading' || $id == 'caption') {
 		$rows = 5;
-	} else if ( 'page_title_custom_text' == $id || 'page_title_custom_subheader' == $id ) {
+	} else if ('page_title_custom_text' == $id || 'page_title_custom_subheader' == $id) {
 		$rows = 1;
 	}
 	?>
@@ -287,7 +302,7 @@ public function textarea( $id, $label, $desc = '', $default = '' ) {
 	<div class="pyre_metabox_field">
 		<div class="pyre_desc">
 			<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
-			<?php if ( $desc ) : ?>
+			<?php if ($desc) : ?>
 				<p><?php echo $desc; ?></p>
 			<?php endif; ?>
 		</div>
@@ -299,24 +314,25 @@ public function textarea( $id, $label, $desc = '', $default = '' ) {
 
 }
 
-public function upload( $id, $label, $desc = '' ) {
+public function upload($id, $label, $desc = '')
+{
 	global $post;
 	?>
 
 	<div class="pyre_metabox_field">
 		<div class="pyre_desc">
 			<label for="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($label); ?></label>
-			<?php if ( $desc ) : ?>
+			<?php if ($desc) : ?>
 				<p><?php echo $desc; ?></p>
 			<?php endif; ?>
 		</div>
 		<div class="pyre_field">
 			<div class="pyre_upload">
 
-				<?php $saved = get_post_meta( $post->ID, 'pyre_'.$id, true );?>
-				<input type="url" class="large-text" name="pyre_<?php echo esc_html($id); ?>" id="media_upload_btn" value="<?php echo esc_attr( $saved ); ?>"><br>
+				<?php $saved = get_post_meta($post->ID, 'pyre_' . $id, true); ?>
+				<input type="url" class="large-text" name="pyre_<?php echo esc_html($id); ?>" id="media_upload_btn" value="<?php echo esc_attr($saved); ?>"><br>
 
-				<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php esc_html_e( 'Upload Media', 'aione' )?></button>
+				<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn"><?php esc_html_e('Upload Media', 'aione') ?></button>
 			</div>
 		</div>
 	</div>
@@ -369,12 +385,12 @@ $metaboxes = new PerPageOptionsMetaboxes;
 	$id = get_the_ID();
 	echo '[aione-slider id="'.esc_html($id).'"]';
 }
-*/
+ */
 
 /**
-* Register Aione Slider Custom Field "Gallery"
-* 
-*/
+ * Register Aione Slider Custom Field "Gallery"
+ * 
+ */
 /**
  * Enable ACF 5 early access
  * Requires at least version ACF 4.4.12 to work
@@ -483,34 +499,37 @@ function aione_gallery_admin_notice() {
 
 
 /**
-* Aione Slider Widget
-* 
-*/
+ * Aione Slider Widget
+ * 
+ */
 /* create_function is deprecated in php 7.2 */
 //add_action('widgets_init', create_function('', "register_widget('Aione_Slider_Widget');"));
-add_action('widgets_init', function() {
+add_action('widgets_init', function () {
 	register_widget('Aione_Slider_Widget');
-}
-);
-class Aione_Slider_Widget extends WP_Widget {
+});
+class Aione_Slider_Widget extends WP_Widget
+{
 
-	public function __construct() {
-		$widget_options = array( 
+	public function __construct()
+	{
+		$widget_options = array(
 			'classname' => 'aione_slider_widget',
 			'description' => 'List of Aione Sliders',
 		);
-		parent::__construct( 'aione_slider_widget', 'Aione slider', $widget_options );
+		parent::__construct('aione_slider_widget', 'Aione slider', $widget_options);
 	}
-	public function widget( $args, $instance ) {
-		$title = apply_filters( 'widget_title', $instance[ 'title' ] );
+	public function widget($args, $instance)
+	{
+		$title = apply_filters('widget_title', $instance['title']);
 		//echo $args['before_widget'] . $args['before_title'] . $title . $args['after_title']; 
-		echo $args['before_widget'] . $args['before_title'] . $args['after_title']; 
-		
-		do_shortcode('[aione-slider id="'.$instance[ 'slider' ].'"]');
+		echo $args['before_widget'] . $args['before_title'] . $args['after_title'];
+
+		do_shortcode('[aione-slider id="' . $instance['slider'] . '"]');
 
 		echo $args['after_widget'];
 	}
-	public function form( $instance ) {
+	public function form($instance)
+	{
 		$args = array(
 			'post_type' => 'aione-slider',
 			'posts_per_page' => -1,
@@ -519,325 +538,371 @@ class Aione_Slider_Widget extends WP_Widget {
 
 		$custom_posts = new WP_Query($args);
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : ''; ?>
+		$title = !empty($instance['title']) ? $instance['title'] : ''; ?>
 		<p>
-			<label for="<?php echo esc_html( $this->get_field_id( 'title' ) ); ?>">Title:</label>
-			<input type="text" id="<?php echo esc_html( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_html( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $title ); ?>" />
+			<label for="<?php echo esc_html($this->get_field_id('title')); ?>">Title:</label>
+			<input type="text" id="<?php echo esc_html($this->get_field_id('title')); ?>" name="<?php echo esc_html($this->get_field_name('title')); ?>" value="<?php echo esc_attr($title); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_html( $this->get_field_id( 'slider' ) ); ?>">Select Slider:</label>
-			<select id="<?php echo esc_html( $this->get_field_id( 'slider' ) ); ?>" name="<?php echo esc_html( $this->get_field_name( 'slider' ) ); ?>">
+			<label for="<?php echo esc_html($this->get_field_id('slider')); ?>">Select Slider:</label>
+			<select id="<?php echo esc_html($this->get_field_id('slider')); ?>" name="<?php echo esc_html($this->get_field_name('slider')); ?>">
 				<?php 
-				if ($custom_posts->have_posts() ) { 
-					foreach($custom_posts->posts as $slider){ 
-						$selected_html = '';
-						if ($slider->post_name==$instance['slider']) {
-							$selected_html = " selected='selected'";
-						}
-						echo "<option value='".esc_html( $slider->ID )."' ".esc_html( $selected_html ).">".esc_html( $slider->post_title )."</option>";
+			if ($custom_posts->have_posts()) {
+				foreach ($custom_posts->posts as $slider) {
+					$selected_html = '';
+					if ($slider->post_name == $instance['slider']) {
+						$selected_html = " selected='selected'";
+					}
+					echo "<option value='" . esc_html($slider->ID) . "' " . esc_html($selected_html) . ">" . esc_html($slider->post_title) . "</option>";
 
-					} 
 				}
-				?>
+			}
+			?>
 			</select>
 		</p>
 		<?php 
-	}
-	public function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$instance[ 'title' ] = strip_tags( $new_instance[ 'title' ] );
-		$instance[ 'slider' ] = strip_tags( $new_instance[ 'slider' ] );
-		return $instance;
-	}
+}
+public function update($new_instance, $old_instance)
+{
+	$instance = $old_instance;
+	$instance['title'] = strip_tags($new_instance['title']);
+	$instance['slider'] = strip_tags($new_instance['slider']);
+	return $instance;
+}
 }
 
 /**********************
-*
-* Aione Social Icons Widget
-* 
-***********************/
+ *
+ * Aione Social Icons Widget
+ * 
+ ***********************/
 
-add_action('widgets_init', function() {
+add_action('widgets_init', function () {
 	register_widget('Aione_Social_Icons_Widget');
-}
-);
+});
 
-class Aione_Social_Icons_Widget extends WP_Widget {
+class Aione_Social_Icons_Widget extends WP_Widget
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 
-		$widget_options = array( 
+		$widget_options = array(
 			'classname' => 'aione-social-icons-widget',
 			'description' => 'Displays a list of social media website icons and a link to your profile.',
 		);
 
-		parent::__construct( 'aione_social_icons_widget', 'Aione Social Icons', $widget_options );
+		parent::__construct('aione_social_icons_widget', 'Aione Social Icons', $widget_options);
 
 		global $asiw_social_accounts;
 
 		$asiw_social_accounts = array(
-			'Facebook'	=>	'facebook',
-			'Twitter'	=>	'twitter',
-			'YouTube'	=>	'youtube',
-			'Google+'	=>	'googleplus',
-			'LinkedIn'	=>	'linkedin',
-			'Instagram'	=>	'instagram',
+			'Facebook' => 'facebook',
+			'Twitter' => 'twitter',
+			'YouTube' => 'youtube',
+			'Google+' => 'googleplus',
+			'LinkedIn' => 'linkedin',
+			'Instagram' => 'instagram',
 			// 'Email'		=>	'email',
-			'Flickr'	=>	'flickr',
-			'GitHub'	=>	'github',
-			'Pinterest'	=>	'pinterest',
-			'RSS Feed'	=>	'rss',
-			'Tumblr'	=>	'tumblr',
-			'Vimeo'		=>	'vimeo',
-			'WordPress'	=>	'wordpress',
+			'Flickr' => 'flickr',
+			'GitHub' => 'github',
+			'Pinterest' => 'pinterest',
+			'RSS Feed' => 'rss',
+			'Tumblr' => 'tumblr',
+			'Vimeo' => 'vimeo',
+			'WordPress' => 'wordpress',
 		);
 
-		if( has_filter('aione_social_icon_accounts') ) {
+		if (has_filter('aione_social_icon_accounts')) {
 			$asiw_social_accounts = apply_filters('aione_social_icon_accounts', $asiw_social_accounts);
 		}
 
 	}
 
 
-	public function widget( $args, $instance ) {
+	public function widget($args, $instance)
+	{
 		global $asiw_social_accounts;
 		extract($args);
-		
+
 		$asiw_title = empty($instance['title']) ? 'Follow Us' : apply_filters('widget_title', $instance['title']);
 		$asiw_icon_size = $instance['icon_size'];
 		$asiw_icon_theme = $instance['icon_theme'];
 		$asiw_icon_style = $instance['icon_style'];
 		$asiw_icon_direction = $instance['icon_direction'];
 		$asiw_labels = $instance['labels'];
-		
+
 		echo $before_widget;
-		
+
 		echo $before_title;
 		echo $asiw_title;
 		echo $after_title;
 
 		$classes = array();
 		$classes[] = 'aione-social-icons';
-		if($asiw_labels == 'show') { $classes[] = 'labels'; }
-		if($asiw_icon_direction == 'vertical') { $classes[] = 'vertical'; }
+		if ($asiw_labels == 'show') {
+			$classes[] = 'labels';
+		}
+		if ($asiw_icon_direction == 'vertical') {
+			$classes[] = 'vertical';
+		}
 		$classes[] = $asiw_icon_size;
 		$classes[] = $asiw_icon_theme;
 		$classes[] = $asiw_icon_style;
 
-		$classes = implode(" ",$classes);
+		$classes = implode(" ", $classes);
 
 
-		echo apply_filters('social_icon_opening_tag', '<ul class="'.$classes.'">'); 
+		echo apply_filters('social_icon_opening_tag', '<ul class="' . $classes . '">');
 
-		foreach($asiw_social_accounts as $label => $id) : 
-			if($instance[$id] != '' && $instance[$id] != 'http://') :
-				global $asiw_data;
-				global $asiw_icon_output;
-				
-				$asiw_data['id'] = $id;
-				$asiw_data['url'] = $instance[$id];
-				$asiw_data['title'] = $label;
-				
-				if($asiw_labels != 'show') { $asiw_data['label'] = ''; }
-				else { $asiw_data['label'] = $label; }
+		foreach ($asiw_social_accounts as $label => $id) :
+			if ($instance[$id] != '' && $instance[$id] != 'http://') :
+			global $asiw_data;
+		global $asiw_icon_output;
 
-				$format = '<li class="%1$s"><a href="%2$s" target="_blank" rel="noopener" title="%3$s"><span class="icon"></span><span class="label">%4$s</span></a></li>';
+		$asiw_data['id'] = $id;
+		$asiw_data['url'] = $instance[$id];
+		$asiw_data['title'] = $label;
 
-				$asiw_icon_output = apply_filters('social_icon_output', $format);
-				echo vsprintf($asiw_icon_output, $asiw_data);
-			endif; 
-		endforeach; 
-		echo apply_filters('social_icon_closing_tag', '</ul>'); 
+		if ($asiw_labels != 'show') {
+			$asiw_data['label'] = '';
+		} else {
+			$asiw_data['label'] = $label;
+		}
+
+		$format = '<li class="%1$s"><a href="%2$s" target="_blank" rel="noopener" title="%3$s"><span class="icon"></span><span class="label">%4$s</span></a></li>';
+
+		$asiw_icon_output = apply_filters('social_icon_output', $format);
+		echo vsprintf($asiw_icon_output, $asiw_data);
+		endif;
+		endforeach;
+		echo apply_filters('social_icon_closing_tag', '</ul>');
 		echo $after_widget;
 	}
 
-	public function form( $instance ) {
+	public function form($instance)
+	{
 		global $asiw_social_accounts;
 
 		foreach ($asiw_social_accounts as $site => $id) {
-			if(!isset($instance[$id])) { $instance[$id] = ''; }
-		elseif($instance[$id] == 'http://') { $instance[$id] = ''; }
-	}
+			if (!isset($instance[$id])) {
+				$instance[$id] = '';
+			} elseif ($instance[$id] == 'http://') {
+				$instance[$id] = '';
+			}
+		}
 
-	if(!isset($instance['title'])) { $instance['title'] = ''; }
-	if(!isset($instance['icon_size'])) { $instance['icon_size'] = 'lg'; }
-	if(!isset($instance['icon_theme'])) { $instance['icon_theme'] = 'dark'; }
-	if(!isset($instance['icon_style'])) { $instance['icon_style'] = 'square'; }
-	if(!isset($instance['icon_direction'])) { $instance['icon_direction'] = 'horizontal'; }
-	if(!isset($instance['labels'])) { $instance['labels'] = ''; }
-	?>
+		if (!isset($instance['title'])) {
+			$instance['title'] = '';
+		}
+		if (!isset($instance['icon_size'])) {
+			$instance['icon_size'] = 'lg';
+		}
+		if (!isset($instance['icon_theme'])) {
+			$instance['icon_theme'] = 'dark';
+		}
+		if (!isset($instance['icon_style'])) {
+			$instance['icon_style'] = 'square';
+		}
+		if (!isset($instance['icon_direction'])) {
+			$instance['icon_direction'] = 'horizontal';
+		}
+		if (!isset($instance['labels'])) {
+			$instance['labels'] = '';
+		}
+		?>
 
 	<div class="aione_social_icons_widget">
 
-		<p><label for="<?php echo esc_attr( $this->get_field_id('title') ); ?>">Title:</label>
-			<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('title') ); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
+		<p><label for="<?php echo esc_attr($this->get_field_id('title')); ?>">Title:</label>
+			<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
 
 			<?php
-			$asiw_sizes = array(
-				'none' => 'none',
-				'Small' => 'small',
-				'Medium' => 'medium',
-				'Large' => 'large',
-				'Extra Large' => 'xlarge',
-			);
-			$asiw_theme = array(
-				'Colored' => 'colored',
-				'Dark' => 'dark',
-				'Dark Solid' => 'dark-solid',
-				'Dark Outline' => 'dark-outline',
-				'Light' => 'light',
-				'Light Solid' => 'light-solid',
-				'Light Outline' => 'light-outline',
-			);
-			$asiw_style = array(
-				'Square' => 'square',
-				'Rounded' => 'rounded',
-				'Circle' => 'circle',
-			);
-			$asiw_direction = array(
-				'Horizontal' => 'horizontal',
-				'Vertical' => 'vertical',
-			);
-			?>
+		$asiw_sizes = array(
+			'none' => 'none',
+			'Small' => 'small',
+			'Medium' => 'medium',
+			'Large' => 'large',
+			'Extra Large' => 'xlarge',
+		);
+		$asiw_theme = array(
+			'Colored' => 'colored',
+			'Dark' => 'dark',
+			'Dark Solid' => 'dark-solid',
+			'Dark Outline' => 'dark-outline',
+			'Light' => 'light',
+			'Light Solid' => 'light-solid',
+			'Light Outline' => 'light-outline',
+		);
+		$asiw_style = array(
+			'Square' => 'square',
+			'Rounded' => 'rounded',
+			'Circle' => 'circle',
+		);
+		$asiw_direction = array(
+			'Horizontal' => 'horizontal',
+			'Vertical' => 'vertical',
+		);
+		?>
 
-			<p class="icon_options"><label for="<?php echo esc_html( $this->get_field_id('icon_size') ); ?>">Icon Size:</label>
-				<select id="<?php echo esc_html( $this->get_field_id('icon_size') ); ?>" name="<?php echo esc_html( $this->get_field_name('icon_size') ); ?>">
+			<p class="icon_options"><label for="<?php echo esc_html($this->get_field_id('icon_size')); ?>">Icon Size:</label>
+				<select id="<?php echo esc_html($this->get_field_id('icon_size')); ?>" name="<?php echo esc_html($this->get_field_name('icon_size')); ?>">
 					<?php
-					foreach($asiw_sizes as $option => $value) :
+				foreach ($asiw_sizes as $option => $value) :
 
-						if ( esc_attr( $instance['icon_size'] == $value ) ) { $selected = ' selected="selected"'; }
-						else { $selected = ''; }
-						?>
+					if (esc_attr($instance['icon_size'] == $value)) {
+					$selected = ' selected="selected"';
+				} else {
+					$selected = '';
+				}
+				?>
 
-						<option value="<?php echo esc_html( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+						<option value="<?php echo esc_html($value); ?>"<?php echo esc_attr($selected); ?>><?php echo esc_html($option); ?></option>
 
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-			<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>">Icon Theme:</label>
-				<select id="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_theme') ); ?>">
+			<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_theme')); ?>">Icon Theme:</label>
+				<select id="<?php echo esc_attr($this->get_field_id('icon_theme')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_theme')); ?>">
 					<?php
-					foreach($asiw_theme as $option => $value) :
+				foreach ($asiw_theme as $option => $value) :
 
-						if(esc_attr($instance['icon_theme'] == $value)) { $selected = ' selected="selected"'; }
-						else { $selected = ''; }
-						?>
+					if (esc_attr($instance['icon_theme'] == $value)) {
+					$selected = ' selected="selected"';
+				} else {
+					$selected = '';
+				}
+				?>
 
-						<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+						<option value="<?php echo esc_attr($value); ?>"<?php echo esc_attr($selected); ?>><?php echo esc_html($option); ?></option>
 
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-			<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>">Icon Style:</label>
-				<select id="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_style') ); ?>">
+			<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_style')); ?>">Icon Style:</label>
+				<select id="<?php echo esc_attr($this->get_field_id('icon_style')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_style')); ?>">
 					<?php
-					foreach($asiw_style as $option => $value) :
+				foreach ($asiw_style as $option => $value) :
 
-						if(esc_attr($instance['icon_style'] == $value)) { $selected = ' selected="selected"'; }
-						else { $selected = ''; }
-						?>
+					if (esc_attr($instance['icon_style'] == $value)) {
+					$selected = ' selected="selected"';
+				} else {
+					$selected = '';
+				}
+				?>
 
-						<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+						<option value="<?php echo esc_attr($value); ?>"<?php echo esc_attr($selected); ?>><?php echo esc_html($option); ?></option>
 
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-			<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>">Icon Direction:</label>
-				<select id="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_direction') ); ?>">
+			<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_direction')); ?>">Icon Direction:</label>
+				<select id="<?php echo esc_attr($this->get_field_id('icon_direction')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_direction')); ?>">
 					<?php
-					foreach($asiw_direction as $option => $value) :
+				foreach ($asiw_direction as $option => $value) :
 
-						if(esc_attr($instance['icon_direction'] == $value)) { $selected = ' selected="selected"'; }
-						else { $selected = ''; }
-						?>
+					if (esc_attr($instance['icon_direction'] == $value)) {
+					$selected = ' selected="selected"';
+				} else {
+					$selected = '';
+				}
+				?>
 
-						<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+						<option value="<?php echo esc_attr($value); ?>"<?php echo esc_attr($selected); ?>><?php echo esc_html($option); ?></option>
 
 					<?php endforeach; ?>
 				</select>
 			</p>
 
-			<?php if( esc_attr( $instance['labels'] == 'show' ) ) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
-			<p class="label_options"><input type="checkbox" id="<?php echo esc_attr( $this->get_field_id('labels') ); ?>" name="<?php echo esc_attr( $this->get_field_name('labels') ); ?>" value="show"<?php echo esc_html( $checked ); ?> /> <label for="<?php echo esc_attr( $this->get_field_id('labels') ); ?>">Show Labels</label></p>
+			<?php if (esc_attr($instance['labels'] == 'show')) {
+			$checked = ' checked="checked"';
+		} else {
+			$checked = '';
+		} ?>
+			<p class="label_options"><input type="checkbox" id="<?php echo esc_attr($this->get_field_id('labels')); ?>" name="<?php echo esc_attr($this->get_field_name('labels')); ?>" value="show"<?php echo esc_html($checked); ?> /> <label for="<?php echo esc_attr($this->get_field_id('labels')); ?>">Show Labels</label></p>
 
 			<ul class="aione_social_accounts">
 				<?php foreach ($asiw_social_accounts as $site => $id) : ?>
-					<li><label for="<?php echo esc_attr( $this->get_field_id($id) ); ?>" class="<?php echo esc_attr( $id ); ?>"><?php echo esc_attr( $site ); ?>:</label>
-						<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id($id) ); ?>" name="<?php echo esc_attr( $this->get_field_name($id) ); ?>" value="<?php echo esc_attr($instance[$id]); ?>" placeholder="http://" /></li>
+					<li><label for="<?php echo esc_attr($this->get_field_id($id)); ?>" class="<?php echo esc_attr($id); ?>"><?php echo esc_attr($site); ?>:</label>
+						<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id($id)); ?>" name="<?php echo esc_attr($this->get_field_name($id)); ?>" value="<?php echo esc_attr($instance[$id]); ?>" placeholder="http://" /></li>
 					<?php endforeach; ?>
 				</ul>
 
 			</div>
 			<?php
-		}
-		public function update( $new_instance, $old_instance ) {
-			global $asiw_social_accounts;
-			$instance = array();
 
-			foreach ($asiw_social_accounts as $site => $id) {
-				$instance[$id] = $new_instance[$id];
-			}
-
-			$instance['title'] = $new_instance['title'];
-			$instance['icon_size'] = $new_instance['icon_size'];
-			$instance['icon_theme'] = $new_instance['icon_theme'];
-			$instance['icon_style'] = $new_instance['icon_style'];
-			$instance['icon_direction'] = $new_instance['icon_direction'];
-			$instance['labels'] = $new_instance['labels'];
-
-			return $instance;
-		}
 	}
+	public function update($new_instance, $old_instance)
+	{
+		global $asiw_social_accounts;
+		$instance = array();
+
+		foreach ($asiw_social_accounts as $site => $id) {
+			$instance[$id] = $new_instance[$id];
+		}
+
+		$instance['title'] = $new_instance['title'];
+		$instance['icon_size'] = $new_instance['icon_size'];
+		$instance['icon_theme'] = $new_instance['icon_theme'];
+		$instance['icon_style'] = $new_instance['icon_style'];
+		$instance['icon_direction'] = $new_instance['icon_direction'];
+		$instance['labels'] = $new_instance['labels'];
+
+		return $instance;
+	}
+}
 
 
 /**********************
-*
-* Aione Social Share Widget
-* 
-***********************/
+ *
+ * Aione Social Share Widget
+ * 
+ ***********************/
 
-add_action( 'widgets_init' , function() {
-	register_widget( 'Aione_Social_Share_Widget' );
-}
-);
+add_action('widgets_init', function () {
+	register_widget('Aione_Social_Share_Widget');
+});
 
-class Aione_Social_Share_Widget extends WP_Widget {
+class Aione_Social_Share_Widget extends WP_Widget
+{
 
-	public function __construct() {
+	public function __construct()
+	{
 
-		$widget_options = array( 
-			'classname'	=>	'aione_social_share_widget',
-			'description'	=>	'Social Share Buttons',
+		$widget_options = array(
+			'classname' => 'aione_social_share_widget',
+			'description' => 'Social Share Buttons',
 		);
 
-		parent::__construct( 'aione_social_share_widget', 'Aione Social Share', $widget_options );
+		parent::__construct('aione_social_share_widget', 'Aione Social Share', $widget_options);
 
 		global $aione_social_share_accounts;
 
 		$aione_social_share_accounts = array(
-			'Facebook' 		=> 'facebook',
-			'Flickr' 		=> 'flickr',
-			'Google Plus' 	=> 'googleplus',
-			'LinkedIn' 		=> 'linkedin',
-			'pinterest' 	=> 'pinterest',
-			'RSS' 			=> 'rss',
-			'tumblr' 		=> 'tumblr',
-			'twitter' 		=> 'twitter',
-			'vimeo' 		=> 'vimeo',
-			'wordpress' 	=> 'wordpress',
-			'youtube' 		=> 'youtube',
+			'Facebook' => 'facebook',
+			'Flickr' => 'flickr',
+			'Google Plus' => 'googleplus',
+			'LinkedIn' => 'linkedin',
+			'pinterest' => 'pinterest',
+			'RSS' => 'rss',
+			'tumblr' => 'tumblr',
+			'twitter' => 'twitter',
+			'vimeo' => 'vimeo',
+			'wordpress' => 'wordpress',
+			'youtube' => 'youtube',
 			// 'Blogger' 		=> 'blogger',
 			// 'Delicious' 	=> 'delicious',
 			// 'Google +' 		=> 'plus',
-			'whatsapp' 		=> 'whatsapp',
+			'whatsapp' => 'whatsapp',
 		);
 
 	}
-	
-	public function widget( $args, $instance ) {
+
+	public function widget($args, $instance)
+	{
 
 		extract($args);
 
@@ -849,24 +914,24 @@ class Aione_Social_Share_Widget extends WP_Widget {
 		$share_icon_style = $instance['icon_style'];
 		$share_icon_direction = $instance['icon_direction'];
 		$share_labels = $instance['labels'];
-		
+
 		echo $before_widget;
-		
+
 		echo $before_title;
 		echo $share_title;
 		echo $after_title;
-		
+
 		$title = get_the_title();
 		$url = get_permalink();
 		?>
 		<script>
 			jQuery(document).ready(function(){
 				jQuery('.share').ShareLink({
-					title: <?php echo '"'.$title.'"' ; ?>,
-					url: <?php echo '"'.esc_url( $url ).'"' ; ?>
+					title: <?php echo '"' . $title . '"'; ?>,
+					url: <?php echo '"' . esc_url($url) . '"'; ?>
 				});
 				jQuery('.counter').ShareCounter({
-					url: <?php echo '"'.esc_url( $url ).'"' ; ?>,
+					url: <?php echo '"' . esc_url($url) . '"'; ?>,
 					increment: true
 				});
 
@@ -874,235 +939,280 @@ class Aione_Social_Share_Widget extends WP_Widget {
 		</script>
 		<?php
 
-		$classes = array();
-		$classes[] = 'aione-social-icons';
+	$classes = array();
+	$classes[] = 'aione-social-icons';
 		// $classes[] = 'labels';
-		if($share_labels == 'show') { $classes[] = 'labels'; }
-		if($share_icon_direction == 'vertical') { $classes[] = 'vertical'; }
-		$classes[] = $share_icon_size;
-		$classes[] = $share_icon_theme;
-		$classes[] = $share_icon_style;
-		
-		$classes = implode(" ",$classes);
+	if ($share_labels == 'show') {
+		$classes[] = 'labels';
+	}
+	if ($share_icon_direction == 'vertical') {
+		$classes[] = 'vertical';
+	}
+	$classes[] = $share_icon_size;
+	$classes[] = $share_icon_theme;
+	$classes[] = $share_icon_style;
 
-		echo apply_filters('social_icon_opening_tag', '<ul class="'.$classes.'">');
+	$classes = implode(" ", $classes);
 
-		foreach ($aione_social_share_accounts as $site => $id) {
-			if($instance[$id] == 'enable'){
+	echo apply_filters('social_icon_opening_tag', '<ul class="' . $classes . '">');
 
-				echo '<li class="share '.esc_html( $id ).' s_'.esc_html( $id ).'"><a title="'.esc_html( $site ).'"><span class="icon"></span><span class="label">'.esc_html( $site ).'</span></a></li>';
-			}
+	foreach ($aione_social_share_accounts as $site => $id) {
+		if ($instance[$id] == 'enable') {
+
+			echo '<li class="share ' . esc_html($id) . ' s_' . esc_html($id) . '"><a title="' . esc_html($site) . '"><span class="icon"></span><span class="label">' . esc_html($site) . '</span></a></li>';
 		}
-		
-		echo apply_filters('social_icon_closing_tag', '</ul>'); 
-		echo $after_widget;
-		
 	}
 
+	echo apply_filters('social_icon_closing_tag', '</ul>');
+	echo $after_widget;
 
-	public function form( $instance ) { 
+}
 
-		global $aione_social_share_accounts;
 
-		foreach ($aione_social_share_accounts as $site => $id) {
-			if(!isset($instance[$id])) { $instance[$id] = ''; }
+public function form($instance)
+{
+
+	global $aione_social_share_accounts;
+
+	foreach ($aione_social_share_accounts as $site => $id) {
+		if (!isset($instance[$id])) {
+			$instance[$id] = '';
 		}
+	}
 
-		if(!isset($instance['title'])) { $instance['title'] = ''; }
-		if(!isset($instance['icon_size'])) { $instance['icon_size'] = 'lg'; }
-		if(!isset($instance['icon_theme'])) { $instance['icon_theme'] = 'dark'; }
-		if(!isset($instance['icon_style'])) { $instance['icon_style'] = 'square'; }
-		if(!isset($instance['icon_direction'])) { $instance['icon_direction'] = 'horizontal'; }
-		if(!isset($instance['labels'])) { $instance['labels'] = ''; }
-		?>
+	if (!isset($instance['title'])) {
+		$instance['title'] = '';
+	}
+	if (!isset($instance['icon_size'])) {
+		$instance['icon_size'] = 'lg';
+	}
+	if (!isset($instance['icon_theme'])) {
+		$instance['icon_theme'] = 'dark';
+	}
+	if (!isset($instance['icon_style'])) {
+		$instance['icon_style'] = 'square';
+	}
+	if (!isset($instance['icon_direction'])) {
+		$instance['icon_direction'] = 'horizontal';
+	}
+	if (!isset($instance['labels'])) {
+		$instance['labels'] = '';
+	}
+	?>
 
 		<div class="aione_social_share_widget">
 
-			<p><label for="<?php echo esc_attr( $this->get_field_id('title') ); ?>">Title:</label>
-				<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('title') ); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
+			<p><label for="<?php echo esc_attr($this->get_field_id('title')); ?>">Title:</label>
+				<input class="widefat" type="text" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" value="<?php echo esc_attr($instance['title']); ?>" /></p>
 
 				<?php
-				$share_sizes = array(
-					'none' => 'none',
-					'Small' => 'small',
-					'Medium' => 'medium',
-					'Large' => 'large',
-					'Extra Large' => 'xlarge',
-				);
-				$share_theme = array(
-					'Colored' => 'colored',
-					'Dark' => 'dark',
-					'Dark Solid' => 'dark-solid',
-					'Dark Outline' => 'dark-outline',
-					'Light' => 'light',
-					'Light Solid' => 'light-solid',
-					'Light Outline' => 'light-outline',
-				);
-				$share_style = array(
-					'Square' => 'square',
-					'Rounded' => 'rounded',
-					'Circle' => 'circle',
-				);
-				$share_direction = array(
-					'Horizontal' => 'horizontal',
-					'Vertical' => 'vertical',
-				);
-				?>
+			$share_sizes = array(
+				'none' => 'none',
+				'Small' => 'small',
+				'Medium' => 'medium',
+				'Large' => 'large',
+				'Extra Large' => 'xlarge',
+			);
+			$share_theme = array(
+				'Colored' => 'colored',
+				'Dark' => 'dark',
+				'Dark Solid' => 'dark-solid',
+				'Dark Outline' => 'dark-outline',
+				'Light' => 'light',
+				'Light Solid' => 'light-solid',
+				'Light Outline' => 'light-outline',
+			);
+			$share_style = array(
+				'Square' => 'square',
+				'Rounded' => 'rounded',
+				'Circle' => 'circle',
+			);
+			$share_direction = array(
+				'Horizontal' => 'horizontal',
+				'Vertical' => 'vertical',
+			);
+			?>
 
-				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_size') ); ?>">Icon Size:</label>
-					<select id="<?php echo esc_attr( $this->get_field_id('icon_size') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_size') ); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_size')); ?>">Icon Size:</label>
+					<select id="<?php echo esc_attr($this->get_field_id('icon_size')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_size')); ?>">
 						<?php
-						foreach( $share_sizes as $option => $value ) :
+					foreach ($share_sizes as $option => $value) :
 
-							if( esc_attr( $instance['icon_size'] == $value ) ) { $selected = ' selected="selected"'; }
-							else { $selected = ''; }
-							?>
+						if (esc_attr($instance['icon_size'] == $value)) {
+						$selected = ' selected="selected"';
+					} else {
+						$selected = '';
+					}
+					?>
 							
-							<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+							<option value="<?php echo esc_attr($value); ?>"<?php echo esc_attr($selected); ?>><?php echo esc_html($option); ?></option>
 							
 						<?php endforeach; ?>
 					</select>
 				</p>
 
-				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>">Icon Theme:</label>
-					<select id="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_theme') ); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_theme')); ?>">Icon Theme:</label>
+					<select id="<?php echo esc_attr($this->get_field_id('icon_theme')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_theme')); ?>">
 						<?php
-						foreach( $share_theme as $option => $value ) :
+					foreach ($share_theme as $option => $value) :
 
-							if( esc_attr( $instance['icon_theme'] == $value ) ) { $selected = ' selected="selected"'; }
-							else { $selected = ''; }
-							?>
+						if (esc_attr($instance['icon_theme'] == $value)) {
+						$selected = ' selected="selected"';
+					} else {
+						$selected = '';
+					}
+					?>
 
-							<option value="<?php echo esc_html( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+							<option value="<?php echo esc_html($value); ?>"<?php echo esc_attr($selected); ?>><?php echo esc_html($option); ?></option>
 
 						<?php endforeach; ?>
 					</select>
 				</p>
 
-				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>">Icon Style:</label>
-					<select id="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_style') ); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_style')); ?>">Icon Style:</label>
+					<select id="<?php echo esc_attr($this->get_field_id('icon_style')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_style')); ?>">
 						<?php
-						foreach( $share_style as $option => $value ) :
+					foreach ($share_style as $option => $value) :
 
-							if(esc_attr($instance['icon_style'] == $value)) { $selected = ' selected="selected"'; }
-							else { $selected = ''; }
-							?>
+						if (esc_attr($instance['icon_style'] == $value)) {
+						$selected = ' selected="selected"';
+					} else {
+						$selected = '';
+					}
+					?>
 
-							<option value="<?php echo esc_html( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+							<option value="<?php echo esc_html($value); ?>"<?php echo esc_attr($selected); ?>><?php echo esc_html($option); ?></option>
 
 						<?php endforeach; ?>
 					</select>
 				</p>
 
-				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>">Icon Direction:</label>
-					<select id="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_direction') ); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_direction')); ?>">Icon Direction:</label>
+					<select id="<?php echo esc_attr($this->get_field_id('icon_direction')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_direction')); ?>">
 						<?php
-						foreach($share_direction as $option => $value) :
+					foreach ($share_direction as $option => $value) :
 
-							if(esc_attr($instance['icon_direction'] == $value)) { $selected = ' selected="selected"'; }
-							else { $selected = ''; }
-							?>
+						if (esc_attr($instance['icon_direction'] == $value)) {
+						$selected = ' selected="selected"';
+					} else {
+						$selected = '';
+					}
+					?>
 
-							<option value="<?php echo esc_attr( $value ); ?>"<?php echo esc_attr( $selected ); ?>><?php echo esc_html( $option ); ?></option>
+							<option value="<?php echo esc_attr($value); ?>"<?php echo esc_attr($selected); ?>><?php echo esc_html($option); ?></option>
 
 						<?php endforeach; ?>
 					</select>
 				</p>
 
-				<?php if( esc_attr($instance['labels'] == 'show') ) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
+				<?php if (esc_attr($instance['labels'] == 'show')) {
+				$checked = ' checked="checked"';
+			} else {
+				$checked = '';
+			} ?>
 				<p class="label_options">
-					<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id('labels') ); ?>" name="<?php echo esc_attr( $this->get_field_name('labels') ); ?>" value="show"<?php echo esc_html( $checked ); ?> /> 
-					<label for="<?php echo esc_attr( $this->get_field_id('labels') ); ?>">Show Labels</label>
+					<input type="checkbox" id="<?php echo esc_attr($this->get_field_id('labels')); ?>" name="<?php echo esc_attr($this->get_field_name('labels')); ?>" value="show"<?php echo esc_html($checked); ?> /> 
+					<label for="<?php echo esc_attr($this->get_field_id('labels')); ?>">Show Labels</label>
 				</p>
 
 				<?php foreach ($aione_social_share_accounts as $site => $id) : ?>
-					<?php if(esc_attr($instance[$id] == 'enable')) { $checked = ' checked="checked"'; } else { $checked = ''; } ?>
+					<?php if (esc_attr($instance[$id] == 'enable')) {
+					$checked = ' checked="checked"';
+				} else {
+					$checked = '';
+				} ?>
 					<p class="label_options">
-						<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id($id) ); ?>" name="<?php echo esc_attr( $this->get_field_name($id) ); ?>" value="enable"<?php echo esc_html( $checked ); ?> />
-						<label for="<?php echo esc_attr( $this->get_field_id($id) ); ?>"><?php echo esc_html( $site ); ?> Share</label>
+						<input type="checkbox" id="<?php echo esc_attr($this->get_field_id($id)); ?>" name="<?php echo esc_attr($this->get_field_name($id)); ?>" value="enable"<?php echo esc_html($checked); ?> />
+						<label for="<?php echo esc_attr($this->get_field_id($id)); ?>"><?php echo esc_html($site); ?> Share</label>
 					</p>
 				<?php endforeach; ?>
 
 			</div>
 			<?php
-		}
-		public function update( $new_instance, $old_instance ) {
 
-			global $aione_social_share_accounts;
-			$instance = array();
-
-			foreach ($aione_social_share_accounts as $site => $id) {
-				$instance[$id] = $new_instance[$id];
-			}
-
-			$instance['title'] = $new_instance['title'];
-			$instance['icon_size'] = $new_instance['icon_size'];
-			$instance['icon_theme'] = $new_instance['icon_theme'];
-			$instance['icon_style'] = $new_instance['icon_style'];
-			$instance['icon_direction'] = $new_instance['icon_direction'];
-			$instance['labels'] = $new_instance['labels'];
-
-			return $instance;
-		}
 	}
-	function get_aione_page_option($post_id , $meta_key){
-		$meta_value = get_post_meta( $post_id, $meta_key , true );
-		return $meta_value;
+	public function update($new_instance, $old_instance)
+	{
+
+		global $aione_social_share_accounts;
+		$instance = array();
+
+		foreach ($aione_social_share_accounts as $site => $id) {
+			$instance[$id] = $new_instance[$id];
+		}
+
+		$instance['title'] = $new_instance['title'];
+		$instance['icon_size'] = $new_instance['icon_size'];
+		$instance['icon_theme'] = $new_instance['icon_theme'];
+		$instance['icon_style'] = $new_instance['icon_style'];
+		$instance['icon_direction'] = $new_instance['icon_direction'];
+		$instance['labels'] = $new_instance['labels'];
+
+		return $instance;
 	}
-
-	function is_fullwidth($id,$component){
-		global $theme_options;
-		global $post;
-		$fullwidth = false;
-
-		$page_option = get_aione_page_option($id,'pyre_'.$component.'_100_width');
-
-
-		if($page_option == 'default' || empty($page_option)){
-			if($theme_options[$component.'_100_width']){
-				$fullwidth = true;
-			}
-		} else{
-			if($page_option == 'yes'){
-				$fullwidth = true;
-			}
-		}
-
-
-		if($fullwidth){
-			$fullwidth_class = "fullwidth";
-		} else {
-			$fullwidth_class = "";
-		}
-
-		return $fullwidth_class;
-	}
-
-	function get_page_id(){
-		$blog = false;
-		global $post;
-		if ( is_front_page() && is_home() ) {
-			$blog = false;
-		} elseif ( is_front_page() ) {
-			$blog = false;
-		} elseif ( is_home() ) {
-			$blog = true; 
-		} else {
-			$blog = false;
-		}
-
-		if($blog == true){
-    	return get_option( 'page_for_posts' ); // Returns blog page ID
-    } else {
-    	return $post->ID;
-    }
+}
+function get_aione_page_option($post_id, $meta_key)
+{
+	$meta_value = get_post_meta($post_id, $meta_key, true);
+	return $meta_value;
 }
 
-function is_enabled( $id, $component ){
+function is_fullwidth($id, $component)
+{
+	global $theme_options;
+	global $post;
+	$fullwidth = false;
+
+	$page_option = get_aione_page_option($id, 'pyre_' . $component . '_100_width');
+
+
+	if ($page_option == 'default' || empty($page_option)) {
+		if ($theme_options[$component . '_100_width']) {
+			$fullwidth = true;
+		}
+	} else {
+		if ($page_option == 'yes') {
+			$fullwidth = true;
+		}
+	}
+
+
+	if ($fullwidth) {
+		$fullwidth_class = "fullwidth";
+	} else {
+		$fullwidth_class = "";
+	}
+
+	return $fullwidth_class;
+}
+
+function get_page_id()
+{
+	$blog = false;
+	global $post;
+	if (is_front_page() && is_home()) {
+		$blog = false;
+	} elseif (is_front_page()) {
+		$blog = false;
+	} elseif (is_home()) {
+		$blog = true;
+	} else {
+		$blog = false;
+	}
+
+	if ($blog == true) {
+		return get_option('page_for_posts'); // Returns blog page ID
+	} else {
+		return $post->ID;
+	}
+}
+
+function is_enabled($id, $component)
+{
 	global $theme_options;
 	$is_enabled = false;
 
-	$page_option = get_aione_page_option($id, 'pyre_'.$component);
+	$page_option = get_aione_page_option($id, 'pyre_' . $component);
 
 	/*echo "<br>ID ==".$post->ID;
 	echo "<br>ID ==".$id;
@@ -1110,20 +1220,21 @@ function is_enabled( $id, $component ){
 	echo "<br>PAGE OPTIONS ==".$page_option;
 	echo "<br>THEME OPTIONS ==".$theme_options[$component];*/
 
-	if( $page_option == 'default' || empty($page_option) ){
-		if( $theme_options[$component] ){
+	if ($page_option == 'default' || empty($page_option)) {
+		if ($theme_options[$component]) {
 			$is_enabled = true;
 		}
-	} else{
-		if( $page_option == 'yes' ){
+	} else {
+		if ($page_option == 'yes') {
 			$is_enabled = true;
 		}
 	}
-	
+
 	return $is_enabled;
 }
 
-function empty_sidebar_message(){
+function empty_sidebar_message()
+{
 	$output = '';
 	$output .= 'Empty Widget Area';
 
@@ -1131,9 +1242,9 @@ function empty_sidebar_message(){
 };
 
 /**
-* Shortcode [icon]
-* 
-*/
+ * Shortcode [icon]
+ * 
+ */
 /*add_shortcode( 'aione-icon', 'aione_icon_shortcode' );
 function aione_icon_shortcode( $atts ) {
 	$atts = shortcode_atts( array(
@@ -1173,59 +1284,63 @@ function aione_info_shortcode( $atts ) {
 }*/
 
 /*
-*
-*
-*/
-if(!class_exists('Aione_Admin')){
-	add_action( 'admin_notices', 'aione_admin_notice' );
+ *
+ *
+ */
+if (!class_exists('Aione_Admin')) {
+	add_action('admin_notices', 'aione_admin_notice');
 }
-function aione_admin_notice() {
+function aione_admin_notice()
+{
 	?>
 	<div class="notice error aione-admin-notice is-dismissible" >
-		<p><?php esc_html_e( 'For complete design setting "Aione Admin" plugin is necessary, install it now! 
-		', 'aione' ); ?></p>
+		<p><?php esc_html_e('For complete design setting "Aione Admin" plugin is necessary, install it now! 
+		', 'aione'); ?></p>
 	</div>
 	<?php
+
 }
 
 
-function clean_class($string) {
-   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-   $string = preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
-   $string = trim($string, '-'); // Remove first or last -
-   $string = strtolower($string); // lowercase
+function clean_class($string)
+{
+	$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+	$string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+	$string = preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+	$string = trim($string, '-'); // Remove first or last -
+	$string = strtolower($string); // lowercase
 
-   return $string;
+	return $string;
 }
 
 
-function aione_data_table($headers, $data, $id='aione-',$class = 'compact'){  
+function aione_data_table($headers, $data, $id = 'aione-', $class = 'compact')
+{
 	$columns = array();
-	foreach ($headers as $key => $header){
+	foreach ($headers as $key => $header) {
 		$columns[] = clean_class($header);
 	}
 
 	$output = "";
 	$output .= '<div class="aione-search aione-table" >';
 	$output .= '<div class="field">';
-	$output .= '<input autofocus type="text" class="aione-search-input" data-search="'.implode(' ',$columns).'" placeholder="Search">';
+	$output .= '<input autofocus type="text" class="aione-search-input" data-search="' . implode(' ', $columns) . '" placeholder="Search">';
 	$output .= '</div>';
 	$output .= '<div class="clear"></div>';
-	$output .= '<table class="'.$class.'">';
+	$output .= '<table class="' . $class . '">';
 	$output .= '<thead>';
 	$output .= '<tr>';
-	foreach ($headers as $key => $header){
-		$output .= '<th class="aione-sort-button" data-sort="'.$columns[$key].'">'.$header.'</th>';
+	foreach ($headers as $key => $header) {
+		$output .= '<th class="aione-sort-button" data-sort="' . $columns[$key] . '">' . $header . '</th>';
 	}
 	$output .= '</tr>';
 	$output .= '</thead>';
 	$output .= '<tbody class="aione-search-list">';
-	if(!empty($data)){
-		foreach ($data as $record_key => $record){
+	if (!empty($data)) {
+		foreach ($data as $record_key => $record) {
 			$output .= '<tr>';
-			foreach ($record as $key => $value){
-				$output .= '<td class="'.$columns[$key].'">'.$value.'</td>';
+			foreach ($record as $key => $value) {
+				$output .= '<td class="' . $columns[$key] . '">' . $value . '</td>';
 			}
 			$output .= '</tr>';
 		}
@@ -1239,7 +1354,7 @@ function aione_data_table($headers, $data, $id='aione-',$class = 'compact'){
 /* 
 To delete the created blocks 
 Remove it after use
-*/
+ */
 /*add_action('init', 'g7g_modify_wp_block', 1111);
 function g7g_modify_wp_block() {
 	
@@ -1256,7 +1371,8 @@ function g7g_modify_wp_block() {
 }*/
 
 
-function is_enabled_sidebar( $sidebar_position ){
+function is_enabled_sidebar($sidebar_position)
+{
 
 	global $theme_options;
 	global $post;
@@ -1282,71 +1398,72 @@ function is_enabled_sidebar( $sidebar_position ){
 	$aione_templates = get_option('aione-templates');
 
 	// get 'templete' for Single/Page
-	$aione_template_single =  $aione_templates[$template_slug_single];
+	$aione_template_single = $aione_templates[$template_slug_single];
 	// get 'templete' for Blog/Archive
-	$aione_template_archive =  $aione_templates[$template_slug_archive];
+	$aione_template_archive = $aione_templates[$template_slug_archive];
 
 	// sidebar single
-	$is_enabled_single = $aione_template_single['template_sidebar_'.$sidebar_position.'_enable'];
+	$is_enabled_single = $aione_template_single['template_sidebar_' . $sidebar_position . '_enable'];
 
 	// sidebar  archive
-	$is_enabled_archive = $aione_template_archive['template_sidebar_'.$sidebar_position.'_enable'];
+	$is_enabled_archive = $aione_template_archive['template_sidebar_' . $sidebar_position . '_enable'];
 
 	// Global Options
-	$is_enabled = $theme_options['sidebar_'.$sidebar_position.'_enable'];
+	$is_enabled = $theme_options['sidebar_' . $sidebar_position . '_enable'];
 
 
 
-	if ( is_archive() ) {  
-		if( isset( $template_slug_archive ) ) { 
-			if( $is_enabled_archive == 'no' ) {
+	if (is_archive()) {
+		if (isset($template_slug_archive)) {
+			if ($is_enabled_archive == 'no') {
 				$is_enabled = 0;
 			}
-			if( $is_enabled_archive == 'yes' ) {
+			if ($is_enabled_archive == 'yes') {
 				$is_enabled = 1;
 			}
 		}
 	}
-	if(is_home()){
-		if( isset( $template_slug_archive ) ) { 
-			if( $is_enabled_archive == 'no' ) {
+	if (is_home()) {
+		if (isset($template_slug_archive)) {
+			if ($is_enabled_archive == 'no') {
 				$is_enabled = 0;
 			}
-			if( $is_enabled_archive == 'yes' ) {
+			if ($is_enabled_archive == 'yes') {
 				$is_enabled = 1;
 			}
 		}
 	}
-	if( is_single() ) { 
+	if (is_single()) { 
 
 		//Template Options Enable
-		if( isset( $template_slug_single ) ) {
-			if( $is_enabled_single == 'no' ) {
+		if (isset($template_slug_single)) {
+			if ($is_enabled_single == 'no') {
 				$is_enabled = 0;
 			}
-			if( $is_enabled_single == 'yes' ) {
+			if ($is_enabled_single == 'yes') {
 				$is_enabled = 1;
 			}
 		}
 
 		//Per page Options Enable
-		$is_enabled_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position.'_enable' );
-		if( $is_enabled_custom == 'no' ) {
+		$is_enabled_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position . '_enable');
+		if ($is_enabled_custom == 'no') {
 			$is_enabled = 0;
 		}
-		if( $is_enabled_custom == 'yes' ) {
+		if ($is_enabled_custom == 'yes') {
 			$is_enabled = 1;
 		}
 	}
-	if( is_page() ) {
-		$is_enabled = is_enabled( get_page_id(), 'sidebar_'.$sidebar_position.'_enable');
+	if (is_page()) {
+		$is_enabled = is_enabled(get_page_id(), 'sidebar_' . $sidebar_position . '_enable');
 	}
 
 	return $is_enabled;
 
 }
 
-function aione_get_sidebar( $sidebar_position ){
+function aione_get_sidebar($sidebar_position)
+{
 
 	global $post;
 
@@ -1371,59 +1488,59 @@ function aione_get_sidebar( $sidebar_position ){
 	$aione_templates = get_option('aione-templates');
 
 	// get 'templete' for Single/Page
-	$aione_template_single =  $aione_templates[$template_slug_single];
+	$aione_template_single = $aione_templates[$template_slug_single];
 	// get 'templete' for Blog/Archive
-	$aione_template_archive =  $aione_templates[$template_slug_archive];
+	$aione_template_archive = $aione_templates[$template_slug_archive];
 
 	// sidebar single
-	$sidebar_single = $aione_template_single['template_sidebar_'.$sidebar_position];
+	$sidebar_single = $aione_template_single['template_sidebar_' . $sidebar_position];
 
 	// sidebar  archive
-	$sidebar_archive = $aione_template_archive['template_sidebar_'.$sidebar_position];
+	$sidebar_archive = $aione_template_archive['template_sidebar_' . $sidebar_position];
 
 	// Global Options
-	$sidebar = 'aione-sidebar-'.$sidebar_position;
+	$sidebar = 'aione-sidebar-' . $sidebar_position;
 
 
-	if ( is_archive() ) { 
+	if (is_archive()) { 
 
 		//Template Options Left Sidebar
-		if( !empty( $sidebar_archive ) && $sidebar_archive != 'default' ){
+		if (!empty($sidebar_archive) && $sidebar_archive != 'default') {
 			$sidebar = $sidebar_archive;
 		}
-	} 
+	}
 
-	if( is_single() ) { 
+	if (is_single()) { 
 
 		//Template Options Left Sidebar
-		if( !empty( $sidebar_single ) && $sidebar_single != 'default' ){
+		if (!empty($sidebar_single) && $sidebar_single != 'default') {
 			$sidebar = $sidebar_single;
 		}
 
 		//Per page Options Left Sidebar
-		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
-		if( !empty( $sidebar_custom ) && $sidebar_custom != 'default') {
+		$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+		if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
 			$sidebar = $sidebar_custom;
 		}
 	}
 
-	if( is_attachment() ) { 
+	if (is_attachment()) { 
 
 		//Template Options Left Sidebar
-		if( !empty( $sidebar_single ) && $sidebar_single != 'default' ){
+		if (!empty($sidebar_single) && $sidebar_single != 'default') {
 			$sidebar = $sidebar_single;
 		}
 
 		//Per page Options Left Sidebar
-		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
-		if( !empty( $sidebar_custom ) && $sidebar_custom != 'default') {
+		$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+		if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
 			$sidebar = $sidebar_custom;
 		}
 	}
 
-	if( is_page() ) {
-		$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_'.$sidebar_position );
-		if( !empty( $sidebar_custom ) && $sidebar_custom != 'default') {
+	if (is_page()) {
+		$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+		if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
 			$sidebar = $sidebar_custom;
 		}
 	}
@@ -1431,84 +1548,85 @@ function aione_get_sidebar( $sidebar_position ){
 	return $sidebar;
 }
 
-function aione_pagination($wp_query = null) {
-	if($wp_query == null){
+function aione_pagination($wp_query = null)
+{
+	if ($wp_query == null) {
 		global $wp_query;
 	}
 	$big = 999999999; // need an unlikely integer
 	$current_page = get_query_var('paged');
 	$total_pages = $wp_query->max_num_pages;
 
-	if( $total_pages == 1 ){
+	if ($total_pages == 1) {
 		return '';
 	}
 
 	$args = array(
-		'base' 				=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-		'format'			=> '?paged=%#%',
-		'total'				=> $total_pages,
-		'current'			=> max( 1, $current_page ),
-		'show_all'			=> false,
-		'end_size'			=> 2,
-		'mid_size'			=> 2,
-		'prev_next'			=> false,
-		'prev_text'			=> '<i class="ion-ios-arrow-back"></i>',
-		'next_text'			=> '<i class="ion-ios-arrow-forward"></i>',
-		'type'				=> 'array',
-		'add_args'			=> false,
-		'add_fragment'		=> '',
-		'before_page_number'=> '',
-		'after_page_number'	=> ''
+		'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+		'format' => '?paged=%#%',
+		'total' => $total_pages,
+		'current' => max(1, $current_page),
+		'show_all' => false,
+		'end_size' => 2,
+		'mid_size' => 2,
+		'prev_next' => false,
+		'prev_text' => '<i class="ion-ios-arrow-back"></i>',
+		'next_text' => '<i class="ion-ios-arrow-forward"></i>',
+		'type' => 'array',
+		'add_args' => false,
+		'add_fragment' => '',
+		'before_page_number' => '',
+		'after_page_number' => ''
 	);
 
-	$pages =  paginate_links( $args ); 
+	$pages = paginate_links($args);
 
 	$output = '';
 
 
 	$output .= '<ul class="pagination">';
 
-	if( $current_page == 1 || $current_page == 0 ){
+	if ($current_page == 1 || $current_page == 0) {
 		$output .= '<li class="page first disabled"><span><i class="ion-ios-arrow-back"></i><i class="ion-ios-arrow-back"></i></span></li>';
 		$output .= '<li class="page prev disabled"><span><i class="ion-ios-arrow-back"></i></span></li>';
 	} else {
 		$prev_page = $current_page - 1;
-		$output .= '<li class="page first"><a href="'.esc_url( get_pagenum_link( 1 ) ).'"><span><i class="ion-ios-arrow-back"></i><i class="ion-ios-arrow-back"></i></span></a></li>';
-		$output .= '<li class="page prev"><a href="'.esc_url( get_pagenum_link( $prev_page ) ).'"><span><i class="ion-ios-arrow-back"></i></span></a></li>';
+		$output .= '<li class="page first"><a href="' . esc_url(get_pagenum_link(1)) . '"><span><i class="ion-ios-arrow-back"></i><i class="ion-ios-arrow-back"></i></span></a></li>';
+		$output .= '<li class="page prev"><a href="' . esc_url(get_pagenum_link($prev_page)) . '"><span><i class="ion-ios-arrow-back"></i></span></a></li>';
 	}
 
-	if( is_array( $pages ) ){
-		foreach ( $pages as $key => $page ) {
+	if (is_array($pages)) {
+		foreach ($pages as $key => $page) {
 
 			$classes = array();
 			$classes[] = 'page';
 
 			$page_number = strip_tags($page);
 
-			if( $current_page > 0 && $current_page == $page_number ){
+			if ($current_page > 0 && $current_page == $page_number) {
 				$classes[] = 'active';
 			}
-			if( $current_page == 0 && 1 == $page_number ){
+			if ($current_page == 0 && 1 == $page_number) {
 				$classes[] = 'active';
 			}
 			$classes = implode(' ', $classes);
-			$output .= '<li class="'.$classes.'">'.$page.'</li>';
+			$output .= '<li class="' . $classes . '">' . $page . '</li>';
 		}
 	}
 
-	if( $current_page == $total_pages ){
+	if ($current_page == $total_pages) {
 		$output .= '<li class="page next disabled"><span><i class="ion-ios-arrow-forward"></i></span></li>';
 		$output .= '<li class="page last disabled"><span><i class="ion-ios-arrow-forward"></i><i class="ion-ios-arrow-forward"></i></span></li>';
 	} else {
-		if( $current_page == 1 || $current_page == 0 ) {
+		if ($current_page == 1 || $current_page == 0) {
 			$next_page = 2;
 		} else {
 			$next_page = $current_page + 1;
 		}
-		$output .= '<li class="page next"><a href="'.esc_url( get_pagenum_link( $next_page ) ).'"><span><i class="ion-ios-arrow-forward"></i></span></a></li>';
-		$output .= '<li class="page last"><a href="'.esc_url( get_pagenum_link( $total_pages ) ).'"><span><i class="ion-ios-arrow-forward"></i><i class="ion-ios-arrow-forward"></i></span></a></li>';
+		$output .= '<li class="page next"><a href="' . esc_url(get_pagenum_link($next_page)) . '"><span><i class="ion-ios-arrow-forward"></i></span></a></li>';
+		$output .= '<li class="page last"><a href="' . esc_url(get_pagenum_link($total_pages)) . '"><span><i class="ion-ios-arrow-forward"></i><i class="ion-ios-arrow-forward"></i></span></a></li>';
 	}
-	
+
 	$output .= '</ul>';
 
 	return $output;
@@ -1517,244 +1635,297 @@ function aione_pagination($wp_query = null) {
 
 
 /**
-* Aione Breadcrumbs Widget
-* 
-*/
-add_action('widgets_init', function() {
-		register_widget('Aione_Breadcrumbs_Widget');
+ * Aione Breadcrumbs Widget
+ * 
+ */
+add_action('widgets_init', function () {
+	register_widget('Aione_Breadcrumbs_Widget');
+});
+class Aione_Breadcrumbs_Widget extends WP_Widget
+{
+	public function __construct()
+	{
+		$widget_options = array(
+			'classname' => 'aione_breadcrumbs_widget',
+			'description' => 'Settings',
+		);
+		parent::__construct('aione_breadcrumbs_widget', 'Aione Breadcrumbs', $widget_options);
 	}
-);
-class Aione_Breadcrumbs_Widget extends WP_Widget {
-	public function __construct() {
-	    $widget_options = array( 
-	      'classname' => 'aione_breadcrumbs_widget',
-	      'description' => 'Settings',
-	    );
-	    parent::__construct( 'aione_breadcrumbs_widget', 'Aione Breadcrumbs', $widget_options );
-	}
-	public function widget( $args, $instance ) {
-		echo $args['before_widget']; 
-		
+	public function widget($args, $instance)
+	{
+		echo $args['before_widget'];
+
 		do_shortcode('[aione-breadcrumbs]');
-      
-        echo $args['after_widget'];
+
+		echo $args['after_widget'];
 	}
-	public function form( $instance ) {	
-		$breadcrumb_separator = ! empty( $instance['breadcrumb_separator'] ) ? $instance['breadcrumb_separator'] : ''; 
+	public function form($instance)
+	{
+		$breadcrumb_separator = !empty($instance['breadcrumb_separator']) ? $instance['breadcrumb_separator'] : '';
 		?>
 		<div class="option-box">
-            <p class="option-title"><?php echo _e('Breadcrumb Separator.','aione'); ?></p>
-            <input type="text" placeholder="»" name="<?php echo $this->get_field_name( 'breadcrumb_separator' ); ?>" 
-            value="<?php echo esc_attr( $breadcrumb_separator ); ?>" />
+            <p class="option-title"><?php echo _e('Breadcrumb Separator.', 'aione'); ?></p>
+            <input type="text" placeholder="»" name="<?php echo $this->get_field_name('breadcrumb_separator'); ?>" 
+            value="<?php echo esc_attr($breadcrumb_separator); ?>" />
         </div> 
 		<?php
-	}
-	public function update( $new_instance, $old_instance ) {
-	    $instance = $old_instance;
-	    $instance[ 'breadcrumb_separator' ] = strip_tags( $new_instance[ 'breadcrumb_separator' ] );
-	    $breadcrumb_separator = sanitize_text_field($instance[ 'breadcrumb_separator' ]);
-		update_option('aione_breadcrumb_separator', $breadcrumb_separator);
-	  return $instance;
-	}
+
 }
-function breadcrumb_shorten_string($string, $shorten_style='word', $wordcount=4, $ending='...'){	
-	if(empty($wordcount)){
+public function update($new_instance, $old_instance)
+{
+	$instance = $old_instance;
+	$instance['breadcrumb_separator'] = strip_tags($new_instance['breadcrumb_separator']);
+	$breadcrumb_separator = sanitize_text_field($instance['breadcrumb_separator']);
+	update_option('aione_breadcrumb_separator', $breadcrumb_separator);
+	return $instance;
+}
+}
+function breadcrumb_shorten_string($string, $shorten_style = 'word', $wordcount = 4, $ending = '...')
+{
+	if (empty($wordcount)) {
 		$wordcount = 4;
 	}
-	if($shorten_style == 'word'){
+	if ($shorten_style == 'word') {
 		$retval = $string;  //    Just in case of a problem
 		$array = explode(" ", $string);
-		if (count($array)<=$wordcount){
+		if (count($array) <= $wordcount) {
 			$retval = $string;
-		}else{
+		} else {
 			array_splice($array, $wordcount);
-			$retval = implode(" ", $array).$ending;
+			$retval = implode(" ", $array) . $ending;
 		}
-					
+
 		return $retval;
-				
-	}else if($shorten_style == 'character'){
-		if (strlen($string) > $wordcount){
+
+	} else if ($shorten_style == 'character') {
+		if (strlen($string) > $wordcount) {
 			$stringCut = substr($string, 0, $wordcount);
-			$string = substr($stringCut, 0, strrpos($stringCut, ' ')); 
-						
-			return $string.$ending;
-		}else{
+			$string = substr($stringCut, 0, strrpos($stringCut, ' '));
+
+			return $string . $ending;
+		} else {
 			return $string;
 		}
 	}
 }
-function breadcrumb_get_page_childs($breadcrumb_separator){
+function breadcrumb_get_page_childs($breadcrumb_separator)
+{
 	global $post;
 	$home = get_page(get_option('page_on_front'));
-	
+
 	$html = '';
-	
-	for ($i = count($post->ancestors)-1; $i >= 0; $i--) {
-		if (($home->ID) != ($post->ancestors[$i]))
-			{
-				$html.= '<span  class="separator">'.$breadcrumb_separator.'</span>';
-				$html.= '<a href="';
-				$html.= get_permalink($post->ancestors[$i]); 
-				$html.= '">';
-				$html.= get_the_title($post->ancestors[$i]);
-				$html.= '</a>';
-			}
+
+	for ($i = count($post->ancestors) - 1; $i >= 0; $i--) {
+		if (($home->ID) != ($post->ancestors[$i])) {
+			$html .= '<span  class="separator">' . $breadcrumb_separator . '</span>';
+			$html .= '<a href="';
+			$html .= get_permalink($post->ancestors[$i]);
+			$html .= '">';
+			$html .= get_the_title($post->ancestors[$i]);
+			$html .= '</a>';
+		}
 	}
-	
-	$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.breadcrumb_shorten_string(get_the_title()).'</a>';
-	
+
+	$html .= '<span class="separator">' . $breadcrumb_separator . '</span><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string(get_the_title()) . '</a>';
+
 	return $html;
 }
-add_shortcode( 'aione-breadcrumbs', 'aione_breadcrumbs_callback' );
-function aione_breadcrumbs_callback(){
+add_shortcode('aione-breadcrumbs', 'aione_breadcrumbs_callback');
+function aione_breadcrumbs_callback()
+{
 	global $post;
-	$breadcrumb_separator = get_option( 'aione_breadcrumb_separator' );
-	$html= "";
-	$html.= '<div class="breadcrumb">';
-		if(is_front_page() && is_home()){ 
-			$html.= '<a title="'.get_bloginfo('name').'" href="#">'.get_bloginfo('name').'</a>';			
-		} elseif( is_front_page()){ 
-			$html.= '<a title="'.get_bloginfo('name').'" href="#">'.get_bloginfo('name').'</a>';
-		} elseif( is_home()){	 	
-			$html.= '<a title="'.get_bloginfo('name').'" href="#">'.get_bloginfo('name').'</a>';			
-			$html.= '<span  class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.get_page(get_option('page_for_posts'))->post_title.'</a>';
-		} else if(is_attachment()){ 
-			$current_attachment_id = get_query_var('attachment_id');
-			$current_attachment_link = get_attachment_link($current_attachment_id);				
-			
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-			
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="'.$current_attachment_link.'">'.get_the_title().'</a>';
-		}else if(is_singular()){		
-			$post_parent_id = wp_get_post_parent_id(get_the_ID());
-			$parent_title = get_the_title($post_parent_id);
-			$paren_get_permalink = get_permalink($post_parent_id);
-			
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-			
-			if(is_page()){ 
-				if($post->post_parent){
-					$html.= breadcrumb_get_page_childs($breadcrumb_separator); 
-				} else {
-					$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.breadcrumb_shorten_string(get_the_title()).'</a>';
+	$breadcrumb_separator = get_option('aione_breadcrumb_separator');
+	$html = "";
+	$html .= '<ul class="aione-breadcrumbs">';
+	if (is_front_page() && is_home()) {
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#">' . get_bloginfo('name') . '<span></span></a></li>';
+	} elseif (is_front_page()) {
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#">' . get_bloginfo('name') . '<span></span></a></li>';
+	} elseif (is_home()) {
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_the_title() . '" href="#">' . get_page(get_option('page_for_posts'))->post_title . '<span></span></a></li>';
+	} else if (is_attachment()) {
+		$current_attachment_id = get_query_var('attachment_id');
+		$current_attachment_link = get_attachment_link($current_attachment_id);
+
+		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a href="' . $current_attachment_link . '">' . get_the_title() . '<span></span></a></li>';
+	} else if (is_singular()) {
+		$post_parent_id = wp_get_post_parent_id(get_the_ID());
+		$parent_title = get_the_title($post_parent_id);
+		$paren_get_permalink = get_permalink($post_parent_id);
+
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+
+		if (is_page()) {
+			if ($post->post_parent) {
+				$html .= breadcrumb_get_page_childs($breadcrumb_separator);
+			} else {
+
+				$html .= '<li><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string(get_the_title()) . '<span></span></a></li>';
+			}
+		} else {
+			$permalink_structure = get_option('permalink_structure', true);
+			$permalink_structure = str_replace('%postname%', '', $permalink_structure);
+			$permalink_structure = str_replace('%post_id%', '', $permalink_structure);
+
+			$permalink_items = array_filter(explode('/', $permalink_structure));
+
+			global $post;
+			$author_id = $post->post_author;
+			$author_posts_url = get_author_posts_url($author_id);
+			$author_name = get_the_author_meta('display_name', $author_id);
+
+			$post_date_year = get_the_time('Y');
+			$post_date_month = get_the_time('m');
+			$post_date_day = get_the_time('d');
+
+			$get_month_link = get_month_link($post_date_year, $post_date_month);
+			$get_year_link = get_year_link($post_date_year);
+			$get_day_link = get_day_link($post_date_year, $post_date_month, $post_date_day);
+
+
+			$html_permalink = '';
+
+
+			if (!empty($permalink_structure) && get_post_type() == 'post') {
+				if (in_array('%year%', $permalink_items)) {
+					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $get_year_link . '">' . breadcrumb_shorten_string($post_date_year) . '<span></span></a></li>';
 				}
-			}else{ 
-				$permalink_structure = get_option('permalink_structure',true);
-				$permalink_structure = str_replace('%postname%','',$permalink_structure);
-				$permalink_structure = str_replace('%post_id%','',$permalink_structure);															
-					
-				$permalink_items = array_filter(explode('/',$permalink_structure));
-					
-				global $post;
-				$author_id = $post->post_author;
-				$author_posts_url = get_author_posts_url($author_id);
-				$author_name = get_the_author_meta('display_name', $author_id);								
-				
-				$post_date_year = get_the_time('Y');
-				$post_date_month = get_the_time('m');
-				$post_date_day = get_the_time('d');																
-				
-				$get_month_link = get_month_link($post_date_year,$post_date_month);
-				$get_year_link = get_year_link($post_date_year);
-				$get_day_link = get_day_link($post_date_year, $post_date_month, $post_date_day);
-																			
-											
-				$html_permalink = '';
-				
-				
-				if(!empty($permalink_structure) && get_post_type()=='post'){ 
-					if(in_array('%year%',$permalink_items)){ 
-						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$get_year_link.'">'.breadcrumb_shorten_string($post_date_year).'</a>';
-					}
 
-					if(in_array('%monthnum%',$permalink_items)){ 
-						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$get_month_link.'">'.breadcrumb_shorten_string($post_date_month).'</a>';
-					}										
-							
-					if(in_array('%author%',$permalink_items)){ 
-						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_the_title().'" href="'.$author_posts_url.'">'.breadcrumb_shorten_string($author_name).'</a>';
+				if (in_array('%monthnum%', $permalink_items)) {
+					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $get_month_link . '">' . breadcrumb_shorten_string($post_date_month) . '<span></span></a></li>';
+				}
 
-					}										
-							
-					if(in_array('%day%',$permalink_items)){ 
-						$html_permalink .= '<span  class="separator">'.$breadcrumb_separator.'</span><a itemprop="item" title="'.get_the_title().'" href="'.$get_day_link.'">'.breadcrumb_shorten_string($post_date_day).'</a>';
-					}
-																	
-					if(in_array('%category%',$permalink_items)){ 
-						$post_categories = get_the_category();
-						if(!empty($post_categories)){ 
+				if (in_array('%author%', $permalink_items)) {
+					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $author_posts_url . '">' . breadcrumb_shorten_string($author_name) . '<span></span></a></li>';
+				}
 
-							$parent_cat_links = get_category_parents( $post_categories[0]->term_id, true, ',' );
-							
-							$parent_cat_links = array_filter(explode(",",$parent_cat_links));
+				if (in_array('%day%', $permalink_items)) {
+					$html_permalink .= '<li><a itemprop="item" title="' . get_the_title() . '" href="' . $get_day_link . '">' . breadcrumb_shorten_string($post_date_day) . '<span></span></a></li>';
+				}
 
-							foreach($parent_cat_links as $link){
-								$html_permalink .= '<span class="separator">'.$breadcrumb_separator.'</span>'.$link.'';
-							}
+				if (in_array('%category%', $permalink_items)) {
+					$post_categories = get_the_category();
+					if (!empty($post_categories)) {
+
+						$parent_cat_links = get_category_parents($post_categories[0]->term_id, true, ',');
+
+						$parent_cat_links = array_filter(explode(",", $parent_cat_links));
+
+						foreach ($parent_cat_links as $link) {
+							$html_permalink .= '<li>' . $link . '</li>';
 						}
-						
 					}
-					$html.= $html_permalink;
 				}
-
-				$html.= '<span  class="separator">'.$breadcrumb_separator.'</span><a title="'.get_the_title().'" href="#">'.breadcrumb_shorten_string(get_the_title()).'</a>';
-
+				$html .= $html_permalink;
 			}
-		} else if(is_category()){					
-			$current_cat_id = get_query_var('cat');
-			$parent_cat_links = get_category_parents( $current_cat_id, true, ',' );
-			$parent_cat_links = explode(",",$parent_cat_links);
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-			
-			foreach($parent_cat_links as $link){
-				if($link){
-					$html.= '<span class="separator">'.$breadcrumb_separator.'</span>'.$link;
-				}
-			}
-		} else if(is_tag()){						
-			$current_tag_id = get_query_var('tag_id');
-			$current_tag = get_tag($current_tag_id);	
-			$current_tag_name = $current_tag->name;				
-						
-			$current_tag_link = get_tag_link($current_tag_id);;	
-			
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-						
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  title="'.get_bloginfo('name').'" href="'.$current_tag_link.'">'.$current_tag_name.'</a>';
-		} else if(is_author()){						
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-			
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="'.esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ).'">'.get_the_author().'</a>';
-		} else if(is_search()){		
-			$current_query = sanitize_text_field(get_query_var('s'));
-			
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-			
-			if(empty($current_query)){
-				$current_query = __('Search:','aione');
-			}else {
-				$current_query = __('Search:','aione').' '.$current_query;
-			}
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="#">'.$current_query.'</a>';			
-		} else if(is_year()){ 
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="#">'.get_the_date('Y').'</a>';
-		} else if(is_month()){ 
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="#">'.get_the_date('F').'</a>';
-		} else if(is_date()){ 
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a  href="#">'.get_the_date().'</a>';
-		} elseif(is_404()){ 
-			$html.= '<a  title="'.get_bloginfo('name').'" href="'.get_bloginfo('url').'">'.get_bloginfo('name').'</a>';	
-			$html.= '<span class="separator">'.$breadcrumb_separator.'</span><a href="#">404</a>';
+			$html .= '<li><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string(get_the_title()) . '<span></span></a></li>';
 
-		}else{ 
-			$html.= '';
-		}	 
+		}
+	} else if (is_category()) {
+		$current_cat_id = get_query_var('cat');
+		$parent_cat_links = get_category_parents($current_cat_id, true, ',');
+		$parent_cat_links = explode(",", $parent_cat_links);
+		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a href="#">Category<span></span></a></li>';
+		foreach ($parent_cat_links as $link) {
+			if ($link) {
+				$html .= '<li>' . $link . '</li>';
+			}
+		}
+	} else if (is_tag()) {
+		$current_tag_id = get_query_var('tag_id');
+		$current_tag = get_tag($current_tag_id);
+		$current_tag_name = $current_tag->name;
 
-	$html.= '</div>';
+		$current_tag_link = get_tag_link($current_tag_id);;
+
+		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a href="#">Tag<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . $current_tag_link . '">' . $current_tag_name . '<span></span></a></li>';
+	} else if (is_author()) {
+		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a href="#">Author<span></span></a></li>';
+		$html .= '<li><a href="' . esc_url(get_author_posts_url(get_the_author_meta("ID"))) . '">' . get_the_author() . '<span></span></a></li>';
+	} else if (is_search()) {
+		$current_query = sanitize_text_field(get_query_var('s'));
+
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+
+		if (empty($current_query)) {
+			$current_query = __('Search:', 'aione');
+		} else {
+			$current_query = __('Search:', 'aione') . ' ' . $current_query;
+		}
+		$html .= '<li><a href="#">' . $current_query . '<span></span></a></li>';
+	} else if (is_year()) {
+		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a href="#">' . get_the_date('Y') . '<span></span></a></li>';
+	} else if (is_month()) {
+		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a href="#">' . get_the_date('F') . '<span></span></a></li>';
+	} else if (is_date()) {
+		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a href="#">' . get_the_date() . '<span></span></a></li>';
+	} elseif (is_404()) {
+		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a href="#">404<span></span></a></li>';
+
+	} else {
+		$html .= '';
+	}
+
+	$html .= '</ul>';
+
+	echo $html;
+}
+
+
+add_action('widgets_init', function () {
+	register_widget('Aione_Fontsize_Widget');
+});
+class Aione_Fontsize_Widget extends WP_Widget
+{
+	public function __construct()
+	{
+		$widget_options = array(
+			'classname' => 'aione_fontsize_widget',
+			'description' => 'Settings',
+		);
+		parent::__construct('aione_fontsize_widget', 'Aione Font size', $widget_options);
+	}
+
+	public function widget($args, $instance)
+	{
+		echo $args['before_widget'];
+
+		do_shortcode('[aione-fontsize]');
+
+		echo $args['after_widget'];
+	}
+
+
+	public function form($instance)
+	{
+
+	}
+
+	public function update($new_instance, $old_instance)
+	{
+
+	}
+}
+
+add_shortcode('aione-fontsize', 'aione_fontsize_callback');
+function aione_fontsize_callback()
+{
+	$html = "";
+	$html .= '<ul class="aione-SizeChanger">';
+	$html .= '<li><a>-A</a></li>';
+	$html .= '<li><a>A</a></li>';
+	$html .= '<li><a>+A</a></li>';
+	$html .= '</ul>';
 
 	echo $html;
 }

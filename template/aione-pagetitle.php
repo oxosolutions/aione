@@ -9,19 +9,24 @@ if( is_enabled( $post->ID, 'page_title_bar' ) ) :
 
 		if ( is_category() ) {
 			$page_title = single_cat_title( '', false );
+			// $page_description = get_the_archive_description();
 		} elseif ( is_tag() ) {
-			$page_title = single_tag_title( '', false );
+			$page_title = '#'.single_tag_title( '', false );
+			// $page_description = get_the_archive_description();
 		} elseif ( is_author() ) {
-			$page_title = '<span class="vcard">' . get_the_author() . '</span>';
+			$page_title = get_the_author();
+			$page_description = "All posts from ".get_the_author();
 		} elseif ( is_post_type_archive() ) {
 			$page_title = post_type_archive_title( '', false );
+			// $page_description = get_the_archive_description();
 		} elseif ( is_tax() ) {
 			$page_title = single_term_title( '', false );
+			// $page_description = get_the_archive_description();
 		} else {
 			$page_title = get_the_archive_title();
+			$page_description = get_the_archive_description();
 		}
 
-		$page_description = get_the_archive_description();
 	}
 
 	if( is_404() ) {
@@ -38,7 +43,10 @@ if( is_enabled( $post->ID, 'page_title_bar' ) ) :
 	}
 
 	if( is_search() ) {
+		$search_query = $_REQUEST['s'];
 		$page_title = "Search";
+		$page_description = "Search results for <span>".$search_query."</span>";
+
 	}
 	?>
 
