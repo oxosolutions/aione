@@ -5468,7 +5468,8 @@ img {
   display: block
 }
 .aione-header-logo img {
-  width: auto
+  width: auto;
+  display: block
 }
 .aione-header .aione-header-title {
   text-align: left;

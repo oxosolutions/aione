@@ -1934,3 +1934,97 @@ function aione_fontsize_callback()
 
 	echo $html;
 }
+
+/**
+ * Aione Copyright Widget
+ * 
+ */
+add_action('widgets_init', function () {
+	register_widget('Aione_Copyright_Widget');
+});
+class Aione_Copyright_Widget extends WP_Widget
+{
+	public function __construct()
+	{
+		$widget_options = array(
+			'classname' => 'aione_copyright_widget',
+			'description' => 'Settings',
+		);
+		parent::__construct('aione_copyright_widget', 'Aione Copyright', $widget_options);
+	}
+
+	public function widget($args, $instance)
+	{
+		echo $args['before_widget'];
+
+		do_shortcode('[aione-copyright]');
+
+		echo $args['after_widget'];
+	}
+
+	public function form($instance)
+	{
+
+	}
+
+	public function update($new_instance, $old_instance)
+	{
+
+	}
+}
+
+add_shortcode('aione-copyright', 'aione_copyright_callback');
+function aione_copyright_callback()
+{
+	$html = "";
+	$html .= '<p>©[date format="Y"] <a href="[url]">[info]</a>. All rights reserved.</p>';
+	return $html;
+}
+
+
+/**
+ * Aione DesignBy Widget
+ * 
+ */
+add_action('widgets_init', function () {
+	register_widget('Aione_DesignBy_Widget');
+});
+class Aione_DesignBy_Widget extends WP_Widget
+{
+	public function __construct()
+	{
+		$widget_options = array(
+			'classname' => 'aione_designby_widget',
+			'description' => 'Settings',
+		);
+		parent::__construct('aione_designby_widget', 'Aione Design by', $widget_options);
+	}
+
+	public function widget($args, $instance)
+	{
+		echo $args['before_widget'];
+
+		do_shortcode('[aione-designby]');
+		echo "hello";
+
+		echo $args['after_widget'];
+	}
+
+	public function form($instance)
+	{
+
+	}
+
+	public function update($new_instance, $old_instance)
+	{
+
+	}
+}
+
+add_shortcode('aione-designby', 'aione_designby_callback');
+function aione_designby_callback()
+{
+	
+}
+
+
