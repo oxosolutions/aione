@@ -149,3 +149,9 @@ ADDED: Export Reusable Blocks
 ## 7.3.0.13 06-02-2019
 UPDATED: CSS Reorganization
 UPDATED: Header Left/Right Design
+
+## 7.3.0.14 06-02-2019
+ADDED: Widget Font Size
+ADDED: Widget Copyright Notice
+ADDED: Widget Designed by
+
