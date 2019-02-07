@@ -155,3 +155,6 @@ ADDED: Widget Font Size
 ADDED: Widget Copyright Notice
 ADDED: Widget Designed by
 
+
+## 7.3.0.15 06-02-2019
+FIXED: Enabled issue

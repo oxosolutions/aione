@@ -245,9 +245,19 @@ function clean_script_tag( $input ) {
 
 // require get_template_directory() . '/includes/custom-header.php';
 
+// Common Aione functions
+require get_template_directory() . '/includes/aione-functions.php';
+
+// Common Aione Theme functions
+require get_template_directory() . '/includes/theme-functions.php';
+
+// Aione Widgets
+require get_template_directory() . '/includes/aione-widgets.php';
 
 // Register Sidebars(Widget Areas)
 require get_template_directory() . '/includes/register-sidebars.php';
+
+
 
 //Register Aione Slider
 //require get_template_directory() . '/includes/register-aione-slider.php';

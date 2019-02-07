@@ -10,6 +10,7 @@ $aione_sidebar_left = array(
 	'before_title'  => '<h3 class="widgettitle">',
 	'after_title'   => '</h3>' 
 );
+
 $aione_sidebar_right = array(
 	'name'          => __( 'Sidebar Right', 'aione' ),
 	'id'            => 'aione-sidebar-right',
@@ -31,6 +32,7 @@ $aione_topbar_left_args = array(
 	'before_title'  => '<span class="widgettitle">',
 	'after_title'   => '</span>' 
 );
+
 $aione_topbar_right_args = array(
 	'name'          => __( 'Topbar Right', 'aione' ),
 	'id'            => 'aione-topbar-right',
@@ -75,6 +77,7 @@ $aione_copyright_left_args = array(
 	'before_title'  => '<span class="widgettitle">',
 	'after_title'   => '</span>' 
 );
+
 $aione_copyright_right_args = array(
 	'name'          => __( 'Copyright Right', 'aione' ),
 	'id'            => 'aione-copyright-right',
@@ -107,6 +110,7 @@ $aione_pagebottom_content_args = array(
 	'before_title'  => '<span class="widgettitle">',
 	'after_title'   => '</span>' 
 );
+
 $aione_contenttop_content_args = array(
 	'name'          => __( 'Content Top Area', 'aione' ),
 	'id'            => 'aione-contenttop-content',
@@ -117,6 +121,7 @@ $aione_contenttop_content_args = array(
 	'before_title'  => '<span class="widgettitle">',
 	'after_title'   => '</span>' 
 );
+
 $aione_contentbottom_content_args = array(
 	'name'          => __( 'Content Bottom Area', 'aione' ),
 	'id'            => 'aione-contentbottom-content',
