@@ -51,7 +51,7 @@ class PerPageOptionsMetaboxes
     public function add_meta_boxes()
     {
 
-    	$post_types = get_post_types(array('public' => true));
+    	$post_types = get_post_types( array( 'public' => true) );
 
         /*$disallowed = array( 'page', 'post', 'attachment', 'aione-slider' );
 
@@ -67,8 +67,8 @@ class PerPageOptionsMetaboxes
 
         //$disallowed = array( 'attachment', 'aione-slider' );
         $disallowed = array('aione-slider');
-        foreach ($post_types as $post_type) {
-        	if (in_array($post_type, $disallowed)) {
+        foreach ( $post_types as $post_type ) {
+        	if ( in_array( $post_type, $disallowed ) ) {
         		continue;
         	}
         	$this->add_meta_box('aione_design_options', 'Aione Design Options', $post_type);
@@ -78,25 +78,25 @@ class PerPageOptionsMetaboxes
 
     public function add_meta_box( $id, $label, $post_type )
     {
-    	add_meta_box('pyre_' . $id, $label, array($this, $id), $post_type, 'advanced', 'default', array('post_type' => $post_type));
+    	add_meta_box('pyre_' . $id, $label, array( $this, $id ), $post_type, 'advanced', 'default', array( 'post_type' => $post_type ) );
     }
 
     public function aione_design_options()
     {
-    	$this->render_aione_design_options(array('header', 'slider', 'page_title_bar', 'page_settings', 'footer', 'custom_code', 'seo'));
+    	$this->render_aione_design_options( array('header', 'slider', 'page_title_bar', 'page_settings', 'footer', 'custom_code', 'seo' ) );
     }
 
     public function render_aione_design_options( $requested_tabs, $post_type = 'default' )
     {
 
     	$tabs_names = array(
-    		'header' => __('Header', 'aione'),
-    		'slider' => __('Slider', 'aione'),
-    		'page_title_bar' => __('Page Title Bar', 'aione'),
-    		'page_settings' => __('Page Settings', 'aione'),
-    		'footer' => __('Footer', 'aione'),
-    		'custom_code' => __('Custom Code', 'aione'),
-    		'seo' => __('SEO', 'aione'),
+    		'header'          => __('Header', 'aione'),
+    		'slider'          => __('Slider', 'aione'),
+    		'page_title_bar'  => __('Page Title Bar', 'aione'),
+    		'page_settings'   => __('Page Settings', 'aione'),
+    		'footer'          => __('Footer', 'aione'),
+    		'custom_code'     => __('Custom Code', 'aione'),
+    		'seo'             => __('SEO', 'aione'),
 
     	);
     	?>
