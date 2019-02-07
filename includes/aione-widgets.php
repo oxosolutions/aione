@@ -100,8 +100,7 @@ class Aione_Copyright_Widget extends WP_Widget
 		parent::__construct( 'aione_copyright_widget', 'Aione Copyright', $widget_options );
 	}
 
-	public function widget( $args, $instance )
-	{
+	public function widget( $args, $instance ){
 		echo $args['before_widget'];
 
 		do_shortcode( '[aione-copyright]' );
@@ -109,13 +108,11 @@ class Aione_Copyright_Widget extends WP_Widget
 		echo $args['after_widget'];
 	}
 
-	public function form( $instance )
-	{
+	public function form( $instance ){
 
 	}
 
-	public function update( $new_instance, $old_instance )
-	{
+	public function update( $new_instance, $old_instance ){
 
 	}
 }
@@ -123,7 +120,7 @@ class Aione_Copyright_Widget extends WP_Widget
 add_shortcode( 'aione-copyright', 'aione_copyright_callback' );
 function aione_copyright_callback()
 {
-	$html = '<p>©' . do_shortcode('[date format="Y"]') . ' <a href="' . do_shortcode('[url]') . '">' . do_shortcode('[info]') . '</a>. All rights reserved.</p>';
+	$html = '<p>©' . date('Y') . ' <a href="' . home_url() . '">' . get_bloginfo( 'name' ) . '</a>. All rights reserved.</p>';
 	echo $html;
 }
 
