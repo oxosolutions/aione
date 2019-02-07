@@ -103,8 +103,8 @@ class PerPageOptionsMetaboxes
 
     	<ul class="pyre_metabox_tabs">
 
-    		<?php foreach ($requested_tabs as $key => $tab_name): ?>
-    			<?php $class = ($key === 0) ? "active" : "";?>
+    		<?php foreach ( $requested_tabs as $key => $tab_name ): ?>
+    			<?php $class = ( $key === 0 ) ? "active" : "";?>
     			<li class="<?php echo esc_html( $class ); ?>"><a href="<?php echo esc_html( $tab_name ); ?>">
     				<?php echo esc_html( $tabs_names[$tab_name] ); ?></a></li>
 
@@ -114,7 +114,7 @@ class PerPageOptionsMetaboxes
 
     		<div class="pyre_metabox">
 
-    			<?php foreach ($requested_tabs as $key => $tab_name): ?>
+    			<?php foreach ( $requested_tabs as $key => $tab_name ): ?>
     				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo esc_html( $tab_name ); ?>">
     					<?php require_once 'tabs/tab_' . $tab_name . '.php';?>
     				</div>
@@ -123,22 +123,20 @@ class PerPageOptionsMetaboxes
     		</div>
     		<div class="clear"></div>
     		<?php
-
     	}
 
     	public function save_meta_boxes( $post_id )
     	{
 
-    		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
     			return;
     		}
 
-    		foreach ($_POST as $key => $value) {
+    		foreach ( $_POST as $key => $value ) {
     			if ( strstr( $key, 'pyre_' ) ) {
     				update_post_meta( $post_id, $key, $value );
     			}
     		}
-
     	}
 
     	public function text( $id, $label, $desc = '' )
@@ -150,208 +148,208 @@ class PerPageOptionsMetaboxes
     		<div class="pyre_metabox_field">
     			<div class="pyre_desc">
     				<label for="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $label ); ?></label>
-    					<?php if ( $desc ): ?>
-    						<p><?php echo $desc; ?></p>
-    					<?php endif;?>
-    				</div>
-    				<div class="pyre_field">
-    					<input type="text" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>" value="<?php echo esc_html( get_post_meta( $post->ID, 'pyre_' . $id, true ) ); ?>" />
-    				</div>
-    			</div>
-    			<?php
+                   <?php if ( $desc ): ?>
+                      <p><?php echo $desc; ?></p>
+                  <?php endif;?>
+              </div>
+              <div class="pyre_field">
+               <input type="text" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>" value="<?php echo esc_html( get_post_meta( $post->ID, 'pyre_' . $id, true ) ); ?>" />
+           </div>
+       </div>
+       <?php
 
-    		}
+   }
 
-    		public function select( $id, $label, $options, $desc = '' )
-    		{
-    			global $post;
-    			?>
+   public function select( $id, $label, $options, $desc = '' )
+   {
+     global $post;
+     ?>
 
-    			<div class="pyre_metabox_field">
-    				<div class="pyre_desc">
-    					<label for="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $label ); ?></label>
-    						<?php if ($desc): ?>
-    							<p><?php echo $desc; ?></p>
-    						<?php endif;?>
-    					</div>
-    					<div class="pyre_field">
-    						<div class="oxo-shortcodes-arrow">&#xf3d0;</div>
-    						<select id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>">
-    							<?php foreach ($options as $key => $option): ?>
-    								<?php $selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : '';?>
-    								<option <?php echo esc_html( $selected ); ?> value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $option ); ?>
-    								</option>
-    							<?php endforeach;?>
-    						</select>
-    					</div>
-    				</div>
-    				<?php
+     <div class="pyre_metabox_field">
+        <div class="pyre_desc">
+           <label for="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $label ); ?></label>
+           <?php if ($desc): ?>
+             <p><?php echo $desc; ?></p>
+         <?php endif;?>
+     </div>
+     <div class="pyre_field">
+      <div class="oxo-shortcodes-arrow">&#xf3d0;</div>
+      <select id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>">
+         <?php foreach ( $options as $key => $option ): ?>
+            <?php $selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : '';?>
+            <option <?php echo esc_html( $selected ); ?> value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $option ); ?>
+        </option>
+    <?php endforeach;?>
+</select>
+</div>
+</div>
+<?php
 
-    			}
+}
 
-    			public function multiple( $id, $label, $options, $desc = '' )
-    			{
-    				global $post;
-    				?>
+public function multiple( $id, $label, $options, $desc = '' )
+{
+    global $post;
+    ?>
 
-    				<div class="pyre_metabox_field">
-    					<div class="pyre_desc">
-    						<label for="pyre_<?php echo esc_html( $id ); ?>">
-    							<?php echo esc_html( $label ); ?></label>
-    							<?php if ( $desc ): ?>
-    								<p>
-    									<?php echo $desc; ?>
-    								</p>
-    							<?php endif;?>
-    						</div>
-    						<div class="pyre_field">
-    							<select multiple="multiple" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>[]">
-    								<?php foreach ($options as $key => $option): ?>
-    									<?php $selected = (is_array( get_post_meta( $post->ID, 'pyre_' . $id, true ) ) && in_array( $key, get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ) ? 'selected="selected"' : '';?>
-    									<option <?php echo esc_html( $selected ); ?> value="<?php echo esc_html($key); ?>"><?php echo esc_html( $option ); ?>
-    									</option>
-    								<?php endforeach;?>
-    							</select>
-    						</div>
-    					</div>
-    					<?php
+    <div class="pyre_metabox_field">
+       <div class="pyre_desc">
+          <label for="pyre_<?php echo esc_html( $id ); ?>">
+             <?php echo esc_html( $label ); ?></label>
+             <?php if ( $desc ): ?>
+                <p>
+                   <?php echo $desc; ?>
+               </p>
+           <?php endif;?>
+       </div>
+       <div class="pyre_field">
+         <select multiple="multiple" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>[]">
+            <?php foreach ($options as $key => $option): ?>
+               <?php $selected = ( is_array( get_post_meta( $post->ID, 'pyre_' . $id, true ) ) && in_array( $key, get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ) ? 'selected="selected"' : '';?>
+               <option <?php echo esc_html( $selected ); ?> value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $option ); ?>
+           </option>
+       <?php endforeach;?>
+   </select>
+</div>
+</div>
+<?php
 
-    				}
+}
 
-    				public function ace_editor( $id, $label, $desc = '', $default = '' )
-    				{
-    					global $post;
-    					$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
-    					$value = (metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
+public function ace_editor( $id, $label, $desc = '', $default = '' )
+{
+   global $post;
+   $db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
+   $value = (metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
 
-    					?>
-    					<div class="pyre_metabox_field">
-    						<div class="pyre_desc">
-    							<label for="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $label ); ?></label>
-    								<?php if ($desc): ?>
-    									<p> <?php echo $desc; ?> </p>
-    								<?php endif;?>
-    							</div>
-    							<div class="pyre_field">
-    								<textarea style="display:none;" name="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $value ); ?></textarea>
-    								<div id="pyre_<?php echo esc_html( $id ); ?>"></div>
-    							</div>
-    						</div>
-    						<script>
-    							function cssEditor(){
-    								var csstempValue = $('textarea[name="pyre_custom_css"]').val();
-    								var cssEditor = ace.edit("pyre_custom_css");
-    								cssEditor.setTheme("ace/theme/twilight");
-    								cssEditor.session.setMode("ace/mode/css");
-    								cssEditor.session.setValue(csstempValue);
-    								cssEditor.setOptions({
-    									autoScrollEditorIntoView: true,
-    									fontSize: "14px"
-    								});
+   ?>
+   <div class="pyre_metabox_field">
+      <div class="pyre_desc">
+         <label for="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $label ); ?></label>
+         <?php if ( $desc ): ?>
+           <p> <?php echo $desc; ?> </p>
+       <?php endif;?>
+   </div>
+   <div class="pyre_field">
+    <textarea style="display:none;" name="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $value ); ?></textarea>
+    <div id="pyre_<?php echo esc_html( $id ); ?>"></div>
+</div>
+</div>
+<script>
+ function cssEditor(){
+    var csstempValue = $('textarea[name="pyre_custom_css"]').val();
+    var cssEditor = ace.edit("pyre_custom_css");
+    cssEditor.setTheme("ace/theme/twilight");
+    cssEditor.session.setMode("ace/mode/css");
+    cssEditor.session.setValue(csstempValue);
+    cssEditor.setOptions({
+       autoScrollEditorIntoView: true,
+       fontSize: "14px"
+   });
 
-    								var cssinput = $('textarea[name="pyre_custom_css"]');
-    								cssEditor.getSession().on("change", function () {
-    									cssinput.val(cssEditor.getSession().getValue());
-    								});
-    							}
-    							function jsEditor(){
-    								var jstempValue = $('textarea[name="pyre_custom_js"]').val();
-    								var jsEditor = ace.edit("pyre_custom_js");
-    								jsEditor.setTheme("ace/theme/twilight");
-    								jsEditor.session.setMode("ace/mode/javascript");
-    								jsEditor.session.setValue(jstempValue);
-    								jsEditor.setOptions({
-    									autoScrollEditorIntoView: true
-    								});
+    var cssinput = $('textarea[name="pyre_custom_css"]');
+    cssEditor.getSession().on("change", function () {
+       cssinput.val(cssEditor.getSession().getValue());
+   });
+}
+function jsEditor(){
+    var jstempValue = $('textarea[name="pyre_custom_js"]').val();
+    var jsEditor = ace.edit("pyre_custom_js");
+    jsEditor.setTheme("ace/theme/twilight");
+    jsEditor.session.setMode("ace/mode/javascript");
+    jsEditor.session.setValue(jstempValue);
+    jsEditor.setOptions({
+       autoScrollEditorIntoView: true
+   });
 
-    								var jsinput = $('textarea[name="pyre_custom_js"]');
-    								jsEditor.getSession().on("change", function () {
-    									jsinput.val(jsEditor.getSession().getValue());
-    								});
-    							}
-    						</script>
-    						<?php
-    						if ($id == "custom_css"):
-    							?>
-    							<script> cssEditor();</script>
-    							<?php
-    						endif;
-    						if ($id == "custom_js"):
-    							?>
-    							<script> jsEditor();</script>
-    							<?php
-    						endif;
-    						?>
-    						<style media="screen">
-    						.ace_editor {
-    							border: 1px solid lightgray;
-    							height: 200px;
-    						}
-    					</style>
-    					<?php
+    var jsinput = $('textarea[name="pyre_custom_js"]');
+    jsEditor.getSession().on("change", function () {
+       jsinput.val(jsEditor.getSession().getValue());
+   });
+}
+</script>
+<?php
+if ($id == "custom_css"):
+ ?>
+ <script> cssEditor();</script>
+ <?php
+endif;
+if ($id == "custom_js"):
+ ?>
+ <script> jsEditor();</script>
+ <?php
+endif;
+?>
+<style media="screen">
+.ace_editor {
+ border: 1px solid lightgray;
+ height: 200px;
+}
+</style>
+<?php
 
-    				}
+}
 
-    				public function textarea( $id, $label, $desc = '', $default = '' )
-    				{
-    					global $post;
-    					$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
-    					$value = (metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
-    					$rows = 10;
-    					if ( $id == 'heading' || $id == 'caption' ) {
-    						$rows = 5;
-    					} else if ( 'page_title_custom_text' == $id || 'page_title_custom_subheader' == $id ) {
-    						$rows = 1;
-    					}
-    					?>
+public function textarea( $id, $label, $desc = '', $default = '' )
+{
+   global $post;
+   $db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
+   $value = ( metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
+   $rows = 10;
+   if ( $id == 'heading' || $id == 'caption' ) {
+      $rows = 5;
+  } else if ( 'page_title_custom_text' == $id || 'page_title_custom_subheader' == $id ) {
+      $rows = 1;
+  }
+  ?>
 
-    					<div class="pyre_metabox_field">
-    						<div class="pyre_desc">
-    							<label for="pyre_<?php echo esc_html($id); ?>">
-    								<?php echo esc_html($label); ?></label>
-    								<?php if ($desc): ?>
-    									<p>
-    										<?php echo $desc; ?>
-    									</p>
-    								<?php endif;?>
-    							</div>
-    							<div class="pyre_field">
-    								<textarea cols="120" rows="<?php echo esc_html($rows); ?>" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($value); ?></textarea>
-    							</div>
-    						</div>
-    						<?php
+  <div class="pyre_metabox_field">
+      <div class="pyre_desc">
+         <label for="pyre_<?php echo esc_html($id); ?>">
+            <?php echo esc_html($label); ?></label>
+            <?php if ($desc): ?>
+               <p>
+                  <?php echo $desc; ?>
+              </p>
+          <?php endif;?>
+      </div>
+      <div class="pyre_field">
+        <textarea cols="120" rows="<?php echo esc_html($rows); ?>" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($value); ?></textarea>
+    </div>
+</div>
+<?php
 
-    					}
+}
 
-    					public function upload( $id, $label, $desc = '' )
-    					{
-    						global $post;
-    						?>
+public function upload( $id, $label, $desc = '' )
+{
+  global $post;
+  ?>
 
-    						<div class="pyre_metabox_field">
-    							<div class="pyre_desc">
-    								<label for="pyre_<?php echo esc_html($id); ?>">
-    									<?php echo esc_html($label); ?></label>
-    									<?php if ($desc): ?>
-    										<p>
-    											<?php echo $desc; ?>
-    										</p>
-    									<?php endif;?>
-    								</div>
-    								<div class="pyre_field">
-    									<div class="pyre_upload">
+  <div class="pyre_metabox_field">
+     <div class="pyre_desc">
+        <label for="pyre_<?php echo esc_html( $id ); ?>">
+           <?php echo esc_html( $label ); ?></label>
+           <?php if ($desc): ?>
+              <p>
+                 <?php echo $desc; ?>
+             </p>
+         <?php endif;?>
+     </div>
+     <div class="pyre_field">
+       <div class="pyre_upload">
 
-    										<?php $saved = get_post_meta($post->ID, 'pyre_' . $id, true);?>
-    										<input type="url" class="large-text" name="pyre_<?php echo esc_html($id); ?>" id="media_upload_btn" value="<?php echo esc_attr($saved); ?>"><br>
+          <?php $saved = get_post_meta( $post->ID, 'pyre_' . $id, true );?>
+          <input type="url" class="large-text" name="pyre_<?php echo esc_html($id); ?>" id="media_upload_btn" value="<?php echo esc_attr($saved); ?>"><br>
 
-    										<button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn">
-    											<?php esc_html_e('Upload Media', 'aione')?></button>
-    										</div>
-    									</div>
-    								</div>
-    								<script>
-    									jQuery(document).ready(function($){
-    										'use strict';
+          <button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn">
+             <?php esc_html_e('Upload Media', 'aione')?></button>
+         </div>
+     </div>
+ </div>
+ <script>
+   jQuery(document).ready(function($){
+      'use strict';
 			// Instantiates the variable that holds the media library frame.
 			var metaImageFrame;
 			// Runs when the media button is clicked.
@@ -526,7 +524,7 @@ class Aione_Slider_Widget extends WP_Widget
 	public function __construct()
 	{
 		$widget_options = array(
-			'classname' => 'aione_slider_widget',
+			'classname'   => 'aione_slider_widget',
 			'description' => 'List of Aione Sliders',
 		);
 		parent::__construct('aione_slider_widget', 'Aione slider', $widget_options);
@@ -544,30 +542,30 @@ class Aione_Slider_Widget extends WP_Widget
 	public function form($instance)
 	{
 		$args = array(
-			'post_type' => 'aione-slider',
-			'posts_per_page' => -1,
-			'post_status' => 'publish',
+			'post_type'       => 'aione-slider',
+			'posts_per_page'  => -1,
+			'post_status'     => 'publish',
 		);
 
-		$custom_posts = new WP_Query($args);
+		$custom_posts = new WP_Query( $args );
 
-		$title = !empty($instance['title']) ? $instance['title'] : '';?>
+		$title = !empty( $instance['title'] ) ? $instance['title'] : '';?>
 		<p>
-			<label for="<?php echo esc_html($this->get_field_id('title')); ?>">Title:</label>
-			<input type="text" id="<?php echo esc_html($this->get_field_id('title')); ?>" name="<?php echo esc_html($this->get_field_name('title')); ?>"
-			value="<?php echo esc_attr($title); ?>" />
+			<label for="<?php echo esc_html( $this->get_field_id('title') ); ?>">Title:</label>
+			<input type="text" id="<?php echo esc_html( $this->get_field_id('title') ); ?>" name="<?php echo esc_html( $this->get_field_name('title') ); ?>"
+			value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_html($this->get_field_id('slider')); ?>">Select Slider:</label>
-			<select id="<?php echo esc_html($this->get_field_id('slider')); ?>" name="<?php echo esc_html($this->get_field_name('slider')); ?>">
+			<label for="<?php echo esc_html( $this->get_field_id('slider') ); ?>">Select Slider:</label>
+			<select id="<?php echo esc_html( $this->get_field_id('slider') ); ?>" name="<?php echo esc_html( $this->get_field_name('slider')); ?>">
 				<?php
-				if ($custom_posts->have_posts()) {
-					foreach ($custom_posts->posts as $slider) {
+				if ( $custom_posts->have_posts() ) {
+					foreach ( $custom_posts->posts as $slider ) {
 						$selected_html = '';
-						if ($slider->post_name == $instance['slider']) {
+						if ( $slider->post_name == $instance['slider'] ) {
 							$selected_html = " selected='selected'";
 						}
-						echo "<option value='" . esc_html($slider->ID) . "' " . esc_html($selected_html) . ">" . esc_html($slider->post_title) . "</option>";
+						echo "<option value='" . esc_html( $slider->ID ) . "' " . esc_html( $selected_html ) . ">" . esc_html( $slider->post_title ) . "</option>";
 
 					}
 				}
@@ -576,7 +574,7 @@ class Aione_Slider_Widget extends WP_Widget
 		</p>
 		<?php
 	}
-	public function update($new_instance, $old_instance)
+	public function update( $new_instance, $old_instance )
 	{
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -602,7 +600,7 @@ class Aione_Social_Icons_Widget extends WP_Widget
 	{
 
 		$widget_options = array(
-			'classname' => 'aione-social-icons-widget',
+			'classname'   => 'aione-social-icons-widget',
 			'description' => 'Displays a list of social media website icons and a link to your profile.',
 		);
 
@@ -611,26 +609,25 @@ class Aione_Social_Icons_Widget extends WP_Widget
 		global $asiw_social_accounts;
 
 		$asiw_social_accounts = array(
-			'Facebook' => 'facebook',
-			'Twitter' => 'twitter',
-			'YouTube' => 'youtube',
-			'Google+' => 'googleplus',
-			'LinkedIn' => 'linkedin',
-			'Instagram' => 'instagram',
+			'Facebook'   => 'facebook',
+			'Twitter'    => 'twitter',
+			'YouTube'    => 'youtube',
+			'Google+'    => 'googleplus',
+			'LinkedIn'   => 'linkedin',
+			'Instagram'  => 'instagram',
             // 'Email'        =>    'email',
-			'Flickr' => 'flickr',
-			'GitHub' => 'github',
-			'Pinterest' => 'pinterest',
-			'RSS Feed' => 'rss',
-			'Tumblr' => 'tumblr',
-			'Vimeo' => 'vimeo',
-			'WordPress' => 'wordpress',
+			'Flickr'     => 'flickr',
+			'GitHub'     => 'github',
+			'Pinterest'  => 'pinterest',
+			'RSS Feed'   => 'rss',
+			'Tumblr'     => 'tumblr',
+			'Vimeo'      => 'vimeo',
+			'WordPress'  => 'wordpress',
 		);
 
-		if (has_filter('aione_social_icon_accounts')) {
+		if ( has_filter('aione_social_icon_accounts') ) {
 			$asiw_social_accounts = apply_filters('aione_social_icon_accounts', $asiw_social_accounts);
 		}
-
 	}
 
 	public function widget($args, $instance)
