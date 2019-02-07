@@ -1262,22 +1262,25 @@ function is_enabled($id, $component)
 
 	$page_option = get_aione_page_option($id, 'pyre_' . $component);
 
-    /*echo "<br>ID ==".$post->ID;
-    echo "<br>ID ==".$id;
-    echo "<br>component ==".$component;
-    echo "<br>PAGE OPTIONS ==".$page_option;
-    echo "<br>THEME OPTIONS ==".$theme_options[$component];*/
-
-    if ($page_option == 'default' || empty($page_option)) {
-    	if ($theme_options[$component]) {
-    		$is_enabled = true;
-    	}
-    } else {
-    	if ($page_option == 'yes') {
-    		$is_enabled = true;
-    	}
+    /*
+    if( $component == 'header_enable' ){
+        // echo "<br>ID ==".$post->ID;
+        echo "<br>ID ==".$id;
+        // echo "<br>component ==".$component;
+        echo "<br>PAGE OPTIONS ==".$page_option;
+        echo "<br>THEME OPTIONS ==".$theme_options[$component];
     }
+    */
 
+    if (    $page_option == 'default' || empty( $page_options)  ) {
+        if (   $theme_options[$component]  ) {
+            $is_enabled = true;
+        }
+    } else {
+        if (   $page_option == 'yes'   ) {
+            $is_enabled = true;
+        }
+    }
     return $is_enabled;
 }
 

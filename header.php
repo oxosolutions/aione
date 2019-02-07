@@ -178,7 +178,7 @@ $body_classes = implode(" ", $body_classes);
 		<?php get_template_part('template/aione-header'); ?>
 		<?php if ($theme_options['header_position'] != 'top') {
 		echo '<div class="content-wrapper">';
-	} ?>
+		} ?>
 		<?php get_template_part('template/aione-slider'); ?>
 		<?php get_template_part('template/aione-pagetitle'); ?>
 		<?php get_template_part('template/aione-pagetop'); ?>

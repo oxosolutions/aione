@@ -2,6 +2,14 @@
 global $theme_options;
 global $post;
 
+
+/*
+echo  "<br>POST_ID = ".$post->ID;
+echo  "<br>Global header_enable = ".$theme_options['header_enable'];
+echo  "<br>Perpage header_enable = ".get_post_meta($post->ID, 'pyre_header_enable', true);
+echo  "<br>Header is_enabled = ".is_enabled( $post->ID, 'header_enable' ) ;
+*/
+
 $header_classes = array( 'aione-header' );
 
 if( $theme_options['header_sticky'] ) {
