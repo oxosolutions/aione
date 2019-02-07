@@ -143,9 +143,12 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 			}
 
 	        //Per page Options Left Sidebar
-			$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+			$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_' . $sidebar_position );
+
 			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
+
 				$sidebar = $sidebar_custom;
+
 			}
 		}
 
@@ -153,20 +156,28 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 
 	        //Template Options Left Sidebar
 			if (!empty($sidebar_single) && $sidebar_single != 'default') {
+
 				$sidebar = $sidebar_single;
+
 			}
 
 	        //Per page Options Left Sidebar
 			$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+
 			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
+
 				$sidebar = $sidebar_custom;
+
 			}
 		}
 
 		if (is_page()) {
 			$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+
 			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
+
 				$sidebar = $sidebar_custom;
+
 			}
 		}
 
@@ -248,16 +259,24 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 			}
 
 	        //Per page Options Enable
-			$is_enabled_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position . '_enable');
+			$is_enabled_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_' . $sidebar_position . '_enable' );
+
 			if ($is_enabled_custom == 'no') {
+
 				$is_enabled = 0;
+
 			}
+
 			if ($is_enabled_custom == 'yes') {
+
 				$is_enabled = 1;
+
 			}
 		}
 		if (is_page()) {
-			$is_enabled = is_enabled(get_page_id(), 'sidebar_' . $sidebar_position . '_enable');
+
+			$is_enabled = is_enabled( get_page_id(), 'sidebar_' . $sidebar_position . '_enable' );
+
 		}
 
 		return $is_enabled;
@@ -271,7 +290,7 @@ if ( !function_exists( 'get_aione_page_option' ) ) {
 
 	function get_aione_page_option( $post_id, $meta_key ) {
 
-		$meta_value = get_post_meta($post_id, $meta_key, true);
+		$meta_value = trim( get_post_meta($post_id, $meta_key, true) );
 
 		return $meta_value;
 	}
@@ -287,22 +306,33 @@ if ( !function_exists( 'is_fullwidth' ) ) {
 		global $post;
 		$fullwidth = false;
 
-		$page_option = get_aione_page_option($id, 'pyre_' . $component . '_100_width');
+		$page_option = trim( get_aione_page_option( $id, 'pyre_' . $component . '_100_width' ) );
 
-		if ($page_option == 'default' || empty($page_option)) {
-			if ($theme_options[$component . '_100_width']) {
+		if ( $page_option == 'default' || empty($page_option ) ) {
+
+			if ( $theme_options[$component . '_100_width']) {
+
 				$fullwidth = true;
+
 			}
+
 		} else {
+
 			if ($page_option == 'yes') {
+
 				$fullwidth = true;
+
 			}
 		}
 
 		if ($fullwidth) {
+
 			$fullwidth_class = "fullwidth";
+
 		} else {
+
 			$fullwidth_class = "";
+
 		}
 
 		return $fullwidth_class;
@@ -320,19 +350,31 @@ if ( !function_exists( 'get_page_id' ) ) {
 		global $post;
 
 		if (is_front_page() && is_home()) {
+
 			$blog = false;
-		} elseif (is_front_page()) {
+
+		} elseif ( is_front_page() ) {
+
 			$blog = false;
-		} elseif (is_home()) {
+
+		} elseif ( is_home() ) {
+
 			$blog = true;
+
 		} else {
+
 			$blog = false;
+
 		}
 
-		if ($blog == true) {
-		    return get_option('page_for_posts'); // Returns blog page ID
+		if ( $blog == true ) {
+
+		    return get_option( 'page_for_posts' ); // Returns blog page ID
+
 		} else {
+
 			return $post->ID;
+
 		}
 	}
 
@@ -346,7 +388,7 @@ if ( !function_exists( 'is_enabled' ) ) {
 		global $theme_options;
 		$is_enabled = false;
 
-		$page_option = get_aione_page_option($id, 'pyre_' . $component);
+		$page_option = get_aione_page_option($id, 'pyre_' . $component );
 
 	    /*
 	    if( $component == 'slider_enable' ){
@@ -359,7 +401,7 @@ if ( !function_exists( 'is_enabled' ) ) {
 	    */
 	    
 
-	    if( trim( $page_option ) == "default" || empty( trim( $page_option ) ) ) {
+	    if( $page_option == "default" || empty( $page_option ) ) {
 
 	        if(   $theme_options[$component]  ) {
 
@@ -369,7 +411,7 @@ if ( !function_exists( 'is_enabled' ) ) {
 
 	    } else {
 
-	        if( trim( $page_option ) == "yes" ) {
+	        if( $page_option == "yes" ) {
 
 	        	$is_enabled = true;
 

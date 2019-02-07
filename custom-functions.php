@@ -12,7 +12,6 @@ class PerPageOptionsMetaboxes
 {
 	public function __construct()
 	{
-
 		add_action('add_meta_boxes', array($this, 'add_meta_boxes'));
 		add_action('save_post', array($this, 'save_meta_boxes'));
 		add_action('edit_attachment', array($this, 'save_meta_boxes'));
@@ -24,10 +23,9 @@ class PerPageOptionsMetaboxes
      */
     public function admin_script_loader()
     {
-
     	global $pagenow;
 
-    	if (is_admin() && (in_array($pagenow, array('post-new.php', 'post.php')))) {
+    	if ( is_admin() && ( in_array( $pagenow, array( 'post-new.php', 'post.php' ) ) ) ) {
 
     		$theme_info = wp_get_theme();
 
@@ -78,7 +76,7 @@ class PerPageOptionsMetaboxes
 
     }
 
-    public function add_meta_box($id, $label, $post_type)
+    public function add_meta_box( $id, $label, $post_type )
     {
     	add_meta_box('pyre_' . $id, $label, array($this, $id), $post_type, 'advanced', 'default', array('post_type' => $post_type));
     }
@@ -88,7 +86,7 @@ class PerPageOptionsMetaboxes
     	$this->render_aione_design_options(array('header', 'slider', 'page_title_bar', 'page_settings', 'footer', 'custom_code', 'seo'));
     }
 
-    public function render_aione_design_options($requested_tabs, $post_type = 'default')
+    public function render_aione_design_options( $requested_tabs, $post_type = 'default' )
     {
 
     	$tabs_names = array(
@@ -107,8 +105,8 @@ class PerPageOptionsMetaboxes
 
     		<?php foreach ($requested_tabs as $key => $tab_name): ?>
     			<?php $class = ($key === 0) ? "active" : "";?>
-    			<li class="<?php echo esc_html($class); ?>"><a href="<?php echo esc_html($tab_name); ?>">
-    				<?php echo esc_html($tabs_names[$tab_name]); ?></a></li>
+    			<li class="<?php echo esc_html( $class ); ?>"><a href="<?php echo esc_html( $tab_name ); ?>">
+    				<?php echo esc_html( $tabs_names[$tab_name] ); ?></a></li>
 
     			<?php endforeach;?>
 
@@ -117,7 +115,7 @@ class PerPageOptionsMetaboxes
     		<div class="pyre_metabox">
 
     			<?php foreach ($requested_tabs as $key => $tab_name): ?>
-    				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo esc_html($tab_name); ?>">
+    				<div class="pyre_metabox_tab" id="pyre_tab_<?php echo esc_html( $tab_name ); ?>">
     					<?php require_once 'tabs/tab_' . $tab_name . '.php';?>
     				</div>
     			<?php endforeach;?>
@@ -128,7 +126,7 @@ class PerPageOptionsMetaboxes
 
     	}
 
-    	public function save_meta_boxes($post_id)
+    	public function save_meta_boxes( $post_id )
     	{
 
     		if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -136,14 +134,14 @@ class PerPageOptionsMetaboxes
     		}
 
     		foreach ($_POST as $key => $value) {
-    			if (strstr($key, 'pyre_')) {
-    				update_post_meta($post_id, $key, $value);
+    			if ( strstr( $key, 'pyre_' ) ) {
+    				update_post_meta( $post_id, $key, $value );
     			}
     		}
 
     	}
 
-    	public function text($id, $label, $desc = '')
+    	public function text( $id, $label, $desc = '' )
     	{
 
     		global $post;
@@ -151,45 +149,37 @@ class PerPageOptionsMetaboxes
 
     		<div class="pyre_metabox_field">
     			<div class="pyre_desc">
-    				<label for="pyre_<?php echo esc_html($id); ?>">
-    					<?php echo esc_html($label); ?></label>
-    					<?php if ($desc): ?>
-    						<p>
-    							<?php echo $desc; ?>
-    						</p>
+    				<label for="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $label ); ?></label>
+    					<?php if ( $desc ): ?>
+    						<p><?php echo $desc; ?></p>
     					<?php endif;?>
     				</div>
     				<div class="pyre_field">
-    					<input type="text" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>" value="<?php echo esc_html(get_post_meta($post->ID, 'pyre_' . $id, true)); ?>" />
+    					<input type="text" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>" value="<?php echo esc_html( get_post_meta( $post->ID, 'pyre_' . $id, true ) ); ?>" />
     				</div>
     			</div>
     			<?php
 
     		}
 
-    		public function select($id, $label, $options, $desc = '')
+    		public function select( $id, $label, $options, $desc = '' )
     		{
     			global $post;
     			?>
 
     			<div class="pyre_metabox_field">
     				<div class="pyre_desc">
-    					<label for="pyre_<?php echo esc_html($id); ?>">
-    						<?php echo esc_html($label); ?></label>
+    					<label for="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $label ); ?></label>
     						<?php if ($desc): ?>
-    							<p>
-    								<?php echo $desc; ?>
-    							</p>
+    							<p><?php echo $desc; ?></p>
     						<?php endif;?>
     					</div>
     					<div class="pyre_field">
     						<div class="oxo-shortcodes-arrow">&#xf3d0;</div>
-    						<select id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>">
+    						<select id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>">
     							<?php foreach ($options as $key => $option): ?>
-    								<?php $selected = ($key == get_post_meta($post->ID, 'pyre_' . $id, true)) ? 'selected="selected"' : '';?>
-    								<option <?php echo esc_html($selected); ?> value="
-    									<?php echo esc_html($key); ?>">
-    									<?php echo esc_html($option); ?>
+    								<?php $selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : '';?>
+    								<option <?php echo esc_html( $selected ); ?> value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $option ); ?>
     								</option>
     							<?php endforeach;?>
     						</select>
@@ -199,28 +189,26 @@ class PerPageOptionsMetaboxes
 
     			}
 
-    			public function multiple($id, $label, $options, $desc = '')
+    			public function multiple( $id, $label, $options, $desc = '' )
     			{
     				global $post;
     				?>
 
     				<div class="pyre_metabox_field">
     					<div class="pyre_desc">
-    						<label for="pyre_<?php echo esc_html($id); ?>">
-    							<?php echo esc_html($label); ?></label>
-    							<?php if ($desc): ?>
+    						<label for="pyre_<?php echo esc_html( $id ); ?>">
+    							<?php echo esc_html( $label ); ?></label>
+    							<?php if ( $desc ): ?>
     								<p>
     									<?php echo $desc; ?>
     								</p>
     							<?php endif;?>
     						</div>
     						<div class="pyre_field">
-    							<select multiple="multiple" id="pyre_<?php echo esc_html($id); ?>" name="pyre_<?php echo esc_html($id); ?>[]">
+    							<select multiple="multiple" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>[]">
     								<?php foreach ($options as $key => $option): ?>
-    									<?php $selected = (is_array(get_post_meta($post->ID, 'pyre_' . $id, true)) && in_array($key, get_post_meta($post->ID, 'pyre_' . $id, true))) ? 'selected="selected"' : '';?>
-    									<option <?php echo esc_html($selected); ?> value="
-    										<?php echo esc_html($key); ?>">
-    										<?php echo esc_html($option); ?>
+    									<?php $selected = (is_array( get_post_meta( $post->ID, 'pyre_' . $id, true ) ) && in_array( $key, get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ) ? 'selected="selected"' : '';?>
+    									<option <?php echo esc_html( $selected ); ?> value="<?php echo esc_html($key); ?>"><?php echo esc_html( $option ); ?>
     									</option>
     								<?php endforeach;?>
     							</select>
@@ -230,26 +218,23 @@ class PerPageOptionsMetaboxes
 
     				}
 
-    				public function ace_editor($id, $label, $desc = '', $default = '')
+    				public function ace_editor( $id, $label, $desc = '', $default = '' )
     				{
     					global $post;
-    					$db_value = get_post_meta($post->ID, 'pyre_' . $id, true);
-    					$value = (metadata_exists('post', $post->ID, 'pyre_' . $id)) ? $db_value : $default;
+    					$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
+    					$value = (metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
 
     					?>
     					<div class="pyre_metabox_field">
     						<div class="pyre_desc">
-    							<label for="pyre_<?php echo esc_html($id); ?>">
-    								<?php echo esc_html($label); ?></label>
+    							<label for="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $label ); ?></label>
     								<?php if ($desc): ?>
-    									<p>
-    										<?php echo $desc; ?>
-    									</p>
+    									<p> <?php echo $desc; ?> </p>
     								<?php endif;?>
     							</div>
     							<div class="pyre_field">
-    								<textarea style="display:none;" name="pyre_<?php echo esc_html($id); ?>"><?php echo esc_html($value); ?></textarea>
-    								<div id="pyre_<?php echo esc_html($id); ?>"></div>
+    								<textarea style="display:none;" name="pyre_<?php echo esc_html( $id ); ?>"><?php echo esc_html( $value ); ?></textarea>
+    								<div id="pyre_<?php echo esc_html( $id ); ?>"></div>
     							</div>
     						</div>
     						<script>
@@ -307,15 +292,15 @@ class PerPageOptionsMetaboxes
 
     				}
 
-    				public function textarea($id, $label, $desc = '', $default = '')
+    				public function textarea( $id, $label, $desc = '', $default = '' )
     				{
     					global $post;
-    					$db_value = get_post_meta($post->ID, 'pyre_' . $id, true);
-    					$value = (metadata_exists('post', $post->ID, 'pyre_' . $id)) ? $db_value : $default;
+    					$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
+    					$value = (metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
     					$rows = 10;
-    					if ($id == 'heading' || $id == 'caption') {
+    					if ( $id == 'heading' || $id == 'caption' ) {
     						$rows = 5;
-    					} else if ('page_title_custom_text' == $id || 'page_title_custom_subheader' == $id) {
+    					} else if ( 'page_title_custom_text' == $id || 'page_title_custom_subheader' == $id ) {
     						$rows = 1;
     					}
     					?>
@@ -338,7 +323,7 @@ class PerPageOptionsMetaboxes
 
     					}
 
-    					public function upload($id, $label, $desc = '')
+    					public function upload( $id, $label, $desc = '' )
     					{
     						global $post;
     						?>
@@ -940,14 +925,14 @@ class Aione_Social_Share_Widget extends WP_Widget
 
 	}
 
-	public function widget($args, $instance)
+	public function widget( $args, $instance )
 	{
 
 		extract($args);
 
 		global $aione_social_share_accounts;
 
-		$share_title = empty($instance['title']) ? '' : apply_filters('widget_title', $instance['title']);
+		$share_title = empty( $instance['title'] ) ? '' : apply_filters( 'widget_title', $instance['title'] );
 		$share_icon_size = $instance['icon_size'];
 		$share_icon_theme = $instance['icon_theme'];
 		$share_icon_style = $instance['icon_style'];
@@ -1007,33 +992,33 @@ class Aione_Social_Share_Widget extends WP_Widget
 
 	}
 
-	public function form($instance)
+	public function form( $instance )
 	{
 
 		global $aione_social_share_accounts;
 
 		foreach ($aione_social_share_accounts as $site => $id) {
-			if (!isset($instance[$id])) {
+			if ( !isset( $instance[$id] ) ) {
 				$instance[$id] = '';
 			}
 		}
 
-		if (!isset($instance['title'])) {
+		if ( !isset( $instance['title'] ) ) {
 			$instance['title'] = '';
 		}
-		if (!isset($instance['icon_size'])) {
+		if ( !isset( $instance['icon_size'] ) ) {
 			$instance['icon_size'] = 'lg';
 		}
-		if (!isset($instance['icon_theme'])) {
+		if ( !isset( $instance['icon_theme'] ) ) {
 			$instance['icon_theme'] = 'dark';
 		}
-		if (!isset($instance['icon_style'])) {
+		if ( !isset($instance['icon_style'] ) ) {
 			$instance['icon_style'] = 'square';
 		}
-		if (!isset($instance['icon_direction'])) {
+		if ( !isset($instance['icon_direction'] ) ) {
 			$instance['icon_direction'] = 'horizontal';
 		}
-		if (!isset($instance['labels'])) {
+		if ( !isset($instance['labels'] ) ) {
 			$instance['labels'] = '';
 		}
 		?>
@@ -1077,14 +1062,14 @@ class Aione_Social_Share_Widget extends WP_Widget
 						<?php
 						foreach ($share_sizes as $option => $value):
 
-							if (esc_attr($instance['icon_size'] == $value)) {
+							if ( esc_attr( $instance['icon_size'] == $value ) ) {
 								$selected = ' selected="selected"';
 							} else {
 								$selected = '';
 							}
 							?>
 
-							<option value="<?php echo esc_attr($value); ?>" <?php echo esc_attr($selected); ?>>
+							<option value="<?php echo esc_attr( $value ); ?>" <?php echo esc_attr( $selected ); ?>>
 								<?php echo esc_html($option); ?>
 							</option>
 
@@ -1092,19 +1077,19 @@ class Aione_Social_Share_Widget extends WP_Widget
 					</select>
 				</p>
 
-				<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_theme')); ?>">Icon Theme:</label>
-					<select id="<?php echo esc_attr($this->get_field_id('icon_theme')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_theme')); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>">Icon Theme:</label>
+					<select id="<?php echo esc_attr( $this->get_field_id('icon_theme') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_theme') ); ?>">
 						<?php
 						foreach ($share_theme as $option => $value):
 
-							if (esc_attr($instance['icon_theme'] == $value)) {
+							if ( esc_attr( $instance['icon_theme'] == $value ) ) {
 								$selected = ' selected="selected"';
 							} else {
 								$selected = '';
 							}
 							?>
 
-							<option value="<?php echo esc_html($value); ?>" <?php echo esc_attr($selected); ?>>
+							<option value="<?php echo esc_html( $value ); ?>" <?php echo esc_attr( $selected ); ?>>
 								<?php echo esc_html($option); ?>
 							</option>
 
@@ -1113,54 +1098,54 @@ class Aione_Social_Share_Widget extends WP_Widget
 				</p>
 
 				<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_style')); ?>">Icon Style:</label>
-					<select id="<?php echo esc_attr($this->get_field_id('icon_style')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_style')); ?>">
+					<select id="<?php echo esc_attr( $this->get_field_id('icon_style') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_style') ); ?>">
 						<?php
 						foreach ($share_style as $option => $value):
 
-							if (esc_attr($instance['icon_style'] == $value)) {
+							if ( esc_attr( $instance['icon_style'] == $value ) ) {
 								$selected = ' selected="selected"';
 							} else {
 								$selected = '';
 							}
 							?>
 
-							<option value="<?php echo esc_html($value); ?>" <?php echo esc_attr($selected); ?>>
-								<?php echo esc_html($option); ?>
+							<option value="<?php echo esc_html( $value ); ?>" <?php echo esc_attr( $selected ); ?>>
+								<?php echo esc_html( $option ); ?>
 							</option>
 
 						<?php endforeach;?>
 					</select>
 				</p>
 
-				<p class="icon_options"><label for="<?php echo esc_attr($this->get_field_id('icon_direction')); ?>">Icon Direction:</label>
-					<select id="<?php echo esc_attr($this->get_field_id('icon_direction')); ?>" name="<?php echo esc_attr($this->get_field_name('icon_direction')); ?>">
+				<p class="icon_options"><label for="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>">Icon Direction:</label>
+					<select id="<?php echo esc_attr( $this->get_field_id('icon_direction') ); ?>" name="<?php echo esc_attr( $this->get_field_name('icon_direction') ); ?>">
 						<?php
 						foreach ($share_direction as $option => $value):
 
-							if (esc_attr($instance['icon_direction'] == $value)) {
+							if ( esc_attr($instance['icon_direction'] == $value ) ) {
 								$selected = ' selected="selected"';
 							} else {
 								$selected = '';
 							}
 							?>
 
-							<option value="<?php echo esc_attr($value); ?>" <?php echo esc_attr($selected); ?>>
-								<?php echo esc_html($option); ?>
+							<option value="<?php echo esc_attr( $value ); ?>" <?php echo esc_attr( $selected ); ?>>
+								<?php echo esc_html( $option ); ?>
 							</option>
 
 						<?php endforeach;?>
 					</select>
 				</p>
 
-				<?php if (esc_attr($instance['labels'] == 'show')) {
+				<?php if ( esc_attr($instance['labels'] == 'show' ) ) {
 					$checked = ' checked="checked"';
 				} else {
 					$checked = '';
 				}?>
 				<p class="label_options">
-					<input type="checkbox" id="<?php echo esc_attr($this->get_field_id('labels')); ?>" name="<?php echo esc_attr($this->get_field_name('labels')); ?>"
+					<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id('labels') ); ?>" name="<?php echo esc_attr( $this->get_field_name('labels') ); ?>"
 					value="show" <?php echo esc_html($checked); ?> />
-					<label for="<?php echo esc_attr($this->get_field_id('labels')); ?>">Show Labels</label>
+					<label for="<?php echo esc_attr( $this->get_field_id('labels') ); ?>">Show Labels</label>
 				</p>
 
 				<?php foreach ($aione_social_share_accounts as $site => $id): ?>
@@ -1170,9 +1155,9 @@ class Aione_Social_Share_Widget extends WP_Widget
 						$checked = '';
 					}?>
 					<p class="label_options">
-						<input type="checkbox" id="<?php echo esc_attr($this->get_field_id($id)); ?>" name="<?php echo esc_attr($this->get_field_name($id)); ?>"
-						value="enable" <?php echo esc_html($checked); ?> />
-						<label for="<?php echo esc_attr($this->get_field_id($id)); ?>">
+						<input type="checkbox" id="<?php echo esc_attr( $this->get_field_id( $id ) ); ?>" name="<?php echo esc_attr($this->get_field_name($id)); ?>"
+						value="enable" <?php echo esc_html( $checked ); ?> />
+						<label for="<?php echo esc_attr( $this->get_field_id( $id ) ); ?>">
 							<?php echo esc_html($site); ?> Share</label>
 						</p>
 					<?php endforeach;?>
@@ -1181,7 +1166,7 @@ class Aione_Social_Share_Widget extends WP_Widget
 				<?php
 
 			}
-			public function update($new_instance, $old_instance)
+			public function update( $new_instance, $old_instance )
 			{
 
 				global $aione_social_share_accounts;
@@ -1311,20 +1296,20 @@ class Aione_Breadcrumbs_Widget extends WP_Widget
 
 		echo $args['after_widget'];
 	}
-	public function form($instance)
+	public function form( $instance )
 	{
-		$breadcrumb_separator = !empty($instance['breadcrumb_separator']) ? $instance['breadcrumb_separator'] : '';
+		$breadcrumb_separator = !empty( $instance['breadcrumb_separator'] ) ? $instance['breadcrumb_separator'] : '';
 		?>
 		<div class="option-box">
 			<p class="option-title">
 				<?php echo _e('Breadcrumb Separator.', 'aione'); ?>
 			</p>
-			<input type="text" placeholder="»" name="<?php echo $this->get_field_name('breadcrumb_separator'); ?>" value="<?php echo esc_attr($breadcrumb_separator); ?>" />
+			<input type="text" placeholder="»" name="<?php echo $this->get_field_name('breadcrumb_separator'); ?>" value="<?php echo esc_attr( $breadcrumb_separator ); ?>" />
 		</div>
 		<?php
 
 	}
-	public function update($new_instance, $old_instance)
+	public function update( $new_instance, $old_instance )
 	{
 		$instance = $old_instance;
 		$instance['breadcrumb_separator'] = strip_tags($new_instance['breadcrumb_separator']);
@@ -1333,7 +1318,7 @@ class Aione_Breadcrumbs_Widget extends WP_Widget
 		return $instance;
 	}
 }
-function breadcrumb_shorten_string($string, $shorten_style = 'word', $wordcount = 4, $ending = '...')
+function breadcrumb_shorten_string( $string, $shorten_style = 'word', $wordcount = 4, $ending = '...' )
 {
 	if (empty($wordcount)) {
 		$wordcount = 4;
@@ -1344,7 +1329,7 @@ function breadcrumb_shorten_string($string, $shorten_style = 'word', $wordcount 
         if (count($array) <= $wordcount) {
         	$retval = $string;
         } else {
-        	array_splice($array, $wordcount);
+        	array_splice( $array, $wordcount );
         	$retval = implode(" ", $array) . $ending;
         }
 
@@ -1361,7 +1346,7 @@ function breadcrumb_shorten_string($string, $shorten_style = 'word', $wordcount 
     	}
     }
 }
-function breadcrumb_get_page_childs($breadcrumb_separator)
+function breadcrumb_get_page_childs( $breadcrumb_separator )
 {
 	global $post;
 	$home = get_page(get_option('page_on_front'));
@@ -1372,14 +1357,14 @@ function breadcrumb_get_page_childs($breadcrumb_separator)
 		if (($home->ID) != ($post->ancestors[$i])) {
 			$html .= '<span  class="separator">' . $breadcrumb_separator . '</span>';
 			$html .= '<a href="';
-			$html .= get_permalink($post->ancestors[$i]);
+			$html .= get_permalink( $post->ancestors[$i] );
 			$html .= '">';
-			$html .= get_the_title($post->ancestors[$i]);
+			$html .= get_the_title( $post->ancestors[$i] );
 			$html .= '</a>';
 		}
 	}
 
-	$html .= '<span class="separator">' . $breadcrumb_separator . '</span><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string(get_the_title()) . '</a>';
+	$html .= '<span class="separator">' . $breadcrumb_separator . '</span><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string( get_the_title() ) . '</a>';
 
 	return $html;
 }
@@ -1399,7 +1384,7 @@ function aione_breadcrumbs_callback()
 		$html .= '<li><a title="' . get_the_title() . '" href="#">' . get_page(get_option('page_for_posts'))->post_title . '<span></span></a></li>';
 	} else if (is_attachment()) {
 		$current_attachment_id = get_query_var('attachment_id');
-		$current_attachment_link = get_attachment_link($current_attachment_id);
+		$current_attachment_link = get_attachment_link( $current_attachment_id );
 
 		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
 		$html .= '<li><a href="' . $current_attachment_link . '">' . get_the_title() . '<span></span></a></li>';
@@ -1422,47 +1407,47 @@ function aione_breadcrumbs_callback()
 			$permalink_structure = str_replace('%postname%', '', $permalink_structure);
 			$permalink_structure = str_replace('%post_id%', '', $permalink_structure);
 
-			$permalink_items = array_filter(explode('/', $permalink_structure));
+			$permalink_items = array_filter( explode('/', $permalink_structure) );
 
 			global $post;
 			$author_id = $post->post_author;
-			$author_posts_url = get_author_posts_url($author_id);
+			$author_posts_url = get_author_posts_url( $author_id );
 			$author_name = get_the_author_meta('display_name', $author_id);
 
 			$post_date_year = get_the_time('Y');
 			$post_date_month = get_the_time('m');
 			$post_date_day = get_the_time('d');
 
-			$get_month_link = get_month_link($post_date_year, $post_date_month);
-			$get_year_link = get_year_link($post_date_year);
-			$get_day_link = get_day_link($post_date_year, $post_date_month, $post_date_day);
+			$get_month_link = get_month_link( $post_date_year, $post_date_month );
+			$get_year_link = get_year_link( $post_date_year );
+			$get_day_link = get_day_link( $post_date_year, $post_date_month, $post_date_day );
 
 			$html_permalink = '';
 
-			if (!empty($permalink_structure) && get_post_type() == 'post') {
-				if (in_array('%year%', $permalink_items)) {
+			if ( !empty( $permalink_structure ) && get_post_type() == 'post' ) {
+				if ( in_array('%year%', $permalink_items) ) {
 					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $get_year_link . '">' . breadcrumb_shorten_string($post_date_year) . '<span></span></a></li>';
 				}
 
-				if (in_array('%monthnum%', $permalink_items)) {
+				if ( in_array('%monthnum%', $permalink_items) ) {
 					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $get_month_link . '">' . breadcrumb_shorten_string($post_date_month) . '<span></span></a></li>';
 				}
 
-				if (in_array('%author%', $permalink_items)) {
+				if ( in_array('%author%', $permalink_items) ) {
 					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $author_posts_url . '">' . breadcrumb_shorten_string($author_name) . '<span></span></a></li>';
 				}
 
-				if (in_array('%day%', $permalink_items)) {
-					$html_permalink .= '<li><a itemprop="item" title="' . get_the_title() . '" href="' . $get_day_link . '">' . breadcrumb_shorten_string($post_date_day) . '<span></span></a></li>';
+				if ( in_array('%day%', $permalink_items) ) {
+					$html_permalink .= '<li><a itemprop="item" title="' . get_the_title() . '" href="' . $get_day_link . '">' . breadcrumb_shorten_string( $post_date_day ) . '<span></span></a></li>';
 				}
 
-				if (in_array('%category%', $permalink_items)) {
+				if ( in_array('%category%', $permalink_items) ) {
 					$post_categories = get_the_category();
-					if (!empty($post_categories)) {
+					if ( !empty($post_categories) ) {
 
-						$parent_cat_links = get_category_parents($post_categories[0]->term_id, true, ',');
+						$parent_cat_links = get_category_parents( $post_categories[0]->term_id, true, ',' );
 
-						$parent_cat_links = array_filter(explode(",", $parent_cat_links));
+						$parent_cat_links = array_filter( explode(",", $parent_cat_links) );
 
 						foreach ($parent_cat_links as $link) {
 							$html_permalink .= '<li>' . $link . '</li>';
@@ -1473,7 +1458,7 @@ function aione_breadcrumbs_callback()
 			}
 
 			$html .= '<li><a href="#">' . ucwords(get_post_type(get_the_ID())) . '<span></span></a></li>';
-			$html .= '<li><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string(get_the_title()) . '<span></span></a></li>';
+			$html .= '<li><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string( get_the_title() ) . '<span></span></a></li>';
 
 		}
 	} else if (is_category()) {
@@ -1500,9 +1485,9 @@ function aione_breadcrumbs_callback()
 	} else if (is_author()) {
 		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
 		$html .= '<li><a href="#">Author<span></span></a></li>';
-		$html .= '<li><a href="' . esc_url(get_author_posts_url(get_the_author_meta("ID"))) . '">' . get_the_author() . '<span></span></a></li>';
+		$html .= '<li><a href="' . esc_url( get_author_posts_url( get_the_author_meta("ID") ) ) . '">' . get_the_author() . '<span></span></a></li>';
 	} else if (is_search()) {
-		$current_query = sanitize_text_field(get_query_var('s'));
+		$current_query = sanitize_text_field( get_query_var('s') );
 
 		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
 
