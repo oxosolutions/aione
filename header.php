@@ -79,6 +79,7 @@ if (empty($pyre_og_image)) {
 	<!-- Headend -->
 	<?php
 
+/*
 $upload = wp_upload_dir();
 $upload_url = $upload['baseurl'];
 $upload_path = $upload['basedir'];
@@ -96,6 +97,7 @@ $manifest_path = $upload_path . '/pwa/manifest.json';
 if (file_exists($manifest_path)) {
 	echo '<link rel="manifest" href="' . esc_url($manifest_url) . '">';
 }
+*/
 ?>
  
 

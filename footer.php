@@ -429,9 +429,12 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 			echo wp_kses_post($custom_js);
 		}
 
+		/*
+
 		if( !empty( $serviceworker ) ) {
 			echo wp_kses_post($serviceworker);
 		}
+		*/
 
 	}
 	?>

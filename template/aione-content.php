@@ -6,24 +6,28 @@ global $post;
 //echo "<br>ID = ".$post->ID;
 /*$posts_page_id = get_option( 'page_for_posts' );
 echo "*****************".$posts_page_id;*/
-$post_type = get_post_type( $post->ID );
-$aione_components = get_option( 'aione-components' );
-$aione_component = $aione_components[$post_type];
-$single_template_slug = $aione_component['single_template'];
-$archive_template_slug = $aione_component['archive_template'];
+$post_type 				= get_post_type( $post->ID );
+$aione_components 		= get_option( 'aione-components' );
+$aione_component 		= $aione_components[$post_type];
+$single_template_slug 	= $aione_component['single_template'];
+$archive_template_slug 	= $aione_component['archive_template'];
 
-$aione_templates = get_option( 'aione-templates' );
-$aione_template_single = $aione_templates[$single_template_slug]['content'];
+$aione_templates 		= get_option( 'aione-templates' );
+$aione_template_single 	= $aione_templates[$single_template_slug]['content'];
 $aione_template_archive = $aione_templates[$archive_template_slug]['content'];
 
 
 if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
+
 	global $wp_query;
-	$ppp = $aione_templates[$archive_template_slug]['template_posts_per_page'];
-	$order_by = $aione_templates[$archive_template_slug]['template_posts_order_by'];
-	$order = $aione_templates[$archive_template_slug]['template_posts_order'];
+
+	$ppp 		= $aione_templates[$archive_template_slug]['template_posts_per_page'];
+	$order_by 	= $aione_templates[$archive_template_slug]['template_posts_order_by'];
+	$order 		= $aione_templates[$archive_template_slug]['template_posts_order'];
 	$template_posts_status_array = $aione_templates[$archive_template_slug]['template_posts_status'];
+
 	$post_status = array( 'publish' );
+	
 	if( !empty( $template_posts_status_array ) ) {
 		$post_status = array_keys( $template_posts_status_array );
 	}

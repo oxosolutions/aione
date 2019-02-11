@@ -3,7 +3,7 @@ global $post;
 if( is_enabled( $post->ID, 'show_top_bar' ) ) :
 
 	if ( is_active_sidebar( 'aione-topbar-left' ) && is_active_sidebar( 'aione-topbar-right' ) ) {
-		$aione_topbar_left_class = 'aione-topbar-left';
+		$aione_topbar_left_class  = 'aione-topbar-left';
 		$aione_topbar_right_class = 'aione-topbar-right';
 	} else {
 		$aione_topbar_left_class = $aione_topbar_right_class = 'aione-topbar-center';

@@ -30,7 +30,7 @@ global $theme_options;
 			</div><!-- .entry-content -->
 
 			<footer class="entry-footer">
-				<a class="read-more-link" href="<?php echo esc_url(get_permalink()); ?>">Read more</a>
+				<a class="read-more-link" href="<?php echo esc_url( get_permalink() ); ?>">Read more</a>
 			</footer><!-- .entry-footer -->
 		</div>
 	</div>

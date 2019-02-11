@@ -8,14 +8,15 @@
  */
 
 global $post;
-$post_type = get_post_type( $post->ID );
-$aione_components = get_option( 'aione-components' );
-$aione_component = $aione_components[$post_type];
-$single_template_slug = $aione_component['single_template'];
-$archive_template_slug = $aione_component['archive_template'];
 
-$aione_templates = get_option( 'aione-templates' );
-$aione_template_single = $aione_templates[$single_template_slug]['content'];
+$post_type 				= get_post_type( $post->ID );
+$aione_components 		= get_option( 'aione-components' );
+$aione_component 		= $aione_components[$post_type];
+$single_template_slug 	= $aione_component['single_template'];
+$archive_template_slug 	= $aione_component['archive_template'];
+
+$aione_templates 		= get_option( 'aione-templates' );
+$aione_template_single 	= $aione_templates[$single_template_slug]['content'];
 $aione_template_archive = $aione_templates[$archive_template_slug]['content'];
 ?>
 

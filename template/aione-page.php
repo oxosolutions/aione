@@ -18,7 +18,7 @@ if ( is_enabled( $post->ID, 'page_content_padding_enable' ) ) {
 
 $main_classes[] = is_fullwidth( $post->ID, 'page' );
 
-$main_classes = implode(" ", $main_classes);
+$main_classes   = implode(" ", $main_classes);
 
 ?>
 <main id="aione_main" class="aione-main <?php echo esc_html($main_classes); ?>">

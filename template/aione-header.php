@@ -18,7 +18,7 @@ if( $theme_options['header_sticky'] ) {
 
 $header_classes[] = 'logo-alignment-'.$theme_options['header_logo_alignment'];
 $header_classes[] = is_fullwidth( $post->ID, 'header');
-$header_classes = implode(' ', $header_classes);		
+$header_classes   = implode(' ', $header_classes);		
 
 if( $theme_options['header_position'] != 'top' ) { 
 	echo '<div class="header-wrapper">';
@@ -51,7 +51,7 @@ if( is_enabled( $post->ID, 'header_enable' ) ) : ?>
 	<?php
 endif;
 if( $theme_options['main_nav_position'] == 'outside' ) {
-	get_template_part('template/aione-header-menu');
+	get_template_part( 'template/aione-header-menu' );
 }
 if( $theme_options['header_position'] != 'top' ) { 
 	echo '</div>';

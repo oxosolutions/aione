@@ -1,5 +1,5 @@
 <?php
-$is_enabled = is_enabled_sidebar( 'left' );
+$is_enabled   = is_enabled_sidebar( 'left' );
 $sidebar_left = aione_get_sidebar( 'left' );
 
 if( $is_enabled ) : ?>

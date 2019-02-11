@@ -50,7 +50,7 @@ if( is_enabled( $post->ID, 'page_title_bar' ) ) :
 	}
 	?>
 
-	<div id="aione_pagetitle" class="aione-pagetitle <?php echo esc_html(is_fullwidth( $post->ID, 'page_title'));?>">
+	<div id="aione_pagetitle" class="aione-pagetitle <?php echo esc_html(is_fullwidth( $post->ID, 'page_title') );?>">
 		<div class="wrapper">
 			<?php 
 			if( is_enabled( $post->ID, 'page_title_bar_enable_title' )  && !empty( $page_title ) ) : ?>

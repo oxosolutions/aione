@@ -1,6 +1,6 @@
 <?php 
 
-$is_enabled = is_enabled_sidebar( 'right' );
+$is_enabled    = is_enabled_sidebar( 'right' );
 $sidebar_right = aione_get_sidebar( 'right' );
 
 if( $is_enabled ) : ?>
