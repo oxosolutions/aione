@@ -1354,16 +1354,17 @@ function breadcrumb_get_page_childs( $breadcrumb_separator )
 
 	for ( $i = count($post->ancestors) - 1; $i >= 0; $i-- ) {
 		if ( ( $home->ID ) != ( $post->ancestors[$i] ) ) {
-			$html .= '<span  class="separator">' . $breadcrumb_separator . '</span>';
+			$html .= '<li>';
 			$html .= '<a href="';
 			$html .= get_permalink( $post->ancestors[$i] );
 			$html .= '">';
 			$html .= get_the_title( $post->ancestors[$i] );
 			$html .= '</a>';
+			$html .= '</li>';
 		}
 	}
 
-	$html .= '<span class="separator">' . $breadcrumb_separator . '</span><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string( get_the_title() ) . '</a>';
+	$html .= '<li><a title="' . get_the_title() . '" href="#">' . breadcrumb_shorten_string( get_the_title() ) . '</a></li>';
 
 	return $html;
 }
