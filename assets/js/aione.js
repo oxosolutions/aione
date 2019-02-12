@@ -27340,6 +27340,7 @@ $(document).ready(function() {
 	/*****************************************************
 	/*  Hide Menu
 	/*****************************************************/
+	/*
 	$(document).click(function(e) {
 		e.stopPropagation();
 		//console.log(e.target);
@@ -27351,14 +27352,17 @@ $(document).ready(function() {
 	    }
 	    
 	});
+	*/
 
 	/*****************************************************
 	/*  Header Right Menu Toggles
 	/*****************************************************/
+	/*
 	$('body').on('click','#aione_header_right .aione-header-item > a',function(e){
 		e.preventDefault();
 		$(this).parent().toggleClass('active').siblings().removeClass('active');
 	});
+	*/
 	
 	/*****************************************************
 	/*  Navigation Layout Toggle Switch Header
@@ -27409,6 +27413,7 @@ $(document).ready(function() {
 	/*****************************************************
 	/*  Breadcrumbs(Page Header) Show Hide Sub Menu
 	/*****************************************************/
+	/*
 	$('body').on('click','.aione-breadcrumbs > li > a',function(e){
 		e.preventDefault();
 	}); 
@@ -27416,6 +27421,7 @@ $(document).ready(function() {
 	$('body').on('click','.aione-breadcrumbs > li',function(e){
 		$(this).toggleClass('active').siblings().removeClass('active');
 	});
+	*/
 	
 	/*****************************************************
 	/*  Aione progress bar on Projects page
