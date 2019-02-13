@@ -54,7 +54,8 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 	';
 	if( $theme_options['font']['google'] == 'true'){
 		echo '
-			body{
+			body,
+			.font-family{
 				/**
 				DO NOT ESC HTML; Breaks Font
 				Google Font
@@ -65,7 +66,8 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 
 	} else {
 		echo '
-			body{
+			body,
+			.font-family{
 				/**
 				DO NOT ESC HTML; Breaks Font
 				Normal Font
@@ -82,14 +84,17 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 			h3,
 			h4,
 			h5,
-			h6{
+			h6,
+			.font-family-heading{
 				/**
 				DO NOT ESC HTML; Breaks Font
 				Google Font
 				**/
 				font-family: '.$theme_options['font_heading']['font-family'].';
 				font-weight: '.esc_html($theme_options['font_heading']['font-weight']).';
+				/*
 				color:'.esc_html($theme_options['font_heading']['color']).';
+				*/
 			}
 			';
 
@@ -100,14 +105,17 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 			h3,
 			h4,
 			h5,
-			h6{
+			h6,
+			.font-family-heading{
 				/**
 				DO NOT ESC HTML; Breaks Font
 				Normal Font
 				**/
 				font-family: '.$theme_options['font_heading']['font-family'].';
 				font-weight: '.esc_html($theme_options['font_heading']['font-weight']).';
+				/*
 				color:'.esc_html($theme_options['font_heading']['color']).';
+				*/
 			}
 			';
 	}
