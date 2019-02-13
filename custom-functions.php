@@ -1378,24 +1378,24 @@ function aione_breadcrumbs_callback()
 	$html = "";
 	$html .= '<ul class="aione-breadcrumbs">';
 	if ( is_front_page() && is_home() ) {
-		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 	} elseif ( is_front_page() ) {
-		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 	} elseif ( is_home() ) {
-		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="#"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a title="' . get_the_title() . '" href="#">' . get_page(get_option('page_for_posts'))->post_title . '<span></span></a></li>';
 	} else if ( is_attachment() ) {
 		$current_attachment_id   = get_query_var('attachment_id');
 		$current_attachment_link = get_attachment_link( $current_attachment_id );
 
-		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a href="' . $current_attachment_link . '">' . get_the_title() . '<span></span></a></li>';
 	} else if ( is_singular() ) {
 		$post_parent_id      = wp_get_post_parent_id( get_the_ID() );
 		$parent_title        = get_the_title( $post_parent_id );
 		$paren_get_permalink = get_permalink( $post_parent_id );
 
-		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 
 		if ( is_page() ) {
 			if ( $post->post_parent ) {
@@ -1412,31 +1412,31 @@ function aione_breadcrumbs_callback()
 			$permalink_items = array_filter( explode( '/', $permalink_structure ) );
 
 			global $post;
-			$author_id = $post->post_author;
+			$author_id 		  = $post->post_author;
 			$author_posts_url = get_author_posts_url( $author_id );
-			$author_name = get_the_author_meta( 'display_name', $author_id );
+			$author_name 	  = get_the_author_meta( 'display_name', $author_id );
 
-			$post_date_year = get_the_time('Y');
+			$post_date_year  = get_the_time('Y');
 			$post_date_month = get_the_time('m');
-			$post_date_day = get_the_time('d');
+			$post_date_day   = get_the_time('d');
 
 			$get_month_link = get_month_link( $post_date_year, $post_date_month );
-			$get_year_link = get_year_link( $post_date_year );
-			$get_day_link = get_day_link( $post_date_year, $post_date_month, $post_date_day );
+			$get_year_link 	= get_year_link( $post_date_year );
+			$get_day_link 	= get_day_link( $post_date_year, $post_date_month, $post_date_day );
 
 			$html_permalink = '';
 
 			if ( !empty( $permalink_structure ) && get_post_type() == 'post' ) {
 				if ( in_array( '%year%', $permalink_items ) ) {
-					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $get_year_link . '">' . breadcrumb_shorten_string($post_date_year) . '<span></span></a></li>';
+					$html_permalink .= '<li><a title="' . get_the_title() . '" href="' . $get_year_link . '">' . breadcrumb_shorten_string($post_date_year) . '<span></span></a></li>';
 				}
 
 				if ( in_array( '%monthnum%', $permalink_items ) ) {
-					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $get_month_link . '">' . breadcrumb_shorten_string( $post_date_month ) . '<span></span></a></li>';
+					$html_permalink .= '<li><a title="' . get_the_title() . '" href="' . $get_month_link . '">' . breadcrumb_shorten_string( $post_date_month ) . '<span></span></a></li>';
 				}
 
 				if ( in_array( '%author%', $permalink_items ) ) {
-					$html_permalink .= '<li><a  title="' . get_the_title() . '" href="' . $author_posts_url . '">' . breadcrumb_shorten_string( $author_name ) . '<span></span></a></li>';
+					$html_permalink .= '<li><a title="' . get_the_title() . '" href="' . $author_posts_url . '">' . breadcrumb_shorten_string( $author_name ) . '<span></span></a></li>';
 				}
 
 				if ( in_array( '%day%', $permalink_items ) ) {
@@ -1467,7 +1467,7 @@ function aione_breadcrumbs_callback()
 		$current_cat_id = get_query_var( 'cat' );
 		$parent_cat_links = get_category_parents( $current_cat_id, true, ',' );
 		$parent_cat_links = explode( ",", $parent_cat_links );
-		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a href="#">Category<span></span></a></li>';
 		foreach ( $parent_cat_links as $link ) {
 			if ( $link ) {
@@ -1481,17 +1481,17 @@ function aione_breadcrumbs_callback()
 
 		$current_tag_link = get_tag_link( $current_tag_id );
 
-		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a href="#">Tag<span></span></a></li>';
 		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . $current_tag_link . '">' . $current_tag_name . '<span></span></a></li>';
 	} else if ( is_author() ) {
-		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a href="#">Author<span></span></a></li>';
 		$html .= '<li><a href="' . esc_url( get_author_posts_url( get_the_author_meta("ID") ) ) . '">' . get_the_author() . '<span></span></a></li>';
 	} else if ( is_search() ) {
 		$current_query = sanitize_text_field( get_query_var('s') );
 
-		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 
 		if ( empty($current_query) ) {
 			$current_query = __('Search:', 'aione');
@@ -1500,16 +1500,16 @@ function aione_breadcrumbs_callback()
 		}
 		$html .= '<li><a href="#">' . $current_query . '<span></span></a></li>';
 	} else if ( is_year() ) {
-		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a href="#">' . get_the_date('Y') . '<span></span></a></li>';
 	} else if ( is_month() ) {
-		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a href="#">' . get_the_date('F') . '<span></span></a></li>';
 	} else if ( is_date() ) {
-		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a href="#">' . get_the_date() . '<span></span></a></li>';
 	} elseif ( is_404() ) {
-		$html .= '<li><a  title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '">' . get_bloginfo('name') . '<span></span></a></li>';
+		$html .= '<li><a title="' . get_bloginfo('name') . '" href="' . get_bloginfo('url') . '"><span class="aione-icon"><i class="ion-ios-home"></i></span></a></li>';
 		$html .= '<li><a href="#">404<span></span></a></li>';
 
 	} else {
