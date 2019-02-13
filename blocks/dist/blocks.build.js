@@ -28947,6 +28947,8 @@ registerBlockType('aione-blocks/aione-tabs-tab', {
 /* 53 */
 /***/ (function(module, exports) {
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 /**
  * BLOCK: Aione Section.
  */
@@ -28972,7 +28974,7 @@ registerBlockType('aione-blocks/aione-section', {
             type: 'boolean',
             default: true
         },
-        id: {
+        cssid: {
             type: 'string',
             default: ''
         }
@@ -28991,7 +28993,7 @@ registerBlockType('aione-blocks/aione-section', {
 
         var _props$attributes = props.attributes,
             fullWidth = _props$attributes.fullWidth,
-            id = _props$attributes.id;
+            cssid = _props$attributes.cssid;
 
 
         var togglefullWidth = function togglefullWidth() {
@@ -29002,7 +29004,7 @@ registerBlockType('aione-blocks/aione-section', {
             classes = 'fullwidth';
         }
         var onChangeid = function onChangeid(customID) {
-            props.setAttributes({ id: customID });
+            props.setAttributes({ cssid: customID });
         };
 
         return [isSelected && wp.element.createElement(
@@ -29021,16 +29023,16 @@ registerBlockType('aione-blocks/aione-section', {
                     }),
                     wp.element.createElement(TextControl, {
                         label: 'Additional CSS Id',
-                        value: id,
+                        value: cssid,
                         onChange: onChangeid
                     })
                 )
             )
         ), wp.element.createElement(
             'section',
-            { key: 'editable',
-                className: 'aione-section' + ' ' + classes, id: id
-            },
+            _extends({ key: 'editable',
+                className: 'aione-section' + ' ' + classes
+            }, props.attributes.cssid && { id: cssid }),
             wp.element.createElement(
                 'div',
                 { className: 'wrapper' },
@@ -29041,7 +29043,7 @@ registerBlockType('aione-blocks/aione-section', {
     save: function save(props) {
         var _props$attributes2 = props.attributes,
             fullWidth = _props$attributes2.fullWidth,
-            id = _props$attributes2.id;
+            cssid = _props$attributes2.cssid;
 
 
         var classes = '';
@@ -29051,9 +29053,9 @@ registerBlockType('aione-blocks/aione-section', {
 
         return wp.element.createElement(
             'section',
-            {
-                className: 'aione-section' + ' ' + classes, id: id
-            },
+            _extends({
+                className: 'aione-section' + ' ' + classes
+            }, props.attributes.cssid && { id: cssid }),
             wp.element.createElement(
                 'div',
                 { className: 'wrapper' },
