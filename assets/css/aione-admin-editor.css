@@ -48325,7 +48325,8 @@ ul.aione-list.theme-checkmark {
   border-bottom: 1px dotted rgba(244,67,54,.2)
 }
 .aione-icon {
-  font-size: 2em
+  font-size: 1.3em;
+  line-height: inherit
 }
 .aione-icon.small {
   font-size: 3em
