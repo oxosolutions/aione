@@ -5847,33 +5847,33 @@ img {
   list-style: none
 }
 .aione-nav ul li {
-  color: #454545;
+  color: inherit;
   display: inline;
   padding: 0;
   margin: 0;
   position: relative;
-  font-size: 16px;
-  line-height: 30px;
+  font-size: inherit;
+  line-height: inherit;
   font-weight: 400;
-  font-family: "Open Sans",Arial,Helvetica,sans-serif;
-  -webkit-transition: all 150ms ease-out;
-  -moz-transition: all 150ms ease-out;
-  -o-transition: all 150ms ease-out;
-  transition: all 150ms ease-out
+  -webkit-transition: all 180ms ease-in-out;
+  -moz-transition: all 180ms ease-in-out;
+  -ms-transition: all 180ms ease-in-out;
+  -o-transition: all 180ms ease-in-out;
+  transition: all 180ms ease-in-out
 }
 .aione-nav ul li a {
-  color: #454545;
+  color: inherit;
   display: block;
-  padding: 0 6px;
+  padding: 0 8px;
   margin: 0;
-  font-size: 16px;
-  line-height: 40px;
+  font-size: inherit;
+  line-height: inherit;
   font-weight: 400;
-  font-family: "Open Sans",Arial,Helvetica,sans-serif;
-  -webkit-transition: all 150ms ease-out;
-  -moz-transition: all 150ms ease-out;
-  -o-transition: all 150ms ease-out;
-  transition: all 150ms ease-out
+  -webkit-transition: all 180ms ease-in-out;
+  -moz-transition: all 180ms ease-in-out;
+  -ms-transition: all 180ms ease-in-out;
+  -o-transition: all 180ms ease-in-out;
+  transition: all 180ms ease-in-out
 }
 .aione-nav > ul > li > a .nav-item-icon {
   width: 20px;
@@ -5901,11 +5901,14 @@ img {
   border-right: 1px solid #676b75;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
   transform: rotate(45deg);
-  -webkit-transition: all 150ms ease-out;
-  -moz-transition: all 150ms ease-out;
-  -o-transition: all 150ms ease-out;
-  transition: all 150ms ease-out
+  -webkit-transition: all 180ms ease-in-out;
+  -moz-transition: all 180ms ease-in-out;
+  -ms-transition: all 180ms ease-in-out;
+  -o-transition: all 180ms ease-in-out;
+  transition: all 180ms ease-in-out
 }
 .aione-nav > ul > li.nav-item-current {
   border-bottom: none
@@ -5917,6 +5920,8 @@ img {
 .aione-nav > ul > li.nav-item-selected > a .nav-item-arrow {
   -webkit-transform: rotate(135deg);
   -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
   transform: rotate(135deg)
 }
 .aione-nav > ul > li.nav-item-current > a .nav-item-arrow,
@@ -6562,11 +6567,11 @@ img {
   }
   .primary-nav .aione-nav > ul {
     width: 100%;
-    background: #333;
+    background: #fff;
     text-align: center
   }
   .primary-nav .aione-nav > ul > li > a {
-    border-bottom: 1px solid #454545
+    border-bottom: 1px solid #e8e8e8
   }
 }
 .primary-nav .aione-nav.mobile-nav {

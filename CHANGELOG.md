@@ -155,6 +155,9 @@ ADDED: Widget Font Size
 ADDED: Widget Copyright Notice
 ADDED: Widget Designed by
 
-
 ## 7.3.0.15 06-02-2019
 FIXED: Enabled issue
+
+## 7.3.0.16 15-02-2019
+FIXED: Mobile Nav Issue
+ADDED: Added ua-device-desktop/ua-device-mobile class to body by detecting the device
