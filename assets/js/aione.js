@@ -27089,6 +27089,22 @@ $(document).ready(function() {
 	/** Detect Browser ***************************************************/
 	$('body').addClass("ua-"+$.browser.name);
 	$('body').addClass("ua-version-"+$.browser.versionNumber);
+	$('body').addClass("ua-platform-"+$.browser.platform);
+
+	try{
+		if( $.browser.desktop == true){
+			$('body').addClass("ua-device-desktop");
+		}
+		if( $.browser.mobile == true){
+			$('body').addClass("ua-device-mobile");
+		}
+		if( $.browser.tablet == true){
+			$('body').addClass("ua-device-tablet");
+		}
+
+	}catch(e){
+
+	}
 
 	/*****************************************************
 	/*  Primary Nav Hover Animation
