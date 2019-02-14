@@ -6,7 +6,7 @@ if( is_enabled( get_page_id(), 'content_bottom_area_enable' ) ) : ?>
 			if ( is_active_sidebar( 'aione-contentbottom-content' ) ) {
 				dynamic_sidebar( 'aione-contentbottom-content' );
 			} else {
-				echo '<h3>'.esc_html( empty_sidebar_message() ).'</h3>';
+				echo '<h3>'.wp_kses_post( empty_sidebar_message() ).'</h3>';
 			}
 			?>
 		</div>  <!-- .wrapper -->

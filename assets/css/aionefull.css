@@ -9118,6 +9118,15 @@ input[type=file]:hover {
 .gfield_required {
   color: #f44336
 }
+.gfield .textarea.small {
+  height: 120px
+}
+.gfield .textarea.medium {
+  height: 180px
+}
+.gfield .textarea.large {
+  height: 240px
+}
 input[type=date],
 input[type=email],
 input[type=number],

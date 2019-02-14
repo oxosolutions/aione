@@ -429,7 +429,7 @@ if ( !function_exists( 'empty_sidebar_message' ) ) {
 	function empty_sidebar_message(){
 
 		$output = '';
-		$output .= '<p>Empty Widget Area</p>';
+		$output .= 'Empty Widget Area';
 
 		return $output;
 	}
