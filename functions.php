@@ -137,9 +137,13 @@ add_action( 'after_setup_theme', 'aionetheme_content_width', 0 );
  */
 function aione_styles() {
 
+	//loaded from CDN
+	/*
+
 	//Enqueue core css essencial for layout in head, rest css will be loaded in footer
 	wp_register_style( 'core', get_template_directory_uri() . '/assets/css/core.min.css', array(), null, 'all' );
 	wp_enqueue_style( 'core' );
+	*/
 
 	// wp_deregister_style( 'wp-block-library' );
 	wp_dequeue_style( 'wp-block-library' );
@@ -148,10 +152,15 @@ add_action( 'wp_enqueue_scripts', 'aione_styles' );
 //add_action( 'admin_enqueue_scripts', 'aione_scripts' );
 
 function aione_scripts() {
+
+	//loaded from CDN
+
+	/*
     wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
     wp_enqueue_style( 'aione' );
     wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
 	wp_enqueue_script( 'aione-js' );
+	*/
 
 	//wp_deregister_script( 'wp-embed' );
 	wp_dequeue_script( 'wp-embed' );
