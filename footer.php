@@ -25,7 +25,7 @@ $pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
 	//Custom CSS 
 	?>
 
-	<link defer href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/aione.min.css" rel="stylesheet" media="all">
+	<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/aione.min.css" rel="stylesheet" media="all">
 	<script defer src="https://cdn.darlic.com/wp-content/themes/aione/assets/js/aione.min.js"></script>
 
 	<!-- DESIGN SETTINGS CSS START -->
