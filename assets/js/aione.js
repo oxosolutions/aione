@@ -27477,6 +27477,7 @@ $(document).ready(function() {
 	/*  Scroll to top
 	/*****************************************************/
 	try{
+		/*
 	    $(window).scroll(function() {
 			var scroltop = $(this).scrollTop();
 			if (scroltop > 100) {
@@ -27485,6 +27486,7 @@ $(document).ready(function() {
 				$('.scrolltop').removeClass('active');
 			}
 	    });
+	    */
     }catch(e){
 
 	}
