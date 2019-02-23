@@ -8,8 +8,9 @@ global $post;
 $post_content_excerpt = strip_tags(wp_kses_no_null(wp_trim_words($post->post_content, $num_words = 30, $more = null)));
 
 	//Meta description 
-$pyre_meta_description = get_aione_page_option($post->ID, 'pyre_meta_description');
-	
+//$pyre_meta_description = get_aione_page_option($post->ID, 'pyre_meta_description');
+$pyre_meta_description = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_meta_description');
+
 	//Show content/title if empty meta description 
 if (empty($pyre_meta_description)) {
 	$pyre_meta_description = $post_content_excerpt;
@@ -19,16 +20,19 @@ if (empty($pyre_meta_description)) {
 }
 
 	//Meta keywords
-$pyre_meta_keywords = get_aione_page_option($post->ID, 'pyre_meta_keywords');
+//$pyre_meta_keywords = get_aione_page_option($post->ID, 'pyre_meta_keywords');
+$pyre_meta_keywords = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_meta_keywords');
 
 	//Open Graph title
-$pyre_og_title = get_aione_page_option($post->ID, 'pyre_og_title');
+//$pyre_og_title = get_aione_page_option($post->ID, 'pyre_og_title');
+$pyre_og_title = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_og_title');
 if (empty($pyre_og_title)) {
 	$pyre_og_title = get_the_title($post->ID);
 }
 
 	//Open Graph description
-$pyre_og_description = get_aione_page_option($post->ID, 'pyre_og_description');
+//$pyre_og_description = get_aione_page_option($post->ID, 'pyre_og_description');
+$pyre_og_description = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_og_description');
 
 	//Show content/title if empty meta description 
 if (empty($pyre_og_description)) {
@@ -36,13 +40,15 @@ if (empty($pyre_og_description)) {
 }
 	
 	//Open Graph URL
-$pyre_og_url = get_aione_page_option($post->ID, 'pyre_og_url');
+//$pyre_og_url = get_aione_page_option($post->ID, 'pyre_og_url');
+$pyre_og_url = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_og_url');
 if (empty($pyre_og_url)) {
 	$pyre_og_url = get_the_permalink();
 }
 
 	//Open Graph image
-$pyre_og_image = get_aione_page_option($post->ID, 'pyre_og_image');
+//$pyre_og_image = get_aione_page_option($post->ID, 'pyre_og_image');
+$pyre_og_image = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_og_image');
 
 	//Show featured image if image is empty 
 if (empty($pyre_og_image)) {

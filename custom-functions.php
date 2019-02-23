@@ -131,12 +131,14 @@ class PerPageOptionsMetaboxes
     		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
     			return;
     		}
-
+        $setting_array = array();
     		foreach ( $_POST as $key => $value ) {
     			if ( strstr( $key, 'pyre_' ) ) {
-    				update_post_meta( $post_id, $key, $value );
+            $setting_array[$key] = $value; 
+    				//update_post_meta( $post_id, $key, $value );
     			}
     		}
+        update_post_meta( $post_id, 'aione_per_page_setting', $setting_array );
     	}
 
     	public function text( $id, $label, $desc = '' )

@@ -19,7 +19,8 @@ if( $count > 0 ) :
 		$aione_copyright_left_class = $aione_copyright_right_class = 'aione-copyright-center';
 	}
 	
-	$pyre_footer_copyright = get_aione_page_option( $post->ID, 'pyre_footer_copyright');
+	//$pyre_footer_copyright = get_aione_page_option( $post->ID, 'pyre_footer_copyright');
+	$pyre_footer_copyright = get_aione_page_settings( $post->ID, 'aione_per_page_setting','pyre_footer_copyright');
 	
 	$draw = $pyre_footer_copyright == 'yes' ? true 
 	: ( $pyre_footer_copyright == 'no' ? false 

@@ -143,7 +143,8 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 			}
 
 	        //Per page Options Left Sidebar
-			$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_' . $sidebar_position );
+			//$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_' . $sidebar_position );
+			$sidebar_custom = get_aione_page_settings( get_page_id(), 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position );
 
 			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
 
@@ -162,7 +163,8 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 			}
 
 	        //Per page Options Left Sidebar
-			$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+			//$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+			$sidebar_custom = get_aione_page_settings(get_page_id(), 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position);
 
 			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
 
@@ -172,7 +174,8 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 		}
 
 		if (is_page()) {
-			$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+			//$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
+			$sidebar_custom = get_aione_page_settings(get_page_id(), 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position);
 
 			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
 
@@ -259,7 +262,8 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 			}
 
 	        //Per page Options Enable
-			$is_enabled_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_' . $sidebar_position . '_enable' );
+			//$is_enabled_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_' . $sidebar_position . '_enable' );
+			$is_enabled_custom = get_aione_page_settings( get_page_id(), 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position . '_enable' );
 
 			if ($is_enabled_custom == 'no') {
 
@@ -297,6 +301,18 @@ if ( !function_exists( 'get_aione_page_option' ) ) {
 
 }
 
+if ( !function_exists( 'get_aione_page_settings' ) ) {
+
+	function get_aione_page_settings( $post_id, $meta_key,$setting_name = '') {		
+		$meta_value =  get_post_meta($post_id, $meta_key, true );		
+		if($setting_name == ''){
+			return $meta_value;
+		} else {			
+			return $meta_value[$setting_name];
+		}
+	}
+}
+
 
 if ( !function_exists( 'is_fullwidth' ) ) {
 
@@ -306,7 +322,8 @@ if ( !function_exists( 'is_fullwidth' ) ) {
 		global $post;
 		$fullwidth = false;
 
-		$page_option = trim( get_aione_page_option( $id, 'pyre_' . $component . '_100_width' ) );
+		//$page_option = trim( get_aione_page_option( $id, 'pyre_' . $component . '_100_width' ) );
+		$page_option = trim( get_aione_page_settings( $id, 'aione_per_page_setting','pyre_' . $component . '_100_width' ) );
 
 		if ( $page_option == 'default' || empty($page_option ) ) {
 
@@ -388,7 +405,8 @@ if ( !function_exists( 'is_enabled' ) ) {
 		global $theme_options;
 		$is_enabled = false;
 
-		$page_option = get_aione_page_option($id, 'pyre_' . $component );
+		//$page_option = get_aione_page_option($id, 'pyre_' . $component );
+		$page_option = get_aione_page_settings($id,'aione_per_page_setting', 'pyre_' . $component );
 
 	    /*
 	    if( $component == 'slider_enable' ){

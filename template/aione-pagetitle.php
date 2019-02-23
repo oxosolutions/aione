@@ -3,7 +3,8 @@
 if( is_enabled( $post->ID, 'page_title_bar' ) ) :
 	
 	$page_title = get_the_title();
-	$page_description = get_aione_page_option( $post->ID,'pyre_page_title_bar_description_text' );
+	//$page_description = get_aione_page_option( $post->ID,'pyre_page_title_bar_description_text' );
+	$page_description = get_aione_page_settings( $post->ID,'aione_per_page_setting','pyre_page_title_bar_description_text' );
 
 	if( is_post_type_archive() || is_archive() ) {
 

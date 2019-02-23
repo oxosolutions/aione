@@ -2,8 +2,10 @@
 global $post, $theme_options; 
 
 $global_js = $theme_options['custom_js'];
-$custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
-$pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
+//$custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
+//$pyre_custom_css = get_aione_page_option( $post->ID,'pyre_custom_css' );
+$pyre_custom_css = get_aione_page_settings( $post->ID,'aione_per_page_setting','pyre_custom_css' );
+$custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_custom_js' );
 
 ?>
 		<?php get_template_part( 'template/aione-pagebottom' );  ?>

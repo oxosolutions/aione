@@ -30,7 +30,8 @@ if( is_enabled( $post->ID, 'header_show_navigation' ) ) :
 	);
 
 	if( is_page() || is_single() ) {
-		$pyre_displayed_menu = get_aione_page_option( $post->ID,'pyre_displayed_menu' );
+		//$pyre_displayed_menu = get_aione_page_option( $post->ID,'pyre_displayed_menu' );
+		$pyre_displayed_menu = get_aione_page_settings( $post->ID,'aione_per_page_setting','pyre_displayed_menu' );
 		if( $pyre_displayed_menu != 'default' ) :
 			$args['menu'] = $pyre_displayed_menu; 
 		endif;

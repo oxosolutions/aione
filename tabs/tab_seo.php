@@ -1,8 +1,10 @@
 <section class="aione-serp-preview">
 	<div class="aione-serp-preview-label">SERP Preview</div>
-	<div class="aione-serp-preview-title"><?php echo esc_html( get_post_meta( get_the_ID(), 'pyre_title_tag', true ) );?></div>
+	<!-- <div class="aione-serp-preview-title"><?php //echo esc_html( get_post_meta( get_the_ID(), 'pyre_title_tag', true ) );?></div> -->
+	<div class="aione-serp-preview-title"><?php echo esc_html(get_aione_page_settings(get_the_ID(), 'aione_per_page_setting','pyre_title_tag'));?></div>
 	<div class="aione-serp-preview-link"><?php echo esc_url( get_permalink() ); ?></div>
-	<div class="aione-serp-preview-description"><?php echo esc_html( get_post_meta( get_the_ID(), 'pyre_meta_description', true ) );?></div>
+	<!-- <div class="aione-serp-preview-description"><?php //echo esc_html( get_post_meta( get_the_ID(), 'pyre_meta_description', true ) );?></div> -->
+	<div class="aione-serp-preview-description"><?php echo esc_html( get_aione_page_settings(get_the_ID(), 'aione_per_page_setting','pyre_meta_description') );?></div>
 </section>
 <script type="text/javascript">
 	$(document).ready(function(){

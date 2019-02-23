@@ -38,7 +38,8 @@ add_action( 'wp_head', 'gutenbergtheme_pingback_header' );
 add_filter('document_title_parts', 'aione_filter_title_tag');
 function aione_filter_title_tag($title) {
     global $post;
-    $pyre_title_tag = get_aione_page_option($post->ID,'pyre_title_tag');
+    //$pyre_title_tag = get_aione_page_option($post->ID,'pyre_title_tag');
+    $pyre_title_tag = get_aione_page_settings($post->ID,'aione_per_page_setting','pyre_title_tag');
 	if($pyre_title_tag != "") :
 		$title['title']= sanitize_text_field($pyre_title_tag);
 	endif;
