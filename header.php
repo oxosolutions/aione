@@ -80,11 +80,9 @@ if (empty($pyre_og_image)) {
 	<meta name="theme-color" content="#168dc5"/>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
-	?>
 	<?php
 	if( USE_CDN ) {
 	?>
-
 	<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/core.min.css" rel="stylesheet" media="all">
 	<?php
 	}
