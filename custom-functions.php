@@ -138,6 +138,8 @@ class PerPageOptionsMetaboxes
     				//update_post_meta( $post_id, $key, $value );
     			}
     		}
+        /*echo "<pre>";print_r($_POST);echo "</pre>";
+        echo "<pre>";print_r($setting_array);echo "</pre>";*/
         update_post_meta( $post_id, 'aione_per_page_setting', $setting_array );
     	}
 
@@ -155,7 +157,9 @@ class PerPageOptionsMetaboxes
                   <?php endif;?>
               </div>
               <div class="pyre_field">
-               <input type="text" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>" value="<?php echo esc_html( get_post_meta( $post->ID, 'pyre_' . $id, true ) ); ?>" />
+              
+               <input type="text" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>" value="<?php echo esc_html( get_aione_page_settings( $post->ID, 'aione_per_page_setting','pyre_' . $id ) ); ?>" />
+              
            </div>
        </div>
        <?php
@@ -177,8 +181,12 @@ class PerPageOptionsMetaboxes
      <div class="pyre_field">
       <div class="oxo-shortcodes-arrow">&#xf3d0;</div>
       <select id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>">
-         <?php foreach ( $options as $key => $option ): ?>
-            <?php $selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : '';?>
+         <?php foreach ( $options as $key => $option ): ?>          
+            <?php 
+            //$selected = ( $key == get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ? 'selected="selected"' : '';
+            $selected = ( $key == get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_'.$id) ) ? 'selected="selected"' : '';
+
+            ?>
             <option <?php echo esc_html( $selected ); ?> value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $option ); ?>
         </option>
     <?php endforeach;?>
@@ -207,7 +215,11 @@ public function multiple( $id, $label, $options, $desc = '' )
        <div class="pyre_field">
          <select multiple="multiple" id="pyre_<?php echo esc_html( $id ); ?>" name="pyre_<?php echo esc_html( $id ); ?>[]">
             <?php foreach ($options as $key => $option): ?>
-               <?php $selected = ( is_array( get_post_meta( $post->ID, 'pyre_' . $id, true ) ) && in_array( $key, get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ) ? 'selected="selected"' : '';?>
+               <?php 
+               //$selected = ( is_array( get_post_meta( $post->ID, 'pyre_' . $id, true ) ) && in_array( $key, get_post_meta( $post->ID, 'pyre_' . $id, true ) ) ) ? 'selected="selected"' : '';
+               $selected = ( is_array( get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_'.$id) ) && in_array( $key, get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_'.$id) ) ) ? 'selected="selected"' : '';
+               
+               ?>
                <option <?php echo esc_html( $selected ); ?> value="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $option ); ?>
            </option>
        <?php endforeach;?>
@@ -221,9 +233,15 @@ public function multiple( $id, $label, $options, $desc = '' )
 public function ace_editor( $id, $label, $desc = '', $default = '' )
 {
    global $post;
-   $db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
-   $value = (metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
-
+   //$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
+   $db_value = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_'.$id);
+   
+   //$value = (metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
+   if($db_value == ''){
+      $value = $default;
+    } else {
+      $value = $db_value;
+    }
    ?>
    <div class="pyre_metabox_field">
       <div class="pyre_desc">
@@ -295,8 +313,14 @@ endif;
 public function textarea( $id, $label, $desc = '', $default = '' )
 {
    global $post;
-   $db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
-   $value = ( metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
+   //$db_value = get_post_meta( $post->ID, 'pyre_' . $id, true );
+   $db_value = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_'.$id) ;
+   //$value = ( metadata_exists( 'post', $post->ID, 'pyre_' . $id ) ) ? $db_value : $default;
+    if($db_value == ''){
+      $value = $default;
+    } else {
+      $value = $db_value;
+    }
    $rows = 10;
    if ( $id == 'heading' || $id == 'caption' ) {
       $rows = 5;
@@ -341,7 +365,10 @@ public function upload( $id, $label, $desc = '' )
      <div class="pyre_field">
        <div class="pyre_upload">
 
-          <?php $saved = get_post_meta( $post->ID, 'pyre_' . $id, true );?>
+          <?php 
+          //$saved = get_post_meta( $post->ID, 'pyre_' . $id, true );
+          $saved = get_aione_page_settings($post->ID, 'aione_per_page_setting','pyre_'.$id);
+          ?>
           <input type="url" class="large-text" name="pyre_<?php echo esc_html($id); ?>" id="media_upload_btn" value="<?php echo esc_attr($saved); ?>"><br>
 
           <button type="button" class="button" id="media_upload_btn" data-media-uploader-target="#media_upload_btn">
