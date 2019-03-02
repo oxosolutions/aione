@@ -88,7 +88,6 @@ if ( !function_exists( 'aione_pagination' ) ) {
 
 }
 
-
 if ( !function_exists( 'aione_get_sidebar' ) ) {
 
 	function aione_get_sidebar( $sidebar_position ) {

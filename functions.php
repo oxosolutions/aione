@@ -142,6 +142,9 @@ function aione_styles() {
 		//Enqueue core css essencial for layout in head, rest css will be loaded in footer
 		wp_register_style( 'core', get_template_directory_uri() . '/assets/css/core.min.css', array(), null, 'all' );
 		wp_enqueue_style( 'core' );
+
+		wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
+		wp_enqueue_script( 'aione-js' );
 	}
 
 	// wp_deregister_style( 'wp-block-library' );
@@ -157,8 +160,7 @@ function aione_scripts() {
 
 	    wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
 	    wp_enqueue_style( 'aione' );
-	    wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
-		wp_enqueue_script( 'aione-js' );
+	    
 	
 	}
 

@@ -84,6 +84,7 @@ if (empty($pyre_og_image)) {
 	if( USE_CDN ) {
 	?>
 	<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/core.min.css" rel="stylesheet" media="all">
+	<script defer src="https://cdn.darlic.com/wp-content/themes/aione/assets/js/aione.min.js"></script>
 	<?php
 	}
 	?>

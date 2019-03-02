@@ -45,19 +45,23 @@ if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 }
 
 if ( have_posts() ) :
-
+	if(is_home()  || is_archive()){
+		if( isset($archive_template_slug) && $archive_template_slug != 'archive' ){
+			echo "<div class='aione-template type-archive ".$archive_template_slug."'>";
+		}
+	}
 	while ( have_posts() ) : the_post();
 		if( is_search() ){ 
 			get_template_part( 'template-parts/content', 'search' );
 		} else if ( is_home() ) {  
 		    //_to_be_deleted 
 			//get_template_part( 'template-parts/blog', get_post_format() );
-			if( isset($archive_template_slug) && $archive_template_slug != 'archive' ) { 
-				echo do_shortcode($aione_template_archive);
+			if( isset($archive_template_slug) && $archive_template_slug != 'archive' ) { 				
+				echo do_shortcode($aione_template_archive);				
 			} else { 
 				get_template_part( 'template-parts/blog', get_post_format() );
 			}
-		} else if ( is_archive() ) {   
+		} else if ( is_archive() ) {  
 			if( isset($archive_template_slug) && $archive_template_slug != 'archive' ) { 
 				echo do_shortcode($aione_template_archive);
 			} else { 
@@ -91,6 +95,11 @@ if ( have_posts() ) :
 			comments_template();
 	endif;
 endwhile;
+if(is_home()  || is_archive()){
+	if( isset($archive_template_slug) && $archive_template_slug != 'archive' ){
+		echo "</div>";
+	}
+}
 wp_reset_postdata();
 else :
 	get_template_part( 'template-parts/content', 'none' );

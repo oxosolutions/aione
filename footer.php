@@ -32,7 +32,6 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 	?>
 
 	<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/aione.min.css" rel="stylesheet" media="all">
-	<script defer src="https://cdn.darlic.com/wp-content/themes/aione/assets/js/aione.min.js"></script>
 	<?php
 	}
 	?>
