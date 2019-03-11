@@ -452,3 +452,52 @@ if ( !function_exists( 'empty_sidebar_message' ) ) {
 	}
 
 }
+
+/*function aione_filters($wp_query = null){
+	$output = "";
+	global $post;
+	if ($wp_query == null) {
+		global $wp_query;
+	}
+
+	if( isset( $_POST["aione_filters_searchsubmit"]) && isset($_POST["search"]) && $_POST["search"] == "aione_filters_search"){
+		$search_category = $_POST["filter_cat"];
+	} else {
+		$search_category = "-1";
+	} 
+	$output .= '<div class="filters">';
+		//if($category == "true"){
+			$output .= '<form method="post" id="aione_filters_searchform" role="search" action="">';
+			$output .= '<input type="hidden" name="search" value="aione_filters_search">';
+			$output .= '<label for="category" class="">Category</label>';
+			$args = array(
+				'show_option_all'    => '',
+				'show_option_none'   => __( 'Select category', 'aione-app-builder' ),
+				'option_none_value'  => '-1',
+				'orderby'            => 'name',
+				'order'              => 'ASC',
+				'show_count'         => 1,
+				'hide_empty'         => 1,
+				'child_of'           => 0,
+				'exclude'            => '',
+				'include'            => '',
+				'echo'               => 1,
+				'selected'           => $search_category,
+				'hierarchical'       => 1,
+				'name'               => 'filter_cat',
+				'id'                 => '',
+				'class'              => '',
+				'depth'              => 0,
+				'tab_index'          => 0,
+				'taxonomy'           => 'category',
+				'hide_if_empty'      => false,
+				'value_field'	     => 'term_id',
+			);
+		    $output .= wp_dropdown_categories( $args );
+		//}
+		$output .= '<input type="submit" name = "aione_filters_searchsubmit" id="searchsubmit" value="Search" />';
+		$output .= '</form>';
+	$output .= '</div>';
+
+	return $output;
+}*/

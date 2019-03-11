@@ -25,6 +25,7 @@ if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 	$order_by 	= $aione_templates[$archive_template_slug]['template_posts_order_by'];
 	$order 		= $aione_templates[$archive_template_slug]['template_posts_order'];
 	$template_posts_status_array = $aione_templates[$archive_template_slug]['template_posts_status'];
+	$template_filter_enable = $aione_templates[$archive_template_slug]['template_filter_enable'];
 
 	$post_status = array( 'publish' );
 	
@@ -41,6 +42,20 @@ if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 			'post_status' 	 => $post_status
 		) 
 	);
+	/*if($template_filter_enable == "yes"){
+		if( isset( $_POST["aione_filters_searchsubmit"]) && isset($_POST["search"]) && $_POST["search"] == "aione_filters_search"){
+
+			$args['tax_query']  = array(
+		        array(
+		            'taxonomy' => 'category',
+		            'field'    => 'term_id',
+		            'terms'    => array( $_POST["filter_cat"] ),
+		            'operator' => 'IN',
+		        ),
+		    ); 
+			
+		}
+	}*/
 	query_posts( $args );
 }
 
@@ -48,6 +63,9 @@ if ( have_posts() ) :
 	if(is_home()  || is_archive()){
 		if( isset($archive_template_slug) && $archive_template_slug != 'archive' ){
 			echo "<div class='aione-template type-archive ".$archive_template_slug."'>";
+			/*if($template_filter_enable == "yes"){
+				echo aione_filters($wp_query);
+			}*/
 		}
 	}
 	while ( have_posts() ) : the_post();
