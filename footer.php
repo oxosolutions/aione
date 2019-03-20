@@ -441,11 +441,11 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 	if( !empty( $global_js ) || !empty( $custom_js ) || !empty( $serviceworker ) ) {
 
 		if( !empty( $global_js ) ) {
-			echo wp_kses_post($global_js);
+			echo $global_js;
 		}
 
 		if( !empty( $custom_js ) ) {
-			echo wp_kses_post($custom_js);
+			echo $custom_js;
 		}
 
 		/*
