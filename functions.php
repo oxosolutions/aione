@@ -139,10 +139,18 @@ function aione_styles() {
 
 	global $theme_options;
 
-		wp_register_style( 'core', get_template_directory_uri() . '/assets/css/core.min.css', array(), null, 'all' );
-		wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
-		wp_register_style( 'aionefull', get_template_directory_uri() . '/assets/css/aionefull.min.css', array(), null, 'all' );
-		wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
+	$in_footer = false;
+	if( $theme_options['advanced_load_js_bottom'] ){
+		$in_footer = true;
+	}
+
+
+	wp_register_style( 'core', get_template_directory_uri() . '/assets/css/core.min.css', array(), null, 'all' );
+	wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
+	wp_register_style( 'aionefull', get_template_directory_uri() . '/assets/css/aionefull.min.css', array(), null, 'all' );
+
+	wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, $in_footer );
+
 
 	//If not loaded from CDN
 	if( !$theme_options['advanced_use_cdn'] ) {
@@ -153,9 +161,9 @@ function aione_styles() {
 		} else{
 			wp_enqueue_style( 'aionefull' );
 		}
-		if( !$theme_options['advanced_load_js_bottom'] ) {
-			wp_enqueue_script( 'aione-js' );
-		}
+
+		wp_enqueue_script( 'aione-js' );
+
 
 	}
 	
@@ -170,20 +178,12 @@ function aione_scripts() {
 
 	global $theme_options;
 
-	wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
-	wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
-
-
 	//If not loaded from CDN
 	if( !$theme_options['advanced_use_cdn'] ) {
 
 		if( $theme_options['advanced_load_css_bottom'] ) {
 			wp_enqueue_style( 'aione' );
 		}
-		if( $theme_options['advanced_load_js_bottom'] ) {
-			wp_enqueue_script( 'aione-js' );
-		}
-
 	}
 
 	//wp_deregister_script( 'wp-embed' );
