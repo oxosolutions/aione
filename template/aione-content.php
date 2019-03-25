@@ -3,8 +3,10 @@ global $theme_options;
 global $post;
 
 // _to_be_deleted
-//echo "<br>ID = ".$post->ID;
+// echo "<br>ID = ".$post->ID;
 /*$posts_page_id = get_option( 'page_for_posts' );
+
+
 echo "*****************".$posts_page_id;*/
 $post_type 				= get_post_type( $post->ID );
 $aione_components 		= get_option( 'aione-components' );
@@ -32,14 +34,30 @@ if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 	if( !empty( $template_posts_status_array ) ) {
 		$post_status = array_keys( $template_posts_status_array );
 	}
+
+
+	// $big = 999999999; // need an unlikely integer
+    $current_page = get_query_var('paged');
+
+    echo "<br>current_page = ".$current_page;
+    // $total_pages = $wp_query->max_num_pages;
+    // $total_pages = $wp_query->max_num_pages;
+    $offset = null;
+
+    if( $current_page > 0 ){
+    	$offset = $ppp * ( $current_page - 1);
+
+    }
+
 	
 	$args = array_merge( 
 		$wp_query->query, 
 		array( 
-			'posts_per_page' => $ppp, 
-			'orderby'        => $order_by, 
-			'order' 		 => $order,
-			'post_status' 	 => $post_status
+			'posts_per_page'	=> $ppp, 
+			'orderby'			=> $order_by, 
+			'offset'			=> $offset, 
+			'order'				=> $order,
+			'post_status'		=> $post_status
 		) 
 	);
 	/*if($template_filter_enable == "yes"){
@@ -122,3 +140,7 @@ wp_reset_postdata();
 else :
 	get_template_part( 'template-parts/content', 'none' );
 endif;
+
+if( is_post_type_archive() || is_archive() || is_home() || is_search()) {
+	echo aione_pagination( $wp_query );
+}

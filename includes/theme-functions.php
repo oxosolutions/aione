@@ -4,9 +4,21 @@ if ( !function_exists( 'aione_pagination' ) ) {
 
 	function aione_pagination( $wp_query = null ) {
 
+		
+
+
+
 		if ($wp_query == null) {
 			global $wp_query;
 		}
+
+		/*
+
+		echo "<br>QUERY = ";
+		echo "<pre>";
+		print_r( $wp_query );
+		echo "</pre>";
+		*/
 
 	    $big = 999999999; // need an unlikely integer
 	    $current_page = get_query_var('paged');

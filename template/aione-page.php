@@ -34,11 +34,6 @@ $main_classes   = implode(" ", $main_classes);
 
 				<?php get_template_part( 'template/aione-content-bottom' ); ?>
 
-				<?php 
-				if( is_post_type_archive() || is_archive() || is_home() || is_search()) {
-					echo wp_kses_post( aione_pagination() );
-				}
-				?>
 			</div> <!-- .wrapper -->
 		</div> <!-- .aione-page-content -->
 		
