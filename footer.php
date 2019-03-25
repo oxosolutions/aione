@@ -1,5 +1,5 @@
 <?php
-global $post, $theme_options; 
+global $post, $theme_options;
 
 $global_js = $theme_options['custom_js'];
 //$custom_js = get_aione_page_option( $post->ID, 'pyre_custom_js' );
@@ -28,11 +28,20 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 	?>
 
 	<?php
-	if( USE_CDN ) {
-	?>
+	if( $theme_options['advanced_use_cdn'] ) {
 
-	<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/aione.min.css" rel="stylesheet" media="all">
-	<?php
+		if( $theme_options['advanced_load_css_bottom'] ) {
+			echo '<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/aione.min.css" rel="stylesheet" media="all">';
+		}
+
+		$defer = $async = '';
+		if( $theme_options['advanced_deffer_js'] ) { $defer = 'defer';}
+		if( $theme_options['advanced_async_js'] ) { $async = 'async';}
+
+		if( $theme_options['advanced_load_js_bottom'] ) {
+			echo '<script '.$defer.' '. $async.' src="https://cdn.darlic.com/wp-content/themes/aione/assets/js/aione.min.js"></script>';
+		}
+
 	}
 	?>
 
@@ -183,6 +192,7 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 		}
 		.primary-nav .aione-nav > ul > li > a {
 			line-height: '.esc_html($theme_options['main_nav_height']).'px;
+			padding: 0 '.esc_html($theme_options['main_nav_padding']).'px;
 		}
 		';
 	

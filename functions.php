@@ -137,15 +137,28 @@ add_action( 'after_setup_theme', 'aionetheme_content_width', 0 );
  */
 function aione_styles() {
 
-	//If not loaded from CDN
-	if( ! USE_CDN ) {
-		//Enqueue core css essencial for layout in head, rest css will be loaded in footer
-		wp_register_style( 'core', get_template_directory_uri() . '/assets/css/core.min.css', array(), null, 'all' );
-		wp_enqueue_style( 'core' );
+	global $theme_options;
 
+		wp_register_style( 'core', get_template_directory_uri() . '/assets/css/core.min.css', array(), null, 'all' );
+		wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
+		wp_register_style( 'aionefull', get_template_directory_uri() . '/assets/css/aionefull.min.css', array(), null, 'all' );
 		wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
-		wp_enqueue_script( 'aione-js' );
+
+	//If not loaded from CDN
+	if( !$theme_options['advanced_use_cdn'] ) {
+
+		if( $theme_options['advanced_load_css_bottom'] ) {
+			//Enqueue core css essencial for layout in head, rest css will be loaded in footer
+			wp_enqueue_style( 'core' );
+		} else{
+			wp_enqueue_style( 'aionefull' );
+		}
+		if( !$theme_options['advanced_load_js_bottom'] ) {
+			wp_enqueue_script( 'aione-js' );
+		}
+
 	}
+	
 
 	// wp_deregister_style( 'wp-block-library' );
 	wp_dequeue_style( 'wp-block-library' );
@@ -155,13 +168,22 @@ add_action( 'wp_enqueue_scripts', 'aione_styles' );
 
 function aione_scripts() {
 
-	//If not loaded from CDN
-	if( ! USE_CDN ) {
+	global $theme_options;
 
-	    wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
-	    wp_enqueue_style( 'aione' );
-	    
-	
+	wp_register_style( 'aione', get_template_directory_uri() . '/assets/css/aione.min.css', array(), null, 'all' );
+	wp_register_script( 'aione-js', get_template_directory_uri() . '/assets/js/aione.min.js', array(), null, true );
+
+
+	//If not loaded from CDN
+	if( !$theme_options['advanced_use_cdn'] ) {
+
+		if( $theme_options['advanced_load_css_bottom'] ) {
+			wp_enqueue_style( 'aione' );
+		}
+		if( $theme_options['advanced_load_js_bottom'] ) {
+			wp_enqueue_script( 'aione-js' );
+		}
+
 	}
 
 	//wp_deregister_script( 'wp-embed' );

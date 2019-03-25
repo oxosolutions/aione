@@ -37,17 +37,18 @@ if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 
 
 	// $big = 999999999; // need an unlikely integer
-    $current_page = get_query_var('paged');
+    // $current_page = get_query_var('paged');
 
-    echo "<br>current_page = ".$current_page;
+    // echo "<br>current_page = ".$current_page;
     // $total_pages = $wp_query->max_num_pages;
     // $total_pages = $wp_query->max_num_pages;
-    $offset = null;
-
+    // $offset = null;
+	/*
     if( $current_page > 0 ){
     	$offset = $ppp * ( $current_page - 1);
 
     }
+    */
 
 	
 	$args = array_merge( 
@@ -60,6 +61,8 @@ if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 			'post_status'		=> $post_status
 		) 
 	);
+
+	
 	/*if($template_filter_enable == "yes"){
 		if( isset( $_POST["aione_filters_searchsubmit"]) && isset($_POST["search"]) && $_POST["search"] == "aione_filters_search"){
 

@@ -81,10 +81,24 @@ if (empty($pyre_og_image)) {
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 
 	<?php
-	if( USE_CDN ) {
+	if( $theme_options['advanced_use_cdn'] ) {
+	
+	$defer = $async = '';
+	if( $theme_options['advanced_deffer_js'] ) { $defer = 'defer';}
+	if( $theme_options['advanced_async_js'] ) { $async = 'async';}
+
+	if( $theme_options['advanced_load_css_bottom'] ) {
+		echo '<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/core.min.css" rel="stylesheet" media="all">';
+	} else{
+		echo '<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/aionefull.min.css" rel="stylesheet" media="all">';
+	}
+
+	if( !$theme_options['advanced_load_js_bottom'] ) {
+		echo '<script '.$defer.' '. $async.' src="https://cdn.darlic.com/wp-content/themes/aione/assets/js/aione.min.js"></script>';
+	}
 	?>
-	<link href="https://cdn.darlic.com/wp-content/themes/aione/assets/css/core.min.css" rel="stylesheet" media="all">
-	<script defer src="https://cdn.darlic.com/wp-content/themes/aione/assets/js/aione.min.js"></script>
+	
+	
 	<?php
 	}
 	?>
