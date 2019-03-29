@@ -27249,7 +27249,7 @@ $(document).ready(function() {
 	/*****************************************************/
 	try{
 		wow = new WOW({
-			boxClass:     'animate',      // default
+			boxClass:     'animate',  // default
 			animateClass: 'animated', // default
 			offset:       0,          // default
 			mobile:       true,       // default
@@ -27477,7 +27477,6 @@ $(document).ready(function() {
 	/*  Scroll to top
 	/*****************************************************/
 	try{
-		/*
 	    $(window).scroll(function() {
 			var scroltop = $(this).scrollTop();
 			if (scroltop > 100) {
@@ -27486,7 +27485,6 @@ $(document).ready(function() {
 				$('.scrolltop').removeClass('active');
 			}
 	    });
-	    */
     }catch(e){
 
 	}
