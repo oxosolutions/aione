@@ -4036,6 +4036,31 @@ div.ppt {
 .aione-clear {
   clear: both
 }
+.clear {
+  clear: both
+}
+.clear-left {
+  clear: left
+}
+.clear-right {
+  clear: right
+}
+.clear-before:before {
+  content: "";
+  display: table;
+  clear: both
+}
+.clear-after:after {
+  content: "";
+  display: table;
+  clear: both
+}
+body.not-logged-in .is_user_logged_in {
+  display: none!important
+}
+body.logged-in .user_not_logged_in {
+  display: none!important
+}
 .position-relative {
   position: relative
 }

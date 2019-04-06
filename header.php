@@ -187,21 +187,35 @@ $wrapper_classes[] = 'color-scheme-' . $theme_options['color_scheme'];
 $wrapper_classes = implode(" ", $wrapper_classes);
 
 $body_classes = array();
+
 if (is_user_logged_in()) {
+
 	$user = wp_get_current_user();
+
 	$user_roles = $user->roles;
-	if (is_array($user_roles)) {
-		foreach ($user_roles as $key => $user_role) {
+
+	if ( is_array( $user_roles ) ) {
+
+		foreach ( $user_roles as $key => $user_role ) {
 			$body_classes[] = "user-role-" . $user_role;
 		}
+
+	} else{
+		$body_classes[] = "user-role-" . $user_roles;
 	}
+
+} else {
+
+	$body_classes[] = "not-logged-in";
+
 }
+
 $body_classes = implode(" ", $body_classes);
 
 ?>
 
 </head>
-<body <?php body_class($body_classes); ?>>
+<body <?php body_class( $body_classes ); ?>>
 
 <div id="aione_wrapper" class="<?php echo esc_html($wrapper_classes); ?>">
 	<div class="wrapper">
