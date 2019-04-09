@@ -27263,8 +27263,7 @@ $(document).ready(function() {
 	/*****************************************************
 	/*  Animate on Hover 
 	/*****************************************************/
-
-	$(".animate-hover").hover(
+	$(".animate-hover.infinite").hover(
 		function(){ $(this).addClass( "animated infinite" ); }, 
 		function(){ $(this).delay(200).removeClass( "animated infinite" );
 	});

@@ -2871,16 +2871,12 @@
 .user-detail-label {
   float: left;
   width: 50%;
-  box-sizing: border-box;
-  display: block;
-  font-weight: 600;
-  color: #233638
+  box-sizing: border-box
 }
 .user-detail-value {
   float: left;
   width: 50%;
-  box-sizing: border-box;
-  display: block
+  box-sizing: border-box
 }
 .search-form .screen-reader-text {
   display: none
