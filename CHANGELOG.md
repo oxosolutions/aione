@@ -162,6 +162,8 @@ FIXED: Enabled issue
 FIXED: Mobile Nav Issue
 ADDED: Added ua-device-desktop/ua-device-mobile class to body by detecting the device
 
-
 ## 7.3.0.16 16-02-2019
 UPDATED: Using Darlic CDN for loading CSS and JS
+
+## 7.3.0.17 10-04-2019
+UPDATED: Primary Menu Custom CSS

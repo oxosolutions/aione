@@ -208,7 +208,9 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 		.primary-nav .aione-nav > ul > li.current-menu-item > a,
 		.primary-nav .aione-nav > ul > li.current-menu-item > a:hover,
 		.primary-nav .aione-nav > ul > li.current-menu-parent > a,
-		.primary-nav .aione-nav > ul > li.current-menu-parent > a:hover{
+		.primary-nav .aione-nav > ul > li.current-menu-parent > a:hover,
+		.primary-nav .aione-nav > ul > li.current-page-ancestor > a,
+		.primary-nav .aione-nav > ul > li.current-page-ancestor > a:hover{
 			color: '.esc_html($theme_options['main_nav_link_hover_color']).';	
 			background-color: '.esc_html($theme_options['main_nav_link_hover_background_color']).';
 		}
@@ -222,7 +224,9 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-item > a,
 		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-item > a:hover,
 		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-parent > a,
-		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-parent > a:hover{
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-menu-parent > a:hover,
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-page-ancestor > a,
+		.primary-nav .aione-nav > ul > li > ul.sub-menu > li.current-page-ancestor > a:hover{
 			color: '.esc_html($theme_options['submenu_link_hover_color']).';	
 			background-color: '.esc_html($theme_options['submenu_link_background_hover_color']).';
 		}
