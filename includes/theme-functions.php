@@ -106,14 +106,16 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 
 		global $post;
 
+		$post_id = $post->ID;
+
 	    // get Post Type e.g.'movie'
-		$post_type = get_post_type($post->ID);
+		$post_type = get_post_type( $post_id );
 
 	    // Fetch 'compponents' from options
-		$aione_components = get_option('aione-components');
+		$aione_components = get_option( 'aione-components' );
 
 	    // Filter perticular 'component' from 'components'
-		$aione_component = $aione_components[$post_type];
+		$aione_component = $aione_components[ $post_type ];
 
 	    // get 'templete' slug for Single/Page
 		$template_slug_single = $aione_component['single_template'];
@@ -122,7 +124,7 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 		$template_slug_archive = $aione_component['archive_template'];
 
 	    // Fetch 'templates' from options
-		$aione_templates = get_option('aione-templates');
+		$aione_templates = get_option( 'aione-templates' );
 
 	    // get 'templete' for Single/Page
 		$aione_template_single = $aione_templates[$template_slug_single];
@@ -130,65 +132,66 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 		$aione_template_archive = $aione_templates[$template_slug_archive];
 
 	    // sidebar single
-		$sidebar_single = $aione_template_single['template_sidebar_' . $sidebar_position];
+		$sidebar_single = strtolower( $aione_template_single['template_sidebar_' . $sidebar_position] );
 
 	    // sidebar  archive
-		$sidebar_archive = $aione_template_archive['template_sidebar_' . $sidebar_position];
+		$sidebar_archive = strtolower( $aione_template_archive['template_sidebar_' . $sidebar_position] );
 
 	    // Global Options
 		$sidebar = 'aione-sidebar-' . $sidebar_position;
 
-		if (is_archive()) {
+		if ( is_archive() ) {
 
 	        //Template Options Left Sidebar
-			if (!empty($sidebar_archive) && $sidebar_archive != 'default') {
+			if ( ! empty( $sidebar_archive ) && $sidebar_archive != 'default' ) {
 				$sidebar = $sidebar_archive;
 			}
 		}
 
-		if (is_single()) {
+		if ( is_single() ) {
+
+			echo "<br> is_single = ".$is_single;
+			echo "<br> sidebar_single = ".$sidebar_single;
 
 	        //Template Options Left Sidebar
-			if (!empty($sidebar_single) && $sidebar_single != 'default') {
+			if ( ! empty( $sidebar_single ) && $sidebar_single != 'default' ) {
 				$sidebar = $sidebar_single;
 			}
 
 	        //Per page Options Left Sidebar
-			//$sidebar_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_' . $sidebar_position );
-			$sidebar_custom = get_aione_page_settings( get_page_id(), 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position );
+			$sidebar_custom = get_aione_page_settings( $post_id, 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position );
 
-			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
+			if ( ! empty( $sidebar_custom ) && $sidebar_custom != 'default' ) {
 
 				$sidebar = $sidebar_custom;
 
 			}
 		}
 
-		if (is_attachment()) {
+		if ( is_attachment() ) {
 
 	        //Template Options Left Sidebar
-			if (!empty($sidebar_single) && $sidebar_single != 'default') {
+			if ( ! empty( $sidebar_single ) && $sidebar_single != 'default' ) {
 
 				$sidebar = $sidebar_single;
 
 			}
 
 	        //Per page Options Left Sidebar
-			//$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
-			$sidebar_custom = get_aione_page_settings(get_page_id(), 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position);
+			$sidebar_custom = get_aione_page_settings( $post_id, 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position);
 
-			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
+			if ( ! empty( $sidebar_custom ) && $sidebar_custom != 'default' ) {
 
 				$sidebar = $sidebar_custom;
 
 			}
 		}
 
-		if (is_page()) {
-			//$sidebar_custom = get_aione_page_option(get_page_id(), 'pyre_sidebar_' . $sidebar_position);
-			$sidebar_custom = get_aione_page_settings(get_page_id(), 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position);
+		if ( is_page() ) {
+			echo "<br> is_page = ".$is_single;
+			$sidebar_custom = get_aione_page_settings( $post_id, 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position);
 
-			if (!empty($sidebar_custom) && $sidebar_custom != 'default') {
+			if ( ! empty( $sidebar_custom ) && $sidebar_custom != 'default' ) {
 
 				$sidebar = $sidebar_custom;
 
@@ -208,11 +211,13 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 		global $theme_options;
 		global $post;
 
+		$post_id = $post->ID;
+
 	    // get Post Type e.g.'movie'
-		$post_type = get_post_type($post->ID);
+		$post_type = get_post_type(	$post_id );
 
 	    // Fetch 'compponents' from options
-		$aione_components = get_option('aione-components');
+		$aione_components = get_option( 'aione-components' );
 
 	    // Filter perticular 'component' from 'components'
 		$aione_component = $aione_components[$post_type];
@@ -224,7 +229,7 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 		$template_slug_archive = $aione_component['archive_template'];
 
 	    // Fetch 'templates' from options
-		$aione_templates = get_option('aione-templates');
+		$aione_templates = get_option( 'aione-templates' );
 
 	    // get 'templete' for Single/Page
 		$aione_template_single = $aione_templates[$template_slug_single];
@@ -240,57 +245,73 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 	    // Global Options
 		$is_enabled = $theme_options['sidebar_' . $sidebar_position . '_enable'];
 
-		if (is_archive()) {
-			if (isset($template_slug_archive)) {
-				if ($is_enabled_archive == 'no') {
+		if ( is_archive() ) {
+
+			if ( isset( $template_slug_archive ) ) {
+
+				if ( $is_enabled_archive == 'no' ) {
 					$is_enabled = 0;
 				}
-				if ($is_enabled_archive == 'yes') {
+
+				if ( $is_enabled_archive == 'yes' ) {
 					$is_enabled = 1;
 				}
+
 			}
+
 		}
-		if (is_home()) {
-			if (isset($template_slug_archive)) {
-				if ($is_enabled_archive == 'no') {
+
+		if ( is_home() ) {
+
+			if ( isset( $template_slug_archive ) ) {
+
+				if ( $is_enabled_archive == 'no' ) {
 					$is_enabled = 0;
 				}
-				if ($is_enabled_archive == 'yes') {
+
+				if ( $is_enabled_archive == 'yes' ) {
 					$is_enabled = 1;
 				}
+
 			}
+
 		}
-		if (is_single()) {
+
+		if ( is_single() ) {
 
 	        //Template Options Enable
-			if (isset($template_slug_single)) {
-				if ($is_enabled_single == 'no') {
+			if ( isset( $template_slug_single ) ) {
+
+				if ( $is_enabled_single == 'no' ) {
 					$is_enabled = 0;
 				}
-				if ($is_enabled_single == 'yes') {
+
+				if ( $is_enabled_single == 'yes' ) {
 					$is_enabled = 1;
 				}
+
 			}
 
 	        //Per page Options Enable
-			//$is_enabled_custom = get_aione_page_option( get_page_id(), 'pyre_sidebar_' . $sidebar_position . '_enable' );
-			$is_enabled_custom = get_aione_page_settings( get_page_id(), 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position . '_enable' );
+			$is_enabled_custom = get_aione_page_settings( $post_id, 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position . '_enable' );
 
-			if ($is_enabled_custom == 'no') {
+			echo "<br> is_enabled_custom == ".$is_enabled_custom;
+			if ( $is_enabled_custom == 'no' ) {
 
 				$is_enabled = 0;
 
 			}
 
-			if ($is_enabled_custom == 'yes') {
+			if ( $is_enabled_custom == 'yes' ) {
 
 				$is_enabled = 1;
 
 			}
 		}
-		if (is_page()) {
+		
+		if ( is_page() ) {
 
-			$is_enabled = is_enabled( get_page_id(), 'sidebar_' . $sidebar_position . '_enable' );
+			$is_enabled = is_enabled( $post_id, 'sidebar_' . $sidebar_position . '_enable' );
 
 		}
 
@@ -298,6 +319,7 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 	}
 
 }
+
 
 
 
