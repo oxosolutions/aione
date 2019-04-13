@@ -150,9 +150,6 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 
 		if ( is_single() ) {
 
-			echo "<br> is_single = ".$is_single;
-			echo "<br> sidebar_single = ".$sidebar_single;
-
 	        //Template Options Left Sidebar
 			if ( ! empty( $sidebar_single ) && $sidebar_single != 'default' ) {
 				$sidebar = $sidebar_single;
@@ -188,7 +185,7 @@ if ( !function_exists( 'aione_get_sidebar' ) ) {
 		}
 
 		if ( is_page() ) {
-			echo "<br> is_page = ".$is_single;
+
 			$sidebar_custom = get_aione_page_settings( $post_id, 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position);
 
 			if ( ! empty( $sidebar_custom ) && $sidebar_custom != 'default' ) {
@@ -295,7 +292,6 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 	        //Per page Options Enable
 			$is_enabled_custom = get_aione_page_settings( $post_id, 'aione_per_page_setting','pyre_sidebar_' . $sidebar_position . '_enable' );
 
-			echo "<br> is_enabled_custom == ".$is_enabled_custom;
 			if ( $is_enabled_custom == 'no' ) {
 
 				$is_enabled = 0;
