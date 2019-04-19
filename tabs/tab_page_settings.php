@@ -1,5 +1,12 @@
 <?php
 
+$sidebars = array();
+$sidebars['default'] = __( 'Default', 'aione' );
+foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) {
+	$sidebar_id = $sidebar['id'];
+	$sidebars[$sidebar_id] = ucwords( $sidebar['name']);
+}
+
 $this->select(
 	'page_100_width',
 	__( '100% Page width', 'aione' ),
@@ -31,6 +38,12 @@ $this->select(
 	__( '100% Page Top Area width', 'aione' )
 );
 $this->select(
+	'sidebar_pagetop',
+	__( 'Select Pagetop Widget Area', 'aione' ),
+	$sidebars,
+	__( 'Select Pagetop Widget Area', 'aione' )
+);
+$this->select(
 	'page_bottom_area_enable',
 	__( 'Enable Page Bottom Area', 'aione' ),
 	array(
@@ -49,6 +62,12 @@ $this->select(
 		'no'      => __( 'No', 'aione' )
 	),
 	__( '100% Page bottom Area width', 'aione' )
+);
+$this->select(
+	'sidebar_pagebottom',
+	__( 'Select Pagebottom Widget Area', 'aione' ),
+	$sidebars,
+	__( 'Select Pagebottom Widget Area', 'aione' )
 );
 $this->select(
 	'page_padding_enable',
@@ -70,14 +89,6 @@ $this->select(
 	),
 	__( 'Enable Left Sidebar', 'aione' )
 );
-
-$sidebars = array();
-$sidebars['default'] = __( 'Default', 'aione' );
-foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) {
-	$sidebar_id = $sidebar['id'];
-	$sidebars[$sidebar_id] = ucwords( $sidebar['name']);
-}
-
 $this->select(
 	'sidebar_left',
 	__( 'Select Left Sidebar', 'aione' ),
@@ -111,6 +122,12 @@ $this->select(
 	__( 'Enable Content Top Area', 'aione' )
 ); 
 $this->select(
+	'sidebar_contenttop',
+	__( 'Select Content Top Widget Area', 'aione' ),
+	$sidebars,
+	__( 'Select Content Top Widget Area', 'aione' )
+);
+$this->select(
 	'content_bottom_area_enable',
 	__( 'Enable Content Bottom Area', 'aione' ),
 	array(
@@ -120,6 +137,12 @@ $this->select(
 	),
 	__( 'Enable Content Bottom Area', 'aione' )
 ); 
+$this->select(
+	'sidebar_contentbottom',
+	__( 'Select Content Bottom Widget Area', 'aione' ),
+	$sidebars,
+	__( 'Select Content Bottom Widget Area', 'aione' )
+);
 $this->select(
 	'page_content_padding_enable',
 	__( 'Enable Page Content Padding', 'aione' ),
