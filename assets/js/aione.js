@@ -27306,18 +27306,20 @@ $(document).ready(function() {
 	/*****************************************************
 	/*  Aione Collapsible
 	/*****************************************************/
-	$('.aione-collapsible .aione-item-header').click(function(e){
+
+	$(document).on('click', '.aione-collapsible .aione-item-header', function(e) {
 		e.preventDefault();
 		$(this).parent().toggleClass('active'); 
-	})
+	});
 
 	/*****************************************************
 	/*  Aione Collapsible
 	/*****************************************************/
-	$('.aione-accordion .aione-item-header').click(function(e){
+
+	$(document).on('click', '.aione-accordion .aione-item-header', function(e) {
 		e.preventDefault();
 		$(this).parent().toggleClass('active').siblings().removeClass('active'); 
-	})
+	});
 
 	/*****************************************************
 	/*  Aione More
