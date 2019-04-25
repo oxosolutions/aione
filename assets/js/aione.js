@@ -27151,6 +27151,26 @@ $(document).ready(function() {
 
 	}
 
+
+	/*****************************************************
+	/*  Aione Calculate
+	/*****************************************************/
+
+
+	try{
+		$( ".aione-calculate" ).each( function() {
+			var content = $(this).text();
+			var result;
+			
+			result = eval( content );
+			
+			$(this).text(result);
+			
+		});
+	} catch ( e ) {
+        console.log( e );
+	}
+
 	/*****************************************************
 	/*  Aione Typing
 	/*****************************************************/
