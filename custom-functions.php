@@ -112,6 +112,8 @@ class PerPageOptionsMetaboxes
 
     		</ul>
 
+        <?php wp_nonce_field('pyre_metabox', '_pyre_metabox'); ?>
+        
     		<div class="pyre_metabox">
 
     			<?php foreach ( $requested_tabs as $key => $tab_name ): ?>
@@ -131,6 +133,9 @@ class PerPageOptionsMetaboxes
     		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
     			return;
     		}
+
+        if (!wp_verify_nonce( $_POST['_pyre_metabox'], 'pyre_metabox' )) { return ; }
+
         $setting_array = array();
     		foreach ( $_POST as $key => $value ) {
     			if ( strstr( $key, 'pyre_' ) ) {
