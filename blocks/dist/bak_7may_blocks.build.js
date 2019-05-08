@@ -28917,7 +28917,7 @@ registerBlockType('aione-blocks/aione-tabs-tab', {
     },
 
     getEditWrapperProps: function getEditWrapperProps(attributes) {
-        return { 'data-tab-active': attributes.tabNumber };
+        return { 'data-tab': attributes.tabNumber };
     },
 
 
@@ -29128,9 +29128,7 @@ var _wp$editor = wp.editor,
     InnerBlocks = _wp$editor.InnerBlocks;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    TextControl = _wp$components.TextControl,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl;
+    TextControl = _wp$components.TextControl;
 
 
 registerBlockType('aione-blocks/aione-column', {
@@ -29150,18 +29148,6 @@ registerBlockType('aione-blocks/aione-column', {
         smallScreen: {
             type: 'string',
             default: '100'
-        },
-        addLink: {
-            default: false,
-            type: 'boolean'
-        },
-        linkUrl: {
-            type: 'string',
-            default: ''
-        },
-        linkTarget: {
-            type: 'string',
-            default: '_self'
         }
     },
     edit: function edit(props) {
@@ -29179,10 +29165,7 @@ registerBlockType('aione-blocks/aione-column', {
         var _props$attributes = props.attributes,
             largeScreen = _props$attributes.largeScreen,
             mediumScreen = _props$attributes.mediumScreen,
-            smallScreen = _props$attributes.smallScreen,
-            addLink = _props$attributes.addLink,
-            linkUrl = _props$attributes.linkUrl,
-            linkTarget = _props$attributes.linkTarget;
+            smallScreen = _props$attributes.smallScreen;
 
 
         var setlargeScreen = function setlargeScreen(largeScreenNumber) {
@@ -29193,13 +29176,6 @@ registerBlockType('aione-blocks/aione-column', {
         };
         var setsmallScreen = function setsmallScreen(smallScreenNumber) {
             props.setAttributes({ smallScreen: smallScreenNumber });
-        };
-
-        var onChangelinkUrl = function onChangelinkUrl(NewlinkUrl) {
-            props.setAttributes({ linkUrl: NewlinkUrl });
-        };
-        var onChangelinkTarget = function onChangelinkTarget(selectedlinkTarget) {
-            props.setAttributes({ linkTarget: selectedlinkTarget });
         };
 
         return [isSelected && wp.element.createElement(
@@ -29225,52 +29201,18 @@ registerBlockType('aione-blocks/aione-column', {
                         label: __('Small Screen Width'),
                         value: smallScreen,
                         onChange: setsmallScreen
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __('Link'),
-                        checked: !!addLink,
-                        onChange: function onChange() {
-                            return props.setAttributes({ addLink: !addLink });
-                        }
-                    }),
-                    props.attributes.addLink && wp.element.createElement(TextControl, {
-                        label: 'Link Text',
-                        value: linkUrl,
-                        onChange: onChangelinkUrl
-                    }),
-                    props.attributes.addLink && wp.element.createElement(SelectControl, {
-                        label: __('Target:'),
-                        value: linkTarget,
-                        onChange: onChangelinkTarget,
-                        options: [{ value: '_self', label: 'Same Tab' }, { value: '_blank', label: 'New Tab' }]
                     })
                 )
             )
         ), wp.element.createElement(
-            'span',
-            null,
-            props.attributes.addLink ? wp.element.createElement(
-                'a',
-                { href: linkUrl, target: linkTarget },
-                wp.element.createElement(
-                    'div',
-                    { key: 'editable',
-                        className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
-                    wp.element.createElement(
-                        'div',
-                        { className: 'wrapper' },
-                        wp.element.createElement(InnerBlocks, null)
-                    )
-                )
-            ) : wp.element.createElement(
+            'div',
+            { key: 'editable',
+                className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen
+            },
+            wp.element.createElement(
                 'div',
-                { key: 'editable',
-                    className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
-                wp.element.createElement(
-                    'div',
-                    { className: 'wrapper' },
-                    wp.element.createElement(InnerBlocks, null)
-                )
+                { className: 'wrapper' },
+                wp.element.createElement(InnerBlocks, null)
             )
         )];
     },
@@ -29278,39 +29220,20 @@ registerBlockType('aione-blocks/aione-column', {
         var _props$attributes2 = props.attributes,
             largeScreen = _props$attributes2.largeScreen,
             mediumScreen = _props$attributes2.mediumScreen,
-            smallScreen = _props$attributes2.smallScreen,
-            linkUrl = _props$attributes2.linkUrl,
-            linkTarget = _props$attributes2.linkTarget,
-            addLink = _props$attributes2.addLink;
+            smallScreen = _props$attributes2.smallScreen;
 
 
-        if (props.attributes.addLink) {
-            return wp.element.createElement(
-                'a',
-                { href: linkUrl, target: linkTarget },
-                wp.element.createElement(
-                    'div',
-                    {
-                        className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
-                    wp.element.createElement(
-                        'div',
-                        { className: 'wrapper' },
-                        wp.element.createElement(InnerBlocks.Content, null)
-                    )
-                )
-            );
-        } else {
-            return wp.element.createElement(
+        return wp.element.createElement(
+            'div',
+            {
+                className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen
+            },
+            wp.element.createElement(
                 'div',
-                {
-                    className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
-                wp.element.createElement(
-                    'div',
-                    { className: 'wrapper' },
-                    wp.element.createElement(InnerBlocks.Content, null)
-                )
-            );
-        }
+                { className: 'wrapper' },
+                wp.element.createElement(InnerBlocks.Content, null)
+            )
+        );
     }
 
 });
@@ -29573,9 +29496,7 @@ var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl,
-    TextControl = _wp$components.TextControl;
+    SelectControl = _wp$components.SelectControl;
 
 
 registerBlockType('aione-blocks/aione-wrapper', {
@@ -29586,19 +29507,7 @@ registerBlockType('aione-blocks/aione-wrapper', {
     attributes: {
         displayProp: {
             type: 'string',
-            default: 'display-block'
-        },
-        addLink: {
-            default: false,
-            type: 'boolean'
-        },
-        linkUrl: {
-            type: 'string',
-            default: ''
-        },
-        linkTarget: {
-            type: 'string',
-            default: '_self'
+            default: 'dispaly-block'
         }
     },
     edit: function edit(props) {
@@ -29606,11 +29515,7 @@ registerBlockType('aione-blocks/aione-wrapper', {
             editable = props.editable,
             setState = props.setState,
             className = props.className;
-        var _props$attributes = props.attributes,
-            displayProp = _props$attributes.displayProp,
-            addLink = _props$attributes.addLink,
-            linkUrl = _props$attributes.linkUrl,
-            linkTarget = _props$attributes.linkTarget;
+        var displayProp = props.attributes.displayProp;
 
 
         var onSetActiveEditable = function onSetActiveEditable(newEditable) {
@@ -29621,91 +29526,38 @@ registerBlockType('aione-blocks/aione-wrapper', {
         var onChangedisplayProp = function onChangedisplayProp(selecteddisplayProp) {
             props.setAttributes({ displayProp: selecteddisplayProp });
         };
-        var onChangelinkUrl = function onChangelinkUrl(NewlinkUrl) {
-            props.setAttributes({ linkUrl: NewlinkUrl });
-        };
-        var onChangelinkTarget = function onChangelinkTarget(selectedlinkTarget) {
-            props.setAttributes({ linkTarget: selectedlinkTarget });
-        };
 
         return [isSelected && wp.element.createElement(
             InspectorControls,
             null,
             wp.element.createElement(
                 PanelBody,
-                { title: __('Settings'), initialOpen: false },
+                { title: __('Display'), initialOpen: false },
                 wp.element.createElement(
                     'div',
                     { className: 'blocks-font-size__main' },
                     wp.element.createElement(SelectControl, {
-                        label: __('Settings:'),
+                        label: __('Display:'),
                         value: displayProp,
                         onChange: onChangedisplayProp,
                         options: [{ value: 'display-block', label: 'Inline Block' }, { value: 'display-inline', label: 'Inline' }, { value: 'display-inline-block', label: 'Block' }]
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __('Link'),
-                        checked: !!addLink,
-                        onChange: function onChange() {
-                            return props.setAttributes({ addLink: !addLink });
-                        }
-                    }),
-                    props.attributes.addLink && wp.element.createElement(TextControl, {
-                        label: 'Link Text',
-                        value: linkUrl,
-                        onChange: onChangelinkUrl
-                    }),
-                    props.attributes.addLink && wp.element.createElement(SelectControl, {
-                        label: __('Target:'),
-                        value: linkTarget,
-                        onChange: onChangelinkTarget,
-                        options: [{ value: '_self', label: 'Same Tab' }, { value: '_blank', label: 'New Tab' }]
                     })
                 )
             )
         ), wp.element.createElement(
-            'span',
-            null,
-            props.attributes.addLink ? wp.element.createElement(
-                'a',
-                { href: linkUrl, target: linkTarget },
-                wp.element.createElement(
-                    'div',
-                    { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
-                    wp.element.createElement(InnerBlocks, null)
-                )
-            ) : wp.element.createElement(
-                'div',
-                { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
-                wp.element.createElement(InnerBlocks, null)
-            )
+            'div',
+            { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
+            wp.element.createElement(InnerBlocks, null)
         )];
     },
     save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            displayProp = _props$attributes2.displayProp,
-            linkUrl = _props$attributes2.linkUrl,
-            linkTarget = _props$attributes2.linkTarget,
-            addLink = _props$attributes2.addLink;
+        var displayProp = props.attributes.displayProp;
 
-
-        if (props.attributes.addLink) {
-            return wp.element.createElement(
-                'a',
-                { href: linkUrl, target: linkTarget },
-                wp.element.createElement(
-                    'div',
-                    { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
-                    wp.element.createElement(InnerBlocks.Content, null)
-                )
-            );
-        } else {
-            return wp.element.createElement(
-                'div',
-                { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
-                wp.element.createElement(InnerBlocks.Content, null)
-            );
-        }
+        return wp.element.createElement(
+            'div',
+            { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
+            wp.element.createElement(InnerBlocks.Content, null)
+        );
     }
 });
 
