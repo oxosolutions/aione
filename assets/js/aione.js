@@ -27162,9 +27162,18 @@ $(document).ready(function() {
 			var content = $(this).text();
 			var result;
 			
+			content = content.trim();
+			if( content.indexOf("+") == 0 || content.indexOf("-") == 0 || content.indexOf("*") == 0 || content.indexOf("/") == 0 ){
+				content = content.substring(1, content.length);
+			}
+			if( content.endsWith("+") || content.endsWith("-") || content.endsWith("*") || content.endsWith("/") ){
+				content = content.substring(0, content.length-1);
+			}
+			content = content.trim();
+
 			result = eval( content );
-			
-			$(this).text(result);
+
+			$(this).html(result);
 			
 		});
 	} catch ( e ) {
