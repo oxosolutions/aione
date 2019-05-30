@@ -9322,6 +9322,17 @@ input[type=file]:hover {
 .gfield .textarea.large {
   height: 240px
 }
+.acf-field input[type=date],
+.acf-field input[type=email],
+.acf-field input[type=number],
+.acf-field input[type=password],
+.acf-field input[type=search],
+.acf-field input[type=tel],
+.acf-field input[type=text],
+.acf-field input[type=time],
+.acf-field input[type=url],
+.acf-field select input[type=search],
+.acf-field textarea,
 input[type=date],
 input[type=email],
 input[type=number],
@@ -9551,6 +9562,11 @@ input[type=search] {
   box-sizing: border-box;
   transition: all .2s ease-in-out;
   border-radius: 0
+}
+.acf-input-append,
+.acf-input-prepend,
+.acf-input-wrap {
+  height: 40px
 }
 .aione-table table {
   border: 1px solid #e8e8e8;
