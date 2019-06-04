@@ -27357,10 +27357,21 @@ $(document).ready(function() {
 	try{
 		$( ".aione-more" ).each( function() {
 			var html = $(this).html();
+			var toggle = '';
+			var more_text = $(this).data('more');
+			var less_text = $(this).data('less');
 			if($(this).hasClass('active')){
-				var toggle = 'Show Less';
+				if( less_text ){
+					toggle = less_text;
+				} else {
+					toggle = 'Show Less';
+				}
 			} else {
-				var toggle = 'Show More';
+				if( more_text ){
+					toggle = more_text;
+				} else {
+					toggle = 'Show More';
+				}
 			}
 			var output = '<span class="aione-more-content">' + html + '</span>'
 			+'<a href="#" class="aione-more-toggle">'+ toggle +'</a>';
@@ -27373,10 +27384,22 @@ $(document).ready(function() {
 	$(document).on('click', '.aione-more-toggle', function(e){
 		e.preventDefault();
 		$(this).parent().toggleClass('active');
-		if($(this).parent().hasClass('active')){
-			$(this).html('Show Less');
+
+		var more_text = $(this).parent().data('more');
+		var less_text = $(this).parent().data('less');
+
+		if( $(this).parent().hasClass('active') ) {
+			if( less_text ){
+				$(this).html(less_text);
+			} else {
+				$(this).html('Show Less');
+			}
 		} else {
-			$(this).html('Show More');
+			if( more_text ){
+				$(this).html(more_text);
+			} else {
+				$(this).html('Show More');
+			}
 		} 
 	}); 
 	

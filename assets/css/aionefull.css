@@ -6281,51 +6281,63 @@ img {
 .underline-left > ul > li > a span::after,
 .underline-right > ul > li > a span::after,
 .underline-up > ul > li > a span::after {
-  position: relative;
-  display: block;
-  margin-top: -4px;
-  width: 0;
   content: '';
-  transition: .5s ease;
-  height: 4px;
-  background: #168dc5
+  width: 0;
+  height: 0;
+  left: 0;
+  bottom: 0;
+  display: block;
+  position: absolute;
+  transition: all 320ms ease-in-out;
+  border-bottom: 4px solid
 }
 .underline-right > ul > li > a span::after {
-  float: right
+  left: auto;
+  right: 0
+}
+.underline-down > ul > li > a span::after,
+.underline-up > ul > li > a span::after {
+  width: 100%;
+  opacity: 0
 }
 .underline-up ul > li > a span::after {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  opacity: 0;
-  margin-top: -15px
+  bottom: 10px
 }
 .underline-down ul > li > a span::after {
-  height: 4px;
-  opacity: 0;
-  margin-top: 0;
+  bottom: -10px
+}
+.underline-left ul > li > a:hover span:after,
+.underline-left ul > li.current-menu-item > a span:after,
+.underline-left ul > li.current-menu-item > a:hover span:after,
+.underline-left ul > li.current-menu-parent > a span:after,
+.underline-left ul > li.current-menu-parent > a:hover span:after,
+.underline-left ul > li.current-page-ancestor > a span:after,
+.underline-left ul > li.current-page-ancestor > a:hover span:after,
+.underline-right ul > li > a:hover span:after,
+.underline-right ul > li.current-menu-item > a span:after,
+.underline-right ul > li.current-menu-item > a:hover span:after,
+.underline-right ul > li.current-menu-parent > a span:after,
+.underline-right ul > li.current-menu-parent > a:hover span:after,
+.underline-right ul > li.current-page-ancestor > a span:after,
+.underline-right ul > li.current-page-ancestor > a:hover span:after {
   width: 100%
 }
-.underline-left ul > li > a:hover span::after,
-.underline-left ul > li.nav-item-current > a span::after,
-.underline-left ul > li.nav-item-current-parent > a span::after,
-.underline-left ul > li.nav-item-selected > a span::after,
-.underline-right ul > li > a:hover span::after,
-.underline-right ul > li.nav-item-current > a span::after,
-.underline-right ul > li.nav-item-current-parent > a span::after,
-.underline-right ul > li.nav-item-selected > a span::after {
-  width: 100%
-}
-.underline-down ul > li > a:hover span::after,
-.underline-down ul > li.nav-item-current > a span::after,
-.underline-down ul > li.nav-item-current-parent > a span::after,
-.underline-down ul > li.nav-item-selected > a span::after,
-.underline-up ul > li > a:hover span::after,
-.underline-up ul > li.nav-item-current > a span::after,
-.underline-up ul > li.nav-item-current-parent > a span::after,
-.underline-up ul > li.nav-item-selected > a span::after {
-  margin-top: -4px;
-  opacity: 1
+.underline-down ul > li > a:hover span:after,
+.underline-down ul > li.current-menu-item > a span:after,
+.underline-down ul > li.current-menu-item > a:hover span:after,
+.underline-down ul > li.current-menu-parent > a span:after,
+.underline-down ul > li.current-menu-parent > a:hover span:after,
+.underline-down ul > li.current-page-ancestor > a span:after,
+.underline-down ul > li.current-page-ancestor > a:hover span:after,
+.underline-up ul > li > a:hover span:after,
+.underline-up ul > li.current-menu-item > a span:after,
+.underline-up ul > li.current-menu-item > a:hover span:after,
+.underline-up ul > li.current-menu-parent > a span:after,
+.underline-up ul > li.current-menu-parent > a:hover span:after,
+.underline-up ul > li.current-page-ancestor > a span:after,
+.underline-up ul > li.current-page-ancestor > a:hover span:after {
+  opacity: 1;
+  bottom: 0
 }
 .topline-down > ul > li > a span::after,
 .topline-left > ul > li > a span::after,
