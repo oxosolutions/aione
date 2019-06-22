@@ -167,3 +167,6 @@ UPDATED: Using Darlic CDN for loading CSS and JS
 
 ## 7.3.0.17 10-04-2019
 UPDATED: Primary Menu Custom CSS
+
+## 7.4.0.0 22-06-2019
+UPDATED: Primary menu description CSS
