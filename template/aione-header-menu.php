@@ -15,6 +15,10 @@ if( is_enabled( $post->ID, 'header_show_navigation' ) ) :
 	$menu_classes[] = $theme_options['main_nav_layout'];
 	$menu_classes[] = $theme_options['main_nav_animation'];
 
+	if(  $theme_options['main_nav_show_description'] ){
+		$menu_classes[] = 'show-description';
+	}
+
 	$nav_classes  = implode(' ', $nav_classes);
 	$menu_classes = implode(' ', $menu_classes);
 

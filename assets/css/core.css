@@ -1137,7 +1137,9 @@ img {
 .slide-left > ul > li > a,
 .slide-right > ul > li > a,
 .slide-up > ul > li > a {
-  overflow: hidden
+  overflow: hidden;
+  position: relative;
+  display: inline-block
 }
 .slide-left > ul > li > a,
 .slide-right > ul > li > a {
@@ -1145,13 +1147,11 @@ img {
   margin: 0 5px
 }
 .slide-up > ul > li > a > span {
-  position: relative;
-  display: inline-block;
   -webkit-transition: -webkit-transform .3s;
   -moz-transition: -moz-transform .3s;
   transition: transform .3s
 }
-.slide-up > ul > li > a span::after {
+.slide-up > ul > li > a span:after {
   position: absolute;
   top: 100%;
   left: 0;
@@ -1160,11 +1160,23 @@ img {
   -moz-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0)
 }
+.slide-up.show-description > ul > li > a > span:after {
+  margin-top: 6px
+}
+.slide-up.show-description > ul > li > a > span {
+  width: 100%
+}
 .slide-up > ul > li > a:focus span,
 .slide-up > ul > li > a:hover span {
   -webkit-transform: translateY(-100%);
   -moz-transform: translateY(-100%);
   transform: translateY(-100%)
+}
+.slide-up.show-description > ul > li > a:focus .menu-item-description,
+.slide-up.show-description > ul > li > a:hover .menu-item-description {
+  -webkit-transform: translateY(-200%);
+  -moz-transform: translateY(-200%);
+  transform: translateY(-200%)
 }
 .slide-down > ul > li > a span {
   position: relative;
@@ -1434,6 +1446,19 @@ img {
   padding: 0 12px;
   font-size: 16px;
   line-height: 50px
+}
+.primary-nav .aione-nav > ul > li > a span {
+  display: block
+}
+.primary-nav .aione-nav.show-description > ul > li > a .nav-item-text {
+  padding-top: 6px;
+  font-size: 16px;
+  line-height: 24px
+}
+.primary-nav .aione-nav.show-description > ul > li > a .menu-item-description {
+  padding-bottom: 5px;
+  font-size: 13px;
+  line-height: 15px
 }
 .primary-nav .aione-nav.horizontal > ul > li > ul {
   overflow: hidden

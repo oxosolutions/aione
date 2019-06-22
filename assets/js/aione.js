@@ -27109,7 +27109,10 @@ $(document).ready(function() {
 	/*****************************************************
 	/*  Primary Nav Hover Animation
 	/*****************************************************/
-	$('.primary-nav ul li a span').each( function(){
+	$('.primary-nav ul li a .nav-item-text').each( function(){
+        $(this).attr('data-hover', $(this).text() );
+    });
+    $('.primary-nav ul li a .menu-item-description').each( function(){
         $(this).attr('data-hover', $(this).text() );
     });
 	

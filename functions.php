@@ -284,6 +284,9 @@ require get_template_directory() . '/includes/aione-functions.php';
 // Common Aione Theme functions
 require get_template_directory() . '/includes/theme-functions.php';
 
+// Common Aione Theme filters
+require get_template_directory() . '/includes/theme-filters.php';
+
 // Aione Widgets
 require get_template_directory() . '/includes/aione-widgets.php';
 
