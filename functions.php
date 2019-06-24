@@ -293,6 +293,9 @@ require get_template_directory() . '/includes/aione-widgets.php';
 // Register Sidebars(Widget Areas)
 require get_template_directory() . '/includes/register-sidebars.php';
 
+// Register Blocks(Using ACF)
+require get_template_directory() . '/includes/aione-blocks.php';
+
 
 
 //Register Aione Slider
