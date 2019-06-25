@@ -1448,7 +1448,8 @@ img {
   line-height: 50px
 }
 .primary-nav .aione-nav > ul > li > a span {
-  display: block
+  display: block;
+  text-align: center
 }
 .primary-nav .aione-nav.show-description > ul > li > a .nav-item-text {
   padding-top: 6px;
