@@ -9241,6 +9241,9 @@ optgroup {
   padding: 10px 0 10px 0;
   font-weight: 100
 }
+.field-label label .required {
+  color: #d32f2f
+}
 .field-label label:blank,
 .field-label label:empty {
   padding: 0
