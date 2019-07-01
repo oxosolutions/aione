@@ -7777,6 +7777,10 @@ img {
   display: block;
   font-size: 16px
 }
+.aione-footer .widget_nav_menu ul li a .menu-item-description {
+  padding-left: 6px;
+  font-size: 80%
+}
 .aione-footer .widget_categories ul li {
   text-align: right
 }
