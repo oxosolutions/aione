@@ -170,3 +170,6 @@ UPDATED: Primary Menu Custom CSS
 
 ## 7.4.0.0 22-06-2019
 UPDATED: Primary menu description CSS
+
+## 7.4.0.1 02-07-2019
+ADDED: Aione Star Rating

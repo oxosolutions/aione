@@ -27362,6 +27362,32 @@ $(document).ready(function() {
 	});
 
 	/*****************************************************
+	/*  Aione Star Rating
+	/*****************************************************/
+
+
+	$( ".aione-star-rating" ).each( function() {
+		var text 	= $(this).text();
+		var array 	= text.split("/");
+		var value 	= parseInt(array[0]);
+		var total 	= parseInt(array[1]);
+
+		console.log("Total = "+ total);
+		console.log("Value = "+ value);
+
+		var output = '';
+		var i;
+		for (i = 0; i < total; i++){
+			if( i >= value ){
+				output += '<span class="rating-icon star-outline"><i class="ion-ios-star-outline"></i></span>';
+			} else {
+				output += '<span class="rating-icon star"><i class="ion-ios-star"></i></span>';
+			}
+		}
+		$(this).html( output );
+	});
+
+	/*****************************************************
 	/*  Aione More
 	/*****************************************************/
 		

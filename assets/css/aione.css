@@ -9430,6 +9430,12 @@ input[type=search] {
   bottom: 0;
   left: 0
 }
+.aione-star-rating .rating-icon {
+  display: inline-block;
+  color: #595959;
+  font-size: 26px;
+  padding: 0 10px 0 0
+}
 .aione-accordion .aione-item {
   border: 1px solid #e8e8e8;
   border-bottom: none
