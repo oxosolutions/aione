@@ -27369,19 +27369,36 @@ $(document).ready(function() {
 	$( ".aione-star-rating" ).each( function() {
 		var text 	= $(this).text();
 		var array 	= text.split("/");
-		var value 	= parseInt(array[0]);
 		var total 	= parseInt(array[1]);
 
+		var value 	= array[0];
+		var value_array 	= value.split(".");
+
+		var int 	= parseInt(value_array[0]);
+		var float 	= parseInt(value_array[1]);
+
+		if( isNaN( float ) ) {
+			float = 0;
+		}
+
+		console.log("=====================");
 		console.log("Total = "+ total);
 		console.log("Value = "+ value);
+		console.log("Int = "+ int);
+		console.log("Float = "+ float);
 
 		var output = '';
 		var i;
-		for (i = 0; i < total; i++){
-			if( i >= value ){
-				output += '<span class="rating-icon star-outline"><i class="ion-ios-star-outline"></i></span>';
-			} else {
+		for ( i = 1; i <= total; i++ ) {
+			if( i <= int ) {
 				output += '<span class="rating-icon star"><i class="ion-ios-star"></i></span>';
+			} else {
+				if( float >= 5 ) {
+					output += '<span class="rating-icon star-half"><i class="ion-ios-star-half"></i></span>';
+					float=0;
+				} else {
+					output += '<span class="rating-icon star-outline"><i class="ion-ios-star-outline"></i></span>';
+				}		
 			}
 		}
 		$(this).html( output );
