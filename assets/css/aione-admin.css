@@ -2675,6 +2675,12 @@
   font-size: 26px;
   padding: 0 10px 0 0
 }
+.aione-star-rating .rating-icon.thumbs-up {
+  color: #388e3c
+}
+.aione-star-rating .rating-icon.thumbs-down {
+  color: #f44336
+}
 .aione-accordion .aione-item {
   border: 1px solid #e8e8e8;
   border-bottom: none

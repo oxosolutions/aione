@@ -1,10 +1,10 @@
 @charset "UTF-8";
 /*!
- * animate.css -http://daneden.me/animate
- * Version - 3.7.0
+ * animate.css -https://daneden.github.io/animate.css/
+ * Version - 3.7.2
  * Licensed under the MIT license - http://opensource.org/licenses/MIT
  *
- * Copyright (c) 2018 Daniel Eden
+ * Copyright (c) 2019 Daniel Eden
  */
 @-webkit-keyframes bounce {
   20%,
@@ -3036,12 +3036,15 @@
   -webkit-animation-duration: 3s;
   animation-duration: 3s
 }
-@media (prefers-reduced-motion) {
+@media (print),
+(prefers-reduced-motion:reduce) {
   .animated {
-    -webkit-animation: unset!important;
-    animation: unset!important;
-    -webkit-transition: none!important;
-    transition: none!important
+    -webkit-animation-duration: 1ms!important;
+    animation-duration: 1ms!important;
+    -webkit-transition-duration: 1ms!important;
+    transition-duration: 1ms!important;
+    -webkit-animation-iteration-count: 1!important;
+    animation-iteration-count: 1!important
   }
 }
 div.pp_default .pp_bottom,
@@ -48234,6 +48237,12 @@ ul.aione-list.theme-checkmark {
   color: #595959;
   font-size: 26px;
   padding: 0 10px 0 0
+}
+.aione-star-rating .rating-icon.thumbs-up {
+  color: #388e3c
+}
+.aione-star-rating .rating-icon.thumbs-down {
+  color: #f44336
 }
 .aione-accordion .aione-item {
   border: 1px solid #e8e8e8;

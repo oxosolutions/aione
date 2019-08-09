@@ -1312,11 +1312,11 @@ pre.wp-block-verse {
   word-break: break-all
 }
 /*!
- * animate.css -http://daneden.me/animate
- * Version - 3.7.0
+ * animate.css -https://daneden.github.io/animate.css/
+ * Version - 3.7.2
  * Licensed under the MIT license - http://opensource.org/licenses/MIT
  *
- * Copyright (c) 2018 Daniel Eden
+ * Copyright (c) 2019 Daniel Eden
  */
 @-webkit-keyframes bounce {
   20%,
@@ -4348,12 +4348,15 @@ pre.wp-block-verse {
   -webkit-animation-duration: 3s;
   animation-duration: 3s
 }
-@media (prefers-reduced-motion) {
+@media (print),
+(prefers-reduced-motion:reduce) {
   .animated {
-    -webkit-animation: unset!important;
-    animation: unset!important;
-    -webkit-transition: none!important;
-    transition: none!important
+    -webkit-animation-duration: 1ms!important;
+    animation-duration: 1ms!important;
+    -webkit-transition-duration: 1ms!important;
+    transition-duration: 1ms!important;
+    -webkit-animation-iteration-count: 1!important;
+    animation-iteration-count: 1!important
   }
 }
 div.pp_default .pp_bottom,
@@ -5386,12 +5389,14 @@ div.ppt {
 .select2-hidden-accessible {
   border: 0!important;
   clip: rect(0 0 0 0)!important;
+  -webkit-clip-path: inset(50%)!important;
+  clip-path: inset(50%)!important;
   height: 1px!important;
-  margin: -1px!important;
   overflow: hidden!important;
   padding: 0!important;
   position: absolute!important;
-  width: 1px!important
+  width: 1px!important;
+  white-space: nowrap!important
 }
 .select2-container--default .select2-selection--single {
   background-color: #fff;
@@ -5721,9 +5726,7 @@ div.ppt {
   color: #555
 }
 .select2-container--classic[dir=rtl] .select2-selection--multiple .select2-selection__choice {
-  float: right
-}
-.select2-container--classic[dir=rtl] .select2-selection--multiple .select2-selection__choice {
+  float: right;
   margin-left: 5px;
   margin-right: auto
 }
@@ -11585,6 +11588,12 @@ input[type=search] {
   color: #595959;
   font-size: 26px;
   padding: 0 10px 0 0
+}
+.aione-star-rating .rating-icon.thumbs-up {
+  color: #388e3c
+}
+.aione-star-rating .rating-icon.thumbs-down {
+  color: #f44336
 }
 .aione-accordion .aione-item {
   border: 1px solid #e8e8e8;
@@ -59947,12 +59956,14 @@ body.stop-scrolling {
 .select2-hidden-accessible {
   border: 0!important;
   clip: rect(0 0 0 0)!important;
+  -webkit-clip-path: inset(50%)!important;
+  clip-path: inset(50%)!important;
   height: 1px!important;
-  margin: -1px!important;
   overflow: hidden!important;
   padding: 0!important;
   position: absolute!important;
-  width: 1px!important
+  width: 1px!important;
+  white-space: nowrap!important
 }
 .select2-container--default .select2-selection--single {
   background-color: #fff;
@@ -60282,9 +60293,7 @@ body.stop-scrolling {
   color: #555
 }
 .select2-container--classic[dir=rtl] .select2-selection--multiple .select2-selection__choice {
-  float: right
-}
-.select2-container--classic[dir=rtl] .select2-selection--multiple .select2-selection__choice {
+  float: right;
   margin-left: 5px;
   margin-right: auto
 }
