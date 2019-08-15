@@ -5468,11 +5468,6 @@ div.ppt {
 .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
   list-style: none
 }
-.select2-container--default .select2-selection--multiple .select2-selection__placeholder {
-  color: #999;
-  margin-top: 5px;
-  float: left
-}
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
   cursor: pointer;
   float: right;
@@ -5501,8 +5496,7 @@ div.ppt {
   color: #333
 }
 .select2-container--default[dir=rtl] .select2-selection--multiple .select2-search--inline,
-.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice,
-.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__placeholder {
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {
   float: right
 }
 .select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {
@@ -11758,6 +11752,9 @@ input[type=search] {
 .aione-tooltip:hover:before {
   opacity: 1;
   height: auto
+}
+.count-records .filtered-records {
+  display: none
 }
 .aione-sort-button {
   cursor: pointer;
@@ -60035,11 +60032,6 @@ body.stop-scrolling {
 .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
   list-style: none
 }
-.select2-container--default .select2-selection--multiple .select2-selection__placeholder {
-  color: #999;
-  margin-top: 5px;
-  float: left
-}
 .select2-container--default .select2-selection--multiple .select2-selection__clear {
   cursor: pointer;
   float: right;
@@ -60068,8 +60060,7 @@ body.stop-scrolling {
   color: #333
 }
 .select2-container--default[dir=rtl] .select2-selection--multiple .select2-search--inline,
-.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice,
-.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__placeholder {
+.select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {
   float: right
 }
 .select2-container--default[dir=rtl] .select2-selection--multiple .select2-selection__choice {

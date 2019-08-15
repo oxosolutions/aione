@@ -28538,6 +28538,34 @@ $(document).ready(function() {
 		var search = new List(aione_search, options);
     });
 
+    $( '.aione-search-input' ).bind('keyup change', function( e ) {
+		e.preventDefault();
+
+		var data_table_id = $( this ).parent().parent().attr( 'id' );
+
+		var search_input = $( this ).val( );
+
+		if( search_input ) {
+
+			var total_records = $( '#' + data_table_id + ' .count-records .total-records' ).text();
+
+			var count_records = $( '#' + data_table_id + ' .aione-search-list tr' );
+
+			$(  '#' + data_table_id + ' .count-records .filtered-records'  ).text(  ' ' + count_records.length + ' filtered records of ' ).show();
+
+			if( total_records.indexOf( 'total' ) != -1 ) {
+				$( '#' + data_table_id + ' .count-records .total-records' ).text(  total_records );
+			} else {
+				$( '#' + data_table_id + ' .count-records .total-records' ).text(  ' total ' + total_records );
+			}
+
+		} else{
+			$(  '#' + data_table_id + ' .count-records .filtered-records'  ).text( '' ).hide();
+			$( '#' + data_table_id + ' .count-records .total-records' ).text(  total_records );
+		}
+
+	})
+
 	/*****************************************************
 	/*  Aione Collapsible
 	/*****************************************************/

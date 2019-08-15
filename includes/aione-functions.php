@@ -18,7 +18,7 @@ if ( !function_exists( 'clean_class' ) ) {
 
 if ( !function_exists( 'aione_data_table' ) ) {
 
-	function aione_data_table( $headers, $data, $id = 'aione-', $class = 'compact' ) {
+	function aione_data_table( $headers, $data, $id = 'aione-', $class = 'compact', $count = 'yes', $search = 'yes', $sort = 'yes' ) {
 
 		$columns = array();
 		foreach ( $headers as $key => $header ) {
@@ -26,10 +26,27 @@ if ( !function_exists( 'aione_data_table' ) ) {
 		}
 
 		$output = "";
+
 		$output .= '<div class="aione-search aione-table" >';
-		$output .= '<div class="field">';
-		$output .= '<input autofocus type="text" class="aione-search-input" data-search="' . implode(' ', $columns) . '" placeholder="Search">';
-		$output .= '</div>';
+
+		if( $count == 'yes' ){
+			$output .= '<div class="count-records">';
+			$output .= 'Showing';
+			$output .= '<span class="filtered-records">';
+			$output .= '</span>';
+			$output .= '<span class="total-records">';
+			$output .= ' '. count( $data );
+			$output .= '</span>';
+			$output .= ' records';
+			$output .= '</div>';
+		}
+
+		if( $search == 'yes' ){
+			$output .= '<div class="field">';
+			$output .= '<input autofocus type="text" class="aione-search-input" data-search="' . implode(' ', $columns) . '" placeholder="Search">';
+			$output .= '</div>';
+		}
+
 		$output .= '<div class="clear"></div>';
 		$output .= '<table class="' . $class . '">';
 		$output .= '<thead>';

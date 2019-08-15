@@ -2845,6 +2845,9 @@
   opacity: 1;
   height: auto
 }
+.count-records .filtered-records {
+  display: none
+}
 .aione-sort-button {
   cursor: pointer;
   position: relative
