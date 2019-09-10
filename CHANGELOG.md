@@ -173,3 +173,6 @@ UPDATED: Primary menu description CSS
 
 ## 7.4.0.1 02-07-2019
 ADDED: Aione Star Rating
+
+## 7.4.0.2 10-09-2019
+ADDED: Aione Data Table Filtered Row Count
