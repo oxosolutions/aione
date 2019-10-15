@@ -28278,6 +28278,11 @@ $(document).ready(function() {
 
 	}
 });
+$(window).on('load', function(){
+	$(".aione-preloader > .preloader").fadeOut();
+	$(".aione-preloader").delay(200).fadeOut("slow");
+});
+
 $(window).resize(function(){
 	$('.equal').equal();
 });

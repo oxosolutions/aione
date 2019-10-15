@@ -176,3 +176,7 @@ ADDED: Aione Star Rating
 
 ## 7.4.0.2 10-09-2019
 ADDED: Aione Data Table Filtered Row Count
+
+## 7.4.0.3 15-10-2019
+ADDED: Aione Preloader
+ADDED: Retina logo Support

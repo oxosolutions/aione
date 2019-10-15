@@ -216,7 +216,9 @@ $body_classes = implode(" ", $body_classes);
 
 </head>
 <body <?php body_class( $body_classes ); ?>>
-
+<?php if( $theme_options['show_preloader'] ) { ?>
+<div class="aione-preloader"><div class="preloader"></div></div>
+<?php } ?>
 <div id="aione_wrapper" class="<?php echo esc_html($wrapper_classes); ?>">
 	<div class="wrapper">
 

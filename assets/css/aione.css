@@ -7469,6 +7469,7 @@ input[type=file] {
   padding: 20px 0 20px 20px;
   border: 1px dashed #e8e8e8;
   width: 100%;
+  box-sizing: border-box;
   background-color: #f8f8f8;
   -moz-transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
