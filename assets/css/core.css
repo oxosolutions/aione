@@ -272,8 +272,8 @@ img {
   left: 50%;
   top: 50%;
   position: absolute;
-  border: 2px solid #f3f3f3;
-  border-top: 3px solid #f25a41;
+  border: 2px solid #f2f2f2;
+  border-top: 3px solid #1570a6;
   border-radius: 100%;
   animation: spin 1s infinite linear
 }

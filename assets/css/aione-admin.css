@@ -1603,6 +1603,20 @@
 .aione-progress-bar.active .aione-progress-bar-content {
   display: block
 }
+.aione-scroll-progress {
+  background-color: #fff;
+  height: 3px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  box-sizing: border-box
+}
+.aione-scroll-progress .progress {
+  width: 0;
+  height: 3px;
+  background: #faaf3f;
+  transition: all .1s ease-in-out
+}
 .gallery:after {
   display: table;
   content: '';

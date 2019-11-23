@@ -649,14 +649,15 @@ class Aione_Social_Icons_Widget extends WP_Widget
 			'Google+'    => 'googleplus',
 			'LinkedIn'   => 'linkedin',
 			'Instagram'  => 'instagram',
-            // 'Email'        =>    'email',
+            'Email'     => 'email',
 			'Flickr'     => 'flickr',
 			'GitHub'     => 'github',
 			'Pinterest'  => 'pinterest',
 			'RSS Feed'   => 'rss',
 			'Tumblr'     => 'tumblr',
 			'Vimeo'      => 'vimeo',
-			'WordPress'  => 'wordpress',
+			'WhatsApp'   => 'whatsapp',
+            'Call'   => 'call',
 		);
 
 		if ( has_filter('aione_social_icon_accounts') ) {

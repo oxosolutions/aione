@@ -5473,7 +5473,8 @@ div.ppt {
   float: right;
   font-weight: 700;
   margin-top: 5px;
-  margin-right: 10px
+  margin-right: 10px;
+  padding: 1px
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;
@@ -8361,6 +8362,20 @@ input[type=search] {
 }
 .aione-progress-bar.active .aione-progress-bar-content {
   display: block
+}
+.aione-scroll-progress {
+  background-color: #fff;
+  height: 3px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  box-sizing: border-box
+}
+.aione-scroll-progress .progress {
+  width: 0;
+  height: 3px;
+  background: #faaf3f;
+  transition: all .1s ease-in-out
 }
 .gallery:after {
   display: table;
@@ -57888,7 +57903,8 @@ body.stop-scrolling {
   float: right;
   font-weight: 700;
   margin-top: 5px;
-  margin-right: 10px
+  margin-right: 10px;
+  padding: 1px
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
   background-color: #e4e4e4;

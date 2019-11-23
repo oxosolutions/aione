@@ -82,6 +82,13 @@ if (empty($pyre_og_image)) {
 
 	<?php
 	if( $theme_options['advanced_use_cdn'] ) {
+	?>
+
+	<link rel="dns-prefetch" href="https://cdn.darlic.com">
+	<?php
+	// <link rel="preload" href="https://cdn.darlic.com">
+	// <link rel="preconnect" href="https://cdn.darlic.com">
+
 	
 	$defer = $async = '';
 	if( $theme_options['advanced_deffer_js'] ) { $defer = 'defer';}
@@ -218,6 +225,9 @@ $body_classes = implode(" ", $body_classes);
 <body <?php body_class( $body_classes ); ?>>
 <?php if( $theme_options['show_preloader'] ) { ?>
 <div class="aione-preloader"><div class="preloader"></div></div>
+<?php } ?>
+<?php if( $theme_options['show_scroll_progress'] ) { ?>
+<div class="aione-scroll-progress"><div class="progress"></div></div>
 <?php } ?>
 <div id="aione_wrapper" class="<?php echo esc_html($wrapper_classes); ?>">
 	<div class="wrapper">

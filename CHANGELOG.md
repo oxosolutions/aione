@@ -180,3 +180,6 @@ ADDED: Aione Data Table Filtered Row Count
 ## 7.4.0.3 15-10-2019
 ADDED: Aione Preloader
 ADDED: Retina logo Support
+
+## 7.4.0.4 04-11-2019
+ADDED: Scroll Progress Bar

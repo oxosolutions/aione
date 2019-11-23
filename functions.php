@@ -131,6 +131,18 @@ function aionetheme_content_width() {
 }
 add_action( 'after_setup_theme', 'aionetheme_content_width', 0 );
 
+add_filter( 'gform_init_scripts_footer', '__return_true' );
+/*
+function aione_remove_gf_scripts() {
+    // De-register the default version of jQuery
+    wp_deregister_script( 'jquery' );
+    // Register a new version of jQuery under the same handle
+    wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', false, '1.9.1', true );
+}
+add_action('wp_enqueue_scripts', 'aione_remove_gf_scripts', 10);
+*/
+
+
 
 /**
  * Enqueue scripts and styles.
