@@ -183,3 +183,6 @@ ADDED: Retina logo Support
 
 ## 7.4.0.4 04-11-2019
 ADDED: Scroll Progress Bar
+
+## 7.4.0.5 04-12-2019
+ADDED: Google Analytics Code

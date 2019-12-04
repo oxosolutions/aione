@@ -115,6 +115,22 @@ if (empty($pyre_og_image)) {
 	<!-- Headend -->
 	<?php
 
+	$google_analytics = $theme_options['google_analytics_id'];
+	if( !empty( $google_analytics ) ) {
+		?>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $google_analytics; ?>"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', '<?php echo $google_analytics; ?>');
+		</script>
+
+		<?php
+	}
+
 /*
 $upload = wp_upload_dir();
 $upload_url = $upload['baseurl'];
