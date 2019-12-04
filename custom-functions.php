@@ -262,7 +262,7 @@ public function ace_editor( $id, $label, $desc = '', $default = '' )
 </div>
 <script>
  function cssEditor(){
-    var csstempValue = $('textarea[name="pyre_custom_css"]').val();
+    var csstempValue = jQuery('textarea[name="pyre_custom_css"]').val();
     var cssEditor = ace.edit("pyre_custom_css");
     cssEditor.setTheme("ace/theme/twilight");
     cssEditor.session.setMode("ace/mode/css");
@@ -272,13 +272,13 @@ public function ace_editor( $id, $label, $desc = '', $default = '' )
        fontSize: "14px"
    });
 
-    var cssinput = $('textarea[name="pyre_custom_css"]');
+    var cssinput = jQuery('textarea[name="pyre_custom_css"]');
     cssEditor.getSession().on("change", function () {
        cssinput.val(cssEditor.getSession().getValue());
    });
 }
 function jsEditor(){
-    var jstempValue = $('textarea[name="pyre_custom_js"]').val();
+    var jstempValue = jQuery('textarea[name="pyre_custom_js"]').val();
     var jsEditor = ace.edit("pyre_custom_js");
     jsEditor.setTheme("ace/theme/twilight");
     jsEditor.session.setMode("ace/mode/javascript");
@@ -287,7 +287,7 @@ function jsEditor(){
        autoScrollEditorIntoView: true
    });
 
-    var jsinput = $('textarea[name="pyre_custom_js"]');
+    var jsinput = jQuery('textarea[name="pyre_custom_js"]');
     jsEditor.getSession().on("change", function () {
        jsinput.val(jsEditor.getSession().getValue());
    });

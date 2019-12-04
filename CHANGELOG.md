@@ -186,3 +186,4 @@ ADDED: Scroll Progress Bar
 
 ## 7.4.0.5 04-12-2019
 ADDED: Google Analytics Code
+FIXED: Per post setting js conflict

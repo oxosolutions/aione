@@ -7,14 +7,14 @@
 	<div class="aione-serp-preview-description"><?php echo esc_html( get_aione_page_settings(get_the_ID(), 'aione_per_page_setting','pyre_meta_description') );?></div>
 </section>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#pyre_title_tag').on("input", function() {
+	jQuery(document).ready(function(){
+		jQuery('#pyre_title_tag').on("input", function() {
 		  var tInput = this.value;
-		  $('.aione-serp-preview-title').text(tInput);
+		  jQuery('.aione-serp-preview-title').text(tInput);
 		});
-		$('#pyre_meta_description').on("input", function() {
+		jQuery('#pyre_meta_description').on("input", function() {
 		  var dInput = this.value;
-		  $('.aione-serp-preview-description').text(dInput);
+		  jQuery('.aione-serp-preview-description').text(dInput);
 		});
 	});
 </script>
