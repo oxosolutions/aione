@@ -31274,38 +31274,43 @@ function init_sliders(){
 
         $.each(aione_slider_ids, function( index, aione_slider ) {
             var slider_data = $('#'+aione_slider).data();
-            if(slider_data !== undefined){
+            if( slider_data !== undefined ) {
 
-                console.log('Slider Data =');
-                console.log(slider_data);
-                /*
-                $.each( slider_data, function( key, value ) {
-                    is_json = true;
-                    try {
-                        JSON.parse( value );
-                    } catch (e) {
-                        is_json = false;
+                var responsiveClass = slider_data.responsiveClass;
+
+
+                if( responsiveClass ) {
+
+                    var mobile_items = slider_data.responsive_mobile;
+                    var tablet_items = slider_data.responsive_tablet;
+                    var desktop_items = slider_data.responsive_desktop;
+
+                    delete slider_data.responsive_mobile;
+                    delete slider_data.responsive_tablet;
+                    delete slider_data.responsive_desktop;
+
+
+                    if( !desktop_items ) {
+                        desktop_items = slider_data.items;
                     }
 
-                    if( is_json ){
-                        console.log("is_json");
-                        slider_data[key] = JSON.parse( value ); 
+                    if( !tablet_items ) {
+                        tablet_items = parseInt( desktop_items / 2 );
+                        if( tablet_items < 1 ) {
+                            tablet_items = 1;
+                        }
                     }
-                });
-                */
 
-                var desktop_items = slider_data.items;
-                var tablet_items = parseInt( desktop_items / 2 );
-                var mobile_items = parseInt( tablet_items / 2 );
-                if( tablet_items < 1 ) {
-                    tablet_items = 1;
-                }
-                if( mobile_items < 1 ) {
-                    mobile_items = 1;
-                }
+                    if( !mobile_items ) {
+                        mobile_items = parseInt( tablet_items / 2 );
+                        if( mobile_items < 1 ) {
+                            mobile_items = 1;
+                        }
+                    }
 
-                slider_data.responsive = {0:{items:mobile_items},601:{items:tablet_items},901:{items:desktop_items}};
-                console.log(slider_data);
+                    slider_data.responsive = {0:{items:mobile_items},601:{items:tablet_items},901:{items:desktop_items}};
+
+                }
 
                 $('#'+aione_slider).owlCarousel(slider_data);
             } else {
