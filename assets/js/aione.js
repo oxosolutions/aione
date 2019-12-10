@@ -31297,6 +31297,12 @@ function init_sliders(){
                 var desktop_items = slider_data.items;
                 var tablet_items = parseInt( desktop_items / 2 );
                 var mobile_items = parseInt( tablet_items / 2 );
+                if( tablet_items < 1 ) {
+                    tablet_items = 1;
+                }
+                if( mobile_items < 1 ) {
+                    mobile_items = 1;
+                }
 
                 slider_data.responsive = {0:{items:mobile_items},601:{items:tablet_items},901:{items:desktop_items}};
                 console.log(slider_data);
