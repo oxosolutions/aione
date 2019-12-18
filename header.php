@@ -60,8 +60,8 @@ if (empty($pyre_og_image)) {
 }
 
 ?>
-	<meta charset="<?php bloginfo('charset'); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="<?php bloginfo('charset'); ?>" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="description" content="<?php echo esc_textarea($pyre_meta_description); ?>" />
 	<meta name="keywords" content="<?php echo esc_textarea($pyre_meta_keywords); ?>" />
 
@@ -77,14 +77,14 @@ if (empty($pyre_og_image)) {
 	<meta name="twitter:site" content="<?php echo esc_html(get_bloginfo()); ?>" />
 	<meta name="twitter:image" content="<?php echo esc_url($pyre_og_image); ?>" />
 
-	<meta name="theme-color" content="#168dc5"/>
-	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<meta name="theme-color" content="#168dc5" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
 
 	<?php
 	if( $theme_options['advanced_use_cdn'] ) {
 	?>
 
-	<link rel="dns-prefetch" href="https://cdn.darlic.com">
+	<link rel="dns-prefetch" href="https://cdn.darlic.com" />
 	<?php
 	// <link rel="preload" href="https://cdn.darlic.com">
 	// <link rel="preconnect" href="https://cdn.darlic.com">

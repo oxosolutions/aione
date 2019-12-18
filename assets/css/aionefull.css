@@ -7821,6 +7821,10 @@ img {
   .primary-nav .aione-nav-background {
     display: block
   }
+  .primary-nav.align-right.position-inside {
+    float: none;
+    display: block
+  }
   .primary-nav .aione-nav {
     display: none;
     z-index: 9997
@@ -7836,8 +7840,67 @@ img {
     background: #fff;
     text-align: center
   }
+  .primary-nav .aione-nav > ul > li a {
+    border-bottom: 1px solid #e8e8e8;
+    line-height: 40px
+  }
+  .aione-nav.horizontal > ul > li > ul > li > a {
+    padding-left: 15px
+  }
+  .aione-nav.horizontal > ul > li > ul > li > ul > li > a {
+    padding-left: 30px
+  }
+  .aione-nav.horizontal > ul > li > ul > li > ul > li > ul > li > a {
+    padding-left: 45px
+  }
+  .aione-nav.horizontal > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+    padding-left: 60px
+  }
+  .aione-nav.horizontal > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+    padding-left: 75px
+  }
+  .aione-nav.horizontal > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+    padding-left: 90px
+  }
+  .aione-nav.horizontal > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > a {
+    padding-left: 105px
+  }
   .primary-nav .aione-nav > ul > li > a {
-    border-bottom: 1px solid #e8e8e8
+    line-height: 40px!important
+  }
+  .primary-nav .aione-nav > ul > li > a span {
+    text-align: left
+  }
+  .primary-nav.align-right.position-inside {
+    float: none;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0
+  }
+  .primary-nav .aione-nav.horizontal > ul > li ul {
+    width: 100%;
+    top: unset;
+    left: unset;
+    display: block;
+    position: relative;
+    border: none;
+    text-shadow: none;
+    text-align: left;
+    background: #fff;
+    box-shadow: none
+  }
+  .primary-nav .aione-nav.horizontal > ul > li > ul {
+    width: 100%;
+    top: unset;
+    left: unset;
+    display: block;
+    position: relative;
+    border: none;
+    text-shadow: none;
+    text-align: left;
+    background: #fff;
+    box-shadow: none
   }
 }
 .primary-nav .aione-nav.mobile-nav {

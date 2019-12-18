@@ -30,7 +30,7 @@ if( is_enabled( $post->ID, 'header_show_navigation' ) ) :
 		'container_class' =>  $menu_classes,
 		'link_before'     =>  '<span class="nav-item-text" data-hover="">',
 		'link_after'      =>  '</span>',
-		'depth'           =>  5,
+		'depth'           =>  7,
 	);
 
 	if( is_page() || is_single() ) {
