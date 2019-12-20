@@ -240,7 +240,16 @@ $body_classes = implode(" ", $body_classes);
 </head>
 <body <?php body_class( $body_classes ); ?>>
 <?php if( $theme_options['show_preloader'] ) { ?>
-<div class="aione-preloader"><div class="preloader"></div></div>
+<div class="aione-preloader">
+	<div class="preloader"></div>
+	<div class="preloader-text">
+		<?php 
+		if( !empty( $theme_options['preloader_text'] ) ) { 
+			echo $theme_options['preloader_text'];
+		}
+		?>
+	</div>
+</div>
 <?php } ?>
 <?php if( $theme_options['show_scroll_progress'] ) { ?>
 <div class="aione-scroll-progress"><div class="progress"></div></div>
