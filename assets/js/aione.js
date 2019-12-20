@@ -29416,7 +29416,7 @@ var defaultOptions = {
 
     // Scrolling Core
     frameRate        : 150, // [Hz]
-    animationTime    : 1000, // [ms]
+    animationTime    : 400, // [ms]
     stepSize         : 100, // [px]
 
     // Pulse (less tweakable)
@@ -30198,16 +30198,16 @@ else
 
 
 SmoothScroll({
-    frameRate:150,
-    animationTime:1000,
-    stepSize:100,
+    frameRate:400,
+    animationTime:800,
+    stepSize:40,
     pulseAlgorithm:1,
     pulseScale:4,
     pulseNormalize:1,
-    accelerationDelta:50,
+    accelerationDelta:120,
     accelerationMax:3,
     keyboardSupport:1,
-    arrowScroll:50,
+    arrowScroll:40,
     fixedBackground:1
 });
 /*****************************************************
