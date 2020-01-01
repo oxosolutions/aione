@@ -52453,6 +52453,27 @@ ul.aione-list.theme-checkmark {
 .widget_search .search-field {
   width: 100%
 }
+.aione-visit-counter {
+  font-size: 30px;
+  line-height: 40px
+}
+.aione-visit-counter .message {
+  font-size: 18px;
+  line-height: 40px;
+  padding-right: 20px;
+  vertical-align: middle;
+  display: inline-block
+}
+.aione-visit-counter .counter {
+  display: inline-block;
+  letter-spacing: 10px
+}
+.single-product {
+  border: 1px solid #e8e8e8
+}
+.woocommerce .products {
+  border: 1px solid #e8e8e8
+}
 .wp-caption-text {
   font-size: 24px;
   font-weight: 400;
