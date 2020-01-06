@@ -12547,7 +12547,7 @@ input[type=search] {
   opacity: 0;
   margin: 0;
   padding: 0;
-  right: 1.5%;
+  right: 10px;
   bottom: 0;
   width: 40px;
   height: 30px;
@@ -12555,14 +12555,14 @@ input[type=search] {
   position: fixed;
   text-align: center;
   display: inline-block;
-  background-color: #1685c2;
+  background-color: #20252b;
   border-radius: 5px 5px 0 0;
   -webkit-transition: all 280ms ease-in-out;
   -moz-transition: all 280ms ease-in-out;
   transition: all 280ms ease-in-out
 }
 .scrolltop:hover {
-  background-color: #1570a6
+  background-color: #1b2025
 }
 .scrolltop:before {
   content: '';
