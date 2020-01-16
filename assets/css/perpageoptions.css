@@ -262,6 +262,11 @@
   content: "\e643";
 }
 
+#poststuff #pyre_aione_design_options .inside{
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+
 #poststuff .pyre_metabox h2{margin-top:30px;}
 
 #of_container .controls .wp-picker-container .wp-color-result { outline: 0; margin-bottom: 11px; }
@@ -304,7 +309,7 @@
 .pyre_metabox_tabs {
   margin: 0;
   padding: 0;
-  width: 17%;
+  width: 18%;
   float: left;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -337,7 +342,7 @@
 }
 
 .pyre_metabox {
-  width: 75%;
+  width: 82%;
   float: left;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -614,3 +619,67 @@
 /* Slider Fields */
 .oxo-double-fields { overflow: hidden; }
 .oxo-double-fields .oxo-field { width: 49%; float: left; }
+
+
+
+
+
+.aione-serp-preview{
+  display: block;
+  max-width: 592px;
+  padding-bottom: 10px;
+  border: 1px solid #e8e8e8;
+}
+.aione-serp-preview-label{
+  color:#595959;
+  margin-bottom: 10px;
+  font-size:18px;
+  font-weight:400;
+  line-height:1.6;
+    padding-left: 10px;
+  border-bottom: 1px solid #e8e8e8;
+}
+.aione-serp-preview-title{
+  color: #1a0dab;
+  cursor: pointer;
+  display: block;
+  font-family: arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  padding-left: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.aione-serp-preview-title:hover{
+  text-decoration:underline; 
+}
+.aione-serp-preview-link{
+    color: #006621;
+    font-size: 14px;
+    padding-top: 2px;
+    line-height: 14px;
+    padding-bottom: 1px;
+    padding-left: 10px;
+    font-style: normal;
+}
+.aione-serp-preview-description{
+  color: #545454;
+  font-size: 14px;
+  line-height: 18px;
+  height: 36px;
+  overflow: hidden;
+  padding-top: 2px;
+  padding-left: 10px;
+  word-wrap: break-word;
+  font-family: arial, sans-serif;
+}
+#pyre_tab_custom_code .pyre_field {
+    width: 100%;
+    float: none;
+}
+#pyre_tab_custom_code .pyre_desc {
+    width: 100%;
+    float: none;
+}

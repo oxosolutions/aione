@@ -472,5 +472,10 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 	}
 	?>
 	</script>
+	<?php 
+if( !empty( $theme_options['code_body_end'] ) ) { 
+	echo $theme_options['code_body_end'];
+}
+?>
 	</body>
 </html>

@@ -150,8 +150,17 @@ if (file_exists($manifest_path)) {
 	echo '<link rel="manifest" href="' . esc_url($manifest_url) . '">';
 }
 */
+
+if( !empty( $theme_options['seo_contact_name'] ) ) { 
+	$seo_contact_name = $theme_options['seo_contact_name'];
+}
+if( !empty( $theme_options['seo_contact_number'] ) ) { 
+	$seo_contact_number = $theme_options['seo_contact_number'];
+}
+
+
 ?>
- 
+
 
 	<!-- Common Structured Data -->
 	<script type="application/ld+json">
@@ -161,13 +170,19 @@ if (file_exists($manifest_path)) {
 			"name": "<?php echo esc_html(get_bloginfo()); ?>",
 			"url": "<?php echo esc_url(home_url()); ?>",
 			"logo": "<?php echo esc_url($logo); ?>",
-         	"contactPoint": [
+			<?php 
+			if( !empty( $theme_options['seo_contact_name'] ) && !empty( $theme_options['seo_contact_number'] ) ) { 
+			?>
+			"contactPoint": [
          		{ 
          			"@type": "ContactPoint",
-         			"telephone": "+91-183-2401000",
-         			"contactType": "customer service"
+         			"telephone": "<?php echo $seo_contact_number; ?>",
+         			"contactType": "<?php echo $seo_contact_name; ?>"
          		}
          	],
+			<?php
+			}
+			?>
          	"potentialAction": {
          		"@type": "SearchAction",
          		"target": "<?php echo esc_url(home_url('/')); ?>?q={search}",
@@ -176,7 +191,18 @@ if (file_exists($manifest_path)) {
         }         
       </script>
 	<!-- Common Structured Data End -->
-	<?php
+<?php
+$pyre_structured_data = get_aione_page_settings( $post->ID, 'aione_per_page_setting','pyre_structured_data' );
+$pyre_structured_data = do_shortcode($pyre_structured_data);
+$pyre_structured_data = strip_tags($pyre_structured_data);
+
+if( !empty( $pyre_structured_data ) ) {
+	echo '<script type="application/ld+json">';
+	echo $pyre_structured_data;
+	echo "</script>";
+}
+
+
 $post_type = get_post_type();
 $aione_components = get_option('aione-components');
 $aione_component = $aione_components[$post_type];
@@ -236,9 +262,23 @@ if (is_user_logged_in()) {
 $body_classes = implode(" ", $body_classes);
 
 ?>
+<?php 
+if( !empty( $theme_options['code_head'] ) ) { 
+	echo $theme_options['code_head'];
+}
+?>
 
 </head>
 <body <?php body_class( $body_classes ); ?>>
+
+<?php 
+if( !empty( $theme_options['code_body_start'] ) ) { 
+	echo $theme_options['code_body_start'];
+}
+?>
+
+
+
 <?php if( $theme_options['show_preloader'] ) { ?>
 <div class="aione-preloader">
 	<div class="preloader"></div>

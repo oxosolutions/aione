@@ -18,59 +18,6 @@
 		});
 	});
 </script>
-<style>
-.aione-serp-preview{
-	display: block;
-	max-width: 592px;
-	padding-bottom: 10px;
-	border: 1px solid #e8e8e8;
-}
-.aione-serp-preview-label{
-	color:#595959;
-	margin-bottom: 10px;
-	font-size:18px;
-	font-weight:400;
-	line-height:1.6;
-    padding-left: 10px;
-	border-bottom: 1px solid #e8e8e8;
-}
-.aione-serp-preview-title{
-	color: #1a0dab;
-	cursor: pointer;
-	display: block;
-	font-family: arial, sans-serif;
-	font-size: 18px;
-	font-weight: 400;
-	line-height: 18px;
-	padding-left: 10px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.aione-serp-preview-title:hover{
-	text-decoration:underline; 
-}
-.aione-serp-preview-link{
-    color: #006621;
-    font-size: 14px;
-    padding-top: 2px;
-    line-height: 14px;
-    padding-bottom: 1px;
-    padding-left: 10px;
-    font-style: normal;
-}
-.aione-serp-preview-description{
-	color: #545454;
-	font-size: 14px;
-	line-height: 18px;
-	height: 36px;
-	overflow: hidden;
-	padding-top: 2px;
-	padding-left: 10px;
-	word-wrap: break-word;
-	font-family: arial, sans-serif;
-}
-</style>
 <?php 
 printf( '<h3>%s</h3>', esc_html( __( 'Search Engine Listing:', 'aione' ) ) );
 
