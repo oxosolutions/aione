@@ -5,7 +5,9 @@
 global $theme_options;
 global $post;
 
-$post_content_excerpt = strip_tags(wp_kses_no_null(wp_trim_words($post->post_content, $num_words = 30, $more = null)));
+
+
+$post_content_excerpt = strip_shortcodes(strip_tags(wp_kses_no_null(wp_trim_words($post->post_content, 30, ''))));
 
 	//Meta description 
 //$pyre_meta_description = get_aione_page_option($post->ID, 'pyre_meta_description');
