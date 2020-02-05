@@ -2974,7 +2974,8 @@
   font-size: 16px;
   line-height: 20px;
   min-width: 100px;
-  margin: 0 0 10px 0;
+  margin: 0;
+  padding: 10px 0 6px 0;
   display: inline-block
 }
 .comment-respond .comment-form-comment {
@@ -2989,6 +2990,21 @@
 }
 .comment-respond .comment-form-cookies-consent {
   display: none
+}
+.comment-form .comment-form-author,
+.comment-form .comment-form-email,
+.comment-form .comment-form-url {
+  float: left;
+  width: 32%;
+  margin-right: 2%;
+  margin-bottom: 10px
+}
+.comment-form .comment-form-url {
+  margin-right: 0
+}
+.comment-respond .form-submit {
+  clear: both;
+  padding: 10px 0 0 0
 }
 .comment-respond .submit {
   background-color: #168dc5;
@@ -3056,12 +3072,13 @@
 .entry-footer {
   margin: 0 0 10px 0;
   border: 1px solid #e8e8e8;
-  padding: 10px
+  padding: 10px;
+  display: none
 }
-.entry-footer::after {
-  content: '';
-  display: table;
-  clear: both
+.entry-footer:empty {
+  margin: 0;
+  border: none;
+  padding: 0
 }
 .entry-footer .edit-link {
   padding-left: 10px
