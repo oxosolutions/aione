@@ -190,3 +190,6 @@ FIXED: Per post setting js conflict
 
 ## 7.4.0.6 10-12-2019
 ADDED: Responsive Slider
+
+## 7.4.0.7 14-02-2020
+ADDED: Underline Theme to Aione Tabs
