@@ -34497,10 +34497,13 @@ function init_sliders(){
             var slider_data = $('#'+aione_slider).data();
             if( slider_data !== undefined ) {
 
+                console.log('Slider Data not undefined');
+
                 var responsiveClass = slider_data.responsiveClass;
 
 
                 if( responsiveClass ) {
+                    console.log('responsiveClass = ' + responsiveClass);
 
                     var mobile_items = slider_data.responsive_mobile;
                     var tablet_items = slider_data.responsive_tablet;
@@ -34509,6 +34512,10 @@ function init_sliders(){
                     delete slider_data.responsive_mobile;
                     delete slider_data.responsive_tablet;
                     delete slider_data.responsive_desktop;
+
+                    if( !slider_data.items ) {
+                        slider_data.items = 1;
+                    }
 
 
                     if( !desktop_items ) {
@@ -34531,6 +34538,11 @@ function init_sliders(){
 
                     slider_data.responsive = {0:{items:mobile_items},601:{items:tablet_items},901:{items:desktop_items}};
 
+                } else{
+
+                    if( !slider_data.items ) {
+                        slider_data.items = 1;
+                    }
                 }
 
                 $('#'+aione_slider).owlCarousel(slider_data);
