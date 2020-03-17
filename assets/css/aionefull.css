@@ -54573,6 +54573,10 @@ small {
 .line-height-100 {
   line-height: 100px
 }
+.background-clip-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+}
 .aione-list {
   margin-bottom: 1.25em;
   font-size: 1.1em;
