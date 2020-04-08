@@ -44,6 +44,9 @@ if ( ! function_exists( 'aione_init' ) ) :
 		// add_theme_support( 'wp-block-styles' );
 
 		// Add support for custom color scheme.
+		/*
+		Depricated in 5.4
+		See updated docs to manage
 		add_theme_support( 'editor-color-palette',
 			'#168dc5',
 			'#1570a6',
@@ -52,6 +55,7 @@ if ( ! function_exists( 'aione_init' ) ) :
 			'#eee',
 			'#444'
 		);
+		*/
 
 		//Switch default core markup for search form, comment form, and comments to output valid HTML5
 		add_theme_support( 'html5', array(

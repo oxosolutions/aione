@@ -193,3 +193,6 @@ ADDED: Responsive Slider
 
 ## 7.4.0.7 14-02-2020
 ADDED: Underline Theme to Aione Tabs
+
+## 7.5.0.0 08-04-2020
+FIXED: Fixed for Block API in WordPress 5.4
