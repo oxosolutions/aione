@@ -43790,8 +43790,7 @@ html {
   color: #525a5f;
   line-height: 1.6;
   font-weight: 400;
-  letter-spacing: .8px;
-  font-family: Arial,Helvetica,sans-serif
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif,sans-serif
 }
 @media only screen and (min-width:0) {
   html {
@@ -43827,7 +43826,7 @@ p {
   font-size: 1em;
   line-height: 1.6em;
   font-weight: 400;
-  margin-bottom: 2em
+  margin-bottom: 1.6em
 }
 p:empty {
   display: none;
