@@ -216,13 +216,25 @@ add_action( 'get_footer', 'aione_scripts' );
 */
 add_action( 'admin_enqueue_scripts', 'aione_admin_editor_style' );
 function aione_admin_editor_style( $hook ) {
-	
-    if ( 'post.php' != $hook ) {
-        return;
+
+	global $post_type;
+
+	wp_register_style( 'aione-admin-css', get_template_directory_uri() . '/assets/css/admin/aione-admin.min.css', array(), false, 'all' );
+    wp_enqueue_style( 'aione-admin-css' );
+
+
+    if( in_array( $hook, array( 'post-new.php', 'post.php' ) ) ) {
+
+		// If not the desired post type bail here.
+		if( in_array( $post_type , array( 'aione-slider' ) ) ) {
+			return;
+		}
+
+    	wp_register_style( 'aione-admin-editor-css', get_template_directory_uri() . '/assets/css/admin/aione-admin-editor.min.css', array(), false, 'all' );
+    	wp_enqueue_style( 'aione-admin-editor-css' );
+
     }
     
-    wp_register_style( 'aione-admin-editor-css', get_template_directory_uri() . '/assets/css/aione-admin-editor.min.css', array(), false, 'all' );
-    wp_enqueue_style( 'aione-admin-editor-css' );
 }
 
 /**

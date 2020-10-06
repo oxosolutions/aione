@@ -196,3 +196,6 @@ ADDED: Underline Theme to Aione Tabs
 
 ## 7.5.0.0 08-04-2020
 FIXED: Fixed for Block API in WordPress 5.4
+
+## 7.5.0.1 06-10-2020
+FIXED: Fixed form design
