@@ -29,20 +29,15 @@ class PerPageOptionsMetaboxes
 
     		$theme_info = wp_get_theme();
 
-    		wp_register_script('jquery.biscuit', get_template_directory_uri() . '/assets/js/jquery.biscuit.js', array('jquery'), $theme_info->get('Version'));
 
-    		wp_register_script('per-page-options-js', get_template_directory_uri() . '/assets/js/perpageoptions.js', array('jquery'), $theme_info->get('Version'));
+    		wp_register_script('aione-admin-scripts', get_template_directory_uri() . '/assets/js/admin/admin-scripts.min.js', array('jquery'), $theme_info->get('Version'));
     		wp_register_script('ace-editor-js', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js', array('jquery'), $theme_info->get('Version'));
 
-    		wp_enqueue_script('jquery.biscuit');
-    		wp_enqueue_script('per-page-options-js');
+    		wp_enqueue_script('aione-admin-scripts');
     		wp_enqueue_script('ace-editor-js');
     		wp_enqueue_script('media-upload');
     		wp_enqueue_script('thickbox');
     		wp_enqueue_style('thickbox');
-
-    		wp_register_style('per-page-options-css', get_template_directory_uri() . '/assets/css/perpageoptions.css');
-    		wp_enqueue_style('per-page-options-css');
 
     	}
 
@@ -437,7 +432,7 @@ echo '[aione-slider id="'.esc_html($id).'"]';
  * Enable ACF 5 early access
  * Requires at least version ACF 4.4.12 to work
  */
-define('ACF_EARLY_ACCESS', '5');
+// define('ACF_EARLY_ACCESS', '5');
 
 /*if(class_exists('acf')){
 add_action( 'init', 'register_custom_acf_fields' );
