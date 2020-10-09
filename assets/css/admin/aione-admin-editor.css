@@ -58857,6 +58857,10 @@ Blocks
 /***************************************
 WP Block Image
 ***************************************/
+.wp-block-image img {
+  height: auto;
+}
+
 .wp-caption-text {
   font-size: 24px;
   font-weight: 400;

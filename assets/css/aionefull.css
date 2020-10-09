@@ -8577,7 +8577,7 @@ Aione Footer
 .aione-footer {
   color: #b4b4b4;
   margin: 0;
-  padding: 10px 0px;
+  padding: 30px 0 50px 0;
   font-size: 1em;
   line-height: 1.5;
   font-weight: normal;
@@ -66893,6 +66893,10 @@ Blocks
 /***************************************
 WP Block Image
 ***************************************/
+.wp-block-image img {
+  height: auto;
+}
+
 .wp-caption-text {
   font-size: 24px;
   font-weight: 400;
