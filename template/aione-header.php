@@ -45,7 +45,7 @@ if( is_enabled( $post->ID, 'header_enable' ) ) : ?>
 				get_template_part( 'template/aione-header-banner' );
 			}
 			?>	
-			<div class="aione-clear"></div><!-- .aione-clear -->
+			<div class="clear"></div><!-- .clear -->
 		</div><!-- .wrapper -->
 	</header><!-- .aione-header -->
 	<?php

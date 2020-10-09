@@ -84,7 +84,7 @@ function aione_slider_shortcode( $atts ) {
 				}
 				$output .= '</div>';
 			endif;
-			$output .='<div class="aione-clear"></div>';
+			$output .='<div class="clear"></div>';
 		} else {
 			$output .= '<div class="aione-message warning">Invalid Slider</div>';
 		}

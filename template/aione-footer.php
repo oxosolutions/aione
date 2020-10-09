@@ -55,7 +55,7 @@ if( $count > 0 ) :
 						<?php dynamic_sidebar( 'footer-column-4' ); ?>
 					</div>
 				<?php endif; ?>
-				<div class="aione-clear"></div><!-- .aione-clear -->
+				<div class="clear"></div><!-- .clear -->
 			</div><!-- .wrapper -->
 		</footer><!-- .aione-footer -->
 		<?php 

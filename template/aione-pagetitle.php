@@ -64,7 +64,7 @@ if( is_enabled( $post->ID, 'page_title_bar' ) ) :
 					<?php echo wp_kses_post( $page_description ); ?>		
 				</h2>
 			<?php endif; ?>
-			<div class="aione-clear"></div><!-- .aione-clear -->
+			<div class="clear"></div><!-- .clear -->
 		</div><!-- .wrapper -->
 	</div><!-- .aione-pagetitle -->
 <?php endif;

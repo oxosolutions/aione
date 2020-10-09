@@ -46,7 +46,7 @@ if( $count > 0 ) :
 					echo '</div>';
 				}
 				?>
-				<div class="aione-clear"></div><!-- .aione-clear -->
+				<div class="clear"></div><!-- .clear -->
 			</div><!-- .wrapper -->
 		</div><!-- .aione-copyright -->
 		<?php

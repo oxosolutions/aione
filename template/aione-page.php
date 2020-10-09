@@ -39,7 +39,7 @@ $main_classes   = implode(" ", $main_classes);
 		
 		<?php get_template_part( 'template/aione-sidebar-right' ); ?>
 
-		<div class="aione-clear"></div> <!-- .aione-clear -->
+		<div class="clear"></div> <!-- .clear -->
 	</div> <!-- .wrapper -->
 </main> <!-- .aione-main -->
 <?php

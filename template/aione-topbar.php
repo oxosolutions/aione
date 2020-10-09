@@ -24,7 +24,7 @@ if( is_enabled( $post->ID, 'show_top_bar' ) ) :
 				echo '</div>';
 			endif;
 			?>
-			<div class="aione-clear"></div><!-- .aione-clear -->
+			<div class="clear"></div><!-- .clear -->
 		</div><!-- .wrapper -->
 	</div><!-- .aione-topbar -->
 <?php endif;
