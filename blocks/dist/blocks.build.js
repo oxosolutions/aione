@@ -29541,8 +29541,9 @@ registerBlockType('aione-blocks/aione-icon', {
         ), wp.element.createElement(
             'span',
             { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
-            wp.element.createElement('i', { className: iconName })
+            wp.element.createElement('ion-icon', { 'name': iconName })
         )];
+
     },
     save: function save(props) {
         var _props$attributes2 = props.attributes,
@@ -29554,7 +29555,7 @@ registerBlockType('aione-blocks/aione-icon', {
         return wp.element.createElement(
             'span',
             { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
-            wp.element.createElement('i', { className: iconName })
+            wp.element.createElement('ion-icon', { 'name': iconName })
         );
     }
 });

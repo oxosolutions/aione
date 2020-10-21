@@ -2,15 +2,15 @@
 global $theme_options;
 ?>
 <article id="post_<?php the_ID(); ?>" <?php post_class(); ?>> 
-	<div class="ar list-blog">
-		<div class="ac s100 m50 l40">
+	<div class="list-blog">
+		<div class="blog-image">
 			<?php if ( has_post_thumbnail( get_the_ID() ) && $theme_options['blog_archive_featured_image_enable'] == 1 ) { ?>
 				<div class="featured-image aione-rounded">
 					<?php the_post_thumbnail( 'medium' ); ?>	
 				</div>
 			<?php } ?>
 		</div>
-		<div class="ac s100 m50 l60">
+		<div class="blog-content">
 			<header class="entry-header">
 				<?php 
 				the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
@@ -34,5 +34,6 @@ global $theme_options;
 			</footer><!-- .entry-footer -->
 		</div>
 	</div>
+	<div class="clear"></div>
 	<!--_to_be_deleted-->
 </article><!-- #post-<?php the_ID(); ?> -->

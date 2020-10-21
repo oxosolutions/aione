@@ -8,6 +8,7 @@ if ( is_home() ) {
 	$main_classes[] = 'blog-'.$theme_options['blog_archive_layout'];
 }
 
+
 if ( is_enabled( $post->ID, 'page_padding_enable' ) ) { 
 	$main_classes[] = 'page-padding';
 }
