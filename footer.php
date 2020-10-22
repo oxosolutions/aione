@@ -244,7 +244,7 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 			color: '.esc_html($theme_options['page_title_bar_text_color']).';
 		}
 		.aione-pagetitle .description{
-			color: '.esc_html($theme_options['page_title_bar_text_color']).';
+			color: '.esc_html($theme_options['page_title_bar_description_color']).';
 		}
 		.aione-pagetitle a{
 			color: '.esc_html($theme_options['page_title_bar_link_color']).';
