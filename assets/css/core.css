@@ -1911,62 +1911,20 @@ Aione Page Title
 .aione-pagetitle .title {
   margin: 0;
   color: #333333;
-  font-size: 48px;
-  line-height: 1.5;
+  font-size: 36px;
   text-align: center;
 }
 
 .aione-pagetitle .description {
   margin: 0;
   color: #484848;
-  font-size: 22.5px;
-  line-height: 1.5;
-  font-weight: 100;
+  font-size: 18px;
   text-align: center;
 }
 
 /***************************************
-PAGE HEADER
+Aione Breadcrumbs
 ***************************************/
-.aione-page-header {
-  padding: 10px;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.aione-page-header .aione-page-title-container {
-  display: inline-block;
-}
-
-.aione-page-header .aione-page-title-container .aione-page-title {
-  color: #666666;
-  display: inline-block;
-  float: left;
-  padding: 0;
-  margin: 0;
-  font-size: 24px;
-  line-height: 1.33333333;
-  font-weight: 100;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
-}
-
-.aione-page-header .aione-page-title-container .aione-page-title span {
-  color: #168dc5;
-  font-weight: 400;
-  font-size: 18px;
-}
-
-.aione-page-header .aione-page-title-container .aione-page-title span:before {
-  content: "[";
-  font-size: 20px;
-  font-weight: 400;
-}
-
-.aione-page-header .aione-page-title-container .aione-page-title span:after {
-  content: "]";
-  font-size: 20px;
-  font-weight: 400;
-}
-
 .aione-breadcrumbs-container {
   display: inline-block;
   float: right;
