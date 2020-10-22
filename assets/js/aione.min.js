@@ -21422,12 +21422,20 @@ $.fn.equal = function(){
 }));
 
 (function(doc){
-  var scriptElm = doc.scripts[doc.scripts.length - 1];
+  // var scriptElm = doc.scripts[doc.scripts.length - 1];
+  var scriptElm = document.currentScript;
+
   var warn = ['[ionicons] Deprecated script, please remove: ' + scriptElm.outerHTML];
 
   warn.push('To improve performance it is recommended to set the differential scripts in the head as follows:')
 
-  var parts = scriptElm.src.split('/');
+  console.log("scriptElm: " + scriptElm);
+
+  var scriptUrl = scriptElm.getAttribute('src');
+  
+  console.log("scriptUrl: " + scriptUrl);
+
+  var parts = scriptUrl.split('/');
   parts.pop();
   parts.pop();
   parts.push('icons');
