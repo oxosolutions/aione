@@ -11913,26 +11913,8 @@ Aione fontsize
 /***************************************
 Equal
 ***************************************/
-.ar.equal {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
-}
-
 .equal > .ac {
   position: relative;
-}
-
-.equal > .ac > .wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
 }
 
 .equal > .ac > .wrapper .aione-wrapper {
@@ -11946,7 +11928,21 @@ Equal
 /***************************************
 Aione Cards
 ***************************************/
-.ar.display-flex {
+.ar.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.cards > .ac {
+  position: relative;
+}
+
+.cards > .ac > .wrapper {
+  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
