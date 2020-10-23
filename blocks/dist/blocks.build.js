@@ -29470,11 +29470,11 @@ registerBlockType('aione-blocks/aione-icon', {
     attributes: {
         iconName: {
             type: 'string',
-            default: 'ion-ios-checkmark-circle-outline'
+            default: 'checkmark-circle-sharp'
         },
         iconSize: {
             type: 'string',
-            default: 'small'
+            default: 'aione-icon-small'
         },
         iconBGColor: {
             type: 'string',
@@ -29529,7 +29529,7 @@ registerBlockType('aione-blocks/aione-icon', {
                         label: __('Select Size:'),
                         value: iconSize,
                         onChange: onChangeIconSize,
-                        options: [{ value: 'small', label: 'Small' }, { value: 'medium', label: 'Medium' }, { value: 'large', label: 'Large' }]
+                        options: [{ value: 'aione-icon-small', label: 'Small' }, { value: 'aione-icon-medium', label: 'Medium' }, { value: 'aione-icon-large', label: 'Large' }]
                     }),
                     wp.element.createElement(TextControl, {
                         label: __('Icon Background Color:'),
@@ -29541,7 +29541,7 @@ registerBlockType('aione-blocks/aione-icon', {
         ), wp.element.createElement(
             'span',
             { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
-            wp.element.createElement('ion-icon', { 'name': iconName })
+            wp.element.createElement('ion-icon', { 'name': iconName, 'size': iconSize })
         )];
 
     },

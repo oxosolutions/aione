@@ -9286,8 +9286,26 @@ Aione fontsize
 /***************************************
 Equal
 ***************************************/
+.ar.equal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+}
+
 .equal > .ac {
   position: relative;
+}
+
+.equal > .ac > .wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 .equal > .ac > .wrapper .aione-wrapper {
@@ -9296,6 +9314,18 @@ Equal
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+/***************************************
+Aione Cards
+***************************************/
+.ar.display-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 /***************************************
@@ -68634,6 +68664,10 @@ Gravityform
 .gform_heading {
   text-align: center;
   padding-bottom: 2em;
+}
+
+.gform_heading:empty {
+  padding-bottom: 0;
 }
 
 .gform_title {
