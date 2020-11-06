@@ -202,3 +202,6 @@ FIXED: Fixed form design
 
 ## 7.5.0.2 22-10-2020
 UPDATED: Updated CSS classes
+
+## 7.5.0.3 22-10-2020
+ADDED: Archive Template Header and Footer
