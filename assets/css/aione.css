@@ -7036,8 +7036,8 @@ Theme Color
 }
 
 .twitter > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F2B0";
+  font-family: "FontAwesome";
+  content: "\F099";
 }
 
 .googleplus {
@@ -7045,8 +7045,8 @@ Theme Color
 }
 
 .googleplus > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F23B";
+  font-family: "FontAwesome";
+  content: "\F0D5";
 }
 
 .linkedin {
@@ -7063,8 +7063,8 @@ Theme Color
 }
 
 .pinterest > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F244";
+  font-family: "FontAwesome";
+  content: "\F231";
 }
 
 .tumblr {
@@ -7072,8 +7072,8 @@ Theme Color
 }
 
 .tumblr > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F24D";
+  font-family: "FontAwesome";
+  content: "\F173";
 }
 
 .rss {
@@ -7081,8 +7081,8 @@ Theme Color
 }
 
 .rss > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F248";
+  font-family: "FontAwesome";
+  content: "\F09E";
 }
 
 .whatsapp {
@@ -7090,8 +7090,8 @@ Theme Color
 }
 
 .whatsapp > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F2C5";
+  font-family: "FontAwesome";
+  content: "\F232";
 }
 
 .reddit {
@@ -7099,8 +7099,8 @@ Theme Color
 }
 
 .reddit > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F247";
+  font-family: "FontAwesome";
+  content: "\F281";
 }
 
 .buffer {
@@ -7108,8 +7108,8 @@ Theme Color
 }
 
 .buffer > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F22D";
+  font-family: "FontAwesome";
+  content: "\F837";
 }
 
 .youtube {
@@ -7189,8 +7189,8 @@ Theme Color
 }
 
 .forrst > a > .icon:before {
-  font-family: "Ionicons";
-  content: "\F22D";
+  font-family: "FontAwesome";
+  content: "\F1BB";
 }
 
 .vk {
@@ -10624,7 +10624,7 @@ body.logged-in .user_not_logged_in {
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 16px -4px rgba(0, 0, 0, 0.12);
 }
 
 .shadow-md {
@@ -10639,7 +10639,7 @@ body.logged-in .user_not_logged_in {
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-.shadow-2xl {
+.shadow-xxl {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
@@ -10664,7 +10664,7 @@ body.logged-in .user_not_logged_in {
 }
 
 .hover-shadow:hover {
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 20px -3px rgba(0, 0, 0, 0.18);
 }
 
 .hover-shadow-md:hover {

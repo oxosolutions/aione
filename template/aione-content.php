@@ -87,6 +87,9 @@ if ( have_posts() ) :
 			/*if($template_filter_enable == "yes"){
 				echo aione_filters($wp_query);
 			}*/
+			echo "<div class='archive-header'>";
+			echo $aione_templates[$archive_template_slug]['archive_header'];
+			echo "</div>";
 		}
 	}
 	while ( have_posts() ) : the_post();
@@ -136,6 +139,9 @@ if ( have_posts() ) :
 endwhile;
 if(is_home()  || is_archive()){
 	if( isset($archive_template_slug) && $archive_template_slug != 'archive' ){
+		echo "<div class='archive-footer'>";
+			echo $aione_templates[$archive_template_slug]['archive_footer'];
+			echo "</div>";
 		echo "</div>";
 	}
 }

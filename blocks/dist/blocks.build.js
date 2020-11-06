@@ -2170,10 +2170,10 @@ registerBlockType('aione-blocks/aione-social-icons', {
             default: false,
             type: 'boolean'
         },
-        googleplus: {
+        /*googleplus: {
             default: false,
             type: 'boolean'
-        },
+        },*/
         pinterest: {
             default: false,
             type: 'boolean'
@@ -2210,10 +2210,10 @@ registerBlockType('aione-blocks/aione-social-icons', {
             type: 'string',
             default: 'http://github.com/'
         },
-        googleplusUrl: {
+        /*googleplusUrl: {
             type: 'string',
             default: 'http://googleplus.com/'
-        },
+        },*/
         pinterestUrl: {
             type: 'string',
             default: 'http://pinterest.com/'
@@ -2256,14 +2256,14 @@ registerBlockType('aione-blocks/aione-social-icons', {
             rss = _props$attributes.rss,
             tumblr = _props$attributes.tumblr,
             pinterest = _props$attributes.pinterest,
-            googleplus = _props$attributes.googleplus,
+            //googleplus = _props$attributes.googleplus,
             facebookUrl = _props$attributes.facebookUrl,
             twitterUrl = _props$attributes.twitterUrl,
             linkedinUrl = _props$attributes.linkedinUrl,
             youtubeUrl = _props$attributes.youtubeUrl,
             instagramUrl = _props$attributes.instagramUrl,
             githubUrl = _props$attributes.githubUrl,
-            googleplusUrl = _props$attributes.googleplusUrl,
+            //googleplusUrl = _props$attributes.googleplusUrl,
             pinterestUrl = _props$attributes.pinterestUrl,
             tumblrUrl = _props$attributes.tumblrUrl,
             rssUrl = _props$attributes.rssUrl;
@@ -2305,10 +2305,10 @@ registerBlockType('aione-blocks/aione-social-icons', {
             props.setAttributes({ pinterestUrl: PinterestUrl });
         };
 
-        var onChangeGoogleplusUrl = function onChangeGoogleplusUrl(GoogleplusUrl) {
+        /*var onChangeGoogleplusUrl = function onChangeGoogleplusUrl(GoogleplusUrl) {
             props.setAttributes({ googleplusUrl: GoogleplusUrl });
         };
-
+*/
         var onChangeSocialIconSize = function onChangeSocialIconSize(selectedSize) {
             props.setAttributes({ socialIconSize: selectedSize });
         };
@@ -2395,18 +2395,18 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         value: instagramUrl,
                         onChange: onChangeInstagramUrl
                     }),
-                    wp.element.createElement(ToggleControl, {
+                    /*wp.element.createElement(ToggleControl, {
                         label: __('Google+'),
                         checked: !!googleplus,
                         onChange: function onChange() {
                             return props.setAttributes({ googleplus: !googleplus });
                         }
-                    }),
-                    props.attributes.googleplus && wp.element.createElement(TextControl, {
+                    }),*/
+                    /*props.attributes.googleplus && wp.element.createElement(TextControl, {
                         label: 'Google+ Link',
                         value: googleplusUrl,
                         onChange: onChangeGoogleplusUrl
-                    }),
+                    }),*/
                     wp.element.createElement(ToggleControl, {
                         label: __('GitHub'),
                         checked: !!github,
@@ -2575,7 +2575,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                             )
                         )
                     ),
-                    props.attributes.googleplus && wp.element.createElement(
+                    /*props.attributes.googleplus && wp.element.createElement(
                         'li',
                         { 'class': 'googleplus' },
                         wp.element.createElement(
@@ -2588,7 +2588,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                                 'Google+'
                             )
                         )
-                    ),
+                    ),*/
                     props.attributes.github && wp.element.createElement(
                         'li',
                         { 'class': 'github' },
@@ -2665,14 +2665,14 @@ registerBlockType('aione-blocks/aione-social-icons', {
             rss = _props$attributes2.rss,
             tumblr = _props$attributes2.tumblr,
             pinterest = _props$attributes2.pinterest,
-            googleplus = _props$attributes2.googleplus,
+            //googleplus = _props$attributes2.googleplus,
             facebookUrl = _props$attributes2.facebookUrl,
             twitterUrl = _props$attributes2.twitterUrl,
             linkedinUrl = _props$attributes2.linkedinUrl,
             youtubeUrl = _props$attributes2.youtubeUrl,
             instagramUrl = _props$attributes2.instagramUrl,
             githubUrl = _props$attributes2.githubUrl,
-            googleplusUrl = _props$attributes2.googleplusUrl,
+            //googleplusUrl = _props$attributes2.googleplusUrl,
             pinterestUrl = _props$attributes2.pinterestUrl,
             tumblrUrl = _props$attributes2.tumblrUrl,
             rssUrl = _props$attributes2.rssUrl;
@@ -2760,7 +2760,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                             )
                         )
                     ),
-                    props.attributes.googleplus && wp.element.createElement(
+                    /*props.attributes.googleplus && wp.element.createElement(
                         'li',
                         { 'class': 'googleplus' },
                         wp.element.createElement(
@@ -2773,7 +2773,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                                 'Google+'
                             )
                         )
-                    ),
+                    ),*/
                     props.attributes.github && wp.element.createElement(
                         'li',
                         { 'class': 'github' },
@@ -2904,10 +2904,10 @@ registerBlockType('aione-blocks/aione-social-share', {
             default: false,
             type: 'boolean'
         },
-        googleplus: {
+        /*googleplus: {
             default: false,
             type: 'boolean'
-        },
+        },*/
         tumblr: {
             default: false,
             type: 'boolean'
@@ -2939,7 +2939,7 @@ registerBlockType('aione-blocks/aione-social-share', {
             twitter = _props$attributes.twitter,
             linkedin = _props$attributes.linkedin,
             pinterest = _props$attributes.pinterest,
-            googleplus = _props$attributes.googleplus,
+            //googleplus = _props$attributes.googleplus,
             tumblr = _props$attributes.tumblr,
             reddit = _props$attributes.reddit;
 
@@ -2991,13 +2991,13 @@ registerBlockType('aione-blocks/aione-social-share', {
                             return props.setAttributes({ linkedin: !linkedin });
                         }
                     }),
-                    wp.element.createElement(ToggleControl, {
+                    /*wp.element.createElement(ToggleControl, {
                         label: __('Googleplus'),
                         checked: !!googleplus,
                         onChange: function onChange() {
                             return props.setAttributes({ googleplus: !googleplus });
                         }
-                    }),
+                    }),*/
                     wp.element.createElement(ToggleControl, {
                         label: __('Pinterest'),
                         checked: !!pinterest,
@@ -3111,7 +3111,7 @@ registerBlockType('aione-blocks/aione-social-share', {
                             )
                         )
                     ),
-                    props.attributes.googleplus && wp.element.createElement(
+                    /*props.attributes.googleplus && wp.element.createElement(
                         'li',
                         { 'class': 'googleplus' },
                         wp.element.createElement(
@@ -3124,7 +3124,7 @@ registerBlockType('aione-blocks/aione-social-share', {
                                 'Googleplus'
                             )
                         )
-                    ),
+                    ),*/
                     props.attributes.pinterest && wp.element.createElement(
                         'li',
                         { 'class': 'pinterest' },
@@ -29521,7 +29521,7 @@ registerBlockType('aione-blocks/aione-icon', {
                     { className: 'blocks-font-size__main' },
                     wp.element.createElement(TextControl, {
                         label: __('Icon Name:'),
-                        help: 'Font Awesome and ION icons are supported',
+                        help: 'Ionic icons are supported. https://ionicons.com/',
                         value: iconName,
                         onChange: onChangeIcon
                     }),

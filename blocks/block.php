@@ -18,7 +18,7 @@ function aione_render_block( $attributes ) {
 	$linkedin    = get_linkedin_icon( $attributes );
 	$pinterest   = get_pinterest_icon( $attributes );
 	$reddit      = get_reddit_icon( $attributes );
-	$google_plus = get_googleplus_icon( $attributes);
+	//$google_plus = get_googleplus_icon( $attributes);
 	$tumblr      = get_tumblr_icon( $attributes );
 
 	/*return '<div id="ub-social-share-block-editor" class="wp-block-ub-social-share">
@@ -42,7 +42,6 @@ function aione_render_block( $attributes ) {
 			' . $facebook . '
 			' . $twitter . '
 			' . $linkedin . '
-			' . $google_plus . '
 			' . $pinterest . '
 			' . $reddit . '
 			' . $tumblr . '
@@ -188,7 +187,7 @@ function get_reddit_icon( $attributes ) {
  * @param  array   $attributes Options of the block.
  * @return string
  */
-function get_googleplus_icon( $attributes ) {
+/*function get_googleplus_icon( $attributes ) {
 	if ( ! $attributes['googleplus'] ) {
 		return '';
 	}
@@ -202,7 +201,7 @@ function get_googleplus_icon( $attributes ) {
 		<a href="'.$googleplus_url.'"  target="_blank">
 			<span class="icon"></span><span class="label">GooglePlus</span>
 		</a></li>';
-}
+}*/
 
 
 /**
@@ -281,10 +280,10 @@ function aione_register_block() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'googleplus' => array(
+				/*'googleplus' => array(
 					'type'    => 'boolean',
 					'default' => false,
-				),
+				),*/
 				'tumblr' => array(
 					'type'    => 'boolean',
 					'default' => false,
