@@ -205,3 +205,6 @@ UPDATED: Updated CSS classes
 
 ## 7.5.0.3 22-10-2020
 ADDED: Archive Template Header and Footer
+
+## 7.5.0.4 22-10-2020
+ADDED: Shortcode to export as CSV 
