@@ -11,7 +11,7 @@ if ( ! empty( $sidebar_custom ) && $sidebar_custom != 'default' ) {
 }
 
 if( is_enabled( $post_id, 'page_bottom_area_enable' ) ) : ?>	
-	<div id="aione_pagebottom" class="aione-pagebottom">
+	<div id="aione_pagebottom" class="aione-pagebottom <?php echo esc_html(is_fullwidth( $post_id, 'page_bottom_area' ) ); ?>">
 		<div class="wrapper">
 			<?php
 			if ( is_active_sidebar( $sidebar_pagebottom  ) ) {
