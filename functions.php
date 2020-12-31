@@ -87,6 +87,8 @@ if ( ! function_exists( 'aione_init' ) ) :
 			'flex-height' => true,
 		) );
 		*/
+
+		remove_theme_support('core-block-patterns');
 	}
 endif;
 
@@ -323,6 +325,9 @@ require get_template_directory() . '/includes/register-sidebars.php';
 
 // Register Blocks(Using ACF)
 require get_template_directory() . '/includes/aione-blocks.php';
+
+// Register Block Patterns
+require get_template_directory() . '/includes/aione-block-patterns.php';
 
 
 
