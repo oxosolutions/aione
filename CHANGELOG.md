@@ -208,3 +208,6 @@ ADDED: Archive Template Header and Footer
 
 ## 7.5.0.4 22-10-2020
 ADDED: Shortcode to export as CSV 
+
+## 7.6.0.0 29-01-2021
+UPDATED: PHP 7.4 compatibility 
