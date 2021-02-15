@@ -55527,7 +55527,7 @@ Theme Color
 
 .pinterest > a > .icon:before {
   font-family: "FontAwesome";
-  content: "\F231";
+  content: "\F0D2";
 }
 
 .tumblr {
@@ -55762,6 +55762,15 @@ Theme Color
 .snapchat > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F2AC";
+}
+
+.email {
+  background: #20252b;
+}
+
+.snapchat > a > .icon:before {
+  font-family: "FontAwesome";
+  content: "\F003";
 }
 
 /***************************************
@@ -57524,14 +57533,6 @@ optgroup {
 }
 
 :-ms-input-placeholder {
-  /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
-  opacity: 1;
-  /* Firefox */
-}
-
-::-ms-input-placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #babdbf;
   color: rgba(82, 90, 95, 0.5);
@@ -63501,8 +63502,7 @@ Plugins
 :root .fa-rotate-270,
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical {
-  -webkit-filter: none;
-          filter: none;
+  filter: none;
 }
 
 .fa-stack {

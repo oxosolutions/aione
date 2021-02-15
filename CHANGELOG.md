@@ -211,3 +211,6 @@ ADDED: Shortcode to export as CSV
 
 ## 7.6.0.0 29-01-2021
 UPDATED: PHP 7.4 compatibility 
+
+## 7.6.0.1 15-02-2021
+UPDATED: Animate.css

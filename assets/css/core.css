@@ -1049,7 +1049,7 @@ HORIZONTAL
   position: absolute;
   top: 100%;
   left: 0;
-  width: 330px;
+  width: 280px;
   background: #f2f2f2;
   z-index: 9999;
   border: 1px solid #e8e8e8;
@@ -1060,15 +1060,15 @@ HORIZONTAL
   display: block;
 }
 
-.aione-nav.horizontal > ul > li > ul > li {
-  display: block;
+.aione-nav.horizontal > ul > li > ul li {
+  position: relative;
   width: 100%;
+  display: block;
   border-bottom: 1px solid #e8e8e8;
 }
 
 .aione-nav.horizontal > ul > li > ul > li > a {
   display: block;
-  width: 100%;
   padding: 0 0 0 15px;
   font-size: 16px;
   line-height: 36px;
@@ -1080,6 +1080,30 @@ HORIZONTAL
   color: #FFFFFF;
   background-color: #168dc5;
   padding: 0 0 0 20px;
+}
+
+.aione-nav.horizontal > ul > li > ul li > ul {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -1px;
+  width: 200px;
+  background-color: #ffffff;
+  border: 1px solid #e8e8e8;
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.aione-nav.horizontal > ul > li > ul li > a {
+  display: block;
+  padding: 0 0 0 15px;
+  font-size: 16px;
+  line-height: 36px;
+  text-align: left;
+  transition: all 0.2s ease-in-out;
+}
+
+.aione-nav.horizontal > ul > li > ul li:hover > ul {
+  display: block;
 }
 
 /***************************************
@@ -1668,10 +1692,6 @@ Aione Nav
   padding-bottom: 5px;
   font-size: 13px;
   line-height: 15px;
-}
-
-.primary-nav .aione-nav.horizontal > ul > li > ul {
-  overflow: hidden;
 }
 
 .aione-wrapper.layout-header-left .primary-nav,

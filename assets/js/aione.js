@@ -20675,7 +20675,7 @@ $(document).ready(function() {
 	try{
 		wow = new WOW({
 			boxClass:     'animate',  // default
-			animateClass: 'animated', // default
+			animateClass: 'animate__animated', // default
 			offset:       0,          // default
 			mobile:       true,       // default
 			live:         true        // default
@@ -20689,8 +20689,8 @@ $(document).ready(function() {
 	/*  Animate on Hover 
 	/*****************************************************/
 	$(".animate-hover.infinite").hover(
-		function(){ $(this).addClass( "animated infinite" ); }, 
-		function(){ $(this).delay(200).removeClass( "animated infinite" );
+		function(){ $(this).addClass( "animate__animated animate__infinite" ); }, 
+		function(){ $(this).delay(200).removeClass( "animate__animated animate__infinite" );
 	});
 
 	/*****************************************************
