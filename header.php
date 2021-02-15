@@ -266,7 +266,7 @@ $body_classes = implode(" ", $body_classes);
 ?>
 <?php 
 if( !empty( $theme_options['code_head'] ) ) { 
-	echo $theme_options['code_head'];
+	echo do_shortcode( $theme_options['code_head'] );
 }
 ?>
 
@@ -275,7 +275,7 @@ if( !empty( $theme_options['code_head'] ) ) {
 
 <?php 
 if( !empty( $theme_options['code_body_start'] ) ) { 
-	echo $theme_options['code_body_start'];
+	echo do_shortcode( $theme_options['code_body_start'] );
 }
 ?>
 
