@@ -19,6 +19,7 @@ $aione_template_single 	= $aione_templates[$single_template_slug]['content'];
 $aione_template_archive = $aione_templates[$archive_template_slug]['content'];
 
 
+
 if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 
 	global $wp_query;
@@ -36,19 +37,13 @@ if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 	}
 
 
-	// $big = 999999999; // need an unlikely integer
-    // $current_page = get_query_var('paged');
+    $current_page = get_query_var('paged');
 
-    // echo "<br>current_page = ".$current_page;
-    // $total_pages = $wp_query->max_num_pages;
-    // $total_pages = $wp_query->max_num_pages;
-    // $offset = null;
-	/*
     if( $current_page > 0 ){
     	$offset = $ppp * ( $current_page - 1);
-
+    } else{
+    	$offset = 0;
     }
-    */
 
 	
 	$args = array_merge( 
@@ -62,6 +57,7 @@ if( isset( $archive_template_slug ) && $archive_template_slug != "archive" ) {
 		) 
 	);
 
+	
 	
 	/*if($template_filter_enable == "yes"){
 		if( isset( $_POST["aione_filters_searchsubmit"]) && isset($_POST["search"]) && $_POST["search"] == "aione_filters_search"){
@@ -153,5 +149,6 @@ else :
 endif;
 
 if( is_post_type_archive() || is_archive() || is_home() || is_search()) {
+
 	echo aione_pagination( $wp_query );
 }

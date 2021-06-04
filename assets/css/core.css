@@ -2464,12 +2464,6 @@ Common Widget Style in footer
 /*********[   Text Widget   ]***************/
 .aione-footer .textwidget {
   color: #fff;
-  line-height: 25px;
-  letter-spacing: 1.1px;
-}
-
-.aione-footer .textwidget p {
-  text-align: justify;
 }
 
 /*********[   Recent Post Widget   ]***************/
