@@ -325,13 +325,13 @@ require get_template_directory() . '/includes/aione-widgets.php';
 require get_template_directory() . '/includes/register-sidebars.php';
 
 // Register Blocks(Using ACF)
-// require get_template_directory() . '/includes/aione-blocks.php';
+require get_template_directory() . '/includes/aione-blocks.php';
 
 // Register Block Patterns
 require get_template_directory() . '/includes/aione-block-patterns.php';
 
 
-
+ 
 //Register Aione Slider
 //require get_template_directory() . '/includes/register-aione-slider.php';
 
