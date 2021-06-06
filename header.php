@@ -263,8 +263,11 @@ if (is_user_logged_in()) {
 
 $body_classes = implode(" ", $body_classes);
 
-?>
-<?php 
+
+
+if( !$theme_options['advanced_load_css_bottom'] ) {
+	get_template_part( 'template/aione-custom-css' );
+} 
 if( !empty( $theme_options['code_head'] ) ) { 
 	echo do_shortcode( $theme_options['code_head'] );
 }
