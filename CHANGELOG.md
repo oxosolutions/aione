@@ -214,3 +214,6 @@ UPDATED: PHP 7.4 compatibility
 
 ## 7.6.0.1 15-02-2021
 UPDATED: Animate.css
+
+## 7.7.0.0 06-06-2021
+UPDATED: Custom CSS 
