@@ -2382,7 +2382,6 @@ Aione Footer
   font-size: 1em;
   line-height: 1.5;
   font-weight: normal;
-  text-align: center;
   background-color: #222a2d;
 }
 
@@ -2483,11 +2482,6 @@ Common Widget Style in footer
   display: block;
   line-height: 1.6;
   margin-top: 6px;
-}
-
-/*********[   Social Icons Widget   ]***************/
-.aione-footer .widget.aione-social-icons-widget ul li a {
-  text-align: center;
 }
 
 /*********[   Gallery Widget   ]***************/

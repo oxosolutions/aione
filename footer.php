@@ -366,7 +366,7 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 	/****** PAGE END*****/
 	if( $theme_options['page_customize_enable'] ) {
 		echo '
-		.aione-main{
+		.aione-main,.aione-pagetop, .aione-pagebottom  {
 			background-color: '.esc_html($theme_options['page_background_color']).';
 		}
 		.aione-page-content{
@@ -477,16 +477,18 @@ $custom_js = get_aione_page_settings( $post->ID,'aione_per_page_setting', 'pyre_
 
 	?>
 	<?php
-	if( $theme_options['custom_css'] != "" ) {
+	if( $theme_options['custom_css'] != "" ):
 		// do not use filter esc_html; It breaks css
 		// do not add wp_kses_post; it converts > to &gt;
 		echo $theme_options['custom_css'];
-	}
-	if($pyre_custom_css != ""){
+	endif;
+
+	if($pyre_custom_css != ""):
 		// do not use filter esc_html; It breaks css
 		// do not use filter wp_kses_post; it converts > to &gt;
 		echo $pyre_custom_css;
-	}
+	endif;
+	
 	?>
 	</style>
 	<!-- CUSTOM CSS END -->

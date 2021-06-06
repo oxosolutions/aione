@@ -9733,7 +9733,6 @@ Aione Footer
   font-size: 1em;
   line-height: 1.5;
   font-weight: normal;
-  text-align: center;
   background-color: #222a2d;
 }
 
@@ -9834,11 +9833,6 @@ Common Widget Style in footer
   display: block;
   line-height: 1.6;
   margin-top: 6px;
-}
-
-/*********[   Social Icons Widget   ]***************/
-.aione-footer .widget.aione-social-icons-widget ul li a {
-  text-align: center;
 }
 
 /*********[   Gallery Widget   ]***************/
@@ -10634,7 +10628,6 @@ AIONE SOCIAL ICONS
   margin: 0;
   padding: 0;
   list-style: none;
-  text-align: center;
   margin-bottom: 10px;
 }
 
@@ -10649,6 +10642,11 @@ AIONE SOCIAL ICONS
   font-weight: normal;
   display: inline-block;
   text-decoration: none;
+  transition: all 120ms ease-out;
+}
+
+.aione-social-icons > *:hover {
+  transform: scale(1.15);
 }
 
 .aione-social-icons.labels > * > a {
@@ -10837,292 +10835,292 @@ Theme Color
   color: #ffffff;
 }
 
-.facebook {
+.aione-social-icons .facebook {
   background: #4060a5;
 }
 
-.facebook > a > .icon:before {
+.aione-social-icons .facebook > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F09A";
 }
 
-.twitter {
+.aione-social-icons .twitter {
   background: #00abe3;
 }
 
-.twitter > a > .icon:before {
+.aione-social-icons .twitter > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F099";
 }
 
-.googleplus {
-  background: #e64522;
+.aione-social-icons .googleplus {
+  background: #e88845;
 }
 
-.googleplus > a > .icon:before {
+.aione-social-icons .googleplus > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F0D5";
 }
 
-.linkedin {
+.aione-social-icons .linkedin {
   background: #0094bc;
 }
 
-.linkedin > a > .icon:before {
+.aione-social-icons .linkedin > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F0E1";
 }
 
-.pinterest {
+.aione-social-icons .pinterest {
   background: #cb2027;
 }
 
-.pinterest > a > .icon:before {
+.aione-social-icons .pinterest > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F0D2";
 }
 
-.tumblr {
+.aione-social-icons .tumblr {
   background: #3a5876;
 }
 
-.tumblr > a > .icon:before {
+.aione-social-icons .tumblr > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F173";
 }
 
-.rss {
+.aione-social-icons .rss {
   background: #e88845;
 }
 
-.rss > a > .icon:before {
+.aione-social-icons .rss > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F09E";
 }
 
-.whatsapp {
+.aione-social-icons .whatsapp {
   background: #34AF23;
 }
 
-.whatsapp > a > .icon:before {
+.aione-social-icons .whatsapp > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F232";
 }
 
-.reddit {
+.aione-social-icons .reddit {
   background: #ff4500;
 }
 
-.reddit > a > .icon:before {
+.aione-social-icons .reddit > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F281";
 }
 
-.buffer {
+.aione-social-icons .buffer {
   background: #323B43;
 }
 
-.buffer > a > .icon:before {
+.aione-social-icons .buffer > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F837";
 }
 
-.youtube {
+.aione-social-icons .youtube {
   background: #bb0000;
 }
 
-.youtube > a > .icon:before {
+.aione-social-icons .youtube > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F167";
 }
 
-.flickr {
+.aione-social-icons .flickr {
   background: #ff0084;
 }
 
-.flickr > a > .icon:before {
+.aione-social-icons .flickr > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F16E";
 }
 
-.instagram {
+.aione-social-icons .instagram {
   background: #bc2a8d;
 }
 
-.instagram > a > .icon:before {
+.aione-social-icons .instagram > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F16D";
 }
 
-.yahoo {
+.aione-social-icons .yahoo {
   background: #7B0099;
 }
 
-.yahoo > a > .icon:before {
+.aione-social-icons .yahoo > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F19E";
 }
 
-.vimeo {
+.aione-social-icons .vimeo {
   background: #1ab7ea;
 }
 
-.vimeo > a > .icon:before {
+.aione-social-icons .vimeo > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F27D";
 }
 
-.stumbleupon {
+.aione-social-icons .stumbleupon {
   background: #EB4823;
 }
 
-.stumbleupon > a > .icon:before {
+.aione-social-icons .stumbleupon > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F1A4";
 }
 
-.quora {
+.aione-social-icons .quora {
   background: #a82400;
 }
 
-.quora > a > .icon:before {
+.aione-social-icons .quora > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F2C4";
 }
 
-.foursquare {
+.aione-social-icons .foursquare {
   background: #0072b1;
 }
 
-.foursquare > a > .icon:before {
+.aione-social-icons .foursquare > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F180";
 }
 
-.forrst {
+.aione-social-icons .forrst {
   background: #5B9A68;
 }
 
-.forrst > a > .icon:before {
+.aione-social-icons .forrst > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F1BB";
 }
 
-.vk {
+.aione-social-icons .vk {
   background: #45668e;
 }
 
-.vk > a > .icon:before {
+.aione-social-icons .vk > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F189";
 }
 
-.blogger {
+.aione-social-icons .blogger {
   background: #fb8f3d;
 }
 
-.blogger > a > .icon:before {
+.aione-social-icons .blogger > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F37C";
 }
 
-.wordpress {
+.aione-social-icons .wordpress {
   background: #21759b;
 }
 
-.wordpress > a > .icon:before {
+.aione-social-icons .wordpress > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F19A";
 }
 
-.soundcloud {
+.aione-social-icons .soundcloud {
   background: #ff3a00;
 }
 
-.soundcloud > a > .icon:before {
+.aione-social-icons .soundcloud > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F1BE";
 }
 
-.dribbble {
+.aione-social-icons .dribbble {
   background: #ea4c89;
 }
 
-.dribbble > a > .icon:before {
+.aione-social-icons .dribbble > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F17D";
 }
 
-.new-instagram {
+.aione-social-icons .instagram {
   background: #e95950;
 }
 
-.new-instagram > a > .icon:before {
+.aione-social-icons .instagram > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F16D";
 }
 
-.behance {
+.aione-social-icons .behance {
   background: #1769ff;
 }
 
-.behance > a > .icon:before {
+.aione-social-icons .behance > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F1B4";
 }
 
-.spotify {
+.aione-social-icons .spotify {
   background: #00e461;
 }
 
-.spotify > a > .icon:before {
+.aione-social-icons .spotify > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F1BC";
 }
 
-.vine {
+.aione-social-icons .vine {
   background: #00bf8f;
 }
 
-.vine > a > .icon:before {
+.aione-social-icons .vine > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F1CA";
 }
 
-.github {
+.aione-social-icons .github {
   background: #000000;
 }
 
-.github > a > .icon:before {
+.aione-social-icons .github > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F09B";
 }
 
-.dropbox {
+.aione-social-icons .dropbox {
   background: #007ee5;
 }
 
-.dropbox > a > .icon:before {
+.aione-social-icons .dropbox > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F16B";
 }
 
-.snapchat {
+.aione-social-icons .snapchat {
   background: #fffc00;
 }
 
-.snapchat > a > .icon:before {
+.aione-social-icons .snapchat > a > .icon:before {
   font-family: "FontAwesome";
   content: "\F2AC";
 }
 
-.email {
+.aione-social-icons .email {
   background: #20252b;
 }
 
-.snapchat > a > .icon:before {
+.aione-social-icons .email > a > .icon:before {
   font-family: "FontAwesome";
-  content: "\F003";
+  content: "\F0E0";
 }
 
 /***************************************
@@ -68634,6 +68632,82 @@ small {
   line-height: 100px;
 }
 
+.line-height-110 {
+  line-height: 110px;
+}
+
+.line-height-120 {
+  line-height: 120px;
+}
+
+.line-height-130 {
+  line-height: 130px;
+}
+
+.line-height-140 {
+  line-height: 140px;
+}
+
+.line-height-150 {
+  line-height: 150px;
+}
+
+.line-height-160 {
+  line-height: 160px;
+}
+
+.line-height-170 {
+  line-height: 170px;
+}
+
+.line-height-180 {
+  line-height: 180px;
+}
+
+.line-height-190 {
+  line-height: 190px;
+}
+
+.line-height-200 {
+  line-height: 200px;
+}
+
+.text-transform-capitalize {
+  text-transform: capitalize;
+}
+
+.text-transform-inherit {
+  text-transform: inherit;
+}
+
+.text-transform-initial {
+  text-transform: initial;
+}
+
+.text-transform-lowercase {
+  text-transform: lowercase;
+}
+
+.text-transform-math-auto {
+  text-transform: math-auto;
+}
+
+.text-transform-none {
+  text-transform: none;
+}
+
+.text-transform-revert {
+  text-transform: revert;
+}
+
+.text-transform-unset {
+  text-transform: unset;
+}
+
+.text-transform-uppercase {
+  text-transform: uppercase;
+}
+
 /***********************************
 Gradient text
 ***********************************/
@@ -72329,7 +72403,6 @@ Gravityform
   margin-bottom: 1.5em;
   text-align: center;
   font-size: 1em;
-  color: inherit;
 }
 
 .gform_wrapper .validation_message {
