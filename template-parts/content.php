@@ -1,7 +1,10 @@
+
 <article id="post_<?php the_ID(); ?>" <?php post_class(); ?>> 
-	<div class="featured-image aione-rounded">
-		<?php the_post_thumbnail( 'full' ); ?>
-	</div>
+	<?php if ( the_post_thumbnail( get_the_ID() ) && $theme_options['blog_single_featured_image_enable'] == 1 ) { ?>
+		<div class="featured-image rounded">
+			<?php the_post_thumbnail( 'full' ); ?>
+		</div>
+	<?php } ?>
 	<header class="entry-header">
 		<?php 
 		if ( is_singular() ) :

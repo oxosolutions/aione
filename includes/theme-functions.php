@@ -242,7 +242,21 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 	    // Global Options
 		$is_enabled = $theme_options['sidebar_' . $sidebar_position . '_enable'];
 
+
 		if ( is_archive() ) {
+
+			if( $post_type == 'post' ){
+				
+				$theme_options_name = 'blog_archive_' . $sidebar_position . '_sidebar_enable';
+				$theme_options_value = $theme_options[$theme_options_name];
+				
+				if( $theme_options_value ) {
+					$is_enabled = 1;
+				} else{
+					$is_enabled = 0;
+				}
+
+			}
 
 			if ( isset( $template_slug_archive ) ) {
 
@@ -260,6 +274,19 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 
 		if ( is_home() ) {
 
+			if( $post_type == 'post' ){
+				
+				$theme_options_name = 'blog_archive_' . $sidebar_position . '_sidebar_enable';
+				$theme_options_value = $theme_options[$theme_options_name];
+				
+				if( $theme_options_value ) {
+					$is_enabled = 1;
+				} else{
+					$is_enabled = 0;
+				}
+
+			}
+
 			if ( isset( $template_slug_archive ) ) {
 
 				if ( $is_enabled_archive == 'no' ) {
@@ -275,6 +302,19 @@ if ( !function_exists( 'is_enabled_sidebar' ) ) {
 		}
 
 		if ( is_single() ) {
+
+			if( $post_type == 'post' ){
+				
+				$theme_options_name = 'blog_single_' . $sidebar_position . '_sidebar_enable';
+				$theme_options_value = $theme_options[$theme_options_name];
+				
+				if( $theme_options_value ) {
+					$is_enabled = 1;
+				} else{
+					$is_enabled = 0;
+				}
+
+			}
 
 	        //Template Options Enable
 			if ( isset( $template_slug_single ) ) {

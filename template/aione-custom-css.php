@@ -19,14 +19,32 @@ if( $theme_options['color_primary'] ) {
 	.highlight{
 		color:'.esc_html($theme_options['color_highlight']).';
 	}
+	.hover-primary:hover{
+		color:'.esc_html($theme_options['color_primary']).';
+	}
+	.hover-secondary:hover{
+		color:'.esc_html($theme_options['color_secondary']).';
+	}
+	.hover-highlight:hover{
+		color:'.esc_html($theme_options['color_highlight']).';
+	}
 	.bg-primary{
-		color:'.esc_html($theme_options['bg_color_primary']).';
+		background-color:'.esc_html($theme_options['bg_color_primary']).';
 	}
 	.bg-secondary{
-		color:'.esc_html($theme_options['bg_color_secondary']).';
+		background-color:'.esc_html($theme_options['bg_color_secondary']).';
 	}
 	.bg-highlight{
-		color:'.esc_html($theme_options['bg_color_highlight']).';
+		background-color:'.esc_html($theme_options['bg_color_highlight']).';
+	}
+	.hover-bg-primary:hover{
+		background-color:'.esc_html($theme_options['bg_color_primary']).';
+	}
+	.hover-bg-secondary:hover{
+		background-color:'.esc_html($theme_options['bg_color_secondary']).';
+	}
+	.hover-bg-highlight:hover{
+		background-color:'.esc_html($theme_options['bg_color_highlight']).';
 	}
 
 	input[type=button], 
@@ -44,6 +62,12 @@ if( $theme_options['color_primary'] ) {
 	}
 	'; 
 }
+
+echo '
+html{
+	font-size:'.esc_html($theme_options['font']['font-size']).';
+}
+';
 
 
 
@@ -73,7 +97,7 @@ echo '
 if( $theme_options['font']['google'] == 'true'){
 	echo '
 		body,
-		.font-family{
+		.font-primary{
 			/**
 			DO NOT ESC HTML; Breaks Font
 			Google Font
@@ -85,7 +109,7 @@ if( $theme_options['font']['google'] == 'true'){
 } else {
 	echo '
 		body,
-		.font-family{
+		.font-primary{
 			/**
 			DO NOT ESC HTML; Breaks Font
 			Normal Font
@@ -103,7 +127,7 @@ if( $theme_options['font_heading']['google'] == 'true'){
 		h4,
 		h5,
 		h6,
-		.font-family-heading{
+		.font-heading{
 			/**
 			DO NOT ESC HTML; Breaks Font
 			Google Font
@@ -124,7 +148,7 @@ if( $theme_options['font_heading']['google'] == 'true'){
 		h4,
 		h5,
 		h6,
-		.font-family-heading{
+		.font-heading{
 			/**
 			DO NOT ESC HTML; Breaks Font
 			Normal Font
@@ -138,6 +162,20 @@ if( $theme_options['font_heading']['google'] == 'true'){
 		';
 }
 
+
+if( $theme_options['font_other']['google'] == 'true'){
+	echo '
+		.font-secondry{
+			/**
+			DO NOT ESC HTML; Breaks Font
+			Google Font
+			**/
+			font-family: '.$theme_options['font_other']['font-family'].';
+			font-weight: '.esc_html($theme_options['font_other']['font-weight']).';
+		}
+		';
+
+}
 
 
 /****** Top Bar *****/
