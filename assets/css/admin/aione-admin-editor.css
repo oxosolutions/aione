@@ -55777,6 +55777,15 @@ Theme Color
   content: "\F0E0";
 }
 
+.aione-social-icons .call {
+  background: #20252b;
+}
+
+.aione-social-icons .call > a > .icon:before {
+  font-family: "FontAwesome";
+  content: "\F095";
+}
+
 /***************************************
 Aione Buttons
 ***************************************/
@@ -55849,7 +55858,7 @@ Aione Buttons
   border-radius: 100px;
 }
 
-.outline {
+.aione-button.outline {
   background-color: transparent;
   color: #1c2225;
   border: 2px solid #1c2225;

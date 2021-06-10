@@ -2064,55 +2064,70 @@ p.has-text-color a {
   color: inherit;
 }
 
+.wp-block-post-template,
 .wp-block-query-loop {
   max-width: 100%;
   list-style: none;
   padding: 0;
 }
+.wp-block-post-template li,
 .wp-block-query-loop li {
   clear: both;
 }
+.wp-block-post-template.is-flex-container,
 .wp-block-query-loop.is-flex-container {
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
 }
+.wp-block-post-template.is-flex-container li,
 .wp-block-query-loop.is-flex-container li {
   margin: 0 0 1.25em 0;
   width: 100%;
 }
 @media (min-width: 600px) {
-  .wp-block-query-loop.is-flex-container li {
+  .wp-block-post-template.is-flex-container li,
+.wp-block-query-loop.is-flex-container li {
     margin-right: 1.25em;
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-2 > li {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-2 > li,
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-2 > li {
     width: calc((100% / 2) - 1.25em + (1.25em / 2));
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-2 > li:nth-child(2n) {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-2 > li:nth-child(2n),
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-2 > li:nth-child(2n) {
     margin-right: 0;
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-3 > li {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-3 > li,
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-3 > li {
     width: calc((100% / 3) - 1.25em + (1.25em / 3));
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-3 > li:nth-child(3n) {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-3 > li:nth-child(3n),
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-3 > li:nth-child(3n) {
     margin-right: 0;
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-4 > li {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-4 > li,
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-4 > li {
     width: calc((100% / 4) - 1.25em + (1.25em / 4));
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-4 > li:nth-child(4n) {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-4 > li:nth-child(4n),
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-4 > li:nth-child(4n) {
     margin-right: 0;
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-5 > li {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-5 > li,
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-5 > li {
     width: calc((100% / 5) - 1.25em + (1.25em / 5));
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-5 > li:nth-child(5n) {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-5 > li:nth-child(5n),
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-5 > li:nth-child(5n) {
     margin-right: 0;
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-6 > li {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-6 > li,
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-6 > li {
     width: calc((100% / 6) - 1.25em + (1.25em / 6));
   }
-  .wp-block-query-loop.is-flex-container.is-flex-container.columns-6 > li:nth-child(6n) {
+  .wp-block-post-template.is-flex-container.is-flex-container.columns-6 > li:nth-child(6n),
+.wp-block-query-loop.is-flex-container.is-flex-container.columns-6 > li:nth-child(6n) {
     margin-right: 0;
   }
 }
@@ -9491,27 +9506,27 @@ Aione Content
   width: 100%;
   float: none;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 2em;
 }
 
 @media only screen and (min-width: 993px) {
   .aione-wrapper.sidebar-left .aione-main .aione-page-content,
 .aione-wrapper.sidebar-right .aione-main .aione-page-content {
-    width: 70%;
+    width: 75%;
     float: left;
     margin-bottom: 0;
   }
 
   .aione-wrapper.sidebar-left .aione-main .aione-page-content {
-    padding-left: 30px;
+    padding-left: 2em;
   }
 
   .aione-wrapper.sidebar-right .aione-main .aione-page-content {
-    padding-right: 30px;
+    padding-right: 2em;
   }
 
   .aione-wrapper.sidebar-left.sidebar-right .aione-main .aione-page-content {
-    width: 50%;
+    width: 60%;
   }
 }
 /***************************************
@@ -9525,18 +9540,18 @@ Aione Sidebar
   width: 100%;
   float: none;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 2em;
 }
 
 @media only screen and (min-width: 993px) {
   .aione-sidebar {
-    width: 30%;
+    width: 25%;
     position: relative;
     margin-bottom: 0;
   }
 
   .aione-wrapper.sidebar-left.sidebar-right .aione-sidebar {
-    width: 25%;
+    width: 20%;
   }
 }
 /***************************************
@@ -9548,7 +9563,7 @@ Aione Sidebar Left
   }
 
   .aione-main.sidebar-left .aione-sidebar-left > .wrapper {
-    margin-right: 30px;
+    margin-right: 2em;
   }
 }
 /***************************************
@@ -9560,7 +9575,7 @@ Aione Sidebar Right
   }
 
   .aione-main.sidebar-right .aione-sidebar-right > .wrapper {
-    margin-left: 30px;
+    margin-left: 2em;
   }
 }
 /************************************************
@@ -11123,6 +11138,15 @@ Theme Color
   content: "\F0E0";
 }
 
+.aione-social-icons .call {
+  background: #20252b;
+}
+
+.aione-social-icons .call > a > .icon:before {
+  font-family: "FontAwesome";
+  content: "\F095";
+}
+
 /***************************************
 Aione Buttons
 ***************************************/
@@ -11195,7 +11219,7 @@ Aione Buttons
   border-radius: 100px;
 }
 
-.outline {
+.aione-button.outline {
   background-color: transparent;
   color: #1c2225;
   border: 2px solid #1c2225;

@@ -2140,27 +2140,27 @@ Aione Content
   width: 100%;
   float: none;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 2em;
 }
 
 @media only screen and (min-width: 993px) {
   .aione-wrapper.sidebar-left .aione-main .aione-page-content,
 .aione-wrapper.sidebar-right .aione-main .aione-page-content {
-    width: 70%;
+    width: 75%;
     float: left;
     margin-bottom: 0;
   }
 
   .aione-wrapper.sidebar-left .aione-main .aione-page-content {
-    padding-left: 30px;
+    padding-left: 2em;
   }
 
   .aione-wrapper.sidebar-right .aione-main .aione-page-content {
-    padding-right: 30px;
+    padding-right: 2em;
   }
 
   .aione-wrapper.sidebar-left.sidebar-right .aione-main .aione-page-content {
-    width: 50%;
+    width: 60%;
   }
 }
 /***************************************
@@ -2174,18 +2174,18 @@ Aione Sidebar
   width: 100%;
   float: none;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 2em;
 }
 
 @media only screen and (min-width: 993px) {
   .aione-sidebar {
-    width: 30%;
+    width: 25%;
     position: relative;
     margin-bottom: 0;
   }
 
   .aione-wrapper.sidebar-left.sidebar-right .aione-sidebar {
-    width: 25%;
+    width: 20%;
   }
 }
 /***************************************
@@ -2197,7 +2197,7 @@ Aione Sidebar Left
   }
 
   .aione-main.sidebar-left .aione-sidebar-left > .wrapper {
-    margin-right: 30px;
+    margin-right: 2em;
   }
 }
 /***************************************
@@ -2209,7 +2209,7 @@ Aione Sidebar Right
   }
 
   .aione-main.sidebar-right .aione-sidebar-right > .wrapper {
-    margin-left: 30px;
+    margin-left: 2em;
   }
 }
 /************************************************
