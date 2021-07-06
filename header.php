@@ -208,38 +208,99 @@ if( !empty( $pyre_structured_data ) ) {
 $post_type = get_post_type();
 $aione_components = get_option('aione-components');
 $aione_component = $aione_components[$post_type];
-$template_single_slug = $aione_component['single_template'];
 
-$aione_templates = get_option('aione-templates');
-$aione_single_structured_data = $aione_templates[$template_single_slug]['structured_data'];
 
-if ($template_single_slug != 'single') {
-	echo '<script type="application/ld+json">';
-	$aione_single_structured_data_string = do_shortcode($aione_single_structured_data);
-	$aione_single_structured_data_text = strip_tags($aione_single_structured_data_string);
+if( is_single() ){
+	$template_single_slug = $aione_component['single_template'];
 
-	echo $aione_single_structured_data_text;
-	echo "</script>";
+	$aione_templates = get_option('aione-templates');
+	$aione_single_structured_data = $aione_templates[$template_single_slug]['structured_data'];
+
+	if ($template_single_slug != 'single') {
+		echo '<!-- Structured data single -->';
+		echo '<script type="application/ld+json">';
+		$aione_single_structured_data_string = do_shortcode($aione_single_structured_data);
+		$aione_single_structured_data_text = strip_tags($aione_single_structured_data_string);
+
+		echo $aione_single_structured_data_text;
+		echo "</script>";
+	}
 }
 
-$template_archive_slug = $aione_component['archive_template'];
+if( is_archive() ){
 
-$aione_templates = get_option('aione-templates');
-$aione_archive_structured_data = $aione_templates[$template_archive_slug]['structured_data'];
-$aione_archive_structured_data_header = $aione_templates[$template_archive_slug]['structured_data_header'];
-$aione_archive_structured_data_footer = $aione_templates[$template_archive_slug]['structured_data_footer'];
+	$template_archive_slug = $aione_component['archive_template'];
 
-if ($template_archive_slug != 'archive') {
-	echo '<script type="application/ld+json">';
+	$aione_templates = get_option('aione-templates');
+	$aione_archive_structured_data = $aione_templates[$template_archive_slug]['structured_data'];
+	$aione_archive_structured_data_header = $aione_templates[$template_archive_slug]['structured_data_header'];
+	$aione_archive_structured_data_footer = $aione_templates[$template_archive_slug]['structured_data_footer'];
 
-	echo $aione_archive_structured_data_header;
-	$aione_archive_structured_data_string = do_shortcode($aione_archive_structured_data);
-	$aione_archive_structured_data_text = strip_tags($aione_archive_structured_data_string);
+	if ($template_archive_slug != 'archive') {
+		echo '<!-- Structured data archive -->';
+		
+		echo '<script type="application/ld+json">';
 
-	echo $aione_archive_structured_data_text;
-	echo $aione_archive_structured_data_footer;
-	
-	echo "</script>";
+		echo $aione_archive_structured_data_header;
+
+		$posts_per_page = $aione_templates[$template_archive_slug]['template_posts_per_page'];
+
+		/*
+		template_posts_order_by
+		template_posts_order
+		echo '<pre>';
+		print_r( $posts_per_page );
+		echo '</pre>';
+		*/
+
+		$aione_archive_structured_data_array = array();
+
+
+
+
+
+
+		global $post;
+ 
+	    $posts = get_posts( array(
+	        'post_type' => $post_type,
+	        'posts_per_page' => 5,
+	    ) );
+	 
+	    if ( $posts ) {
+	        foreach ( $posts as $post ) : 
+	            setup_postdata( $post ); 
+
+	            $aione_archive_structured_data_string = do_shortcode($aione_archive_structured_data);
+				$aione_archive_structured_data_text = strip_tags($aione_archive_structured_data_string);
+				$aione_archive_structured_data_array[] = $aione_archive_structured_data_text;
+	            
+
+	        endforeach;
+	        wp_reset_postdata();
+	    } 
+		/*
+		
+	    */
+
+
+		/*
+		$aione_archive_structured_data_string = do_shortcode($aione_archive_structured_data);
+		$aione_archive_structured_data_text = strip_tags($aione_archive_structured_data_string);
+
+		echo $aione_archive_structured_data_text;
+		*/
+		echo implode(',', $aione_archive_structured_data_array );
+
+		echo $aione_archive_structured_data_footer;
+
+		echo "</script>";
+		/*
+		echo '<pre>';
+		print_r( $aione_archive_structured_data_array );
+		echo '</pre>';
+		*/
+	}
 }
 
 $wrapper_classes = array('aione-wrapper');
