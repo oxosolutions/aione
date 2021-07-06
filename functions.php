@@ -6,6 +6,52 @@
 
 
 
+
+
+function get_ajax_posts() {
+	global $wp_query;
+	if (isset($_REQUEST) ){
+		$post_id = $_REQUEST['post_id'];
+		$wp_query = new WP_Query($_REQUEST['query']); 
+		$is_front_page = $_REQUEST['is_front_page'];
+	} else {
+		global $post; 
+		global $wp_query;
+		$post_id = $post->ID;
+		$is_front_page = false;
+	}
+
+    
+    $response = get_template_part('template/aione-content',null,array('post_id'=>$post_id,'wp_query'=>$wp_query,'is_front_page'=>$is_front_page ));
+
+    echo($response);
+    wp_die();
+    //exit; // leave ajax call
+}
+
+// Fire AJAX action for both logged in and non-logged in users
+add_action('wp_ajax_get_ajax_posts', 'get_ajax_posts');
+add_action('wp_ajax_nopriv_get_ajax_posts', 'get_ajax_posts');
+
+function get_ajax_filters() {
+	if (isset($_REQUEST) ){
+		$post_id = $_REQUEST['post_id'];
+		$wp_query = new WP_Query($_REQUEST['query']); 
+		$filters = $_REQUEST['filters'];
+	}
+
+	$response = get_template_part('template/aione-content',null,array('post_id'=>$post_id,'wp_query'=>$wp_query,'filters'=>$filters));
+
+    echo($response);
+    wp_die();
+    // exit; // leave ajax call
+}
+
+// Fire AJAX action for both logged in and non-logged in users
+add_action('wp_ajax_get_ajax_filters', 'get_ajax_filters');
+add_action('wp_ajax_nopriv_get_ajax_filters', 'get_ajax_filters');
+
+
 add_action( 'after_setup_theme', 'aione_init' );
 
 if ( ! function_exists( 'aione_init' ) ) :
@@ -193,9 +239,14 @@ function aione_styles() {
 add_action( 'wp_enqueue_scripts', 'aione_styles' );
 //add_action( 'admin_enqueue_scripts', 'aione_scripts' );
 
+
+
+
 function aione_scripts() {
 
 	global $theme_options;
+	global $post;
+	global $wp_query;
 
 	//If not loaded from CDN
 	if( !$theme_options['advanced_use_cdn'] ) {
@@ -210,6 +261,35 @@ function aione_scripts() {
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	} 
+	if( $theme_options['advanced_ajax_content'] ) {
+		
+	?>
+	<script>
+		var post_id = <?php echo $post->ID; ?>;
+		var query = <?php echo json_encode($wp_query ); ?>;
+		var is_front_page = <?php echo json_encode($wp_query->is_front_page() ); ?>;
+		console.log('query')
+		console.log(query)
+		console.log('is_front_page')
+		console.log(is_front_page)
+		//console.log(JSON.stringify(query))
+		$.ajax({
+	        type: 'POST',
+	        url: '<?php echo admin_url('admin-ajax.php');?>',
+	        //dataType: "html", // add data type
+	        data: { action : 'get_ajax_posts', post_id : post_id, query:query.query, is_front_page:is_front_page },
+	        success: function( response ) {
+	        	//console.log('response')
+	        	//console.log(response)
+	        	//console.log(JSON.parse(response))
+	        	//response = JSON.parse(response);
+	            // $( '.aione-page-content > .wrapper' ).html( response ); 
+	            $( '.content' ).html( response ); 
+	        }
+	    });
+	</script>
+	<?php
 	}
 }
 add_action( 'get_footer', 'aione_scripts' );

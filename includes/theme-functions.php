@@ -1,35 +1,50 @@
 <?php
 
+
 if ( !function_exists( 'aione_pagination' ) ) {
 
 	function aione_pagination( $wp_query = null ) {
 
-		
-
-
-
+		global $wp;
+		global $theme_options;
 		if ($wp_query == null) {
 			global $wp_query;
 		}
 
-		/*
+		
 
-		echo "<br>QUERY = ";
+		/*echo "<br>QUERY = ";
 		echo "<pre>";
 		print_r( $wp_query );
-		echo "</pre>";
-		*/
+		echo "</pre>";*/
+		
 
 	    $big = 999999999; // need an unlikely integer
-	    $current_page = get_query_var('paged');
+	    //$current_page = get_query_var('paged');
+	    $current_page = $wp_query->query_vars['paged'];
 	    $total_pages = $wp_query->max_num_pages;
 
 	    if ($total_pages == 1) {
 	    	return '';
 	    }
 
+	    if($theme_options['advanced_ajax_content']) {
+	    	if($current_page == 0) {
+	    		$base = str_replace($big, '%#%', ''.$_SERVER['HTTP_REFERER'].'page/%#%/');
+	    	}
+	    	else {
+	    		$referrer = substr($_SERVER['HTTP_REFERER'], 0, strpos($_SERVER['HTTP_REFERER'], 'page'));
+	    		$base = str_replace($big, '%#%', ''.$referrer.'page/%#%/');
+	    	}
+	    }
+	    else {
+	    	$base = str_replace($big, '%#%', esc_url(get_pagenum_link($big)));
+	    }
+
+	    // echo $base;
+
 	    $args = array(
-	    	'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+	    	'base' => $base,
 	    	'format' => '?paged=%#%',
 	    	'total' => $total_pages,
 	    	'current' => max(1, $current_page),
@@ -94,6 +109,8 @@ if ( !function_exists( 'aione_pagination' ) ) {
 	    }
 
 	    $output .= '</ul>';
+
+	    
 
 	    return $output;
 	}

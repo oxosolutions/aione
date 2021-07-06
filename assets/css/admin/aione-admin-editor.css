@@ -57616,37 +57616,39 @@ optgroup {
 ::-moz-placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
-  opacity: 1;
+  color: inherit;
+  opacity: 0.6;
   /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
-  opacity: 1;
+  color: inherit;
+  opacity: 0.6;
   /* Firefox */
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
-  opacity: 1;
+  color: inherit;
+  opacity: 0.6;
   /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
+  color: inherit;
+  opacity: 0.6;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
+  color: inherit;
+  opacity: 0.6;
 }
 
 /**
@@ -57681,13 +57683,119 @@ textarea {
   transition: all 280ms ease-in-out;
 }
 
+.border-none input[type=search],
+.border-none input[type=text],
+.border-none input[type=email],
+.border-none input[type=number],
+.border-none input[type=password],
+.border-none input[type=tel],
+.border-none input[type=url],
+.border-none input[type=date],
+.border-none input[type=time],
+.border-none select,
+.border-none select[multiple=multiple],
+.border-none textarea {
+  border: none;
+}
+
+.border-current input[type=search],
+.border-current input[type=text],
+.border-current input[type=email],
+.border-current input[type=number],
+.border-current input[type=password],
+.border-current input[type=tel],
+.border-current input[type=url],
+.border-current input[type=date],
+.border-current input[type=time],
+.border-current select,
+.border-current select[multiple=multiple],
+.border-current textarea {
+  border: 1px solid currentColor;
+}
+
+.square input[type=search],
+.square input[type=text],
+.square input[type=email],
+.square input[type=number],
+.square input[type=password],
+.square input[type=tel],
+.square input[type=url],
+.square input[type=date],
+.square input[type=time],
+.square select,
+.square select[multiple=multiple],
+.square textarea {
+  border-radius: 0;
+}
+
+.light input[type=search],
+.light input[type=text],
+.light input[type=email],
+.light input[type=number],
+.light input[type=password],
+.light input[type=tel],
+.light input[type=url],
+.light input[type=date],
+.light input[type=time],
+.light select,
+.light select[multiple=multiple],
+.light textarea {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.dark input[type=search],
+.dark input[type=text],
+.dark input[type=email],
+.dark input[type=number],
+.dark input[type=password],
+.dark input[type=tel],
+.dark input[type=url],
+.dark input[type=date],
+.dark input[type=time],
+.dark select,
+.dark select[multiple=multiple],
+.dark textarea {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+input[type=search]:focus,
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=tel]:focus,
+input[type=url]:focus,
+input[type=date]:focus,
+input[type=time]:focus,
+select:focus,
+select[multiple=multiple]:focus,
+textarea:focus {
+  border: 1px solid currentColor;
+}
+
+.border-none input[type=search]:focus,
+.border-none input[type=text]:focus,
+.border-none input[type=email]:focus,
+.border-none input[type=number]:focus,
+.border-none input[type=password]:focus,
+.border-none input[type=tel]:focus,
+.border-none input[type=url]:focus,
+.border-none input[type=date]:focus,
+.border-none input[type=time]:focus,
+.border-none select:focus,
+.border-none select[multiple=multiple]:focus,
+.border-none textarea:focus {
+  border: none;
+}
+
 input[type=button],
 input[type=submit],
 input[type=reset] {
   border: none;
   color: #fff;
   margin: 0 0 1em 0;
-  padding: 0.7em 3em;
+  padding: 0 3em;
+  line-height: 36px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -58509,6 +58617,8 @@ AIONE SCROLL PROGRESS
   font-size: 16px;
   line-height: 22px;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.28);
+  box-sizing: border-box;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transition: all 0.35s ease-in-out;
@@ -58521,20 +58631,17 @@ AIONE SCROLL PROGRESS
   font-style: normal;
 }
 
-.gallery-caption .aione-title {
-  background-color: rgba(0, 0, 0, 0.28);
-  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.1);
-  font-size: 16px;
-  line-height: 18px;
-  padding: 6px 33px;
-  text-transform: uppercase;
+.gallery-caption .caption-title {
+  font-size: 1.125em;
+  line-height: 1.5;
+  margin-bottom: 0.5em;
   word-break: break-all !important;
 }
 
-.gallery-caption .description {
-  font-size: 16px;
-  line-height: 18px;
-  padding: 8px 7px;
+.gallery-caption .caption-description {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-bottom: 0;
 }
 
 .gallery-item:hover .gallery-caption {

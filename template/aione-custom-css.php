@@ -205,6 +205,12 @@ if( $theme_options['header_customize_enable'] ) {
 		background-color: '.esc_html($theme_options['header_background_color']).';
 		color: '.esc_html($theme_options['header_text_color']).';
 	}
+	.aione-header-title .site-title{
+		color: '.esc_html($theme_options['header_text_color']).';
+	}
+	.aione-header-title .site-description{
+		color: '.esc_html($theme_options['header_text_color']).';
+	}
 	.aione-header a{
 		color: '.esc_html($theme_options['header_link_color']).';	
 	}

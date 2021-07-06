@@ -1116,6 +1116,10 @@ h6.has-background {
 }
 
 ol.wp-block-latest-comments {
+  margin-left: 0;
+}
+
+.wp-block-latest-comments .wp-block-latest-comments {
   padding-left: 0;
 }
 
@@ -1167,6 +1171,7 @@ ol.wp-block-latest-comments {
 }
 .wp-block-latest-posts.wp-block-latest-posts__list {
   list-style: none;
+  padding-left: 0;
 }
 .wp-block-latest-posts.wp-block-latest-posts__list li {
   clear: both;
@@ -2351,33 +2356,31 @@ p.has-text-color a {
   justify-content: flex-end;
 }
 
-.wp-social-link {
+.wp-block-social-link {
   display: block;
   border-radius: 9999px;
   transition: transform 0.1s ease;
   height: auto;
 }
 @media (prefers-reduced-motion: reduce) {
-  .wp-social-link {
+  .wp-block-social-link {
     transition-duration: 0s;
     transition-delay: 0s;
   }
 }
-.wp-social-link a {
+.wp-block-social-link a {
   display: block;
   line-height: 0;
   transition: transform 0.1s ease;
 }
-.wp-social-link a,
-.wp-social-link a:hover,
-.wp-social-link a:active,
-.wp-social-link a:visited,
-.wp-social-link svg {
+.wp-block-social-link:hover {
+  transform: scale(1.1);
+}
+
+.wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor, .wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor:hover, .wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor:active, .wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor:visited,
+.wp-block-social-links .wp-block-social-link .wp-block-social-link-anchor svg {
   color: currentColor;
   fill: currentColor;
-}
-.wp-social-link:hover {
-  transform: scale(1.1);
 }
 
 .wp-block-social-links:not(.is-style-logos-only) .wp-social-link {
@@ -11578,37 +11581,39 @@ optgroup {
 ::-moz-placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
-  opacity: 1;
+  color: inherit;
+  opacity: 0.6;
   /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
-  opacity: 1;
+  color: inherit;
+  opacity: 0.6;
   /* Firefox */
 }
 
 ::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
-  opacity: 1;
+  color: inherit;
+  opacity: 0.6;
   /* Firefox */
 }
 
 :-ms-input-placeholder {
   /* Internet Explorer 10-11 */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
+  color: inherit;
+  opacity: 0.6;
 }
 
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: #babdbf;
-  color: rgba(82, 90, 95, 0.5);
+  color: inherit;
+  opacity: 0.6;
 }
 
 /**
@@ -11643,13 +11648,119 @@ textarea {
   transition: all 280ms ease-in-out;
 }
 
+.border-none input[type=search],
+.border-none input[type=text],
+.border-none input[type=email],
+.border-none input[type=number],
+.border-none input[type=password],
+.border-none input[type=tel],
+.border-none input[type=url],
+.border-none input[type=date],
+.border-none input[type=time],
+.border-none select,
+.border-none select[multiple=multiple],
+.border-none textarea {
+  border: none;
+}
+
+.border-current input[type=search],
+.border-current input[type=text],
+.border-current input[type=email],
+.border-current input[type=number],
+.border-current input[type=password],
+.border-current input[type=tel],
+.border-current input[type=url],
+.border-current input[type=date],
+.border-current input[type=time],
+.border-current select,
+.border-current select[multiple=multiple],
+.border-current textarea {
+  border: 1px solid currentColor;
+}
+
+.square input[type=search],
+.square input[type=text],
+.square input[type=email],
+.square input[type=number],
+.square input[type=password],
+.square input[type=tel],
+.square input[type=url],
+.square input[type=date],
+.square input[type=time],
+.square select,
+.square select[multiple=multiple],
+.square textarea {
+  border-radius: 0;
+}
+
+.light input[type=search],
+.light input[type=text],
+.light input[type=email],
+.light input[type=number],
+.light input[type=password],
+.light input[type=tel],
+.light input[type=url],
+.light input[type=date],
+.light input[type=time],
+.light select,
+.light select[multiple=multiple],
+.light textarea {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.dark input[type=search],
+.dark input[type=text],
+.dark input[type=email],
+.dark input[type=number],
+.dark input[type=password],
+.dark input[type=tel],
+.dark input[type=url],
+.dark input[type=date],
+.dark input[type=time],
+.dark select,
+.dark select[multiple=multiple],
+.dark textarea {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+input[type=search]:focus,
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=tel]:focus,
+input[type=url]:focus,
+input[type=date]:focus,
+input[type=time]:focus,
+select:focus,
+select[multiple=multiple]:focus,
+textarea:focus {
+  border: 1px solid currentColor;
+}
+
+.border-none input[type=search]:focus,
+.border-none input[type=text]:focus,
+.border-none input[type=email]:focus,
+.border-none input[type=number]:focus,
+.border-none input[type=password]:focus,
+.border-none input[type=tel]:focus,
+.border-none input[type=url]:focus,
+.border-none input[type=date]:focus,
+.border-none input[type=time]:focus,
+.border-none select:focus,
+.border-none select[multiple=multiple]:focus,
+.border-none textarea:focus {
+  border: none;
+}
+
 input[type=button],
 input[type=submit],
 input[type=reset] {
   border: none;
   color: #fff;
   margin: 0 0 1em 0;
-  padding: 0.7em 3em;
+  padding: 0 3em;
+  line-height: 36px;
   border: none;
   outline: none;
   cursor: pointer;
@@ -12471,6 +12582,8 @@ AIONE SCROLL PROGRESS
   font-size: 16px;
   line-height: 22px;
   overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.28);
+  box-sizing: border-box;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transition: all 0.35s ease-in-out;
@@ -12483,20 +12596,17 @@ AIONE SCROLL PROGRESS
   font-style: normal;
 }
 
-.gallery-caption .aione-title {
-  background-color: rgba(0, 0, 0, 0.28);
-  box-shadow: 0 0 3px 1px rgba(255, 255, 255, 0.1);
-  font-size: 16px;
-  line-height: 18px;
-  padding: 6px 33px;
-  text-transform: uppercase;
+.gallery-caption .caption-title {
+  font-size: 1.125em;
+  line-height: 1.5;
+  margin-bottom: 0.5em;
   word-break: break-all !important;
 }
 
-.gallery-caption .description {
-  font-size: 16px;
-  line-height: 18px;
-  padding: 8px 7px;
+.gallery-caption .caption-description {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-bottom: 0;
 }
 
 .gallery-item:hover .gallery-caption {
@@ -72956,6 +73066,544 @@ This file is generated by `grunt build`, do not edit it by hand.
   }
 }
 /* @end */
+/************************************************
+/* Datepicker
+/************************************************/
+.ui-datepicker {
+  background: #d7d7d7;
+  height: auto;
+  margin: 5px auto 0;
+  font: 9pt Arial, sans-serif;
+  min-width: 216px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.ui-datepicker a {
+  text-decoration: none;
+}
+
+.ui-datepicker table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gform-admin-datepicker .ui-datepicker-header {
+  background-color: #000;
+  /* set the header background color */
+  color: #e0e0e0;
+  font-weight: bold;
+  box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, 0.2);
+  text-shadow: 1px -1px 0px #000;
+  filter: dropshadow(color=#000, offx=1, offy=-1);
+  line-height: 30px;
+  min-height: 30px !important;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: #666;
+}
+
+.ui-datepicker-header .ui-icon {
+  display: none;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+}
+
+.ui-datepicker-title select {
+  margin-top: 2.5%;
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  cursor: pointer;
+  background-image: url("../images/datepicker/arrow.png");
+  background-repeat: no-repeat;
+  line-height: 600%;
+  overflow: hidden;
+}
+
+.ui-datepicker-prev {
+  float: left;
+  background-position: center -30px;
+}
+
+.ui-datepicker-next {
+  float: right;
+  background-position: center 0px;
+}
+
+.ui-datepicker thead {
+  background: #f7f7f7;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3ZjdmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmMWYxZjEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: linear-gradient(to bottom, #f7f7f7 0%, #f1f1f1 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#f7f7f7", endColorstr="#f1f1f1", GradientType=0);
+  border-bottom: 1px solid #bbb;
+}
+
+.ui-datepicker th {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 6pt;
+  padding: 5px 0;
+  color: #666666;
+  text-shadow: 1px 0px 0px #fff;
+  filter: dropshadow(color=#fff, offx=1, offy=0);
+}
+
+.ui-datepicker tbody td {
+  padding: 0;
+  border-top: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+}
+
+.ui-datepicker tbody td:last-child {
+  border-right: 0px;
+}
+
+.ui-datepicker tbody tr {
+  border-bottom: 1px solid #bbb;
+}
+
+.ui-datepicker tbody tr:last-child {
+  border-bottom: 0px;
+}
+
+.ui-datepicker td span,
+.ui-datepicker td a {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  color: #666666;
+}
+
+.ui-datepicker-calendar .ui-state-default {
+  background: #ededed;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VkZWRlZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkZWRlZGUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: linear-gradient(to bottom, #ededed 0%, #dedede 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ededed", endColorstr="#dedede", GradientType=0);
+  box-shadow: inset 1px 1px 0px 0px rgba(250, 250, 250, 0.5);
+}
+
+.ui-datepicker-calendar .ui-state-hover {
+  background: #f7f7f7;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+  background: #FFF2AA;
+  /* set the active date background color */
+  border: 1px solid #c19163;
+  /* set the active date border color */
+  color: #666;
+  /* set the active date font color */
+  box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  filter: dropshadow(color=#FFF, offx=0, offy=1);
+  position: relative;
+  margin: -1px;
+}
+
+.ui-datepicker-unselectable .ui-state-default {
+  background: #f4f4f4;
+  color: #b4b3b3;
+}
+
+.ui-datepicker-calendar td:first-child .ui-state-active {
+  width: 29px;
+  margin-left: 0;
+}
+
+.ui-datepicker-calendar td:last-child .ui-state-active {
+  width: 29px;
+  margin-right: 0;
+}
+
+.ui-datepicker-calendar tr:last-child .ui-state-active {
+  height: 29px;
+  margin-bottom: 0;
+}
+
+td.ui-datepicker-unselectable.ui-state-disabled {
+  background-color: #d7d7d7;
+}
+
+table.ui-datepicker-calendar {
+  margin: 0 0 0 0 !important;
+}
+
+body div#ui-datepicker-div[style] {
+  z-index: 9999 !important;
+}
+
+/**
+ Datepicker
+ */
+.ui-datepicker:not(.gform-legacy-datepicker) {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  margin: 2.4px;
+  display: none;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker)[style] {
+  z-index: 9999 !important;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header {
+  position: relative;
+  padding: 0 8px 8px;
+  margin: 0 -8px 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-prev,
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-next {
+  position: absolute;
+  cursor: pointer;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-prev:before,
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-next:before {
+  border-style: solid;
+  border-width: 0.18em 0.18em 0 0;
+  content: "";
+  display: inline-block;
+  height: 0.55em;
+  left: 0.15em;
+  position: relative;
+  top: 0.3em;
+  transform: rotate(-135deg);
+  vertical-align: top;
+  width: 0.55em;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-prev .ui-icon,
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-next .ui-icon {
+  display: none;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-prev {
+  left: 16px;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-next {
+  right: 16px;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-next:before {
+  left: 0;
+  transform: rotate(45deg);
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-title {
+  text-align: center;
+  width: calc(100% - 60px);
+  margin-top: -2px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker table {
+  border-spacing: 0;
+  margin: 0;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker thead {
+  font-size: 0.85em;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) .ui-datepicker td {
+  padding: 0;
+  width: 35.2px;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) a.ui-state-default {
+  display: block;
+  width: 100%;
+  line-height: 35.2px;
+  text-align: center;
+  color: #222;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) a.ui-state-default:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.ui-datepicker:not(.gform-legacy-datepicker) a.ui-state-active,
+.ui-datepicker:not(.gform-legacy-datepicker) a.ui-state-active:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.gform_wrapper.gravity-theme .ginput_container_date[style*="display:none"] + .ginput_container_date {
+  margin-left: 0;
+}
+
+.gform_wrapper.gravity-theme .ginput_container_date label {
+  display: block;
+}
+
+html[dir=rtl] .gform_wrapper.gravity-theme .ginput_container_date + .ginput_container_date {
+  margin-left: 0;
+  margin-right: 16px;
+}
+
+html[dir=rtl] .gform_wrapper.gravity-theme .ginput_container_date[style*="display:none"] + .ginput_container_date {
+  margin-right: 0;
+}
+
+/*
+* Date field.
+*
+* Used in the basic.css front-end stylesheet and admin-theme.css.
+*/
+.gform-theme-datepicker:not(.gform-legacy-datepicker) {
+  background: #FFFFFF;
+  border: 1px solid #D0D1D3;
+  border-radius: 3px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.11), 0 0 4px rgba(18, 25, 97, 0.0405344);
+  color: #607382;
+  font-size: 13px;
+  margin-top: 5px;
+  padding: 18px 15px;
+  width: auto;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) table,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) thead,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) tr,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) td,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) th {
+  background: none;
+  border: 0;
+  margin: 0;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) td,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) th {
+  padding: 5px;
+  text-shadow: none;
+  text-transform: none;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header {
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 0 5px;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next {
+  align-items: center;
+  background: none;
+  color: #607382;
+  border: 1px solid rgba(96, 115, 130, 0.2);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  font-family: "gform-icons-theme" !important;
+  font-size: 24px;
+  height: 30px;
+  justify-content: center;
+  line-height: 1;
+  position: absolute;
+  speak: never;
+  top: -2px;
+  text-decoration: none;
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out, border-color 300ms ease-in-out;
+  width: 30px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev:focus,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev:hover,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next:focus,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next:hover {
+  color: #2F4054;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev .ui-icon,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next .ui-icon {
+  display: none;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev:before,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next:before {
+  border: 0;
+  height: auto;
+  position: static;
+  transform: none;
+  width: auto;
+  font-family: "FontAwesome";
+  font-size: 15px;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev {
+  left: 0;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-prev:before {
+  content: "\F053";
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next {
+  right: 0;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header .ui-datepicker-next:before {
+  content: "\F054";
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header select {
+  background-color: transparent;
+  /*background-image: url(../images/theme/down-arrow.svg);*/
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' width='1024' height='1024' viewBox='0 0 1024 1024'%3E%3Ctitle/%3E%3Cg id='icomoon-ignore'%3E%3C/g%3E%3Cpath fill='%23585E6A' d='M334.461 397.266l177.769 175.982 177.766-175.982c17.869-17.688 46.733-17.688 64.602 0s17.869 46.262 0 63.952l-210.3 208.183c-17.865 17.685-46.733 17.685-64.597 0l-210.3-208.183c-17.868-17.69-17.868-46.263 0-63.952 17.869-17.235 47.191-17.688 65.060 0v0z'/%3E%3C/svg%3E");
+  background-position: 100% 50%;
+  background-repeat: no-repeat;
+  background-size: 24px 24px;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+  color: #585E6A;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: auto;
+  min-height: 0;
+  margin: 0 10px 0 0;
+  padding: 5px 22px 4px 0;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  border: 1px solid rgba(96, 115, 130, 0.2);
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header select.ui-datepicker-year {
+  width: calc(50% - 10px);
+  float: right;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-header select.ui-datepicker-month {
+  width: calc(50% - 10px);
+  float: left;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar th span {
+  align-items: center;
+  color: #2F4054;
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  height: 30px;
+  justify-content: center;
+  width: 30px;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar td {
+  font-size: 13px;
+  height: 32px;
+  width: 32px;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-default {
+  align-items: center;
+  background: none;
+  border: 1px solid rgba(96, 115, 130, 0.2);
+  border-radius: 100%;
+  box-shadow: none;
+  color: #2F4054;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out, border-color 300ms ease-in-out;
+  text-decoration: none;
+  width: 30px;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-default:hover,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-default:focus {
+  background: none;
+  border-color: #607382;
+  outline: none;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-default:active {
+  background: #F2F3F5;
+  border-color: #607382;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-datepicker-current-day .ui-state-default {
+  background: #607382;
+  border-color: #607382;
+  box-shadow: 0 2px 2px rgba(58, 58, 87, 0.0596411);
+  color: #FFFFFF;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-datepicker-current-day .ui-state-default:hover,
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-datepicker-current-day .ui-state-default:focus {
+  border-color: #607382;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-disabled {
+  background: none;
+}
+
+.gform-theme-datepicker:not(.gform-legacy-datepicker) .ui-datepicker-calendar .ui-state-disabled .ui-state-default {
+  align-items: center;
+  background: #F2F3F5;
+  border-radius: 100%;
+  color: #686E77;
+  cursor: text;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  text-decoration: none;
+  width: 30px;
+}
+
+html[dir=rtl] #ui-datepicker-div.gform-theme-datepicker[style] {
+  left: auto !important;
+}
+
+.gform_wrapper.gravity-theme .ginput_container_date img.ui-datepicker-trigger {
+  display: block;
+  margin-left: 12.8px;
+  max-width: 25.6px;
+  max-height: 25.6px;
+}
+
+.gform_wrapper.gravity-theme .ginput_complex .ginput_container_date {
+  flex-flow: row wrap;
+  flex-basis: min-content;
+  max-width: 30%;
+}
+
+.gform_wrapper.gravity-theme .ginput_complex .ginput_container_date input,
+.gform_wrapper.gravity-theme .ginput_complex .ginput_container_date select {
+  width: 100%;
+  min-width: 84px;
+}
+
+html[dir=rtl] .gform_wrapper.gravity-theme .ginput_container_date img.ui-datepicker-trigger {
+  margin-right: 12.8px;
+  margin-left: 0;
+  order: 1;
+}
+
 /********************************
 ACF
 *********************************/

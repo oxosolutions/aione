@@ -217,3 +217,6 @@ UPDATED: Animate.css
 
 ## 7.7.0.0 06-06-2021
 UPDATED: Custom CSS 
+
+## 7.8.0.0 06-07-2021
+ADDED: Structured data for archive page 

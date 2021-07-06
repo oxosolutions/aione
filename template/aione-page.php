@@ -31,7 +31,16 @@ $main_classes   = implode(" ", $main_classes);
 			<div class="wrapper">
 				<?php get_template_part( 'template/aione-content-top' ); ?>
 				
-				<?php get_template_part( 'template/aione-content' ); ?>
+				<div id="content" class="content">
+
+					<?php if( $theme_options['advanced_ajax_content'] ) {
+						//get_template_part( 'template/aione-content' ); 
+					} 
+					else {
+						get_template_part( 'template/aione-content' ); 
+					} ?>
+
+				</div> <!-- .wrapper -->
 
 				<?php get_template_part( 'template/aione-content-bottom' ); ?>
 

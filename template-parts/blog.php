@@ -29,8 +29,8 @@ if( $blog_archive_layout == 'grid' ){
 		$column_class = "l20";
 	}
 }
-?>
 
+?>
 
 <div class="ac <?php echo $column_class;?> m100 s100 mb-24">
 	<div class="aione-wrapper p-12 shadow bg-white">

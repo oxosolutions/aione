@@ -222,6 +222,26 @@ if ($template_single_slug != 'single') {
 	echo "</script>";
 }
 
+$template_archive_slug = $aione_component['archive_template'];
+
+$aione_templates = get_option('aione-templates');
+$aione_archive_structured_data = $aione_templates[$template_archive_slug]['structured_data'];
+$aione_archive_structured_data_header = $aione_templates[$template_archive_slug]['structured_data_header'];
+$aione_archive_structured_data_footer = $aione_templates[$template_archive_slug]['structured_data_footer'];
+
+if ($template_archive_slug != 'archive') {
+	echo '<script type="application/ld+json">';
+
+	echo $aione_archive_structured_data_header;
+	$aione_archive_structured_data_string = do_shortcode($aione_archive_structured_data);
+	$aione_archive_structured_data_text = strip_tags($aione_archive_structured_data_string);
+
+	echo $aione_archive_structured_data_text;
+	echo $aione_archive_structured_data_footer;
+	
+	echo "</script>";
+}
+
 $wrapper_classes = array('aione-wrapper');
 $wrapper_classes[] = 'layout-header-' . $theme_options['header_position'];
 $wrapper_classes[] = 'aione-layout-' . $theme_options['site_layout'];
