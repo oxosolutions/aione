@@ -245,19 +245,7 @@ if( is_archive() ){
 
 		$posts_per_page = $aione_templates[$template_archive_slug]['template_posts_per_page'];
 
-		/*
-		template_posts_order_by
-		template_posts_order
-		echo '<pre>';
-		print_r( $posts_per_page );
-		echo '</pre>';
-		*/
-
 		$aione_archive_structured_data_array = array();
-
-
-
-
 
 
 		global $post;
@@ -279,27 +267,13 @@ if( is_archive() ){
 	        endforeach;
 	        wp_reset_postdata();
 	    } 
-		/*
-		
-	    */
 
-
-		/*
-		$aione_archive_structured_data_string = do_shortcode($aione_archive_structured_data);
-		$aione_archive_structured_data_text = strip_tags($aione_archive_structured_data_string);
-
-		echo $aione_archive_structured_data_text;
-		*/
 		echo implode(',', $aione_archive_structured_data_array );
 
 		echo $aione_archive_structured_data_footer;
 
 		echo "</script>";
-		/*
-		echo '<pre>';
-		print_r( $aione_archive_structured_data_array );
-		echo '</pre>';
-		*/
+
 	}
 }
 
