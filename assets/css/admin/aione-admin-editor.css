@@ -59334,18 +59334,12 @@ Aione Accordion
 }
 
 .aione-collapsible .aione-item {
-  margin-bottom: 10px;
+  margin-bottom: 1em;
   border: 1px solid #e8e8e8;
 }
 
 .aione-item-header {
-  padding: 15px 15px 15px 45px;
-  color: #666666;
-  background-color: #fafafa;
-  font-size: 18px;
-  line-height: 1.4;
-  font-weight: 100;
-  font-family: "Open Sans", Arial, sans-serif;
+  padding: 10px 40px 10px 10px;
 }
 
 .aione-accordion .aione-item .aione-item-header,
@@ -59357,33 +59351,28 @@ Aione Accordion
   -moz-osx-font-smoothing: grayscale;
 }
 
-.aione-accordion .aione-item.active .aione-item-header,
-.aione-collapsible .aione-item.active .aione-item-header {
-  background-color: #f2f2f2;
-}
-
 .aione-accordion .aione-item .aione-item-header:before,
 .aione-collapsible .aione-item .aione-item-header:before {
   content: "";
-  width: 15px;
+  width: 16px;
   height: 0;
   position: absolute;
   top: 50%;
-  left: 15px;
+  right: 15px;
   margin-top: -1px;
-  border-top: 1px solid #989898;
+  border-top: 2px solid currentColor;
 }
 
 .aione-accordion .aione-item .aione-item-header:after,
 .aione-collapsible .aione-item .aione-item-header:after {
   content: "";
   width: 0;
-  height: 15px;
+  height: 16px;
   position: absolute;
   top: 50%;
-  left: 22px;
+  right: 22px;
   margin-top: -8px;
-  border-left: 1px solid #989898;
+  border-left: 2px solid currentColor;
   transition: all 200ms ease-in-out;
 }
 
@@ -59400,11 +59389,7 @@ Aione Accordion
 .aione-accordion .aione-item .aione-item-content,
 .aione-collapsible .aione-item .aione-item-content {
   display: none;
-  color: #666666;
-  font-size: 16px;
-  line-height: 1.4;
   border-top: 1px solid #e8e8e8;
-  font-family: "Open Sans", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -59420,10 +59405,8 @@ Aione Message
 .aione-message {
   padding: 20px;
   margin: 10px 0;
-  font-size: 20px;
-  line-height: 1.4;
+  font-size: 1.25em;
   font-weight: normal;
-  font-family: "Open Sans", Arial, sans-serif;
   text-align: center;
   color: #454545;
   background-color: #f2f2f2;
@@ -59449,7 +59432,6 @@ Aione Message
 }
 
 .aione-messages li {
-  font-size: 16px;
   text-align: left;
   border-bottom: 1px dotted #e8e8e8;
   padding-bottom: 4px;
