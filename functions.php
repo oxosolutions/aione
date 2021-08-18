@@ -6,7 +6,7 @@
 
 
 //REmove New Block Widget Support
-add_filter( 'use_widgets_block_editor', '__return_false' );
+//add_filter( 'use_widgets_block_editor', '__return_false' );
 
 
 function get_ajax_posts() {
@@ -307,7 +307,7 @@ function aione_admin_editor_style( $hook ) {
     wp_enqueue_style( 'aione-admin-css' );
 
 
-    if( in_array( $hook, array( 'post-new.php', 'post.php' ) ) ) {
+    if( in_array( $hook, array( 'post-new.php', 'post.php', 'widgets.php' ) ) ) {
 
 		// If not the desired post type bail here.
 		if( in_array( $post_type , array( 'aione-slider' ) ) ) {
@@ -409,7 +409,7 @@ require get_template_directory() . '/includes/register-sidebars.php';
 require get_template_directory() . '/includes/aione-blocks.php';
 
 // Register Block Patterns
-require get_template_directory() . '/includes/aione-block-patterns.php';
+//require get_template_directory() . '/includes/aione-block-patterns.php';
 
 
  

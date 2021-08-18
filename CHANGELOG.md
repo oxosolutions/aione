@@ -219,4 +219,10 @@ UPDATED: Animate.css
 UPDATED: Custom CSS 
 
 ## 7.8.0.0 06-07-2021
-ADDED: Structured data for archive page 
+ADDED: Structured data for archive page
+
+## 7.8.0.1 06-08-2021
+UPDATED: Aione Tabs Block 
+UPDATED: Aione Column Block
+REMOVED: Pattern
+FIXED: Error in get_aione_page_settings 

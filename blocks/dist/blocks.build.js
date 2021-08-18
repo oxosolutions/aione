@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 30);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -81,7 +81,7 @@ var cachedClearTimeout;
 function defaultSetTimout() {
     throw new Error('setTimeout has not been defined');
 }
-function defaultClearTimeout() {
+function defaultClearTimeout () {
     throw new Error('clearTimeout has not been defined');
 }
 (function () {
@@ -103,7 +103,7 @@ function defaultClearTimeout() {
     } catch (e) {
         cachedClearTimeout = defaultClearTimeout;
     }
-})();
+} ())
 function runTimeout(fun) {
     if (cachedSetTimeout === setTimeout) {
         //normal enviroments in sane situations
@@ -117,15 +117,17 @@ function runTimeout(fun) {
     try {
         // when when somebody has screwed with setTimeout but no I.E. maddness
         return cachedSetTimeout(fun, 0);
-    } catch (e) {
+    } catch(e){
         try {
             // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
             return cachedSetTimeout.call(null, fun, 0);
-        } catch (e) {
+        } catch(e){
             // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
             return cachedSetTimeout.call(this, fun, 0);
         }
     }
+
+
 }
 function runClearTimeout(marker) {
     if (cachedClearTimeout === clearTimeout) {
@@ -140,16 +142,19 @@ function runClearTimeout(marker) {
     try {
         // when when somebody has screwed with setTimeout but no I.E. maddness
         return cachedClearTimeout(marker);
-    } catch (e) {
+    } catch (e){
         try {
             // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
             return cachedClearTimeout.call(null, marker);
-        } catch (e) {
+        } catch (e){
             // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
             // Some versions of I.E. have different rules for clearTimeout vs setTimeout
             return cachedClearTimeout.call(this, marker);
         }
     }
+
+
+
 }
 var queue = [];
 var draining = false;
@@ -179,7 +184,7 @@ function drainQueue() {
     draining = true;
 
     var len = queue.length;
-    while (len) {
+    while(len) {
         currentQueue = queue;
         queue = [];
         while (++queueIndex < len) {
@@ -235,23 +240,18 @@ process.emit = noop;
 process.prependListener = noop;
 process.prependOnceListener = noop;
 
-process.listeners = function (name) {
-    return [];
-};
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
 };
 
-process.cwd = function () {
-    return '/';
-};
+process.cwd = function () { return '/' };
 process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
-process.umask = function () {
-    return 0;
-};
+process.umask = function() { return 0; };
+
 
 /***/ }),
 /* 1 */
@@ -261,9 +261,9 @@ process.umask = function () {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(38);
+  module.exports = __webpack_require__(34);
 } else {
-  module.exports = __webpack_require__(39);
+  module.exports = __webpack_require__(35);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -367,38 +367,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is classified as an `Array` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an array, else `false`.
- * @example
- *
- * _.isArray([1, 2, 3]);
- * // => true
- *
- * _.isArray(document.body.children);
- * // => false
- *
- * _.isArray('abc');
- * // => false
- *
- * _.isArray(_.noop);
- * // => false
- */
-var isArray = Array.isArray;
-
-module.exports = isArray;
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -419,7 +387,7 @@ exports.isTouchEvent = isTouchEvent;
 exports.getEdgeOffset = getEdgeOffset;
 exports.getLockPixelOffset = getLockPixelOffset;
 
-var _invariant = __webpack_require__(5);
+var _invariant = __webpack_require__(4);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
@@ -585,7 +553,7 @@ function getLockPixelOffset(_ref) {
 }
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -642,22 +610,23 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports) {
 
 var g;
 
 // This works in non-strict mode
-g = function () {
+g = (function() {
 	return this;
-}();
+})();
 
 try {
 	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1, eval)("this");
-} catch (e) {
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
 	// This works if the window reference is available
-	if (typeof window === "object") g = window;
+	if(typeof window === "object")
+		g = window;
 }
 
 // g can still be undefined, but nothing to do about it...
@@ -666,182 +635,9 @@ try {
 
 module.exports = g;
 
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isArray = __webpack_require__(3),
-    isKey = __webpack_require__(66),
-    stringToPath = __webpack_require__(70),
-    toString = __webpack_require__(99);
-
-/**
- * Casts `value` to a path array if it's not one.
- *
- * @private
- * @param {*} value The value to inspect.
- * @param {Object} [object] The object to query keys on.
- * @returns {Array} Returns the cast property path array.
- */
-function castPath(value, object) {
-  if (isArray(value)) {
-    return value;
-  }
-  return isKey(value, object) ? [value] : stringToPath(toString(value));
-}
-
-module.exports = castPath;
-
 
 /***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseGetTag = __webpack_require__(17),
-    isObjectLike = __webpack_require__(19);
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-  return typeof value == 'symbol' ||
-    (isObjectLike(value) && baseGetTag(value) == symbolTag);
-}
-
-module.exports = isSymbol;
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var root = __webpack_require__(18);
-
-/** Built-in value references. */
-var Symbol = root.Symbol;
-
-module.exports = Symbol;
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__(20);
-
-/* Built-in method references that are verified to be native. */
-var nativeCreate = getNative(Object, 'create');
-
-module.exports = nativeCreate;
-
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
-}
-
-module.exports = isObject;
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var eq = __webpack_require__(24);
-
-/**
- * Gets the index at which the `key` is found in `array` of key-value pairs.
- *
- * @private
- * @param {Array} array The array to inspect.
- * @param {*} key The key to search for.
- * @returns {number} Returns the index of the matched value, else `-1`.
- */
-function assocIndexOf(array, key) {
-  var length = array.length;
-  while (length--) {
-    if (eq(array[length][0], key)) {
-      return length;
-    }
-  }
-  return -1;
-}
-
-module.exports = assocIndexOf;
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isKeyable = __webpack_require__(95);
-
-/**
- * Gets the data for `map`.
- *
- * @private
- * @param {Object} map The map to query.
- * @param {string} key The reference key.
- * @returns {*} Returns the map data.
- */
-function getMapData(map, key) {
-  var data = map.__data__;
-  return isKeyable(key)
-    ? data[typeof key == 'string' ? 'string' : 'hash']
-    : data.map;
-}
-
-module.exports = getMapData;
-
-
-/***/ }),
-/* 14 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -857,7 +653,7 @@ module.exports = getMapData;
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(15);
+  var ReactPropTypesSecret = __webpack_require__(7);
   var loggedTypeFailures = {};
 
   printWarning = function(text) {
@@ -940,7 +736,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 15 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -959,7 +755,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 16 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -997,359 +793,15 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(42);
+  module.exports = __webpack_require__(38);
 } else {
-  module.exports = __webpack_require__(45);
+  module.exports = __webpack_require__(41);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__(9),
-    getRawTag = __webpack_require__(68),
-    objectToString = __webpack_require__(69);
-
-/** `Object#toString` result references. */
-var nullTag = '[object Null]',
-    undefinedTag = '[object Undefined]';
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * The base implementation of `getTag` without fallbacks for buggy environments.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the `toStringTag`.
- */
-function baseGetTag(value) {
-  if (value == null) {
-    return value === undefined ? undefinedTag : nullTag;
-  }
-  return (symToStringTag && symToStringTag in Object(value))
-    ? getRawTag(value)
-    : objectToString(value);
-}
-
-module.exports = baseGetTag;
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var freeGlobal = __webpack_require__(67);
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-module.exports = root;
-
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && typeof value == 'object';
-}
-
-module.exports = isObjectLike;
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseIsNative = __webpack_require__(77),
-    getValue = __webpack_require__(82);
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-module.exports = getNative;
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isSymbol = __webpack_require__(8);
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0;
-
-/**
- * Converts `value` to a string key if it's not a string or symbol.
- *
- * @private
- * @param {*} value The value to inspect.
- * @returns {string|symbol} Returns the key.
- */
-function toKey(value) {
-  if (typeof value == 'string' || isSymbol(value)) {
-    return value;
-  }
-  var result = (value + '');
-  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
-}
-
-module.exports = toKey;
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(40)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(41)();
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(43);
-} else {
-  module.exports = __webpack_require__(44);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports) {
-
-/**
- * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */
-function eq(value, other) {
-  return value === other || (value !== value && other !== other);
-}
-
-module.exports = eq;
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__(20);
-
-var defineProperty = (function() {
-  try {
-    var func = getNative(Object, 'defineProperty');
-    func({}, '', {});
-    return func;
-  } catch (e) {}
-}());
-
-module.exports = defineProperty;
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports) {
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/** Used to detect unsigned integer values. */
-var reIsUint = /^(?:0|[1-9]\d*)$/;
-
-/**
- * Checks if `value` is a valid array-like index.
- *
- * @private
- * @param {*} value The value to check.
- * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
- */
-function isIndex(value, length) {
-  var type = typeof value;
-  length = length == null ? MAX_SAFE_INTEGER : length;
-
-  return !!length &&
-    (type == 'number' ||
-      (type != 'symbol' && reIsUint.test(value))) &&
-        (value > -1 && value % 1 == 0 && value < length);
-}
-
-module.exports = isIndex;
-
-
-/***/ }),
-/* 27 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseIsArguments = __webpack_require__(108),
-    isObjectLike = __webpack_require__(19);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Built-in value references. */
-var propertyIsEnumerable = objectProto.propertyIsEnumerable;
-
-/**
- * Checks if `value` is likely an `arguments` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- *  else `false`.
- * @example
- *
- * _.isArguments(function() { return arguments; }());
- * // => true
- *
- * _.isArguments([1, 2, 3]);
- * // => false
- */
-var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {
-  return isObjectLike(value) && hasOwnProperty.call(value, 'callee') &&
-    !propertyIsEnumerable.call(value, 'callee');
-};
-
-module.exports = isArguments;
-
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports) {
-
-/**
- * This method returns the first argument it receives.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {*} value Any value.
- * @returns {*} Returns `value`.
- * @example
- *
- * var object = { 'a': 1 };
- *
- * console.log(_.identity(object) === object);
- * // => true
- */
-function identity(value) {
-  return value;
-}
-
-module.exports = identity;
-
-
-/***/ }),
-/* 29 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/**
@@ -1792,37 +1244,218 @@ function toNumber(value) {
 
 module.exports = throttle;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 30 */
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var icon = wp.element.createElement(
+    "svg",
+    { height: "20px", width: "20px", version: "1.1", viewBox: "0 0 16 16" },
+    wp.element.createElement(
+        "g",
+        null,
+        wp.element.createElement("path", { className: "active-path", d: "M14 4v-2h-14v13h16v-11h-2zM10 3h3v1h-3v-1zM6 3h3v1h-3v-1zM15 14h-14v-11h4v2h10v9z", fill: "#f64646" })
+    )
+);
+
+/* harmony default export */ __webpack_exports__["a"] = (icon);
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return richTextToHTML; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mergeRichTextArray; });
+/* unused harmony export dashesToCamelcase */
+/* unused harmony export generateIcon */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return upgradeButtonLabel; });
+/* unused harmony export getDescendantBlocks */
+/* unused harmony export objectsMatch */
+/* unused harmony export removeFromArray */
+/* unused harmony export splitArrayIntoChunks */
+/* unused harmony export splitArray */
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var __ = wp.i18n.__;
+
+
+var richTextToHTML = function richTextToHTML(elem) {
+	var outputString = "";
+
+	outputString += "<" + elem.type + (elem.type === "a" ? " href='" + elem.props.href + "' rel='" + elem.props.rel + "' target='" + elem.props.target + "'" : elem.type === "img" ? " style='" + elem.props.style + "' class='" + elem.props.class + "' src='" + elem.props.src + "' alt='" + elem.props.alt + "'" : "") + ">";
+
+	elem.props.children.forEach(function (child) {
+		outputString += typeof child === "string" ? child : richTextToHTML(child);
+	});
+	if (!["br", "img"].includes(elem.type)) outputString += "</" + elem.type + ">";
+
+	return outputString;
+};
+
+var mergeRichTextArray = function mergeRichTextArray(input) {
+	return input.map(function (item) {
+		return typeof item === "string" ? item : richTextToHTML(item);
+	}).join("");
+};
+
+var dashesToCamelcase = function dashesToCamelcase(str) {
+	return str.split("-").map(function (s) {
+		return s[0].toUpperCase() + s.slice(1);
+	}).join("");
+};
+
+var generateIcon = function generateIcon(selectedIcon, size) {
+	return wp.element.createElement(
+		"svg",
+		{
+			xmlns: "http://www.w3.org/2000/svg",
+			height: size,
+			width: size,
+			viewBox: "0, 0, " + selectedIcon.icon[0] + ", " + selectedIcon.icon[1]
+		},
+		wp.element.createElement("path", { fill: "currentColor", d: selectedIcon.icon[4] })
+	);
+};
+
+var upgradeButtonLabel = __("We have made some improvements to this block. Click here to upgrade the block. You will not lose any content.");
+
+var getDescendantBlocks = function getDescendantBlocks(rootBlock) {
+	var descendants = [];
+	rootBlock.innerBlocks.forEach(function (innerBlock) {
+		descendants.push(innerBlock);
+		if (innerBlock.innerBlocks.length > 0) {
+			descendants.push.apply(descendants, _toConsumableArray(getDescendantBlocks(innerBlock)));
+		}
+	});
+	return descendants;
+};
+
+var objectsMatch = function objectsMatch(obj, source) {
+	return Object.keys(source).every(function (key) {
+		return obj.hasOwnProperty(key) && obj[key] === source[key];
+	});
+};
+
+var removeFromArray = function removeFromArray(arr, removedElems) {
+	return arr.filter(function (a) {
+		return Array.isArray(removedElems) ? !removedElems.includes(a) : a !== removedElems;
+	});
+};
+
+var splitArrayIntoChunks = function splitArrayIntoChunks(inputArray, chunkSize) {
+	return (
+		//from Andrei R, https://stackoverflow.com/a/37826698
+		inputArray.reduce(function (resultArray, item, index) {
+			var chunkIndex = Math.floor(index / chunkSize);
+
+			if (!resultArray[chunkIndex]) {
+				resultArray[chunkIndex] = []; // start a new chunk
+			}
+
+			resultArray[chunkIndex].push(item);
+
+			return resultArray;
+		}, [])
+	);
+};
+
+var splitArray = function splitArray(sourceArray, condition) {
+	var passArray = [];
+	var failArray = [];
+
+	sourceArray.forEach(function (item) {
+		if (condition(item)) {
+			passArray.push(item);
+		} else {
+			failArray.push(item);
+		}
+	});
+
+	return [passArray, failArray];
+};
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(36)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(37)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(39);
+} else {
+  module.exports = __webpack_require__(40);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Button_button_js__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Button_button_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Button_button_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SocialLinks_socialLinks_js__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__SocialLinks_socialLinks_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__SocialLinks_socialLinks_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialShare_socialShare_js__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialShare_socialShare_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SocialShare_socialShare_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Accordian_accordian_js__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__Accordian_accordian_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__Accordian_accordian_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Tabs_tabs_js__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Tabs_tab_js__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Section_section_js__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Section_section_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Section_section_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Row_row_js__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Row_row_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__Row_row_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Column_column_js__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Column_column_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__Column_column_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Title_title_js__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Icon_icon_js__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__Icon_icon_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__Icon_icon_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Wrapper_wrapper_js__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Wrapper_wrapper_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__Wrapper_wrapper_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Slider_slider_js__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__GoogleMap_googlemap_js__ = __webpack_require__(127);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Icon_icon_js__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Icon_icon_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Icon_icon_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Button_button_js__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Button_button_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Button_button_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialLinks_socialLinks_js__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__SocialLinks_socialLinks_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__SocialLinks_socialLinks_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SocialShare_socialShare_js__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__SocialShare_socialShare_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__SocialShare_socialShare_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Accordian_accordian_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__Accordian_accordian_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__Accordian_accordian_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Section_section_js__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__Section_section_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__Section_section_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Row_row_js__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__Row_row_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__Row_row_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Column_column_js__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__Column_column_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__Column_column_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__Title_title_js__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Wrapper_wrapper_js__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__Wrapper_wrapper_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__Wrapper_wrapper_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__GoogleMap_googlemap_js__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__Tabs_block_js__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__Tabs_components_tab_js__ = __webpack_require__(49);
 /**
  * Aione Blocks
  *
@@ -1848,10 +1481,123 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
+//import './Slider/slider.js';
 
 /***/ }),
-/* 31 */
+/* 15 */
+/***/ (function(module, exports) {
+
+/**
+ * BLOCK: Aione Icon.
+ */
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var InspectorControls = wp.editor.InspectorControls;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl;
+
+
+registerBlockType('aione-blocks/aione-icon', {
+    title: __('Aione Icon'), // Block title.
+    icon: 'smiley',
+    category: 'aione-blocks',
+    keywords: [__('icon'), __('svg'), __('Aione')],
+    attributes: {
+        iconName: {
+            type: 'string',
+            default: 'ion-ios-checkmark-circle-outline'
+        },
+        iconSize: {
+            type: 'string',
+            default: 'small'
+        },
+        iconBGColor: {
+            type: 'string',
+            default: ''
+        }
+    },
+    edit: function edit(props) {
+        var isSelected = props.isSelected,
+            editable = props.editable,
+            setState = props.setState,
+            className = props.className;
+
+
+        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
+            return function () {
+                setState({ editable: newEditable });
+            };
+        };
+
+        var _props$attributes = props.attributes,
+            iconName = _props$attributes.iconName,
+            iconSize = _props$attributes.iconSize,
+            iconBGColor = _props$attributes.iconBGColor;
+
+
+        var onChangeIcon = function onChangeIcon(IconName) {
+            props.setAttributes({ iconName: IconName });
+        };
+        var onChangeIconSize = function onChangeIconSize(IconSize) {
+            props.setAttributes({ iconSize: IconSize });
+        };
+        var onChangeIconBGColor = function onChangeIconBGColor(IconBGColor) {
+            props.setAttributes({ iconBGColor: IconBGColor });
+        };
+
+        return [isSelected && wp.element.createElement(
+            InspectorControls,
+            null,
+            wp.element.createElement(
+                PanelBody,
+                { title: __('Settings'), initialOpen: true },
+                wp.element.createElement(
+                    'div',
+                    { className: 'blocks-font-size__main' },
+                    wp.element.createElement(TextControl, {
+                        label: __('Icon Name:'),
+                        help: 'Font Awesome and ION icons are supported',
+                        value: iconName,
+                        onChange: onChangeIcon
+                    }),
+                    wp.element.createElement(SelectControl, {
+                        label: __('Select Size:'),
+                        value: iconSize,
+                        onChange: onChangeIconSize,
+                        options: [{ value: 'small', label: 'Small' }, { value: 'medium', label: 'Medium' }, { value: 'large', label: 'Large' }]
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: __('Icon Background Color:'),
+                        value: iconBGColor,
+                        onChange: onChangeIconBGColor
+                    })
+                )
+            )
+        ), wp.element.createElement(
+            'span',
+            { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
+            wp.element.createElement('i', { className: iconName })
+        )];
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            iconName = _props$attributes2.iconName,
+            iconSize = _props$attributes2.iconSize,
+            iconBGColor = _props$attributes2.iconBGColor;
+
+
+        return wp.element.createElement(
+            'span',
+            { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
+            wp.element.createElement('i', { className: iconName })
+        );
+    }
+});
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports) {
 
 /**
@@ -1860,18 +1606,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    BlockControls = _wp$editor.BlockControls,
-    URLInput = _wp$editor.URLInput,
-    RichText = _wp$editor.RichText;
+var _wp$blockEditor = wp.blockEditor,
+    InspectorControls = _wp$blockEditor.InspectorControls,
+    BlockControls = _wp$blockEditor.BlockControls,
+    URLInput = _wp$blockEditor.URLInput,
+    RichText = _wp$blockEditor.RichText;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     TextControl = _wp$components.TextControl,
     SelectControl = _wp$components.SelectControl,
     IconButton = _wp$components.IconButton,
     Dashicon = _wp$components.Dashicon,
-    ToggleControl = _wp$components.ToggleControl;
+    ToggleControl = _wp$components.ToggleControl,
+    Button = _wp$components.Button,
+    Icon = _wp$components.Icon;
 
 
 registerBlockType('aione-blocks/aione-button', {
@@ -1885,6 +1633,9 @@ registerBlockType('aione-blocks/aione-button', {
             source: 'children',
             selector: '.aione-button'
         },
+        /*buttonText: {
+            type: 'string',
+        },*/
         buttonUrl: {
             type: 'string',
             source: 'attribute',
@@ -1893,7 +1644,7 @@ registerBlockType('aione-blocks/aione-button', {
         },
         buttonSize: {
             type: 'string',
-            default: 'fullwidth'
+            default: 'medium'
         },
         buttonStyle: {
             type: 'string',
@@ -1914,6 +1665,10 @@ registerBlockType('aione-blocks/aione-button', {
         buttonBorderColor: {
             type: 'string',
             default: 'border-black'
+        },
+        buttonTarget: {
+            type: 'boolean',
+            default: false
         }
 
     },
@@ -1937,7 +1692,8 @@ registerBlockType('aione-blocks/aione-button', {
             buttonOutline = _props$attributes.buttonOutline,
             buttonBGColor = _props$attributes.buttonBGColor,
             buttonTextColor = _props$attributes.buttonTextColor,
-            buttonBorderColor = _props$attributes.buttonBorderColor;
+            buttonBorderColor = _props$attributes.buttonBorderColor,
+            buttonTarget = _props$attributes.buttonTarget;
 
 
         var setSize = function setSize(selectedSize) {
@@ -1958,9 +1714,12 @@ registerBlockType('aione-blocks/aione-button', {
         var toggleOutline = function toggleOutline() {
             props.setAttributes({ buttonOutline: !buttonOutline });
         };
-        var classes = '';
+        var onChangeButtonTarget = function onChangeButtonTarget() {
+            props.setAttributes({ buttonTarget: !buttonTarget });
+        };
+        var customClasses = '';
         if (buttonOutline === true) {
-            classes = 'outline';
+            customClasses = 'outline';
         }
 
         return [isSelected && wp.element.createElement(
@@ -1989,6 +1748,11 @@ registerBlockType('aione-blocks/aione-button', {
                         checked: !!buttonOutline,
                         onChange: toggleOutline
                     }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __('Open link in new window'),
+                        checked: buttonTarget,
+                        onChange: onChangeButtonTarget
+                    }),
                     wp.element.createElement(TextControl, {
                         label: __('Background Color'),
                         value: buttonBGColor,
@@ -2011,47 +1775,44 @@ registerBlockType('aione-blocks/aione-button', {
             { key: 'editable', className: props.className },
             wp.element.createElement(
                 'div',
-                {
-                    className: 'aione-button-container'
-                },
+                { className: 'aione-button-container' },
                 wp.element.createElement(RichText, {
                     tagName: 'span',
-                    placeholder: __('Add Text..'),
-
-                    className: 'aione-button' + ' ' + buttonSize + ' ' + buttonStyle + ' ' + classes + ' ' + buttonBGColor + ' ' + buttonTextColor + ' ' + buttonBorderColor,
+                    placeholder: __('Button text..'),
+                    keepPlaceholderOnFocus: true,
+                    value: buttonText,
+                    allowedFormats: [],
+                    className: 'aione-button' + ' ' + buttonSize + ' ' + buttonStyle + ' ' + customClasses + ' ' + buttonBGColor + ' ' + buttonTextColor + ' ' + buttonBorderColor,
                     onChange: function onChange(value) {
                         return props.setAttributes({ buttonText: value });
-                    },
-                    value: buttonText,
-                    isSelected: isSelected && editable === 'button_text',
-                    onFocus: onSetActiveEditable('button_text'),
-                    keepPlaceholderOnFocus: true
+                    }
                 })
-            ),
+            )
+        ), isSelected && wp.element.createElement(
+            'form',
+            {
+                key: 'form-link',
+                className: 'blocks-button__inline-link ab-button- core-blocks-button__inline-link aione_button_input_box',
+                onSubmit: function onSubmit(event) {
+                    return event.preventDefault();
+                }
+
+            },
+            wp.element.createElement(Dashicon, { icon: 'admin-links' }),
+            wp.element.createElement(URLInput, {
+                className: 'button-url',
+                value: buttonUrl,
+                onChange: function onChange(value) {
+                    return props.setAttributes({ buttonUrl: value });
+                }
+            }),
             wp.element.createElement(
-                'div',
-                { className: 'aione_button_url_input' },
-                focus && wp.element.createElement(
-                    'form',
-                    {
-                        key: 'form-link',
-                        onSubmit: function onSubmit(event) {
-                            return event.preventDefault();
-                        },
-                        className: 'core-blocks-button__inline-link aione_button_input_box' },
-                    wp.element.createElement(Dashicon, { icon: 'admin-links' }),
-                    wp.element.createElement(URLInput, {
-                        value: buttonUrl,
-                        onChange: function onChange(value) {
-                            return props.setAttributes({ buttonUrl: value });
-                        }
-                    }),
-                    wp.element.createElement(IconButton, {
-                        icon: 'editor-break',
-                        label: __('Apply'),
-                        type: 'submit'
-                    })
-                )
+                Button,
+                {
+                    label: __('Apply'),
+                    type: 'submit'
+                },
+                wp.element.createElement(Icon, { icon: 'editor-break' })
             )
         )];
     },
@@ -2064,12 +1825,13 @@ registerBlockType('aione-blocks/aione-button', {
             buttonOutline = _props$attributes2.buttonOutline,
             buttonBGColor = _props$attributes2.buttonBGColor,
             buttonTextColor = _props$attributes2.buttonTextColor,
-            buttonBorderColor = _props$attributes2.buttonBorderColor;
+            buttonBorderColor = _props$attributes2.buttonBorderColor,
+            buttonTarget = _props$attributes2.buttonTarget;
 
 
-        var classes = '';
+        var customClasses = '';
         if (buttonOutline === true) {
-            classes = 'outline';
+            customClasses = 'outline';
         }
 
         return wp.element.createElement(
@@ -2080,14 +1842,15 @@ registerBlockType('aione-blocks/aione-button', {
                 {
                     className: 'aione-button-container'
                 },
-                wp.element.createElement(
+                buttonText && wp.element.createElement(
                     'a',
                     {
                         href: buttonUrl,
-                        target: '_blank',
-                        className: 'aione-button' + ' ' + buttonSize + ' ' + buttonStyle + ' ' + classes + ' ' + buttonBGColor + ' ' + buttonTextColor + ' ' + buttonBorderColor
+                        target: buttonTarget ? '_blank' : "_self",
+                        rel: buttonTarget ? 'noopener noreferrer' : null,
+                        className: 'aione-button' + ' ' + buttonSize + ' ' + buttonStyle + ' ' + customClasses + ' ' + buttonBGColor + ' ' + buttonTextColor + ' ' + buttonBorderColor
                     },
-                    buttonText
+                    wp.element.createElement(RichText.Content, { value: buttonText })
                 )
             )
         );
@@ -2096,7 +1859,7 @@ registerBlockType('aione-blocks/aione-button', {
 });
 
 /***/ }),
-/* 32 */
+/* 17 */
 /***/ (function(module, exports) {
 
 /**
@@ -2170,10 +1933,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
             default: false,
             type: 'boolean'
         },
-        /*googleplus: {
-            default: false,
-            type: 'boolean'
-        },*/
+
         pinterest: {
             default: false,
             type: 'boolean'
@@ -2210,10 +1970,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
             type: 'string',
             default: 'http://github.com/'
         },
-        /*googleplusUrl: {
-            type: 'string',
-            default: 'http://googleplus.com/'
-        },*/
+
         pinterestUrl: {
             type: 'string',
             default: 'http://pinterest.com/'
@@ -2256,14 +2013,12 @@ registerBlockType('aione-blocks/aione-social-icons', {
             rss = _props$attributes.rss,
             tumblr = _props$attributes.tumblr,
             pinterest = _props$attributes.pinterest,
-            //googleplus = _props$attributes.googleplus,
             facebookUrl = _props$attributes.facebookUrl,
             twitterUrl = _props$attributes.twitterUrl,
             linkedinUrl = _props$attributes.linkedinUrl,
             youtubeUrl = _props$attributes.youtubeUrl,
             instagramUrl = _props$attributes.instagramUrl,
             githubUrl = _props$attributes.githubUrl,
-            //googleplusUrl = _props$attributes.googleplusUrl,
             pinterestUrl = _props$attributes.pinterestUrl,
             tumblrUrl = _props$attributes.tumblrUrl,
             rssUrl = _props$attributes.rssUrl;
@@ -2305,10 +2060,6 @@ registerBlockType('aione-blocks/aione-social-icons', {
             props.setAttributes({ pinterestUrl: PinterestUrl });
         };
 
-        /*var onChangeGoogleplusUrl = function onChangeGoogleplusUrl(GoogleplusUrl) {
-            props.setAttributes({ googleplusUrl: GoogleplusUrl });
-        };
-*/
         var onChangeSocialIconSize = function onChangeSocialIconSize(selectedSize) {
             props.setAttributes({ socialIconSize: selectedSize });
         };
@@ -2395,18 +2146,6 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         value: instagramUrl,
                         onChange: onChangeInstagramUrl
                     }),
-                    /*wp.element.createElement(ToggleControl, {
-                        label: __('Google+'),
-                        checked: !!googleplus,
-                        onChange: function onChange() {
-                            return props.setAttributes({ googleplus: !googleplus });
-                        }
-                    }),*/
-                    /*props.attributes.googleplus && wp.element.createElement(TextControl, {
-                        label: 'Google+ Link',
-                        value: googleplusUrl,
-                        onChange: onChangeGoogleplusUrl
-                    }),*/
                     wp.element.createElement(ToggleControl, {
                         label: __('GitHub'),
                         checked: !!github,
@@ -2575,20 +2314,6 @@ registerBlockType('aione-blocks/aione-social-icons', {
                             )
                         )
                     ),
-                    /*props.attributes.googleplus && wp.element.createElement(
-                        'li',
-                        { 'class': 'googleplus' },
-                        wp.element.createElement(
-                            'a',
-                            { href: googleplusUrl, target: '_blank' },
-                            wp.element.createElement('span', { 'class': 'icon' }),
-                            wp.element.createElement(
-                                'span',
-                                { 'class': 'label' },
-                                'Google+'
-                            )
-                        )
-                    ),*/
                     props.attributes.github && wp.element.createElement(
                         'li',
                         { 'class': 'github' },
@@ -2665,14 +2390,12 @@ registerBlockType('aione-blocks/aione-social-icons', {
             rss = _props$attributes2.rss,
             tumblr = _props$attributes2.tumblr,
             pinterest = _props$attributes2.pinterest,
-            //googleplus = _props$attributes2.googleplus,
             facebookUrl = _props$attributes2.facebookUrl,
             twitterUrl = _props$attributes2.twitterUrl,
             linkedinUrl = _props$attributes2.linkedinUrl,
             youtubeUrl = _props$attributes2.youtubeUrl,
             instagramUrl = _props$attributes2.instagramUrl,
             githubUrl = _props$attributes2.githubUrl,
-            //googleplusUrl = _props$attributes2.googleplusUrl,
             pinterestUrl = _props$attributes2.pinterestUrl,
             tumblrUrl = _props$attributes2.tumblrUrl,
             rssUrl = _props$attributes2.rssUrl;
@@ -2695,7 +2418,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'facebook' },
                         wp.element.createElement(
                             'a',
-                            { href: facebookUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: facebookUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2709,7 +2432,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'youtube' },
                         wp.element.createElement(
                             'a',
-                            { href: youtubeUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: youtubeUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2723,7 +2446,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'twitter' },
                         wp.element.createElement(
                             'a',
-                            { href: twitterUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: twitterUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2737,7 +2460,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'linkedin' },
                         wp.element.createElement(
                             'a',
-                            { href: linkedinUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: linkedinUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2751,7 +2474,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'instagram' },
                         wp.element.createElement(
                             'a',
-                            { href: instagramUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: instagramUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2760,26 +2483,12 @@ registerBlockType('aione-blocks/aione-social-icons', {
                             )
                         )
                     ),
-                    /*props.attributes.googleplus && wp.element.createElement(
-                        'li',
-                        { 'class': 'googleplus' },
-                        wp.element.createElement(
-                            'a',
-                            { href: googleplusUrl, target: '_blank' },
-                            wp.element.createElement('span', { 'class': 'icon' }),
-                            wp.element.createElement(
-                                'span',
-                                { 'class': 'label' },
-                                'Google+'
-                            )
-                        )
-                    ),*/
                     props.attributes.github && wp.element.createElement(
                         'li',
                         { 'class': 'github' },
                         wp.element.createElement(
                             'a',
-                            { href: githubUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: githubUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2793,7 +2502,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'pinterest' },
                         wp.element.createElement(
                             'a',
-                            { href: pinterestUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: pinterestUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2807,7 +2516,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'tumblr' },
                         wp.element.createElement(
                             'a',
-                            { href: tumblrUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: tumblrUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2821,7 +2530,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'rss' },
                         wp.element.createElement(
                             'a',
-                            { href: rssUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: rssUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2838,7 +2547,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
 });
 
 /***/ }),
-/* 33 */
+/* 18 */
 /***/ (function(module, exports) {
 
 /**
@@ -2904,10 +2613,7 @@ registerBlockType('aione-blocks/aione-social-share', {
             default: false,
             type: 'boolean'
         },
-        /*googleplus: {
-            default: false,
-            type: 'boolean'
-        },*/
+
         tumblr: {
             default: false,
             type: 'boolean'
@@ -2939,7 +2645,6 @@ registerBlockType('aione-blocks/aione-social-share', {
             twitter = _props$attributes.twitter,
             linkedin = _props$attributes.linkedin,
             pinterest = _props$attributes.pinterest,
-            //googleplus = _props$attributes.googleplus,
             tumblr = _props$attributes.tumblr,
             reddit = _props$attributes.reddit;
 
@@ -2991,13 +2696,6 @@ registerBlockType('aione-blocks/aione-social-share', {
                             return props.setAttributes({ linkedin: !linkedin });
                         }
                     }),
-                    /*wp.element.createElement(ToggleControl, {
-                        label: __('Googleplus'),
-                        checked: !!googleplus,
-                        onChange: function onChange() {
-                            return props.setAttributes({ googleplus: !googleplus });
-                        }
-                    }),*/
                     wp.element.createElement(ToggleControl, {
                         label: __('Pinterest'),
                         checked: !!pinterest,
@@ -3111,20 +2809,6 @@ registerBlockType('aione-blocks/aione-social-share', {
                             )
                         )
                     ),
-                    /*props.attributes.googleplus && wp.element.createElement(
-                        'li',
-                        { 'class': 'googleplus' },
-                        wp.element.createElement(
-                            'a',
-                            { href: '#', target: '_blank' },
-                            wp.element.createElement('span', { 'class': 'icon' }),
-                            wp.element.createElement(
-                                'span',
-                                { 'class': 'label' },
-                                'Googleplus'
-                            )
-                        )
-                    ),*/
                     props.attributes.pinterest && wp.element.createElement(
                         'li',
                         { 'class': 'pinterest' },
@@ -3178,7 +2862,7 @@ registerBlockType('aione-blocks/aione-social-share', {
 });
 
 /***/ }),
-/* 34 */
+/* 19 */
 /***/ (function(module, exports) {
 
 /**
@@ -3304,127 +2988,45 @@ registerBlockType('aione-blocks/aione-accordian', {
 });
 
 /***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 20 */
+/***/ (function(module, exports) {
 
-"use strict";
-/* unused harmony export name */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__ = __webpack_require__(36);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 /**
- * BLOCK: Aione Tabs.
+ * BLOCK: Aione Section.
  */
-//import './style.scss';
-//import './editor.scss'; 
-
 
 var __ = wp.i18n.__;
 var registerBlockType = wp.blocks.registerBlockType;
 var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
-    BlockControls = _wp$editor.BlockControls,
-    InnerBlocks = _wp$editor.InnerBlocks,
-    RichText = _wp$editor.RichText;
+    InnerBlocks = _wp$editor.InnerBlocks;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
-    TextControl = _wp$components.TextControl,
-    SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl,
-    IconButton = _wp$components.IconButton,
-    Dashicon = _wp$components.Dashicon,
-    ToggleControl = _wp$components.ToggleControl;
+    ToggleControl = _wp$components.ToggleControl,
+    TextControl = _wp$components.TextControl;
 
 
-var getAioneTabsTemplate = function getAioneTabsTemplate(attributes) {
-    var tabsCount = attributes.tabsCount,
-        tabActive = attributes.tabActive;
-
-    var result = [];
-
-    for (var k = 1; k <= tabsCount; k++) {
-        result.push(['aione-blocks/aione-tabs-tab', { tabNumber: k, active: tabActive }]);
-    }
-
-    return result;
-};
-
-var getTabs = function getTabs(_ref) {
-    var tabsCount = _ref.tabsCount,
-        tabsSettings = _ref.tabsSettings;
-
-    var result = [];
-
-    for (var k = 1; k <= tabsCount; k++) {
-        result.push({
-            label: tabsSettings['tab_' + k] ? tabsSettings['tab_' + k].label : sprintf(__('Tab %d'), k),
-            number: k
-        });
-    }
-
-    return result;
-};
-
-var name = 'aione-blocks/aione-tabs';
-
-registerBlockType('aione-blocks/aione-tabs', {
-    title: __('Aione Tabs'),
-    icon: 'welcome-widgets-menus',
+registerBlockType('aione-blocks/aione-section', {
+    title: __('Aione Section'),
+    icon: 'editor-table',
     category: 'aione-blocks',
-    keywords: [__('Tabs'), __('Aione')],
+    keywords: [__('Section'), __('Aione')],
     attributes: {
-        tabsCount: {
-            type: 'number',
-            default: 2
+        fullWidth: {
+            type: 'boolean',
+            default: true
         },
-        tabActive: {
-            type: 'number',
-            default: 1
-        },
-        tabsSettings: {
-            type: 'object',
-            default: {}
-        },
-
-        activeControl: {
-            type: 'string'
-        },
-        timestamp: {
-            type: 'number',
-            default: 0
-        },
-        direction: {
-            type: 'string',
-            default: 'horizontal'
-        },
-        alignment: {
-            type: 'string',
-            default: 'align-left'
-        },
-        layout: {
+        cssid: {
             type: 'string',
             default: ''
-        },
-        theme: {
-            type: 'string',
-            default: 'theme-clean'
-        },
-        margin: {
-            default: false,
-            type: 'boolean'
-        },
-        hover: {
-            default: false,
-            type: 'boolean'
         }
     },
-
     edit: function edit(props) {
         var isSelected = props.isSelected,
             editable = props.editable,
-            setState = props.setState,
-            className = props.className,
-            setAttributes = props.setAttributes,
-            attributes = props.attributes;
+            setState = props.setState;
 
 
         var onSetActiveEditable = function onSetActiveEditable(newEditable) {
@@ -3434,42 +3036,528 @@ registerBlockType('aione-blocks/aione-tabs', {
         };
 
         var _props$attributes = props.attributes,
-            tabsCount = _props$attributes.tabsCount,
-            tabActive = _props$attributes.tabActive,
-            tabsSettings = _props$attributes.tabsSettings,
-            activeControl = _props$attributes.activeControl,
-            timestamp = _props$attributes.timestamp,
-            direction = _props$attributes.direction,
-            alignment = _props$attributes.alignment,
-            layout = _props$attributes.layout,
-            theme = _props$attributes.theme,
-            margin = _props$attributes.margin,
-            hover = _props$attributes.hover;
+            fullWidth = _props$attributes.fullWidth,
+            cssid = _props$attributes.cssid;
 
 
-        var tabs = getTabs({ tabsCount: tabsCount, tabsSettings: tabsSettings });
-
-        var onChangeDirection = function onChangeDirection(value) {
-            return setAttributes({ direction: value });
+        var togglefullWidth = function togglefullWidth() {
+            props.setAttributes({ fullWidth: !fullWidth });
         };
-        var onChangeAlignment = function onChangeAlignment(value) {
-            return setAttributes({ alignment: value });
-        };
-        var onChangeLayout = function onChangeLayout(value) {
-            return setAttributes({ layout: value });
-        };
-        var onChangeTheme = function onChangeTheme(value) {
-            return setAttributes({ theme: value });
-        };
-
-        var marginClass = '';
-        if (margin === true) {
-            marginClass = 'margin';
+        var classes = '';
+        if (fullWidth === true) {
+            classes = 'fullwidth';
         }
-        var hoverClass = '';
-        if (hover === true) {
-            hoverClass = 'hover';
+        var onChangeid = function onChangeid(customID) {
+            props.setAttributes({ cssid: customID });
+        };
+
+        return [isSelected && wp.element.createElement(
+            InspectorControls,
+            null,
+            wp.element.createElement(
+                PanelBody,
+                { title: __('Settings'), initialOpen: true },
+                wp.element.createElement(
+                    'div',
+                    { className: 'blocks-font-size__main' },
+                    wp.element.createElement(ToggleControl, {
+                        label: __('Fullwidth'),
+                        checked: !!fullWidth,
+                        onChange: togglefullWidth
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: 'Additional CSS Id',
+                        value: cssid,
+                        onChange: onChangeid
+                    })
+                )
+            )
+        ), wp.element.createElement(
+            'section',
+            _extends({ key: 'editable',
+                className: 'aione-section' + ' ' + classes
+            }, props.attributes.cssid && { id: cssid }),
+            wp.element.createElement(
+                'div',
+                { className: 'wrapper' },
+                wp.element.createElement(InnerBlocks, null)
+            )
+        )];
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            fullWidth = _props$attributes2.fullWidth,
+            cssid = _props$attributes2.cssid;
+
+
+        var classes = '';
+        if (fullWidth === true) {
+            classes = 'fullwidth';
         }
+
+        return wp.element.createElement(
+            'section',
+            _extends({
+                className: 'aione-section' + ' ' + classes
+            }, props.attributes.cssid && { id: cssid }),
+            wp.element.createElement(
+                'div',
+                { className: 'wrapper' },
+                wp.element.createElement(InnerBlocks.Content, null)
+            )
+        );
+    }
+
+});
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
+
+/**
+ * BLOCK: Aione Row.
+ */
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var InnerBlocks = wp.editor.InnerBlocks;
+
+
+registerBlockType('aione-blocks/aione-row', {
+    title: __('Aione Row'),
+    icon: 'menu',
+    category: 'aione-blocks',
+    keywords: [__('Row'), __('Aione')],
+    attributes: {},
+    edit: function edit(props) {
+        var isSelected = props.isSelected,
+            editable = props.editable,
+            setState = props.setState;
+
+
+        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
+            return function () {
+                setState({ editable: newEditable });
+            };
+        };
+
+        return [wp.element.createElement(
+            'div',
+            { key: 'editable', className: 'ar' },
+            wp.element.createElement(InnerBlocks, null)
+        )];
+    },
+    save: function save(props) {
+        return wp.element.createElement(
+            'div',
+            { className: 'ar' },
+            wp.element.createElement(InnerBlocks.Content, null)
+        );
+    }
+
+});
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports) {
+
+/**
+ * BLOCK: Aione Column.
+ */
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    InnerBlocks = _wp$editor.InnerBlocks;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl,
+    ToggleControl = _wp$components.ToggleControl;
+
+
+registerBlockType('aione-blocks/aione-column', {
+    title: __('Aione Column'),
+    icon: 'controls-pause',
+    category: 'aione-blocks',
+    keywords: [__('Column'), __('Aione')],
+    attributes: {
+        largeScreen: {
+            type: 'string',
+            default: '100'
+        },
+        mediumScreen: {
+            type: 'string',
+            default: '100'
+        },
+        smallScreen: {
+            type: 'string',
+            default: '100'
+        },
+        addLink: {
+            default: false,
+            type: 'boolean'
+        },
+        linkUrl: {
+            type: 'string',
+            default: ''
+        },
+        linkTarget: {
+            type: 'string',
+            default: '_self'
+        }
+    },
+    edit: function edit(props) {
+        var isSelected = props.isSelected,
+            editable = props.editable,
+            setState = props.setState;
+
+
+        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
+            return function () {
+                setState({ editable: newEditable });
+            };
+        };
+
+        var _props$attributes = props.attributes,
+            largeScreen = _props$attributes.largeScreen,
+            mediumScreen = _props$attributes.mediumScreen,
+            smallScreen = _props$attributes.smallScreen,
+            addLink = _props$attributes.addLink,
+            linkUrl = _props$attributes.linkUrl,
+            linkTarget = _props$attributes.linkTarget;
+
+
+        var setlargeScreen = function setlargeScreen(largeScreenNumber) {
+            props.setAttributes({ largeScreen: largeScreenNumber });
+        };
+        var setmediumScreen = function setmediumScreen(mediumScreenNumber) {
+            props.setAttributes({ mediumScreen: mediumScreenNumber });
+        };
+        var setsmallScreen = function setsmallScreen(smallScreenNumber) {
+            props.setAttributes({ smallScreen: smallScreenNumber });
+        };
+
+        var onChangelinkUrl = function onChangelinkUrl(NewlinkUrl) {
+            props.setAttributes({ linkUrl: NewlinkUrl });
+        };
+        var onChangelinkTarget = function onChangelinkTarget(selectedlinkTarget) {
+            props.setAttributes({ linkTarget: selectedlinkTarget });
+        };
+
+        return [isSelected && wp.element.createElement(
+            InspectorControls,
+            null,
+            wp.element.createElement(
+                PanelBody,
+                { title: __('Settings'), initialOpen: true },
+                wp.element.createElement(
+                    'div',
+                    { className: 'blocks-font-size__main' },
+                    wp.element.createElement(TextControl, {
+                        label: __('Large Screen Width'),
+                        value: largeScreen,
+                        onChange: setlargeScreen
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: __('Medium Screen Width'),
+                        value: mediumScreen,
+                        onChange: setmediumScreen
+                    }),
+                    wp.element.createElement(TextControl, {
+                        label: __('Small Screen Width'),
+                        value: smallScreen,
+                        onChange: setsmallScreen
+                    }),
+                    wp.element.createElement(ToggleControl, {
+                        label: __('Link'),
+                        checked: !!addLink,
+                        onChange: function onChange() {
+                            return props.setAttributes({ addLink: !addLink });
+                        }
+                    }),
+                    props.attributes.addLink && wp.element.createElement(TextControl, {
+                        label: 'Link Text',
+                        value: linkUrl,
+                        onChange: onChangelinkUrl
+                    }),
+                    props.attributes.addLink && wp.element.createElement(SelectControl, {
+                        label: __('Target:'),
+                        value: linkTarget,
+                        onChange: onChangelinkTarget,
+                        options: [{ value: '_self', label: 'Same Tab' }, { value: '_blank', label: 'New Tab' }]
+                    })
+                )
+            )
+        ), wp.element.createElement(
+            'span',
+            null,
+            props.attributes.addLink ? wp.element.createElement(
+                'div',
+                { key: 'editable',
+                    className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
+                wp.element.createElement(
+                    'a',
+                    { href: linkUrl, target: linkTarget },
+                    wp.element.createElement(
+                        'div',
+                        { className: 'wrapper' },
+                        wp.element.createElement(InnerBlocks, null)
+                    )
+                )
+            ) : wp.element.createElement(
+                'div',
+                { key: 'editable',
+                    className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
+                wp.element.createElement(
+                    'div',
+                    { className: 'wrapper' },
+                    wp.element.createElement(InnerBlocks, null)
+                )
+            )
+        )];
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            largeScreen = _props$attributes2.largeScreen,
+            mediumScreen = _props$attributes2.mediumScreen,
+            smallScreen = _props$attributes2.smallScreen,
+            linkUrl = _props$attributes2.linkUrl,
+            linkTarget = _props$attributes2.linkTarget,
+            addLink = _props$attributes2.addLink;
+
+
+        if (props.attributes.addLink) {
+            return wp.element.createElement(
+                'div',
+                {
+                    className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
+                wp.element.createElement(
+                    'a',
+                    { href: linkUrl, target: linkTarget },
+                    wp.element.createElement(
+                        'div',
+                        { className: 'wrapper' },
+                        wp.element.createElement(InnerBlocks.Content, null)
+                    )
+                )
+            );
+        } else {
+            return wp.element.createElement(
+                'div',
+                {
+                    className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
+                wp.element.createElement(
+                    'div',
+                    { className: 'wrapper' },
+                    wp.element.createElement(InnerBlocks.Content, null)
+                )
+            );
+        }
+    }
+
+});
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__heading_tag__ = __webpack_require__(24);
+/**
+ * BLOCK: Aione Title.
+ */
+
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    InnerBlocks = _wp$editor.InnerBlocks,
+    RichText = _wp$editor.RichText;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl;
+
+
+registerBlockType('aione-blocks/aione-title', {
+    title: __('Aione Title'),
+    icon: 'editor-textcolor',
+    category: 'aione-blocks',
+    keywords: [__('Title'), __('Aione')],
+    attributes: {
+        headingSize: {
+            type: 'string',
+            default: 'h1'
+        },
+        headingText: {
+            type: 'string',
+            default: ''
+        }
+    },
+    edit: function edit(props) {
+        var isSelected = props.isSelected,
+            editable = props.editable,
+            setState = props.setState;
+
+
+        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
+            return function () {
+                setState({ editable: newEditable });
+            };
+        };
+
+        var _props$attributes = props.attributes,
+            headingSize = _props$attributes.headingSize,
+            headingText = _props$attributes.headingText;
+
+
+        var setheadingSize = function setheadingSize(selectedheadingSize) {
+            props.setAttributes({ headingSize: selectedheadingSize });
+        };
+
+        return [isSelected && wp.element.createElement(
+            InspectorControls,
+            null,
+            wp.element.createElement(
+                PanelBody,
+                { title: __('Settings'), initialOpen: true },
+                wp.element.createElement(
+                    'div',
+                    { className: 'blocks-font-size__main' },
+                    wp.element.createElement(SelectControl, {
+                        label: __('Heading Size:'),
+                        value: headingSize,
+                        onChange: setheadingSize,
+                        options: [{ value: 'h1', label: 'h1' }, { value: 'h2', label: 'h2' }, { value: 'h3', label: 'h3' }, { value: 'h4', label: 'h4' }, { value: 'h5', label: 'h5' }, { value: 'h6', label: 'h6' }]
+                    })
+                )
+            )
+        ), wp.element.createElement(
+            'div',
+            { key: 'editable',
+                className: 'section-title'
+            },
+            wp.element.createElement(RichText, {
+                tagName: headingSize,
+                placeholder: __('Add Text..'),
+
+                onChange: function onChange(value) {
+                    return props.setAttributes({ headingText: value });
+                },
+                value: headingText,
+                isSelected: isSelected && editable === 'heading_text',
+                onFocus: onSetActiveEditable('heading_text'),
+                keepPlaceholderOnFocus: true
+            })
+        )];
+    },
+    save: function save(props) {
+        var _props$attributes2 = props.attributes,
+            headingSize = _props$attributes2.headingSize,
+            headingText = _props$attributes2.headingText;
+
+
+        return wp.element.createElement(
+            'div',
+            {
+                className: 'section-title'
+            },
+            wp.element.createElement(
+                __WEBPACK_IMPORTED_MODULE_0__heading_tag__["a" /* default */],
+                { tagName: headingSize },
+                headingText
+            )
+        );
+    }
+
+});
+
+/***/ }),
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = Section;
+var createElement = wp.element.createElement;
+
+function Section(_ref) {
+	var tagName = _ref.tagName,
+	    children = _ref.children;
+
+
+	return createElement(tagName, {}, children);
+}
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+/**
+ * BLOCK: Aione Wrapper.
+ */
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$editor = wp.editor,
+    InnerBlocks = _wp$editor.InnerBlocks,
+    InspectorControls = _wp$editor.InspectorControls;
+var _wp$components = wp.components,
+    PanelBody = _wp$components.PanelBody,
+    SelectControl = _wp$components.SelectControl,
+    ToggleControl = _wp$components.ToggleControl,
+    TextControl = _wp$components.TextControl;
+
+
+registerBlockType('aione-blocks/aione-wrapper', {
+    title: __('Aione Wrapper'), // Block title.
+    icon: 'editor-expand',
+    category: 'aione-blocks',
+    keywords: [__('div'), __('wrapper'), __('Aione')],
+    attributes: {
+        displayProp: {
+            type: 'string',
+            default: 'display-block'
+        },
+        addLink: {
+            default: false,
+            type: 'boolean'
+        },
+        linkUrl: {
+            type: 'string',
+            default: ''
+        },
+        linkTarget: {
+            type: 'string',
+            default: '_self'
+        }
+    },
+    edit: function edit(props) {
+        var isSelected = props.isSelected,
+            editable = props.editable,
+            setState = props.setState,
+            className = props.className;
+        var _props$attributes = props.attributes,
+            displayProp = _props$attributes.displayProp,
+            addLink = _props$attributes.addLink,
+            linkUrl = _props$attributes.linkUrl,
+            linkTarget = _props$attributes.linkTarget;
+
+
+        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
+            return function () {
+                setState({ editable: newEditable });
+            };
+        };
+        var onChangedisplayProp = function onChangedisplayProp(selecteddisplayProp) {
+            props.setAttributes({ displayProp: selecteddisplayProp });
+        };
+        var onChangelinkUrl = function onChangelinkUrl(NewlinkUrl) {
+            props.setAttributes({ linkUrl: NewlinkUrl });
+        };
+        var onChangelinkTarget = function onChangelinkTarget(selectedlinkTarget) {
+            props.setAttributes({ linkTarget: selectedlinkTarget });
+        };
 
         return [isSelected && wp.element.createElement(
             InspectorControls,
@@ -3480,174 +3568,1575 @@ registerBlockType('aione-blocks/aione-tabs', {
                 wp.element.createElement(
                     'div',
                     { className: 'blocks-font-size__main' },
-                    wp.element.createElement(RangeControl, {
-                        label: __('Tabs'),
-                        value: tabsCount,
-                        onChange: function onChange(value) {
-                            return setAttributes({ tabsCount: value });
-                        },
-                        min: 1,
-                        max: 6
-                    }),
                     wp.element.createElement(SelectControl, {
-                        label: __('Select Direction:'),
-                        value: direction,
-                        onChange: onChangeDirection,
-                        options: [{ value: 'horizontal', label: 'Horizontal' }, { value: 'vertical', label: 'Vertical' }]
-                    }),
-                    wp.element.createElement(SelectControl, {
-                        label: __('Select Text Alignment:'),
-                        value: alignment,
-                        onChange: onChangeAlignment,
-                        options: [{ value: 'align-left', label: 'Align Left' }, { value: 'align-center', label: 'Align Center' }, { value: 'align-right', label: 'Align Right' }]
-                    }),
-                    wp.element.createElement(SelectControl, {
-                        label: __('Layout Position:'),
-                        help: __('This will work only with VERTICAL direction'),
-                        value: layout,
-                        onChange: onChangeLayout,
-                        options: [{ value: 'layout-left', label: 'Layout Left' }, { value: 'layout-right', label: 'Layout Right' }]
-                    }),
-                    wp.element.createElement(SelectControl, {
-                        label: __('Select Theme:'),
-                        value: theme,
-                        onChange: onChangeTheme,
-                        options: [{ value: 'theme-clean', label: 'Theme Clean' }, { value: 'theme-bold', label: 'Theme Bold' }, { value: 'theme-pastel', label: 'Theme Pastel' }, { value: 'theme-pointer', label: 'Theme Pointer' }, { value: 'theme-arrow', label: 'Theme Arrow' }, { value: 'theme-orange', label: 'Theme Orange' }]
+                        label: __('Settings:'),
+                        value: displayProp,
+                        onChange: onChangedisplayProp,
+                        options: [{ value: 'display-block', label: 'Inline Block' }, { value: 'display-inline', label: 'Inline' }, { value: 'display-inline-block', label: 'Block' }]
                     }),
                     wp.element.createElement(ToggleControl, {
-                        label: __('Enable Margin'),
-                        checked: !!margin,
+                        label: __('Link'),
+                        checked: !!addLink,
                         onChange: function onChange() {
-                            return props.setAttributes({ margin: !margin });
+                            return props.setAttributes({ addLink: !addLink });
                         }
                     }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __('Hover'),
-                        checked: !!hover,
-                        onChange: function onChange() {
-                            return props.setAttributes({ hover: !hover });
-                        }
+                    props.attributes.addLink && wp.element.createElement(TextControl, {
+                        label: 'Link Text',
+                        value: linkUrl,
+                        onChange: onChangelinkUrl
+                    }),
+                    props.attributes.addLink && wp.element.createElement(SelectControl, {
+                        label: __('Target:'),
+                        value: linkTarget,
+                        onChange: onChangelinkTarget,
+                        options: [{ value: '_self', label: 'Same Tab' }, { value: '_blank', label: 'New Tab' }]
                     })
                 )
             )
         ), wp.element.createElement(
-            'div',
-            { className: className, key: 'tabber', 'data-tab-active': tabActive },
-            wp.element.createElement(
-                'div',
-                { className: className + '-holder' + ' aione-tabs ' + direction + ' ' + alignment + ' ' + layout + ' ' + theme + ' ' + marginClass + ' ' + hoverClass },
+            'span',
+            null,
+            props.attributes.addLink ? wp.element.createElement(
+                'a',
+                { href: linkUrl, target: linkTarget },
                 wp.element.createElement(
                     'div',
-                    { className: className + '-tabs-title SortableList nav' },
-                    tabs.map(function (val) {
-                        var selected = tabActive === val.number;
-
-                        return wp.element.createElement(
-                            'div',
-                            {
-                                className: className + '-tab-title-wrap SortableItem' + (tabActive === val.number ? ' active' : ''),
-                                style: { backgroundColor: tabActive === val.number ? theme : 'theme-clean' },
-                                'data-target': '#tab_' + val.number },
-                            wp.element.createElement(RichText, {
-                                tagName: 'div',
-                                className: className + '-tab-title ',
-                                value: val.label,
-                                'data-tab': val.number,
-                                formattingControls: ['bold', 'italic', 'strikethrough'],
-                                isSelected: activeControl === 'tab-title-' + val.number && isSelected,
-                                placeholder: __('Tab label'),
-                                unstableOnFocus: function unstableOnFocus() {
-                                    return setAttributes({ tabActive: val.number });
-                                },
-                                onChange: function onChange(value) {
-                                    if (typeof tabs[val.number - 1] !== 'undefined') {
-                                        if (typeof tabsSettings['tab_' + val.number] === 'undefined') {
-                                            tabsSettings['tab_' + val.number] = {};
-                                        }
-                                        tabsSettings['tab_' + val.number].label = value;
-                                        setAttributes({ tabsSettings: Object.assign({}, tabsSettings) });
-                                    }
-                                },
-                                keepPlaceholderOnFocus: true,
-                                key: 'tab_button_' + val.number
-                            })
-                        );
-                    })
-                ),
-                wp.element.createElement(
-                    'div',
-                    { className: className + '-tabs-content ' },
-                    wp.element.createElement(InnerBlocks, {
-                        template: getAioneTabsTemplate(props.attributes),
-                        templateLock: 'all',
-                        allowedBlocks: ['aione-blocks/aione-tabs-tab']
-                    })
+                    { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
+                    wp.element.createElement(InnerBlocks, null)
                 )
+            ) : wp.element.createElement(
+                'div',
+                { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
+                wp.element.createElement(InnerBlocks, null)
             )
         )];
     },
-
     save: function save(props) {
         var _props$attributes2 = props.attributes,
-            tabsCount = _props$attributes2.tabsCount,
-            tabActive = _props$attributes2.tabActive,
-            direction = _props$attributes2.direction,
-            alignment = _props$attributes2.alignment,
-            layout = _props$attributes2.layout,
-            theme = _props$attributes2.theme,
-            margin = _props$attributes2.margin,
-            hover = _props$attributes2.hover;
+            displayProp = _props$attributes2.displayProp,
+            linkUrl = _props$attributes2.linkUrl,
+            linkTarget = _props$attributes2.linkTarget,
+            addLink = _props$attributes2.addLink;
 
 
-        var className = 'wp-block-aione-tabbed-content';
-
-        var tabs = getTabs(props.attributes);
-
-        var marginClass = '';
-        if (margin === true) {
-            marginClass = 'margin';
+        if (props.attributes.addLink) {
+            return wp.element.createElement(
+                'a',
+                { href: linkUrl, target: linkTarget },
+                wp.element.createElement(
+                    'div',
+                    { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
+                    wp.element.createElement(InnerBlocks.Content, null)
+                )
+            );
+        } else {
+            return wp.element.createElement(
+                'div',
+                { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
+                wp.element.createElement(InnerBlocks.Content, null)
+            );
         }
-        var hoverClass = '';
-        if (hover === true) {
-            hoverClass = 'hover';
+    }
+});
+
+/***/ }),
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inspector__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_throttle__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_throttle__);
+/**
+ * Block Aione Map
+ */
+
+
+
+
+
+var __ = wp.i18n.__;
+var Component = wp.element.Component;
+var registerBlockType = wp.blocks.registerBlockType;
+var _wp$editor = wp.editor,
+    RichText = _wp$editor.RichText,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    ButtonGroup = _wp$components.ButtonGroup,
+    CheckboxControl = _wp$components.CheckboxControl,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    PanelColor = _wp$components.PanelColor,
+    RadioControl = _wp$components.RadioControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
+    ToggleControl = _wp$components.ToggleControl,
+    Toolbar = _wp$components.Toolbar,
+    SelectControl = _wp$components.SelectControl;
+
+
+function getSettings(attributes) {
+    var settings = [];
+    for (var attribute in attributes) {
+        var value = attributes[attribute];
+        if ('boolean' === typeof attributes[attribute]) {
+            value = value.toString();
         }
+        settings.push(wp.element.createElement(
+            'li',
+            null,
+            attribute,
+            ': ',
+            value
+        ));
+    }
+    return settings;
+}
+
+function buildMapIframe(attributes) {
+    return wp.element.createElement(
+        'div',
+        { 'class': 'wp-block-aione-map' },
+        wp.element.createElement('iframe', { width: '100%', height: parseInt(attributes.height, 10) + 'px', src: 'https://www.google.com/maps/embed/v1/place?q=' + encodeURIComponent(attributes.address) + '&maptype=roadmap&zoom=' + parseInt(attributes.zoom, 10) + '&key=' + attributes.api_key, frameBorder: '0' })
+    );
+} // buildMapIframe
+
+/**
+ * Register static block example block
+ */
+registerBlockType('aione-blocks/aione-map', {
+    title: __('Aione Map'),
+    description: __('Simple yet powerfull map block powered by Google Maps'),
+    category: 'aione-blocks',
+    icon: __WEBPACK_IMPORTED_MODULE_0__icon__["a" /* default */],
+    keywords: [__('Map'), __('Location'), __('google')],
+    attributes: {
+        zoom: {
+            type: 'number',
+            default: '10'
+        },
+        height: {
+            type: 'number',
+            default: '300'
+        },
+        address: {
+            type: 'string',
+            default: 'OXO Solutions, Amritsar'
+        },
+        api_key: {
+            type: 'string',
+            default: aione_blocks.api_key
+        }
+    },
+    edit: function edit(props) {
+        var message = props.attributes.message,
+            attributes = props.attributes,
+            className = props.className,
+            setAttributes = props.setAttributes;
+
+
+        var maphtml = buildMapIframe(attributes);
+
+        var isSelected = props.isSelected,
+            editable = props.editable,
+            setState = props.setState;
+
+
+        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
+            return function () {
+                setState({ editable: newEditable });
+            };
+        };
+
+        var _props$attributes = props.attributes,
+            zoom = _props$attributes.zoom,
+            height = _props$attributes.height,
+            address = _props$attributes.address,
+            api_key = _props$attributes.api_key;
+
+
+        return [wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__inspector__["a" /* default */], props), wp.element.createElement(
+            'div',
+            null,
+            maphtml
+        )];
+    },
+    save: function save(props) {
+        var attributes = props.attributes;
+
+
+        var maphtml = buildMapIframe(attributes);
 
         return wp.element.createElement(
             'div',
-            { className: className, 'data-tab-active': tabActive },
-            wp.element.createElement(
-                'div',
-                { className: className + '-holder' + ' aione-tabs ' + direction + ' ' + alignment + ' ' + layout + ' ' + theme + ' ' + marginClass + ' ' + hoverClass },
-                wp.element.createElement(
-                    'div',
-                    { className: className + '-tabs-title' + ' nav' },
-                    tabs.map(function (val) {
-
-                        return wp.element.createElement(
-                            'div',
-                            {
-                                'data-target': '#tab_' + val.number, className: className + '-tab-title-wrap' + (tabActive === val.number ? ' active' : ''),
-                                key: val.number },
-                            wp.element.createElement(
-                                'div',
-                                { className: className + '-tab-title' },
-                                val.label
-                            )
-                        );
-                    })
-                ),
-                wp.element.createElement(
-                    'div',
-                    { className: className + '-tabs-content' + ' content' },
-                    wp.element.createElement(InnerBlocks.Content, null)
-                )
-            )
+            null,
+            maphtml
         );
     }
 });
 
 /***/ }),
-/* 36 */
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var icon = wp.element.createElement(
+  "svg",
+  { version: "1.1", width: "16pt", heght: "16pt", x: "2pt", y: "0px", viewBox: "-295 387 20 20" },
+  wp.element.createElement("path", { d: "M-277.5,400.2c0,0,0-1.4,0-1.7s-0.4-0.8-1-0.8c-0.6,0-1.2,0-1.2,0v-2h-3v2.1h-1.4l-0.7,1.4l-0.8-1.5h-1.3v-2h-3.1v2\nc0,0-0.2,0-1.1,0c-0.9,0-0.9,1-0.9,1v4.3c0,0,0.2,0.1,0.7,0.1c0.5,0,0.9,0.1,0.9,0.1l0,1.8c0,0,0,0-0.6-0.1\nc-0.6-0.1-0.9-0.2-0.9-0.2l0,2.4h14.6v-5c0,0-0.2-0.1-0.5-0.3c-0.4-0.1-1-0.3-1-0.3l0.4-1.7L-277.5,400.2z M-287.8,404.4\nc-0.6,0.2-0.9,0.2-0.9,0.2l-0.4-1.6c0,0,0.3,0,0.8-0.2s0.8-0.3,0.8-0.3l0.6,1.5C-286.8,404-287.1,404.2-287.8,404.4z M-285.1,403.2\nl-0.8-1.5l1.5-0.9l0.8,1.5L-285.1,403.2z M-281.3,401.5c-0.4,0.1-0.8,0.2-0.8,0.2l-0.5-1.6c0,0,0.3-0.1,0.9-0.3\nc0.6-0.1,0.9-0.1,0.9-0.1l0.1,1.7C-280.6,401.4-280.9,401.4-281.3,401.5z" }),
+  wp.element.createElement("path", { "class": "map-block-red-pin", d: "M-284.8,387c-1.8,0-3.3,1.5-3.3,3.3s3.2,7.4,3.3,7.4c0,0,3.3-5.6,3.3-7.4S-283,387-284.8,387z M-284.8,392.4\nc-1.1,0-2-0.9-2-2s0.9-2,2-2c1.1,0,2,0.9,2,2S-283.7,392.4-284.8,392.4z" })
+);
+
+/* harmony default export */ __webpack_exports__["a"] = (icon);
+
+/***/ }),
+/* 28 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_throttle__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_throttle__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Internal block libraries
+ */
+
+
+
+var Component = wp.element.Component;
+var _wp$editor = wp.editor,
+    InspectorControls = _wp$editor.InspectorControls,
+    ColorPalette = _wp$editor.ColorPalette;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    ButtonGroup = _wp$components.ButtonGroup,
+    CheckboxControl = _wp$components.CheckboxControl,
+    PanelBody = _wp$components.PanelBody,
+    PanelRow = _wp$components.PanelRow,
+    PanelColor = _wp$components.PanelColor,
+    RadioControl = _wp$components.RadioControl,
+    RangeControl = _wp$components.RangeControl,
+    TextControl = _wp$components.TextControl,
+    TextareaControl = _wp$components.TextareaControl,
+    ToggleControl = _wp$components.ToggleControl,
+    Toolbar = _wp$components.Toolbar,
+    SelectControl = _wp$components.SelectControl;
+
+/**
+ * Create an Inspector Controls wrapper Component
+ */
+
+var Inspector = function (_Component) {
+    _inherits(Inspector, _Component);
+
+    function Inspector() {
+        _classCallCheck(this, Inspector);
+
+        var _this = _possibleConstructorReturn(this, (Inspector.__proto__ || Object.getPrototypeOf(Inspector)).apply(this, arguments));
+
+        _this.updateApiKey = _this.updateApiKey.bind(_this);
+        _this.updateApiKeyThrottled = __WEBPACK_IMPORTED_MODULE_0_lodash_throttle___default()(_this.updateApiKey, 3000);
+        return _this;
+    }
+
+    _createClass(Inspector, [{
+        key: 'updateApiKey',
+        value: function updateApiKey(key) {
+            aione_blocks.api_key = key;
+
+            fetch(ajaxurl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: "action=aione_map_block_save_key&api_key=" + key
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            var _props = this.props,
+                _props$attributes = _props.attributes,
+                zoom = _props$attributes.zoom,
+                height = _props$attributes.height,
+                address = _props$attributes.address,
+                api_key = _props$attributes.api_key,
+                setAttributes = _props.setAttributes;
+
+
+            return wp.element.createElement(
+                InspectorControls,
+                null,
+                wp.element.createElement(
+                    PanelBody,
+                    null,
+                    wp.element.createElement(TextControl, {
+                        label: 'Address',
+                        value: address,
+                        onChange: function onChange(address) {
+                            return setAttributes({ address: address });
+                        }
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    null,
+                    wp.element.createElement(RangeControl, {
+                        beforeIcon: 'arrow-left-alt2',
+                        afterIcon: 'arrow-right-alt2',
+                        label: 'Zoom',
+                        value: zoom,
+                        onChange: function onChange(zoom) {
+                            return setAttributes({ zoom: zoom });
+                        },
+                        min: 1,
+                        max: 21
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    null,
+                    wp.element.createElement(RangeControl, {
+                        beforeIcon: 'arrow-left-alt2',
+                        afterIcon: 'arrow-right-alt2',
+                        label: 'Problems? We are here to help!',
+                        value: height,
+                        onChange: function onChange(height) {
+                            return setAttributes({ height: height });
+                        },
+                        min: 50,
+                        max: 1000
+                    })
+                ),
+                wp.element.createElement(
+                    PanelBody,
+                    null,
+                    wp.element.createElement(TextControl, {
+                        label: 'API Key',
+                        help: wp.element.createElement(
+                            'p',
+                            null,
+                            'Please create your API key on the',
+                            ' ',
+                            wp.element.createElement(
+                                'a',
+                                { href: 'https://console.developers.google.com', target: '_blank' },
+                                'Google Console'
+                            ),
+                            '. ',
+                            'This is a requirement enforced by Google'
+                        ),
+                        value: api_key,
+                        onChange: function onChange(api_key) {
+                            if (!api_key) {
+                                api_key = aione_blocks.api_key;
+                            }
+                            setAttributes({ api_key: api_key });
+                            _this2.updateApiKeyThrottled(api_key);
+                        }
+                    })
+                )
+            );
+        }
+    }]);
+
+    return Inspector;
+}(Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (Inspector);
+
+/***/ }),
+/* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icons_icon__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__oldVersions__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__common__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_editorDisplay__ = __webpack_require__(31);
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+/**
+ * BLOCK: tabbed-content
+ *
+ * Registering a basic block with Gutenberg.
+ * Simple block, renders and saves the same content without any interactivity.
+ */
+
+
+
+
+
+
+var __ = wp.i18n.__;
+var _wp$blocks = wp.blocks,
+    registerBlockType = _wp$blocks.registerBlockType,
+    createBlock = _wp$blocks.createBlock;
+var _wp$compose = wp.compose,
+    withState = _wp$compose.withState,
+    compose = _wp$compose.compose;
+var _wp$data = wp.data,
+    withSelect = _wp$data.withSelect,
+    withDispatch = _wp$data.withDispatch;
+var _wp$blockEditor = wp.blockEditor,
+    RichText = _wp$blockEditor.RichText,
+    InnerBlocks = _wp$blockEditor.InnerBlocks;
+
+
+var oldAttributes = {
+	id: {
+		type: "number",
+		default: -1
+	},
+	activeControl: {
+		type: "string"
+	},
+	activeTab: {
+		type: "number",
+		default: 0
+	},
+	/*theme: {
+ 	type: "string",
+ 	default: "#eeeeee",
+ },*/
+	titleColor: {
+		type: "string",
+		default: "#000000"
+	},
+	tabsContent: {
+		source: "query",
+		selector: ".wp-block-aione-tabs-content-tab-content-wrap",
+		query: {
+			content: {
+				type: "array",
+				source: "children",
+				selector: ".wp-block-aione-tabs-content-tab-content"
+			}
+		}
+	},
+	tabsTitle: {
+		source: "query",
+		selector: ".wp-block-aione-tabs-content-tab-title-wrap",
+		query: {
+			content: {
+				type: "array",
+				source: "children",
+				selector: ".wp-block-aione-tabs-content-tab-title"
+			}
+		}
+	}
+};
+
+var attributes = {
+	direction: {
+		type: 'string',
+		default: 'horizontal'
+	},
+	alignment: {
+		type: 'string',
+		default: 'align-left'
+	},
+	layout: {
+		type: 'string',
+		default: ''
+	},
+	theme: {
+		type: 'string',
+		default: 'theme-clean'
+	},
+	margin: {
+		default: false,
+		type: 'boolean'
+	},
+	hover: {
+		default: false,
+		type: 'boolean'
+	},
+	blockID: {
+		type: "string",
+		default: ""
+	},
+	activeControl: {
+		type: "string"
+	},
+	activeTab: {
+		type: "number",
+		default: 0
+	},
+	/*theme: {
+ 	type: "string",
+ 	default: "#eeeeee",
+ },*/
+	normalColor: {
+		type: "string",
+		default: ""
+	},
+	titleColor: {
+		type: "string",
+		default: "#000000"
+	},
+	normalTitleColor: {
+		type: "string",
+		default: "#000000"
+	},
+	borderColor: {
+		type: "string",
+		default: "#d3d3d3"
+	},
+	tabsTitle: {
+		type: "array",
+		default: []
+	},
+	tabsAlignment: {
+		type: "string",
+		default: "left"
+	},
+	tabsTitleAlignment: {
+		type: "array",
+		default: []
+	},
+	tabsAnchor: {
+		type: "array",
+		default: []
+	},
+	useAnchors: {
+		type: "boolean",
+		default: false
+	},
+	tabVertical: {
+		type: "boolean",
+		default: false
+	},
+	tabletTabDisplay: {
+		type: "string",
+		default: "horizontaltab"
+	},
+	mobileTabDisplay: {
+		type: "string",
+		default: "horizontaltab"
+	},
+	tabStyle: {
+		type: "string",
+		default: "tabs"
+	}
+};
+
+/**
+ * Register: aa Gutenberg Block.
+ *
+ * Registers a new block provided a unique name and an object defining its
+ * behavior. Once registered, the block is made editor as an option to any
+ * editor interface where blocks are implemented.
+ *
+ * @link https://wordpress.org/gutenberg/handbook/block-api/
+ * @param  {string}   name     aione-blocks/aione-tabs.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully
+ *                             registered; otherwise `undefined`.
+ */
+
+registerBlockType("aione-blocks/aione-tabs", {
+	title: __("Aione Tabs"),
+	icon: __WEBPACK_IMPORTED_MODULE_0__icons_icon__["a" /* default */],
+	category: "aione-blocks",
+	keywords: [__("Aione Tabs"), __("Tabs"), __("Aione Blocks")],
+	attributes: oldAttributes,
+	supports: {
+		inserter: false
+	},
+
+	edit: compose([withSelect(function (select, ownProps) {
+		var _ref = select("core/block-editor") || select("core/editor"),
+		    getBlock = _ref.getBlock,
+		    getSelectedBlock = _ref.getSelectedBlock;
+
+		return {
+			block: getBlock(ownProps.clientId),
+			selectedBlock: getSelectedBlock()
+		};
+	}), withDispatch(function (dispatch) {
+		var _ref2 = dispatch("core/block-editor") || dispatch("core/editor"),
+		    updateBlockAttributes = _ref2.updateBlockAttributes,
+		    insertBlock = _ref2.insertBlock,
+		    removeBlock = _ref2.removeBlock,
+		    moveBlockToPosition = _ref2.moveBlockToPosition,
+		    selectBlock = _ref2.selectBlock,
+		    replaceBlock = _ref2.replaceBlock;
+
+		return {
+			updateBlockAttributes: updateBlockAttributes,
+			insertBlock: insertBlock,
+			removeBlock: removeBlock,
+			moveBlockToPosition: moveBlockToPosition,
+			selectBlock: selectBlock,
+			replaceBlock: replaceBlock
+		};
+	}), withState({ oldArrangement: "" })])(__WEBPACK_IMPORTED_MODULE_3__components_editorDisplay__["a" /* OldTabHolder */]),
+
+	save: function save(props) {
+		var className = "wp-block-aione-tabs-content";
+
+		var _props$attributes = props.attributes,
+		    activeTab = _props$attributes.activeTab,
+		    theme = _props$attributes.theme,
+		    titleColor = _props$attributes.titleColor,
+		    tabsTitle = _props$attributes.tabsTitle,
+		    id = _props$attributes.id;
+
+
+		return wp.element.createElement(
+			"div",
+			{ "data-id": id },
+			wp.element.createElement(
+				"div",
+				{ className: className + "-holder aione-tabs" },
+				wp.element.createElement(
+					"div",
+					{ className: className + "-tabs-title nav" },
+					tabsTitle.map(function (value, i) {
+						return wp.element.createElement(
+							"div",
+							{
+								className: className + "-tab-title-wrap" + (activeTab === i ? " active" : ""),
+								style: {
+									backgroundColor: activeTab === i ? theme : "initial",
+									borderColor: activeTab === i ? theme : "lightgrey",
+									color: activeTab === i ? titleColor : "#000000"
+								},
+								key: i
+							},
+							wp.element.createElement(RichText.Content, {
+								tagName: "div",
+								className: className + "-tab-title",
+								value: value.content
+							})
+						);
+					})
+				),
+				wp.element.createElement(
+					"div",
+					{ className: className + "-tabs-content content" },
+					wp.element.createElement(InnerBlocks.Content, null)
+				)
+			)
+		);
+	},
+	deprecated: [{
+		attributes: oldAttributes,
+		migrate: function migrate(attributes) {
+			var tabsContent = attributes.tabsContent,
+			    otherAttributes = _objectWithoutProperties(attributes, ["tabsContent"]);
+
+			return [otherAttributes, tabsContent.map(function (t) {
+				var tabContent = [];
+				t.content.forEach(function (paragraph, i) {
+					if (typeof paragraph === "string") {
+						tabContent.push(createBlock("core/paragraph", {
+							content: paragraph
+						}));
+					} else if (paragraph.type === "br") {
+						if (t.content[i - 1].type === "br") {
+							tabContent.push(createBlock("core/paragraph"));
+						}
+					} else {
+						tabContent.push(createBlock("core/paragraph", {
+							content: Object(__WEBPACK_IMPORTED_MODULE_2__common__["b" /* richTextToHTML */])(paragraph)
+						}));
+					}
+				});
+
+				return createBlock("aione-blocks/aione-tab", {}, tabContent);
+			})];
+		},
+		save: __WEBPACK_IMPORTED_MODULE_1__oldVersions__["a" /* version_1_1_2 */]
+	}]
+});
+
+registerBlockType("aione-blocks/aione-tabs-block", {
+	title: __("Aione Tabs"),
+	icon: __WEBPACK_IMPORTED_MODULE_0__icons_icon__["a" /* default */],
+	category: "aione-blocks",
+	keywords: [__("Aione Tabs"), __("Tabs"), __("Aione Blocks")],
+	attributes: attributes,
+	supports: {
+		align: ["wide", "full"]
+	},
+
+	edit: compose([withSelect(function (select, ownProps) {
+		var _ref3 = select("core/block-editor") || select("core/editor"),
+		    getBlock = _ref3.getBlock,
+		    getSelectedBlock = _ref3.getSelectedBlock,
+		    getClientIdsWithDescendants = _ref3.getClientIdsWithDescendants;
+
+		return {
+			block: getBlock(ownProps.clientId),
+			selectedBlock: getSelectedBlock(),
+			getBlock: getBlock,
+			getClientIdsWithDescendants: getClientIdsWithDescendants
+		};
+	}), withDispatch(function (dispatch) {
+		var _ref4 = dispatch("core/block-editor") || dispatch("core/editor"),
+		    updateBlockAttributes = _ref4.updateBlockAttributes,
+		    insertBlock = _ref4.insertBlock,
+		    removeBlock = _ref4.removeBlock,
+		    moveBlockToPosition = _ref4.moveBlockToPosition,
+		    selectBlock = _ref4.selectBlock;
+
+		return {
+			updateBlockAttributes: updateBlockAttributes,
+			insertBlock: insertBlock,
+			removeBlock: removeBlock,
+			moveBlockToPosition: moveBlockToPosition,
+			selectBlock: selectBlock
+		};
+	}), withState({ oldArrangement: [] })])(__WEBPACK_IMPORTED_MODULE_3__components_editorDisplay__["b" /* TabHolder */]),
+
+	save: function save() {
+		return wp.element.createElement(InnerBlocks.Content, null);
+	}
+});
+
+/***/ }),
+/* 30 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return version_1_1_2; });
+var RichText = wp.editor.RichText;
+
+
+var version_1_1_2 = function version_1_1_2(props) {
+	var className = 'wp-block-aione-tabs-content';
+
+	var _props$attributes = props.attributes,
+	    activeTab = _props$attributes.activeTab,
+	    theme = _props$attributes.theme,
+	    titleColor = _props$attributes.titleColor,
+	    tabsTitle = _props$attributes.tabsTitle,
+	    tabsContent = _props$attributes.tabsContent,
+	    id = _props$attributes.id;
+
+
+	return wp.element.createElement(
+		'div',
+		{ 'data-id': id },
+		wp.element.createElement(
+			'div',
+			{ className: className + '-holder' },
+			wp.element.createElement(
+				'div',
+				{ className: className + '-tabs-title' },
+				tabsTitle.map(function (value, i) {
+					return wp.element.createElement(
+						'div',
+						{
+							className: className + '-tab-title-wrap' + (activeTab === i ? ' active' : ''),
+							style: {
+								backgroundColor: activeTab === i ? theme : 'initial',
+								borderColor: activeTab === i ? theme : 'lightgrey',
+								color: activeTab === i ? titleColor : '#000000'
+							},
+							key: i
+						},
+						wp.element.createElement(RichText.Content, {
+							tagName: 'div',
+							className: className + '-tab-title',
+							value: value.content
+						})
+					);
+				})
+			),
+			wp.element.createElement(
+				'div',
+				{ className: className + '-tabs-content' },
+				tabsContent.map(function (value, i) {
+					return wp.element.createElement(
+						'div',
+						{
+							className: className + '-tab-content-wrap' + (activeTab === i ? ' active' : ' ub-hide'),
+							key: i
+						},
+						wp.element.createElement(RichText.Content, {
+							tagName: 'div',
+							className: className + '-tab-content',
+							value: value.content
+						})
+					);
+				})
+			)
+		)
+	);
+};
+
+/***/ }),
+/* 31 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OldTabHolder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return TabHolder; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inspector__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__common__ = __webpack_require__(11);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var __ = wp.i18n.__;
+var createBlock = wp.blocks.createBlock;
+
+var _ref = wp.blockEditor || wp.editor,
+    RichText = _ref.RichText,
+    InnerBlocks = _ref.InnerBlocks,
+    BlockControls = _ref.BlockControls;
+
+var _wp$components = wp.components,
+    ToolbarGroup = _wp$components.ToolbarGroup,
+    ToolbarButton = _wp$components.ToolbarButton;
+
+
+var OldTabHolder = function (_Component) {
+	_inherits(OldTabHolder, _Component);
+
+	function OldTabHolder(props) {
+		_classCallCheck(this, OldTabHolder);
+
+		return _possibleConstructorReturn(this, (OldTabHolder.__proto__ || Object.getPrototypeOf(OldTabHolder)).call(this, props));
+	}
+
+	_createClass(OldTabHolder, [{
+		key: "render",
+		value: function render() {
+			var _this2 = this;
+
+			var _props = this.props,
+			    setAttributes = _props.setAttributes,
+			    attributes = _props.attributes,
+			    isSelected = _props.isSelected,
+			    moveBlockToPosition = _props.moveBlockToPosition,
+			    oldArrangement = _props.oldArrangement,
+			    setState = _props.setState,
+			    updateBlockAttributes = _props.updateBlockAttributes,
+			    removeBlock = _props.removeBlock,
+			    selectedBlock = _props.selectedBlock,
+			    selectBlock = _props.selectBlock,
+			    insertBlock = _props.insertBlock,
+			    replaceBlock = _props.replaceBlock;
+
+
+			var className = "wp-block-aione-tabs-content";
+
+			window.ubTabbedContentBlocks = window.ubTabbedContentBlocks || [];
+
+			var block = null;
+
+			var _iteratorNormalCompletion = true;
+			var _didIteratorError = false;
+			var _iteratorError = undefined;
+
+			try {
+				for (var _iterator = window.ubTabbedContentBlocks[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+					var bl = _step.value;
+
+					if (bl.id === attributes.id) {
+						block = bl;
+						break;
+					}
+				}
+			} catch (err) {
+				_didIteratorError = true;
+				_iteratorError = err;
+			} finally {
+				try {
+					if (!_iteratorNormalCompletion && _iterator.return) {
+						_iterator.return();
+					}
+				} finally {
+					if (_didIteratorError) {
+						throw _iteratorError;
+					}
+				}
+			}
+
+			if (!block) {
+				block = {
+					id: window.ubTabbedContentBlocks.length,
+					SortableItem: null,
+					SortableList: null
+				};
+				window.ubTabbedContentBlocks.push(block);
+				setAttributes({ id: block.id });
+			}
+
+			if (!attributes.tabsTitle) {
+				attributes.tabsTitle = [];
+			}
+
+			var tabs = this.props.block.innerBlocks;
+
+			var showControls = function showControls(type, index) {
+				setAttributes({ activeControl: type + "-" + index });
+				setAttributes({ activeTab: index });
+
+				tabs.forEach(function (tab, i) {
+					updateBlockAttributes(tab.clientId, { isActive: index === i });
+				});
+			};
+
+			var addTab = function addTab(i) {
+				insertBlock(createBlock("aione-blocks/aione-tab", {}), i, _this2.props.block.clientId);
+				attributes.tabsTitle[i] = { content: "Tab Title" };
+				setAttributes({ tabsTitle: attributes.tabsTitle });
+
+				setAttributes({ activeTab: i });
+
+				showControls("tab-title", i);
+			};
+
+			if (attributes.tabsTitle.length === 0) {
+				addTab(0);
+			}
+
+			var DragHandle = Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["SortableHandle"])(function () {
+				return wp.element.createElement("span", { className: "dashicons dashicons-move drag-handle" });
+			});
+
+			if (!block.SortableItem) {
+				block.SortableItem = Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["SortableElement"])(function (_ref2) {
+					var value = _ref2.value,
+					    i = _ref2.i,
+					    propz = _ref2.propz,
+					    onChangeTitle = _ref2.onChangeTitle,
+					    onRemoveTitle = _ref2.onRemoveTitle,
+					    toggleTitle = _ref2.toggleTitle;
+					return wp.element.createElement(
+						"div",
+						{
+							className: className + "-tab-title-wrap SortableItem" + (propz.attributes.activeTab === i ? " active" : ""),
+							style: {
+								backgroundColor: propz.attributes.activeTab === i ? propz.attributes.theme : "initial",
+								color: propz.attributes.activeTab === i ? propz.attributes.titleColor : "#000000"
+							},
+							onClick: function onClick() {
+								return toggleTitle("tab-title", i);
+							}
+						},
+						wp.element.createElement(RichText, {
+							tagName: "div",
+							className: className + "-tab-title ",
+							value: value.content,
+							allowedFormats: ["core/bold", "core/italic"],
+							isSelected: propz.attributes.activeControl === "tab-title-" + i && propz.isSelected,
+							onChange: function onChange(content) {
+								return onChangeTitle(content, i);
+							},
+							placeholder: "Tab Title"
+						}),
+						wp.element.createElement(
+							"div",
+							{ className: "ub-tab-actions" },
+							wp.element.createElement(DragHandle, null),
+							wp.element.createElement("span", {
+								className: "dashicons dashicons-minus remove-tab-icon" + (propz.attributes.tabsTitle.length === 1 ? " ub-hide" : ""),
+								onClick: function onClick() {
+									return onRemoveTitle(i);
+								}
+							})
+						)
+					);
+				});
+			}
+
+			if (!block.SortableList) {
+				block.SortableList = Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["SortableContainer"])(function (_ref3) {
+					var items = _ref3.items,
+					    propz = _ref3.propz,
+					    onChangeTitle = _ref3.onChangeTitle,
+					    onRemoveTitle = _ref3.onRemoveTitle,
+					    toggleTitle = _ref3.toggleTitle,
+					    onAddTab = _ref3.onAddTab;
+					return wp.element.createElement(
+						"div",
+						{ className: className + "-tabs-title SortableList" },
+						items.map(function (value, index) {
+							return wp.element.createElement(block.SortableItem, {
+								propz: propz,
+								key: "item-" + index,
+								i: index,
+								index: index,
+								value: value,
+								onChangeTitle: onChangeTitle,
+								onRemoveTitle: onRemoveTitle,
+								toggleTitle: toggleTitle
+							});
+						}),
+						wp.element.createElement(
+							"div",
+							{
+								className: className + "-tab-title-wrap",
+								key: propz.attributes.tabsTitle.length,
+								onClick: function onClick() {
+									return onAddTab(propz.attributes.tabsTitle.length);
+								}
+							},
+							wp.element.createElement("span", { className: "dashicons dashicons-plus-alt" })
+						)
+					);
+				});
+			}
+
+			var newArrangement = JSON.stringify(tabs.map(function (tab) {
+				return tab.attributes.index;
+			}));
+
+			if (newArrangement !== oldArrangement) {
+				tabs.forEach(function (tab, i) {
+					return updateBlockAttributes(tab.clientId, {
+						index: i,
+						isActive: attributes.activeTab === i
+					});
+				});
+				setState({ oldArrangement: newArrangement });
+			}
+
+			if (selectedBlock && selectedBlock.clientId !== this.props.block.clientId) {
+				if (tabs.filter(function (innerblock) {
+					return innerblock.attributes.isActive;
+				}).length === 0) {
+					showControls("tab-title", tabs.length - 1);
+				}
+				if (tabs.filter(function (tab) {
+					return tab.clientId === selectedBlock.clientId;
+				}).length > 0 && !selectedBlock.attributes.isActive) {
+					selectBlock(this.props.block.clientId);
+				}
+			}
+
+			return [isSelected && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__inspector__["a" /* default */], { attributes: attributes, setAttributes: setAttributes }), wp.element.createElement(
+				"div",
+				{ className: className },
+				wp.element.createElement(
+					"button",
+					{
+						onClick: function onClick() {
+							var _props$block$attribut = _this2.props.block.attributes,
+							    activeControl = _props$block$attribut.activeControl,
+							    activeTab = _props$block$attribut.activeTab,
+							    theme = _props$block$attribut.theme,
+							    direction = _props$block$attribut.direction,
+							    alignment = _props$block$attribut.alignment,
+							    layout = _props$block$attribut.layout,
+							    margin = _props$block$attribut.margin,
+							    hover = _props$block$attribut.hover,
+							    titleColor = _props$block$attribut.titleColor,
+							    tabsTitle = _props$block$attribut.tabsTitle;
+
+							replaceBlock(_this2.props.block.clientId, createBlock("aione-blocks/aione-tabs-block", {
+								activeControl: activeControl,
+								activeTab: activeTab,
+								theme: theme,
+								titleColor: titleColor,
+								tabsTitle: tabsTitle.map(function (title) {
+									return title.content;
+								}).map(function (title) {
+									return Array.isArray(title) ? Object(__WEBPACK_IMPORTED_MODULE_3__common__["a" /* mergeRichTextArray */])(title) : title;
+								})
+							}, _this2.props.block.innerBlocks.map(function (innerBlock, i) {
+								return createBlock("aione-blocks/aione-tab-block", {
+									index: i,
+									isActive: innerBlock.attributes.isActive
+								}, innerBlock.innerBlocks);
+							})));
+						}
+					},
+					__WEBPACK_IMPORTED_MODULE_3__common__["c" /* upgradeButtonLabel */]
+				),
+				wp.element.createElement(
+					"div",
+					{ className: className + "-holder aione-tabs " + direction },
+					wp.element.createElement(block.SortableList, {
+						axis: "x",
+						propz: this.props,
+						items: attributes.tabsTitle,
+						onSortEnd: function onSortEnd(_ref4) {
+							var oldIndex = _ref4.oldIndex,
+							    newIndex = _ref4.newIndex;
+
+							var titleItems = attributes.tabsTitle.slice(0);
+
+							setAttributes({
+								tabsTitle: Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["arrayMove"])(titleItems, oldIndex, newIndex)
+							});
+
+							moveBlockToPosition(tabs.filter(function (tab) {
+								return tab.attributes.index === oldIndex;
+							})[0].clientId, _this2.props.block.clientId, _this2.props.block.clientId, newIndex);
+
+							showControls("tab-title", oldIndex);
+							setAttributes({ activeTab: newIndex });
+						},
+						useDragHandle: true,
+						onChangeTitle: function onChangeTitle(content, i) {
+							attributes.tabsTitle[i].content = content;
+						},
+						onRemoveTitle: function onRemoveTitle(i) {
+							setAttributes({
+								tabsTitle: [].concat(_toConsumableArray(attributes.tabsTitle.slice(0, i)), _toConsumableArray(attributes.tabsTitle.slice(i + 1)))
+							});
+
+							removeBlock(tabs.filter(function (tab) {
+								return tab.attributes.index === i;
+							})[0].clientId);
+
+							setAttributes({ activeTab: 0 });
+							showControls("tab-title", 0);
+						},
+						toggleTitle: showControls,
+						onAddTab: addTab
+					}),
+					wp.element.createElement(
+						"div",
+						{ className: className + "-tabs-content content" },
+						wp.element.createElement(InnerBlocks, { templateLock: false, allowedBlocks: ["aione-blocks/aione-tab"] })
+					)
+				)
+			)];
+		}
+	}]);
+
+	return OldTabHolder;
+}(__WEBPACK_IMPORTED_MODULE_2_react__["Component"]);
+
+var TabHolder = function (_Component2) {
+	_inherits(TabHolder, _Component2);
+
+	function TabHolder(props) {
+		_classCallCheck(this, TabHolder);
+
+		var _this3 = _possibleConstructorReturn(this, (TabHolder.__proto__ || Object.getPrototypeOf(TabHolder)).call(this, props));
+
+		_this3.state = {
+			index: -1
+		};
+		return _this3;
+	}
+
+	_createClass(TabHolder, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			var _props2 = this.props,
+			    attributes = _props2.attributes,
+			    setAttributes = _props2.setAttributes;
+			var tabsTitle = attributes.tabsTitle,
+			    tabsTitleAlignment = attributes.tabsTitleAlignment;
+
+
+			if (tabsTitle.length !== tabsTitleAlignment.length) {
+				setAttributes({
+					tabsTitleAlignment: Array(tabsTitle.length).fill("center")
+				});
+			}
+		}
+	}, {
+		key: "componentWillUnmount",
+		value: function componentWillUnmount() {
+			window.removeEventListener("resize", this.checkWidth);
+		}
+	}, {
+		key: "render",
+		value: function render() {
+			var _this4 = this,
+			    _wp$element$createEle;
+
+			var _props3 = this.props,
+			    setAttributes = _props3.setAttributes,
+			    attributes = _props3.attributes,
+			    isSelected = _props3.isSelected,
+			    moveBlockToPosition = _props3.moveBlockToPosition,
+			    oldArrangement = _props3.oldArrangement,
+			    setState = _props3.setState,
+			    updateBlockAttributes = _props3.updateBlockAttributes,
+			    removeBlock = _props3.removeBlock,
+			    selectedBlock = _props3.selectedBlock,
+			    selectBlock = _props3.selectBlock,
+			    insertBlock = _props3.insertBlock,
+			    getBlock = _props3.getBlock,
+			    getClientIdsWithDescendants = _props3.getClientIdsWithDescendants;
+
+
+			var className = "wp-block-aione-tabs-content";
+
+			window.ubTabbedContentBlocks = window.ubTabbedContentBlocks || [];
+
+			var tabsTitle = attributes.tabsTitle,
+			    tabsTitleAlignment = attributes.tabsTitleAlignment,
+			    activeTab = attributes.activeTab,
+			    tabsAlignment = attributes.tabsAlignment,
+			    tabVertical = attributes.tabVertical,
+			    blockID = attributes.blockID,
+			    tabStyle = attributes.tabStyle,
+			    direction = attributes.direction,
+			    alignment = attributes.alignment,
+			    theme = attributes.theme,
+			    layout = attributes.layout,
+			    margin = attributes.margin,
+			    hover = attributes.hover;
+
+			var block = null;
+
+			var _iteratorNormalCompletion2 = true;
+			var _didIteratorError2 = false;
+			var _iteratorError2 = undefined;
+
+			try {
+				for (var _iterator2 = window.ubTabbedContentBlocks[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+					var bl = _step2.value;
+
+					if (bl.id === attributes.id) {
+						block = bl;
+						break;
+					}
+				}
+			} catch (err) {
+				_didIteratorError2 = true;
+				_iteratorError2 = err;
+			} finally {
+				try {
+					if (!_iteratorNormalCompletion2 && _iterator2.return) {
+						_iterator2.return();
+					}
+				} finally {
+					if (_didIteratorError2) {
+						throw _iteratorError2;
+					}
+				}
+			}
+
+			if (!block) {
+				block = {
+					id: this.props.block.clientId,
+					SortableItem: null,
+					SortableList: null
+				};
+				window.ubTabbedContentBlocks.push(block);
+				setAttributes({ id: block.id });
+			}
+
+			if (!attributes.tabsTitle) {
+				attributes.tabsTitle = [];
+			}
+
+			var tabs = this.props.block.innerBlocks;
+
+			var showControls = function showControls(type, index) {
+				setAttributes({
+					activeControl: type + "-" + index,
+					activeTab: index
+				});
+
+				tabs.forEach(function (tab, i) {
+					updateBlockAttributes(tab.clientId, { isActive: index === i });
+				});
+			};
+
+			var addTab = function addTab(i) {
+				insertBlock(createBlock("aione-blocks/aione-tab-block", {}), i, _this4.props.block.clientId);
+				setAttributes({
+					tabsTitle: [].concat(_toConsumableArray(tabsTitle), ["Tab Title"]),
+					tabsTitleAlignment: [].concat(_toConsumableArray(tabsTitleAlignment), ["left"]),
+					activeTab: i
+				});
+
+				showControls("tab-title", i);
+			};
+
+			if (attributes.tabsTitle.length === 0) {
+				addTab(0);
+			}
+
+			var DragHandle = Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["SortableHandle"])(function () {
+				return wp.element.createElement("span", { className: "dashicons dashicons-move drag-handle" });
+			});
+
+			if (!block.SortableItem) {
+				block.SortableItem = Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["SortableElement"])(function (_ref5) {
+					var value = _ref5.value,
+					    i = _ref5.i,
+					    propz = _ref5.propz,
+					    onChangeTitle = _ref5.onChangeTitle,
+					    onRemoveTitle = _ref5.onRemoveTitle,
+					    toggleTitle = _ref5.toggleTitle;
+					return wp.element.createElement(
+						"div",
+						{
+							className: className + "-tab-title-" + (tabVertical ? "vertical-" : "") + "wrap SortableItem" + (propz.attributes.activeTab === i ? " active" : ""),
+							style: {
+								textAlign: propz.attributes.tabsTitleAlignment[i],
+								backgroundColor: propz.attributes.tabStyle === "underline" ? "inherit" : propz.attributes.activeTab === i ? propz.attributes.theme : propz.attributes.normalColor || "inherit",
+								color: propz.attributes.activeTab === i ? propz.attributes.titleColor || "inherit" : propz.attributes.normalTitleColor || "inherit",
+								borderBottom: propz.attributes.activeTab === i && propz.attributes.tabStyle === "underline" ? "5px solid " + (propz.attributes.titleColor || "inherit") : null
+							},
+							onClick: function onClick() {
+								return toggleTitle("tab-title", i);
+							}
+						},
+						wp.element.createElement(RichText, {
+							tagName: "div",
+							className: className + "-tab-title",
+							value: value,
+							allowedFormats: ["core/bold", "core/italic"],
+							isSelected: propz.attributes.activeControl === "tab-title-" + i && propz.isSelected,
+							onChange: function onChange(content) {
+								return onChangeTitle(content, i);
+							},
+							placeholder: "Tab Title"
+						}),
+						wp.element.createElement(
+							"div",
+							{
+								className: "ub-tab-actions" + (propz.attributes.tabsTitle.length === 1 ? " ub-hide" : "")
+							},
+							wp.element.createElement(DragHandle, null),
+							wp.element.createElement("span", {
+								className: "dashicons dashicons-minus remove-tab-icon",
+								onClick: function onClick() {
+									return onRemoveTitle(i);
+								}
+							})
+						)
+					);
+				});
+			}
+
+			if (!block.SortableList) {
+				block.SortableList = Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["SortableContainer"])(function (_ref6) {
+					var items = _ref6.items,
+					    propz = _ref6.propz,
+					    onChangeTitle = _ref6.onChangeTitle,
+					    onRemoveTitle = _ref6.onRemoveTitle,
+					    toggleTitle = _ref6.toggleTitle,
+					    onAddTab = _ref6.onAddTab;
+					return wp.element.createElement(
+						"div",
+						{
+							className: className + "-tabs-title" + (propz.attributes.tabVertical ? "-vertical-tab" : "") + " SortableList",
+							style: {
+								justifyContent: tabsAlignment === "center" ? "center" : "flex-" + (tabsAlignment === "left" ? "start" : "end")
+							},
+							useWindowAsScrollContainer: true
+						},
+						items.map(function (value, index) {
+							return wp.element.createElement(block.SortableItem, {
+								propz: propz,
+								key: "item-" + index,
+								i: index,
+								index: index,
+								value: value,
+								onChangeTitle: onChangeTitle,
+								onRemoveTitle: onRemoveTitle,
+								toggleTitle: toggleTitle
+							});
+						}),
+						wp.element.createElement(
+							"div",
+							{
+								className: className + "-tab-title-" + (attributes.tabVertical ? "vertical-" : "") + "wrap",
+								key: propz.attributes.tabsTitle.length,
+								onClick: function onClick() {
+									return onAddTab(propz.attributes.tabsTitle.length);
+								}
+							},
+							wp.element.createElement("span", { className: "dashicons dashicons-plus-alt" })
+						)
+					);
+				});
+			}
+
+			var newArrangement = tabs.map(function (tab) {
+				return tab.attributes.index;
+			});
+
+			if (!newArrangement.every(function (i, j) {
+				return i === oldArrangement[j];
+			})) {
+				tabs.forEach(function (tab, i) {
+					return updateBlockAttributes(tab.clientId, {
+						index: i,
+						isActive: attributes.activeTab === i
+					});
+				});
+				setState({ oldArrangement: newArrangement });
+			}
+
+			if (selectedBlock && selectedBlock.clientId !== this.props.block.clientId) {
+				if (tabs.filter(function (innerblock) {
+					return innerblock.attributes.isActive;
+				}).length === 0) {
+					showControls("tab-title", tabs.length - 1);
+				}
+				if (tabs.filter(function (tab) {
+					return tab.clientId === selectedBlock.clientId;
+				}).length > 0 && !selectedBlock.attributes.isActive) {
+					selectBlock(this.props.block.clientId);
+				}
+			}
+
+			if (blockID === "" || getClientIdsWithDescendants().some(function (ID) {
+				return "blockID" in getBlock(ID).attributes && getBlock(ID).attributes.blockID === attributes.blockID;
+			})) {
+				setAttributes({ blockID: this.props.block.clientId });
+			}
+
+			return [isSelected && wp.element.createElement(
+				BlockControls,
+				null,
+				wp.element.createElement(
+					ToolbarGroup,
+					null,
+					["left", "center", "right"].map(function (a) {
+						return wp.element.createElement(ToolbarButton, {
+							icon: "editor-align" + a,
+							label: __("Align Tab Title " + (a[0].toUpperCase() + a.slice(1))),
+							isActive: tabsTitleAlignment[activeTab] === a,
+							onClick: function onClick() {
+								return setAttributes({
+									tabsTitleAlignment: [].concat(_toConsumableArray(tabsTitleAlignment.slice(0, activeTab)), [a], _toConsumableArray(tabsTitleAlignment.slice(activeTab + 1)))
+								});
+							}
+						});
+					})
+				),
+				wp.element.createElement(
+					ToolbarGroup,
+					null,
+					["left", "center", "right"].map(function (a) {
+						return wp.element.createElement(ToolbarButton, {
+							icon: "align-" + a,
+							label: __("Align Tabs " + (a[0].toUpperCase() + a.slice(1))),
+							onClick: function onClick() {
+								return setAttributes({ tabsAlignment: a });
+							}
+						});
+					})
+				)
+			), isSelected && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__inspector__["a" /* default */], { attributes: attributes, setAttributes: setAttributes }), wp.element.createElement(
+				"div",
+				{
+					className: "" + className + (tabStyle === "tabs" ? "" : "-" + tabStyle)
+				},
+				wp.element.createElement(
+					"div",
+					{
+						className: className + "-holder aione-tabs \n\t\t\t\t\t " + (direction !== "horizontal" ? "" + direction : "horizontal") + "\n\t\t\t\t\t " + (alignment !== "align-left" ? "" + alignment : "align-left") + "\n\t\t\t\t\t " + (layout !== "" ? "" + layout : "") + "\n\t\t\t\t\t " + (theme !== "theme-clean" ? "" + theme : "theme-clean") + "\n\t\t\t\t\t " + (margin ? "margin" : "") + "\n\t\t\t\t\t " + (hover ? "hover" : "") + "\n\t\t\t\t\t"
+					},
+					wp.element.createElement(
+						"div",
+						{
+							className: className + "-tab-holder nav " + (attributes.tabVertical ? "vertical-tab-width" : "")
+						},
+						wp.element.createElement(block.SortableList, (_wp$element$createEle = {
+							axis: attributes.tabVertical ? "y" : "x",
+							propz: this.props,
+							items: attributes.tabsTitle,
+							onSortEnd: function onSortEnd(_ref7) {
+								var oldIndex = _ref7.oldIndex,
+								    newIndex = _ref7.newIndex;
+
+								var titleItems = attributes.tabsTitle.slice(0);
+								var alignments = attributes.tabsTitleAlignment.slice(0);
+								setAttributes({
+									tabsTitle: Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["arrayMove"])(titleItems, oldIndex, newIndex),
+									tabsTitleAlignment: Object(__WEBPACK_IMPORTED_MODULE_0_react_sortable_hoc__["arrayMove"])(alignments, oldIndex, newIndex),
+									activeTab: newIndex
+								});
+
+								moveBlockToPosition(tabs.filter(function (tab) {
+									return tab.attributes.index === oldIndex;
+								})[0].clientId, _this4.props.block.clientId, _this4.props.block.clientId, newIndex);
+
+								setAttributes({
+									activeControl: "tab-title-" + newIndex,
+									activeTab: newIndex
+								});
+
+								tabs.forEach(function (tab, i) {
+									updateBlockAttributes(tab.clientId, {
+										isActive: oldIndex === i
+									});
+								});
+							},
+							onRemoveTitle: function onRemoveTitle(i) {
+								setAttributes({
+									tabsTitle: [].concat(_toConsumableArray(tabsTitle.slice(0, i)), _toConsumableArray(tabsTitle.slice(i + 1))),
+									tabsTitleAlignment: [].concat(_toConsumableArray(tabsTitleAlignment.slice(0, i)), _toConsumableArray(tabsTitleAlignment.slice(i + 1))),
+									activeTab: 0
+								});
+
+								removeBlock(tabs.filter(function (tab) {
+									return tab.attributes.index === i;
+								})[0].clientId);
+
+								showControls("tab-title", 0);
+							},
+							onAddTab: addTab,
+							toggleTitle: showControls,
+							useDragHandle: true,
+							onChangeTitle: function onChangeTitle(content, i) {
+								setAttributes({
+									tabsTitle: [].concat(_toConsumableArray(attributes.tabsTitle.slice(0, i)), [content], _toConsumableArray(attributes.tabsTitle.slice(i + 1)))
+								});
+							}
+						}, _defineProperty(_wp$element$createEle, "toggleTitle", showControls), _defineProperty(_wp$element$createEle, "onAddTab", addTab), _wp$element$createEle))
+					),
+					wp.element.createElement(
+						"div",
+						{
+							className: className + "-tabs-content content " + (this.props.attributes.tabVertical ? "vertical-content-width" : "")
+						},
+						wp.element.createElement(InnerBlocks, {
+							templateLock: false,
+							allowedBlocks: ["aione-blocks/aione-tab-block"],
+							template: [["aione-blocks/aione-tab-block"]]
+						})
+					)
+				)
+			)];
+		}
+	}]);
+
+	return TabHolder;
+}(__WEBPACK_IMPORTED_MODULE_2_react__["Component"]);
+
+/***/ }),
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3658,7 +5147,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.arrayMove = exports.sortableHandle = exports.sortableElement = exports.sortableContainer = exports.SortableHandle = exports.SortableElement = exports.SortableContainer = undefined;
 
-var _utils = __webpack_require__(4);
+var _utils = __webpack_require__(3);
 
 Object.defineProperty(exports, 'arrayMove', {
   enumerable: true,
@@ -3667,15 +5156,15 @@ Object.defineProperty(exports, 'arrayMove', {
   }
 });
 
-var _SortableContainer2 = __webpack_require__(37);
+var _SortableContainer2 = __webpack_require__(33);
 
 var _SortableContainer3 = _interopRequireDefault(_SortableContainer2);
 
-var _SortableElement2 = __webpack_require__(50);
+var _SortableElement2 = __webpack_require__(46);
 
 var _SortableElement3 = _interopRequireDefault(_SortableElement2);
 
-var _SortableHandle2 = __webpack_require__(51);
+var _SortableHandle2 = __webpack_require__(47);
 
 var _SortableHandle3 = _interopRequireDefault(_SortableHandle2);
 
@@ -3689,7 +5178,7 @@ exports.sortableElement = _SortableElement3.default;
 exports.sortableHandle = _SortableHandle3.default;
 
 /***/ }),
-/* 37 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3711,21 +5200,21 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(22);
+var _propTypes = __webpack_require__(12);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(8);
 
-var _invariant = __webpack_require__(5);
+var _invariant = __webpack_require__(4);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _Manager = __webpack_require__(49);
+var _Manager = __webpack_require__(45);
 
 var _Manager2 = _interopRequireDefault(_Manager);
 
-var _utils = __webpack_require__(4);
+var _utils = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -4450,7 +5939,7 @@ function sortableContainer(WrappedComponent) {
 }
 
 /***/ }),
-/* 38 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4481,7 +5970,7 @@ unstable_ConcurrentMode:x,unstable_Profiler:u,__SECRET_INTERNALS_DO_NOT_USE_OR_Y
 
 
 /***/ }),
-/* 39 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4503,7 +5992,7 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var _assign = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(14);
+var checkPropTypes = __webpack_require__(6);
 
 // TODO: this is special because it gets imported during build.
 
@@ -6372,7 +7861,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 40 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6387,8 +7876,8 @@ module.exports = react;
 
 var assign = __webpack_require__(2);
 
-var ReactPropTypesSecret = __webpack_require__(15);
-var checkPropTypes = __webpack_require__(14);
+var ReactPropTypesSecret = __webpack_require__(7);
+var checkPropTypes = __webpack_require__(6);
 
 var printWarning = function() {};
 
@@ -6935,7 +8424,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 41 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6948,7 +8437,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var ReactPropTypesSecret = __webpack_require__(15);
+var ReactPropTypesSecret = __webpack_require__(7);
 
 function emptyFunction() {}
 
@@ -7001,7 +8490,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 42 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7017,7 +8506,7 @@ module.exports = function() {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(1),n=__webpack_require__(2),ba=__webpack_require__(23);function ca(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var k=[c,d,e,f,g,h],l=0;a=Error(b.replace(/%s/g,function(){return k[l++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
+var aa=__webpack_require__(1),n=__webpack_require__(2),ba=__webpack_require__(13);function ca(a,b,c,d,e,f,g,h){if(!a){a=void 0;if(void 0===b)a=Error("Minified exception occurred; use the non-minified dev environment for the full error message and additional helpful warnings.");else{var k=[c,d,e,f,g,h],l=0;a=Error(b.replace(/%s/g,function(){return k[l++]}));a.name="Invariant Violation"}a.framesToPop=1;throw a;}}
 function t(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);ca(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}aa?void 0:t("227");function da(a,b,c,d,e,f,g,h,k){var l=Array.prototype.slice.call(arguments,3);try{b.apply(c,l)}catch(m){this.onError(m)}}
 var ea=!1,fa=null,ha=!1,ia=null,ja={onError:function(a){ea=!0;fa=a}};function ka(a,b,c,d,e,f,g,h,k){ea=!1;fa=null;da.apply(ja,arguments)}function la(a,b,c,d,e,f,g,h,k){ka.apply(this,arguments);if(ea){if(ea){var l=fa;ea=!1;fa=null}else t("198"),l=void 0;ha||(ha=!0,ia=l)}}var ma=null,na={};
 function oa(){if(ma)for(var a in na){var b=na[a],c=ma.indexOf(a);-1<c?void 0:t("96",a);if(!pa[c]){b.extractEvents?void 0:t("97",a);pa[c]=b;c=b.eventTypes;for(var d in c){var e=void 0;var f=c[d],g=b,h=d;qa.hasOwnProperty(h)?t("99",h):void 0;qa[h]=f;var k=f.phasedRegistrationNames;if(k){for(e in k)k.hasOwnProperty(e)&&ra(k[e],g,h);e=!0}else f.registrationName?(ra(f.registrationName,g,h),e=!0):e=!1;e?void 0:t("98",d,a)}}}}
@@ -7257,7 +8746,7 @@ var li={default:ki},mi=li&&ki||li;module.exports=mi.default||mi;
 
 
 /***/ }),
-/* 43 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7283,10 +8772,10 @@ exports.unstable_scheduleCallback=function(a,b){var d=-1!==k?k:exports.unstable_
 b=d.previous;b.next=d.previous=a;a.next=d;a.previous=b}return a};exports.unstable_cancelCallback=function(a){var b=a.next;if(null!==b){if(b===a)c=null;else{a===c&&(c=b);var d=a.previous;d.next=b;b.previous=d}a.next=a.previous=null}};exports.unstable_wrapCallback=function(a){var b=h;return function(){var d=h,e=k;h=b;k=exports.unstable_now();try{return a.apply(this,arguments)}finally{h=d,k=e,v()}}};exports.unstable_getCurrentPriorityLevel=function(){return h};
 exports.unstable_shouldYield=function(){return!f&&(null!==c&&c.expirationTime<l||w())};exports.unstable_continueExecution=function(){null!==c&&p()};exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return c};
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ }),
-/* 44 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7994,10 +9483,10 @@ exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
   })();
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(5)))
 
 /***/ }),
-/* 45 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8020,9 +9509,9 @@ if (process.env.NODE_ENV !== "production") {
 
 var React = __webpack_require__(1);
 var _assign = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(14);
-var scheduler = __webpack_require__(23);
-var tracing = __webpack_require__(46);
+var checkPropTypes = __webpack_require__(6);
+var scheduler = __webpack_require__(13);
+var tracing = __webpack_require__(42);
 
 /**
  * Use invariant() to assert state which your program assumes to be true.
@@ -28090,22 +29579,22 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 46 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(47);
+  module.exports = __webpack_require__(43);
 } else {
-  module.exports = __webpack_require__(48);
+  module.exports = __webpack_require__(44);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 47 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28122,7 +29611,7 @@ Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interac
 
 
 /***/ }),
-/* 48 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28553,7 +30042,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 49 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28637,7 +30126,7 @@ function sortByIndex(_ref2, _ref3) {
 }
 
 /***/ }),
-/* 50 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28657,17 +30146,17 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(22);
+var _propTypes = __webpack_require__(12);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(8);
 
-var _invariant = __webpack_require__(5);
+var _invariant = __webpack_require__(4);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _utils = __webpack_require__(4);
+var _utils = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28785,7 +30274,7 @@ function sortableElement(WrappedComponent) {
 }
 
 /***/ }),
-/* 51 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28805,13 +30294,13 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(16);
+var _reactDom = __webpack_require__(8);
 
-var _invariant = __webpack_require__(5);
+var _invariant = __webpack_require__(4);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _utils = __webpack_require__(4);
+var _utils = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28862,3559 +30351,10 @@ function sortableHandle(WrappedComponent) {
 }
 
 /***/ }),
-/* 52 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export name */
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    InnerBlocks = _wp$editor.InnerBlocks;
-
-
-var name = 'aione-blocks/aione-tabs-tab';
-
-registerBlockType('aione-blocks/aione-tabs-tab', {
-
-    title: __('Tab'),
-    parent: ['aione-blocks/aione-tabs'],
-    description: __('A single tab within a tabs block.'),
-    icon: 'welcome-widgets-menus',
-    category: 'aione-blocks',
-    supports: {
-
-        reusable: false
-    },
-    attributes: {
-
-        tabNumber: {
-            type: 'number'
-        },
-        active: {
-            type: 'number'
-        }
-    },
-
-    edit: function edit(props) {
-        var isSelected = props.isSelected,
-            editable = props.editable,
-            setState = props.setState,
-            className = props.className,
-            setAttributes = props.setAttributes,
-            attributes = props.attributes;
-
-
-        return wp.element.createElement(
-            'div',
-            { className: className },
-            wp.element.createElement(InnerBlocks, { templateLock: false })
-        );
-    },
-
-    getEditWrapperProps: function getEditWrapperProps(attributes) {
-        return { 'data-tab-active': attributes.tabNumber };
-    },
-
-
-    save: function save(props) {
-        var _props$attributes = props.attributes,
-            tabNumber = _props$attributes.tabNumber,
-            active = _props$attributes.active;
-
-
-        var className = 'aione-tab';
-
-        var activeClass = '';
-        if (active == tabNumber) {
-            activeClass = 'active';
-        }
-
-        return wp.element.createElement(
-            'div',
-            { id: 'tab_' + tabNumber, className: className + ' ' + activeClass },
-            wp.element.createElement(InnerBlocks.Content, null)
-        );
-    }
-
-});
-
-/***/ }),
-/* 53 */
-/***/ (function(module, exports) {
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-/**
- * BLOCK: Aione Section.
- */
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    InnerBlocks = _wp$editor.InnerBlocks;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    ToggleControl = _wp$components.ToggleControl,
-    TextControl = _wp$components.TextControl;
-
-
-registerBlockType('aione-blocks/aione-section', {
-    title: __('Aione Section'),
-    icon: 'editor-table',
-    category: 'aione-blocks',
-    keywords: [__('Section'), __('Aione')],
-    attributes: {
-        fullWidth: {
-            type: 'boolean',
-            default: true
-        },
-        cssid: {
-            type: 'string',
-            default: ''
-        }
-    },
-    edit: function edit(props) {
-        var isSelected = props.isSelected,
-            editable = props.editable,
-            setState = props.setState;
-
-
-        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
-            return function () {
-                setState({ editable: newEditable });
-            };
-        };
-
-        var _props$attributes = props.attributes,
-            fullWidth = _props$attributes.fullWidth,
-            cssid = _props$attributes.cssid;
-
-
-        var togglefullWidth = function togglefullWidth() {
-            props.setAttributes({ fullWidth: !fullWidth });
-        };
-        var classes = '';
-        if (fullWidth === true) {
-            classes = 'fullwidth';
-        }
-        var onChangeid = function onChangeid(customID) {
-            props.setAttributes({ cssid: customID });
-        };
-
-        return [isSelected && wp.element.createElement(
-            InspectorControls,
-            null,
-            wp.element.createElement(
-                PanelBody,
-                { title: __('Settings'), initialOpen: true },
-                wp.element.createElement(
-                    'div',
-                    { className: 'blocks-font-size__main' },
-                    wp.element.createElement(ToggleControl, {
-                        label: __('Fullwidth'),
-                        checked: !!fullWidth,
-                        onChange: togglefullWidth
-                    }),
-                    wp.element.createElement(TextControl, {
-                        label: 'Additional CSS Id',
-                        value: cssid,
-                        onChange: onChangeid
-                    })
-                )
-            )
-        ), wp.element.createElement(
-            'section',
-            _extends({ key: 'editable',
-                className: 'aione-section' + ' ' + classes
-            }, props.attributes.cssid && { id: cssid }),
-            wp.element.createElement(
-                'div',
-                { className: 'wrapper' },
-                wp.element.createElement(InnerBlocks, null)
-            )
-        )];
-    },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            fullWidth = _props$attributes2.fullWidth,
-            cssid = _props$attributes2.cssid;
-
-
-        var classes = '';
-        if (fullWidth === true) {
-            classes = 'fullwidth';
-        }
-
-        return wp.element.createElement(
-            'section',
-            _extends({
-                className: 'aione-section' + ' ' + classes
-            }, props.attributes.cssid && { id: cssid }),
-            wp.element.createElement(
-                'div',
-                { className: 'wrapper' },
-                wp.element.createElement(InnerBlocks.Content, null)
-            )
-        );
-    }
-
-});
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-/**
- * BLOCK: Aione Section.
- */
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var InnerBlocks = wp.editor.InnerBlocks;
-
-
-registerBlockType('aione-blocks/aione-row', {
-    title: __('Aione Row'),
-    icon: 'menu',
-    category: 'aione-blocks',
-    keywords: [__('Row'), __('Aione')],
-    attributes: {},
-    edit: function edit(props) {
-        var isSelected = props.isSelected,
-            editable = props.editable,
-            setState = props.setState;
-
-
-        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
-            return function () {
-                setState({ editable: newEditable });
-            };
-        };
-
-        return [wp.element.createElement(
-            'div',
-            { key: 'editable', className: 'ar' },
-            wp.element.createElement(InnerBlocks, null)
-        )];
-    },
-    save: function save(props) {
-        return wp.element.createElement(
-            'div',
-            { className: 'ar' },
-            wp.element.createElement(InnerBlocks.Content, null)
-        );
-    }
-
-});
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports) {
-
-/**
- * BLOCK: Aione Section.
- */
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    InnerBlocks = _wp$editor.InnerBlocks;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    TextControl = _wp$components.TextControl,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl;
-
-
-registerBlockType('aione-blocks/aione-column', {
-    title: __('Aione Column'),
-    icon: 'controls-pause',
-    category: 'aione-blocks',
-    keywords: [__('Column'), __('Aione')],
-    attributes: {
-        largeScreen: {
-            type: 'string',
-            default: '100'
-        },
-        mediumScreen: {
-            type: 'string',
-            default: '100'
-        },
-        smallScreen: {
-            type: 'string',
-            default: '100'
-        },
-        addLink: {
-            default: false,
-            type: 'boolean'
-        },
-        linkUrl: {
-            type: 'string',
-            default: ''
-        },
-        linkTarget: {
-            type: 'string',
-            default: '_self'
-        }
-    },
-    edit: function edit(props) {
-        var isSelected = props.isSelected,
-            editable = props.editable,
-            setState = props.setState;
-
-
-        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
-            return function () {
-                setState({ editable: newEditable });
-            };
-        };
-
-        var _props$attributes = props.attributes,
-            largeScreen = _props$attributes.largeScreen,
-            mediumScreen = _props$attributes.mediumScreen,
-            smallScreen = _props$attributes.smallScreen,
-            addLink = _props$attributes.addLink,
-            linkUrl = _props$attributes.linkUrl,
-            linkTarget = _props$attributes.linkTarget;
-
-
-        var setlargeScreen = function setlargeScreen(largeScreenNumber) {
-            props.setAttributes({ largeScreen: largeScreenNumber });
-        };
-        var setmediumScreen = function setmediumScreen(mediumScreenNumber) {
-            props.setAttributes({ mediumScreen: mediumScreenNumber });
-        };
-        var setsmallScreen = function setsmallScreen(smallScreenNumber) {
-            props.setAttributes({ smallScreen: smallScreenNumber });
-        };
-
-        var onChangelinkUrl = function onChangelinkUrl(NewlinkUrl) {
-            props.setAttributes({ linkUrl: NewlinkUrl });
-        };
-        var onChangelinkTarget = function onChangelinkTarget(selectedlinkTarget) {
-            props.setAttributes({ linkTarget: selectedlinkTarget });
-        };
-
-        return [isSelected && wp.element.createElement(
-            InspectorControls,
-            null,
-            wp.element.createElement(
-                PanelBody,
-                { title: __('Settings'), initialOpen: true },
-                wp.element.createElement(
-                    'div',
-                    { className: 'blocks-font-size__main' },
-                    wp.element.createElement(TextControl, {
-                        label: __('Large Screen Width'),
-                        value: largeScreen,
-                        onChange: setlargeScreen
-                    }),
-                    wp.element.createElement(TextControl, {
-                        label: __('Medium Screen Width'),
-                        value: mediumScreen,
-                        onChange: setmediumScreen
-                    }),
-                    wp.element.createElement(TextControl, {
-                        label: __('Small Screen Width'),
-                        value: smallScreen,
-                        onChange: setsmallScreen
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __('Link'),
-                        checked: !!addLink,
-                        onChange: function onChange() {
-                            return props.setAttributes({ addLink: !addLink });
-                        }
-                    }),
-                    props.attributes.addLink && wp.element.createElement(TextControl, {
-                        label: 'Link Text',
-                        value: linkUrl,
-                        onChange: onChangelinkUrl
-                    }),
-                    props.attributes.addLink && wp.element.createElement(SelectControl, {
-                        label: __('Target:'),
-                        value: linkTarget,
-                        onChange: onChangelinkTarget,
-                        options: [{ value: '_self', label: 'Same Tab' }, { value: '_blank', label: 'New Tab' }]
-                    })
-                )
-            )
-        ), wp.element.createElement(
-            'span',
-            null,
-            props.attributes.addLink ? wp.element.createElement(
-                'a',
-                { href: linkUrl, target: linkTarget },
-                wp.element.createElement(
-                    'div',
-                    { key: 'editable',
-                        className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
-                    wp.element.createElement(
-                        'div',
-                        { className: 'wrapper' },
-                        wp.element.createElement(InnerBlocks, null)
-                    )
-                )
-            ) : wp.element.createElement(
-                'div',
-                { key: 'editable',
-                    className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
-                wp.element.createElement(
-                    'div',
-                    { className: 'wrapper' },
-                    wp.element.createElement(InnerBlocks, null)
-                )
-            )
-        )];
-    },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            largeScreen = _props$attributes2.largeScreen,
-            mediumScreen = _props$attributes2.mediumScreen,
-            smallScreen = _props$attributes2.smallScreen,
-            linkUrl = _props$attributes2.linkUrl,
-            linkTarget = _props$attributes2.linkTarget,
-            addLink = _props$attributes2.addLink;
-
-
-        if (props.attributes.addLink) {
-            return wp.element.createElement(
-                'a',
-                { href: linkUrl, target: linkTarget },
-                wp.element.createElement(
-                    'div',
-                    {
-                        className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
-                    wp.element.createElement(
-                        'div',
-                        { className: 'wrapper' },
-                        wp.element.createElement(InnerBlocks.Content, null)
-                    )
-                )
-            );
-        } else {
-            return wp.element.createElement(
-                'div',
-                {
-                    className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
-                wp.element.createElement(
-                    'div',
-                    { className: 'wrapper' },
-                    wp.element.createElement(InnerBlocks.Content, null)
-                )
-            );
-        }
-    }
-
-});
-
-/***/ }),
-/* 56 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__heading_tag__ = __webpack_require__(57);
-/**
- * BLOCK: Aione Section.
- */
-
-
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    InnerBlocks = _wp$editor.InnerBlocks,
-    RichText = _wp$editor.RichText;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl;
-
-
-registerBlockType('aione-blocks/aione-title', {
-    title: __('Aione Title'),
-    icon: 'editor-textcolor',
-    category: 'aione-blocks',
-    keywords: [__('Title'), __('Aione')],
-    attributes: {
-        headingSize: {
-            type: 'string',
-            default: 'h1'
-        },
-        headingText: {
-            type: 'string',
-            default: ''
-        }
-    },
-    edit: function edit(props) {
-        var isSelected = props.isSelected,
-            editable = props.editable,
-            setState = props.setState;
-
-
-        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
-            return function () {
-                setState({ editable: newEditable });
-            };
-        };
-
-        var _props$attributes = props.attributes,
-            headingSize = _props$attributes.headingSize,
-            headingText = _props$attributes.headingText;
-
-
-        var setheadingSize = function setheadingSize(selectedheadingSize) {
-            props.setAttributes({ headingSize: selectedheadingSize });
-        };
-
-        return [isSelected && wp.element.createElement(
-            InspectorControls,
-            null,
-            wp.element.createElement(
-                PanelBody,
-                { title: __('Settings'), initialOpen: true },
-                wp.element.createElement(
-                    'div',
-                    { className: 'blocks-font-size__main' },
-                    wp.element.createElement(SelectControl, {
-                        label: __('Heading Size:'),
-                        value: headingSize,
-                        onChange: setheadingSize,
-                        options: [{ value: 'h1', label: 'h1' }, { value: 'h2', label: 'h2' }, { value: 'h3', label: 'h3' }, { value: 'h4', label: 'h4' }, { value: 'h5', label: 'h5' }, { value: 'h6', label: 'h6' }]
-                    })
-                )
-            )
-        ), wp.element.createElement(
-            'div',
-            { key: 'editable',
-                className: 'section-title'
-            },
-            wp.element.createElement(RichText, {
-                tagName: headingSize,
-                placeholder: __('Add Text..'),
-
-                onChange: function onChange(value) {
-                    return props.setAttributes({ headingText: value });
-                },
-                value: headingText,
-                isSelected: isSelected && editable === 'heading_text',
-                onFocus: onSetActiveEditable('heading_text'),
-                keepPlaceholderOnFocus: true
-            })
-        )];
-    },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            headingSize = _props$attributes2.headingSize,
-            headingText = _props$attributes2.headingText;
-
-
-        return wp.element.createElement(
-            'div',
-            {
-                className: 'section-title'
-            },
-            wp.element.createElement(
-                __WEBPACK_IMPORTED_MODULE_0__heading_tag__["a" /* default */],
-                { tagName: headingSize },
-                headingText
-            )
-        );
-    }
-
-});
-
-/***/ }),
-/* 57 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = Section;
-var createElement = wp.element.createElement;
-
-function Section(_ref) {
-	var tagName = _ref.tagName,
-	    children = _ref.children;
-
-
-	return createElement(tagName, {}, children);
-}
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports) {
-
-/**
- * BLOCK: Aione Icon.
- */
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var InspectorControls = wp.editor.InspectorControls;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    TextControl = _wp$components.TextControl,
-    SelectControl = _wp$components.SelectControl;
-
-
-registerBlockType('aione-blocks/aione-icon', {
-    title: __('Aione Icon'), // Block title.
-    icon: 'smiley',
-    category: 'aione-blocks',
-    keywords: [__('icon'), __('svg'), __('Aione')],
-    attributes: {
-        iconName: {
-            type: 'string',
-            default: 'checkmark-circle-sharp'
-        },
-        iconSize: {
-            type: 'string',
-            default: 'aione-icon-small'
-        },
-        iconBGColor: {
-            type: 'string',
-            default: ''
-        }
-    },
-    edit: function edit(props) {
-        var isSelected = props.isSelected,
-            editable = props.editable,
-            setState = props.setState,
-            className = props.className;
-
-
-        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
-            return function () {
-                setState({ editable: newEditable });
-            };
-        };
-
-        var _props$attributes = props.attributes,
-            iconName = _props$attributes.iconName,
-            iconSize = _props$attributes.iconSize,
-            iconBGColor = _props$attributes.iconBGColor;
-
-
-        var onChangeIcon = function onChangeIcon(IconName) {
-            props.setAttributes({ iconName: IconName });
-        };
-        var onChangeIconSize = function onChangeIconSize(IconSize) {
-            props.setAttributes({ iconSize: IconSize });
-        };
-        var onChangeIconBGColor = function onChangeIconBGColor(IconBGColor) {
-            props.setAttributes({ iconBGColor: IconBGColor });
-        };
-
-        return [isSelected && wp.element.createElement(
-            InspectorControls,
-            null,
-            wp.element.createElement(
-                PanelBody,
-                { title: __('Settings'), initialOpen: true },
-                wp.element.createElement(
-                    'div',
-                    { className: 'blocks-font-size__main' },
-                    wp.element.createElement(TextControl, {
-                        label: __('Icon Name:'),
-                        help: 'Ionic icons are supported. https://ionicons.com/',
-                        value: iconName,
-                        onChange: onChangeIcon
-                    }),
-                    wp.element.createElement(SelectControl, {
-                        label: __('Select Size:'),
-                        value: iconSize,
-                        onChange: onChangeIconSize,
-                        options: [{ value: 'aione-icon-small', label: 'Small' }, { value: 'aione-icon-medium', label: 'Medium' }, { value: 'aione-icon-large', label: 'Large' }]
-                    }),
-                    wp.element.createElement(TextControl, {
-                        label: __('Icon Background Color:'),
-                        value: iconBGColor,
-                        onChange: onChangeIconBGColor
-                    })
-                )
-            )
-        ), wp.element.createElement(
-            'span',
-            { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
-            wp.element.createElement('ion-icon', { 'name': iconName, 'size': iconSize })
-        )];
-
-    },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            iconName = _props$attributes2.iconName,
-            iconSize = _props$attributes2.iconSize,
-            iconBGColor = _props$attributes2.iconBGColor;
-
-
-        return wp.element.createElement(
-            'span',
-            { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
-            wp.element.createElement('ion-icon', { 'name': iconName })
-        );
-    }
-});
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports) {
-
-/**
- * BLOCK: Aione Wrapper.
- */
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$editor = wp.editor,
-    InnerBlocks = _wp$editor.InnerBlocks,
-    InspectorControls = _wp$editor.InspectorControls;
-var _wp$components = wp.components,
-    PanelBody = _wp$components.PanelBody,
-    SelectControl = _wp$components.SelectControl,
-    ToggleControl = _wp$components.ToggleControl,
-    TextControl = _wp$components.TextControl;
-
-
-registerBlockType('aione-blocks/aione-wrapper', {
-    title: __('Aione Wrapper'), // Block title.
-    icon: 'editor-expand',
-    category: 'aione-blocks',
-    keywords: [__('div'), __('wrapper'), __('Aione')],
-    attributes: {
-        displayProp: {
-            type: 'string',
-            default: 'display-block'
-        },
-        addLink: {
-            default: false,
-            type: 'boolean'
-        },
-        linkUrl: {
-            type: 'string',
-            default: ''
-        },
-        linkTarget: {
-            type: 'string',
-            default: '_self'
-        }
-    },
-    edit: function edit(props) {
-        var isSelected = props.isSelected,
-            editable = props.editable,
-            setState = props.setState,
-            className = props.className;
-        var _props$attributes = props.attributes,
-            displayProp = _props$attributes.displayProp,
-            addLink = _props$attributes.addLink,
-            linkUrl = _props$attributes.linkUrl,
-            linkTarget = _props$attributes.linkTarget;
-
-
-        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
-            return function () {
-                setState({ editable: newEditable });
-            };
-        };
-        var onChangedisplayProp = function onChangedisplayProp(selecteddisplayProp) {
-            props.setAttributes({ displayProp: selecteddisplayProp });
-        };
-        var onChangelinkUrl = function onChangelinkUrl(NewlinkUrl) {
-            props.setAttributes({ linkUrl: NewlinkUrl });
-        };
-        var onChangelinkTarget = function onChangelinkTarget(selectedlinkTarget) {
-            props.setAttributes({ linkTarget: selectedlinkTarget });
-        };
-
-        return [isSelected && wp.element.createElement(
-            InspectorControls,
-            null,
-            wp.element.createElement(
-                PanelBody,
-                { title: __('Settings'), initialOpen: false },
-                wp.element.createElement(
-                    'div',
-                    { className: 'blocks-font-size__main' },
-                    wp.element.createElement(SelectControl, {
-                        label: __('Settings:'),
-                        value: displayProp,
-                        onChange: onChangedisplayProp,
-                        options: [{ value: 'display-block', label: 'Inline Block' }, { value: 'display-inline', label: 'Inline' }, { value: 'display-inline-block', label: 'Block' }]
-                    }),
-                    wp.element.createElement(ToggleControl, {
-                        label: __('Link'),
-                        checked: !!addLink,
-                        onChange: function onChange() {
-                            return props.setAttributes({ addLink: !addLink });
-                        }
-                    }),
-                    props.attributes.addLink && wp.element.createElement(TextControl, {
-                        label: 'Link Text',
-                        value: linkUrl,
-                        onChange: onChangelinkUrl
-                    }),
-                    props.attributes.addLink && wp.element.createElement(SelectControl, {
-                        label: __('Target:'),
-                        value: linkTarget,
-                        onChange: onChangelinkTarget,
-                        options: [{ value: '_self', label: 'Same Tab' }, { value: '_blank', label: 'New Tab' }]
-                    })
-                )
-            )
-        ), wp.element.createElement(
-            'span',
-            null,
-            props.attributes.addLink ? wp.element.createElement(
-                'a',
-                { href: linkUrl, target: linkTarget },
-                wp.element.createElement(
-                    'div',
-                    { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
-                    wp.element.createElement(InnerBlocks, null)
-                )
-            ) : wp.element.createElement(
-                'div',
-                { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
-                wp.element.createElement(InnerBlocks, null)
-            )
-        )];
-    },
-    save: function save(props) {
-        var _props$attributes2 = props.attributes,
-            displayProp = _props$attributes2.displayProp,
-            linkUrl = _props$attributes2.linkUrl,
-            linkTarget = _props$attributes2.linkTarget,
-            addLink = _props$attributes2.addLink;
-
-
-        if (props.attributes.addLink) {
-            return wp.element.createElement(
-                'a',
-                { href: linkUrl, target: linkTarget },
-                wp.element.createElement(
-                    'div',
-                    { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
-                    wp.element.createElement(InnerBlocks.Content, null)
-                )
-            );
-        } else {
-            return wp.element.createElement(
-                'div',
-                { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
-                wp.element.createElement(InnerBlocks.Content, null)
-            );
-        }
-    }
-});
-
-/***/ }),
-/* 60 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__edit__ = __webpack_require__(61);
-/**
- * BLOCK: Aione Wrapper.
- */
-var __ = wp.i18n.__;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$editor = wp.editor,
-    InnerBlocks = _wp$editor.InnerBlocks,
-    MediaUpload = _wp$editor.MediaUpload;
-var Button = wp.components.Button;
-
-
-
-
-var attributes = {
-    theme: {
-        type: "string",
-        default: "darlic"
-    },
-    margin: {
-        type: "string",
-        default: "0"
-    },
-    loop: {
-        type: "string",
-        default: "false"
-    },
-    nav: {
-        type: "string",
-        default: "false"
-    },
-    dots: {
-        type: "string",
-        default: "false"
-    },
-    autoplay: {
-        type: "string",
-        default: "false"
-    },
-    slides: {
-        type: "number",
-        default: 1
-    },
-    imgID: {
-        type: "number"
-    },
-    thumbs: {
-        type: "array",
-        default: [],
-        source: "query",
-        selector: ".owl-stage-outer .owl-stage",
-        query: {
-            url: {
-                source: "attribute",
-                selector: "img",
-                attribute: "src"
-            },
-            alt: {
-                source: "attribute",
-                selector: "img",
-                attribute: "alt",
-                default: ""
-            },
-            id: {
-                source: "attribute",
-                selector: "img",
-                attribute: "data-id"
-            }
-        }
-    }
-};
-
-registerBlockType('aione-blocks/aione-slider', {
-    title: __('Aione Slider'), // Block title.
-    icon: 'slides',
-    category: 'aione-blocks',
-    keywords: [__('slider'), __('Aione')],
-    attributes: attributes,
-    edit: __WEBPACK_IMPORTED_MODULE_0__edit__["a" /* default */],
-
-    save: function save(props) {
-        var _props$attributes = props.attributes,
-            theme = _props$attributes.theme,
-            margin = _props$attributes.margin,
-            loop = _props$attributes.loop,
-            nav = _props$attributes.nav,
-            dots = _props$attributes.dots,
-            autoplay = _props$attributes.autoplay,
-            slides = _props$attributes.slides,
-            thumbs = _props$attributes.thumbs,
-            imgID = _props$attributes.imgID,
-            className = props.className;
-
-
-        return wp.element.createElement(
-            "div",
-            { className: "slider owl-carousel " + theme, "data-items": slides, "data-margin": margin, "data-loop": loop, "data-nav": nav, "data-dots": dots, "data-autoplay": autoplay, "data-nav-text": "", "data-animate-out": "slideOutLeft", "data-animate-in": "slideInRight" },
-            thumbs.map(function (thumb, i) {
-                return wp.element.createElement(
-                    "div",
-                    { key: i },
-                    wp.element.createElement("img", { "data-id": thumb.id, src: thumb.url, alt: thumb.alt })
-                );
-            })
-        );
-    }
-});
-
-/***/ }),
-/* 61 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_pick__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_pick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_pick__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times__ = __webpack_require__(121);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash_times___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash_times__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// pick so we can grab only certain properties from our image
-
-
-
-var _wp$element = wp.element,
-    Component = _wp$element.Component,
-    Fragment = _wp$element.Fragment;
-var _wp$editor = wp.editor,
-    MediaUpload = _wp$editor.MediaUpload,
-    InspectorControls = _wp$editor.InspectorControls;
-var _wp$components = wp.components,
-    Button = _wp$components.Button,
-    PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
-    RangeControl = _wp$components.RangeControl,
-    SelectControl = _wp$components.SelectControl,
-    TextControl = _wp$components.TextControl;
-var __ = wp.i18n.__;
-
-var SliderEdit = function (_Component) {
-	_inherits(SliderEdit, _Component);
-
-	// 1. Get teh existing thumbs attr (in case saved)
-	// 2. Use times to create a blank arr for each column
-
-	function SliderEdit() {
-		_classCallCheck(this, SliderEdit);
-
-		var _this = _possibleConstructorReturn(this, (SliderEdit.__proto__ || Object.getPrototypeOf(SliderEdit)).apply(this, arguments));
-
-		_this.onSelectImage = _this.onSelectImage.bind(_this);
-		_this.onChangeNumberSlides = _this.onChangeNumberSlides.bind(_this);
-		_this.onChangeTheme = _this.onChangeTheme.bind(_this);
-		_this.onChangeMargin = _this.onChangeMargin.bind(_this);
-		_this.onChangeMargin = _this.onChangeMargin.bind(_this);
-		_this.onChangeLoop = _this.onChangeLoop.bind(_this);
-		_this.onChangeNav = _this.onChangeNav.bind(_this);
-		_this.onChangeDots = _this.onChangeDots.bind(_this);
-		_this.onChangeAutoPlay = _this.onChangeAutoPlay.bind(_this);
-
-		_this.state = {
-			thumbs: []
-		};
-		return _this;
-	}
-
-	_createClass(SliderEdit, [{
-		key: "componentDidMount",
-		value: function componentDidMount() {
-			var _this2 = this;
-
-			var _props$attributes = this.props.attributes,
-			    thumbs = _props$attributes.thumbs,
-			    slides = _props$attributes.slides;
-
-			// if there is no thumbs i.e. a new block the length will be 0
-
-			if (thumbs.length) {
-				this.setState({
-					thumbs: thumbs
-				});
-			} else {
-				// lets make a new array with -ve id's
-				__WEBPACK_IMPORTED_MODULE_1_lodash_times___default()(slides, function (index) {
-					var thumb = {
-						alt: "",
-						id: -1,
-						url: ""
-					};
-
-					_this2.setState({
-						thumbs: [].concat(_toConsumableArray(thumbs), [thumb])
-					});
-					console.log("one thumb found" + index);
-				});
-			}
-		}
-	}, {
-		key: "onSelectImage",
-		value: function onSelectImage(index, image) {
-			// we need to update the state at that particular index
-			var THUMBS = this.state.thumbs;
-
-			// pick gets only certain properties
-			THUMBS[index] = __WEBPACK_IMPORTED_MODULE_0_lodash_pick___default()(image, ["alt", "id", "url"]);
-
-			this.setState({
-				thumbs: THUMBS
-			});
-
-			this.props.setAttributes({
-				thumbs: THUMBS
-			});
-		}
-	}, {
-		key: "onChangeNumberSlides",
-		value: function onChangeNumberSlides(slides) {
-			var prevSlideIndex = this.props.attributes.slides - 1;
-
-			console.log("prev index: " + prevSlideIndex);
-
-			this.props.setAttributes({
-				slides: slides
-			});
-
-			var index = slides - 1;
-			console.log("current index: " + index);
-
-			// in this case the number of columns has been reduced
-			// so lets remove from the array
-			if (prevSlideIndex > index) {
-				var THUMBS = this.state.thumbs.slice(0, -1);
-
-				this.setState({
-					thumbs: THUMBS
-				});
-
-				this.props.setAttributes({
-					thumbs: THUMBS
-				});
-			} else {
-				var thumb = {
-					alt: "",
-					id: -1,
-					url: ""
-				};
-
-				var _THUMBS = this.state.thumbs;
-				_THUMBS[index] = thumb;
-
-				this.setState({
-					thumbs: _THUMBS
-				});
-
-				this.props.setAttributes({
-					thumbs: _THUMBS
-				});
-			}
-		}
-	}, {
-		key: "onChangeTheme",
-		value: function onChangeTheme(theme) {
-			this.props.setAttributes({
-				theme: theme
-			});
-		}
-	}, {
-		key: "onChangeMargin",
-		value: function onChangeMargin(margin) {
-			this.props.setAttributes({
-				margin: margin
-			});
-		}
-	}, {
-		key: "onChangeLoop",
-		value: function onChangeLoop(loop) {
-			this.props.setAttributes({
-				loop: loop
-			});
-		}
-	}, {
-		key: "onChangeNav",
-		value: function onChangeNav(nav) {
-			this.props.setAttributes({
-				nav: nav
-			});
-		}
-	}, {
-		key: "onChangeDots",
-		value: function onChangeDots(dots) {
-			this.props.setAttributes({
-				dots: dots
-			});
-		}
-	}, {
-		key: "onChangeAutoPlay",
-		value: function onChangeAutoPlay(autoplay) {
-			this.props.setAttributes({
-				autoplay: autoplay
-			});
-		}
-	}, {
-		key: "render",
-		value: function render() {
-			var _this3 = this;
-
-			var _props = this.props,
-			    _props$attributes2 = _props.attributes,
-			    theme = _props$attributes2.theme,
-			    margin = _props$attributes2.margin,
-			    loop = _props$attributes2.loop,
-			    nav = _props$attributes2.nav,
-			    dots = _props$attributes2.dots,
-			    autoplay = _props$attributes2.autoplay,
-			    slides = _props$attributes2.slides,
-			    thumbs = _props$attributes2.thumbs,
-			    imgID = _props$attributes2.imgID,
-			    className = _props.className,
-			    isSelected = _props.isSelected,
-			    onChangeNumberSlides = _props.onChangeNumberSlides,
-			    onChangeTheme = _props.onChangeTheme,
-			    onChangeMargin = _props.onChangeMargin,
-			    onChangeLoop = _props.onChangeLoop,
-			    onChangeNav = _props.onChangeNav,
-			    onChangeDots = _props.onChangeDots,
-			    onChangeAutoPlay = _props.onChangeAutoPlay;
-
-
-			return wp.element.createElement(
-				"div",
-				{ className: className },
-				wp.element.createElement(
-					InspectorControls,
-					{ key: "inspector" },
-					wp.element.createElement(
-						PanelBody,
-						{ title: __("Slider Options") },
-						wp.element.createElement(RangeControl, {
-							label: __("Number of Slides"),
-							value: slides,
-							onChange: this.onChangeNumberSlides,
-							min: 1,
-							max: 16
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __('Theme:'),
-							value: theme,
-							onChange: this.onChangeTheme,
-							options: [{ value: 'darlic', label: 'Darlic' }, { value: 'aione', label: 'Aione' }, { value: 'oxo', label: 'OXO' }]
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __('Loop:'),
-							value: loop,
-							onChange: this.onChangeLoop,
-							options: [{ value: 'false', label: 'False' }, { value: 'true', label: 'True' }]
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __('Navigation:'),
-							value: nav,
-							onChange: this.onChangeNav,
-							options: [{ value: 'false', label: 'False' }, { value: 'true', label: 'True' }]
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __('Dots:'),
-							value: dots,
-							onChange: this.onChangeDots,
-							options: [{ value: 'false', label: 'False' }, { value: 'true', label: 'True' }]
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __('Auto Play:'),
-							value: autoplay,
-							onChange: this.onChangeAutoPlay,
-							options: [{ value: 'false', label: 'False' }, { value: 'true', label: 'True' }]
-						}),
-						wp.element.createElement(TextControl, {
-							label: __('Margin:'),
-							value: margin,
-							onChange: this.onChangeMargin
-						})
-					)
-				),
-				wp.element.createElement(
-					"div",
-					{ className: "editor--slides-container columns-" + slides },
-					this.state.thumbs.map(function (thumb, i) {
-						return wp.element.createElement(
-							"div",
-							{ key: i },
-							!thumb.id || thumb.id == -1 ? wp.element.createElement(MediaUpload, {
-								onSelect: _this3.onSelectImage.bind(_this3, i),
-								type: "image",
-								value: thumb.id,
-								render: function render(_ref) {
-									var open = _ref.open;
-									return wp.element.createElement(
-										Button,
-										{ className: "button button-large", onClick: open },
-										__(" Upload Image", "jsforwpblocks")
-									);
-								}
-							}) : wp.element.createElement("img", { src: thumb.url, alt: thumb.alt })
-						);
-					})
-				)
-			);
-		}
-	}]);
-
-	return SliderEdit;
-}(Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (SliderEdit);
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var basePick = __webpack_require__(63),
-    flatRest = __webpack_require__(110);
-
-/**
- * Creates an object composed of the picked `object` properties.
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Object
- * @param {Object} object The source object.
- * @param {...(string|string[])} [paths] The property paths to pick.
- * @returns {Object} Returns the new object.
- * @example
- *
- * var object = { 'a': 1, 'b': '2', 'c': 3 };
- *
- * _.pick(object, ['a', 'c']);
- * // => { 'a': 1, 'c': 3 }
- */
-var pick = flatRest(function(object, paths) {
-  return object == null ? {} : basePick(object, paths);
-});
-
-module.exports = pick;
-
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var basePickBy = __webpack_require__(64),
-    hasIn = __webpack_require__(105);
-
-/**
- * The base implementation of `_.pick` without support for individual
- * property identifiers.
- *
- * @private
- * @param {Object} object The source object.
- * @param {string[]} paths The property paths to pick.
- * @returns {Object} Returns the new object.
- */
-function basePick(object, paths) {
-  return basePickBy(object, paths, function(value, path) {
-    return hasIn(object, path);
-  });
-}
-
-module.exports = basePick;
-
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseGet = __webpack_require__(65),
-    baseSet = __webpack_require__(102),
-    castPath = __webpack_require__(7);
-
-/**
- * The base implementation of  `_.pickBy` without support for iteratee shorthands.
- *
- * @private
- * @param {Object} object The source object.
- * @param {string[]} paths The property paths to pick.
- * @param {Function} predicate The function invoked per property.
- * @returns {Object} Returns the new object.
- */
-function basePickBy(object, paths, predicate) {
-  var index = -1,
-      length = paths.length,
-      result = {};
-
-  while (++index < length) {
-    var path = paths[index],
-        value = baseGet(object, path);
-
-    if (predicate(value, path)) {
-      baseSet(result, castPath(path, object), value);
-    }
-  }
-  return result;
-}
-
-module.exports = basePickBy;
-
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var castPath = __webpack_require__(7),
-    toKey = __webpack_require__(21);
-
-/**
- * The base implementation of `_.get` without support for default values.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Array|string} path The path of the property to get.
- * @returns {*} Returns the resolved value.
- */
-function baseGet(object, path) {
-  path = castPath(path, object);
-
-  var index = 0,
-      length = path.length;
-
-  while (object != null && index < length) {
-    object = object[toKey(path[index++])];
-  }
-  return (index && index == length) ? object : undefined;
-}
-
-module.exports = baseGet;
-
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isArray = __webpack_require__(3),
-    isSymbol = __webpack_require__(8);
-
-/** Used to match property names within property paths. */
-var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
-    reIsPlainProp = /^\w*$/;
-
-/**
- * Checks if `value` is a property name and not a property path.
- *
- * @private
- * @param {*} value The value to check.
- * @param {Object} [object] The object to query keys on.
- * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
- */
-function isKey(value, object) {
-  if (isArray(value)) {
-    return false;
-  }
-  var type = typeof value;
-  if (type == 'number' || type == 'symbol' || type == 'boolean' ||
-      value == null || isSymbol(value)) {
-    return true;
-  }
-  return reIsPlainProp.test(value) || !reIsDeepProp.test(value) ||
-    (object != null && value in Object(object));
-}
-
-module.exports = isKey;
-
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
-
-module.exports = freeGlobal;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__(9);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/** Built-in value references. */
-var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
-
-/**
- * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
- *
- * @private
- * @param {*} value The value to query.
- * @returns {string} Returns the raw `toStringTag`.
- */
-function getRawTag(value) {
-  var isOwn = hasOwnProperty.call(value, symToStringTag),
-      tag = value[symToStringTag];
-
-  try {
-    value[symToStringTag] = undefined;
-    var unmasked = true;
-  } catch (e) {}
-
-  var result = nativeObjectToString.call(value);
-  if (unmasked) {
-    if (isOwn) {
-      value[symToStringTag] = tag;
-    } else {
-      delete value[symToStringTag];
-    }
-  }
-  return result;
-}
-
-module.exports = getRawTag;
-
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports) {
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var nativeObjectToString = objectProto.toString;
-
-/**
- * Converts `value` to a string using `Object.prototype.toString`.
- *
- * @private
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- */
-function objectToString(value) {
-  return nativeObjectToString.call(value);
-}
-
-module.exports = objectToString;
-
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var memoizeCapped = __webpack_require__(71);
-
-/** Used to match property names within property paths. */
-var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
-
-/** Used to match backslashes in property paths. */
-var reEscapeChar = /\\(\\)?/g;
-
-/**
- * Converts `string` to a property path array.
- *
- * @private
- * @param {string} string The string to convert.
- * @returns {Array} Returns the property path array.
- */
-var stringToPath = memoizeCapped(function(string) {
-  var result = [];
-  if (string.charCodeAt(0) === 46 /* . */) {
-    result.push('');
-  }
-  string.replace(rePropName, function(match, number, quote, subString) {
-    result.push(quote ? subString.replace(reEscapeChar, '$1') : (number || match));
-  });
-  return result;
-});
-
-module.exports = stringToPath;
-
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var memoize = __webpack_require__(72);
-
-/** Used as the maximum memoize cache size. */
-var MAX_MEMOIZE_SIZE = 500;
-
-/**
- * A specialized version of `_.memoize` which clears the memoized function's
- * cache when it exceeds `MAX_MEMOIZE_SIZE`.
- *
- * @private
- * @param {Function} func The function to have its output memoized.
- * @returns {Function} Returns the new memoized function.
- */
-function memoizeCapped(func) {
-  var result = memoize(func, function(key) {
-    if (cache.size === MAX_MEMOIZE_SIZE) {
-      cache.clear();
-    }
-    return key;
-  });
-
-  var cache = result.cache;
-  return result;
-}
-
-module.exports = memoizeCapped;
-
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var MapCache = __webpack_require__(73);
-
-/** Error message constants. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/**
- * Creates a function that memoizes the result of `func`. If `resolver` is
- * provided, it determines the cache key for storing the result based on the
- * arguments provided to the memoized function. By default, the first argument
- * provided to the memoized function is used as the map cache key. The `func`
- * is invoked with the `this` binding of the memoized function.
- *
- * **Note:** The cache is exposed as the `cache` property on the memoized
- * function. Its creation may be customized by replacing the `_.memoize.Cache`
- * constructor with one whose instances implement the
- * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
- * method interface of `clear`, `delete`, `get`, `has`, and `set`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to have its output memoized.
- * @param {Function} [resolver] The function to resolve the cache key.
- * @returns {Function} Returns the new memoized function.
- * @example
- *
- * var object = { 'a': 1, 'b': 2 };
- * var other = { 'c': 3, 'd': 4 };
- *
- * var values = _.memoize(_.values);
- * values(object);
- * // => [1, 2]
- *
- * values(other);
- * // => [3, 4]
- *
- * object.a = 2;
- * values(object);
- * // => [1, 2]
- *
- * // Modify the result cache.
- * values.cache.set(object, ['a', 'b']);
- * values(object);
- * // => ['a', 'b']
- *
- * // Replace `_.memoize.Cache`.
- * _.memoize.Cache = WeakMap;
- */
-function memoize(func, resolver) {
-  if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  var memoized = function() {
-    var args = arguments,
-        key = resolver ? resolver.apply(this, args) : args[0],
-        cache = memoized.cache;
-
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    var result = func.apply(this, args);
-    memoized.cache = cache.set(key, result) || cache;
-    return result;
-  };
-  memoized.cache = new (memoize.Cache || MapCache);
-  return memoized;
-}
-
-// Expose `MapCache`.
-memoize.Cache = MapCache;
-
-module.exports = memoize;
-
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var mapCacheClear = __webpack_require__(74),
-    mapCacheDelete = __webpack_require__(94),
-    mapCacheGet = __webpack_require__(96),
-    mapCacheHas = __webpack_require__(97),
-    mapCacheSet = __webpack_require__(98);
-
-/**
- * Creates a map cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function MapCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-// Add methods to `MapCache`.
-MapCache.prototype.clear = mapCacheClear;
-MapCache.prototype['delete'] = mapCacheDelete;
-MapCache.prototype.get = mapCacheGet;
-MapCache.prototype.has = mapCacheHas;
-MapCache.prototype.set = mapCacheSet;
-
-module.exports = MapCache;
-
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Hash = __webpack_require__(75),
-    ListCache = __webpack_require__(87),
-    Map = __webpack_require__(93);
-
-/**
- * Removes all key-value entries from the map.
- *
- * @private
- * @name clear
- * @memberOf MapCache
- */
-function mapCacheClear() {
-  this.size = 0;
-  this.__data__ = {
-    'hash': new Hash,
-    'map': new (Map || ListCache),
-    'string': new Hash
-  };
-}
-
-module.exports = mapCacheClear;
-
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var hashClear = __webpack_require__(76),
-    hashDelete = __webpack_require__(83),
-    hashGet = __webpack_require__(84),
-    hashHas = __webpack_require__(85),
-    hashSet = __webpack_require__(86);
-
-/**
- * Creates a hash object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Hash(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-// Add methods to `Hash`.
-Hash.prototype.clear = hashClear;
-Hash.prototype['delete'] = hashDelete;
-Hash.prototype.get = hashGet;
-Hash.prototype.has = hashHas;
-Hash.prototype.set = hashSet;
-
-module.exports = Hash;
-
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var nativeCreate = __webpack_require__(10);
-
-/**
- * Removes all key-value entries from the hash.
- *
- * @private
- * @name clear
- * @memberOf Hash
- */
-function hashClear() {
-  this.__data__ = nativeCreate ? nativeCreate(null) : {};
-  this.size = 0;
-}
-
-module.exports = hashClear;
-
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isFunction = __webpack_require__(78),
-    isMasked = __webpack_require__(79),
-    isObject = __webpack_require__(11),
-    toSource = __webpack_require__(81);
-
-/**
- * Used to match `RegExp`
- * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
- */
-var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
-/** Used to detect host constructors (Safari). */
-var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype,
-    objectProto = Object.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/** Used to detect if a method is native. */
-var reIsNative = RegExp('^' +
-  funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&')
-  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
-);
-
-/**
- * The base implementation of `_.isNative` without bad shim checks.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function,
- *  else `false`.
- */
-function baseIsNative(value) {
-  if (!isObject(value) || isMasked(value)) {
-    return false;
-  }
-  var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource(value));
-}
-
-module.exports = baseIsNative;
-
-
-/***/ }),
-/* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseGetTag = __webpack_require__(17),
-    isObject = __webpack_require__(11);
-
-/** `Object#toString` result references. */
-var asyncTag = '[object AsyncFunction]',
-    funcTag = '[object Function]',
-    genTag = '[object GeneratorFunction]',
-    proxyTag = '[object Proxy]';
-
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */
-function isFunction(value) {
-  if (!isObject(value)) {
-    return false;
-  }
-  // The use of `Object#toString` avoids issues with the `typeof` operator
-  // in Safari 9 which returns 'object' for typed arrays and other constructors.
-  var tag = baseGetTag(value);
-  return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
-}
-
-module.exports = isFunction;
-
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var coreJsData = __webpack_require__(80);
-
-/** Used to detect methods masquerading as native. */
-var maskSrcKey = (function() {
-  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-  return uid ? ('Symbol(src)_1.' + uid) : '';
-}());
-
-/**
- * Checks if `func` has its source masked.
- *
- * @private
- * @param {Function} func The function to check.
- * @returns {boolean} Returns `true` if `func` is masked, else `false`.
- */
-function isMasked(func) {
-  return !!maskSrcKey && (maskSrcKey in func);
-}
-
-module.exports = isMasked;
-
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var root = __webpack_require__(18);
-
-/** Used to detect overreaching core-js shims. */
-var coreJsData = root['__core-js_shared__'];
-
-module.exports = coreJsData;
-
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports) {
-
-/** Used for built-in method references. */
-var funcProto = Function.prototype;
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to convert.
- * @returns {string} Returns the source code.
- */
-function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString.call(func);
-    } catch (e) {}
-    try {
-      return (func + '');
-    } catch (e) {}
-  }
-  return '';
-}
-
-module.exports = toSource;
-
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports) {
-
-/**
- * Gets the value at `key` of `object`.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */
-function getValue(object, key) {
-  return object == null ? undefined : object[key];
-}
-
-module.exports = getValue;
-
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports) {
-
-/**
- * Removes `key` and its value from the hash.
- *
- * @private
- * @name delete
- * @memberOf Hash
- * @param {Object} hash The hash to modify.
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function hashDelete(key) {
-  var result = this.has(key) && delete this.__data__[key];
-  this.size -= result ? 1 : 0;
-  return result;
-}
-
-module.exports = hashDelete;
-
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var nativeCreate = __webpack_require__(10);
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Gets the hash value for `key`.
- *
- * @private
- * @name get
- * @memberOf Hash
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function hashGet(key) {
-  var data = this.__data__;
-  if (nativeCreate) {
-    var result = data[key];
-    return result === HASH_UNDEFINED ? undefined : result;
-  }
-  return hasOwnProperty.call(data, key) ? data[key] : undefined;
-}
-
-module.exports = hashGet;
-
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var nativeCreate = __webpack_require__(10);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Checks if a hash value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Hash
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function hashHas(key) {
-  var data = this.__data__;
-  return nativeCreate ? (data[key] !== undefined) : hasOwnProperty.call(data, key);
-}
-
-module.exports = hashHas;
-
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var nativeCreate = __webpack_require__(10);
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-/**
- * Sets the hash `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Hash
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the hash instance.
- */
-function hashSet(key, value) {
-  var data = this.__data__;
-  this.size += this.has(key) ? 0 : 1;
-  data[key] = (nativeCreate && value === undefined) ? HASH_UNDEFINED : value;
-  return this;
-}
-
-module.exports = hashSet;
-
-
-/***/ }),
-/* 87 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var listCacheClear = __webpack_require__(88),
-    listCacheDelete = __webpack_require__(89),
-    listCacheGet = __webpack_require__(90),
-    listCacheHas = __webpack_require__(91),
-    listCacheSet = __webpack_require__(92);
-
-/**
- * Creates an list cache object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function ListCache(entries) {
-  var index = -1,
-      length = entries == null ? 0 : entries.length;
-
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-// Add methods to `ListCache`.
-ListCache.prototype.clear = listCacheClear;
-ListCache.prototype['delete'] = listCacheDelete;
-ListCache.prototype.get = listCacheGet;
-ListCache.prototype.has = listCacheHas;
-ListCache.prototype.set = listCacheSet;
-
-module.exports = ListCache;
-
-
-/***/ }),
-/* 88 */
-/***/ (function(module, exports) {
-
-/**
- * Removes all key-value entries from the list cache.
- *
- * @private
- * @name clear
- * @memberOf ListCache
- */
-function listCacheClear() {
-  this.__data__ = [];
-  this.size = 0;
-}
-
-module.exports = listCacheClear;
-
-
-/***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var assocIndexOf = __webpack_require__(12);
-
-/** Used for built-in method references. */
-var arrayProto = Array.prototype;
-
-/** Built-in value references. */
-var splice = arrayProto.splice;
-
-/**
- * Removes `key` and its value from the list cache.
- *
- * @private
- * @name delete
- * @memberOf ListCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function listCacheDelete(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  if (index < 0) {
-    return false;
-  }
-  var lastIndex = data.length - 1;
-  if (index == lastIndex) {
-    data.pop();
-  } else {
-    splice.call(data, index, 1);
-  }
-  --this.size;
-  return true;
-}
-
-module.exports = listCacheDelete;
-
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var assocIndexOf = __webpack_require__(12);
-
-/**
- * Gets the list cache value for `key`.
- *
- * @private
- * @name get
- * @memberOf ListCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function listCacheGet(key) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  return index < 0 ? undefined : data[index][1];
-}
-
-module.exports = listCacheGet;
-
-
-/***/ }),
-/* 91 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var assocIndexOf = __webpack_require__(12);
-
-/**
- * Checks if a list cache value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf ListCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function listCacheHas(key) {
-  return assocIndexOf(this.__data__, key) > -1;
-}
-
-module.exports = listCacheHas;
-
-
-/***/ }),
-/* 92 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var assocIndexOf = __webpack_require__(12);
-
-/**
- * Sets the list cache `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf ListCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the list cache instance.
- */
-function listCacheSet(key, value) {
-  var data = this.__data__,
-      index = assocIndexOf(data, key);
-
-  if (index < 0) {
-    ++this.size;
-    data.push([key, value]);
-  } else {
-    data[index][1] = value;
-  }
-  return this;
-}
-
-module.exports = listCacheSet;
-
-
-/***/ }),
-/* 93 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getNative = __webpack_require__(20),
-    root = __webpack_require__(18);
-
-/* Built-in method references that are verified to be native. */
-var Map = getNative(root, 'Map');
-
-module.exports = Map;
-
-
-/***/ }),
-/* 94 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getMapData = __webpack_require__(13);
-
-/**
- * Removes `key` and its value from the map.
- *
- * @private
- * @name delete
- * @memberOf MapCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function mapCacheDelete(key) {
-  var result = getMapData(this, key)['delete'](key);
-  this.size -= result ? 1 : 0;
-  return result;
-}
-
-module.exports = mapCacheDelete;
-
-
-/***/ }),
-/* 95 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is suitable for use as unique object key.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
- */
-function isKeyable(value) {
-  var type = typeof value;
-  return (type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean')
-    ? (value !== '__proto__')
-    : (value === null);
-}
-
-module.exports = isKeyable;
-
-
-/***/ }),
-/* 96 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getMapData = __webpack_require__(13);
-
-/**
- * Gets the map value for `key`.
- *
- * @private
- * @name get
- * @memberOf MapCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function mapCacheGet(key) {
-  return getMapData(this, key).get(key);
-}
-
-module.exports = mapCacheGet;
-
-
-/***/ }),
-/* 97 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getMapData = __webpack_require__(13);
-
-/**
- * Checks if a map value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf MapCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function mapCacheHas(key) {
-  return getMapData(this, key).has(key);
-}
-
-module.exports = mapCacheHas;
-
-
-/***/ }),
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var getMapData = __webpack_require__(13);
-
-/**
- * Sets the map `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf MapCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the map cache instance.
- */
-function mapCacheSet(key, value) {
-  var data = getMapData(this, key),
-      size = data.size;
-
-  data.set(key, value);
-  this.size += data.size == size ? 0 : 1;
-  return this;
-}
-
-module.exports = mapCacheSet;
-
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseToString = __webpack_require__(100);
-
-/**
- * Converts `value` to a string. An empty string is returned for `null`
- * and `undefined` values. The sign of `-0` is preserved.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- * @example
- *
- * _.toString(null);
- * // => ''
- *
- * _.toString(-0);
- * // => '-0'
- *
- * _.toString([1, 2, 3]);
- * // => '1,2,3'
- */
-function toString(value) {
-  return value == null ? '' : baseToString(value);
-}
-
-module.exports = toString;
-
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__(9),
-    arrayMap = __webpack_require__(101),
-    isArray = __webpack_require__(3),
-    isSymbol = __webpack_require__(8);
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0;
-
-/** Used to convert symbols to primitives and strings. */
-var symbolProto = Symbol ? Symbol.prototype : undefined,
-    symbolToString = symbolProto ? symbolProto.toString : undefined;
-
-/**
- * The base implementation of `_.toString` which doesn't convert nullish
- * values to empty strings.
- *
- * @private
- * @param {*} value The value to process.
- * @returns {string} Returns the string.
- */
-function baseToString(value) {
-  // Exit early for strings to avoid a performance hit in some environments.
-  if (typeof value == 'string') {
-    return value;
-  }
-  if (isArray(value)) {
-    // Recursively convert values (susceptible to call stack limits).
-    return arrayMap(value, baseToString) + '';
-  }
-  if (isSymbol(value)) {
-    return symbolToString ? symbolToString.call(value) : '';
-  }
-  var result = (value + '');
-  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
-}
-
-module.exports = baseToString;
-
-
-/***/ }),
-/* 101 */
-/***/ (function(module, exports) {
-
-/**
- * A specialized version of `_.map` for arrays without support for iteratee
- * shorthands.
- *
- * @private
- * @param {Array} [array] The array to iterate over.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the new mapped array.
- */
-function arrayMap(array, iteratee) {
-  var index = -1,
-      length = array == null ? 0 : array.length,
-      result = Array(length);
-
-  while (++index < length) {
-    result[index] = iteratee(array[index], index, array);
-  }
-  return result;
-}
-
-module.exports = arrayMap;
-
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var assignValue = __webpack_require__(103),
-    castPath = __webpack_require__(7),
-    isIndex = __webpack_require__(26),
-    isObject = __webpack_require__(11),
-    toKey = __webpack_require__(21);
-
-/**
- * The base implementation of `_.set`.
- *
- * @private
- * @param {Object} object The object to modify.
- * @param {Array|string} path The path of the property to set.
- * @param {*} value The value to set.
- * @param {Function} [customizer] The function to customize path creation.
- * @returns {Object} Returns `object`.
- */
-function baseSet(object, path, value, customizer) {
-  if (!isObject(object)) {
-    return object;
-  }
-  path = castPath(path, object);
-
-  var index = -1,
-      length = path.length,
-      lastIndex = length - 1,
-      nested = object;
-
-  while (nested != null && ++index < length) {
-    var key = toKey(path[index]),
-        newValue = value;
-
-    if (index != lastIndex) {
-      var objValue = nested[key];
-      newValue = customizer ? customizer(objValue, key, nested) : undefined;
-      if (newValue === undefined) {
-        newValue = isObject(objValue)
-          ? objValue
-          : (isIndex(path[index + 1]) ? [] : {});
-      }
-    }
-    assignValue(nested, key, newValue);
-    nested = nested[key];
-  }
-  return object;
-}
-
-module.exports = baseSet;
-
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseAssignValue = __webpack_require__(104),
-    eq = __webpack_require__(24);
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto.hasOwnProperty;
-
-/**
- * Assigns `value` to `key` of `object` if the existing value is not equivalent
- * using [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * for equality comparisons.
- *
- * @private
- * @param {Object} object The object to modify.
- * @param {string} key The key of the property to assign.
- * @param {*} value The value to assign.
- */
-function assignValue(object, key, value) {
-  var objValue = object[key];
-  if (!(hasOwnProperty.call(object, key) && eq(objValue, value)) ||
-      (value === undefined && !(key in object))) {
-    baseAssignValue(object, key, value);
-  }
-}
-
-module.exports = assignValue;
-
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var defineProperty = __webpack_require__(25);
-
-/**
- * The base implementation of `assignValue` and `assignMergeValue` without
- * value checks.
- *
- * @private
- * @param {Object} object The object to modify.
- * @param {string} key The key of the property to assign.
- * @param {*} value The value to assign.
- */
-function baseAssignValue(object, key, value) {
-  if (key == '__proto__' && defineProperty) {
-    defineProperty(object, key, {
-      'configurable': true,
-      'enumerable': true,
-      'value': value,
-      'writable': true
-    });
-  } else {
-    object[key] = value;
-  }
-}
-
-module.exports = baseAssignValue;
-
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseHasIn = __webpack_require__(106),
-    hasPath = __webpack_require__(107);
-
-/**
- * Checks if `path` is a direct or inherited property of `object`.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Object
- * @param {Object} object The object to query.
- * @param {Array|string} path The path to check.
- * @returns {boolean} Returns `true` if `path` exists, else `false`.
- * @example
- *
- * var object = _.create({ 'a': _.create({ 'b': 2 }) });
- *
- * _.hasIn(object, 'a');
- * // => true
- *
- * _.hasIn(object, 'a.b');
- * // => true
- *
- * _.hasIn(object, ['a', 'b']);
- * // => true
- *
- * _.hasIn(object, 'b');
- * // => false
- */
-function hasIn(object, path) {
-  return object != null && hasPath(object, path, baseHasIn);
-}
-
-module.exports = hasIn;
-
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports) {
-
-/**
- * The base implementation of `_.hasIn` without support for deep paths.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {Array|string} key The key to check.
- * @returns {boolean} Returns `true` if `key` exists, else `false`.
- */
-function baseHasIn(object, key) {
-  return object != null && key in Object(object);
-}
-
-module.exports = baseHasIn;
-
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var castPath = __webpack_require__(7),
-    isArguments = __webpack_require__(27),
-    isArray = __webpack_require__(3),
-    isIndex = __webpack_require__(26),
-    isLength = __webpack_require__(109),
-    toKey = __webpack_require__(21);
-
-/**
- * Checks if `path` exists on `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {Array|string} path The path to check.
- * @param {Function} hasFunc The function to check properties.
- * @returns {boolean} Returns `true` if `path` exists, else `false`.
- */
-function hasPath(object, path, hasFunc) {
-  path = castPath(path, object);
-
-  var index = -1,
-      length = path.length,
-      result = false;
-
-  while (++index < length) {
-    var key = toKey(path[index]);
-    if (!(result = object != null && hasFunc(object, key))) {
-      break;
-    }
-    object = object[key];
-  }
-  if (result || ++index != length) {
-    return result;
-  }
-  length = object == null ? 0 : object.length;
-  return !!length && isLength(length) && isIndex(key, length) &&
-    (isArray(object) || isArguments(object));
-}
-
-module.exports = hasPath;
-
-
-/***/ }),
-/* 108 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseGetTag = __webpack_require__(17),
-    isObjectLike = __webpack_require__(19);
-
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]';
-
-/**
- * The base implementation of `_.isArguments`.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an `arguments` object,
- */
-function baseIsArguments(value) {
-  return isObjectLike(value) && baseGetTag(value) == argsTag;
-}
-
-module.exports = baseIsArguments;
-
-
-/***/ }),
-/* 109 */
-/***/ (function(module, exports) {
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/**
- * Checks if `value` is a valid array-like length.
- *
- * **Note:** This method is loosely based on
- * [`ToLength`](http://ecma-international.org/ecma-262/7.0/#sec-tolength).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
- * @example
- *
- * _.isLength(3);
- * // => true
- *
- * _.isLength(Number.MIN_VALUE);
- * // => false
- *
- * _.isLength(Infinity);
- * // => false
- *
- * _.isLength('3');
- * // => false
- */
-function isLength(value) {
-  return typeof value == 'number' &&
-    value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
-}
-
-module.exports = isLength;
-
-
-/***/ }),
-/* 110 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var flatten = __webpack_require__(111),
-    overRest = __webpack_require__(115),
-    setToString = __webpack_require__(117);
-
-/**
- * A specialized version of `baseRest` which flattens the rest array.
- *
- * @private
- * @param {Function} func The function to apply a rest parameter to.
- * @returns {Function} Returns the new function.
- */
-function flatRest(func) {
-  return setToString(overRest(func, undefined, flatten), func + '');
-}
-
-module.exports = flatRest;
-
-
-/***/ }),
-/* 111 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseFlatten = __webpack_require__(112);
-
-/**
- * Flattens `array` a single level deep.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Array
- * @param {Array} array The array to flatten.
- * @returns {Array} Returns the new flattened array.
- * @example
- *
- * _.flatten([1, [2, [3, [4]], 5]]);
- * // => [1, 2, [3, [4]], 5]
- */
-function flatten(array) {
-  var length = array == null ? 0 : array.length;
-  return length ? baseFlatten(array, 1) : [];
-}
-
-module.exports = flatten;
-
-
-/***/ }),
-/* 112 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayPush = __webpack_require__(113),
-    isFlattenable = __webpack_require__(114);
-
-/**
- * The base implementation of `_.flatten` with support for restricting flattening.
- *
- * @private
- * @param {Array} array The array to flatten.
- * @param {number} depth The maximum recursion depth.
- * @param {boolean} [predicate=isFlattenable] The function invoked per iteration.
- * @param {boolean} [isStrict] Restrict to values that pass `predicate` checks.
- * @param {Array} [result=[]] The initial result value.
- * @returns {Array} Returns the new flattened array.
- */
-function baseFlatten(array, depth, predicate, isStrict, result) {
-  var index = -1,
-      length = array.length;
-
-  predicate || (predicate = isFlattenable);
-  result || (result = []);
-
-  while (++index < length) {
-    var value = array[index];
-    if (depth > 0 && predicate(value)) {
-      if (depth > 1) {
-        // Recursively flatten arrays (susceptible to call stack limits).
-        baseFlatten(value, depth - 1, predicate, isStrict, result);
-      } else {
-        arrayPush(result, value);
-      }
-    } else if (!isStrict) {
-      result[result.length] = value;
-    }
-  }
-  return result;
-}
-
-module.exports = baseFlatten;
-
-
-/***/ }),
-/* 113 */
-/***/ (function(module, exports) {
-
-/**
- * Appends the elements of `values` to `array`.
- *
- * @private
- * @param {Array} array The array to modify.
- * @param {Array} values The values to append.
- * @returns {Array} Returns `array`.
- */
-function arrayPush(array, values) {
-  var index = -1,
-      length = values.length,
-      offset = array.length;
-
-  while (++index < length) {
-    array[offset + index] = values[index];
-  }
-  return array;
-}
-
-module.exports = arrayPush;
-
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Symbol = __webpack_require__(9),
-    isArguments = __webpack_require__(27),
-    isArray = __webpack_require__(3);
-
-/** Built-in value references. */
-var spreadableSymbol = Symbol ? Symbol.isConcatSpreadable : undefined;
-
-/**
- * Checks if `value` is a flattenable `arguments` object or array.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is flattenable, else `false`.
- */
-function isFlattenable(value) {
-  return isArray(value) || isArguments(value) ||
-    !!(spreadableSymbol && value && value[spreadableSymbol]);
-}
-
-module.exports = isFlattenable;
-
-
-/***/ }),
-/* 115 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var apply = __webpack_require__(116);
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMax = Math.max;
-
-/**
- * A specialized version of `baseRest` which transforms the rest array.
- *
- * @private
- * @param {Function} func The function to apply a rest parameter to.
- * @param {number} [start=func.length-1] The start position of the rest parameter.
- * @param {Function} transform The rest array transform.
- * @returns {Function} Returns the new function.
- */
-function overRest(func, start, transform) {
-  start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
-  return function() {
-    var args = arguments,
-        index = -1,
-        length = nativeMax(args.length - start, 0),
-        array = Array(length);
-
-    while (++index < length) {
-      array[index] = args[start + index];
-    }
-    index = -1;
-    var otherArgs = Array(start + 1);
-    while (++index < start) {
-      otherArgs[index] = args[index];
-    }
-    otherArgs[start] = transform(array);
-    return apply(func, this, otherArgs);
-  };
-}
-
-module.exports = overRest;
-
-
-/***/ }),
-/* 116 */
-/***/ (function(module, exports) {
-
-/**
- * A faster alternative to `Function#apply`, this function invokes `func`
- * with the `this` binding of `thisArg` and the arguments of `args`.
- *
- * @private
- * @param {Function} func The function to invoke.
- * @param {*} thisArg The `this` binding of `func`.
- * @param {Array} args The arguments to invoke `func` with.
- * @returns {*} Returns the result of `func`.
- */
-function apply(func, thisArg, args) {
-  switch (args.length) {
-    case 0: return func.call(thisArg);
-    case 1: return func.call(thisArg, args[0]);
-    case 2: return func.call(thisArg, args[0], args[1]);
-    case 3: return func.call(thisArg, args[0], args[1], args[2]);
-  }
-  return func.apply(thisArg, args);
-}
-
-module.exports = apply;
-
-
-/***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseSetToString = __webpack_require__(118),
-    shortOut = __webpack_require__(120);
-
-/**
- * Sets the `toString` method of `func` to return `string`.
- *
- * @private
- * @param {Function} func The function to modify.
- * @param {Function} string The `toString` result.
- * @returns {Function} Returns `func`.
- */
-var setToString = shortOut(baseSetToString);
-
-module.exports = setToString;
-
-
-/***/ }),
-/* 118 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var constant = __webpack_require__(119),
-    defineProperty = __webpack_require__(25),
-    identity = __webpack_require__(28);
-
-/**
- * The base implementation of `setToString` without support for hot loop shorting.
- *
- * @private
- * @param {Function} func The function to modify.
- * @param {Function} string The `toString` result.
- * @returns {Function} Returns `func`.
- */
-var baseSetToString = !defineProperty ? identity : function(func, string) {
-  return defineProperty(func, 'toString', {
-    'configurable': true,
-    'enumerable': false,
-    'value': constant(string),
-    'writable': true
-  });
-};
-
-module.exports = baseSetToString;
-
-
-/***/ }),
-/* 119 */
-/***/ (function(module, exports) {
-
-/**
- * Creates a function that returns `value`.
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Util
- * @param {*} value The value to return from the new function.
- * @returns {Function} Returns the new constant function.
- * @example
- *
- * var objects = _.times(2, _.constant({ 'a': 1 }));
- *
- * console.log(objects);
- * // => [{ 'a': 1 }, { 'a': 1 }]
- *
- * console.log(objects[0] === objects[1]);
- * // => true
- */
-function constant(value) {
-  return function() {
-    return value;
-  };
-}
-
-module.exports = constant;
-
-
-/***/ }),
-/* 120 */
-/***/ (function(module, exports) {
-
-/** Used to detect hot functions by number of calls within a span of milliseconds. */
-var HOT_COUNT = 800,
-    HOT_SPAN = 16;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeNow = Date.now;
-
-/**
- * Creates a function that'll short out and invoke `identity` instead
- * of `func` when it's called `HOT_COUNT` or more times in `HOT_SPAN`
- * milliseconds.
- *
- * @private
- * @param {Function} func The function to restrict.
- * @returns {Function} Returns the new shortable function.
- */
-function shortOut(func) {
-  var count = 0,
-      lastCalled = 0;
-
-  return function() {
-    var stamp = nativeNow(),
-        remaining = HOT_SPAN - (stamp - lastCalled);
-
-    lastCalled = stamp;
-    if (remaining > 0) {
-      if (++count >= HOT_COUNT) {
-        return arguments[0];
-      }
-    } else {
-      count = 0;
-    }
-    return func.apply(undefined, arguments);
-  };
-}
-
-module.exports = shortOut;
-
-
-/***/ }),
-/* 121 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseTimes = __webpack_require__(122),
-    castFunction = __webpack_require__(123),
-    toInteger = __webpack_require__(124);
-
-/** Used as references for various `Number` constants. */
-var MAX_SAFE_INTEGER = 9007199254740991;
-
-/** Used as references for the maximum length and index of an array. */
-var MAX_ARRAY_LENGTH = 4294967295;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMin = Math.min;
-
-/**
- * Invokes the iteratee `n` times, returning an array of the results of
- * each invocation. The iteratee is invoked with one argument; (index).
- *
- * @static
- * @since 0.1.0
- * @memberOf _
- * @category Util
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} [iteratee=_.identity] The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- * @example
- *
- * _.times(3, String);
- * // => ['0', '1', '2']
- *
- *  _.times(4, _.constant(0));
- * // => [0, 0, 0, 0]
- */
-function times(n, iteratee) {
-  n = toInteger(n);
-  if (n < 1 || n > MAX_SAFE_INTEGER) {
-    return [];
-  }
-  var index = MAX_ARRAY_LENGTH,
-      length = nativeMin(n, MAX_ARRAY_LENGTH);
-
-  iteratee = castFunction(iteratee);
-  n -= MAX_ARRAY_LENGTH;
-
-  var result = baseTimes(length, iteratee);
-  while (++index < n) {
-    iteratee(index);
-  }
-  return result;
-}
-
-module.exports = times;
-
-
-/***/ }),
-/* 122 */
-/***/ (function(module, exports) {
-
-/**
- * The base implementation of `_.times` without support for iteratee shorthands
- * or max array length checks.
- *
- * @private
- * @param {number} n The number of times to invoke `iteratee`.
- * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns the array of results.
- */
-function baseTimes(n, iteratee) {
-  var index = -1,
-      result = Array(n);
-
-  while (++index < n) {
-    result[index] = iteratee(index);
-  }
-  return result;
-}
-
-module.exports = baseTimes;
-
-
-/***/ }),
-/* 123 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var identity = __webpack_require__(28);
-
-/**
- * Casts `value` to `identity` if it's not a function.
- *
- * @private
- * @param {*} value The value to inspect.
- * @returns {Function} Returns cast function.
- */
-function castFunction(value) {
-  return typeof value == 'function' ? value : identity;
-}
-
-module.exports = castFunction;
-
-
-/***/ }),
-/* 124 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toFinite = __webpack_require__(125);
-
-/**
- * Converts `value` to an integer.
- *
- * **Note:** This method is loosely based on
- * [`ToInteger`](http://www.ecma-international.org/ecma-262/7.0/#sec-tointeger).
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted integer.
- * @example
- *
- * _.toInteger(3.2);
- * // => 3
- *
- * _.toInteger(Number.MIN_VALUE);
- * // => 0
- *
- * _.toInteger(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toInteger('3.2');
- * // => 3
- */
-function toInteger(value) {
-  var result = toFinite(value),
-      remainder = result % 1;
-
-  return result === result ? (remainder ? result - remainder : result) : 0;
-}
-
-module.exports = toInteger;
-
-
-/***/ }),
-/* 125 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toNumber = __webpack_require__(126);
-
-/** Used as references for various `Number` constants. */
-var INFINITY = 1 / 0,
-    MAX_INTEGER = 1.7976931348623157e+308;
-
-/**
- * Converts `value` to a finite number.
- *
- * @static
- * @memberOf _
- * @since 4.12.0
- * @category Lang
- * @param {*} value The value to convert.
- * @returns {number} Returns the converted number.
- * @example
- *
- * _.toFinite(3.2);
- * // => 3.2
- *
- * _.toFinite(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toFinite(Infinity);
- * // => 1.7976931348623157e+308
- *
- * _.toFinite('3.2');
- * // => 3.2
- */
-function toFinite(value) {
-  if (!value) {
-    return value === 0 ? value : 0;
-  }
-  value = toNumber(value);
-  if (value === INFINITY || value === -INFINITY) {
-    var sign = (value < 0 ? -1 : 1);
-    return sign * MAX_INTEGER;
-  }
-  return value === value ? value : 0;
-}
-
-module.exports = toFinite;
-
-
-/***/ }),
-/* 126 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(11),
-    isSymbol = __webpack_require__(8);
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject(other) ? (other + '') : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = value.replace(reTrim, '');
-  var isBinary = reIsBinary.test(value);
-  return (isBinary || reIsOctal.test(value))
-    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-    : (reIsBadHex.test(value) ? NAN : +value);
-}
-
-module.exports = toNumber;
-
-
-/***/ }),
-/* 127 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icon__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__inspector__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_throttle__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_lodash_throttle__);
-/**
- * Block Aione Map
- */
-
-
-
-
-
-var __ = wp.i18n.__;
-var Component = wp.element.Component;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp$editor = wp.editor,
-    RichText = _wp$editor.RichText,
-    InspectorControls = _wp$editor.InspectorControls,
-    ColorPalette = _wp$editor.ColorPalette;
-var _wp$components = wp.components,
-    Button = _wp$components.Button,
-    ButtonGroup = _wp$components.ButtonGroup,
-    CheckboxControl = _wp$components.CheckboxControl,
-    PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
-    PanelColor = _wp$components.PanelColor,
-    RadioControl = _wp$components.RadioControl,
-    RangeControl = _wp$components.RangeControl,
-    TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl,
-    ToggleControl = _wp$components.ToggleControl,
-    Toolbar = _wp$components.Toolbar,
-    SelectControl = _wp$components.SelectControl;
-
-
-function getSettings(attributes) {
-    var settings = [];
-    for (var attribute in attributes) {
-        var value = attributes[attribute];
-        if ('boolean' === typeof attributes[attribute]) {
-            value = value.toString();
-        }
-        settings.push(wp.element.createElement(
-            'li',
-            null,
-            attribute,
-            ': ',
-            value
-        ));
-    }
-    return settings;
-}
-
-function buildMapIframe(attributes) {
-    return wp.element.createElement(
-        'div',
-        { 'class': 'wp-block-aione-map' },
-        wp.element.createElement('iframe', { width: '100%', height: parseInt(attributes.height, 10) + 'px', src: 'https://www.google.com/maps/embed/v1/place?q=' + encodeURIComponent(attributes.address) + '&maptype=roadmap&zoom=' + parseInt(attributes.zoom, 10) + '&key=' + attributes.api_key, frameBorder: '0' })
-    );
-} // buildMapIframe
-
-/**
- * Register static block example block
- */
-registerBlockType('aione-blocks/aione-map', {
-    title: __('Aione Map'),
-    description: __('Simple yet powerfull map block powered by Google Maps'),
-    category: 'aione-blocks',
-    icon: __WEBPACK_IMPORTED_MODULE_0__icon__["a" /* default */],
-    keywords: [__('Map'), __('Location'), __('google')],
-    attributes: {
-        zoom: {
-            type: 'number',
-            default: '10'
-        },
-        height: {
-            type: 'number',
-            default: '300'
-        },
-        address: {
-            type: 'string',
-            default: 'OXO Solutions, Amritsar'
-        },
-        api_key: {
-            type: 'string',
-            default: aione_blocks.api_key
-        }
-    },
-    edit: function edit(props) {
-        var message = props.attributes.message,
-            attributes = props.attributes,
-            className = props.className,
-            setAttributes = props.setAttributes;
-
-
-        var maphtml = buildMapIframe(attributes);
-
-        var isSelected = props.isSelected,
-            editable = props.editable,
-            setState = props.setState;
-
-
-        var onSetActiveEditable = function onSetActiveEditable(newEditable) {
-            return function () {
-                setState({ editable: newEditable });
-            };
-        };
-
-        var _props$attributes = props.attributes,
-            zoom = _props$attributes.zoom,
-            height = _props$attributes.height,
-            address = _props$attributes.address,
-            api_key = _props$attributes.api_key;
-
-
-        return [wp.element.createElement(__WEBPACK_IMPORTED_MODULE_1__inspector__["a" /* default */], props), wp.element.createElement(
-            'div',
-            null,
-            maphtml
-        )];
-    },
-    save: function save(props) {
-        var attributes = props.attributes;
-
-
-        var maphtml = buildMapIframe(attributes);
-
-        return wp.element.createElement(
-            'div',
-            null,
-            maphtml
-        );
-    }
-});
-
-/***/ }),
-/* 128 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var icon = wp.element.createElement(
-  "svg",
-  { version: "1.1", width: "16pt", heght: "16pt", x: "2pt", y: "0px", viewBox: "-295 387 20 20" },
-  wp.element.createElement("path", { d: "M-277.5,400.2c0,0,0-1.4,0-1.7s-0.4-0.8-1-0.8c-0.6,0-1.2,0-1.2,0v-2h-3v2.1h-1.4l-0.7,1.4l-0.8-1.5h-1.3v-2h-3.1v2\nc0,0-0.2,0-1.1,0c-0.9,0-0.9,1-0.9,1v4.3c0,0,0.2,0.1,0.7,0.1c0.5,0,0.9,0.1,0.9,0.1l0,1.8c0,0,0,0-0.6-0.1\nc-0.6-0.1-0.9-0.2-0.9-0.2l0,2.4h14.6v-5c0,0-0.2-0.1-0.5-0.3c-0.4-0.1-1-0.3-1-0.3l0.4-1.7L-277.5,400.2z M-287.8,404.4\nc-0.6,0.2-0.9,0.2-0.9,0.2l-0.4-1.6c0,0,0.3,0,0.8-0.2s0.8-0.3,0.8-0.3l0.6,1.5C-286.8,404-287.1,404.2-287.8,404.4z M-285.1,403.2\nl-0.8-1.5l1.5-0.9l0.8,1.5L-285.1,403.2z M-281.3,401.5c-0.4,0.1-0.8,0.2-0.8,0.2l-0.5-1.6c0,0,0.3-0.1,0.9-0.3\nc0.6-0.1,0.9-0.1,0.9-0.1l0.1,1.7C-280.6,401.4-280.9,401.4-281.3,401.5z" }),
-  wp.element.createElement("path", { "class": "map-block-red-pin", d: "M-284.8,387c-1.8,0-3.3,1.5-3.3,3.3s3.2,7.4,3.3,7.4c0,0,3.3-5.6,3.3-7.4S-283,387-284.8,387z M-284.8,392.4\nc-1.1,0-2-0.9-2-2s0.9-2,2-2c1.1,0,2,0.9,2,2S-283.7,392.4-284.8,392.4z" })
-);
-
-/* harmony default export */ __webpack_exports__["a"] = (icon);
-
-/***/ }),
-/* 129 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_throttle__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash_throttle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash_throttle__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -32423,153 +30363,279 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-/**
- * Internal block libraries
- */
-
-
-
+var __ = wp.i18n.__;
 var Component = wp.element.Component;
-var _wp$editor = wp.editor,
-    InspectorControls = _wp$editor.InspectorControls,
-    ColorPalette = _wp$editor.ColorPalette;
+
+var _ref = wp.blockEditor || wp.editor,
+    InspectorControls = _ref.InspectorControls,
+    PanelColorSettings = _ref.PanelColorSettings;
+
 var _wp$components = wp.components,
-    Button = _wp$components.Button,
-    ButtonGroup = _wp$components.ButtonGroup,
-    CheckboxControl = _wp$components.CheckboxControl,
     PanelBody = _wp$components.PanelBody,
-    PanelRow = _wp$components.PanelRow,
-    PanelColor = _wp$components.PanelColor,
-    RadioControl = _wp$components.RadioControl,
-    RangeControl = _wp$components.RangeControl,
-    TextControl = _wp$components.TextControl,
-    TextareaControl = _wp$components.TextareaControl,
     ToggleControl = _wp$components.ToggleControl,
-    Toolbar = _wp$components.Toolbar,
-    SelectControl = _wp$components.SelectControl;
+    RadioControl = _wp$components.RadioControl,
+    TextControl = _wp$components.TextControl,
+    SelectControl = _wp$components.SelectControl,
+    RangeControl = _wp$components.RangeControl,
+    Icon = _wp$components.Icon,
+    ButtonGroup = _wp$components.ButtonGroup,
+    Button = _wp$components.Button,
+    Tooltip = _wp$components.Tooltip,
+    IconButton = _wp$components.IconButton,
+    Dashicon = _wp$components.Dashicon;
 
 /**
  * Create an Inspector Controls wrapper Component
  */
 
 var Inspector = function (_Component) {
-    _inherits(Inspector, _Component);
+	_inherits(Inspector, _Component);
 
-    function Inspector() {
-        _classCallCheck(this, Inspector);
+	function Inspector(props) {
+		_classCallCheck(this, Inspector);
 
-        var _this = _possibleConstructorReturn(this, (Inspector.__proto__ || Object.getPrototypeOf(Inspector)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (Inspector.__proto__ || Object.getPrototypeOf(Inspector)).call(this, props));
 
-        _this.updateApiKey = _this.updateApiKey.bind(_this);
-        _this.updateApiKeyThrottled = __WEBPACK_IMPORTED_MODULE_0_lodash_throttle___default()(_this.updateApiKey, 3000);
-        return _this;
-    }
+		_this.state = { displayMode: "desktop" };
+		return _this;
+	}
 
-    _createClass(Inspector, [{
-        key: 'updateApiKey',
-        value: function updateApiKey(key) {
-            aione_blocks.api_key = key;
+	_createClass(Inspector, [{
+		key: "render",
+		value: function render() {
+			var displayMode = this.state.displayMode;
+			var _props = this.props,
+			    attributes = _props.attributes,
+			    setAttributes = _props.setAttributes;
+			var activeTab = attributes.activeTab,
+			    direction = attributes.direction,
+			    alignment = attributes.alignment,
+			    layout = attributes.layout,
+			    margin = attributes.margin,
+			    hover = attributes.hover,
+			    theme = attributes.theme,
+			    normalColor = attributes.normalColor,
+			    titleColor = attributes.titleColor,
+			    normalTitleColor = attributes.normalTitleColor,
+			    borderColor = attributes.borderColor,
+			    tabVertical = attributes.tabVertical,
+			    tabletTabDisplay = attributes.tabletTabDisplay,
+			    mobileTabDisplay = attributes.mobileTabDisplay,
+			    tabsTitle = attributes.tabsTitle,
+			    tabsAnchor = attributes.tabsAnchor,
+			    useAnchors = attributes.useAnchors,
+			    tabStyle = attributes.tabStyle;
 
-            fetch(ajaxurl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: "action=aione_map_block_save_key&api_key=" + key
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this2 = this;
 
-            var _props = this.props,
-                _props$attributes = _props.attributes,
-                zoom = _props$attributes.zoom,
-                height = _props$attributes.height,
-                address = _props$attributes.address,
-                api_key = _props$attributes.api_key,
-                setAttributes = _props.setAttributes;
+			var onChangeDirection = function onChangeDirection(value) {
+				return setAttributes({ direction: value });
+			};
+			var onChangeAlignment = function onChangeAlignment(value) {
+				return setAttributes({ alignment: value });
+			};
+			var onChangeLayout = function onChangeLayout(value) {
+				return setAttributes({ layout: value });
+			};
+			var onChangeTheme = function onChangeTheme(value) {
+				return setAttributes({ theme: value });
+			};
 
+			var tabColorPanels = [{
+				value: normalColor,
+				onChange: function onChange(value) {
+					return setAttributes({ normalColor: value });
+				},
+				label: __("Tab Color")
+			}, {
+				value: theme,
+				onChange: function onChange(value) {
+					return setAttributes({ theme: value });
+				},
+				label: __("Active Tab Color")
+			}, {
+				value: normalTitleColor,
+				onChange: function onChange(value) {
+					return setAttributes({ normalTitleColor: value });
+				},
+				label: __("Tab Title Color")
+			}, {
+				value: titleColor,
+				onChange: function onChange(value) {
+					return setAttributes({ titleColor: value });
+				},
+				label: __("Active Tab Title Color")
+			}];
 
-            return wp.element.createElement(
-                InspectorControls,
-                null,
-                wp.element.createElement(
-                    PanelBody,
-                    null,
-                    wp.element.createElement(TextControl, {
-                        label: 'Address',
-                        value: address,
-                        onChange: function onChange(address) {
-                            return setAttributes({ address: address });
-                        }
-                    })
-                ),
-                wp.element.createElement(
-                    PanelBody,
-                    null,
-                    wp.element.createElement(RangeControl, {
-                        beforeIcon: 'arrow-left-alt2',
-                        afterIcon: 'arrow-right-alt2',
-                        label: 'Zoom',
-                        value: zoom,
-                        onChange: function onChange(zoom) {
-                            return setAttributes({ zoom: zoom });
-                        },
-                        min: 1,
-                        max: 21
-                    })
-                ),
-                wp.element.createElement(
-                    PanelBody,
-                    null,
-                    wp.element.createElement(RangeControl, {
-                        beforeIcon: 'arrow-left-alt2',
-                        afterIcon: 'arrow-right-alt2',
-                        label: 'Problems? We are here to help!',
-                        value: height,
-                        onChange: function onChange(height) {
-                            return setAttributes({ height: height });
-                        },
-                        min: 50,
-                        max: 1000
-                    })
-                ),
-                wp.element.createElement(
-                    PanelBody,
-                    null,
-                    wp.element.createElement(TextControl, {
-                        label: 'API Key',
-                        help: wp.element.createElement(
-                            'p',
-                            null,
-                            'Please create your API key on the',
-                            ' ',
-                            wp.element.createElement(
-                                'a',
-                                { href: 'https://console.developers.google.com', target: '_blank' },
-                                'Google Console'
-                            ),
-                            '. ',
-                            'This is a requirement enforced by Google'
-                        ),
-                        value: api_key,
-                        onChange: function onChange(api_key) {
-                            if (!api_key) {
-                                api_key = aione_blocks.api_key;
-                            }
-                            setAttributes({ api_key: api_key });
-                            _this2.updateApiKeyThrottled(api_key);
-                        }
-                    })
-                )
-            );
-        }
-    }]);
+			return wp.element.createElement(
+				InspectorControls,
+				null,
+				wp.element.createElement(
+					PanelBody,
+					{ title: __('Settings') },
+					wp.element.createElement(
+						"div",
+						{ className: "blocks-font-size__main" },
+						wp.element.createElement(SelectControl, {
+							label: __('Select Direction:'),
+							value: direction,
+							onChange: onChangeDirection,
+							options: [{ value: 'horizontal', label: 'Horizontal' }, { value: 'vertical', label: 'Vertical' }]
+						}),
+						wp.element.createElement(SelectControl, {
+							label: __('Select Text Alignment:'),
+							value: alignment,
+							onChange: onChangeAlignment,
+							options: [{ value: 'align-left', label: 'Align Left' }, { value: 'align-center', label: 'Align Center' }, { value: 'align-right', label: 'Align Right' }]
+						}),
+						wp.element.createElement(SelectControl, {
+							label: __('Layout Position:'),
+							help: __('This will work only with VERTICAL direction'),
+							value: layout,
+							onChange: onChangeLayout,
+							options: [{ value: 'layout-left', label: 'Layout Left' }, { value: 'layout-right', label: 'Layout Right' }]
+						}),
+						wp.element.createElement(SelectControl, {
+							label: __('Select Theme:'),
+							value: theme,
+							onChange: onChangeTheme,
+							options: [{ value: 'theme-clean', label: 'Theme Clean' }, { value: 'theme-bold', label: 'Theme Bold' }, { value: 'theme-pastel', label: 'Theme Pastel' }, { value: 'theme-pointer', label: 'Theme Pointer' }, { value: 'theme-arrow', label: 'Theme Arrow' }, { value: 'theme-orange', label: 'Theme Orange' }]
+						}),
+						wp.element.createElement(ToggleControl, {
+							label: __('Enable Margin')
+							/*checked={  !! margin } 
+       onChange={ ()=>
+                   setAttributes( { margin: ! margin })    
+               }*/
+							, checked: margin,
+							onChange: function onChange(margin) {
+								return setAttributes({ margin: margin });
+							}
+						}),
+						wp.element.createElement(ToggleControl, {
+							label: __('Hover'),
+							checked: !!hover,
+							onChange: function onChange() {
+								return setAttributes({ hover: !hover });
+							}
+						})
+					)
+				)
+			);
+		}
+	}]);
 
-    return Inspector;
+	return Inspector;
 }(Component);
 
 /* harmony default export */ __webpack_exports__["a"] = (Inspector);
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__icons_icon__ = __webpack_require__(10);
+
+
+var __ = wp.i18n.__;
+var registerBlockType = wp.blocks.registerBlockType;
+var InnerBlocks = wp.blockEditor.InnerBlocks;
+var withSelect = wp.data.withSelect;
+
+
+registerBlockType("aione-blocks/aione-tab", {
+	title: __("Tab"),
+	parent: __("aione-blocks/aione-tabs"),
+	description: __("content of tab"),
+	icon: __WEBPACK_IMPORTED_MODULE_0__icons_icon__["a" /* default */],
+	category: "aione-blocks",
+	attributes: {
+		index: {
+			type: "number",
+			default: 0
+		},
+		isActive: {
+			type: "boolean",
+			default: true
+		}
+	},
+	supports: {
+		inserter: false,
+		reusable: false
+	},
+	edit: function edit(props) {
+		return wp.element.createElement(
+			"div",
+			{ style: { display: props.attributes.isActive ? "block" : "none" } },
+			wp.element.createElement(InnerBlocks, { templateLock: false })
+		);
+	},
+	save: function save(props) {
+		return wp.element.createElement(
+			"div",
+			{
+				className: "wp-block-aione-tabs-content-tab-content-wrap " + (props.attributes.isActive ? "active" : "ub-hide")
+			},
+			wp.element.createElement(InnerBlocks.Content, null)
+		);
+	}
+});
+
+registerBlockType("aione-blocks/aione-tab-block", {
+	title: __("Tab"),
+	parent: __("aione-blocks/aione-tabs-block"),
+	description: __("content of tab"),
+	icon: __WEBPACK_IMPORTED_MODULE_0__icons_icon__["a" /* default */],
+	category: "aione-blocks",
+	attributes: {
+		index: {
+			type: "number",
+			default: 0
+		},
+		isActive: {
+			type: "boolean",
+			default: true
+		},
+		parentID: {
+			type: "string",
+			default: ""
+		}
+	},
+	supports: {
+		inserter: false,
+		reusable: false
+	},
+	edit: withSelect(function (select, ownProps) {
+		return {
+			blockParentId: (select("core/block-editor") || select("core/editor")).getBlockRootClientId(ownProps.clientId)
+		};
+	})(function (props) {
+		var blockParentId = props.blockParentId,
+		    setAttributes = props.setAttributes;
+		var _props$attributes = props.attributes,
+		    parentID = _props$attributes.parentID,
+		    isActive = _props$attributes.isActive;
+
+
+		if (parentID === "" || parentID !== blockParentId) {
+			setAttributes({ parentID: blockParentId });
+		}
+		return wp.element.createElement(
+			"div",
+			{ style: { display: isActive ? "block" : "none" } },
+			wp.element.createElement(InnerBlocks, {
+				templateLock: false,
+				template: [["core/paragraph", { placeholder: __("Enter content for this tab") }]],
+				renderAppender: function renderAppender() {
+					return wp.element.createElement(InnerBlocks.ButtonBlockAppender, null);
+				}
+			})
+		);
+	}),
+	save: function save() {
+		return wp.element.createElement(InnerBlocks.Content, null);
+	}
+});
 
 /***/ })
 /******/ ]);

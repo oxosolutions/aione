@@ -391,10 +391,14 @@ if ( !function_exists( 'get_aione_page_settings' ) ) {
 
 	function get_aione_page_settings( $post_id, $meta_key,$setting_name = '') {		
 		$meta_value =  get_post_meta($post_id, $meta_key, true );		
-		if($setting_name == ''){
+		if($meta_value){
+			if($setting_name == ''){
+				return $meta_value;
+			} else {			
+				return $meta_value[$setting_name];
+			}
+		} else {
 			return $meta_value;
-		} else {			
-			return $meta_value[$setting_name];
 		}
 	}
 }
