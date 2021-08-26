@@ -7936,6 +7936,10 @@ HEADER
   z-index: 99;
 }
 
+.admin-bar .aione-header.fixed {
+  top: 32px;
+}
+
 .layout-header-top .aione-header {
   float: none;
 }
