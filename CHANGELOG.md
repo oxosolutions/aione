@@ -226,3 +226,6 @@ UPDATED: Aione Tabs Block
 UPDATED: Aione Column Block
 REMOVED: Pattern
 FIXED: Error in get_aione_page_settings 
+
+## 7.8.0.2 26-08-2021
+UPDATED: CSS Updates
