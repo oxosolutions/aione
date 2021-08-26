@@ -11132,6 +11132,15 @@ Theme Color
   content: "\F2AC";
 }
 
+.aione-social-icons .telegram {
+  background: #029be5;
+}
+
+.aione-social-icons .telegram > a > .icon:before {
+  font-family: "FontAwesome";
+  content: "\F1D8";
+}
+
 .aione-social-icons .email {
   background: #20252b;
 }
