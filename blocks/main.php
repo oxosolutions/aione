@@ -24,14 +24,15 @@ class AioneBlocks {
 
   	public function run() {
 		//add_action( 'enqueue_block_assets', array( $this, 'blocks_assets' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 		//add_filter( 'block_categories', array( $this, 'aione_block_category' ),10,2);
+        //add_action( 'wp_enqueue_scripts', array($this,'ub_tabbed_content_add_frontend_assets' ));
+
+		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 		add_filter( 'block_categories_all', array( $this, 'aione_block_category' ),10,2);
 
 		add_action('wp_ajax_aione_map_block_save_key', array($this, 'save_key'));
         add_action('wp_ajax_nopriv_aione_map_block_save_key', array($this, 'save_key'));
 
-        //add_action( 'wp_enqueue_scripts', array($this,'ub_tabbed_content_add_frontend_assets' ));
 		
 
 		require_once get_template_directory(). '/blocks/src/SocialShare/block.php';

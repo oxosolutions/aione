@@ -229,3 +229,9 @@ FIXED: Error in get_aione_page_settings
 
 ## 7.8.0.2 26-08-2021
 UPDATED: CSS Updates
+
+## 7.8.0.3 03-09-2021
+UPDATED: Aione Column Block recovery
+
+## 7.8.0.4 11-09-2021
+UPDATED: Aione Breadcrumbs widget : Home Icon

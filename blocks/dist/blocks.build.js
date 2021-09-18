@@ -1578,7 +1578,7 @@ registerBlockType('aione-blocks/aione-icon', {
         ), wp.element.createElement(
             'span',
             { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
-            wp.element.createElement('i', { className: iconName })
+            wp.element.createElement('ion-icon', { name: iconName })
         )];
     },
     save: function save(props) {
@@ -1591,7 +1591,7 @@ registerBlockType('aione-blocks/aione-icon', {
         return wp.element.createElement(
             'span',
             { className: ' aione-icon ' + iconSize + ' ' + iconBGColor },
-            wp.element.createElement('i', { className: iconName })
+            wp.element.createElement('ion-icon', { name: iconName })
         );
     }
 });
@@ -3299,7 +3299,7 @@ registerBlockType('aione-blocks/aione-column', {
                     className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
                 wp.element.createElement(
                     'a',
-                    { href: linkUrl, target: linkTarget },
+                    { href: linkUrl, target: linkTarget, rel: 'noopener' },
                     wp.element.createElement(
                         'div',
                         { className: 'wrapper' },
@@ -3335,7 +3335,7 @@ registerBlockType('aione-blocks/aione-column', {
                     className: 'ac' + ' l' + largeScreen + ' m' + mediumScreen + ' s' + smallScreen },
                 wp.element.createElement(
                     'a',
-                    { href: linkUrl, target: linkTarget },
+                    { href: linkUrl, target: linkTarget, rel: 'noopener' },
                     wp.element.createElement(
                         'div',
                         { className: 'wrapper' },
