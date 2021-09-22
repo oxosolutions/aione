@@ -1847,7 +1847,7 @@ registerBlockType('aione-blocks/aione-button', {
                     {
                         href: buttonUrl,
                         target: buttonTarget ? '_blank' : "_self",
-                        rel: buttonTarget ? 'noopener noreferrer' : 'noopener',
+                        rel: buttonTarget ? 'noopener noreferrer' : null,
                         className: 'aione-button' + ' ' + buttonSize + ' ' + buttonStyle + ' ' + customClasses + ' ' + buttonBGColor + ' ' + buttonTextColor + ' ' + buttonBorderColor
                     },
                     wp.element.createElement(RichText.Content, { value: buttonText })

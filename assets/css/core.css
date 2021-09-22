@@ -908,7 +908,7 @@ HEADER
 @media only screen and (min-width : 993px) {
   .layout-header-left .content-wrapper,
 .layout-header-right .content-wrapper {
-    width: calc( 100% - 250px );
+    width: calc(100% - 250px);
     float: left;
   }
 }

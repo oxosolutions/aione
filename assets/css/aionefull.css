@@ -8277,7 +8277,7 @@ HEADER
 @media only screen and (min-width : 993px) {
   .layout-header-left .content-wrapper,
 .layout-header-right .content-wrapper {
-    width: calc( 100% - 250px );
+    width: calc(100% - 250px);
     float: left;
   }
 }
@@ -10486,7 +10486,7 @@ AIONE TABS Theme Arrow
   height: 0;
   bottom: 0;
   right: 0;
-  top: calc( 50% - 12px );
+  top: calc(50% - 12px);
   border-top: 12px solid transparent;
   border-left: 16px solid #168dc5;
   border-bottom: 12px solid transparent;
@@ -11163,6 +11163,153 @@ Theme Color
   content: "\F095";
 }
 
+/**
+ * lightbox – ultra slim jQuery lightbox
+ * Version 1.7.14 - http://noelboss.github.io/lightbox/
+ *
+ * Copyright 2019, Noël Raoul Bossart (http://www.noelboss.com)
+ * MIT Licensed.
+**/
+html.with-lightbox {
+  /* disable global scrolling when lightboxs are visible */
+  overflow: hidden;
+}
+
+.lightbox {
+  display: none;
+  /* dimensions: spanning the background from edge to edge */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2147483647;
+  /* z-index needs to be >= elements on the site. */
+  /* position: centering content */
+  text-align: center;
+  /* insures that the ::before pseudo element doesn't force wrap with fixed width content; */
+  white-space: nowrap;
+  /* styling */
+  cursor: pointer;
+  background: #333;
+  /* IE8 "hack" for nested lightboxs */
+  background: rgba(0, 0, 0, 0);
+}
+
+/* support for nested lightboxs. Does not work in IE8 (use JS to fix) */
+.lightbox:last-of-type {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.lightbox:before {
+  /* position: trick to center content vertically */
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.lightbox .lightbox-content {
+  /* make content container for positioned elements (close button) */
+  position: relative;
+  /* position: centering vertical and horizontal */
+  text-align: left;
+  vertical-align: middle;
+  display: inline-block;
+  /* dimensions: cut off images */
+  overflow: auto;
+  padding: 25px 25px 0;
+  border-bottom: 25px solid transparent;
+  /* dimensions: handling large content */
+  margin-left: 5%;
+  margin-right: 5%;
+  max-height: 95%;
+  /* styling */
+  background: #fff;
+  cursor: auto;
+  /* reset white-space wrapping */
+  white-space: normal;
+}
+
+/* contains the content */
+.lightbox .lightbox-inner {
+  /* make sure its visible */
+  display: block;
+}
+
+/* don't show these though */
+.lightbox script.lightbox-inner,
+.lightbox link.lightbox-inner,
+.lightbox style.lightbox-inner {
+  display: none;
+}
+
+.lightbox .lightbox-close-icon {
+  /* position: centering vertical and horizontal */
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  /* dimensions: 25px x 25px */
+  line-height: 25px;
+  width: 25px;
+  /* styling */
+  cursor: pointer;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background: #fff;
+  /* Set the background in case it overlaps the content */
+  background: rgba(255, 255, 255, 0.3);
+  color: #000;
+  border: none;
+  padding: 0;
+}
+
+/* See http://stackoverflow.com/questions/16077341/how-to-reset-all-default-styles-of-the-html5-button-element */
+.lightbox .lightbox-close-icon::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+.lightbox .lightbox-image {
+  /* styling */
+  width: 100%;
+}
+
+.lightbox-iframe .lightbox-content {
+  /* removed the border for image croping since iframe is edge to edge */
+  border-bottom: 0;
+  padding: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.lightbox iframe {
+  /* styling */
+  border: none;
+}
+
+.lightbox * {
+  /* See https://github.com/noelboss/lightbox/issues/42 */
+  box-sizing: border-box;
+}
+
+/* handling phones and small screens */
+@media only screen and (max-width: 1024px) {
+  .lightbox .lightbox-content {
+    /* dimensions: maximize lightbox with for small screens */
+    margin-left: 0;
+    margin-right: 0;
+    max-height: 98%;
+    padding: 10px 10px 0;
+    border-bottom: 10px solid transparent;
+  }
+}
+/* hide non lightbox items when printing */
+@media print {
+  html.with-lightbox > * > :not(.lightbox) {
+    display: none;
+  }
+}
 /***************************************
 Aione Buttons
 ***************************************/

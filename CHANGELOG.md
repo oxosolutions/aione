@@ -235,3 +235,9 @@ UPDATED: Aione Column Block recovery
 
 ## 7.8.0.4 11-09-2021
 UPDATED: Aione Breadcrumbs widget : Home Icon
+
+## 7.8.0.5 20-09-2021
+UPDATED: Aione Button Block recovery
+
+## 7.9.0.0 22-09-2021
+ADDED: Lightbox
