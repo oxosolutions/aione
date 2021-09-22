@@ -2249,7 +2249,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'facebook' },
                         wp.element.createElement(
                             'a',
-                            { href: facebookUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: facebookUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2263,7 +2263,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'youtube' },
                         wp.element.createElement(
                             'a',
-                            { href: youtubeUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: youtubeUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2277,7 +2277,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'twitter' },
                         wp.element.createElement(
                             'a',
-                            { href: twitterUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: twitterUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2291,7 +2291,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'linkedin' },
                         wp.element.createElement(
                             'a',
-                            { href: linkedinUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: linkedinUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2305,7 +2305,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'instagram' },
                         wp.element.createElement(
                             'a',
-                            { href: instagramUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: instagramUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2319,7 +2319,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'github' },
                         wp.element.createElement(
                             'a',
-                            { href: githubUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: githubUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2333,7 +2333,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'pinterest' },
                         wp.element.createElement(
                             'a',
-                            { href: pinterestUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: pinterestUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2347,7 +2347,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'tumblr' },
                         wp.element.createElement(
                             'a',
-                            { href: tumblrUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: tumblrUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -2361,7 +2361,7 @@ registerBlockType('aione-blocks/aione-social-icons', {
                         { 'class': 'rss' },
                         wp.element.createElement(
                             'a',
-                            { href: rssUrl, target: '_blank' },
+                            { rel: 'noopener noreferrer', href: rssUrl, target: '_blank' },
                             wp.element.createElement('span', { 'class': 'icon' }),
                             wp.element.createElement(
                                 'span',
@@ -3599,7 +3599,7 @@ registerBlockType('aione-blocks/aione-wrapper', {
             null,
             props.attributes.addLink ? wp.element.createElement(
                 'a',
-                { href: linkUrl, target: linkTarget },
+                { rel: 'noopener noreferrer', href: linkUrl, target: linkTarget },
                 wp.element.createElement(
                     'div',
                     { className: 'aione-wrapper' + ' ' + displayProp + ' ' },
@@ -3623,7 +3623,7 @@ registerBlockType('aione-blocks/aione-wrapper', {
         if (props.attributes.addLink) {
             return wp.element.createElement(
                 'a',
-                { href: linkUrl, target: linkTarget },
+                { rel: 'noopener noreferrer', href: linkUrl, target: linkTarget },
                 wp.element.createElement(
                     'div',
                     { className: 'aione-wrapper' + ' ' + displayProp + ' ' },

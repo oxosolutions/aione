@@ -241,3 +241,6 @@ UPDATED: Aione Button Block recovery
 
 ## 7.9.0.0 22-09-2021
 ADDED: Lightbox
+
+## 7.9.0.1 22-09-2021
+FIXED: Block fixes
