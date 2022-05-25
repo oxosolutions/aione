@@ -7,10 +7,153 @@ add_action('widgets_init', function () {
 
 	register_widget( 'Aione_DesignBy_Widget' );
 	register_widget( 'Aione_Copyright_Widget' );
-	register_widget( 'Aione_Fontsize_Widget' );
+	//register_widget( 'Aione_Fontsize_Widget' );
 	register_widget( 'Aione_Breadcrumbs_Widget' );
+	register_widget( 'Aione_Navigation_Menu_Widget' );
 
 });
+
+class Aione_Navigation_Menu_Widget extends WP_Widget {
+	public function __construct() {
+        $widget_ops = array(
+            'description'                 => __( 'Add a navigation menu to your sidebar.' ),
+            'customize_selective_refresh' => true,
+            'show_instance_in_rest'       => true,
+        );
+        parent::__construct( 'widget_aione_nav_menu', __( 'Aione Navigation Menu' ), $widget_ops );
+    }
+
+    public function widget( $args, $instance ) {
+        // Get menu.
+      	$widget_settings = get_option('widget_aione_nav_menu');
+ 
+        $aione_nav_menu = ! empty( $instance['widget_aione_nav_menu'] ) ? wp_get_nav_menu_object( $instance['widget_aione_nav_menu'] ) : false;
+ 
+        if ( ! $aione_nav_menu ) {
+            return;
+        }
+ 
+        $default_title = __( 'Menu' );
+        $title         = ! empty( $instance['title'] ) ? $instance['title'] : '';
+ 
+        /** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+        $title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+ 
+        echo $args['before_widget'];
+ 
+        if ( $title ) {
+            echo $args['before_title'] . $title . $args['after_title'];
+        }
+ 
+        $format = current_theme_supports( 'html5', 'navigation-widgets' ) ? 'html5' : 'xhtml';
+ 
+       
+        $format = apply_filters( 'navigation_widgets_format', $format );
+ 
+        if ( 'html5' === $format ) {
+            // The title may be filtered: Strip out HTML and make sure the aria-label is never empty.
+            $title      = trim( strip_tags( $title ) );
+            $aria_label = $title ? $title : $default_title;
+ 
+            $nav_menu_args = array(
+                'fallback_cb'          => '',
+                'menu'                 => $aione_nav_menu,
+                'container'            => 'nav',
+                'container_aria_label' => $aria_label,
+                'items_wrap'           => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+            );
+        } else {
+            $nav_menu_args = array(
+                'fallback_cb' => '',
+                'menu'        => $aione_nav_menu,
+            );
+        }
+ 
+  		wp_nav_menu( apply_filters( 'widget_nav_menu_args', $nav_menu_args, $aione_nav_menu, $args, $instance ) );
+        //wp_nav_menu($nav_menu_args);
+ 
+        echo $args['after_widget'];
+    }
+   
+    public function update( $new_instance, $old_instance ) {
+        $instance = $old_instance;
+        if ( ! empty( $new_instance['title'] ) ) {
+            $instance['title'] = sanitize_text_field( $new_instance['title'] );
+        }
+        if ( ! empty( $new_instance['widget_aione_nav_menu'] ) ) {
+            $instance['widget_aione_nav_menu'] = (int) $new_instance['widget_aione_nav_menu'];
+        }
+       
+
+        $instance['show_description'] = isset( $new_instance['show_description'] ) ? 'true' : 'false';
+        return $instance;
+    }
+
+    public function form( $instance ) {
+        global $wp_customize;
+        $title    = isset( $instance['title'] ) ? $instance['title'] : '';
+        $aione_nav_menu = isset( $instance['widget_aione_nav_menu'] ) ? $instance['widget_aione_nav_menu'] : '';
+        $instance['show_description'] = isset( $new_instance['show_description'] ) ? 'true' : 'false';
+ 
+        // Get menus.
+        $menus = wp_get_nav_menus();
+ 
+        $empty_menus_style     = '';
+        $not_empty_menus_style = '';
+        if ( empty( $menus ) ) {
+            $empty_menus_style = ' style="display:none" ';
+        } else {
+            $not_empty_menus_style = ' style="display:none" ';
+        }
+ 
+        $nav_menu_style = '';
+        if ( ! $aione_nav_menu ) {
+            $nav_menu_style = 'display: none;';
+        }
+ 
+        // If no menus exists, direct the user to go and create some.
+        ?>
+        <p class="nav-menu-widget-no-menus-message" <?php echo $not_empty_menus_style; ?>>
+            <?php
+            if ( $wp_customize instanceof WP_Customize_Manager ) {
+                $url = 'javascript: wp.customize.panel( "nav_menus" ).focus();';
+            } else {
+                $url = admin_url( 'nav-menus.php' );
+            }
+ 
+            /* translators: %s: URL to create a new menu. */
+            printf( __( 'No menus have been created yet. <a href="%s">Create some</a>.' ), esc_attr( $url ) );
+            ?>
+        </p>
+        <div class="nav-menu-widget-form-controls" <?php echo $empty_menus_style; ?>>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+                <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" />
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'widget_aione_nav_menu' ); ?>"><?php _e( 'Select Menu:' ); ?></label>
+                <select id="<?php echo $this->get_field_id( 'widget_aione_nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'widget_aione_nav_menu' ); ?>">
+                    <option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
+                    <?php foreach ( $menus as $menu ) : ?>
+                        <option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $aione_nav_menu, $menu->term_id ); ?>>
+                            <?php echo esc_html( $menu->name ); ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </p>
+            <p>
+                <label for="<?php echo $this->get_field_id( 'show_description' ); ?>"><?php _e( 'Show Description:' ); ?></label>
+                <input type="checkbox" class="widefat" id="<?php echo $this->get_field_id( 'show_description' ); ?>" name="<?php echo $this->get_field_name( 'show_description' ); ?>" <?php checked( 'true', $instance['show_description'], $echo, 'checked' ); ?>>
+            </p>
+            <?php if ( $wp_customize instanceof WP_Customize_Manager ) : ?>
+                <p class="edit-selected-nav-menu" style="<?php echo $nav_menu_style; ?>">
+                    <button type="button" class="button"><?php _e( 'Edit Menu' ); ?></button>
+                </p>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
+}
 
 
 class Aione_DesignBy_Widget extends WP_Widget {
@@ -106,11 +249,13 @@ class Aione_Copyright_Widget extends WP_Widget {
 	}
 
 	public function form( $instance ) {
-
+		
 	}
 
 	public function update( $new_instance, $old_instance ) {
-
+		$old_instance = $new_instance;
+		$instance = $old_instance;
+		return $instance;
 	}
 }
 

@@ -244,3 +244,6 @@ ADDED: Lightbox
 
 ## 7.9.0.1 22-09-2021
 FIXED: Block fixes
+
+## 8.0.0.0 25-05-2022
+UPDATED: Wordpress 6.0

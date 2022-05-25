@@ -474,9 +474,11 @@ Aione Header
 
 .aione-header-logo {
   width: auto;
+  max-width: 84%;
+  max-width: calc(100% - 60px);
   float: left;
   position: relative;
-  z-index: 9998;
+  z-index: 9997;
 }
 
 .aione-header-logo a {
@@ -486,6 +488,7 @@ Aione Header
 .aione-header-logo img {
   width: auto;
   display: block;
+  height: auto;
 }
 
 .aione-header .aione-header-title {
@@ -1781,7 +1784,7 @@ Mobile Nav
 
   .primary-nav .aione-nav {
     display: none;
-    z-index: 9997;
+    z-index: 9998;
   }
 
   .aione-nav.horizontal > ul > li {

@@ -221,9 +221,13 @@ if( $theme_options['header_customize_enable'] ) {
 }
 if( $theme_options['logo_height'] ) { 
 	echo '
-		.aione-header-logo > a > img{
+		.aione-header-logo{
 			height: '.esc_html( $theme_options['logo_height'] ).'px
 		}
+		.aione-header-logo img{
+			max-height: '.esc_html( $theme_options['logo_height'] ).'px
+		}
+		
 	';
 }
 /****** Header END*****/
