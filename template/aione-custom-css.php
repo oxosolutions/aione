@@ -225,7 +225,7 @@ if( $theme_options['logo_height'] ) {
 			height: '.esc_html( $theme_options['logo_height'] ).'px
 		}
 		.aione-header-logo img{
-			max-height: '.esc_html( $theme_options['logo_height'] ).'px
+			height: '.esc_html( $theme_options['logo_height'] ).'px
 		}
 		
 	';
